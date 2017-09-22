@@ -1,10 +1,7 @@
 *.swp
 /index.html
 /category/*
-!/category/tag-template.html
 /*.html
-!/template.html
-!/index-template.html
 /compiled/*
 /pollen-cache
 /css/style.css
