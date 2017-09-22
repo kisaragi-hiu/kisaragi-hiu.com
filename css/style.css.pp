@@ -1,4 +1,14 @@
 #lang pollen
+◊(define highlight-color "#A868E8")
+◊(define font-cjk-sans-serif "'思源黑體', 'Noto Sans CJK TC'")
+◊(define font-cjk-serif "'思源楷體', 'IPAmjMincho', 'Noto Serif CJK TC'")
+◊(define font-code "'Source Code Pro', 'source-code-pro', monospace")
+◊(define font-secondary (string-append "'Source Serif Pro', "
+                                       font-cjk-serif
+                                       ", serif"))
+◊(define font-primary (string-append "'Overpass' ,"
+                                     font-cjk-sans-serif
+                                     ", sans-serif"))
 
 body { font-size: 38pt;
        margin: 0; padding: 0;
@@ -8,21 +18,25 @@ body { font-size: 38pt;
        box-sizing: border-box;
        color: #444;
        background-color: white;
-       font-family: "Minion Pro", "minion-pro";
+       font-family: ◊|font-primary|;
        text-rendering: optimizeLegibility;
-     }
+}
 a { text-decoration: none; }
-a:link { color: rgb(223, 85, 3); }
-a:visited { color: rgb(223, 85, 3); }
-a:hover { color: rgb(223, 85, 3); text-decoration: underline; }
-a:active { color: rgb(223, 85, 3); }
+a:link { color: ◊|highlight-color|; }
+a:visited { color: ◊|highlight-color|; }
+a:hover { color: ◊|highlight-color|; text-decoration: underline; }
+a:active { color: ◊|highlight-color|; }
 .nav2, .nav3, .nav4, .nav5, .nav6, .nav7 { font-size: 100%t; }
 .nav3 { padding-left: 2em; }
 .nav4 { padding-left: 4em; }
 .nav5 { padding-left: 6em; }
 .nav6 { padding-left: 8em; }
-h1, h2, h3, h4, h5, h6, h7 { font-family: "Myriad Pro", "myriad-pro"; }
-p, h1, h2, h3, h4, h5, h6, h7, .footer, .nav2, .nav3, .nav4, .nav5, .nav6, .nav7, blockquote, #disqus_thread, body > a, .category { margin-left: auto; margin-right: auto; width: 90%; }
+h1, h2, h3, h4, h5, h6, h7 { font-family: ◊|font-secondary|; }
+p, h1, h2, h3, h4, h5, h6, h7, .footer, .nav2, .nav3, .nav4, .nav5, .nav6, .nav7, blockquote, #disqus_thread, body > a, .category {
+  margin-left: auto;
+  margin-right: auto;
+  width: 90%;
+}
 p { font-size: 100%; }
 .highlight { margin-top: 1em; margin-bottom: 1em; max-width: 100%;}
 figure .highlight { margin-top: 1em; margin-bottom: 0em; }
@@ -64,7 +78,7 @@ span.righty { position: absolute; right: 1em; font-size: 90%; }
     -webkit-justify-content: center;
     justify-content: center;
     flex-directon: row;
-    font-family: "Myriad Pro", "myriad-pro", sans-serif;
+    font-family: ◊|font-secondary|;
 }
 
 #home-wrap .home-left {
@@ -238,7 +252,7 @@ aside {
     font-style: italic;
     margin: 0;
     padding: 0;
-    font-family: "Myriad Pro", "myriad-pro";
+    font-family: ◊|font-secondary|;
     font-size: 10pt;
     text-align: left;
     text-indent: 0em;
@@ -251,7 +265,7 @@ aside {
     font-style: italic;
     margin: 0;
     padding: 0;
-    font-family: "Myriad Pro", "myriad-pro";
+    font-family: ◊|font-secondary|;
     font-size: 10pt;
     text-align: left;
     text-indent: 0em;
@@ -332,7 +346,7 @@ svg {
 
 /*
 pre {
-    font-family: "Source Code Pro", "source-code-pro";
+    font-family: ◊|font-code|;
     font-size: 12pt;
     color: white;
 }
@@ -366,7 +380,7 @@ svg {
 }
 
 pre {
-    font-family: "Source Code Pro", "source-code-pro";
+    font-family: ◊|font-code|;
     font-size: 190%;
     color: white;
 }
@@ -378,7 +392,7 @@ pre {
 }
 
 #header .lefty {
-    font-family: "futura-pt", sans-serif;
+    font-family: ◊|font-secondary|;
     font-weight: 700;
 }
 
@@ -401,8 +415,8 @@ blockquote {
 }
 
 .highlight {
-    font-family: "Source Code Pro", "source-code-pro";
-    color: rgb(3, 85, 223);
+    font-family: ◊|font-code|;
+    color: #111;
     padding-top: 0.75em;
     padding-left: 0em;
     overflow-y: visible;
@@ -439,7 +453,7 @@ blockquote {
 	margin-left: auto;
 	margin-right: auto;
     }
-    
+
     .abstract h2
     {
 	font-size: 120%;
@@ -451,7 +465,7 @@ blockquote {
 	margin-bottom: 2em;
     }
 
-    figcaption 
+    figcaption
     {
 	width: 100%;
     }

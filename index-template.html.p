@@ -2,7 +2,6 @@
   <head>
     <meta charset="UTF-8">
     <meta name="google" content="notranslate">
-    <meta http-equiv="Content-Language" content="en">
     <link rel="stylesheet" type="text/css" href="css/monokai.css" />
     <link rel="stylesheet" type="text/css" href="css/style.css" />
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
@@ -32,13 +31,13 @@
                                   (p ([class "index-date"])
                                      "發佈於"
                                      ,@(format-date (select-from-metas 'publish-date x))
-                                     " in "
+                                     " :: "
                                      ,@(format-cats (select-from-metas 'categories x)))
                                   (p ,@(get-elements (remove-supref (select-element 'p 'body x)))
                                   (br)
                                   (a ([href ,(symbol->string x)]
                                       [class "readmore"])
-                                     "Read more")))))
+                                     "更多")))))
                    (children here))
               (->html `(hr)))
 
