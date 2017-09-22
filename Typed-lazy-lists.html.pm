@@ -1,7 +1,7 @@
 #lang pollen/markup
 
 ◊headline{Typed lazy lists}
-◊define-meta[publish-date]{05/12/2011}
+◊define-meta[publish-date]{2011/12/05}
 ◊define-meta[categories]{shen, programming}
 ◊define-meta[comments]{true}
 

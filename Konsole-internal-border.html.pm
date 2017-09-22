@@ -1,7 +1,7 @@
 #lang pollen/markup
 
 ◊headline{Konsole internal border}
-◊define-meta[publish-date]{15/07/2013}
+◊define-meta[publish-date]{2013/07/15}
 ◊define-meta[categories]{linux}
 ◊define-meta[comments]{true}
 

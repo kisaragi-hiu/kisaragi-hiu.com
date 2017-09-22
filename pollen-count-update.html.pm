@@ -1,7 +1,7 @@
 #lang pollen
 
 ◊headline{Update: pollen-count}
-◊define-meta[publish-date]{15/08/2015}
+◊define-meta[publish-date]{2015/08/15}
 ◊define-meta[categories]{pollen, racket, programming}
 ◊define-meta[toc]{true}
 ◊define-meta[comments]{true}

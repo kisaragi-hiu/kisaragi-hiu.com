@@ -1,7 +1,7 @@
 #lang pollen/markup
 
 ◊headline{Shen infix notation}
-◊define-meta[publish-date]{20/03/2013}
+◊define-meta[publish-date]{2013/03/20}
 ◊define-meta[categories]{shen, programming}
 ◊define-meta[comments]{true}
 

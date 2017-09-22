@@ -1,7 +1,7 @@
 #lang pollen/markup
 
 ◊headline{At the Court of the Nasqueron Dwellers}
-◊define-meta[publish-date]{26/11/2011}
+◊define-meta[publish-date]{2011/11/26}
 ◊define-meta[categories]{shen, programming}
 ◊define-meta[comments]{true}
 

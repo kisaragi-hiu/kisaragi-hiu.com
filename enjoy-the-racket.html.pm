@@ -1,7 +1,7 @@
 #lang pollen
 
 ◊headline{Enjoy the Racket}
-◊define-meta[publish-date]{10/09/2015}
+◊define-meta[publish-date]{2015/09/10}
 ◊define-meta[categories]{racket, programming}
 ◊define-meta[comments]{true}
 

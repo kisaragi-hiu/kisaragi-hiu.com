@@ -1,7 +1,7 @@
 #lang pollen/markup
 
 ◊headline{Alien algebra}
-◊define-meta[publish-date]{23/11/2011}
+◊define-meta[publish-date]{2011/11/23}
 ◊define-meta[categories]{shen, programming}
 ◊define-meta[comments]{true}
 

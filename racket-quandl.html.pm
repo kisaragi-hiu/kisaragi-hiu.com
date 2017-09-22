@@ -1,7 +1,7 @@
 #lang pollen
 
 ◊headline{racket-quandl: Racket for fun and profit}
-◊define-meta[publish-date]{29/02/2016}
+◊define-meta[publish-date]{2016/02/29}
 ◊define-meta[categories]{programming, racket, Quandl, finance}
 ◊define-meta[comments]{true}
 

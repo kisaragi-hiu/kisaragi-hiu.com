@@ -1,7 +1,7 @@
 #lang pollen/markup
 
 ◊headline{thunner: a Google Play Music curses client}
-◊define-meta[publish-date]{06/03/2013}
+◊define-meta[publish-date]{2013/03/06}
 ◊define-meta[categories]{thunner, Google, python}
 ◊define-meta[comments]{true}
 
