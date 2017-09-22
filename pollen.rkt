@@ -1,5 +1,6 @@
 #lang racket/base
-(require pollen/decode 
+(require pollen/decode
+         threading
 	 txexpr
 	 pollen/tag
 	 racket/list
@@ -128,27 +129,37 @@ Register the following blocks so they're ignored by detect-paragraphs
   `(span ((class "strike")) ,@text))
 
 (define (datestring->date datetime)
-  (match (string-split datetime)
-    [(list date time) (match (map string->number (append (string-split date "/") (string-split time ":")))
-                        [(list day month year hour minutes) (date->string (seconds->date (find-seconds 0
-                                                                                                       minutes
-                                                                                                       hour
-                                                                                                       day
-                                                                                                       month
-                                                                                                       year)))])]
-    [(list date) (match (map string->number (string-split date "/"))
-                   [(list day month year) (date->string (seconds->date (find-seconds 0
-                                                                                     0
-                                                                                     0
-                                                                                     day
-                                                                                     month
-                                                                                     year)))])]))
+  ; datetime: "2017/09/22 [22:00]"
+  (parameterize ([date-display-format 'chinese]) ; "2017/9/22 星期五"
+    (match (string-split datetime)
+      [(list date time) (match (map string->number (append (string-split date "/")
+                                                           (string-split time ":")))
+                          [(list year month day hour minutes) (date->string
+                                                               (seconds->date
+                                                                (find-seconds 0
+                                                                              minutes
+                                                                              hour
+                                                                              day
+                                                                              month
+                                                                              year)))])]
+      [(list date) (match (map string->number (string-split date "/"))
+                     [(list year month day) (date->string
+                                             (seconds->date (find-seconds 0
+                                                                          0
+                                                                          0
+                                                                          day
+                                                                          month
+                                                                          year)))])])))
 
 (define headline (make-default-tag-function 'h1))
 
 (define (format-date string)
-  (match (string-split (datestring->date string))
-    [(list day month date year) `(,day " " ,month " " (span ((class "ord")) ,date) " " ,year)]))
+  (match (~> (datestring->date "2017/09/13")
+             (string-split _ "/")
+             (map string-split _)
+             (flatten))
+    [(list year month date day) ; day: 星期三, 星期五, etc.
+     `(,year "年" ,month "月" ,date "日，" ,day)]))
 
 (define (link url . text)
   `(a [[href ,url]] ,@text))
