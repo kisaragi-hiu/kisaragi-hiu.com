@@ -1,10 +1,10 @@
 #lang racket
 
 (require pollen/pagetree
-	 pollen/render
-	 txexpr
-	 racket/date
-	 rackjure
+   pollen/render
+   txexpr
+   racket/date
+   rackjure
          pollen/template
          pollen/core
          rackunit)
@@ -30,14 +30,14 @@
   (close-output-port out))
 
 (define (list-pms directory)
-  (filter (λ (file) 
-	     (and (not (equal? (path->string file) "index.html.pm"))
-                  (regexp-match #rx"\\.pm" (path->string file))))
-	  (directory-list directory)))
+  (filter (λ (file)
+           (and (not (equal? (path->string file) "index.html.pm"))
+                (regexp-match #rx"\\.pm" (path->string file))))
+    (directory-list directory)))
 
 (define (pm->html file)
   (string-trim (path->string file) ".pm"
-	       #:left? #f #:repeat? #f))
+         #:left? #f #:repeat? #f))
 
 (define (pm->html-symbol file)
   (string->symbol (string-trim (path->string file) ".pm"
@@ -72,7 +72,7 @@
   (sort files
         (λ (file1 file2)
           (> (file-date-in-seconds file1)
-	     (file-date-in-seconds file2)))
+           (file-date-in-seconds file2)))
         #:cache-keys? #t))
 
 (define (cat-string->list string)
@@ -107,22 +107,21 @@ find-tags: find categories metadata in all files
 ;; Generate index page with those files
 (define (generate-cats tags)
   (apply string-append (map (λ (tag)
-			      (make-tag-index tag)
-			      (string-append tag-dir tag ".html\n"))
-			    tags)))
+                             (make-tag-index tag)
+                             (string-append tag-dir tag ".html\n"))
+                        tags)))
 
 (define (make-.ptree post-files tags)
   (define out (open-output-file "index.ptree" #:exists 'replace))
   (define st
     (string-append "#lang pollen\n◊index.html{"
-		   (apply string-append
-			  (map (λ (x)
-				 (string-append (pm->html x) "\n")) post-files))
-		   "}\n" (generate-cats tags)))
+       (apply string-append
+          (map (λ (x)
+                (string-append (pm->html x) "\n")) post-files))
+       "}\n" (generate-cats tags)))
   (display st out)
   (close-output-port out))
 
 (define post-files (order-by-date (list-pms "./")))
 (define tags (find-tags post-files))
 (make-.ptree post-files tags)
-

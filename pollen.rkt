@@ -1,23 +1,23 @@
 #lang racket/base
 (require pollen/decode
          threading
-	 txexpr
-	 pollen/tag
-	 racket/list
-	 racket/string
-	 racket/date
-	 racket/match
+         txexpr
+         pollen/tag
+         racket/list
+         racket/string
+         racket/date
+         racket/match
          pollen/core
-	 pollen/unstable/pygments
-	 pollen/template
-	 hyphenate
-	 racket/function
-	 pollen-count)
+         pollen/unstable/pygments
+         pollen/template
+         hyphenate
+         racket/function
+         pollen-count)
 
 (provide highlight
-	 make-highlight-css
-	 get-elements
-	 add-between)
+         make-highlight-css
+         get-elements
+         add-between)
 (provide (all-defined-out))
 
 (module setup racket/base
@@ -47,7 +47,7 @@ Functions for use in template: remove-tags, tag-in-file?, select-element, format
 (define (select-element tag container location)
   (findf (lambda (x)
            (and (list? x) (equal? (car x) 'p)))
-	 (select* container location)))
+   (select* container location)))
 
 (define (category->link category)
   `(a [[href ,(string-append site-url "category/" category ".html")]]
@@ -66,10 +66,10 @@ Functions for use in template: remove-tags, tag-in-file?, select-element, format
 (define (remove-supref txexpr)
   (define-values (stripped _)
     (splitf-txexpr txexpr
-		   (λ (x) 
-		     (and (txexpr? x)
-			  (and (attrs-have-key? x 'class)
-			       (equal? (attr-ref x 'class) "supref"))))))
+       (λ (x)
+         (and (txexpr? x)
+          (and (attrs-have-key? x 'class)
+               (equal? (attr-ref x 'class) "supref"))))))
   stripped)
 
 #|
@@ -83,7 +83,7 @@ See https://github.com/malcolmstill/mstill.io/issues/1
   (define (omitter tx)
     (or (equal? (car tx) 'code) ; 'code tags
         (and (equal? (car tx) 'span) ; 'span tags that also have class="no-hyphens"
-             (attrs-have-key? tx 'class) 
+             (attrs-have-key? tx 'class)
              (equal? (attr-ref tx 'class) "no-hyphens"))))
 
   (if (member (car tx) '(p aside)) ; only hyphenate 'p or 'aside tags
@@ -92,11 +92,11 @@ See https://github.com/malcolmstill/mstill.io/issues/1
 
 (define (element-processing elements)
   (decode-elements elements
-		   #:txexpr-elements-proc detect-paragraphs
-		   #:block-txexpr-proc (compose1 my-hyphenate
-						 wrap-hanging-quotes)
-		   #:exclude-tags '(style script pre)
-		   #:string-proc (compose smart-quotes smart-dashes)))
+       #:txexpr-elements-proc detect-paragraphs
+       #:block-txexpr-proc (compose1 my-hyphenate
+                            wrap-hanging-quotes)
+       #:exclude-tags '(style script pre)
+       #:string-proc (compose smart-quotes smart-dashes)))
 
 (define (typofy-with-tag tag elements)
    (make-txexpr tag null (element-processing elements)))
@@ -116,14 +116,14 @@ Register the following blocks so they're ignored by detect-paragraphs
 
 (define (marginalia left right . content)
   `(div [[class "flx"]]
-	(div [[class "margin"]] ,(attr-set left 'class "left"))
-	,@content
-	(div [[class "margin"]] ,(attr-set right 'class "right"))))
+    (div [[class "margin"]] ,(attr-set left 'class "left"))
+    ,@content
+    (div [[class "margin"]] ,(attr-set right 'class "right"))))
 
 (define (image width src text)
   `(figure [[style ,(string-append "max-width:" width ";")]]
-	   (img [[src ,src] 
-		 [alt ,text]])))
+     (img [[src ,src]
+           [alt ,text]])))
 
 (define (strike . text)
   `(span ((class "strike")) ,@text))
@@ -162,7 +162,20 @@ Register the following blocks so they're ignored by detect-paragraphs
      `(,year "年" ,month "月" ,date "日，" ,day)]))
 
 (define (link url . text)
-  `(a [[href ,url]] ,@text))
+  `(a ([href ,url]) ,@text))
+
+(define (youtube video-id)
+  `(iframe ([id "ytplayer"]
+            [type "text/html"]
+            [width "640"]
+            [height "360"]
+            [src ,(string-append
+                   "http://www.youtube.com/embed/"
+                   video-id
+                   "?autoplay=0"
+                   "&origin="
+                   site-url)]
+            [frameborder "0"])))
 
 (define (supref . text)
   `(span ((class "supref")) ,@text))
@@ -172,7 +185,7 @@ Register the following blocks so they're ignored by detect-paragraphs
 (define (heading->toc-entry heading)
   `(div [[class ,(string-replace (symbol->string (get-tag heading)) "h" "nav")]]
         (span ""
-        (a [[href ,(string-append "#" (attr-ref heading 'id))]] ,@(get-elements heading)))))
+         (a [[href ,(string-append "#" (attr-ref heading 'id))]] ,@(get-elements heading)))))
 
 (define (nosection . xs)
   `(h2 ((id ,(symbol->string (gensym)))) ,@xs))
@@ -222,19 +235,19 @@ Root function automatically applied to .pm files
   ;; Strip out h1 from elements
   (define-values (xs-nohead headline)
     (splitf-txexpr `(body ,@xs)
-                   (λ (x) 
+                   (λ (x)
                      (and (txexpr? x)
                           (member (car x) '(h1))))))
-  
+
   (define refd (cross-reference xs-nohead))
-  
+
   ;; Pull out h2 - h7s into headings
   (define-values (_ headings)
     (splitf-txexpr refd
                    (λ (x)
                      (and (txexpr? x)
                           (member (car x) '(h2 h3 h4))))))
-  
+
   ;; Generate txexprs for ToC
   (define toc-entries (map heading->toc-entry headings))
   ;; Generate doc with headline, body, and ToC entries
@@ -242,6 +255,3 @@ Root function automatically applied to .pm files
     ,(typofy-with-tag 'headline headline)
     ,(typofy refd)
     ,(typofy-with-tag 'toc-entries toc-entries)))
-
-
-
