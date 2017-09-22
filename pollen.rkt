@@ -24,6 +24,8 @@
   (require pollen/setup)
   (define block-tags (append '(subsection subsubsection label img pre) default-block-tags)))
 
+(define site-url "http://localhost:8080/")
+
 #|
 Functions for use in template: remove-tags, tag-in-file?, select-element, format-cat
 |#
@@ -47,7 +49,7 @@ Functions for use in template: remove-tags, tag-in-file?, select-element, format
 	 (select* container location)))
 
 (define (category->link category)
-  `(a [[href ,(string-append "http://mstill.io/blog/category/" category ".html")]]
+  `(a [[href ,(string-append site-url "category/" category ".html")]]
       ,category))
 
 (define (cat-string->list string)
