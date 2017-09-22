@@ -5,7 +5,7 @@
     <meta http-equiv="Content-Language" content="en">
     <link rel="stylesheet" type="text/css" href="css/monokai.css" />
     <link rel="stylesheet" type="text/css" href="css/style.css" />
-    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 
     ◊when/splice[(select-from-metas 'background here)]{
     <style>
