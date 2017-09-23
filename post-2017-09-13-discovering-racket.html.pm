@@ -40,10 +40,11 @@ Later in June, I decided to also cover the hitcircles and other elements, and ev
 
 I thought about ◊link["http://xon.sh/"]{Xonsh}, Python, ◊link["https://scsh.net/"]{`scsh`}, the ◊link["https://github.com/michaelmacinnis/oh"]{`oh`} shell, and some others, but:
 
-- `oh`: I don't really understand. At least not yet.
-- Python: I don't like doing shell script-y stuff in Python currently. Previously I had ported my `randomwallpaper` script to Python, and it didn't feel better than Bash. This is purely my issue.
-- Xonsh: Looks very interesting, but I got stuck trying to figure out how I should parse command line arguments.
-- `scsh`: A full language + some shell-isms, sort of like Xonsh. Project feels kind of inactive though.
+◊ul{
+◊li{`oh`: I don't really understand. At least not yet.}
+◊li{Python: I don't like doing shell script-y stuff in Python currently. Previously I had ported my `randomwallpaper` script to Python, and it didn't feel better than Bash. This is purely my issue.}
+◊li{Xonsh: Looks very interesting, but I got stuck trying to figure out how I should parse command line arguments.}
+◊li{`scsh`: A full language + some shell-isms, sort of like Xonsh. Project feels kind of inactive though.}}
 
 So I just gave up and stayed with Bash, and tried to improve the script further; but the "Scheme shell" idea seemed really interesting to me, so I decided to Google for "Scheme shell" and see what I'd get. Racket showed up in the results, and I met Racket for the first time. It actually looks great!
 
