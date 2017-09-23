@@ -3,10 +3,11 @@
 ◊(define font-cjk-sans-serif "'思源黑體', 'Noto Sans CJK TC'")
 ◊(define font-cjk-serif "'思源楷體', 'IPAmjMincho', 'Noto Serif CJK TC'")
 ◊(define font-code "'Source Code Pro', 'source-code-pro', monospace")
-◊(define font-secondary (string-append "'Source Serif Pro', "
+
+◊(define font-primary (string-append "'Source Serif Pro', "
                                        font-cjk-serif
                                        ", serif"))
-◊(define font-primary (string-append "'Overpass' ,"
+◊(define font-secondary (string-append "'Overpass' ,"
                                      font-cjk-sans-serif
                                      ", sans-serif"))
 
@@ -45,7 +46,12 @@ p code { font-size: 90%; top: -0.05em; position: relative; background-color: #ee
 
 span.righty { position: absolute; right: 1em; font-size: 90%; }
 
-.index-date { font-size: 80%; color: #aaa; margin-bottom: 1em; }
+.index-date {
+    font-family: ◊|font-secondary|;
+    font-size: 80%;
+    color: #aaa;
+    margin-bottom: 1em;
+}
 .readmore { display: block; font-size: 100%; margin-top: 0.5em; }
 .supref { font-variant-position: super;
           -moz-font-feature-settings: "sups";
@@ -111,7 +117,11 @@ span.righty { position: absolute; right: 1em; font-size: 90%; }
 
 
 
-.category { font-size: 80%; margin-bottom: 2em; }
+.category {
+    font-family: ◊|font-secondary|;
+    font-size: 80%;
+    margin-bottom: 2em;
+}
 
 .abstract > h2 { margin-top: 0em; margin-bottom: 0em; }
 
