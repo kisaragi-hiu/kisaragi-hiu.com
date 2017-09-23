@@ -26,13 +26,16 @@
   (define block-tags (append '(subsection subsubsection label img pre) default-block-tags)))
 
 (define site-url "http://localhost:8080/")
-(define site-header
+(define (get-site-header #:at-index [at-index? #f])
   `(div ([id "header"])
         (a ([href "/index.html"])
            (img ([src "/images/avatar.png"])))
-        (span ([class "righty"])
-              (a ([href "/index.html"])
-                 "Up"))))
+        ,(if at-index?
+           `(span ([class "righty"])
+                  (a ([href "/index.html"])
+                     "Up"))
+           `(span ([class "righty"])))))
+
 (define site-global-head
   `(span
     (meta ([charset "UTF-8"]))

@@ -16,7 +16,7 @@
 
   </head>
   <body>
-    ◊(->html site-header)
+    ◊(->html (get-site-header))
     ◊(add-between (map (λ (x)
                         (->html `(div ([class "abstract"])
                                       (h2 ,(select 'h1 x))

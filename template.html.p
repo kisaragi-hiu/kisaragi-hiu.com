@@ -16,7 +16,7 @@
    
   </head>
   <body>
-    ◊(->html site-header)
+    ◊(->html (get-site-header #:at-index #t))
     ◊(->html `(p ([class "date"]) ,@(format-date (select-from-metas 'publish-date here))))
     ◊(->html (select 'headline here))
 
