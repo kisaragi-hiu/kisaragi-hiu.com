@@ -26,6 +26,13 @@
   (define block-tags (append '(subsection subsubsection label img pre) default-block-tags)))
 
 (define site-url "http://localhost:8080/")
+(define site-header
+  `(div ([id "header"])
+        (a ([href "index.html"])
+           (img ([src "images/avatar.png"])))
+        (span ([class "righty"])
+              (a ([href "index.html"])
+                 "Up"))))
 
 #|
 Functions for use in template: remove-tags, tag-in-file?, select-element, format-cat
