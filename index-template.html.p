@@ -1,11 +1,7 @@
 <html>
   <head>
-    <meta charset="UTF-8">
-    <meta name="google" content="notranslate">
     <title>Kisaragi Hiu</title>
-    <link rel="stylesheet" type="text/css" href="css/monokai.css" />
-    <link rel="stylesheet" type="text/css" href="css/style.css" />
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    ◊(->html site-global-head)
 
     ◊when/splice[(select-from-metas 'background here)]{
     <style>

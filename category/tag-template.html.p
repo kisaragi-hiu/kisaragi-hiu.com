@@ -1,13 +1,8 @@
 <html>
   <head>
-    <meta charset="UTF-8">
-    <meta name="google" content="notranslate">
-    <meta http-equiv="Content-Language" content="en">
     <title>Kisaragi Hiu/◊(select 'title here)</title>
-    <link rel="stylesheet" type="text/css" href="../css/monokai.css" />
-    <link rel="stylesheet" type="text/css" href="../css/style.css" />
-    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon" />
-    
+    ◊(->html site-global-head)
+
     ◊when/block[(select-from-metas 'background here)]{
     <style>
       #header { 
@@ -21,13 +16,7 @@
    
   </head>
   <body>
-    <div id="header">
-      <a href="../index.html">
-	<img src="../images/avatar.png" />
-      </a>
-      <span class="righty"></span>
-    </div>
-    
+    ◊(->html site-header)
     ◊(->html `(h1 "Category: " ,(select 'title here)))
     ◊(add-between (map (λ (x)
                          (->html `(div [[class "abstract"]]

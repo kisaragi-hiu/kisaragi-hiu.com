@@ -1,11 +1,7 @@
 <html>
   <head>
-    <meta charset="UTF-8">
-    <meta name="google" content="notranslate">
     <title>◊(remove-tags (select 'headline here))</title>
-    <link rel="stylesheet" type="text/css" href="css/monokai.css" />
-    <link rel="stylesheet" type="text/css" href="css/style.css" />
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    ◊(->html site-global-head)
 
     ◊when/block[(select-from-metas 'background here)]{
     <style>
@@ -21,7 +17,7 @@
   </head>
   <body>
     ◊(->html site-header)
-    ◊(->html `(p ((class "date")) ,@(format-date (select-from-metas 'publish-date here))))
+    ◊(->html `(p ([class "date"]) ,@(format-date (select-from-metas 'publish-date here))))
     ◊(->html (select 'headline here))
 
     ◊when/splice[(select-from-metas 'categories here)]{

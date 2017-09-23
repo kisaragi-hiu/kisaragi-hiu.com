@@ -28,11 +28,18 @@
 (define site-url "http://localhost:8080/")
 (define site-header
   `(div ([id "header"])
-        (a ([href "index.html"])
-           (img ([src "images/avatar.png"])))
+        (a ([href "/index.html"])
+           (img ([src "/images/avatar.png"])))
         (span ([class "righty"])
-              (a ([href "index.html"])
+              (a ([href "/index.html"])
                  "Up"))))
+(define site-global-head
+  `(span
+    (meta ([charset "UTF-8"]))
+    (meta ([name "google"] [content "notranslate"]))
+    (link ([rel "stylesheet"] [type "text/css"] [href "/css/monokai.css"]))
+    (link ([rel "stylesheet"] [type "text/css"] [href "/css/style.css"]))
+    (link ([rel "shortcut icon"] [type "image/x-icon"] [href "/favicon.ico"]))))
 
 #|
 Functions for use in template: remove-tags, tag-in-file?, select-element, format-cat
