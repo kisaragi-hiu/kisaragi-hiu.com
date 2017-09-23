@@ -33,7 +33,7 @@ a:active { color: ◊|highlight-color|; }
 .nav5 { padding-left: 6em; }
 .nav6 { padding-left: 8em; }
 h1, h2, h3, h4, h5, h6, h7 { font-family: ◊|font-secondary|; }
-p, h1, h2, h3, h4, h5, h6, h7, .footer, .nav2, .nav3, .nav4, .nav5, .nav6, .nav7, blockquote, #disqus_thread, body > a, .category {
+p, ul, ol, h1, h2, h3, h4, h5, h6, h7, .footer, .nav2, .nav3, .nav4, .nav5, .nav6, .nav7, blockquote, #disqus_thread, body > a, .category {
   margin-left: auto;
   margin-right: auto;
   width: 90%;
@@ -453,7 +453,7 @@ blockquote {
 	font-size: 200%;
     }
 
-    p, .abstract h2, h1, .category, .highlight, figure, h2, .nav2
+    p, ul, ol, .abstract h2, h1, .category, .highlight, figure, h2, .nav2
     {
 	max-width: 45rem;
     }
