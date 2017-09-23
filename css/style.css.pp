@@ -441,42 +441,42 @@ blockquote {
 {
     body
     {
-	font-size: 16pt;
+        font-size: 16pt;
     }
 
     pre {
-	font-size: 80%;
+        font-size: 80%;
     }
 
     h1
     {
-	font-size: 200%;
+        font-size: 200%;
     }
 
     p, ul, ol, .abstract h2, h1, .category, .highlight, figure, h2, .nav2
     {
-	max-width: 45rem;
+        max-width: 45rem;
     }
 
     .highlight
     {
-	margin-left: auto;
-	margin-right: auto;
+        margin-left: auto;
+        margin-right: auto;
     }
 
     .abstract h2
     {
-	font-size: 120%;
+        font-size: 120%;
     }
 
     hr
     {
-	margin-top: 2em;
-	margin-bottom: 2em;
+        margin-top: 2em;
+        margin-bottom: 2em;
     }
 
     figcaption
     {
-	width: 100%;
+        width: 100%;
     }
 }
