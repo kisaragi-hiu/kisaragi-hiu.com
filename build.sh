@@ -26,7 +26,7 @@ publish () {
 }
 
 cleanup () {
-    rm "*.html" "category/*.html" "category/*.html.pm"
+    rm ./*.html ./category/*.html ./category/*.html.pm
     raco pollen reset
 }
 
@@ -41,6 +41,7 @@ case "$1" in
         ;;
     (clean|cleanup)
         echo cleaning up
+        cleanup
         ;;
     (*)
         echo "$helptext"
