@@ -175,7 +175,7 @@ Register the following blocks so they're ignored by detect-paragraphs
 (define headline (make-default-tag-function 'h1))
 
 (define (format-date string)
-  (match (~> (datestring->date "2017/09/13")
+  (match (~> (datestring->date string)
              (string-split _ "/")
              (map string-split _)
              (flatten))
