@@ -183,7 +183,9 @@ Register the following blocks so they're ignored by detect-paragraphs
      `(,year "年" ,month "月" ,date "日，" ,day)]))
 
 (define (link url . text)
-  `(a ([href ,url]) ,@text))
+  (if text
+      `(a ([href ,url]) ,@text)
+      `(a ([href ,url]) ,url)))
 
 (define (youtube video-id)
   `(iframe ([id "ytplayer"]
