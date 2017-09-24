@@ -31,7 +31,7 @@ cleanup () {
 }
 
 case "$1" in
-    (build)
+    (""|build) # automatically build if not given an option
         echo building
         build
         ;;
