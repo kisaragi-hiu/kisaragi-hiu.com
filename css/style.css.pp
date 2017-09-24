@@ -225,20 +225,18 @@ h3 { margin-top: 1em; font-size: 18pt;}
 h4 { margin-top: 1em; font-size: 16pt;}
 
 p {
-
     font-weight: normal;
-    margin-bottom: 0em;
     margin-top: 0em;
     line-height: 1.5;
     color: #444;
 }
 
-body > p+p, blockquote > p+p { text-indent: 1.5em; }
+body > p+p, blockquote > p+p { text-indent: 0em; }
 body > p+p.footnote {
     text-indent: 0em;
 }
 
-.flx+p { text-indent: 1.5em; }
+.flx+p { text-indent: 0em; }
 
 p.date {
     text-indent: 0em;

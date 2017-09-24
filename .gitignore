@@ -4,7 +4,7 @@
 /*.html
 /compiled/*
 /pollen-cache
-/css/style.css
+/css/*.css
 /css/compiled/*
 /index.ptree
 style.css

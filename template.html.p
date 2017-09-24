@@ -3,9 +3,9 @@
     <title>◊(remove-tags (select 'headline here))</title>
     ◊(->html site-global-head)
 
-    ◊when/block[(select-from-metas 'background here)]{
+    ◊when/splice[(select-from-metas 'background here)]{
     <style>
-      #header { 
+      #header {
       background-image: url(◊(select-from-metas 'background metas));
       background-size: cover;
       background-position: center top;
@@ -13,7 +13,11 @@
       }
     </style>
     }
-   
+
+    ◊when/splice[(select-from-metas 'language here)]{
+    <link rel="stylesheet" href="◊(get-language-stylesheet (select-from-metas 'language metas))"/>
+    }
+
   </head>
   <body>
     ◊(->html (get-site-header #:at-index #t))
@@ -29,7 +33,7 @@
         ◊(->html `(div ([id "toc"]) (h2 "Table of Contents")
                        ,@(select-from-doc 'toc-entries here)))
     }
-    ◊(map ->html (select-from-doc 'body here)) 
+    ◊(map ->html (select-from-doc 'body here))
 
     ◊when/splice[(select-from-metas 'comments here)]{
         <h2>Comments</h2>
@@ -37,6 +41,6 @@
     }
     <footer>
     </footer>
-    
+
   </body>
 </html>

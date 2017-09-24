@@ -44,6 +44,10 @@
     (link ([rel "stylesheet"] [type "text/css"] [href "/css/style.css"]))
     (link ([rel "shortcut icon"] [type "image/x-icon"] [href "/favicon.ico"]))))
 
+(define (get-language-stylesheet language)
+  ; language -> string
+  (string-append "/css/" language ".css"))
+
 #|
 Functions for use in template: remove-tags, tag-in-file?, select-element, format-cat
 |#
