@@ -1,5 +1,6 @@
 #lang pollen
 ◊headline{Discovering Racket through making a osu! skin}
+◊define-meta[language]{en}
 ◊define-meta[publish-date]{2017/09/13 17:58}
 ◊define-meta[categories]{English, Programming, Racket}
 
