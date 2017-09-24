@@ -40,6 +40,7 @@
   `(span
     (meta ([charset "UTF-8"]))
     (meta ([name "google"] [content "notranslate"]))
+    (script ([src "https://use.fontawesome.com/f9f3cd1f14.js"]))
     (link ([rel "stylesheet"] [type "text/css"] [href "/css/monokai.css"]))
     (link ([rel "stylesheet"] [type "text/css"] [href "/css/style.css"]))
     (link ([rel "shortcut icon"] [type "image/x-icon"] [href "/favicon.ico"]))))
@@ -186,6 +187,9 @@ Register the following blocks so they're ignored by detect-paragraphs
   (if text
       `(a ([href ,url]) ,@text)
       `(a ([href ,url]) ,url)))
+
+(define (fa fa-icon)
+  `(span ([class "fa" ,fa-icon])))
 
 (define (youtube video-id)
   `(iframe ([id "ytplayer"]
