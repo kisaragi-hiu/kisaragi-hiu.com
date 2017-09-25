@@ -43,6 +43,7 @@
     (script ([src "https://use.fontawesome.com/f9f3cd1f14.js"]))
     (link ([rel "stylesheet"] [type "text/css"] [href "/css/monokai.css"]))
     (link ([rel "stylesheet"] [type "text/css"] [href "/css/style.css"]))
+    (link ([rel "stylesheet"] [type "text/css"] [href "https://fonts.googleapis.com/css?family=Overpass:200,400,700"]))
     (link ([rel "shortcut icon"] [type "image/x-icon"] [href "/favicon.ico"]))))
 
 (define (get-language-stylesheet language)
