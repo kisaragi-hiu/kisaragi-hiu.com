@@ -16,4 +16,4 @@ Overall I like this setup a bit more.
 
 ◊i{Update: The not updating date was just me hard-coding the date during testing, then forgetting it there.}
 
-◊figure["images/newsite-directory.jpg" #:width "45rem"]{New site directory structure}
+◊figure["/images/newsite-directory.jpg" #:width "45rem"]{New site directory structure}

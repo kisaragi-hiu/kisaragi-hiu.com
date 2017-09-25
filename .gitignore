@@ -2,10 +2,8 @@
 /index.html
 /category/*
 /*.html
-/compiled/*
+compiled
 /pollen-cache
-/css/*.css
-/css/compiled/*
+*.css
 /index.ptree
-style.css
 pollen.cache

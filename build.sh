@@ -26,7 +26,7 @@ publish () {
 }
 
 cleanup () {
-    rm ./*.html ./category/*.html ./category/*.html.pm
+    rm ./*.html ./category/*.html ./category/*.html.pm ./post/*.html
     raco pollen reset
 }
 
