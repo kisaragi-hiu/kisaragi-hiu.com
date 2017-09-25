@@ -1,9 +1,4 @@
 *.swp
-/index.html
-/category/*
-*.html
 compiled
 /pollen-cache
-*.css
-/index.ptree
 pollen.cache
