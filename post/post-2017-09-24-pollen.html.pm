@@ -4,7 +4,7 @@
 ◊define-meta[categories]{English, Meta, Pollen, Frog}
 ◊define-meta[language]{en}
 
-So, I restructured this blog again, this time using ◊link["https://mstill.io"] as a template, because I don't know how to use bootstrap. And I want to use Pollen markup.
+So, I restructured this blog again, this time using ◊link["https://mstill.io"]{mstill.io} as a template, because I don't know how to use bootstrap. And I want to use Pollen markup.
 
 The process is actually suprisingly smooth, except:
 ◊ul{
