@@ -25,7 +25,7 @@
   (require pollen/setup)
   (define block-tags (append '(subsection subsubsection label img pre) default-block-tags)))
 
-(define site-url "http://localhost:8080/")
+(define site-url "https://flyingfeather1501.github.io/")
 (define (get-site-header #:at-index [at-index? #f])
   `(div ([id "header"])
         (a ([href "/index.html"])
