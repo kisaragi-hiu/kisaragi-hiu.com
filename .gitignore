@@ -1,7 +1,7 @@
 *.swp
 /index.html
 /category/*
-/*.html
+*.html
 compiled
 /pollen-cache
 *.css
