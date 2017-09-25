@@ -21,12 +21,16 @@
   </head>
   <body>
     ◊(->html (get-site-header #:at-index #t))
-    ◊(->html `(p ([class "date"]) ,@(format-date (select-from-metas 'publish-date here))))
+    ◊when/splice[(select-from-metas 'date here)]{
+        ◊(->html `(p ([class "date"])
+                     ,@(format-date (select-from-metas 'publish-date here))))
+    }
+
     ◊(->html (select 'headline here))
 
     ◊when/splice[(select-from-metas 'categories here)]{
         ◊(->html `(div ([class "category"])
-                     ,@(format-cats (select-from-metas 'categories here))))
+                       ,@(format-cats (select-from-metas 'categories here))))
     }
 
     ◊when/splice[(select-from-metas 'toc here)]{
