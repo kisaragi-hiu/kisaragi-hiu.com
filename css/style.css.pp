@@ -451,7 +451,7 @@ blockquote {
         font-size: 200%;
     }
 
-    p, ul, ol, .abstract h2, h1, .category, .highlight, figure, h2, .nav2
+    p, ul, ol, .abstract h2, h1, .category, .highlight, figure, h2, h3, h4, .nav2, .nav3, .nav4
     {
         max-width: 45rem;
     }
