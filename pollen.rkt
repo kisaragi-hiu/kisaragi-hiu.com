@@ -25,6 +25,8 @@
   (require pollen/setup)
   (define block-tags (append '(subsection subsubsection label img pre) default-block-tags)))
 
+(define wip '(i "Work in progress."))
+
 (define site-url "https://flyingfeather1501.github.io/")
 (define (get-site-header #:at-index [at-index? #f])
   `(div ([id "header"])
@@ -150,6 +152,15 @@ Register the following blocks so they're ignored by detect-paragraphs
 
 (define (strike . text)
   `(span ((class "strike")) ,@text))
+
+(define (→→ . xs) `(code ,(apply arrow xs)))
+
+(define (arrow left [right #f] . xs)
+  (let ([xs (flatten xs)]
+        [→ " > "])
+    (cond [(not right) left]
+          [(empty? xs) (string-append left → right)]
+          [else (arrow (string-append left → right) (car xs) (rest xs))])))
 
 (define (datestring->date datetime)
   ; datetime: "2017/09/22 [22:00]"
