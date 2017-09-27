@@ -80,9 +80,11 @@ This is a curve determining what key a note should be on.
 There are two modes for this, Mode1 is a curve relative to its key in the basic properties; Mode2 is a freeform curve. Just use Mode2: it visualizes the pitch curve and allows direct edits on the piano roll.
 ◊figure["/images/utau/screenshot-mode2.png" #:width "45rem"]{Mode2, with pitch curve  shown clearly on the piano roll}
 
-◊section["Workflow"]
+◊section["Dump"]
 
-◊wip
+To manipulate a note: S-drag = resize note no matter what, C-drag = resize note relative to adjacent note. Notes' position in time depends on lengths of all previous notes. Overlap has to be done with envelopes, and spacing has to be done with the rest note.
+
+Note properties can be changed with the menu, or use C-e for general properties, C-t for pitch curve settings, and C-y for envelope. C-r inserts a rest note, C-w selects all notes between the first and last non-rest notes, C-a selects all notes. C-x, C-c, C-v work as expected; C-v pastes after the current selected note. C-z and C-S-z are undo and redo, respectively. b is built-in editing tools, eg. Suffix Broker; n is plugin list. Just try every button on the keyboard with/without Ctrl held if you can't remember. Everything is in the toolbar as well.
 
 Project settings: click the region below the utauloid's avatar, where their name is. This window will pop up.
 ◊figure["/images/utau/screenshot-project-settings.png" #:width "45rem"]{Project settings}
