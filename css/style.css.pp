@@ -5,11 +5,32 @@
 ◊(define font-code "'Source Code Pro', 'source-code-pro', monospace")
 
 ◊(define font-primary (string-append "'Source Serif Pro', "
-                                       font-cjk-serif
-                                       ", serif"))
+                                     font-cjk-serif
+                                     ", serif"))
 ◊(define font-secondary (string-append "'Overpass' ,"
-                                     font-cjk-sans-serif
-                                     ", sans-serif"))
+                                       font-cjk-sans-serif
+                                       ", sans-serif"))
+
+#header {
+    display: table;
+    padding: 1em;
+    font-family: ◊|font-secondary|;
+    font-weight: 700;
+}
+
+#rightheader, #leftheader {
+    display: table-cell;
+}
+
+#rightheader {
+    text-align: right;
+}
+
+
+#header a img {
+    width: 3em;
+    border-radius: 100%;
+}
 
 body { font-size: 38pt;
        margin: 0; padding: 0;
@@ -33,7 +54,7 @@ a:active { color: ◊|highlight-color|; }
 .nav5 { padding-left: 6em; }
 .nav6 { padding-left: 8em; }
 h1, h2, h3, h4, h5, h6, h7 { font-family: ◊|font-secondary|; }
-p, ul, ol, h1, h2, h3, h4, h5, h6, h7, .footer, .nav2, .nav3, .nav4, .nav5, .nav6, .nav7, blockquote, #disqus_thread, body > a, .category {
+p, ul, ol, h1, h2, h3, h4, h5, h6, h7, .footer, .nav2, .nav3, .nav4, .nav5, .nav6, .nav7, blockquote, #disqus_thread, body > a, .category, #header {
   margin-left: auto;
   margin-right: auto;
   width: 90%;
@@ -43,8 +64,6 @@ p { font-size: 100%; }
 figure .highlight { margin-top: 1em; margin-bottom: 0em; }
 p code { font-size: 90%; top: -0.05em; position: relative; background-color: #eee; }
 .sourcetable { margin-left: 1em;}
-
-span.righty { position: absolute; right: 1em; font-size: 90%; }
 
 .index-date {
     font-family: ◊|font-secondary|;
@@ -360,12 +379,6 @@ pre {
 }
 */
 
-#header {
-    width: 100%;
-    padding: 1em;
-}
-
-
 .flx aside:nth-child(3)>p { margin-left: 1em; max-width: 12em; margin-right: 1em; }
 
 
@@ -391,22 +404,6 @@ pre {
     font-family: ◊|font-code|;
     font-size: 190%;
     color: white;
-}
-
-#header {
-    width: 100%;
-    padding: 1em;
-    box-sizing: border-box;
-}
-
-#header .lefty {
-    font-family: ◊|font-secondary|;
-    font-weight: 700;
-}
-
-#header a img {
-    width: 3em;
-    border-radius: 100%;
 }
 
 .strike { text-decoration: line-through; }
@@ -451,7 +448,7 @@ blockquote {
         font-size: 200%;
     }
 
-    p, ul, ol, .abstract h2, h1, .category, .highlight, figure, h2, h3, h4, .nav2, .nav3, .nav4
+    p, ul, ol, .abstract h2, h1, .category, .highlight, figure, h2, h3, h4, .nav2, .nav3, .nav4, #header
     {
         max-width: 45rem;
     }

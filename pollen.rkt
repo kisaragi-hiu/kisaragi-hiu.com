@@ -30,13 +30,14 @@
 (define site-url "https://flyingfeather1501.github.io/")
 (define (get-site-header #:at-index [at-index? #f])
   `(div ([id "header"])
-        (a ([href "/index.html"])
-           (img ([src "/images/avatar.png"])))
-        ,(if at-index?
-           `(span ([class "righty"])
-                  (a ([href "/index.html"])
-                     "Up"))
-           `(span ([class "righty"])))))
+        (div ([id "leftheader"])
+             (a ([href "/index.html"])
+                (img ([src "/images/avatar.png"]))))
+        (div ([id "rightheader"])
+             ,(if at-index?
+                  `(a ([href "/index.html"])
+                      "Up")
+                  ""))))
 
 (define site-global-head
   `(span
