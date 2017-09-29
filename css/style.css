@@ -27,7 +27,7 @@ body { font-size: 38pt;
        box-sizing: border-box;
        color: #444;
        background-color: white;
-       font-family: 'Source Serif Pro', '思源楷體', 'IPAmjMincho', 'Noto Serif CJK TC', serif;
+       font-family: 'EB Garamond', 'Hannari', 'cwTeXFangSong', serif;
        text-rendering: optimizeLegibility;
 }
 a { text-decoration: none; }

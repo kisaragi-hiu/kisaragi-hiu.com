@@ -1,9 +1,7 @@
 #lang pollen
 ◊(define highlight-color "#A868E8")
 ◊(define font-cjk-sans-serif "'思源黑體', 'Noto Sans CJK TC'")
-◊(define font-cjk-serif "'思源楷體', 'IPAmjMincho', 'Noto Serif CJK TC'")
 ◊(define font-code "'Source Code Pro', 'source-code-pro', monospace")
-
 ◊(define font-primary (string-append "'EB Garamond', "
                                      "'Hannari', "
                                      "'cwTeXFangSong', "
