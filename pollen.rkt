@@ -31,7 +31,7 @@
 (define (get-site-header #:at-index [at-index? #f])
   `(div ([id "header"])
         (div ([id "leftheader"])
-             (a ([href "/index.html"])
+             (a ([href "/about.html"])
                 (img ([src "/images/avatar.png"]))))
         (div ([id "rightheader"])
              ,(if at-index?
@@ -46,7 +46,9 @@
     (script ([src "https://use.fontawesome.com/f9f3cd1f14.js"]))
     (link ([rel "stylesheet"] [type "text/css"] [href "/css/monokai.css"]))
     (link ([rel "stylesheet"] [type "text/css"] [href "/css/style.css"]))
-    (link ([rel "stylesheet"] [type "text/css"] [href "https://fonts.googleapis.com/css?family=Overpass:200,400,700"]))
+    (link ([rel "stylesheet"] [type "text/css"] [href "https://fonts.googleapis.com/css?family=Overpass:200,400,700|EB+Garamond"]))
+    (link ([rel "stylesheet"] [type "text/css"] [href "https://fonts.googleapis.com/earlyaccess/hannari.css"]))
+    (link ([rel "stylesheet"] [type "text/css"] [href "https://fonts.googleapis.com/earlyaccess/cwtexfangsong.css"]))
     (link ([rel "shortcut icon"] [type "image/x-icon"] [href "/favicon.ico"]))))
 
 (define (get-language-stylesheet language)
@@ -76,7 +78,7 @@ Functions for use in template: remove-tags, tag-in-file?, select-element, format
    (select* container location)))
 
 (define (category->link category)
-  `(a [[href ,(string-append site-url "category/" category ".html")]]
+  `(a [[href ,(string-append "/category/" category ".html")]]
       ,category))
 
 (define (cat-string->list string)

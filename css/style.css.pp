@@ -4,9 +4,10 @@
 ◊(define font-cjk-serif "'思源楷體', 'IPAmjMincho', 'Noto Serif CJK TC'")
 ◊(define font-code "'Source Code Pro', 'source-code-pro', monospace")
 
-◊(define font-primary (string-append "'Source Serif Pro', "
-                                     font-cjk-serif
-                                     ", serif"))
+◊(define font-primary (string-append "'EB Garamond', "
+                                     "'Hannari', "
+                                     "'cwTeXFangSong', "
+                                     "serif"))
 ◊(define font-secondary (string-append "'Overpass' ,"
                                        font-cjk-sans-serif
                                        ", sans-serif"))
