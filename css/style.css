@@ -1,11 +1,11 @@
 #header {
     display: table;
     padding: 0;
-    padding-bottom: 1em	;
+    padding-bottom: 1em;
     padding-top: 1em;
     font-family: 'Overpass' ,'思源黑體', 'Noto Sans CJK TC', 'Microsoft Jhenghei', sans-serif;
     font-weight: 300;
-    font-size: 1.3em;
+    font-size: 1.5em;
 }
 
 #rightheader, #leftheader {
@@ -27,7 +27,6 @@
 
 #header a img {
     width: 2em;
-    border-radius: 100%;
 }
 
 body { font-size: 38pt;
