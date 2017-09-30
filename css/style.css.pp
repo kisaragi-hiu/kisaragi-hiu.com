@@ -1,6 +1,6 @@
 #lang pollen
 ◊(define highlight-color "#A868E8")
-◊(define font-cjk-sans-serif "'思源黑體', 'Noto Sans CJK TC'")
+◊(define font-cjk-sans-serif "'思源黑體', 'Noto Sans CJK TC', 'Microsoft Jhenghei'")
 ◊(define font-code "'Source Code Pro', 'source-code-pro', monospace")
 ◊(define font-primary (string-append "'EB Garamond', "
                                      "'Hannari', "
@@ -16,7 +16,7 @@
     padding-bottom: 1em	;
     padding-top: 1em;
     font-family: ◊|font-secondary|;
-    font-weight: 700;
+    font-weight: 300;
     font-size: 1.3em;
 }
 
