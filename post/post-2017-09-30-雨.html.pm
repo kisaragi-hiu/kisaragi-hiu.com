@@ -1,6 +1,6 @@
 #lang pollen
 
-◊headline{雨}
+◊define-meta[headline]{雨}
 ◊define-meta[publish-date]{2017/09/30}
 ◊define-meta[categories]{詩, 雨}
 

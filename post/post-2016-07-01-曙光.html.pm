@@ -1,5 +1,5 @@
 #lang pollen
-◊headline{曙光}
+◊define-meta[headline]{曙光}
 ◊define-meta[publish-date]{2016/07/01 00:00}
 ◊define-meta[categories]{詩}
 

@@ -1,5 +1,5 @@
 #lang pollen
-◊headline{衝！衝！衝！}
+◊define-meta[headline]{衝！衝！衝！}
 ◊define-meta[publish-date]{2014/11/01 00:00}
 ◊define-meta[categories]{詩}
 

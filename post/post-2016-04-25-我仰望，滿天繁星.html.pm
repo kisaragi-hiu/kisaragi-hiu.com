@@ -1,5 +1,5 @@
 #lang pollen
-◊headline{我仰望，滿天繁星}
+◊define-meta[headline]{我仰望，滿天繁星}
 ◊define-meta[publish-date]{2016/04/25 00:00}
 ◊define-meta[categories]{詩}
 

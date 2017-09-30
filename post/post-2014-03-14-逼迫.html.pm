@@ -1,5 +1,5 @@
 #lang pollen
-◊headline{逼迫}
+◊define-meta[headline]{逼迫}
 ◊define-meta[publish-date]{2014/03/14 00:00}
 ◊define-meta[categories]{詩}
 

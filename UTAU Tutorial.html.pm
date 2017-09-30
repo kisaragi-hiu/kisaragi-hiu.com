@@ -1,7 +1,7 @@
 #lang pollen/markup
 ◊(define (screenshot path) (figure path #:width "45rem" path))
 
-◊headline{UTAU Tutorial by Kisaragi Hiu}
+◊define-meta[headline]{UTAU Tutorial by Kisaragi Hiu}
 ◊define-meta[language]{en}
 ◊;define-meta[publish-date]{2017/09/26}
 ◊;define-meta[categories]{UTAU}

@@ -5,7 +5,7 @@
 
     ◊when/block[(select-from-metas 'background here)]{
     <style>
-      #header { 
+      #header {
       background-image: url(◊(select-from-metas 'background metas));
       background-size: cover;
       background-position: center top;
@@ -13,14 +13,14 @@
       }
     </style>
     }
-   
+
   </head>
   <body>
     ◊(->html (get-site-header #:at-index #t))
     ◊(->html `(h1 "Category: " ,(select 'title here)))
     ◊(add-between (map (λ (x)
                          (->html `(div ([class "abstract"])
-                                      (h2 ,(select 'h1 x))
+                                      (h2 ,(select-from-metas 'headline x))
                                       (p ([class "index-date"])
                                          "發佈於"
                                          ,@(format-date (select-from-metas 'publish-date x))
@@ -36,9 +36,9 @@
                                  (tag-in-file? (select 'title here) file))
                                (children 'index.html)))
                   (->html `(hr)))
-    
+
     <footer>
     </footer>
-    
+
   </body>
 </html>

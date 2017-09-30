@@ -1,6 +1,6 @@
 <html>
   <head>
-    <title>◊(remove-tags (select 'headline here))</title>
+    <title>◊(select-from-metas 'headline here)</title>
     ◊(->html site-global-head)
 
     ◊when/splice[(select-from-metas 'background here)]{
@@ -20,13 +20,11 @@
 
   </head>
   <body>
-    ◊(->html (get-site-header))
+    ◊(->html (get-site-header #:headline (select-from-metas 'headline here)))
     ◊when/splice[(select-from-metas 'date here)]{
         ◊(->html `(p ([class "date"])
                      ,@(format-date (select-from-metas 'publish-date here))))
     }
-
-    ◊(->html (select 'headline here))
 
     ◊when/splice[(select-from-metas 'categories here)]{
         ◊(->html `(div ([class "category"])

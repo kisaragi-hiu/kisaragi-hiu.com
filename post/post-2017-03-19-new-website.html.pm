@@ -1,5 +1,5 @@
 #lang pollen
-◊headline{新網站}
+◊define-meta[headline]{新網站}
 ◊define-meta[publish-date]{2017/03/19 05:00}
 ◊define-meta[categories]{Meta}
 

@@ -1,5 +1,5 @@
 #lang pollen
-◊headline{旅程}
+◊define-meta[headline]{旅程}
 ◊define-meta[categories]{詩}
 ◊define-meta[publish-date]{2015/12/06 00:00}
 

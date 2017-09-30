@@ -1,5 +1,5 @@
 #lang pollen
-◊headline{レディーレ Cover}
+◊define-meta[headline]{レディーレ Cover}
 ◊define-meta[publish-date]{2017/06/28 22:50}
 ◊define-meta[categories]{Cover}
 

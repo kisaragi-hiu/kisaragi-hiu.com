@@ -1,5 +1,5 @@
 #lang pollen
-◊headline{淚}
+◊define-meta[headline]{淚}
 ◊define-meta[publish-date]{2017/09/07 17:00}
 ◊define-meta[categories]{詩}
 

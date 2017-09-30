@@ -28,15 +28,18 @@
 (define wip '(i "Work in progress."))
 
 (define site-url "https://flyingfeather1501.github.io/")
-(define (get-site-header #:at-index [at-index? #f])
+(define (get-site-header #:at-index [at-index? #f]
+                         #:headline [headline "如月.飛羽"])
   `(div ([id "header"])
         (div ([id "leftheader"])
              ,(if at-index?
-                  "如月.飛羽"
+                  headline
                   `(a ([href "/index.html"])
-                      "Up")))
+                      ,headline)))
         (div ([id "rightheader"])
-             (a ([href "/about.html"])
+             (a ,(if at-index?
+                     '([href "/about.html"])
+                     '([href "/index.html"]))
                 (img ([src "/images/avatar.png"]))))))
 
 (define site-global-head
@@ -156,14 +159,7 @@ Register the following blocks so they're ignored by detect-paragraphs
 (define (strike . text)
   `(span ((class "strike")) ,@text))
 
-(define (→→ . xs) `(code ,(apply arrow xs)))
-
-(define (arrow left [right #f] . xs)
-  (let ([xs (flatten xs)]
-        [→ " > "])
-    (cond [(not right) left]
-          [(empty? xs) (string-append left → right)]
-          [else (arrow (string-append left → right) (car xs) (rest xs))])))
+(define (→→ . xs) `(code ,(string-join xs " > ")))
 
 (define (datestring->date datetime)
   ; datetime: "2017/09/22 [22:00]"

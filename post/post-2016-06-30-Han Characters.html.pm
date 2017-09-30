@@ -1,5 +1,5 @@
 #lang pollen
-◊headline{Han Characters}
+◊define-meta[headline]{Han Characters}
 ◊define-meta[language]{en}
 ◊define-meta[publish-date]{2016/06/30 00:00}
 ◊define-meta[categories]{Mandarin, Han Characters, Language}

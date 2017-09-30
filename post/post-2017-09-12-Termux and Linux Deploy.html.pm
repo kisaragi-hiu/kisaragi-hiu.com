@@ -1,5 +1,5 @@
 #lang pollen
-◊headline{在Android上用Frog}
+◊define-meta[headline]{在Android上用Frog}
 ◊define-meta[publish-date]{2017/09/12 16:46}
 ◊define-meta[categories]{Android, Linux, Meta}
 

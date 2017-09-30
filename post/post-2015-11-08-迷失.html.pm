@@ -1,5 +1,5 @@
 #lang pollen
-◊headline{迷失}
+◊define-meta[headline]{迷失}
 ◊define-meta[publish-date]{2015/11/08 00:00}
 ◊define-meta[categories]{詩}
 

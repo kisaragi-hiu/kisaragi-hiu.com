@@ -1,5 +1,5 @@
 #lang pollen
-◊headline{いつか海の見える街で Cover + PV}
+◊define-meta[headline]{いつか海の見える街で Cover + PV}
 ◊define-meta[publish-date]{2017/07/10 15:01}
 ◊define-meta[categories]{Cover}
 

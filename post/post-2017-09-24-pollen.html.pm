@@ -1,5 +1,5 @@
 #lang pollen
-◊headline{Moving the blog, again}
+◊define-meta[headline]{Moving the blog, again}
 ◊define-meta[publish-date]{2017/09/24 18:20}
 ◊define-meta[categories]{English, Meta, Pollen, Frog}
 ◊define-meta[language]{en}
