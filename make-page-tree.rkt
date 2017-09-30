@@ -31,7 +31,10 @@
   (close-output-port out))
 
 (define (list-pms directory)
-  (~> (run-pipeline/out `(find ,directory -maxdepth 1 -regex .*\.pm)) ; use `find` for finding stuff
+  ; dirty, sure
+  ; remember regex n* means 0 or more n
+  ; so pmd* matches pmd.. as well as pm
+  (~> (run-pipeline/out `(find ,directory -maxdepth 1 -regex .*\.pmd*))
       (string-split _ "\n")
       (map (λ (x) (string-replace x #rx"^./" "")) _) ; strip "./" away
       (filter (λ (x) (not (equal? x "index.html.pm"))) _) ; "don't include index.html"
