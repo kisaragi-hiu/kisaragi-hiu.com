@@ -1,5 +1,6 @@
 #lang pollen
-◊index.html{post/post-2017-09-24-pollen.html
+◊index.html{post/post-2017-09-30-雨.html
+post/post-2017-09-24-pollen.html
 post/post-2017-09-13-discovering-racket.html
 post/post-2017-09-12-Termux and Linux Deploy.html
 post/post-2017-09-07-淚.html
@@ -22,6 +23,8 @@ post/post-2013-01-01-永遠.html
 }
 about.html
 UTAU Tutorial.html
+category/詩.html
+category/雨.html
 category/English.html
 category/Meta.html
 category/Pollen.html
@@ -30,9 +33,7 @@ category/Programming.html
 category/Racket.html
 category/Android.html
 category/Linux.html
-category/短詩.html
 category/Cover.html
 category/Mandarin.html
 category/Han Characters.html
 category/Language.html
-category/長詩.html

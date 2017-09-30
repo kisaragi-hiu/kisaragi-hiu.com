@@ -1,7 +1,7 @@
 #lang pollen
 ◊headline{你}
 ◊define-meta[publish-date]{2017/07/04 00:00}
-◊define-meta[categories]{短詩}
+◊define-meta[categories]{詩}
 
 你總是走在兩個人後面。只是跟著。
 彷彿一直都是多餘的人一樣。

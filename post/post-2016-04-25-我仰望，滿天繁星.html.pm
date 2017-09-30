@@ -1,7 +1,7 @@
 #lang pollen
 ◊headline{我仰望，滿天繁星}
 ◊define-meta[publish-date]{2016/04/25 00:00}
-◊define-meta[categories]{長詩}
+◊define-meta[categories]{詩}
 
 當我抬起頭，仰望著，美麗星空——
 那自然界的奇妙意象啊！如此文靜地照耀著、閃爍著……

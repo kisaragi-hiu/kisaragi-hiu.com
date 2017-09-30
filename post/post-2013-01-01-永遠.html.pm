@@ -1,7 +1,7 @@
 #lang pollen
 ◊headline{永遠}
 ◊define-meta[publish-date]{2013/01/01 00:00}
-◊define-meta[categories]{短詩}
+◊define-meta[categories]{詩}
 
 過去了，才知道要珍惜，
 

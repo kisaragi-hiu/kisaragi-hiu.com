@@ -1,7 +1,7 @@
 <html>
   <head>
     <title>Discovering Racket through making a osu! skin</title>
-    <span><meta charset="UTF-8"/><meta name="google" content="notranslate"/><script src="https://use.fontawesome.com/f9f3cd1f14.js"></script><link rel="stylesheet" type="text/css" href="/css/monokai.css"/><link rel="stylesheet" type="text/css" href="/css/style.css"/><link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Overpass:200,400,700"/><link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/earlyaccess/kokoro.css"/><link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/earlyaccess/cwtexfangsong.css"/><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico"/></span>
+    <span><meta charset="UTF-8"/><meta name="google" content="notranslate"/><script src="https://use.fontawesome.com/f9f3cd1f14.js"></script><link rel="stylesheet" type="text/css" href="/css/monokai.css"/><link rel="stylesheet" type="text/css" href="/css/style.css"/><link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Overpass:200,400,700|EB+Garamond"/><link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/earlyaccess/hannari.css"/><link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/earlyaccess/cwtexfangsong.css"/><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico"/></span>
 
 
 
@@ -14,7 +14,7 @@
 
     <h1>Discovering Racket through making a osu! skin</h1>
 
-    <div class="category"><a href="https://flyingfeather1501.github.io/category/English.html">English</a>, <a href="https://flyingfeather1501.github.io/category/Programming.html">Programming</a>, <a href="https://flyingfeather1501.github.io/category/Racket.html">Racket</a></div>
+    <div class="category"><a href="/category/English.html">English</a>, <a href="/category/Programming.html">Programming</a>, <a href="/category/Racket.html">Racket</a></div>
 
 
     <p>In around March this year, I started trying to make my own osu! skin, or at least mix a skin for my own use.<br/>I started with the <a href="https://osu.ppy.sh/forum/t/454986">Emilia (Re:0) skin by Beatstatic</a>, with a git repo to track my changes, and copied the hitcircles from <a href="https://osu.ppy.sh/forum/t/300001">Clear Skin Ultra 2.4</a> (I like its hitcircle design a lot).</p><p>Then I stumbled across <a href="https://www.youtube.com/watch?v=Yih6pz09Z1A">a font made for the I script in Re:0</a> in April, and started wanting to learn the script for the sake of it. As part of the practice, I decided why not make osu!‘s elements in the Re:0 writing system? So I made a new folder in my mix skin, then opened Blender to make the elements, because that’s the only tool I was comfortable with using. (I’ve since learned to use Inkscape more.)</p><p>Making osu! skin elements with Blender is weird. I am putting multiple elements in the same file and adding a different camera for each of them, binding the cameras onto markers, and so I wondered if there’s some way to render every marker and maybe name the output with the marker.<br/>After a bit of Googling, I saw an answer by `p2or` on StackExchange that fits my needs perfectly. (I added the first two comments.)</p><div class="highlight"><table class="sourcetable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre> 1

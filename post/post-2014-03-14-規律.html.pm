@@ -1,6 +1,6 @@
 #lang pollen
 ◊headline{規律}
-◊define-meta[categories]{短詩}
+◊define-meta[categories]{詩}
 ◊define-meta[publish-date]{2014/03/14 00:00}
 
 今天星期幾？今天是幾號？

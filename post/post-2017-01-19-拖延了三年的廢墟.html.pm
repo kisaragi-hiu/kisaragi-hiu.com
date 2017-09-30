@@ -1,6 +1,6 @@
 #lang pollen
 ◊headline{拖延了三年的廢墟}
-◊define-meta[categories]{短詩}
+◊define-meta[categories]{詩}
 ◊define-meta[publish-date]{2017/01/19 00:00}
 
 當分離來臨，崩壞將至，  

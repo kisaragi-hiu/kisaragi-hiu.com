@@ -1,7 +1,7 @@
 #lang pollen
 ◊headline{曙光}
 ◊define-meta[publish-date]{2016/07/01 00:00}
-◊define-meta[categories]{短詩}
+◊define-meta[categories]{詩}
 
 陰日中，曙光乍現  
 而又隨即消失  
