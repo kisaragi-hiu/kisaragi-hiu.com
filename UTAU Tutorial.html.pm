@@ -7,13 +7,17 @@
 ◊;define-meta[categories]{UTAU}
 ◊define-meta[toc]{true}
 
+This is a script for my introduction to UTAU. I plan to make a ~20m video on the workflow, then extending the series with higher-level usage tips.
+
 Welcome to my UTAU tutorial.
 
 ◊; Assumption
+◊writing-tip{Assume viewer knows Japanese.}
 I'm going to assume you know Kana and some Japanese already, 'cause I'm not going to explain Japanese in this series. If you don't, most of this should still make sense; I'd say utau is actually a good way to learn Kana. Anyways.
 
 ◊section["UTAU?"]
-UTAU is a voice synthesizer platform. It is made up of an editor, render engines, voicebanks, and plugins.
+◊writing-tip{Summary of UTAU.}
+UTAU is a voice synthesizer platform. It is made up of an editor ◊show{editor}, render engines ◊show{tool1,2}, voicebanks, and plugins.
 
 ◊section["Installation"]
 Because of encoding issues, UTAU has to be installed using the Japanese locale. There are two ways to do this:
@@ -42,14 +46,23 @@ env WINEPREFIX=$HOME/.wineprefix/UTAU wine $HOME/.wineprefix/UTAU/drive_c/Progra
 
 Wine might install a desktop entry in your launcher as well, if that's available you can start UTAU from your launcher.
 
-◊section["Voicebanks"]
-Voicebanks are sound definition files of a character's voice. A character with a UTAU voicebank is also called an UTAUloid. I'm going to use Defoko, Xia, and Uzuki in my demo; I don't know about English VBs.
-UTAU ships with Defoko by default. I'll demonstrate the UI with her voice for now. We'll look into other voicebanks later.
+◊section{The tutorial}
 
-Now start UTAU, and you should see this screen.
+Start UTAU, and you should see this screen.
 ◊screenshot{/images/utau/screenshot-first-start.png}
 
-Contratulations, UTAU is now set-up!
+◊writing-tip{Debug encoding issues here.}
+
+Describe piano roll.
+Describe note basics.
+Describe interface usage.
+
+Describe voice bank.
+Describe renderers.
+
+Describe CV, VCV, CVVC.
+Tuning demonstration.
+Describe plugins.
 
 ◊section["Note basics."]
 An UTAUloid sings by combining "notes" together.
@@ -80,6 +93,30 @@ This is basically an intensity / volume curve, along with two parameters saying 
 This is a curve determining what key a note should be on.
 There are two modes for this, Mode1 is a curve relative to its key in the basic properties; Mode2 is a freeform curve. Just use Mode2: it visualizes the pitch curve and allows direct edits on the piano roll.
 ◊figure["/images/utau/screenshot-mode2.png" #:width "45rem"]{Mode2, with pitch curve  shown clearly on the piano roll}
+
+◊section{Interface}
+
+S-drag, C-drag.
+C-a, C-w.
+Space.
+
+◊section{CV}
+Constanant, Vowel.
+"ka" "nu"
+Kana → Note.
+
+◊section{CVVC}
+CV + v c
+"ka" "a n" "nu"
+Kana → Note, insert VC
+
+◊section{VCV}
+Vowel, Constant Vowel
+"- ka" "a nu"
+Kana → Note → autocvvc
+
+◊section{Plugin: Autocvvc}
+Convert between CV, VCV, CVVC
 
 ◊section["Dump"]
 
