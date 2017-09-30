@@ -20,7 +20,7 @@
 
   </head>
   <body>
-    ◊(->html (get-site-header #:at-index #t))
+    ◊(->html (get-site-header))
     ◊when/splice[(select-from-metas 'date here)]{
         ◊(->html `(p ([class "date"])
                      ,@(format-date (select-from-metas 'publish-date here))))
