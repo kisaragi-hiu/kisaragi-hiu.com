@@ -26,6 +26,7 @@
   (define block-tags (append '(subsection subsubsection label img pre) default-block-tags)))
 
 (define wip '(i "Work in progress."))
+(define pagebreak '(div ([class "page-break"])))
 
 (define site-url "https://flyingfeather1501.github.io/")
 (define (get-site-header #:at-index [at-index? #f]

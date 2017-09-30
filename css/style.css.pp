@@ -52,6 +52,11 @@ body { font-size: 38pt;
        font-family: ◊|font-primary|;
        text-rendering: optimizeLegibility;
 }
+
+#disqus_thread {
+    max-width: 45rem;
+}
+
 a { text-decoration: none; }
 a:link { color: ◊|highlight-color|; }
 a:visited { color: ◊|highlight-color|; }
@@ -80,6 +85,11 @@ p code { font-size: 90%; top: -0.05em; position: relative; background-color: #ee
     color: #aaa;
     margin-bottom: 1em;
 }
+
+.page-break {
+    break-before: page;
+}
+
 .readmore { display: block; font-size: 100%; margin-top: 0.5em; }
 .supref { font-variant-position: super;
           -moz-font-feature-settings: "sups";

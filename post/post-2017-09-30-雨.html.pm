@@ -3,6 +3,7 @@
 ◊define-meta[headline]{雨}
 ◊define-meta[publish-date]{2017/09/30}
 ◊define-meta[categories]{詩, 雨}
+◊define-meta[comments]{true}
 
 我喜歡下雨的日子。
 比起在熱天流汗，雨天清爽多了。
