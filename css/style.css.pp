@@ -12,9 +12,12 @@
 
 #header {
     display: table;
-    padding: 1em;
+    padding: 0;
+    padding-bottom: 1em	;
+    padding-top: 1em;
     font-family: ◊|font-secondary|;
     font-weight: 700;
+    font-size: 1.3em;
 }
 
 #rightheader, #leftheader {
@@ -25,9 +28,17 @@
     text-align: right;
 }
 
+#header a {
+    color: #444;
+}
+
+#header a:hover {
+    text-decoration-line: underline;
+    text-decoration-style: dotted;
+}
 
 #header a img {
-    width: 3em;
+    width: 2em;
     border-radius: 100%;
 }
 

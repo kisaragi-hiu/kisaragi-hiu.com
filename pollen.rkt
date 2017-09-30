@@ -31,13 +31,13 @@
 (define (get-site-header #:at-index [at-index? #f])
   `(div ([id "header"])
         (div ([id "leftheader"])
-             (a ([href "/about.html"])
-                (img ([src "/images/avatar.png"]))))
-        (div ([id "rightheader"])
              ,(if at-index?
+                  "如月.飛羽"
                   `(a ([href "/index.html"])
-                      "Up")
-                  ""))))
+                      "Up")))
+        (div ([id "rightheader"])
+             (a ([href "/about.html"])
+                (img ([src "/images/avatar.png"]))))))
 
 (define site-global-head
   `(span
