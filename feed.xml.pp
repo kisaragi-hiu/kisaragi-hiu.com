@@ -97,7 +97,7 @@
                             (summary [[type "html"]]
                                      ,(as-cdata (string-append "<p>" (rss-item-summary ri) "</p>"
                                                                (xexpr->string `(p (a ((href ,item-url))
-                                                                                     "Click here to read "
+                                                                                     "More: "
                                                                                      (i ,(rss-item-title ri)))))))))))
 
   `(feed [[xml:lang "en-us"] [xmlns "http://www.w3.org/2005/Atom"]]
