@@ -12,18 +12,13 @@
 |#
 
 (require xml
+         txexpr
+         threading
          pollen/file
          pollen/core
          racket/date
-         racket/format)   ; For ~r
-
-#|
-  Really only need datestring->date from here. If you wanted to make this file
-  entirely self-contained you could copy/paste that function's definition here.
-  This is the function that interprets datestrings in the markup sources, in
-  this case in the format "yyyy-mm-dd" or "yyyy-mm-dd hh:mm".
-|#
-(require (only-in "pollen.rkt" datestring->date))
+         racket/format
+         "./pollen.rkt")
 
 #|
   Customizeable values
@@ -32,7 +27,7 @@
 (define opt-feed-ptree   "index.ptree")
 (define opt-author-name  "Kisaragi Hiu")         ; The name given for the feed's <author>
 (define opt-author-email "flyingfeather1501@gmail.com")    ; Email for the feed's <author>
-(define opt-feed-title   "Kisarahi Hiu")
+(define opt-feed-title   "Kisaragi Hiu")
 (define opt-feed-site    "https://flyingfeather1501.githib.io/") ; This should end with /
 
 #|
@@ -48,9 +43,9 @@
   will get certain values.
 |#
 (define sym-author  'author)
-(define sym-pubdate 'doc-publish-date)
-(define sym-updated 'doc-updated)
-(define sym-title   'title)
+(define sym-pubdate 'publish-date)
+(define sym-updated 'publish-date)
+(define sym-title   'headline)
 (define sym-summary 'summary)
 
 #|
@@ -158,8 +153,16 @@
                                        (define item-link (symbol->string ri))
                                        (define item-path (get-markup-source item-link))
                                        (define item-metas (dynamic-require item-path 'metas))
+                                       (define item-doc (dynamic-require item-path 'doc))
                                        (define item-author (or (select-from-metas sym-author item-metas) opt-author-name))
-                                       (define item-summary (or (select-from-metas sym-summary item-metas) "(No summary given)"))
+                                       (define item-summary (or (select-from-metas sym-summary item-metas)
+                                                                (~> (select-element 'p 'body item-doc)
+                                                                    remove-supref
+                                                                    get-elements
+                                                                    remove-attrs
+                                                                    (filter string? _)
+                                                                    string-join)
+                                                                ""))
                                        (define item-pubdate (select-from-metas sym-pubdate item-metas))
                                        (define item-updated (or (select-from-metas sym-updated item-metas) item-pubdate))
                                        (define item-title (or (select-from-metas sym-title item-metas)
@@ -182,6 +185,7 @@
   be stored in the target file).
 |#
 (provide doc metas)
+; make-feed-xexpr : (string? string? (listof rss-item?) . -> . xexpr?)
 (define rss-xpr (make-feed-xexpr opt-feed-title opt-feed-site feed-item-structs))
 (define doc (complete-feed rss-xpr))
 (define metas (hash))

@@ -27,10 +27,10 @@
                                          ,@(format-cats (select-from-metas 'categories x)))
                                       (p ,@(get-elements (remove-supref
                                                           (select-element 'p 'body x)))
-                                     (br)
-                                      (a ([href ,(symbol->string x)]
-                                          [class "readmore"])
-                                         "更多")))))
+                                         (br)
+                                         (a ([href ,(symbol->string x)]
+                                             [class "readmore"])
+                                             "更多")))))
                        (children here))
                   (->html `(hr)))
 
