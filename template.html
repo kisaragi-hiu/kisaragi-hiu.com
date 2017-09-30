@@ -38,8 +38,29 @@
     ◊(map ->html (select-from-doc 'body here))
 
     ◊when/splice[(select-from-metas 'comments here)]{
+        ◊(->html pagebreak)
         <h2>Comments</h2>
-        ◊;disqus comments here
+        <div id="disqus_thread"></div>
+        <script>
+            var disqus_config = function () {
+                this.page.identifier = '◊(string-append (select-from-metas 'headline here) (select-from-metas 'publish-date here))';
+            };
+
+            (function() {  // REQUIRED CONFIGURATION VARIABLE: EDIT THE SHORTNAME BELOW
+                var d = document, s = d.createElement('script');
+
+                s.src = 'https://kisaragi-hiu-blog.disqus.com/embed.js';
+
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        </script>
+        <noscript>
+            Enable JavaScript if you want to see
+            <a href="https://disqus.com/?ref_noscript" rel="nofollow">
+                Disqus comments.
+            </a>
+        </noscript>
     }
     <footer>
     </footer>
