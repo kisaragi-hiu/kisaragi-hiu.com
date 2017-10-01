@@ -13,6 +13,12 @@ build () {
     raco pollen render index.ptree
 }
 
+deploy () {
+    build
+    git commit -am "Deploy"
+    git push
+}
+
 publish () {
     # $1: origin (likely ./)
     # $2: destination
@@ -42,6 +48,9 @@ case "$1" in
     (clean|cleanup)
         echo cleaning up
         cleanup
+        ;;
+    (deploy)
+        deploy
         ;;
     (*)
         echo "$helptext"
