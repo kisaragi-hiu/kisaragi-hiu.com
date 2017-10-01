@@ -25,13 +25,22 @@
   (require pollen/setup)
   (define block-tags (append '(subsection subsubsection label img pre) default-block-tags)))
 
+(define (font-family . xs)
+  ; a b c -> 'a', 'b', 'c'
+  (string-join (flatten xs) "', '"
+               #:before-first "'"
+               #:after-last "'"))
+
 (define wip '(i "Work in progress."))
 (define pagebreak '(div ([class "page-break"])))
 
 (define site-url "https://flyingfeather1501.github.io/")
 (define (get-site-header #:at-index [at-index? #f]
                          #:headline [headline "如月.飛羽"])
-  `(div ([id "header"])
+  `(div ,(if at-index?
+             '([id "header"])
+             '([id "header"]
+               [style "padding-bottom: 0;"]))
         (div ([id "leftheader"])
              ,(if at-index?
                   headline
@@ -55,6 +64,7 @@
     ,(stylesheet "https://fonts.googleapis.com/css?family=Overpass:200,400,700|EB+Garamond")
     ,(stylesheet "https://fonts.googleapis.com/earlyaccess/hannari.css")
     ,(stylesheet "https://fonts.googleapis.com/earlyaccess/cwtexfangsong.css")
+    (script ([src "/js/justfont.js"]))
     (link ([rel "shortcut icon"] [type "image/x-icon"] [href "/favicon.ico"]))))
 
 (define (get-language-stylesheet language)

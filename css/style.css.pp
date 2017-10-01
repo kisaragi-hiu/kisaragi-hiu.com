@@ -1,14 +1,20 @@
 #lang pollen
 ◊(define highlight-color "#A868E8")
-◊(define font-cjk-sans-serif "'思源黑體', 'Noto Sans CJK TC', 'Microsoft Jhenghei'")
+◊(define font-cjk-sans-serif '("Noto Sans CJK TC" "sourcehansans-tc" "Microsoft Jhenghei"))
 ◊(define font-code "'Source Code Pro', 'source-code-pro', monospace")
-◊(define font-primary (string-append "'EB Garamond', "
-                                     "'Hannari', "
-                                     "'cwTeXFangSong', "
-                                     "serif"))
-◊(define font-secondary (string-append "'Overpass' ,"
-                                       font-cjk-sans-serif
-                                       ", sans-serif"))
+
+◊(define font-primary (font-family "EB Garamond"
+                                   "Hannari"
+                                   "cwTeXFangSong"
+                                   ◊; make sure system serif is never used
+                                   "Segoe UI"
+                                   "Helvetica"
+                                   font-cjk-sans-serif
+                                   "sans-serif"))
+
+◊(define font-secondary (font-family "Overpass"
+                                     font-cjk-sans-serif
+                                     "sans-serif"))
 
 #header {
     display: table;
@@ -53,38 +59,32 @@ body { font-size: 38pt;
        text-rendering: optimizeLegibility;
 }
 
-#disqus_thread {
-    max-width: 45rem;
-}
-
 a { text-decoration: none; }
 a:link { color: ◊|highlight-color|; }
 a:visited { color: ◊|highlight-color|; }
 a:hover { color: ◊|highlight-color|; text-decoration: underline; }
 a:active { color: ◊|highlight-color|; }
+
 .nav2, .nav3, .nav4, .nav5, .nav6, .nav7 { font-size: 100%t; }
 .nav3 { padding-left: 2em; }
 .nav4 { padding-left: 4em; }
 .nav5 { padding-left: 6em; }
 .nav6 { padding-left: 8em; }
+
 h1, h2, h3, h4, h5, h6, h7 { font-family: ◊|font-secondary|; }
-p, ul, ol, h1, h2, h3, h4, h5, h6, h7, .footer, .nav2, .nav3, .nav4, .nav5, .nav6, .nav7, blockquote, #disqus_thread, body > a, .category, #header {
+p, ul, ol, h1, h2, h3, h4, h5, h6, h7, .footer, .nav2, .nav3, .nav4, .nav5, .nav6, .nav7, blockquote, #disqus_thread, body > a, .page-meta, #header {
   margin-left: auto;
   margin-right: auto;
   width: 90%;
 }
+
 p { font-size: 100%; }
+
 .highlight { margin-top: 1em; margin-bottom: 1em; max-width: 100%;}
+
 figure .highlight { margin-top: 1em; margin-bottom: 0em; }
 p code { font-size: 90%; top: -0.05em; position: relative; background-color: #eee; }
 .sourcetable { margin-left: 1em;}
-
-.index-date {
-    font-family: ◊|font-secondary|;
-    font-size: 80%;
-    color: #aaa;
-    margin-bottom: 1em;
-}
 
 .page-break {
     break-before: page;
@@ -153,12 +153,33 @@ p code { font-size: 90%; top: -0.05em; position: relative; background-color: #ee
 .key p { font-weight: 600; }
 .value { width: 15em; padding-top: 1em; padding-bottom: 1em; }
 
+.index-date {
+    font-family: ◊|font-secondary|;
+    font-size: 80%;
+    color: #aaa;
+    margin-bottom: 1em;
+}
 
+.categories {
+    margin-top: 0.25em;
+    font-style: italic;
+}
 
-.category {
+.page-meta {
     font-family: ◊|font-secondary|;
     font-size: 80%;
     margin-bottom: 2em;
+    color: #aaa
+}
+
+.page-meta a {
+    font-weight: 700;
+    color: #aaa;
+}
+
+.page-meta a:hover {
+    text-decoration-line: underline;
+    text-decoration-style: dotted;
 }
 
 .abstract > h2 { margin-top: 0em; margin-bottom: 0em; }
@@ -209,14 +230,6 @@ dquo {margin-left: -0.50em;}
     padding-right: 2em;
     padding-left: 0em;
 }
-
-
-.categories {
-    margin-top: 0.25em;
-    font-style: italic;
-}
-
-
 
 footer {
     width: 100%;
@@ -467,7 +480,7 @@ blockquote {
         font-size: 200%;
     }
 
-    p, ul, ol, .abstract h2, h1, .category, .highlight, figure, h2, h3, h4, .nav2, .nav3, .nav4, #header
+    p, ul, ol, .abstract h2, h1, .page-meta, .highlight, figure, h2, h3, h4, .nav2, .nav3, .nav4, #header, #disqus_thread
     {
         max-width: 45rem;
     }

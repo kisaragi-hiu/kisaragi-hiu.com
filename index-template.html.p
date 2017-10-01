@@ -20,7 +20,7 @@
     ◊(add-between (map (λ (x)
                         (->html `(div ([class "abstract"])
                                       (h2 ,(select-from-metas 'headline x))
-                                      (p ([class "index-date"])
+                                      (p ([class "page-meta"])
                                          "發佈於"
                                          ,@(format-date (select-from-metas 'publish-date x))
                                          " :: "
