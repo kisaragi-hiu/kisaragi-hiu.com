@@ -43,16 +43,18 @@
                      '([href "/index.html"]))
                 (img ([src "/images/avatar.png"]))))))
 
+(define (stylesheet url) `(link ([rel "stylesheet"] [type "text/css"] [href ,url])))
+
 (define site-global-head
   `(span
     (meta ([charset "UTF-8"]))
     (meta ([name "google"] [content "notranslate"]))
     (script ([src "https://use.fontawesome.com/f9f3cd1f14.js"]))
-    (link ([rel "stylesheet"] [type "text/css"] [href "/css/monokai.css"]))
-    (link ([rel "stylesheet"] [type "text/css"] [href "/css/style.css"]))
-    (link ([rel "stylesheet"] [type "text/css"] [href "https://fonts.googleapis.com/css?family=Overpass:200,400,700|EB+Garamond"]))
-    (link ([rel "stylesheet"] [type "text/css"] [href "https://fonts.googleapis.com/earlyaccess/hannari.css"]))
-    (link ([rel "stylesheet"] [type "text/css"] [href "https://fonts.googleapis.com/earlyaccess/cwtexfangsong.css"]))
+    ,(stylesheet "/css/monokai.css")
+    ,(stylesheet "/css/style.css")
+    ,(stylesheet "https://fonts.googleapis.com/css?family=Overpass:200,400,700|EB+Garamond")
+    ,(stylesheet "https://fonts.googleapis.com/earlyaccess/hannari.css")
+    ,(stylesheet "https://fonts.googleapis.com/earlyaccess/cwtexfangsong.css")
     (link ([rel "shortcut icon"] [type "image/x-icon"] [href "/favicon.ico"]))))
 
 (define (get-language-stylesheet language)
