@@ -168,7 +168,7 @@ p code { font-size: 90%; top: -0.05em; position: relative; background-color: #ee
 .page-meta {
     font-family: ◊|font-secondary|;
     font-size: 80%;
-    margin-bottom: 2em;
+    ◊;margin-bottom: 2em;
     color: #aaa
 }
 

@@ -35,6 +35,7 @@
     ◊(map ->html (select-from-doc 'body here))
 
     ◊when/splice[(select-from-metas 'comments here)]{
+        <br>
         ◊(->html pagebreak)
         <h2>Comments</h2>
         <div id="disqus_thread"></div>
