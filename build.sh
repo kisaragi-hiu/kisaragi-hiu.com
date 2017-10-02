@@ -4,7 +4,7 @@ $0
 
 usage:
   $0 build
-  $0 publish orig dest
+  $0 publish
   $0 cleanup
 "
 
@@ -24,11 +24,9 @@ publish () {
     # $2: destination
 
     # return if not supplied the arguments
-    [ -z "$1" ] && return
-    [ -z "$2" ] && return
-
     build
-    raco pollen publish "$1" "$2"
+    rm -rf ./public/*
+    racket ./publish.rkt
 }
 
 cleanup () {
@@ -43,7 +41,7 @@ case "$1" in
         ;;
     (publish)
         echo publishing
-        publish "$2" "$3"
+        publish
         ;;
     (clean|cleanup)
         echo cleaning up
