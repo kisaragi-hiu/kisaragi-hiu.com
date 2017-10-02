@@ -1,6 +1,6 @@
 <html>
   <head>
-    <title>◊(select-from-metas 'headline here)</title>
+    <title>◊(select-from-metas 'headline here) - Kisaragi Hiu</title>
     ◊(->html site-global-head)
 
     ◊when/splice[(select-from-metas 'background here)]{

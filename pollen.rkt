@@ -36,16 +36,17 @@
 
 (define site-url "https://flyingfeather1501.github.io/")
 (define (get-site-header #:at-index [at-index? #f]
+                         #:headline-link-to-index [headline-link-to-index? #t]
                          #:headline [headline "如月.飛羽"])
   `(div ,(if at-index?
              '([id "header"])
              '([id "header"]
                [style "padding-bottom: 0;"]))
         (div ([id "leftheader"])
-             ,(if at-index?
-                  headline
+             ,(if headline-link-to-index?
                   `(a ([href "/index.html"])
-                      ,headline)))
+                      ,headline)
+                  headline))
         (div ([id "rightheader"])
              (a ,(if at-index?
                      '([href "/about.html"])

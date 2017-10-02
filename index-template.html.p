@@ -16,7 +16,8 @@
 
   </head>
   <body>
-    ◊(->html (get-site-header #:at-index #t))
+    ◊(->html (get-site-header #:at-index #t
+                              #:headline-link-to-index #f))
     ◊(add-between (map (λ (x)
                         (->html `(div ([class "abstract"])
                                       (h2 ,(select-from-metas 'headline x))
