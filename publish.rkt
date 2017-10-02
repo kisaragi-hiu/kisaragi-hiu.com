@@ -8,7 +8,26 @@
                                            -name *.html
                                            -or -name *.css
                                            -or -name *.js
-                                           -or -name feed.xml
+                                           -not -regex .*/public/.*))
+                  (string-split _ "\n"))]
+       [new-files (map (lambda (entry)
+                         (string-replace entry
+                                         CWD
+                                         (string-append CWD
+                                                        "public/")))
+                       files)])
+  (map (lambda (source target)
+         (run-pipeline `(mkdir ,(~> target
+                                    string->path
+                                    path-only
+                                    path->string))
+                       `(mv ,source ,target)))
+       files
+       new-files))
+
+(let* ([CWD (path->string (current-directory))]
+       [files (~> (run-pipeline/out `(find ,CWD
+                                           -name feed.xml
                                            -or -name favicon.ico
                                            -or -name README.md
                                            -or -name LICENSE
@@ -27,6 +46,6 @@
                                     string->path
                                     path-only
                                     path->string))
-                       `(mv ,source ,target)))
+                       `(cp ,source ,target)))
        files
        new-files))
