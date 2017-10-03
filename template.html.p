@@ -20,8 +20,15 @@
 
   </head>
   <body>
-    ◊(->html (get-site-header #:headline (select-from-metas 'headline here)))
+    ◊; When there is no publish date, 1) don't show page-meta, 2) make header push contents down
+    ◊when/splice[(not (select-from-metas 'publish-date here))]{
+    ◊(->html (get-site-header #:headline (select-from-metas 'headline here)
+                              #:push-contents #t))
+    }
+
+    ◊; When there is, show page-meta and header shouldn't push contents down
     ◊when/splice[(select-from-metas 'publish-date here)]{
+        ◊(->html (get-site-header #:headline (select-from-metas 'headline here)))
         ◊(->html `(p ([class "page-meta"])
                      ,@(format-date (select-from-metas 'publish-date here))
                      " :: "

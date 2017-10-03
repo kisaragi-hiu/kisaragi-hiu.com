@@ -37,8 +37,9 @@
 (define site-url "https://flyingfeather1501.github.io/")
 (define (get-site-header #:at-index [at-index? #f]
                          #:headline-link-to-index [headline-link-to-index? #t]
-                         #:headline [headline "如月.飛羽"])
-  `(div ,(if at-index?
+                         #:headline [headline "如月.飛羽"]
+                         #:push-contents [push-contents? #f])
+  `(div ,(if push-contents?
              '([id "header"])
              '([id "header"]
                [style "padding-bottom: 0;"]))
