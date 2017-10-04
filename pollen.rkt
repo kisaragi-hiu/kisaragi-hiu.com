@@ -25,6 +25,34 @@
   (require pollen/setup)
   (define block-tags (append '(subsection subsubsection label img pre) default-block-tags)))
 
+(define (stylesheet url . xs) `(link ([rel "stylesheet"]
+                                      [type "text/css"]
+                                      [href ,url]
+                                      ,@xs)))
+
+(define site-global-head
+  `(span
+    (meta ([charset "UTF-8"]))
+    (meta ([name "google"] [content "notranslate"]))
+    (script ([src "https://use.fontawesome.com/f9f3cd1f14.js"]))
+    ,(stylesheet "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+                 '(integrity "sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u")
+                 '(crossorigin "anonymous"))
+    ,(stylesheet "/css/monokai.css")
+    ,(stylesheet "/css/style.css")
+    ,(stylesheet "https://fonts.googleapis.com/css?family=Overpass:200,400,700|EB+Garamond")
+    ,(stylesheet "https://fonts.googleapis.com/earlyaccess/hannari.css")
+    ,(stylesheet "https://fonts.googleapis.com/earlyaccess/cwtexfangsong.css")
+    (script ([src "/js/justfont.js"]))
+    (link ([rel "shortcut icon"] [type "image/x-icon"] [href "/favicon.ico"]))))
+
+(define site-global-end-of-body
+  `(span
+     (script ([src "https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"]))
+     (script ([src "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"]
+              [integrity "sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"]
+              [crossorigin "anonymous"]))))
+
 (define (font-family . xs)
   ; a b c -> 'a', 'b', 'c'
   (string-join (flatten xs) "', '"
@@ -53,21 +81,6 @@
                      '([href "/about.html"])
                      '([href "/index.html"]))
                 (img ([src "/images/avatar.png"]))))))
-
-(define (stylesheet url) `(link ([rel "stylesheet"] [type "text/css"] [href ,url])))
-
-(define site-global-head
-  `(span
-    (meta ([charset "UTF-8"]))
-    (meta ([name "google"] [content "notranslate"]))
-    (script ([src "https://use.fontawesome.com/f9f3cd1f14.js"]))
-    ,(stylesheet "/css/monokai.css")
-    ,(stylesheet "/css/style.css")
-    ,(stylesheet "https://fonts.googleapis.com/css?family=Overpass:200,400,700|EB+Garamond")
-    ,(stylesheet "https://fonts.googleapis.com/earlyaccess/hannari.css")
-    ,(stylesheet "https://fonts.googleapis.com/earlyaccess/cwtexfangsong.css")
-    (script ([src "/js/justfont.js"]))
-    (link ([rel "shortcut icon"] [type "image/x-icon"] [href "/favicon.ico"]))))
 
 (define (get-language-stylesheet language)
   ; language -> string

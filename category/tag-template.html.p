@@ -40,6 +40,6 @@
 
     <footer>
     </footer>
-
+    ◊(->html site-global-end-of-body)
   </body>
 </html>
