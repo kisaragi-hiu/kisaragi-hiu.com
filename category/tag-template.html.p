@@ -17,7 +17,9 @@
   </head>
   <body>
     ◊(->html (get-site-header #:at-index #t #:headline (string-append (select 'title here) " / 如月.飛羽")))
-    ◊;(->html `(h1 "Category: " ,(select 'title here)))
+
+    ◊(->html site-sidebar)
+
     ◊(add-between (map (λ (x)
                          (->html `(div ([class "abstract"])
                                        (h2 ,(select-from-metas 'headline x))

@@ -25,44 +25,46 @@
   (require pollen/setup)
   (define block-tags (append '(subsection subsubsection label img pre) default-block-tags)))
 
-(define (stylesheet url . xs) `(link ([rel "stylesheet"]
-                                      [type "text/css"]
-                                      [href ,url]
-                                      ,@xs)))
+(define site-url "https://flyingfeather1501.github.io/")
 
-(define site-global-head
-  `(span
-    (meta ([charset "UTF-8"]))
-    (meta ([name "google"] [content "notranslate"]))
-    (script ([src "https://use.fontawesome.com/f9f3cd1f14.js"]))
-    ,(stylesheet "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-                 '(integrity "sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u")
-                 '(crossorigin "anonymous"))
-    ,(stylesheet "/css/monokai.css")
-    ,(stylesheet "/css/style.css")
-    ,(stylesheet "https://fonts.googleapis.com/css?family=Overpass:200,400,700|EB+Garamond")
-    ,(stylesheet "https://fonts.googleapis.com/earlyaccess/hannari.css")
-    ,(stylesheet "https://fonts.googleapis.com/earlyaccess/cwtexfangsong.css")
-    (script ([src "/js/justfont.js"]))
-    (link ([rel "shortcut icon"] [type "image/x-icon"] [href "/favicon.ico"]))))
-
-(define site-global-end-of-body
-  `(span
-     (script ([src "https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"]))
-     (script ([src "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"]
-              [integrity "sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"]
-              [crossorigin "anonymous"]))))
-
+#| functions for site meta stuff |#
 (define (font-family . xs)
   ; a b c -> 'a', 'b', 'c'
   (string-join (flatten xs) "', '"
                #:before-first "'"
                #:after-last "'"))
 
-(define wip '(i "Work in progress."))
-(define pagebreak '(div ([class "page-break"])))
+(define (stylesheet url . xs) `(link ([rel "stylesheet"]
+                                      [type "text/css"]
+                                      [href ,url]
+                                      ,@xs)))
 
-(define site-url "https://flyingfeather1501.github.io/")
+#| site meta |#
+(define site-global-head
+  `(span
+    (meta ([charset "UTF-8"]))
+    (meta ([name "google"] [content "notranslate"]))
+    (script ([src "https://use.fontawesome.com/f9f3cd1f14.js"]))
+    ,(stylesheet "/css/monokai.css")
+    ,(stylesheet "/css/style.css")
+    ,(stylesheet "/css/sidebar.css")
+    ,(stylesheet "https://fonts.googleapis.com/css?family=Overpass:200,400,700|EB+Garamond")
+    ,(stylesheet "https://fonts.googleapis.com/earlyaccess/hannari.css")
+    ,(stylesheet "https://fonts.googleapis.com/earlyaccess/cwtexfangsong.css")
+    (script ([src "/js/justfont.js"]))
+    (script ([src "/js/sidenav.js"]))
+    (link ([rel "shortcut icon"] [type "image/x-icon"] [href "/favicon.ico"]))))
+
+(define site-global-end-of-body
+  `(span
+     (script ([src "https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"]))))
+
+(define site-sidebar
+  '(div ([id "site-sidebar"] [class "sidenav"])
+        (a ([href "javascript:void(0)"] [class "closebtn"] [onclick "closeNav()"]) "×")
+        (a ([href "#"]) "About")
+        (a ([href "#"]) "Test")))
+
 (define (get-site-header #:at-index [at-index? #f]
                          #:headline-link-to-index [headline-link-to-index? #t]
                          #:headline [headline "如月.飛羽"]
@@ -77,10 +79,10 @@
                       ,headline)
                   headline))
         (div ([id "rightheader"])
-             (a ,(if at-index?
-                     '([href "/about.html"])
-                     '([href "/index.html"]))
-                (img ([src "/images/avatar.png"]))))))
+             (img ([id "avatar"]
+                   [onclick "toggleNav()"]
+                   [style "cursor:pointer;"]
+                   [src "/images/avatar.png"])))))
 
 (define (get-language-stylesheet language)
   ; language -> string
@@ -173,6 +175,9 @@ Register the following blocks so they're ignored by detect-paragraphs
 ;(register-block-tag 'img)
 ;(register-block-tag 'pre)
 
+#|
+in-document stuff
+|#
 (define (marginalia left right . content)
   `(div [[class "flx"]]
     (div [[class "margin"]] ,(attr-set left 'class "left"))
@@ -220,6 +225,9 @@ Register the following blocks so they're ignored by detect-paragraphs
               (flatten))
      [(list year month date day) ; day: 星期三, 星期五, etc.
       `(,year "年" ,month "月" ,date "日，" ,day)])))
+
+(define wip '(i "Work in progress."))
+(define pagebreak '(div ([class "page-break"])))
 
 (define (link url . text)
   `(a ([href ,url]) ,@text))

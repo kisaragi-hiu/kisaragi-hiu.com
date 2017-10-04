@@ -26,6 +26,8 @@
                               #:push-contents #t))
     }
 
+    ◊(->html site-sidebar)
+
     ◊; When there is, show page-meta and header shouldn't push contents down
     ◊when/splice[(select-from-metas 'publish-date here)]{
         ◊(->html (get-site-header #:headline (select-from-metas 'headline here)))

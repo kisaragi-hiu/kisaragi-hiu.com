@@ -16,8 +16,10 @@
 
   </head>
   <body>
-    ◊(->html (get-site-header #:at-index #t
-                              ))
+    ◊(->html (get-site-header #:at-index #t))
+
+    ◊(->html site-sidebar)
+
     ◊(map (λ (x)
            (->html `(h2
                      (a ([href ,(symbol->string x)]

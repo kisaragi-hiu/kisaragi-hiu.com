@@ -43,7 +43,7 @@
     text-decoration-style: dotted;
 }
 
-#header a img {
+#header #avatar {
     width: 2em;
 }
 
