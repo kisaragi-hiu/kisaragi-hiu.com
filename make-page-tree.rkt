@@ -127,7 +127,9 @@ find-tags: find categories metadata in all files
        (apply string-append
               (map (λ (x)
                      (string-append (pm->html x) "\n")) nonpost-files))
-       (generate-cats tags)))
+       "◊category/index.html{"
+       (generate-cats tags)
+       "}\n"))
   (display st out)
   (close-output-port out))
 
