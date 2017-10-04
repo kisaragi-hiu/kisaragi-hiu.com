@@ -1,12 +1,12 @@
 #lang pollen
 
 .sidenav {
-    right: 0;
     height: 100%;
     width: 0;
     position: fixed;
     z-index: 1;
     top: 0;
+    right: 0;
     background-color: black;
     overflow-x: hidden;
     padding-top: 10em;
