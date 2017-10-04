@@ -23,7 +23,7 @@ post/post-2013-01-01-永遠.html
 }
 about.html
 UTAU Tutorial.html
-category/詩.html
+◊category/index.html{category/詩.html
 category/雨.html
 category/English.html
 category/Meta.html
@@ -37,3 +37,4 @@ category/Cover.html
 category/Mandarin.html
 category/Han Characters.html
 category/Language.html
+}

@@ -18,6 +18,9 @@
   <body>
     ◊(->html (get-site-header #:at-index #t
                               #:headline-link-to-index #f))
+
+    ◊(->html site-sidebar)
+
     ◊(add-between (map (λ (x)
                         (->html `(div ([class "abstract"])
                                       (h2 ,(select-from-metas 'headline x))
@@ -37,6 +40,6 @@
 
     <footer>
     </footer>
-
+    ◊(->html site-global-end-of-body)
   </body>
 </html>
