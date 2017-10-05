@@ -1,4 +1,20 @@
 #lang pollen
+◊(define highlight-color "#A868E8")
+◊(define font-cjk-sans-serif '("Noto Sans CJK TC" "sourcehansans-tc" "Microsoft Jhenghei"))
+◊(define font-code "'Source Code Pro', 'source-code-pro', monospace")
+
+◊(define font-primary (font-family "EB Garamond"
+                                   "Hannari"
+                                   "cwTeXFangSong"
+                                   ◊; make sure system serif is never used
+                                   "Segoe UI"
+                                   "Helvetica"
+                                   font-cjk-sans-serif
+                                   "sans-serif"))
+
+◊(define font-secondary (font-family "Overpass"
+                                     font-cjk-sans-serif
+                                     "sans-serif"))
 
 .sidenav {
     height: 100%;
@@ -7,7 +23,7 @@
     z-index: 1;
     top: 0;
     right: 0;
-    background-color: black;
+    background-color: #fbfbfb;
     overflow-x: hidden;
     padding-top: 10em;
     transition: 0.5s;
@@ -17,13 +33,13 @@
     padding: 8px 8px 8px 32px;
     text-decoration: none;
     font-size: 25px;
-    color: #818181;
+    color: #333;
     display: block;
-    transition: 0.3s
+    transition: 0.2s
 }
 
 .sidenav a:hover, .offcanvas a:focus{
-    color: #f1f1f1;
+    color: #777;
 }
 
 .sidenav .closebtn {

@@ -16,6 +16,8 @@
                                      font-cjk-sans-serif
                                      "sans-serif"))
 
+◊(provide (all-defined-out))
+
 #header {
     display: table;
     padding: 0;
@@ -39,27 +41,31 @@
 }
 
 #header a:hover {
-    text-decoration-line: underline;
-    text-decoration-style: dotted;
+    color: #777;
+    text-decoration: none;
 }
 
 #header #avatar {
     width: 2em;
 }
 
-body { font-size: 38pt;
-       margin: 0; padding: 0;
-       -webkit-box-sizing: border-box;
-       -moz-box-sizing: border-box;
-       -webkit-text-size-adjust: 100%;
-       box-sizing: border-box;
-       color: #444;
-       background-color: white;
-       font-family: ◊|font-primary|;
-       text-rendering: optimizeLegibility;
+body {
+    font-size: 38pt;
+    margin: 0; padding: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-text-size-adjust: 100%;
+    box-sizing: border-box;
+    color: #444;
+    background-color: #fbfbfb;
+    font-family: ◊|font-primary|;
+    text-rendering: optimizeLegibility;
 }
 
-a { text-decoration: none; }
+a {
+    text-decoration: none;
+    transition: 0.3s;
+}
 a:link { color: ◊|highlight-color|; }
 a:visited { color: ◊|highlight-color|; }
 a:hover { color: ◊|highlight-color|; text-decoration: underline; }
