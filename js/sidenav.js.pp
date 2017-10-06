@@ -1,8 +1,6 @@
 #lang pollen
-◊(define sidebar-width "10em")
-
 function openNav() {
-    document.getElementById("site-sidebar").style.width = "◊|sidebar-width|";
+    document.getElementById("site-sidebar").style.width = "◊|style/sidebar-size|";
 }
 
 function closeNav() {
@@ -10,7 +8,7 @@ function closeNav() {
 }
 
 function toggleNav() {
-    if (document.getElementById("site-sidebar").style.width != "◊|sidebar-width|") {
+    if (document.getElementById("site-sidebar").style.width != "◊|style/sidebar-size|") {
         // if width not at opened size, assume closed
         openNav();
     } else {

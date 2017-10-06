@@ -372,8 +372,8 @@ aside img {
 */
 
 .flx >  p:nth-child(2) {
-    /*min-width: 45rem;
-    max-width: 45rem;
+    /*min-width: ◊|style/content-width|;
+    max-width: ◊|style/content-width|;
 */
 }
 
@@ -470,7 +470,7 @@ blockquote {
 
     p, ul, ol, .abstract h2, h1, .page-meta, .highlight, figure, h2, h3, h4, .nav2, .nav3, .nav4, #header, #disqus_thread
     {
-        max-width: 45rem;
+        max-width: ◊|style/content-width|;
     }
 
     .highlight

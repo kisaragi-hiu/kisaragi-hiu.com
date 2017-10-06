@@ -5,6 +5,7 @@
          pollen/tag
          racket/list
          racket/string
+         racket/format
          racket/date
          racket/match
          pollen/core
@@ -90,6 +91,9 @@
   (string-append "/css/" language ".css"))
 
 #| Global stylesheet variables |#
+
+(define style/sidebar-size "10em")
+(define style/content-width "45rem")
 (define style/color-highlight "#A868E8")
 (define style/font-cjk '("Noto Sans CJK TC" "sourcehansans-tc" "Microsoft Jhenghei"))
 (define style/font-code "'Source Code Pro', 'source-code-pro', monospace")
@@ -105,6 +109,21 @@
 (define style/font-secondary (font-family "Overpass"
                                           style/font-cjk
                                           "sans-serif"))
+
+(define (css-/ x . xs)
+  (let ([css-number (~> x
+                        (string-replace _ "rem" "")
+                        (string-replace _ "em" "")
+                        (string-replace _ "px" "")
+                        string->number)]
+        [css-unit (cond [(string-contains? x "rem") "rem"]
+                        [(string-contains? x "em") "em"]
+                        [(string-contains? x "px") "px"]
+                        [else ""])])
+    (~> (apply (curry / css-number) xs)
+        exact->inexact
+        ~a
+        (string-append _ css-unit))))
 
 #|
 Functions for use in template: remove-tags, tag-in-file?, select-element, format-cat
