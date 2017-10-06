@@ -62,8 +62,9 @@
 (define site-sidebar
   '(div ([id "site-sidebar"] [class "sidenav"])
         (a ([href "javascript:void(0)"] [class "closebtn"] [onclick "closeNav()"]) "×")
-        (a ([href "/about.html"]) "About")
-        (a ([href "/category/index.html"]) "Categories")))
+        (div ([class "sidelinks"])
+             (a ([href "/about.html"]) "About")
+             (a ([href "/category/index.html"]) "Categories"))))
 
 (define (get-site-header #:at-index [at-index? #f]
                          #:headline-link-to-index [headline-link-to-index? #t]

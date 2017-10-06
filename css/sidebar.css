@@ -7,17 +7,25 @@
     right: 0;
     background-color: #fbfbfb;
     overflow-x: hidden;
-    padding-top: 10em;
-    transition: 0.5s;
+    padding-top: 2em;
+    transition: 0.3s;
 }
 
 .sidenav a {
-    padding: 8px 8px 8px 32px;
     text-decoration: none;
-    font-size: 25px;
+    font-size: 1.3em;
     color: #333;
     display: block;
     transition: 0.2s
+}
+
+.sidelinks {
+    padding-top: 1.2em;
+}
+
+.sidelinks a {
+    font-family: 'Overpass', 'Noto Sans CJK TC', 'sourcehansans-tc', 'Microsoft Jhenghei', 'sans-serif';
+    padding: 1.3em 1.5em 0 0.5em;
 }
 
 .sidenav a:hover, .offcanvas a:focus{
@@ -27,9 +35,9 @@
 .sidenav .closebtn {
     position: absolute;
     top: 0;
-    right: 25px;
-    font-size: 36px;
-    margin-left: 50px;
+    right: 0.3em;
+    font-size: 3em;
+    margin-left: 3em;
 }
 
 @media screen and (max-height: 450px) {

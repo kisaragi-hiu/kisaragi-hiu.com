@@ -1,5 +1,5 @@
 #lang pollen
-◊(define sidebar-width "250px")
+◊(define sidebar-width "10em")
 
 function openNav() {
     document.getElementById("site-sidebar").style.width = "◊|sidebar-width|";
