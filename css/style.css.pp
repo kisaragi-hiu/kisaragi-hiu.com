@@ -1,29 +1,11 @@
 #lang pollen
-◊(define highlight-color "#A868E8")
-◊(define font-cjk-sans-serif '("Noto Sans CJK TC" "sourcehansans-tc" "Microsoft Jhenghei"))
-◊(define font-code "'Source Code Pro', 'source-code-pro', monospace")
-
-◊(define font-primary (font-family "EB Garamond"
-                                   "Hannari"
-                                   "cwTeXFangSong"
-                                   ◊; make sure system serif is never used
-                                   "Segoe UI"
-                                   "Helvetica"
-                                   font-cjk-sans-serif
-                                   "sans-serif"))
-
-◊(define font-secondary (font-family "Overpass"
-                                     font-cjk-sans-serif
-                                     "sans-serif"))
-
-◊(provide (all-defined-out))
 
 #header {
     display: table;
     padding: 0;
     padding-bottom: 1em;
     padding-top: 1em;
-    font-family: ◊|font-secondary|;
+    font-family: ◊|style/font-secondary|;
     font-weight: 300;
     font-size: 1.5em;
 }
@@ -58,7 +40,7 @@ body {
     box-sizing: border-box;
     color: #444;
     background-color: #fbfbfb;
-    font-family: ◊|font-primary|;
+    font-family: ◊|style/font-primary|;
     text-rendering: optimizeLegibility;
 }
 
@@ -66,10 +48,10 @@ a {
     text-decoration: none;
     transition: 0.3s;
 }
-a:link { color: ◊|highlight-color|; }
-a:visited { color: ◊|highlight-color|; }
-a:hover { color: ◊|highlight-color|; text-decoration: underline; }
-a:active { color: ◊|highlight-color|; }
+a:link { color: ◊|style/color-highlight|; }
+a:visited { color: ◊|style/color-highlight|; }
+a:hover { color: ◊|style/color-highlight|; text-decoration: underline; }
+a:active { color: ◊|style/color-highlight|; }
 
 .nav2, .nav3, .nav4, .nav5, .nav6, .nav7 { font-size: 100%t; }
 .nav3 { padding-left: 2em; }
@@ -77,7 +59,7 @@ a:active { color: ◊|highlight-color|; }
 .nav5 { padding-left: 6em; }
 .nav6 { padding-left: 8em; }
 
-h1, h2, h3, h4, h5, h6, h7 { font-family: ◊|font-secondary|; }
+h1, h2, h3, h4, h5, h6, h7 { font-family: ◊|style/font-secondary|; }
 p, ul, ol, h1, h2, h3, h4, h5, h6, h7, .footer, .nav2, .nav3, .nav4, .nav5, .nav6, .nav7, blockquote, #disqus_thread, body > a, .page-meta, #header {
   margin-left: auto;
   margin-right: auto;
@@ -128,7 +110,7 @@ p code { font-size: 90%; top: -0.05em; position: relative; background-color: #ee
     -webkit-justify-content: center;
     justify-content: center;
     flex-directon: row;
-    font-family: ◊|font-secondary|;
+    font-family: ◊|style/font-secondary|;
 }
 
 #home-wrap .home-left {
@@ -160,7 +142,7 @@ p code { font-size: 90%; top: -0.05em; position: relative; background-color: #ee
 .value { width: 15em; padding-top: 1em; padding-bottom: 1em; }
 
 .index-date {
-    font-family: ◊|font-secondary|;
+    font-family: ◊|style/font-secondary|;
     font-size: 80%;
     color: #aaa;
     margin-bottom: 1em;
@@ -172,7 +154,7 @@ p code { font-size: 90%; top: -0.05em; position: relative; background-color: #ee
 }
 
 .page-meta {
-    font-family: ◊|font-secondary|;
+    font-family: ◊|style/font-secondary|;
     font-size: 80%;
     ◊;margin-bottom: 2em;
     color: #aaa
@@ -317,7 +299,7 @@ aside {
     font-style: italic;
     margin: 0;
     padding: 0;
-    font-family: ◊|font-secondary|;
+    font-family: ◊|style/font-secondary|;
     font-size: 10pt;
     text-align: left;
     text-indent: 0em;
@@ -330,7 +312,7 @@ aside {
     font-style: italic;
     margin: 0;
     padding: 0;
-    font-family: ◊|font-secondary|;
+    font-family: ◊|style/font-secondary|;
     font-size: 10pt;
     text-align: left;
     text-indent: 0em;
@@ -411,7 +393,7 @@ svg {
 
 /*
 pre {
-    font-family: ◊|font-code|;
+    font-family: ◊|style/font-code|;
     font-size: 12pt;
     color: white;
 }
@@ -439,7 +421,7 @@ svg {
 }
 
 pre {
-    font-family: ◊|font-code|;
+    font-family: ◊|style/font-code|;
     font-size: 190%;
     color: white;
 }
@@ -458,7 +440,7 @@ blockquote {
 }
 
 .highlight {
-    font-family: ◊|font-code|;
+    font-family: ◊|style/font-code|;
     color: #111;
     padding-top: 0.75em;
     padding-left: 0em;

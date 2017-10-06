@@ -89,6 +89,23 @@
   ; language -> string
   (string-append "/css/" language ".css"))
 
+#| Global stylesheet variables |#
+(define style/color-highlight "#A868E8")
+(define style/font-cjk '("Noto Sans CJK TC" "sourcehansans-tc" "Microsoft Jhenghei"))
+(define style/font-code "'Source Code Pro', 'source-code-pro', monospace")
+(define style/font-primary (font-family "EB Garamond"
+                                        "Hannari"
+                                        "cwTeXFangSong"
+                                        ; make sure system serif is never used
+                                        "Segoe UI"
+                                        "Helvetica"
+                                        style/font-cjk
+                                        "sans-serif"))
+
+(define style/font-secondary (font-family "Overpass"
+                                          style/font-cjk
+                                          "sans-serif"))
+
 #|
 Functions for use in template: remove-tags, tag-in-file?, select-element, format-cat
 |#

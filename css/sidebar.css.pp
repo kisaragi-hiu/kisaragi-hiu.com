@@ -1,20 +1,4 @@
 #lang pollen
-◊(define highlight-color "#A868E8")
-◊(define font-cjk-sans-serif '("Noto Sans CJK TC" "sourcehansans-tc" "Microsoft Jhenghei"))
-◊(define font-code "'Source Code Pro', 'source-code-pro', monospace")
-
-◊(define font-primary (font-family "EB Garamond"
-                                   "Hannari"
-                                   "cwTeXFangSong"
-                                   ◊; make sure system serif is never used
-                                   "Segoe UI"
-                                   "Helvetica"
-                                   font-cjk-sans-serif
-                                   "sans-serif"))
-
-◊(define font-secondary (font-family "Overpass"
-                                     font-cjk-sans-serif
-                                     "sans-serif"))
 
 .sidenav {
     height: 100%;
@@ -42,7 +26,7 @@
 }
 
 .sidelinks a {
-    font-family: ◊|font-secondary|;
+    font-family: ◊|style/font-secondary|;
     padding: 1.3em 1.5em 0 0.5em;
 }
 
