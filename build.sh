@@ -6,7 +6,21 @@ usage:
   $0 build
   $0 publish
   $0 cleanup
+  $0 new <Title>
 "
+
+new () {
+    date_now="$(date --iso-8601=date)"
+    newfile="./post/post-$date_now-$1.html.pm"
+    {
+        echo '#lang pollen'
+        echo "◊define-meta[headline]{$1}"
+        echo "◊define-meta[publish-date]{$date_now}"
+        echo "◊define-meta[categories]{}"
+        echo "◊define-meta[comments]{true}"
+    } >> "$newfile"
+    $EDITOR "$newfile"
+}
 
 build () {
     racket make-page-tree.rkt
@@ -46,6 +60,11 @@ case "$1" in
     (clean|cleanup)
         echo cleaning up
         cleanup
+        ;;
+    (new)
+        test -z "$2" && echo "$helptext" && exit
+        echo New post: "$2"
+        new "$2"
         ;;
     (deploy)
         deploy
