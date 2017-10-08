@@ -60,7 +60,7 @@ a:active { color: ◊|style/color-highlight|; }
 .nav6 { padding-left: 8em; }
 
 h1, h2, h3, h4, h5, h6, h7 { font-family: ◊|style/font-secondary|; }
-p, ul, ol, h1, h2, h3, h4, h5, h6, h7, .footer, .nav2, .nav3, .nav4, .nav5, .nav6, .nav7, blockquote, #disqus_thread, body > a, .page-meta, #header {
+p, ul, ol, h1, h2, h3, h4, h5, h6, h7, .footer, .nav2, .nav3, .nav4, .nav5, .nav6, .nav7, blockquote, #disqus_thread, body > a, figure, .page-meta, #header {
   margin-left: auto;
   margin-right: auto;
   width: 90%;
