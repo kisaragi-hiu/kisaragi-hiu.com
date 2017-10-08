@@ -10,7 +10,7 @@ usage:
 "
 
 new () {
-    date_now="$(date --iso-8601=date)"
+    date_now="$(date +%Y/%m/%d)"
     newfile="./post/post-$date_now-$1.html.pm"
     {
         echo '#lang pollen'
@@ -19,8 +19,10 @@ new () {
         echo "◊define-meta[categories]{}"
         echo "◊define-meta[comments]{true}"
     } >> "$newfile"
-    test -z "$EDITOR" && EDITOR=vi # use vi if EDITOR is not set
-    $EDITOR "$newfile"
+    if test -z "$2"; then
+        test -z "$EDITOR" && EDITOR=vi # use vi if EDITOR is not set
+        $EDITOR "$newfile"
+    fi
 }
 
 build () {
@@ -65,7 +67,7 @@ case "$1" in
     (new)
         test -z "$2" && echo "$helptext" && exit
         echo New post: "$2"
-        new "$2"
+        new "$2" "$3"
         ;;
     (deploy)
         deploy
