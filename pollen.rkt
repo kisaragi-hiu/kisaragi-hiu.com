@@ -221,10 +221,10 @@ in-document stuff
     ,@content
     (div [[class "margin"]] ,(attr-set right 'class "right"))))
 
-(define (image width src text)
-  `(figure [[style ,(string-append "max-width:" width ";")]]
-     (img [[src ,src]
-           [alt ,text]])))
+(define (image src text #:width [width style/content-width])
+  `(figure ([style ,(string-append "max-width:" width ";")])
+     (img ([src ,src]
+           [alt ,text]))))
 
 (define (strike . text)
   `(span ((class "strike")) ,@text))
