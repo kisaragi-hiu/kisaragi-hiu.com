@@ -10,12 +10,12 @@ usage:
 "
 
 new () {
-    date_now="$(date +%Y/%m/%d)"
-    newfile="./post/post-$date_now-$1.html.pm"
-    {
-        echo '#lang pollen'
+    date_path="$(date --iso-8601=date)"
+    date_text="$(date +%Y/%m/%d)"
+    newfile="./post/post-$date_path-$1.html.pm"
+    {   echo '#lang pollen'
         echo "◊define-meta[headline]{$1}"
-        echo "◊define-meta[publish-date]{$date_now}"
+        echo "◊define-meta[publish-date]{$date_text}"
         echo "◊define-meta[categories]{}"
         echo "◊define-meta[comments]{true}"
     } >> "$newfile"
