@@ -60,11 +60,13 @@ a:active { color: ◊|style/color-highlight|; }
 .nav6 { padding-left: 8em; }
 
 h1, h2, h3, h4, h5, h6, h7 { font-family: ◊|style/font-secondary|; }
-p, ul, ol, h1, h2, h3, h4, h5, h6, h7, .footer, .nav2, .nav3, .nav4, .nav5, .nav6, .nav7, blockquote, #disqus_thread, body > a, figure, .page-meta, #header {
+p, ul, ol, dl, h1, h2, h3, h4, h5, h6, h7, .footer, .nav2, .nav3, .nav4, .nav5, .nav6, .nav7, blockquote, #disqus_thread, body > a, figure, .page-meta, #header {
   margin-left: auto;
   margin-right: auto;
   width: 90%;
 }
+
+ul, ol { padding-left: 0; }
 
 p { font-size: 100%; }
 
@@ -468,7 +470,7 @@ blockquote {
         font-size: 200%;
     }
 
-    p, ul, ol, .abstract h2, h1, .page-meta, .highlight, figure, h2, h3, h4, .nav2, .nav3, .nav4, #header, #disqus_thread
+    p, ul, ol, dl, .abstract h2, h1, .page-meta, .highlight, figure, h2, h3, h4, .nav2, .nav3, .nav4, #header, #disqus_thread
     {
         max-width: ◊|style/content-width|;
     }
