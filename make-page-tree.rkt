@@ -41,11 +41,12 @@
       (map string->path _)))
 
 (define (pm->html file)
-  (string-trim (path->string file) ".pm"
-         #:left? #f #:repeat? #f))
+  (string-trim (path->string file)
+               #rx".pmd*"
+               #:left? #f #:repeat? #f))
 
 (define (pm->html-symbol file)
-  (string->symbol (string-trim (path->string file) ".pm"
+  (string->symbol (string-trim (path->string file) #rx".pmd*"
                                #:left? #f #:repeat? #f)))
 
 (define (datestring->seconds datetime)
