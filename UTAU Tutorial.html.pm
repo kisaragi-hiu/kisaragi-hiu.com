@@ -1,40 +1,51 @@
-#lang pollen/markup
+#lang pollen
+◊; Script first, article second
 ◊(define (screenshot path) (figure path #:width "45rem" path))
 
+◊define-meta[livejs]{true}
+◊(define-meta justfont #f)
 ◊define-meta[headline]{UTAU Tutorial by Kisaragi Hiu}
 ◊define-meta[language]{en}
 ◊;define-meta[publish-date]{2017/09/26}
 ◊;define-meta[categories]{UTAU}
 ◊define-meta[toc]{true}
 
-This is a script for my introduction to UTAU. I plan to make a ~20m video on the workflow, then extending the series with higher-level usage tips.
+This is a script for my introduction to UTAU.
 
 Welcome to my UTAU tutorial.
 
 ◊; Assumption
-◊writing-tip{Assume viewer knows Japanese.}
+◊;writing-tip{Assume viewer knows Japanese.}
 I'm going to assume you know Kana and some Japanese already, 'cause I'm not going to explain Japanese in this series. If you don't, most of this should still make sense; I'd say utau is actually a good way to learn Kana. Anyways.
 
 ◊section["UTAU?"]
-◊writing-tip{Summary of UTAU.}
-UTAU is a voice synthesizer platform. It is made up of an editor ◊show{editor}, render engines ◊show{tool1,2}, voicebanks, and plugins.
+◊;writing-tip{Summary of UTAU.}
+UTAU is a voice synthesizer platform. It is made up of an editor, render engines, voicebanks, and plugins.
+◊;video: editor -> UTAU interface
+◊;       render engines -> tool2 folder
+◊;       voicebanks -> voice/
 
 ◊section["Installation"]
 Because of encoding issues, UTAU has to be installed using the Japanese locale. There are two ways to do this:
 
-◊subsection["Option 1: Change system locale"]
+◊subsection{"Option 1: Change system locale"}
+This will effect the entire system. If you don't mind seeing Japanese occationally on your system, this is my recommendation.
+
 To switch system locale, go to ◊(→→ "Control Center" "Language" "Change system locale" "Japanese(Japan)" "OK") then reboot when it asks you.
 ◊;figure["/images/utau/system-locale.jpg" #:width "45rem"]{Change system locale}
 
-◊subsection["Option 2: Launch UTAU using Locale Emulator"]
-Download Locale Emulator from ◊link["http://pooi.moe/Locale-Emulator/"]{its homepage}, extract to a folder (the install will depend on this folder), ◊(→→ "LEInstaller.exe" "Install / Upgrade"), and you should see Locale Emulator available as an option when you right click on a program. ◊(→→ "Right click on UTAU installer" "Locale Emulator" "Run in Japanese").
+◊subsection{"Option 2: Launch UTAU using Locale Emulator"}
+This will require launching UTAU with Locale Emulator everytime you use it. If you don't want to change system locale, this will be the best way.
+
+Download Locale Emulator from ◊link["http://pooi.moe/Locale-Emulator/"]{its homepage}, extract to a folder (the install will depend on this folder), then run ◊(→→ "LEInstaller.exe" "Install / Upgrade"), and you should see Locale Emulator available as an option when you right click on a program. ◊(→→ "Right click on UTAU installer" "Locale Emulator" "Run in Japanese").
 ◊;figure["/images/utau/locale-emulator.jpg" #:width "45rem"]{Use Locale Emulator}
 
 After this just install like a normal Windows application.
+◊;Fast forwarded install footage
 
-◊subsection["Installation on Linux"]
+◊subsection{Installation on Linux}
 Create a new 32 bit wineprefix, and install utau in there.
-If version 0.4.18 fails to install, use 0.4.16. I don't know why; it happens; it doesn't matter.
+If version 0.4.18 fails to install, use 0.4.16. I don't know why; it happens, and it doesn't matter.
 ◊code{
 env WINEPREFIX=$HOME/.wineprefix/UTAU WINEARCH=win32 wine utau0418e-inst.exe
 }
@@ -46,16 +57,59 @@ env WINEPREFIX=$HOME/.wineprefix/UTAU wine $HOME/.wineprefix/UTAU/drive_c/Progra
 
 Wine might install a desktop entry in your launcher as well, if that's available you can start UTAU from your launcher.
 
-◊section{The tutorial}
-
 Start UTAU, and you should see this screen.
 ◊screenshot{/images/utau/screenshot-first-start.png}
 
-◊writing-tip{Debug encoding issues here.}
+◊;Debug encoding issues here.
+If you see weird question marks, there are encoding issues. Make sure you either launch UTAU using Locale Emulator, or have set system locale to Japanese. The default voicebank may be corrupted; run the installer again with locale set up to get it back.
 
-Describe piano roll.
-Describe note basics.
-Describe interface usage.
+◊section{Piano Roll}
+◊describe{The grid part of the interface} is called the Piano Roll.
+On the left, the vertical piano keyboard marks what pitch each note is on.
+◊; Show left piano as mouse moves across piano roll
+The current pitch your mouse cursor is on is shown in a highlighted color.
+
+◊section{Notes}
+◊figure["/images/utau/screenshot-notes.png" #:width "45rem"]{Notes and Piano Roll}
+To make an UTAUloid sing, add notes onto the piano roll. Do this by clicking the pen button (1), then clicking on the piano roll. Play it back with the play button.
+Alternatively, type lyrics into the Lyric field, and press the pink "Insert Lyrics" button.
+
+A song is made up of notes; every note each has its own properties. To edit a note's properties, click on it to select it (2), then press ◊key{Ctrl+E} for "edit". It is also in the menu, ◊(→→ "Edit" "Region Property").
+
+◊section{Basic Note Properties}
+In the note properties window, there's an arrow saying "Show" (1). Click it to unhide a few other more advanced properties.
+◊figure["/images/utau/screenshot-note-property.png" #:width "45rem"]{Note property window}
+
+Lyric, Note, Length: self-explainatory.
+These can be edited on the Piano Roll: Lyric by double-clicking on a note, "Note" (I call it pitch to avoid confution) by moving the note up and down, and Length by dragging the edges of the note.
+If a note isn't changing size when you drag its edges, hold down ◊key{Ctrl} to shrink the adjacent note as you expand this, or ◊key{Shift} to resize while pushing everything further.
+◊; Video works better here.
+
+Intensity is the volume for the entire note, sort of. It can be visualized on the Piano Roll using the "~" button (2).
+
+Consonant Velocity is how fast a note plays. Increasing the speed of a note makes the consonant sound shorter, hence the name. The consonant is two times longer at a value of 0 (note plays at 50%), and gets shorter the higher this number is. A value of 200 is half the length for the consonant.
+
+◊section{Rest Notes}
+In UTAU, every note depends on the previous for their position, meaning there needs to be a rest note to fill in a gap. You can think of it as there being a force of gravity to the left, and they can't just float without the rest notes.
+A rest note is added with ◊key{Ctrl-r}.
+
+◊section{Tuning practice}
+We'll start by tuning a simple song. I'll use Twinkle Twinkle Little Star as an example. (Thanks, Fukumennkei Noise.)
+
+In the interface, the usual ◊key{Ctrl+z}, ◊key{Ctrl+x}, ◊key{Ctrl+c}, ◊key{Ctrl+v} (Undo, Cut, Copy, Paste) keys work here. Redo is ◊key{Ctrl+Shift+z}.
+
+Here's the Japanese lyrics for it:
+
+きらきらひかる　おそらのほしよ
+まばたきしては　みんなをみてる
+きらきらひかる　おそらのほしよ
+
+We need to place down notes, resize them to the right timing, move them to the right pitches, and fill in the lyrics. The order doesn't matter.
+◊; video: do that.
+
+◊(image "./images/utau/screenshot-tuning1-placing-notes.png" "Place down the notes with lyrics")
+◊(image "./images/utau/screenshot-tuning1-adjust-pitch.png" "Adjust the pitch for each note")
+◊(image "./images/utau/screenshot-tuning1-timing.png" "Adjust timing of each note")
 
 Describe voice bank.
 Describe renderers.
@@ -63,42 +117,6 @@ Describe renderers.
 Describe CV, VCV, CVVC.
 Tuning demonstration.
 Describe plugins.
-
-◊section["Note basics."]
-An UTAUloid sings by combining "notes" together.
-◊figure["/images/utau/screenshot-notes.png" #:width "45rem"]{Notes and Piano Roll}
-
-Notes are arranged on a piano roll. To add a note, click the pen icon (1) and click on the piano roll. To select a note, click the select icon next to (1) and click on a note; selected note(s) are highlighted in red (2).
-
-Each note has its own properties. To open the properties of the selected note(s), press ◊key{Ctrl-e}. Alternatively, it's in the menu ◊(→→ "Edit" "Region Property").
-◊figure["/images/utau/screenshot-note-property.png" #:width "45rem"]{Note property window}
-
-There will be an arrow saying "Show": click it to unhide the other properties.
-
-◊subsection{Lyric, Note, Length}
-Basic properties of the note.
-
-◊subsection{Intensity}
-Basically the volume for the entire note.
-
-◊subsection{Modulation}
-Each word corresponds to some voice sample of the voicebank, which will have a bit of pitch instability. A modulation of 0 completely smooths that out, while a modulation of 100 leaves that pitch fluctuation in.
-
-Notes also have two other types of properties: Envelope and Pitch Curve.
-
-◊subsection["Envelope"]
-This is basically an intensity / volume curve, along with two parameters saying how much earlier this note should start playing (Preutterance), and how much it would overlap with the previous note. This creates a cross-fade between two notes and actually allows joining them together into one sound.
-
-◊subsection["Pitch Curve"]
-This is a curve determining what key a note should be on.
-There are two modes for this, Mode1 is a curve relative to its key in the basic properties; Mode2 is a freeform curve. Just use Mode2: it visualizes the pitch curve and allows direct edits on the piano roll.
-◊figure["/images/utau/screenshot-mode2.png" #:width "45rem"]{Mode2, with pitch curve  shown clearly on the piano roll}
-
-◊section{Interface}
-
-S-drag, C-drag.
-C-a, C-w.
-Space.
 
 ◊section{CV}
 Constanant, Vowel.
