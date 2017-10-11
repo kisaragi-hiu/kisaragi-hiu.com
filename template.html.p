@@ -1,7 +1,11 @@
 <html>
   <head>
     <title>◊(select-from-metas 'headline here) - Kisaragi Hiu</title>
-    ◊(->html site-global-head)
+
+    ◊(->html (get-site-global-head #:livejs (select-from-metas 'livejs metas)
+                                   #:justfont (if (select-from-metas 'justfont here)
+                                                  (select-from-metas 'justfont metas)
+                                                  #t)))
 
     ◊when/splice[(select-from-metas 'background here)]{
     <style>

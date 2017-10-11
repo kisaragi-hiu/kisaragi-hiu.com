@@ -41,20 +41,22 @@
                                       ,@xs)))
 
 #| site meta |#
-(define site-global-head
-  `(span
-    (meta ([charset "UTF-8"]))
-    (meta ([name "google"] [content "notranslate"]))
-    (script ([src "https://use.fontawesome.com/f9f3cd1f14.js"]))
-    ,(stylesheet "/css/monokai.css")
-    ,(stylesheet "/css/style.css")
-    ,(stylesheet "/css/sidebar.css")
-    ,(stylesheet "https://fonts.googleapis.com/css?family=Overpass:200,400,700|EB+Garamond")
-    ,(stylesheet "https://fonts.googleapis.com/earlyaccess/hannari.css")
-    ,(stylesheet "https://fonts.googleapis.com/earlyaccess/cwtexfangsong.css")
-    (script ([src "/js/justfont.js"]))
-    (script ([src "/js/sidenav.js"]))
-    (link ([rel "shortcut icon"] [type "image/x-icon"] [href "/favicon.ico"]))))
+(define (get-site-global-head #:justfont [jf? #t] #:livejs [livejs? #f])
+  (filter (λ (x) (not (void? x)))
+          `(span
+            (meta ([charset "UTF-8"]))
+            (meta ([name "google"] [content "notranslate"]))
+            ,(when livejs? '(script ([src "http://livejs.com/live.js"])))
+            (script ([src "https://use.fontawesome.com/f9f3cd1f14.js"]))
+            ,(stylesheet "/css/monokai.css")
+            ,(stylesheet "/css/style.css")
+            ,(stylesheet "/css/sidebar.css")
+            ,(stylesheet "https://fonts.googleapis.com/css?family=Overpass:200,400,700|EB+Garamond")
+            ,(stylesheet "https://fonts.googleapis.com/earlyaccess/hannari.css")
+            ,(stylesheet "https://fonts.googleapis.com/earlyaccess/cwtexfangsong.css")
+            ,(when jf? '(script ([src "/js/justfont.js"])))
+            (script ([src "/js/sidenav.js"]))
+            (link ([rel "shortcut icon"] [type "image/x-icon"] [href "/favicon.ico"])))))
 
 (define site-global-end-of-body
   `(span
