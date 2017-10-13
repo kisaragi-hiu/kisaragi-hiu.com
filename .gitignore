@@ -1,4 +1,9 @@
+public
 *.swp
 compiled
 /pollen-cache
 pollen.cache
+*.html
+*.js
+category/*
+!category/*.p
