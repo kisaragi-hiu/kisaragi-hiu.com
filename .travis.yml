@@ -1,4 +1,5 @@
 language: python
+python: 3.6
 sudo: false
 
 branches:
@@ -18,8 +19,11 @@ before_install:
     - export PATH="${RACKET_DIR}/bin:${PATH}"
 
 install:
-    - raco pkg install --deps search-auto pollen hyphenate pollen-count txexpr threading
+    - raco pkg install --deps search-auto pollen hyphenate pollen-count txexpr threading shell-pipeline
     - pip install pygments
 
 script:
+    - bash ./build.sh publish
+
+after_success:
     - bash ./deploy.sh

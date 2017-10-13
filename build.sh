@@ -31,14 +31,11 @@ build () {
 }
 
 publish () {
-    # $1: origin (likely ./)
-    # $2: destination
-
-    # return if not supplied the arguments
     build
     rm -rf ./public
     mkdir ./public
     racket ./publish.rkt
+    return 0 # workaround publish.rkt output
 }
 
 cleanup () {
