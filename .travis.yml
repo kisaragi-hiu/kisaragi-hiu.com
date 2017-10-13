@@ -2,6 +2,15 @@ language: python
 sudo: required
 dist: trusty
 
+branches:
+    only:
+        - source
+
+env:
+    global:
+        - GH_REF: 'github.com/flyingfeather1501/flyingfeather1501.github.io.git'
+        - secure: "hcotoSVA+jJXM62bK8UEXgOQGuBsH2/+Avn4xYM1U05e1KFIWp6R9H29bT5yed6vNrMMtbz2f4XnxUC8uoek1pZObogaQoX0fSxGguTi7iCX3azJ4hWp2tHI3DEGULvBsI5LKLbPdZB31yfGXaa/nXA8sXA0jccMSTURULogyh27dXB1kXUSphMrZMxiZiTBTzcuee5N9XR5Qe4an1slRybTVPX3BIIZc9gRBhMeWHhyFwtNyMvexvnZoeYlluNhFUb99OBDuw/WBrovLkiu6xt8giRNtFHisT69zYYcPJcixyST5/WqNuJyQHsgwxtI9AKah8WzqzuaBZTtQ7oAikSZ22HGWyATjmNsygHyIRKw5IJzZu3xmOttzpugDJf4xiieneFCYKQdTpmYeHPib5rDoJPHYU7PxVswzG9VM9lSJx087uDVcAmUkwSGVW+KiuQtZLAXO+6shYM578C86nIwAwdGpjmOWnpeoszkBIwPdnfyBJxN6/Lelun9NTve3iKnqu4zrv+d769YS4dzuZpNK4LRFrjCD4JlkaGLjSmZ2Qh4eq+FWKWsY6bE1dmqrKiyUbBDiurV2Br6pbPUqAuicsIPLYBoL1TOmBrg3S6geBP+ew1uWGVAgnO07Ab2FebThfLLrUJKnsk6+sAr/2qkG8njGyUay9d/3WPfHPI="
+
 before_install:
     - sudo add-apt-repository ppa:plt/racket -y
     - sudo apt update
@@ -9,3 +18,7 @@ before_install:
 
 install:
     - raco pkg install --deps search-auto pollen hyphenate pollen-count txexpr threading
+    - pip install pygments
+
+script:
+    - bash ./deploy.sh
