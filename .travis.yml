@@ -19,7 +19,7 @@ before_install:
     - export PATH="${RACKET_DIR}/bin:${PATH}"
 
 install:
-    - raco pkg install --deps search-auto pollen hyphenate pollen-count txexpr threading shell-pipeline rackjure rackunit
+    - raco pkg install --deps search-auto pollen hyphenate pollen-count txexpr threading shell-pipeline rackjure
     - pip install pygments
 
 script:
