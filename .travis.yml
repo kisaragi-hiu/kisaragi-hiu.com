@@ -1,0 +1,11 @@
+language: python
+sudo: required
+dist: trusty
+
+before_install:
+    - sudo add-apt-repository ppa:plt/racket -y
+    - sudo apt update
+    - sudo apt install racket
+
+install:
+    - raco pkg install --deps search-auto pollen hyphenate 
