@@ -30,19 +30,14 @@ build () {
     raco pollen render
 }
 
-deploy () {
-    build
-    git commit -am "Deploy"
-    git push
-}
-
 publish () {
     # $1: origin (likely ./)
     # $2: destination
 
     # return if not supplied the arguments
     build
-    rm -rf ./public/*
+    rm -rf ./public
+    mkdir ./public
     racket ./publish.rkt
 }
 
@@ -68,9 +63,6 @@ case "$1" in
         test -z "$2" && echo "$helptext" && exit
         echo New post: "$2"
         new "$2" "$3"
-        ;;
-    (deploy)
-        deploy
         ;;
     (*)
         echo "$helptext"
