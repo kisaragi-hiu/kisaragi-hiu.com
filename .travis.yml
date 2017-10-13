@@ -23,7 +23,4 @@ install:
     - pip install pygments
 
 script:
-    - bash ./build.sh publish
-
-after_success:
     - bash ./deploy.sh
