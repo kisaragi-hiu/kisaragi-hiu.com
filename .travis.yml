@@ -8,4 +8,4 @@ before_install:
     - sudo apt install racket
 
 install:
-    - raco pkg install --deps search-auto pollen hyphenate 
+    - raco pkg install --deps search-auto pollen hyphenate pollen-count txexpr threading
