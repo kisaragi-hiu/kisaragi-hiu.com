@@ -32,10 +32,7 @@ build () {
 
 publish () {
     build
-    rm -rf ./public
-    mkdir ./public
-    racket ./publish.rkt
-    return 0 # workaround publish.rkt output
+    raco pollen publish ./ ~/public
 }
 
 cleanup () {

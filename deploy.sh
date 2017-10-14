@@ -2,7 +2,7 @@
 
 bash build.sh publish
 
-cd public || exit 1
+cd ~/public || exit 1
 git init
 
 git config user.name "Built on Travis CI"
