@@ -32,7 +32,7 @@ build () {
 
 publish () {
     build
-    raco pollen publish ./ ~/public
+    raco pollen publish . ~/public
 }
 
 cleanup () {
