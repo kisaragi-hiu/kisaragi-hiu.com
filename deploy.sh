@@ -12,4 +12,4 @@ git add .
 git commit -m "Deploy to Github Pages"
 
 git remote add deploy "https://${GH_TOKEN}@${GH_REF}"
-git push deploy master --force --quiet >/dev/null 2>/dev/null
+git push -u deploy master --force --quiet >/dev/null 2>/dev/null
