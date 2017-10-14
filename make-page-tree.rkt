@@ -40,6 +40,15 @@
       (filter (λ (x) (not (equal? x "index.html.pm"))) _) ; "don't include index.html"
       (map string->path _)))
 
+(define (list-js directory)
+  ; dirty, sure
+  ; remember regex n* means 0 or more n
+  ; so pmd* matches pmd.. as well as pm
+  (~> (run-pipeline/out `(find ,directory -maxdepth 1 -regex .*\.js))
+      (string-split _ "\n")
+      (map (λ (x) (string-replace x #rx"^./" "")) _) ; strip "./" away
+      (map string->path _)))
+
 (define (pm->html file)
   (string-trim (path->string file)
                #rx".pmd*"
@@ -117,25 +126,31 @@ find-tags: find categories metadata in all files
                              (string-append tag-dir tag ".html\n"))
                         tags)))
 
-(define (make-.ptree post-files nonpost-files tags)
+(define (make-.ptree post-pages nonpost-pages js-files css-files tags)
   (define out (open-output-file "index.ptree" #:exists 'replace))
   (define st
     (string-append "#lang pollen\n◊index.html{"
        (apply string-append
               (map (λ (x)
-                     (string-append (pm->html x) "\n")) post-files))
+                     (string-append (pm->html x) "\n")) post-pages))
        "}\n"
        (apply string-append
               (map (λ (x)
-                     (string-append (pm->html x) "\n")) nonpost-files))
+                     (string-append (pm->html x) "\n")) nonpost-pages))
        "◊category/index.html{"
        (generate-cats tags)
-       "}\n"))
+       "}\n"
+       (apply string-append
+              (map (λ (x)
+                     (string-append (pm->html x) "\n")) js-files))
+       (apply string-append
+              (map (λ (x)
+                     (string-append (pm->html x) "\n")) css-files))))
   (display st out)
   (close-output-port out))
 
-(define post-files (order-by-date (list-pms "./post/")))
+(define post-pages (order-by-date (list-pms "./post/")))
 (define tags (find-tags post-files))
-(define nonpost-files (list-pms "./"))
+(define nonpost-pages (list-pms "./"))
 
-(make-.ptree post-files nonpost-files tags)
+(make-.ptree post-pages nonpost-pages js-files css-files tags)
