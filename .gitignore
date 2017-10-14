@@ -5,5 +5,7 @@ compiled
 pollen.cache
 *.html
 *.js
+*.css
 category/*
 !category/*.p
+index.ptree
