@@ -8,4 +8,5 @@ pollen.cache
 *.css
 category/*
 !category/*.p
+!category/index.html.pm
 index.ptree

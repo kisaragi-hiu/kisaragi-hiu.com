@@ -39,7 +39,8 @@ publish () {
 }
 
 cleanup () {
-    rm ./*.html ./category/*.html ./category/*.html.pm ./post/*.html
+    rm ./*.html ./category/*.html ./post/*.html
+    find ./category/ -maxdepth 1 -type f -name "*.pm" -not -name "index.html.pm" -delete
     raco pollen reset
 }
 
