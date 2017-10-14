@@ -40,6 +40,13 @@
       (filter (λ (x) (not (equal? x "index.html.pm"))) _) ; "don't include index.html"
       (map string->path _)))
 
+(define (list-pps directory)
+  (~> (run-pipeline/out `(find ,directory -maxdepth 1 -regex .*\.pp*))
+      (string-split _ "\n")
+      (map (λ (x) (string-replace x #rx"^./" "")) _) ; strip "./" away
+      (filter (λ (x) (not (string-contains? x "template"))) _) ; don't include templates
+      (map string->path _)))
+
 (define (list-js directory)
   ; dirty, sure
   ; remember regex n* means 0 or more n
@@ -52,6 +59,11 @@
 (define (pm->html file)
   (string-trim (path->string file)
                #rx".pmd*"
+               #:left? #f #:repeat? #f))
+
+(define (pp->html file)
+  (string-trim (path->string file)
+               #rx".pp*"
                #:left? #f #:repeat? #f))
 
 (define (pm->html-symbol file)
@@ -142,15 +154,17 @@ find-tags: find categories metadata in all files
        "}\n"
        (apply string-append
               (map (λ (x)
-                     (string-append (pm->html x) "\n")) js-files))
+                     (string-append (pp->html x) "\n")) js-files))
        (apply string-append
               (map (λ (x)
-                     (string-append (pm->html x) "\n")) css-files))))
+                     (string-append (pp->html x) "\n")) css-files))))
   (display st out)
   (close-output-port out))
 
 (define post-pages (order-by-date (list-pms "./post/")))
-(define tags (find-tags post-files))
+(define tags (find-tags post-pages))
 (define nonpost-pages (list-pms "./"))
+(define js-files (list-pps "./js/"))
+(define css-files (list-pps "./css/"))
 
 (make-.ptree post-pages nonpost-pages js-files css-files tags)
