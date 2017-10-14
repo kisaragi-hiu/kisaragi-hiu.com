@@ -27,7 +27,7 @@ new () {
 
 build () {
     racket make-page-tree.rkt
-    raco pollen render
+    raco pollen render index.ptree
 }
 
 publish () {
