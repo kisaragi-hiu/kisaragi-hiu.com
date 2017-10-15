@@ -8,6 +8,7 @@ env:
   global:
   - RACKET_DIR: "~/racket"
   - RACKET_VERSION: 6.10.1
+  - GH_REF: 'github.com/flyingfeather1501/flyingfeather1501.github.io.git'
   - secure: zhx1LxLtoIjA2UQwpeoF9BWm08X2op2Ko39927tiwgQpLJSeOS33bsx/BKUU8iNEXXjYxeAqUIgrINdLSmW0/cbsgjDKdNhx6q0VZ6kvIja5TPe3NO2rGHsBZJAw2Zg7U6pUJYeEi113KM76ntAGrJI+aCqShvupAURCWn7+S6rdL2VWQpkM2c+bIWp/3tFyiFUr//NBtZ9+rbPlLuUKiQ+XPY38c9CU8zqZnw1MUwthyNz99O5zr1aqL2py1G2cxnCAHJEK1Dm8gdXBNs8Z1G/zaS/+MmA8gAje0blCLnKB2dppTeHMxlh75g8Oq8j8hYdjwbXsBh88bJuC66ua2Dtgpn3uRzwwO6DQ/lrZJgNOosJbFgHiGueFdgBGfXiBUQsgjPAWtyDpeCpBcSuIB4TMQ9Vw5O/w0boSLybk1UmicmRaGOVjQK+h5zJJNsOROp2/02o3/tkhrNLlvR/kV0Bkh8uJFMddHqtmtrwip+MSBJ0jQ7f/p9ZHwhuWzH8QSseaaCaGCOIOU3Y7AnVN2g+3+L16ZGUR/IoT7AHvC9RvyAqLDllN2U3SFCLtN7IQRj1jYWDA/rrFWe4h0p3ah2qn/wuZHzrW7OSYQssV1UHjvotnXPoiKA/uKP7BEM5gILVXIQNX3gi2J0a9zjB2fpFJ2nFShl9ts0g/R7RIQKM=
 before_install:
 - git clone https://github.com/greghendershott/travis-racket.git ~/travis-racket
