@@ -11,5 +11,4 @@ git config user.email "flyingfeather1501@gmail.com"
 git add .
 git commit -m "Deploy to Github Pages"
 
-git remote add deploy "https://${GH_TOKEN}@flyingfeather1501.github.com/flyungfeather1501/flyingfeather1501.github.io.git"
-git push -u deploy master --force --quiet >/dev/null 2>/dev/null
+git push -u https://${GH_TOKEN}@github.com/flyungfeather1501/flyingfeather1501.github.io.git master --force --quiet >/dev/null 2>/dev/null
