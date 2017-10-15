@@ -1,7 +1,7 @@
 #lang pollen
 ◊; Script first, article second
 ◊(define (screenshot path) (figure path #:width "45rem" path))
-
+◊(define video i)
 ◊define-meta[livejs]{true}
 ◊(define-meta justfont #f)
 ◊define-meta[headline]{UTAU Tutorial by Kisaragi Hiu}
@@ -10,9 +10,10 @@
 ◊;define-meta[categories]{UTAU}
 ◊define-meta[toc]{true}
 
-This is a script for my introduction to UTAU.
+This is the script for my introduction to UTAU.
 
 Welcome to my UTAU tutorial.
+◊;video 0: UTAU singing. Use 夏の空と君の傘下で's video.
 
 ◊; Assumption
 ◊;writing-tip{Assume viewer knows Japanese.}
@@ -21,9 +22,9 @@ I'm going to assume you know Kana and some Japanese already, 'cause I'm not goin
 ◊section["UTAU?"]
 ◊;writing-tip{Summary of UTAU.}
 UTAU is a voice synthesizer platform. It is made up of an editor, render engines, voicebanks, and plugins.
-◊;video: editor -> UTAU interface
-◊;       render engines -> tool2 folder
-◊;       voicebanks -> voice/
+◊;video 0: editor -> UTAU interface
+◊;video 1: render engines, VBs -> project properties
+◊;video 2: plugins -> plugin list
 
 ◊section["Installation"]
 Because of encoding issues, UTAU has to be installed using the Japanese locale. There are two ways to do this:
@@ -33,15 +34,17 @@ This will effect the entire system. If you don't mind seeing Japanese occational
 
 To switch system locale, go to ◊(→→ "Control Center" "Language" "Change system locale" "Japanese(Japan)" "OK") then reboot when it asks you.
 ◊;figure["/images/utau/system-locale.jpg" #:width "45rem"]{Change system locale}
+◊;video 3: system locale switching
 
 ◊subsection{"Option 2: Launch UTAU using Locale Emulator"}
 This will require launching UTAU with Locale Emulator everytime you use it. If you don't want to change system locale, this will be the best way.
 
 Download Locale Emulator from ◊link["http://pooi.moe/Locale-Emulator/"]{its homepage}, extract to a folder (the install will depend on this folder), then run ◊(→→ "LEInstaller.exe" "Install / Upgrade"), and you should see Locale Emulator available as an option when you right click on a program. ◊(→→ "Right click on UTAU installer" "Locale Emulator" "Run in Japanese").
 ◊;figure["/images/utau/locale-emulator.jpg" #:width "45rem"]{Use Locale Emulator}
+◊;video 4: downloading and setting up locale emulator
 
 After this just install like a normal Windows application.
-◊;Fast forwarded install footage
+◊;video 5: install UTAU itself
 
 ◊subsection{Installation on Linux}
 Create a new 32 bit wineprefix, and install utau in there.
@@ -56,6 +59,8 @@ env WINEPREFIX=$HOME/.wineprefix/UTAU wine $HOME/.wineprefix/UTAU/drive_c/Progra
 }
 
 Wine might install a desktop entry in your launcher as well, if that's available you can start UTAU from your launcher.
+
+◊;video 6: install on linux
 
 Start UTAU, and you should see this screen.
 ◊screenshot{/images/utau/screenshot-first-start.png}
