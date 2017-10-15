@@ -11,3 +11,4 @@ Note that all `*.html`, `*.css`, `*.xml` are generated from corresponding `*.pm`
 # Thanks
 
 This site is possible thanks to mstill.io, try-pollen, pollen, and racket.
+I followed Lexi Lambda's [post](https://lexi-lambda.github.io/blog/2015/07/18/automatically-deploying-a-frog-powered-blog-to-github-pages/) when setting up Travis.
