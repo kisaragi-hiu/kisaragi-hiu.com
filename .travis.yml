@@ -22,4 +22,13 @@ install:
     - pip install pygments
 
 script:
-    - bash ./deploy.sh
+    - bash ./build.sh publish
+
+deploy:
+    provider: pages
+    skip_cleanup: true
+    github_token: $GH_TOKEN
+    local_dir: $HOME/public
+    target_branch: master
+    on:
+        branch: source
