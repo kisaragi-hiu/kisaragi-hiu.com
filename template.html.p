@@ -1,3 +1,4 @@
+◊(local-require threading)
 <html>
   <head>
     <title>◊(select-from-metas 'headline here) - Kisaragi Hiu</title>
@@ -47,21 +48,19 @@
     }
     ◊(map ->html (select-from-doc 'body here))
 
-    ◊when/splice[(previous here)]{
-        ◊(->html
-         `(div ([id "prev"])
-               (a ([href ,(previous here)])
-                  ,(select-from-metas 'headline
-                                      (previous here)))))
-    }
-
-    ◊when/splice[(next here)]{
-        ◊(->html
-         `(div ([id "next"])
-               (a ([href ,(next here)])
-                  ,(select-from-metas 'headline
-                                      (next here)))))
-    }
+    ◊(->html
+      (let* ([newer (previous here)]
+             [newer-title (select-from-metas 'headline newer)]
+             [newer-href (string-append "/" (symbol->string newer))]
+             [older (next here)]
+             [older-title (select-from-metas 'headline older)]
+             [older-href (string-append "/" (symbol->string older))])
+         (get-site-prevnext #:newer newer
+                            #:newer-title newer-title
+                            #:newer-href newer-href
+                            #:older older
+                            #:older-title older-title
+                            #:older-href older-href)))
 
     ◊when/splice[(select-from-metas 'comments here)]{
         <br>

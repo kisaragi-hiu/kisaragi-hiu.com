@@ -1,5 +1,6 @@
 #lang pollen
 
+/* Header */
 #header {
     display: table;
     padding: 0;
@@ -31,6 +32,31 @@
     width: 2em;
 }
 
+/* Navigation */
+
+#prevnext {
+    display: table;
+    font-family: ◊|style/font-secondary|;
+}
+
+#prevnext a {
+    color: #444;
+}
+
+#prevnext a:hover {
+    color: #777;
+    text-decoration: none;
+}
+
+#newer, #older {
+    display: table-cell;
+}
+
+#older {
+    text-align: right;
+}
+
+/* text */
 body {
     font-size: 38pt;
     margin: 0; padding: 0;
@@ -48,6 +74,7 @@ a {
     text-decoration: none;
     transition: 0.3s;
 }
+
 a:link { color: ◊|style/color-highlight|; }
 a:visited { color: ◊|style/color-highlight|; }
 a:hover { color: ◊|style/color-highlight|; text-decoration: underline; }
@@ -60,11 +87,6 @@ a:active { color: ◊|style/color-highlight|; }
 .nav6 { padding-left: 8em; }
 
 h1, h2, h3, h4, h5, h6, h7 { font-family: ◊|style/font-secondary|; }
-p, ul, ol, dl, h1, h2, h3, h4, h5, h6, h7, .footer, .nav2, .nav3, .nav4, .nav5, .nav6, .nav7, blockquote, #disqus_thread, body > a, figure, .page-meta, #header {
-  margin-left: auto;
-  margin-right: auto;
-  width: 90%;
-}
 
 ul, ol { padding-left: 0; }
 
@@ -75,6 +97,10 @@ p { font-size: 100%; }
 figure .highlight { margin-top: 1em; margin-bottom: 0em; }
 p code { font-size: 90%; top: -0.05em; position: relative; background-color: #eee; }
 .sourcetable { margin-left: 1em;}
+
+.disabled {
+    color: #aaa;
+}
 
 .page-break {
     break-before: page;
@@ -390,16 +416,7 @@ svg {
 .footer {
     min-height: 100px;
     margin-top: 0em;
-        /*border-top: 1px solid #eee;*/
 }
-
-/*
-pre {
-    font-family: ◊|style/font-code|;
-    font-size: 12pt;
-    color: white;
-}
-*/
 
 .flx aside:nth-child(3)>p { margin-left: 1em; max-width: 12em; margin-right: 1em; }
 
@@ -454,6 +471,13 @@ blockquote {
     display: none;
 }
 
+p, ul, ol, dl, h1, h2, h3, h4, h5, h6, h7, .footer, .nav2, .nav3, .nav4, .nav5, .nav6, .nav7, blockquote, #disqus_thread, body > a, figure, .page-meta, #header, #prevnext
+{
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+}
+
 @media (min-device-width: 5in)
 {
     body
@@ -469,8 +493,8 @@ blockquote {
     {
         font-size: 200%;
     }
-
-    p, ul, ol, dl, .abstract h2, h1, .page-meta, .highlight, figure, h2, h3, h4, .nav2, .nav3, .nav4, #header, #disqus_thread
+    
+    p, ul, ol, dl, .abstract h2, h1, .page-meta, .highlight, figure, h2, h3, h4, .nav2, .nav3, .nav4, #header, #disqus_thread, #prevnext
     {
         max-width: ◊|style/content-width|;
     }

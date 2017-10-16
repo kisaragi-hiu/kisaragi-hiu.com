@@ -26,7 +26,26 @@
   (require pollen/setup)
   (define block-tags (append '(subsection subsubsection label img pre) default-block-tags)))
 
+(define not-void? (λ (x) (not (void? x))))
+
 (define site-url "https://flyingfeather1501.github.io/")
+
+(define (get-site-prevnext #:newer newer #:newer-title newer-title
+                           #:newer-href newer-href #:older older
+                           #:older-title older-title #:older-href older-href)
+  `(div ([id "prevnext"])
+        ,(if (and newer newer-title)
+             `(div ([id "newer"])
+                   (a ([href ,newer-href])
+                      ,(string-append "←" newer-title)))
+             `(div ([id "newer"] [class "disabled"])
+                   "No newer post"))
+        ,(if (and older older-title)
+             `(div ([id "older"])
+                   (a ([href ,older-href])
+                      ,(string-append older-title "→")))
+             `(div ([id "older"] [class "disabled"])
+                   "No older post"))))
 
 #| functions for site meta stuff |#
 (define (font-family . xs)
@@ -314,13 +333,6 @@ Define section, subsection, subsubsection and figure tags. We give the section t
 
 (define-countable-tag (footnote . xs) (0 number->string #f ".") (count)
   `(p ((class "footnote")) ,count ". " ,@xs))
-
-#|
-(define-countable-tag (figure src #:width [width "90%"] . xs) (0 number->string #f ".") (count)
-  `(figure [[style ,(string-append "max-width:" width ";")]]
-    (img ((src ,src)))
-    (figcaption "Figure " ,count ": " ,@xs)))
-|#
 
 (define-countable-tag (figure src #:width [width "90%"] . xs) (0 number->string #f ".") (count)
   `(figure ;; [[style ,(string-append "max-width:" width ";")]]
