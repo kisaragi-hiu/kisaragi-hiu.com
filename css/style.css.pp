@@ -1,5 +1,13 @@
 #lang pollen
 
+/* Animation declaration */
+
+@keyframes flash-gray {
+    0% {color: #444;}
+    50% {color: #777;}
+    100% {color: #444;}
+}
+
 /* Header */
 #header {
     display: table;
@@ -21,6 +29,9 @@
 
 #header a {
     color: #444;
+    animation-name: flash-gray;
+    animation-delay: 1s;
+    animation-duration: 1s;
 }
 
 #header a:hover {
