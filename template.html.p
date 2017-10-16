@@ -47,6 +47,22 @@
     }
     ◊(map ->html (select-from-doc 'body here))
 
+    ◊when/splice[(previous here)]{
+        ◊(->html
+         `(div ([id "prev"])
+               (a ([href ,(previous here)])
+                  ,(select-from-metas 'headline
+                                      (previous here)))))
+    }
+
+    ◊when/splice[(next here)]{
+        ◊(->html
+         `(div ([id "next"])
+               (a ([href ,(next here)])
+                  ,(select-from-metas 'headline
+                                      (next here)))))
+    }
+
     ◊when/splice[(select-from-metas 'comments here)]{
         <br>
         ◊(->html pagebreak)
