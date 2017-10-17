@@ -2,7 +2,9 @@
 (require pollen/decode
          threading
          txexpr
+         css-expr
          pollen/tag
+         racket/dict
          racket/list
          racket/string
          racket/format
@@ -13,33 +15,43 @@
          pollen/template
          hyphenate
          racket/function
-         pollen-count)
+         pollen-count
+         pollen-component)
 
-(provide highlight
+(provide (all-defined-out)
+         (all-from-out racket/string racket/dict racket/format css-expr)
+         highlight
          make-highlight-css
          get-elements
          add-between)
-(provide (all-defined-out))
 
 (module setup racket/base
   (provide (all-defined-out))
   (require pollen/setup)
   (define block-tags (append '(subsection subsubsection label img pre) default-block-tags)))
 
-(define not-void? (λ (x) (not (void? x))))
+(components-output-types #:dynamic html #:static css javascript)
 
-(define site-url "https://flyingfeather1501.github.io/")
+(define (not-void? x) (not (void? x)))
+(define (remove-void x) (filter-map (λ (y)
+                                      (and (not-void? y) y))
+                                    x))
+
+(define site-url "https://flyingfeather1501.github.io")
 
 (define (get-site-prevnext #:newer newer #:newer-title newer-title
                            #:newer-href newer-href #:older older
                            #:older-title older-title #:older-href older-href)
   `(div ([id "prevnext"])
         ,(if (and newer newer-title)
-             `(div ([id "newer"])
-                   (a ([href ,newer-href])
-                      ,(string-append "← " newer-title)))
-             `(div ([id "newer"] [class "disabled"])
-                   "No newer post"))
+             (button newer-href
+                     #:id "newer"
+                     #:direction 'left
+                     newer-title)
+             (button "/index.html"
+                     #:id "newer"
+                     #:greyed #t
+                     "Back to index"))
         ,(if (and older older-title)
              `(div ([id "older"])
                    (a ([href ,older-href])
@@ -61,21 +73,21 @@
 
 #| site meta |#
 (define (get-site-global-head #:justfont [jf? #t] #:livejs [livejs? #f])
-  (filter (λ (x) (not (void? x)))
-          `(span
-            (meta ([charset "UTF-8"]))
-            (meta ([name "google"] [content "notranslate"]))
-            ,(when livejs? '(script ([src "http://livejs.com/live.js"])))
-            (script ([src "https://use.fontawesome.com/f9f3cd1f14.js"]))
-            ,(stylesheet "/css/monokai.css")
-            ,(stylesheet "/css/style.css")
-            ,(stylesheet "/css/sidebar.css")
-            ,(stylesheet "https://fonts.googleapis.com/css?family=Overpass:200,400,700|EB+Garamond")
-            ,(stylesheet "https://fonts.googleapis.com/earlyaccess/hannari.css")
-            ,(stylesheet "https://fonts.googleapis.com/earlyaccess/cwtexfangsong.css")
-            ,(when jf? '(script ([src "/js/justfont.js"])))
-            (script ([src "/js/sidenav.js"]))
-            (link ([rel "shortcut icon"] [type "image/x-icon"] [href "/favicon.ico"])))))
+  (remove-void
+   `(span
+     (meta ([charset "UTF-8"]))
+     (meta ([name "google"] [content "notranslate"]))
+     ,(when livejs? '(script ([src "http://livejs.com/live.js"])))
+     (script ([src "https://use.fontawesome.com/f9f3cd1f14.js"]))
+     ,(stylesheet "/css/monokai.css")
+     ,(stylesheet "/css/style.css")
+     ,(stylesheet "/css/sidebar.css")
+     ,(stylesheet "https://fonts.googleapis.com/css?family=Overpass:200,400,700|EB+Garamond")
+     ,(stylesheet "https://fonts.googleapis.com/earlyaccess/hannari.css")
+     ,(stylesheet "https://fonts.googleapis.com/earlyaccess/cwtexfangsong.css")
+     ,(when jf? '(script ([src "/js/justfont.js"])))
+     (script ([src "/js/sidenav.js"]))
+     (link ([rel "shortcut icon"] [type "image/x-icon"] [href "/favicon.ico"])))))
 
 (define site-global-end-of-body
   `(span
@@ -130,6 +142,8 @@
 (define style/font-secondary (font-family "Overpass"
                                           style/font-cjk
                                           "sans-serif"))
+(define style/color-dark-black "#444")
+(define style/color-grey "#777")
 
 (define (css-/ x . xs)
   (let ([css-number (~> x
@@ -225,17 +239,27 @@ See https://github.com/malcolmstill/mstill.io/issues/1
                (element-processing (get-elements txexpr))))
 
 #|
-Register the following blocks so they're ignored by detect-paragraphs
-|#
-;(register-block-tag 'subsection)
-;(register-block-tag 'subsubsection)
-;(register-block-tag 'label)
-;(register-block-tag 'img)
-;(register-block-tag 'pre)
-
-#|
 in-document stuff
 |#
+
+(define (button href
+                #:id [id #f]
+                #:direction [direction 'none]
+                #:target [target "_self"]
+                #:greyed [greyed #f]. text)
+  (remove-void
+   `(div ,(remove-void
+           `(,(remove-void `[class "button" ,(when greyed "greyed")])
+             ,(when id `[id ,id])))
+           (a ([target ,target]
+               [href ,href])
+              ,(cond
+                 [(eq? direction 'right) (string-append (string-join text)
+                                                        " →")]
+                 [(eq? direction 'left) (string-append "← "
+                                                       (string-join text))]
+                 [else (string-join text)])))))
+
 (define (marginalia left right . content)
   `(div [[class "flx"]]
     (div [[class "margin"]] ,(attr-set left 'class "left"))
@@ -372,6 +396,7 @@ Root function automatically applied to .pm files
 
   ;; Generate txexprs for ToC
   (define toc-entries (map heading->toc-entry headings))
+
   ;; Generate doc with headline, body, and ToC entries
   `(root
     ,(typofy-with-tag 'headline headline)

@@ -36,9 +36,7 @@
                                       (p ,@(get-elements (remove-supref
                                                           (select-element 'p 'body x)))
                                          (br)
-                                         (a ([href ,(symbol->string x)]
-                                             [class "readmore"])
-                                             "更多")))))
+                                         ,(button (symbol->string x) "更多")))))
                        (children here))
                   (->html `(hr)))
 

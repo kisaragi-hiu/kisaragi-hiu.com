@@ -1,5 +1,8 @@
 #lang pollen
 
+◊(string-join (for/list ([(component css) (in-dict (components/css))])
+               (~a (css-expr->css css))))
+
 /* Animation declaration */
 
 @keyframes flash-gray {
@@ -84,12 +87,10 @@ body {
 a {
     text-decoration: none;
     transition: 0.3s;
+    color: ◊|style/color-highlight|;
 }
 
-a:link { color: ◊|style/color-highlight|; }
-a:visited { color: ◊|style/color-highlight|; }
-a:hover { color: ◊|style/color-highlight|; text-decoration: underline; }
-a:active { color: ◊|style/color-highlight|; }
+a:hover { text-decoration: underline; }
 
 .nav2, .nav3, .nav4, .nav5, .nav6, .nav7 { font-size: 100%t; }
 .nav3 { padding-left: 2em; }
@@ -109,7 +110,7 @@ figure .highlight { margin-top: 1em; margin-bottom: 0em; }
 p code { font-size: 90%; top: -0.05em; position: relative; background-color: #eee; }
 .sourcetable { margin-left: 1em;}
 
-.disabled {
+.disabled .greyed {
     color: #aaa;
 }
 
@@ -387,6 +388,19 @@ aside img {
     width: 80%;
 }
 
+.button {
+    font-family: ◊|style/font-secondary|;
+}
+
+.button a {
+    color: ◊|style/color-dark-black|;
+}
+
+.button a:hover {
+    color: ◊|style/color-grey|;
+    text-decoration: none;
+}
+
 .flx {
     display: flex;
     flex-direction: row;
@@ -482,7 +496,7 @@ blockquote {
     display: none;
 }
 
-p, ul, ol, dl, h1, h2, h3, h4, h5, h6, h7, .footer, .nav2, .nav3, .nav4, .nav5, .nav6, .nav7, blockquote, #disqus_thread, body > a, figure, .page-meta, #header, #prevnext
+p, ul, ol, dl, h1, h2, h3, h4, h5, h6, h7, .footer, .nav2, .nav3, .nav4, .nav5, .nav6, .nav7, blockquote, #disqus_thread, body > a, figure, .page-meta, #header, #prevnext, .button
 {
     margin-left: auto;
     margin-right: auto;
@@ -505,7 +519,7 @@ p, ul, ol, dl, h1, h2, h3, h4, h5, h6, h7, .footer, .nav2, .nav3, .nav4, .nav5, 
         font-size: 200%;
     }
     
-    p, ul, ol, dl, .abstract h2, h1, .page-meta, .highlight, figure, h2, h3, h4, .nav2, .nav3, .nav4, #header, #disqus_thread, #prevnext
+    p, ul, ol, dl, .abstract h2, h1, .page-meta, .highlight, figure, h2, h3, h4, .nav2, .nav3, .nav4, #header, #disqus_thread, #prevnext, .button
     {
         max-width: ◊|style/content-width|;
     }
