@@ -31,7 +31,7 @@ build () {
 }
 
 publish () {
-    build
+    build || exit 1
     raco pollen publish . ~/public
 }
 
