@@ -35,12 +35,7 @@
                                        (p ,@(get-elements (remove-supref
                                                            (select-element 'p 'body x)))
                                        (br)
-                                       (a ([href ,(string-append "/"
-                                                                 (symbol->string x))]
-                                           [class "readmore"])
-                                          "更多")))))
-                       (filter (λ (file)
-                                 (tag-in-file? (select 'title here) file))
+                                       ,(button (symbol->string x) "更多")))))
                                (children 'index.html)))
                   (->html `(hr)))
 
