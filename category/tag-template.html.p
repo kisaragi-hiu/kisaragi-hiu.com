@@ -36,7 +36,7 @@
                                                            (select-element 'p 'body x)))
                                        (br)
                                        ,(button (symbol->string x) "更多")))))
-                               (children 'index.html)))
+                               (children 'index.html))
                   (->html `(hr)))
 
     <footer>
