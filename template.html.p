@@ -1,4 +1,3 @@
-◊(local-require threading)
 <html>
   <head>
     <title>◊(select-from-metas 'headline here) - Kisaragi Hiu</title>
@@ -89,6 +88,7 @@
         </noscript>
     }
     <footer>
+    ◊(->html site/footer)
     </footer>
     ◊(->html site-global-end-of-body)
   </body>

@@ -40,6 +40,7 @@
                   (->html `(hr)))
 
     <footer>
+    ◊(->html site/footer)
     </footer>
     ◊(->html site-global-end-of-body)
   </body>

@@ -37,6 +37,9 @@
                                       (and (not-void? y) y))
                                     x))
 
+(define site/footer
+  '(p ((class "footer")) "© Kisaragi Hiu 2017. Posts are licensed under CC-BY-NC 4.0 International."))
+
 (define site-url "https://flyingfeather1501.github.io")
 
 (define (get-site-prevnext #:newer newer #:newer-title newer-title
