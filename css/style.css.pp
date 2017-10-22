@@ -65,6 +65,10 @@
     text-decoration: none;
 }
 
+#older, #newer {
+    margin: auto;
+}
+
 #older {
     text-align: right;
 }
