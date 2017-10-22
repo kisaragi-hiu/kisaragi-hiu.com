@@ -56,11 +56,14 @@
                      #:greyed #t
                      "Back to index"))
         ,(if (and older older-title)
-             `(div ([id "older"])
-                   (a ([href ,older-href])
-                      ,(string-append older-title " →")))
-             `(div ([id "older"] [class "disabled"])
-                   "No older post"))))
+             (button older-href
+                     #:id "older"
+                     #:direction 'right
+                     older-title)
+             (button "/index.html"
+                     #:id "older"
+                     #:greyed #t
+                     "Back to index"))))
 
 #| functions for site meta stuff |#
 (define (font-family . xs)
@@ -249,7 +252,7 @@ in-document stuff
                 #:id [id #f]
                 #:direction [direction 'none]
                 #:target [target "_self"]
-                #:greyed [greyed #f]. text)
+                #:greyed [greyed #f] . text)
   (remove-void
    `(div ,(remove-void
            `(,(remove-void `[class "button" ,(when greyed "greyed")])
@@ -257,10 +260,9 @@ in-document stuff
            (a ([target ,target]
                [href ,href])
               ,(cond
-                 [(eq? direction 'right) (string-append (string-join text)
-                                                        " →")]
-                 [(eq? direction 'left) (string-append "← "
-                                                       (string-join text))]
+                 [(eq? direction 'right)
+                  (string-append (string-join text) " →")]
+                 [(eq? direction 'left) (string-append "← " (string-join text))]
                  [else (string-join text)])))))
 
 (define (marginalia left right . content)
