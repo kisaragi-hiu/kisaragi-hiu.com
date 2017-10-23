@@ -1,16 +1,18 @@
 #lang racket
 
-(require pollen/pagetree
+(require pollen/core
+         pollen/pagetree
          pollen/render
-         txexpr
+         pollen/template
          racket/date
          rackjure
-         pollen/template
-         pollen/core
+         rackunit
          shell/pipeline
-         rackunit)
+         txexpr
+         "./_common/date.rkt")
 
 (define tag-dir "category/")
+(define lang-dir "language/")
 
 (define (make-index title)
   (define out (open-output-file (string-append title ".html.pm")
@@ -27,6 +29,15 @@
                                 #:exists 'replace))
   (display (string-append "#lang pollen/markup
 ◊define-meta[template]{tag-template.html}
+◊define-meta[title]{" title "}") out)
+  (close-output-port out))
+
+(define (make-lang-index title)
+  (define out (open-output-file (string-append lang-dir title ".html.pm")
+                                #:mode 'binary
+                                #:exists 'replace))
+  (display (string-append "#lang pollen/markup
+◊define-meta[template]{lang-template.html}
 ◊define-meta[title]{" title "}") out)
   (close-output-port out))
 
@@ -47,15 +58,6 @@
       (filter (λ (x) (not (string-contains? x "template"))) _) ; don't include templates
       (map string->path _)))
 
-(define (list-js directory)
-  ; dirty, sure
-  ; remember regex n* means 0 or more n
-  ; so pmd* matches pmd.. as well as pm
-  (~> (run-pipeline/out `(find ,directory -maxdepth 1 -regex .*\.js))
-      (string-split _ "\n")
-      (map (λ (x) (string-replace x #rx"^./" "")) _) ; strip "./" away
-      (map string->path _)))
-
 (define (pm->html file)
   (string-trim (path->string file)
                #rx".pmd*"
@@ -69,38 +71,6 @@
 (define (pm->html-symbol file)
   (string->symbol (string-trim (path->string file) #rx".pmd*"
                                #:left? #f #:repeat? #f)))
-
-(define (datestring->seconds datetime)
-  ; datetime: "2017/09/22 [22:00]"
-  (parameterize ([date-display-format 'chinese]) ; "2017/9/22 星期五"
-    (match (string-split datetime)
-      [(list date time) (match (map string->number (append (string-split date "/")
-                                                           (string-split time ":")))
-                          [(list year month day hour minutes) (find-seconds 0
-                                                                            minutes
-                                                                            hour
-                                                                            day
-                                                                            month
-                                                                            year)])]
-      [(list date) (match (map string->number (string-split date "/"))
-                     [(list year month day) (find-seconds 0
-                                                          0
-                                                          0
-                                                          day
-                                                          month
-                                                          year)])])))
-
-(define (file-date-in-seconds file)
-  (if (select-from-metas 'publish-date file)
-      (datestring->seconds (select-from-metas 'publish-date file))
-      0))
-
-(define (order-by-date files)
-  (sort files
-        (λ (file1 file2)
-          (> (file-date-in-seconds file1)
-             (file-date-in-seconds file2)))
-        #:cache-keys? #t))
 
 (define (cat-string->list string)
   (map (λ (tag)
@@ -129,6 +99,15 @@ find-tags: find categories metadata in all files
       flatten
       remove-duplicates))
 
+(define (find-languages files)
+  (~> (map (λ (file)
+             (or (select-from-metas 'language file)
+                 "zh-tw")) ; use zh-tw by default
+           files)
+      ((λ (x) (filter identity x))) ; remove #f
+      flatten
+      remove-duplicates))
+
 ;; Extract all categories from files
 ;; For each category find all files that are tagged with it
 ;; Generate index page with those files
@@ -138,7 +117,15 @@ find-tags: find categories metadata in all files
                              (string-append tag-dir tag ".html\n"))
                         tags)))
 
-(define (make-.ptree post-pages nonpost-pages js-files css-files tags)
+(define (generate-langs langs)
+  (apply string-append (map (λ (lang)
+                             (make-lang-index lang)
+                             (string-append lang-dir lang ".html\n"))
+                        langs)))
+
+(define (make-.ptree #:post post-pages #:nonpost nonpost-pages
+                     #:js js-files #:css css-files
+                     #:tags tags #:languages languages)
   (define out (open-output-file "index.ptree" #:exists 'replace))
   (define st
     (string-append "#lang pollen\n◊index.html{"
@@ -152,6 +139,9 @@ find-tags: find categories metadata in all files
        "◊category/index.html{"
        (generate-cats tags)
        "}\n"
+       "◊language/index.html{"
+       (generate-langs languages)
+       "}\n"
        (apply string-append
               (map (λ (x)
                      (string-append (pp->html x) "\n")) js-files))
@@ -163,8 +153,14 @@ find-tags: find categories metadata in all files
 
 (define post-pages (order-by-date (list-pms "./post/")))
 (define tags (find-tags post-pages))
+(define languages (find-languages post-pages))
 (define nonpost-pages (list-pms "./"))
 (define js-files (list-pps "./js/"))
 (define css-files (list-pps "./css/"))
 
-(make-.ptree post-pages nonpost-pages js-files css-files tags)
+(make-.ptree #:post post-pages
+             #:nonpost nonpost-pages
+             #:js js-files
+             #:css css-files
+             #:tags tags
+             #:languages languages)

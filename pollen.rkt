@@ -16,10 +16,15 @@
          hyphenate
          racket/function
          pollen-count
-         pollen-component)
+         pollen-component
+         "./_common/date.rkt")
 
 (provide (all-defined-out)
-         (all-from-out racket/string racket/dict racket/format css-expr)
+         (all-from-out racket/string
+                       racket/dict
+                       racket/format
+                       css-expr
+                       "./_common/date.rkt")
          highlight
          make-highlight-css
          get-elements
@@ -281,37 +286,7 @@ in-document stuff
 
 (define (→→ . xs) `(code ,(string-join xs " > ")))
 
-(define (datestring->date datetime)
-  ; datetime: "2017/09/22 [22:00]"
-   (match (string-split datetime)
-       [(list date time) (match (map string->number (append (string-split date "/")
-                                                            (string-split time ":")))
-                           [(list year month day hour minutes) (seconds->date
-                                                                (find-seconds 0
-                                                                              minutes
-                                                                              hour
-                                                                              day
-                                                                              month
-                                                                              year))])]
-       [(list date) (match (map string->number (string-split date "/"))
-                      [(list year month day) (seconds->date (find-seconds 0
-                                                             0
-                                                             0
-                                                             day
-                                                             month
-                                                             year))])]))
-
 (define headline (make-default-tag-function 'h1))
-
-(define (format-date string)
- (parameterize ([date-display-format 'chinese])
-   (match (~> (datestring->date string)
-              (date->string _)
-              (string-split _ "/")
-              (map string-split _)
-              (flatten))
-     [(list year month date day) ; day: 星期三, 星期五, etc.
-      `(,year "年" ,month "月" ,date "日，" ,day)])))
 
 (define wip '(i "Work in progress."))
 (define pagebreak '(div ([class "page-break"])))
