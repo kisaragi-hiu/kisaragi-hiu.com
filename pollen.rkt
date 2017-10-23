@@ -89,10 +89,11 @@
      (meta ([charset "UTF-8"]))
      (meta ([name "google"] [content "notranslate"]))
      ,(when livejs? '(script ([src "http://livejs.com/live.js"])))
-     (script ([src "https://use.fontawesome.com/f9f3cd1f14.js"]))
+     ;; (script ([src "https://use.fontawesome.com/f9f3cd1f14.js"]))
      ,(stylesheet "/css/monokai.css")
      ,(stylesheet "/css/style.css")
      ,(stylesheet "/css/sidebar.css")
+     ,(stylesheet "https://fonts.googleapis.com/icon?family=Material+Icons") ; Material Icons
      ,(stylesheet "https://fonts.googleapis.com/css?family=Overpass:200,400,700|EB+Garamond")
      ,(stylesheet "https://fonts.googleapis.com/earlyaccess/hannari.css")
      ,(stylesheet "https://fonts.googleapis.com/earlyaccess/cwtexfangsong.css")
@@ -125,10 +126,12 @@
                       ,headline)
                   headline))
         (div ([id "rightheader"])
-             (img ([id "avatar"]
-                   [onclick "toggleNav()"]
-                   [style "cursor:pointer;"]
-                   [src "/images/avatar.png"])))))
+             (i ([id "navtoggle"]
+                 [class "material-icons"]
+                 [aria-hidden "true"]
+                 [onclick "toggleNav()"]
+                 [style "cursor:pointer;"])
+                "menu"))))
 
 (define (get-language-stylesheet language)
   ; language -> string
@@ -294,8 +297,8 @@ in-document stuff
 (define (link url . text)
   `(a ([href ,url]) ,@text))
 
-(define (fa fa-icon)
-  `(span ([class "fa" ,fa-icon])))
+;; (define (fa fa-icon)
+;;   `(span ([class "fa" ,fa-icon])))
 
 (define (youtube video-id)
   `(iframe ([id "ytplayer"]

@@ -13,7 +13,9 @@
 
 /* Header */
 #header {
-    display: table;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     padding: 0;
     padding-bottom: 1em;
     padding-top: 1em;
@@ -22,8 +24,10 @@
     font-size: 1.5em;
 }
 
-#rightheader, #leftheader {
-    display: table-cell;
+#leftheader {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start ;
 }
 
 #rightheader {
@@ -42,8 +46,8 @@
     text-decoration: none;
 }
 
-#header #avatar {
-    width: 2em;
+#navtoggle {
+    font-size: 1.5em;
 }
 
 /* Navigation */
