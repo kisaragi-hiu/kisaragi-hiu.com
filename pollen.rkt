@@ -299,11 +299,19 @@ in-document stuff
 (define wip '(i "Work in progress."))
 (define pagebreak '(div ([class "page-break"])))
 
+(define (year . text)
+  `(p ([class "year-in-page"]) ,@text))
+
 (define (link url . text)
   `(a ([href ,url]) ,@text))
 
 ;; (define (fa fa-icon)
 ;;   `(span ([class "fa" ,fa-icon])))
+
+(define (link/date url date . text)
+  `(p
+    ,(string-append date " ")
+    ,(link url (string-join text))))
 
 (define (youtube video-id)
   `(iframe ([id "ytplayer"]
