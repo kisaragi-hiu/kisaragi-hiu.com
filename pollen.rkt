@@ -88,6 +88,12 @@
    `(span
      (meta ([charset "UTF-8"]))
      (meta ([name "google"] [content "notranslate"]))
+     (script ([async "async"]
+              [src "//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"]))
+     (script "(adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: \"ca-pub-6215394828182929\",
+    enable_page_level_ads: true
+  });")  
      ,(when livejs? '(script ([src "http://livejs.com/live.js"])))
      ;; (script ([src "https://use.fontawesome.com/f9f3cd1f14.js"]))
      ,(stylesheet "/css/monokai.css")
