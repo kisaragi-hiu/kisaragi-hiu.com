@@ -85,8 +85,7 @@
 #| site meta |#
 (define (get-site-global-head #:justfont [jf? #t] #:livejs [livejs? #f])
   (remove-void
-   `(span
-     (meta ([charset "UTF-8"]))
+   `((meta ([charset "UTF-8"]))
      (meta ([name "google"] [content "notranslate"]))
      (script ([async "async"]
               [src "//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"]))
