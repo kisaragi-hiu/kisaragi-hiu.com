@@ -13,7 +13,9 @@
 
 /* Header */
 #header {
-    display: table;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     padding: 0;
     padding-bottom: 1em;
     padding-top: 1em;
@@ -22,8 +24,10 @@
     font-size: 1.5em;
 }
 
-#rightheader, #leftheader {
-    display: table-cell;
+#leftheader {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start ;
 }
 
 #rightheader {
@@ -42,19 +46,22 @@
     text-decoration: none;
 }
 
-#header #avatar {
-    width: 2em;
+#navtoggle {
+    font-size: 1.5em;
 }
 
 /* Navigation */
 
 #prevnext {
-    display: table;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
     font-family: ◊|style/font-secondary|;
 }
 
 #prevnext a {
     color: #444;
+    vertical-align: center;
 }
 
 #prevnext a:hover {
@@ -62,8 +69,8 @@
     text-decoration: none;
 }
 
-#newer, #older {
-    display: table-cell;
+#older, #newer {
+    margin: auto;
 }
 
 #older {
@@ -110,7 +117,7 @@ figure .highlight { margin-top: 1em; margin-bottom: 0em; }
 p code { font-size: 90%; top: -0.05em; position: relative; background-color: #eee; }
 .sourcetable { margin-left: 1em;}
 
-.disabled .greyed {
+.disabled, .greyed {
     color: #aaa;
 }
 

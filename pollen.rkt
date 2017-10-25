@@ -16,10 +16,15 @@
          hyphenate
          racket/function
          pollen-count
-         pollen-component)
+         pollen-component
+         "./_common/date.rkt")
 
 (provide (all-defined-out)
-         (all-from-out racket/string racket/dict racket/format css-expr)
+         (all-from-out racket/string
+                       racket/dict
+                       racket/format
+                       css-expr
+                       "./_common/date.rkt")
          highlight
          make-highlight-css
          get-elements
@@ -56,11 +61,14 @@
                      #:greyed #t
                      "Back to index"))
         ,(if (and older older-title)
-             `(div ([id "older"])
-                   (a ([href ,older-href])
-                      ,(string-append older-title " →")))
-             `(div ([id "older"] [class "disabled"])
-                   "No older post"))))
+             (button older-href
+                     #:id "older"
+                     #:direction 'right
+                     older-title)
+             (button "/index.html"
+                     #:id "older"
+                     #:greyed #t
+                     "Back to index"))))
 
 #| functions for site meta stuff |#
 (define (font-family . xs)
@@ -80,11 +88,18 @@
    `(span
      (meta ([charset "UTF-8"]))
      (meta ([name "google"] [content "notranslate"]))
+     (script ([async "async"]
+              [src "//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"]))
+     (script "(adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: \"ca-pub-6215394828182929\",
+    enable_page_level_ads: true
+  });")  
      ,(when livejs? '(script ([src "http://livejs.com/live.js"])))
-     (script ([src "https://use.fontawesome.com/f9f3cd1f14.js"]))
+     ;; (script ([src "https://use.fontawesome.com/f9f3cd1f14.js"]))
      ,(stylesheet "/css/monokai.css")
      ,(stylesheet "/css/style.css")
      ,(stylesheet "/css/sidebar.css")
+     ,(stylesheet "https://fonts.googleapis.com/icon?family=Material+Icons") ; Material Icons
      ,(stylesheet "https://fonts.googleapis.com/css?family=Overpass:200,400,700|EB+Garamond")
      ,(stylesheet "https://fonts.googleapis.com/earlyaccess/hannari.css")
      ,(stylesheet "https://fonts.googleapis.com/earlyaccess/cwtexfangsong.css")
@@ -117,10 +132,12 @@
                       ,headline)
                   headline))
         (div ([id "rightheader"])
-             (img ([id "avatar"]
-                   [onclick "toggleNav()"]
-                   [style "cursor:pointer;"]
-                   [src "/images/avatar.png"])))))
+             (i ([id "navtoggle"]
+                 [class "material-icons"]
+                 [aria-hidden "true"]
+                 [onclick "toggleNav()"]
+                 [style "cursor:pointer;"])
+                "menu"))))
 
 (define (get-language-stylesheet language)
   ; language -> string
@@ -249,7 +266,7 @@ in-document stuff
                 #:id [id #f]
                 #:direction [direction 'none]
                 #:target [target "_self"]
-                #:greyed [greyed #f]. text)
+                #:greyed [greyed #f] . text)
   (remove-void
    `(div ,(remove-void
            `(,(remove-void `[class "button" ,(when greyed "greyed")])
@@ -257,10 +274,9 @@ in-document stuff
            (a ([target ,target]
                [href ,href])
               ,(cond
-                 [(eq? direction 'right) (string-append (string-join text)
-                                                        " →")]
-                 [(eq? direction 'left) (string-append "← "
-                                                       (string-join text))]
+                 [(eq? direction 'right)
+                  (string-append (string-join text) " →")]
+                 [(eq? direction 'left) (string-append "← " (string-join text))]
                  [else (string-join text)])))))
 
 (define (marginalia left right . content)
@@ -279,37 +295,7 @@ in-document stuff
 
 (define (→→ . xs) `(code ,(string-join xs " > ")))
 
-(define (datestring->date datetime)
-  ; datetime: "2017/09/22 [22:00]"
-   (match (string-split datetime)
-       [(list date time) (match (map string->number (append (string-split date "/")
-                                                            (string-split time ":")))
-                           [(list year month day hour minutes) (seconds->date
-                                                                (find-seconds 0
-                                                                              minutes
-                                                                              hour
-                                                                              day
-                                                                              month
-                                                                              year))])]
-       [(list date) (match (map string->number (string-split date "/"))
-                      [(list year month day) (seconds->date (find-seconds 0
-                                                             0
-                                                             0
-                                                             day
-                                                             month
-                                                             year))])]))
-
 (define headline (make-default-tag-function 'h1))
-
-(define (format-date string)
- (parameterize ([date-display-format 'chinese])
-   (match (~> (datestring->date string)
-              (date->string _)
-              (string-split _ "/")
-              (map string-split _)
-              (flatten))
-     [(list year month date day) ; day: 星期三, 星期五, etc.
-      `(,year "年" ,month "月" ,date "日，" ,day)])))
 
 (define wip '(i "Work in progress."))
 (define pagebreak '(div ([class "page-break"])))
@@ -317,8 +303,8 @@ in-document stuff
 (define (link url . text)
   `(a ([href ,url]) ,@text))
 
-(define (fa fa-icon)
-  `(span ([class "fa" ,fa-icon])))
+;; (define (fa fa-icon)
+;;   `(span ([class "fa" ,fa-icon])))
 
 (define (youtube video-id)
   `(iframe ([id "ytplayer"]
