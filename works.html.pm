@@ -1,9 +1,18 @@
 #lang pollen
 ◊define-meta[template]{info-template.html}
 ◊define-meta[headline]{Works}
+◊define-meta[toc]{true}
+
+◊section{3dcg}
+
+◊section{Music Covers}
+
+I started practicing singing since February 2017. These are my published covers along the way.
+
+◊section{UTAU Covers}
 
 ◊year{2017}
-
+◊;TODO: Given a list of yt urls, extract title, process it, extract date, and format it
 ◊link/date["https://www.youtube.com/watch?v=c4hJBUAr1qI&list=PLfMHd_8KspwNG-AvEz4EtvEVMav-MnqoP&index=1" "2017/08/21"]{isotext ft. 夏語遙}
 ◊link/date["https://www.youtube.com/watch?v=CK1C1NrghG8&list=PLfMHd_8KspwNG-AvEz4EtvEVMav-MnqoP&index=2" "2017/07/25"]{夏の空と君の傘下で ft.雨月}
 ◊link/date["https://www.youtube.com/watch?v=4mtoBVKQ4Ns&index=3&list=PLfMHd_8KspwNG-AvEz4EtvEVMav-MnqoP" "2017/03/11"]{常世 ft.雨月}
@@ -25,3 +34,4 @@
 ◊link/date["https://www.youtube.com/watch?v=suQ4tWFyzvs&index=13&list=PLfMHd_8KspwNG-AvEz4EtvEVMav-MnqoP" "2014/12/23"]{十六夜シーイング ft. 夏語遙}
 ◊link/date["https://www.youtube.com/watch?v=d1g3_nWRwpM&index=14&list=PLfMHd_8KspwNG-AvEz4EtvEVMav-MnqoP" "2014/12/15"]{Ivy ft. 夏語遙}
 ◊link/date["https://www.youtube.com/watch?v=zGwRJkyxmg4&index=15&list=PLfMHd_8KspwNG-AvEz4EtvEVMav-MnqoP" "2014/12/08"]{M.S.S.Phantom ft. 夏語遙}
+
