@@ -6,9 +6,9 @@
 /* Animation declaration */
 
 @keyframes flash-gray {
-    0% {color: #444;}
-    50% {color: #777;}
-    100% {color: #444;}
+    0% {color: ◊|style/color-dark-black|;}
+    50% {color: ◊|style/color-grey|;}
+    100% {color: ◊|style/color-dark-black|;}
 }
 
 /* Header */
@@ -35,15 +35,20 @@
 }
 
 #header a {
-    color: #444;
+    color: ◊|style/color-dark-black|;
     animation-name: flash-gray;
     animation-delay: 1s;
     animation-duration: 1s;
 }
 
 #header a:hover {
-    color: #777;
+    color: ◊|style/color-grey|;
     text-decoration: none;
+}
+
+.footer {
+    font-family: ◊|style/font-secondary|;
+    color: ◊|style/color-grey|;
 }
 
 #navtoggle {
@@ -60,12 +65,12 @@
 }
 
 #prevnext a {
-    color: #444;
+    color: ◊|style/color-dark-black|;
     vertical-align: center;
 }
 
 #prevnext a:hover {
-    color: #777;
+    color: ◊|style/color-grey|;
     text-decoration: none;
 }
 
@@ -85,7 +90,7 @@ body {
     -moz-box-sizing: border-box;
     -webkit-text-size-adjust: 100%;
     box-sizing: border-box;
-    color: #444;
+    color: ◊|style/color-dark-black|;
     background-color: #fbfbfb;
     font-family: ◊|style/font-primary|;
     text-rendering: optimizeLegibility;
@@ -314,7 +319,7 @@ p {
     font-weight: normal;
     margin-top: 0em;
     line-height: 1.5;
-    color: #444;
+    color: ◊|style/color-dark-black|;
 }
 
 body > p+p, blockquote > p+p { text-indent: 0em; }
