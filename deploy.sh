@@ -1,7 +1,5 @@
 #!/bin/bash
 
-bash build.sh publish
-
 cd ~/public || exit 1
 git init
 
