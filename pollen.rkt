@@ -302,18 +302,69 @@ in-document stuff
 (define (year . text)
   `(p ([class "year-in-page"]) ,@text))
 
-(define (link url . text)
-  `(a ([href ,url]) ,@text))
+#| link functions |#
 
-;; (define (fa fa-icon)
-;;   `(span ([class "fa" ,fa-icon])))
+;; (define (link url . text)
+;;   `(a ([href ,url]) ,@text))
+
+(define (link url #:class [class ""] . text)
+  `(a ([href ,url]
+       [target "_blank"]
+       [class ,class])
+      ,@text))
 
 (define (link/date url date . text)
   `(p
     ,(string-append date " ")
     ,(link url (string-join text))))
 
-(define (youtube video-id)
+(define (L site sub text #:class [class ""])
+  (~> (hash 'github "https://github.com/"
+            'youtube "https://youtube.com/"
+            'pixiv "https://pixiv.net/"
+            'niconico "http://www.nicovideo.jp/"
+            'osuwiki "http://osu.ppy.sh/help/wiki/"
+            'transifex "https://www.transifex.com/user/profile/"
+            'noichigo "https://www.no-ichigo.jp/read/book/book_id/")
+      (dict-ref _ site)
+      (string-append _ sub)
+      (link _ text class)))
+
+; wrapper around L
+(define (github sub text)
+  (L 'github
+     sub
+     text))
+(define (youtube sub text)
+  (L 'youtube
+     sub
+     text
+     #:class "youtube"))
+(define (pixiv sub text)
+  (L 'pixiv
+     sub
+     text
+     #:class "pixiv"))
+(define (niconico sub text)
+  (L 'niconico
+     sub
+     text
+     #:class "niconico"))
+(define (osuwiki sub text)
+  (L 'osuwiki
+     sub
+     text
+     #:class "osuwiki"))
+(define (transifex sub text)
+  (L 'transifex
+     sub
+     text))
+(define (noichigo sub text)
+  (L 'noichigo
+     sub
+     text))
+
+(define (youtube/embed video-id)
   `(iframe ([id "ytplayer"]
             [type "text/html"]
             [width "640"]
