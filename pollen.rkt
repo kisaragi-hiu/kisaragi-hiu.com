@@ -100,8 +100,8 @@
      ,(stylesheet "/css/sidebar.css")
      ,(stylesheet "https://fonts.googleapis.com/icon?family=Material+Icons") ; Material Icons
      ,(stylesheet "https://fonts.googleapis.com/css?family=Overpass:200,400,700|EB+Garamond")
-     ,(stylesheet "https://fonts.googleapis.com/earlyaccess/hannari.css")
-     ,(stylesheet "https://fonts.googleapis.com/earlyaccess/cwtexfangsong.css")
+     ;; ,(stylesheet "https://fonts.googleapis.com/earlyaccess/hannari.css")
+     ;; ,(stylesheet "https://fonts.googleapis.com/earlyaccess/cwtexfangsong.css")
      ,(when jf? '(script ([src "/js/justfont.js"])))
      (script ([src "/js/sidenav.js"]))
      (link ([rel "shortcut icon"] [type "image/x-icon"] [href "/favicon.ico"])))))
@@ -149,12 +149,7 @@
 (define style/color-highlight "#A868E8")
 (define style/font-cjk '("Noto Sans CJK TC" "sourcehansans-tc" "Microsoft Jhenghei"))
 (define style/font-code "'Source Code Pro', 'source-code-pro', monospace")
-(define style/font-primary (font-family "EB Garamond"
-                                        "Hannari"
-                                        "cwTeXFangSong"
-                                        ; make sure system serif is never used
-                                        "Segoe UI"
-                                        "Helvetica"
+(define style/font-primary (font-family "Overpass"
                                         style/font-cjk
                                         "sans-serif"))
 
