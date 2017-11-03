@@ -1,0 +1,63 @@
+/* custom.css */
+
+code {
+    color: black;
+}
+
+/* When highlighted code blocks are too wide, they wrap. Resulting in the */
+/* line numbers column's rows not lining up with the code rows. Prevent */
+/* wrapping. */
+pre {
+    white-space: pre;
+    width: inherit;
+}
+
+article img {
+  /* Make sure that images within blog articles never take more width
+     than the article width; `height: auto` ensures the height is also
+     resized proportionally.
+
+     This is useful given that Markdown itself gives you little
+     control over image resizing, and in particular no way to achieve
+     this "best fit" behavior.
+ */
+  max-width: 100%;
+  height: auto;
+}
+
+.container
+{
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+}
+
+body {
+    font-family: 'Overpass', 'Noto Sans CJK TC', 'Meiryo', 'Microsoft Jhenghei', 'Microsoft Yahei', sans-serif;
+    font-size: 38pt;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-text-size-adjust: 100%;
+    box-sizing: border-box;
+    color: #444;
+    background-color: #fbfbfb;
+    text-rendering: optimizeLegibility;
+}
+
+p { font-size: 100%; }
+
+@media (min-device-width: 5in) {
+    body
+    {
+	font-size: 16pt;
+    }
+
+    .container
+    {
+	max-width: 45rem;
+    }
+    pre
+    {
+	font-size: 80%;
+    }
+}

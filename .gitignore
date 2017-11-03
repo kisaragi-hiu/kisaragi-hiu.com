@@ -4,9 +4,6 @@ public
 compiled
 /pollen-cache
 pollen.cache
-*.html
-*.js
-*.css
 language/*
 category/*
 !category/*.p
@@ -14,3 +11,6 @@ category/*
 !category/index.html.pm
 !language/index.html.pm
 index.ptree
+*#
+.#*
+.frog
