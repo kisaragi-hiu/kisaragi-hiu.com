@@ -4,9 +4,11 @@
 ;; in frog/params.
 (define/contract (init)
   (-> any)
-  (current-scheme/host "http://www.example.com")
-  (current-title "My Blog")
-  (current-author "The Unknown Author"))
+  (current-scheme/host "http://kisaragi-hiu.com")
+  (current-title "Kisaragi Hiu")
+  (current-author "Kisaragi Hiu")
+  (current-permalink "/{year}-{month}-{day}-{filename}/index.html")
+  (current-output-dir "./public"))
 
 ;; Called once per post and non-post page, on the contents.
 (define/contract (enhance-body xs)
@@ -15,7 +17,7 @@
   (~> xs
       (syntax-highlight #:python-executable "python"
                         #:line-numbers? #t
-                        #:css-class "source")
+                        #:css-class "highlight")
       (auto-embed-tweets #:parents? #t)
       (add-racket-doc-links #:code? #t #:prose? #f)))
 
