@@ -7,8 +7,7 @@
   (current-scheme/host "http://kisaragi-hiu.com")
   (current-title "Kisaragi Hiu")
   (current-author "Kisaragi Hiu")
-  (current-permalink "/{year}-{month}-{day}-{filename}/index.html")
-  (current-output-dir "./public"))
+  (current-permalink "/{year}-{month}-{day}-{filename}/index.html"))
 
 ;; Called once per post and non-post page, on the contents.
 (define/contract (enhance-body xs)

@@ -1,5 +1,9 @@
 /* custom.css */
 
+html {
+    font-size: 18pt;
+}
+
 code {
     color: black;
 }

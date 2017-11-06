@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+ <title type="text">Kisaragi Hiu: Posts tagged 'tag with spaces'</title>
+ <link rel="self" href="http://kisaragi-hiu.com/feeds/tag-with-spaces.atom.xml" />
+ <link href="http://kisaragi-hiu.com/tags/tag-with-spaces.html" />
+ <id>urn:http-kisaragi-hiu-com:-tags-tag-with-spaces-html</id>
+ <updated>2011-12-31T16:00:00Z</updated>
+ <entry>
+  <title type="text">A 2012 blog post</title>
+  <link rel="alternate" href="http://kisaragi-hiu.com/2012/01/a-2012-blog-post.html?utm_source=tag-with-spaces&amp;utm_medium=Atom" />
+  <id>urn:http-kisaragi-hiu-com:-2012-01-a-2012-blog-post-html</id>
+  <published>2011-12-31T16:00:00Z</published>
+  <updated>2011-12-31T16:00:00Z</updated>
+  <author>
+   <name>Kisaragi Hiu</name></author>
+  <content type="html">
+&lt;p&gt;Here is an example blog post.&lt;/p&gt;
+
+&lt;p&gt;Everything after this paragraph &amp;ldquo;after the break&amp;rdquo;. On index pages and Atom feeds, it will become &amp;ldquo;Continue reading&amp;hellip;&amp;rdquo;, if you configure them to include only the summary &amp;ldquo;blurb&amp;rdquo; before the break.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;some code&lt;/code&gt;&lt;/pre&gt;&lt;a href="http://kisaragi-hiu.com/2012/01/a-2012-blog-post.html?utm_source=tag-with-spaces&amp;amp;utm_medium=Atom"&gt;&lt;em&gt;More&amp;hellip;&lt;/em&gt;&lt;/a&gt;</content></entry></feed>
