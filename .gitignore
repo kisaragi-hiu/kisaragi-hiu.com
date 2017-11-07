@@ -14,3 +14,11 @@ index.ptree
 *#
 .#*
 .frog
+_src/*.html
+_src/*.md
+/*.html
+feeds/*
+tags/*
+20*/*.html
+index.html
+sitemap.txt
