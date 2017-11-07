@@ -24,10 +24,12 @@
 (define (strike . text)
   (->html `(s ,@text)))
 
+; newline-decode : (ListOf String) -> String
 (define (newline-decode . text)
-  (~> (map string-trim text)
-      (filter-not (λ (x) (equal? "" x)) _)
-      (string-join _ "<br>\n")))
+  (~> (string-join text "")
+      (string-replace _ "\n\n" "\nREPLACEWITHNEWLINNNNEE")
+      (string-replace _ "\n" "<br>\n")
+      (string-replace _ "REPLACEWITHNEWLINNNNEE" "\n")))
 
 (define pagebreak (->html '(div ([class "page-break"]))))
 
