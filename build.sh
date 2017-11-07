@@ -27,6 +27,7 @@ new () {
 
 build () {
     raco pollen render _src/
+    raco pollen render _src/posts/
     raco frog --build
 }
 

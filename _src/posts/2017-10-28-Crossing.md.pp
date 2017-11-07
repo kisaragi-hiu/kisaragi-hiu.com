@@ -3,6 +3,7 @@
     Date: 2017-10-28T18:54:00
     Tags: Poem
 
+◊newline-decode{
 The green signal lights up
 As the overpass overlooks us
 Everyone has moved on
@@ -23,3 +24,4 @@ Without destination, the feather I am
 Coming out from the underpass
 Looking back at the crossing
 There's only a crowd, without you
+}
