@@ -1,7 +1,7 @@
 #lang pollen
-◊define-meta[headline]{新網站}
-◊define-meta[publish-date]{2017/03/19 05:00}
-◊define-meta[categories]{Meta}
+    Title: 新網站
+    Date: 2017-03-19T05:00:00
+    Tags: Meta
 
 想要有個簡單的檔案記錄所有連結
 →放在Github Pages好了

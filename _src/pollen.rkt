@@ -24,6 +24,11 @@
 (define (strike . text)
   (->html `(s ,@text)))
 
+(define (newline-decode . text)
+  (~> (map string-trim text)
+      (filter-not (λ (x) (equal? "" x)) _)
+      (string-join _ "<br>\n")))
+
 (define pagebreak (->html '(div ([class "page-break"]))))
 
 (define (year . text)

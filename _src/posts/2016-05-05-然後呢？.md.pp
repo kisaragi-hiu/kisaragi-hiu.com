@@ -1,7 +1,7 @@
 #lang pollen
-◊define-meta[headline]{然後呢？}
-◊define-meta[publish-date]{2016/05/05 00:00}
-◊define-meta[categories]{詩}
+    Title: 然後呢？
+    Date: 2016-05-05T00:00:00
+    Tags: 詩
 
 脫軌了。
 一切的意義，漸漸消失了。

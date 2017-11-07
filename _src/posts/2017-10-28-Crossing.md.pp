@@ -1,9 +1,7 @@
 #lang pollen
-◊define-meta[headline]{Crossing}
-◊define-meta[language]{en}
-◊define-meta[publish-date]{2017/10/28 18:54}
-◊define-meta[comments]{true}
-◊define-meta[categories]{Poem}
+    Title: Crossing
+    Date: 2017-10-28T18:54:00
+    Tags: Poem
 
 The green signal lights up
 As the overpass overlooks us

@@ -1,7 +1,7 @@
 #lang pollen
-◊define-meta[headline]{衝！衝！衝！}
-◊define-meta[publish-date]{2014/11/01 00:00}
-◊define-meta[categories]{詩}
+    Title: 衝！衝！衝！
+    Date: 2014-11-01T00:00:00
+    Tags: 詩
 
 衝！衝！衝！　踩著人頭向上衝！
 

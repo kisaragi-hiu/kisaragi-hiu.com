@@ -1,8 +1,7 @@
 #lang pollen
-◊define-meta[headline]{Discovering Racket through making a osu! skin}
-◊define-meta[language]{en}
-◊define-meta[publish-date]{2017/09/13 17:58}
-◊define-meta[categories]{English, Programming, Racket}
+    Title: Discovering Racket through making a osu! skin
+    Date: 2017-09-13T17:58:00
+    Tags: English, Programming, Racket
 
 In around March this year, I started trying to make my own osu! skin, or at least mix a skin for my own use.
 I started with the ◊link["https://osu.ppy.sh/forum/t/454986"]{Emilia (Re:0) skin by Beatstatic}, with a git repo to track my changes, and copied the hitcircles from ◊link["https://osu.ppy.sh/forum/t/300001"]{Clear Skin Ultra 2.4} (I like its hitcircle design a lot).
@@ -12,7 +11,7 @@ Then I stumbled across ◊link["https://www.youtube.com/watch?v=Yih6pz09Z1A"]{a 
 Making osu! skin elements with Blender is weird. I am putting multiple elements in the same file and adding a different camera for each of them, binding the cameras onto markers, and so I wondered if there's some way to render every marker and maybe name the output with the marker.
 After a bit of Googling, I saw an answer by `p2or` on StackExchange that fits my needs perfectly. (I added the first two comments.)
 
-◊highlight['python]{
+```python
 # by p2or on Blender StackExchange
 # https://blender.stackexchange.com/questions/23121
 import bpy
@@ -33,7 +32,7 @@ for k, m in scn.timeline_markers.items():
     bpy.ops.render.render( write_still=True )
 
 bpy.context.scene.render.filepath = output_path
-}
+```
 
 With that, I was able to hack together a shell script to render all blend files. Blender also only allows one resolution per scene, so I had to write some post processing functions that resize some images for me, as well as a sort of interface to them through the file names.
 
@@ -41,11 +40,11 @@ Later in June, I decided to also cover the hitcircles and other elements, and ev
 
 I thought about ◊link["http://xon.sh/"]{Xonsh}, Python, ◊link["https://scsh.net/"]{`scsh`}, the ◊link["https://github.com/michaelmacinnis/oh"]{`oh`} shell, and some others, but:
 
-◊ul{
-◊li{`oh`: I don't really understand. At least not yet.}
-◊li{Python: I don't like doing shell script-y stuff in Python currently. Previously I had ported my `randomwallpaper` script to Python, and it didn't feel better than Bash. This is purely my issue.}
-◊li{Xonsh: Looks very interesting, but I got stuck trying to figure out how I should parse command line arguments.}
-◊li{`scsh`: A full language + some shell-isms, sort of like Xonsh. Project feels kind of inactive though.}}
+
+- `oh`: I don't really understand. At least not yet.
+- Python: I don't like doing shell script-y stuff in Python currently. Previously I had ported my `randomwallpaper` script to Python, and it didn't feel better than Bash. This is purely my issue.
+- Xonsh: Looks very interesting, but I got stuck trying to figure out how I should parse command line arguments.
+- `scsh`: A full language + some shell-isms, sort of like Xonsh. Project feels kind of inactive though.
 
 So I just gave up and stayed with Bash, and tried to improve the script further; but the "Scheme shell" idea seemed really interesting to me, so I decided to Google for "Scheme shell" and see what I'd get. Racket showed up in the results, and I met Racket for the first time. It actually looks great!
 

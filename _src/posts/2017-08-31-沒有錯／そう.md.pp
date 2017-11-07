@@ -1,7 +1,7 @@
 #lang pollen
-◊define-meta[headline]{沒有錯}
-◊define-meta[publish-date]{2017/08/31 00:00}
-◊define-meta[categories]{詩}
+    Title: 沒有錯
+    Date: 2017-08-31T00:00:00
+    Tags: 詩
 
 沒有錯，那是
 一年前

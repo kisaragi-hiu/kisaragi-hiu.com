@@ -1,8 +1,7 @@
 #lang pollen
-◊define-meta[headline]{飛逝}
-◊define-meta[publish-date]{2017/10/08 22:13}
-◊define-meta[categories]{詩,電車}
-◊define-meta[comments]{true}
+    Title: 飛逝
+    Date: 2017-10-08T22:13:00
+    Tags: 詩,電車
 
 ◊;以電車景敘述人生，什麼的。
 

@@ -1,7 +1,7 @@
 #lang pollen
-◊define-meta[headline]{淚}
-◊define-meta[publish-date]{2017/09/07 17:00}
-◊define-meta[categories]{詩}
+    Title: 淚
+    Date: 2017-09-07T17:00:00
+    Tags: 詩
 
 雨時  
 天並沒有流淚  

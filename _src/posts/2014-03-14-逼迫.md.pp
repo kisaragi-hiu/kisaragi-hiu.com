@@ -1,7 +1,7 @@
 #lang pollen
-◊define-meta[headline]{逼迫}
-◊define-meta[publish-date]{2014/03/14 00:00}
-◊define-meta[categories]{詩}
+    Title: 逼迫
+    Date: 2014-03-14T00:00:00
+    Tags: 詩
 
 時間逼迫我們分開,
 

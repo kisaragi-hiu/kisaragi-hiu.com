@@ -1,7 +1,7 @@
 #lang pollen
-◊define-meta[headline]{規律}
-◊define-meta[categories]{詩}
-◊define-meta[publish-date]{2014/03/14 00:00}
+    Title: 規律
+    Tags: 詩
+    Date: 2014-03-14T00:00:00
 
 今天星期幾？今天是幾號？
 
