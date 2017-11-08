@@ -19,6 +19,6 @@ _src/*.md
 /*.html
 feeds/*
 tags/*
-20*/*.html
+20*
 index.html
 sitemap.txt
