@@ -30,8 +30,9 @@ build () {
 }
 
 publish () {
+    # Frog can already build to another dir
     build || exit 1
-    raco pollen publish . ~/public
+    mv public ~/
 }
 
 cleanup () {
