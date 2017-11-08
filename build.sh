@@ -10,14 +10,12 @@ usage:
 "
 
 new () {
-    date_path="$(date --iso-8601=date)"
-    date_text="$(date +%Y/%m/%d)"
-    newfile="./post/post-$date_path-$1.html.pm"
+    date_full="$(date +%Y-%m-%dT%H:%M:%S)"
+    newfile="./_src/posts/$date_full-$1.md.pp"
     {   echo '#lang pollen'
-        echo "◊define-meta[headline]{$1}"
-        echo "◊define-meta[publish-date]{$date_text}"
-        echo "◊define-meta[categories]{}"
-        echo "◊define-meta[comments]{true}"
+        echo "    Title: $1"
+        echo "    Date: $date_full"
+        echo "    Tags: DRAFT"
     } >> "$newfile"
     if test -z "$2"; then
         test -z "$EDITOR" && EDITOR=vi # use vi if EDITOR is not set
