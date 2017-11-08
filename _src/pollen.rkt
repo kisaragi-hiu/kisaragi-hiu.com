@@ -27,7 +27,7 @@
 ; newline-decode : (ListOf String) -> String
 (define (newline-decode . text)
   (~> (string-join text "")
-      (string-replace _ "\n\n" "\nREPLACEWITHNEWLINNNNEE")
+      (string-replace _ #rx"\n\n+" "\nREPLACEWITHNEWLINNNNEE")
       (string-replace _ "\n" "<br>\n")
       (string-replace _ "REPLACEWITHNEWLINNNNEE" "\n")))
 
