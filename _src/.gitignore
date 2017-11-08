@@ -1,0 +1,7 @@
+# Assume all .md posts / pages are built artifact.
+# Negate as needed.
+posts/*.md
+*.md
+
+# Assume templates are raw; these aren't.
+_src/page-template.html
