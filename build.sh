@@ -35,9 +35,16 @@ publish () {
 }
 
 cleanup () {
-    rm ./*.html ./category/*.html ./post/*.html
-    find ./category/ -maxdepth 1 -type f -name "*.pm" -not -name "index.html.pm" -delete
-    raco pollen reset
+    if test -n "$1"; then
+        git clean -Xdn # dry run
+        read -p "Confirm delete (y/n)? " yn
+        case "$yn" in
+            y*) true;; # Do nothing
+            *) exit;;
+        esac
+    fi
+    # X: only ignored; d: include dirs; f: yes I mean it
+    git clean -Xdf
 }
 
 case "$1" in
@@ -51,7 +58,7 @@ case "$1" in
         ;;
     (clean|cleanup)
         echo cleaning up
-        cleanup
+        cleanup "$2"
         ;;
     (new)
         test -z "$2" && echo "$helptext" && exit
