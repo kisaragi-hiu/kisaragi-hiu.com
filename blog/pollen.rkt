@@ -12,7 +12,8 @@
          racket/match
          racket/string
          threading
-         txexpr)
+         txexpr
+         "_common/ytvidinfo.rkt")
 
 (provide (all-defined-out))
 

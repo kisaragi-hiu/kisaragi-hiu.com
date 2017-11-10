@@ -1,14 +1,17 @@
 #lang racket/base
-(require net/url
+(require racket/port
+         racket/list
+         net/url
          json
          threading)
 
-(provide (all-defined-out))
+(provide youtube/formatted-title)
 
 (define (get-json url)
    (call/input-url (string->url url)
                    get-pure-port
-                   (compose string->jsexpr port->string)))
+                   port->string
+                   string->jsexpr))
 
 (define (youtube/formatted-title id)
   (define key (getenv "YOUTUBE_API_KEY"))
