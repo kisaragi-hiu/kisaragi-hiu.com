@@ -5,7 +5,7 @@ $0
 usage:
   $0 build: Build the site
   $0 publish: Build the site then move built files to public/
-  $0 cleanup: Clean up built files
+  $0 cleanup [interactive]: Clean up built files
   $0 new <Title>: Add a new post with the title <Title>, then edit it with \$EDITOR ($EDITOR)
 "
 
@@ -27,6 +27,8 @@ build () {
     raco pollen render blog/
     raco pollen render blog/posts/
     raco frog --build
+    cp -r blog/css public/
+    cp -r blog/images public/
 }
 
 publish () {
