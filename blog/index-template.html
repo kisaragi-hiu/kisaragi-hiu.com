@@ -1,12 +1,13 @@
+@; { Template for each item in an index }
 <article>
-  <header>
-    <h2><a href='@|uri-path|'>@|title|</a></h2>
-    <p class='date-and-tags'>@|date| :: @|tags|</p>
-    <p class='authors'>By: @|authors|</p>
+  <header class='index-item'>
+    <p class='date'>@|date|</p>
+    <p><a href='@|uri-path|'>@|title|</a></p>
+    <p class='tags'>@|tags|</p>
   </header>
-  @|content-only|
+  @;{@|content-only|
   @(when more?
     @list{<footer>
             <a href='@|uri-path|'>&hellip; more &hellip;</a>
-          </footer>})
+        </footer>})}
 </article>
