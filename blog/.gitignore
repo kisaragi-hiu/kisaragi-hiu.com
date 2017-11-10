@@ -2,6 +2,7 @@
 # Negate as needed.
 posts/*.md
 *.md
+!posts/*.pp
 
 # Assume templates are raw; these aren't.
 _src/page-template.html

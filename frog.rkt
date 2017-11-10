@@ -7,7 +7,8 @@
   (current-scheme/host "http://kisaragi-hiu.com")
   (current-title "Kisaragi Hiu")
   (current-author "Kisaragi Hiu")
-  (current-permalink "/{year}-{month}-{day}-{filename}/index.html")
+  (current-permalink "/blog/{year}-{month}-{day}-{filename}/index.html")
+  (current-source-dir "blog")
   (current-output-dir "public"))
 
 ;; Called once per post and non-post page, on the contents.

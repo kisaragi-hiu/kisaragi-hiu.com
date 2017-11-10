@@ -11,7 +11,7 @@ usage:
 
 new () {
     date_full="$(date +%Y-%m-%dT%H:%M:%S)"
-    newfile="./_src/posts/$date_full-$1.md.pp"
+    newfile="./blog/posts/$date_full-$1.md.pp"
     {   echo '#lang pollen'
         echo "    Title: $1"
         echo "    Date: $date_full"
@@ -24,8 +24,8 @@ new () {
 }
 
 build () {
-    raco pollen render _src/
-    raco pollen render _src/posts/
+    raco pollen render blog/
+    raco pollen render blog/posts/
     raco frog --build
 }
 
