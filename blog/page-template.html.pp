@@ -90,7 +90,5 @@
         ◊(->html ◊p{Preprocessed with ◊a[#:href "http://pollenpub.com"]{Pollen}, the programmable publishing system.})
       </footer>
     </div>
-    <!-- </body> JS -->
-    <script type="text/javascript" src="//code.jquery.com/jquery.min.js"></script>
   </body>
 </html>
