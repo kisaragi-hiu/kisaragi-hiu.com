@@ -18,7 +18,7 @@ before_install:
 - export PATH="${RACKET_DIR}/bin:${PATH}"
 - popd
 install:
-- raco pkg install --catalog https://pkg-build.racket-lang.org/server/built/catalog/ --deps search-auto pollen hyphenate pollen-count pollen-component txexpr threading shell-pipeline rackjure css-expr
+- raco pkg install --catalog https://pkg-build.racket-lang.org/server/built/catalog/ --deps search-auto pollen frog pollen-component txexpr threading css-expr
 - pip install pygments
 script:
 - bash ./build.sh publish
