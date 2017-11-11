@@ -11,9 +11,9 @@
     "="
     "\"" (second attr) "\""))
 
-@(define rest-headline
+@;{(define rest-headline
    (cond [(string-ci=? uri-path "/index.html") " / Blog"]
-         [else ""]))
+         [else ""]))}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -50,7 +50,7 @@
     <header id="topheader" class="container">
       <div class="logo">
         <img src="@|uri-prefix|/images/avatar.png" height="40px"/>
-        <a href="/">如月.飛羽@|rest-headline|</a>
+        <a href="/">如月.飛羽</a>
       </div>
       <nav>
         <ul>
