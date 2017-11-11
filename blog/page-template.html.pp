@@ -46,31 +46,31 @@
     @google-universal-analytics["UA-xxxxx"]
   </head>
   <body>
-
-    <header id="topheader" class="container">
-      <div class="logo">
-        <img src="@|uri-prefix|/images/avatar.png" height="40px"/>
-        <a href="/">如月.飛羽</a>
-      </div>
-      <nav>
-        <ul>
-          <li><a href="@|uri-prefix|/index.html">Blog</a></li>
-          <li><a href="@|uri-prefix|/about.html">About</a></li>
-          <li><a href="@|uri-prefix|/writing">Writing</a></li>
-        </ul>
-      </nav>
-    </header>
-
     <div class="container">
+      <header id="topheader" class="ten columns offset-by-one">
+        <div class="logo">
+          <img src="@|uri-prefix|/images/avatar.png" height="40px"/>
+          <a href="/">如月.飛羽</a>
+        </div>
+        <nav>
+          <ul>
+            <li><a href="@|uri-prefix|/index.html">Blog</a></li>
+            <li><a href="@|uri-prefix|/about.html">About</a></li>
+            <li><a href="@|uri-prefix|/writing">Writing</a></li>
+          </ul>
+        </nav>
+      </header>
+
       <div class="row">
-        <div id="content" class="ten column">
+        <div id="content" class="ten columns offset-by-one">
           @;{ @tag in tag indexes is non-#f }
           @(when tag
             @list{<h1>Tag: <em>@|tag|</em></h1>})
           @|contents|
         </div>
       </div>
-      <footer>
+
+      <footer class="ten columns offset-by-one">
         <hr />
         <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">
            <img alt="Creative Commons License"

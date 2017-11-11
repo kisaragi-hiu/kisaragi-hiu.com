@@ -1,14 +1,13 @@
 <article>
-  <header>
-    <h1>@|title|</h1>
+  <header class="post-header">
     <p class='date-and-tags'>@|date| :: @|tags|</p>
-    <p class='authors'>By: @|authors|</p>
+    <p class='title'><a href='@|full-uri|'>@|title|</a></p>
   </header>
   @|content|
   <footer>
     @twitter-share-button[full-uri]
     @google-plus-share-button[full-uri]
-    @disqus-comments["kisaragi-hiu-blog"]
     @older/newer-links[older-uri older-title newer-uri newer-title]
+    @disqus-comments["kisaragi-hiu-blog"]
   </footer>
 </article>

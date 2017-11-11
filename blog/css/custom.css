@@ -20,7 +20,7 @@ a {
 }
 
 #topheader a {
-    color: #222;
+    color: #333;
     text-decoration: none;
 }
 
@@ -29,6 +29,7 @@ a {
 }
 
 #topheader .logo {
+    font-weight: 300;
     display: flex;
     margin-bottom: 0.4em;
     border-bottom: 1px solid black;
@@ -56,6 +57,10 @@ a {
     text-decoration: none;
 }
 
+article {
+    font-size: 1.8rem;
+}
+
 article img {
   /* Make sure that images within blog articles never take more width
      than the article width; `height: auto` ensures the height is also
@@ -69,8 +74,42 @@ article img {
   height: auto;
 }
 
-.index-item p {
+article header {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+article header a {
+    text-decoration: none;
+    color: #444;
+}
+
+article header p {
     display: inline;
+}
+
+article header .date-and-tags {
+    display: block;
+    color: #888;
+    margin-bottom: 0;
+    margin-top: 0;
+    font-size: 1.8rem;
+}
+
+.post-header .title{
+    font-weight: 600;
+}
+
+.pager {
+    list-style: none;
+}
+
+.pager li {
+    display: inline;
+}
+
+.pager .next {
+    float: right;
 }
 
 body {

@@ -1,9 +1,8 @@
 @; { Template for each item in an index }
 <article>
   <header class='index-item'>
+    <p class='date-and-tags'>@|date| :: @|tags|</p>
     <p><a href='@|uri-path|'>@|title|</a></p>
-    <p class='tags'>:: @|tags|</p>
-    <p class='date'>@|date|</p>
   </header>
   @;{@|content-only|
   @(when more?
@@ -11,3 +10,4 @@
             <a href='@|uri-path|'>&hellip; more &hellip;</a>
         </footer>})}
 </article>
+<br>
