@@ -25,6 +25,11 @@
 (define (strike . text)
   (->html `(s ,@text)))
 
+(define (image src text #:width [width #f])
+  ;; "Backwards compatibility"
+  (->html `(img ([src ,src]
+                 [alt ,text]))))
+
 ; newline-decode : (ListOf String) -> String
 (define (newline-decode . text)
   (~> (string-join text "")
