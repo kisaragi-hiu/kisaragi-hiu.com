@@ -24,11 +24,11 @@ new () {
 }
 
 build () {
-    raco pollen render blog/
-    raco pollen render blog/posts/
-    raco frog --build
-    cp -r blog/css public/
-    cp -r blog/images public/
+    raco pollen render blog/ || exit 1
+    raco pollen render blog/posts/ || exit 1
+    raco frog --build || exit 1
+    cp -r blog/css public/ || exit 1
+    cp -r blog/images public/ || exit 1
 }
 
 publish () {
