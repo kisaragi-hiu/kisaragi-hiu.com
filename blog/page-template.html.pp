@@ -7,6 +7,10 @@
     "="
     "\"" (second attr) "\""))
 
+@(define rest-headline
+   (cond [(string-ci=? uri-path "/index.html") " / Blog"]
+         [else ""]))
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -39,17 +43,18 @@
   </head>
   <body>
 
-    <nav class="header" role="navigation">
-      <ul class="top header">
-        <li><img src="@|uri-prefix|/images/avatar.png"/></li>
-        <li><a href="@|uri-prefix|">@|title|</a></li>
-      </ul>
-      <ul class="bottom header">
-        <li><a href="@|uri-prefix|/about">About</a></li>
-        <li><a href="@|uri-prefix|/writing">Writing</a></li>
-        <li><a href="@|uri-prefix|/blog">Blog</a></li>
-      </ul>
-    </nav>
+    <header id="topheader" class="container">
+      <div class="logo">
+        <img src="@|uri-prefix|/images/avatar.png" height="40px"/>
+        <a href="/">如月.飛羽@|rest-headline|</a>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="@|uri-prefix|/about">About</a></li>
+          <li><a href="@|uri-prefix|/writing">Writing</a></li>
+        </ul>
+      </nav>
+    </header>
 
     <div class="container">
       <div class="row">

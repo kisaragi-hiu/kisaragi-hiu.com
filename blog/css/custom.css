@@ -10,6 +10,52 @@ pre {
     width: inherit;
 }
 
+a {
+    transition: 0.4s;
+}
+
+#topheader {
+    font-size: 24px;
+    margin-top: 1em;
+}
+
+#topheader a {
+    color: #222;
+    text-decoration: none;
+}
+
+#topheader a:hover {
+    color: #777;
+}
+
+#topheader .logo {
+    display: flex;
+    margin-bottom: 0.4em;
+    border-bottom: 1px solid black;
+}
+
+#topheader .logo a {
+    font-size: 36px;
+}
+
+#topheader .logo img {
+    height: 2em;
+    margin-right: 0.4em;
+}
+
+#topheader nav ul {
+    list-style: none;
+}
+
+#topheader nav ul li {
+    display: inline;
+}
+
+#topheader nav ul li a {
+    padding-right: 0.4em;
+    text-decoration: none;
+}
+
 article img {
   /* Make sure that images within blog articles never take more width
      than the article width; `height: auto` ensures the height is also
