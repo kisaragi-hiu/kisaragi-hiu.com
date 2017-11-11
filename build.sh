@@ -40,7 +40,7 @@ publish () {
 cleanup () {
     if test -n "$1"; then
         git clean -Xdn # dry run
-        read -p "Confirm delete (y/n)? " yn
+        read -r -p "Confirm delete (y/n)? " yn
         case "$yn" in
             y*) true;; # Do nothing
             *) exit;;
