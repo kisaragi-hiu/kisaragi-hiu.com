@@ -54,7 +54,8 @@
       </div>
       <nav>
         <ul>
-          <li><a href="@|uri-prefix|/about">About</a></li>
+          <li><a href="@|uri-prefix|/index.html">Blog</a></li>
+          <li><a href="@|uri-prefix|/about.html">About</a></li>
           <li><a href="@|uri-prefix|/writing">Writing</a></li>
         </ul>
       </nav>
