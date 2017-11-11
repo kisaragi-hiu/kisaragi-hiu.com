@@ -69,6 +69,10 @@ article img {
   height: auto;
 }
 
+.index-item p {
+    display: inline;
+}
+
 body {
     font-family: 'Overpass', 'Noto Sans CJK TC', 'Meiryo', 'Microsoft Jhenghei', 'Microsoft Yahei', sans-serif;
     color: #444;
