@@ -35,8 +35,6 @@
     <!-- Feeds -->
     <link rel="alternate" type="application/atom+xml"
           href="@|atom-feed-uri|" title="Atom Feed">
-    <!-- <link rel="alternate" type="application/rss+xml" -->
-    <!--       href="@|rss-feed-uri|" title="RSS Feed"> -->
     <!-- JS -->
     <script src="https://use.fontawesome.com/f9f3cd1f14.js"></script>
     @google-universal-analytics["UA-xxxxx"]
@@ -58,16 +56,10 @@
 
     <div class="container">
       <div class="row">
-        <div id="content" class="one-half column">
-          @(when (string-ci=? uri-path
-                              (string-append uri-prefix
-                                             "/index.html"))
-            @list{
-              <h1>Welcome</h1>
-              <p></p> })
-          @;{ Index pages for posts have @tag that's not #f }
+        <div id="content" class="ten column">
+          @;{ @tag in tag indexes is non-#f }
           @(when tag
-            @list{<h1>@"@"<em>@|tag|</em></h1>})
+            @list{<h1>Tag: <em>@|tag|</em></h1>})
           @|contents|
         </div>
       </div>
