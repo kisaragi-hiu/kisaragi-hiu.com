@@ -56,7 +56,7 @@
           <ul>
             <li><a href="@|uri-prefix|/index.html">Blog</a></li>
             <li><a href="@|uri-prefix|/about.html">About</a></li>
-            <li><a href="@|uri-prefix|/writing">Writing</a></li>
+            <li><a href="@|uri-prefix|/writing.html">Writing</a></li>
           </ul>
         </nav>
       </header>
@@ -72,10 +72,10 @@
 
       <footer class="ten columns offset-by-one">
         <hr />
-        <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">
+        <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">
            <img alt="Creative Commons License"
                 style="border-width:0"
-                src="https://i.creativecommons.org/l/by/4.0/88x31.png" />
+                src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" />
         </a>
         <br />
         <p>© Kisaragi Hiu 2017. Posts are licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">CC-BY-NC 4.0 International license</a>.</p>
