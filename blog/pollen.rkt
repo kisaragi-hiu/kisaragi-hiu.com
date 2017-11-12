@@ -78,7 +78,7 @@
             'twitter "https://twitter.com/")
       (dict-ref _ site)
       (string-append _ sub)
-      (link _ text class)))
+      (link _ #:class class text)))
 
 ; wrapper around L
 (define (twitter sub text)
