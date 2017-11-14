@@ -24,11 +24,13 @@ new () {
 }
 
 build () {
+    # Build the site into public/
     raco pollen render blog/ || exit 1
     raco pollen render blog/posts/ || exit 1
     raco frog --build || exit 1
     cp -r blog/css public/ || exit 1
     cp -r blog/images public/ || exit 1
+    touch public/.nojekyll
 }
 
 publish () {
