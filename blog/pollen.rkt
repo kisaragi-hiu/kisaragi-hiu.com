@@ -15,7 +15,9 @@
          txexpr
          "_common/ytvidinfo.rkt")
 
-(provide (all-defined-out))
+(provide (all-defined-out)
+         (all-from-out
+           "_common/ytvidinfo.rkt"))
 
 (module setup racket/base
   (provide (all-defined-out))
