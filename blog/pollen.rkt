@@ -57,10 +57,10 @@
 
 #| link functions |#
 
-(define (link url #:class [class ""] . text)
+(define (link url #:class [class ""] #:target [target "_blank"] . text)
   (->html
    `(a ([href ,url]
-        [target "_blank"]
+        [target ,target]
         [class ,class])
        ,@text)))
 
