@@ -126,14 +126,22 @@
 (define site-url "http://kisaragi-hiu.com")
 (define (youtube/embed video-id)
   (->html
-   `(iframe ([id "ytplayer"]
-             [type "text/html"]
-             [width "640"]
-             [height "360"]
-             [src ,(string-append
-                    "http://www.youtube.com/embed/"
-                    video-id
-                    "?autoplay=0"
-                    "&origin="
-                    site-url)]
-             [frameborder "0"]))))
+   `(div ([style "padding-bottom: 50%;
+                  position: relative;
+                  overflow: hidden;"])
+      (iframe ([id "ytplayer"]
+               [type "text/html"]
+               [width "640"]
+               [height "360"]
+               [style "position: absolute;
+                       top: 0;
+                       left: 0;
+                       width: 100%;
+                       height: 100%;"]
+               [src ,(string-append
+                       "http://www.youtube.com/embed/"
+                       video-id
+                       "?autoplay=0"
+                       "&origin="
+                       site-url)]
+               [frameborder "0"])))))
