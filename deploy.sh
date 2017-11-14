@@ -1,5 +1,10 @@
 #!/bin/bash
 
+if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then
+    echo "This is a pull request. Not deploying."
+    exit 0
+fi
+
 cd ~/public || exit 1
 git init
 
