@@ -31,6 +31,7 @@ build () {
     cp -r blog/css public/ || exit 1
     cp -r blog/images public/ || exit 1
     cp CNAME public/ || exit 1
+    cp favicon.ico public/ || exit 1
     touch public/.nojekyll
 }
 
