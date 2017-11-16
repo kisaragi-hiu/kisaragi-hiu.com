@@ -1,7 +1,7 @@
 #lang pollen
     Title: レディーレ Cover
     Date: 2017-06-28T22:50:00
-    Tags: Cover
+    Tags: 中文, Cover
 
 試唱了バルーン的レディーレ。
 看到本家就想要唱唱看了，但拖了兩個禮拜才全部弄好就是ww

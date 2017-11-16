@@ -1,7 +1,7 @@
 #lang pollen
     Title: 淚
     Date: 2017-09-07T17:00:00
-    Tags: 詩
+    Tags: 中文, 詩
 
 ◊newline-decode{
 雨時

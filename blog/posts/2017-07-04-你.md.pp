@@ -1,7 +1,7 @@
 #lang pollen
     Title: 你
     Date: 2017-07-04T00:00:00
-    Tags: 詩
+    Tags: 中文, 詩
 
 ◊newline-decode{
 你總是走在兩個人後面。只是跟著。

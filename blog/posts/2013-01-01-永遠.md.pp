@@ -1,7 +1,7 @@
 #lang pollen
     Title: 永遠
     Date: 2013-01-01T00:00:00
-    Tags: 詩
+    Tags: 中文, 詩
 
 ◊newline-decode{
 過去了，才知道要珍惜，

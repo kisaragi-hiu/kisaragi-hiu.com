@@ -1,7 +1,7 @@
 #lang pollen
     Title: 新網站
     Date: 2017-03-19T05:00:00
-    Tags: Meta
+    Tags: 中文, Meta
 
 ◊newline-decode{
 想要有個簡單的檔案記錄所有連結

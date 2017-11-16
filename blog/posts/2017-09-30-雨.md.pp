@@ -2,7 +2,7 @@
 
     Title: 雨
     Date: 2017-09-30T00:00:00
-    Tags: 詩, 雨
+    Tags: 中文, 詩, 雨
 
 ◊newline-decode{
 我喜歡下雨的日子。

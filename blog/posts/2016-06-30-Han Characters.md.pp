@@ -1,7 +1,7 @@
 #lang pollen
     Title: Han Characters
     Date: 2016-06-30T00:00:00
-    Tags: Mandarin, Han Characters, Language
+    Tags: English, Han Characters, Language
 
 If you're learning a language using Han characters, and you haven't known Han characters already, start with just the phonetic alphabets first. If you know them already... maybe starting with just phonetic alphabets would also be a good idea, but the difference won't be that significent.
 

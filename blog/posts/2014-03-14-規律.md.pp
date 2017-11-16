@@ -1,7 +1,7 @@
 #lang pollen
     Title: 規律
-    Tags: 詩
     Date: 2014-03-14T00:00:00
+    Tags: 中文, 詩
 ◊newline-decode{
 今天星期幾？今天是幾號？
 今年又是幾年呢？

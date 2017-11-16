@@ -1,7 +1,7 @@
 #lang pollen
     Title: 我仰望，滿天繁星
     Date: 2016-04-25T00:00:00
-    Tags: 詩
+    Tags: 中文, 詩
 
 ◊newline-decode{
 當我抬起頭，仰望著，美麗星空——

@@ -1,7 +1,7 @@
 #lang pollen
     Title: 曙光
     Date: 2016-07-01T00:00:00
-    Tags: 詩
+    Tags: 中文, 詩
 
 ◊newline-decode{
 陰日中，曙光乍現

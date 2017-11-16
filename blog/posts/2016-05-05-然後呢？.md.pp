@@ -1,7 +1,7 @@
 #lang pollen
     Title: 然後呢？
     Date: 2016-05-05T00:00:00
-    Tags: 詩
+    Tags: 中文, 詩
 
 ◊newline-decode{
 脫軌了。
