@@ -124,8 +124,12 @@ article header .date-and-tags {
 body {
     font-family: 'Overpass', 'Noto Sans CJK TC', 'Meiryo', 'Microsoft Jhenghei', 'Microsoft Yahei', sans-serif;
     color: #444;
-    background-color: #fbfbfb;
     text-rendering: optimizeLegibility;
+}
+
+html,
+body {
+    background-color: #fbfbfb;
 }
 
 p { font-size: 100%; }
