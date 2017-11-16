@@ -3,10 +3,6 @@
 
 ## 3dcg
 
-## Music Covers
-
-I started practicing singing since February 2017. These are my published covers along the way.
-
 ## UTAU Covers
 
 I use Uzuki, Xia Yu Yao, and Yamine Renri's voices to do my UTAU covers.
