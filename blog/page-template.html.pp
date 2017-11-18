@@ -43,7 +43,7 @@
           href="@|atom-feed-uri|" title="Atom Feed">
     <!-- JS -->
     <script src="https://use.fontawesome.com/f9f3cd1f14.js"></script>
-    @google-universal-analytics["UA-xxxxx"]
+    @google-universal-analytics["UA-109874076-1"]
   </head>
   <body>
     <div class="container">
