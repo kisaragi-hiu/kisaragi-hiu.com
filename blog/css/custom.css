@@ -11,8 +11,12 @@ pre {
 }
 
 a {
-    color: #A868E8;
+    color: #a868e8;
     transition: 0.4s;
+}
+
+a:hover {
+    color: #d0a3ff;
 }
 
 #topheader a,
@@ -135,3 +139,9 @@ body {
 
 p { font-size: 100%; }
 
+@media print {
+    .no-print,
+    .no-print * {
+        display: none;
+    }
+}
