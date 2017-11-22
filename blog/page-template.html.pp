@@ -36,7 +36,6 @@
     <link rel="stylesheet" type="text/css" href="@|uri-prefix|/css/normalize.css">
     <link rel="stylesheet" type="text/css" href="@|uri-prefix|/css/skeleton.css">
     <link rel="stylesheet" type="text/css" href="@|uri-prefix|/css/monokai.css">
-    <link rel="stylesheet" type="text/css" href="@|uri-prefix|/css/scribble.css">
     <link rel="stylesheet" type="text/css" href="@|uri-prefix|/css/custom.css">
     <!-- Feeds -->
     <link rel="alternate" type="application/atom+xml"
