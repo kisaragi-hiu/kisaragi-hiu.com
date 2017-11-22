@@ -504,8 +504,12 @@ blockquote {
     overflow-x: auto;
 }
 
-.highlight .linenos {
-    display: none;
+.linenos {
+    /* display: none; */
+    padding-right: 0;
+    /* colors from monokai */
+    background-color: #272822;
+    color: #f8f8f2;
 }
 
 p, ul, ol, dl, h1, h2, h3, h4, h5, h6, h7, .footer, .nav2, .nav3, .nav4, .nav5, .nav6, .nav7, blockquote, #disqus_thread, body > a, figure, .page-meta, #header, #prevnext, .button
