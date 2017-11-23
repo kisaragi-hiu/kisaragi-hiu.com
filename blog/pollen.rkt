@@ -12,12 +12,10 @@
          racket/match
          racket/string
          threading
-         txexpr
-         "_common/ytvidinfo.rkt")
+         txexpr)
 
 (provide (all-defined-out)
-         (all-from-out
-           "_common/ytvidinfo.rkt"))
+         (all-from-out pollen/template))
 
 (module setup racket/base
   (provide (all-defined-out))
