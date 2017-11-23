@@ -11,7 +11,7 @@ usage:
 
 new () {
     date_full="$(date +%Y-%m-%dT%H:%M:%S)"
-    newfile="./blog/posts/$date_full-$1.md.pp"
+    newfile="./blog/posts/${date_full%T*}-$1.md.pp"
     {   echo '#lang pollen'
         echo "    Title: $1"
         echo "    Date: $date_full"
