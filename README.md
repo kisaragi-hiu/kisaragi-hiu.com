@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/flyingfeather1501/flyingfeather1501.github.io.svg?branch=source)](https://travis-ci.org/flyingfeather1501/flyingfeather1501.github.io)
 My personal website.
 
 # License
