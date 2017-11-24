@@ -30,6 +30,8 @@
   (->html `(img ([src ,src]
                  [alt ,text]))))
 
+(define (R text ruby) `(ruby ,text (rt ,ruby)))
+
 ; newline-decode : (ListOf String) -> String
 (define (newline-decode . text)
   (~> (string-join text "")
