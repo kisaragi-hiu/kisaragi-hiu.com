@@ -10,6 +10,5 @@ pollen.cache
 /*.html
 feeds/*
 tags/*
-20*
 index.html
 sitemap.txt
