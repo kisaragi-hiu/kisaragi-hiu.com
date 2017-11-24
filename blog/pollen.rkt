@@ -44,6 +44,8 @@
 (define (year . text)
   (->html `(p ([class "year-in-page"]) ,@text)))
 
+(define ie "i.e.")
+
 (define (font-awesome fa-icon
                       #:aria [hidden #t]
                       #:txexpr [return-txexpr #f])
