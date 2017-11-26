@@ -32,6 +32,9 @@
 
 (define (R text ruby) `(ruby ,text (rt ,ruby)))
 
+(define (table . elements)
+  (->html `(table ,@elements)))
+
 ; newline-decode : (ListOf String) -> String
 (define (newline-decode . text)
   (~> (string-join text "")
