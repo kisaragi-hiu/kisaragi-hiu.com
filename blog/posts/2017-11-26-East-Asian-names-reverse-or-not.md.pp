@@ -7,9 +7,9 @@ In English, some people write East Asian names (Chinese, Japanese etc.) with giv
 
 Me being born in Taiwan using Mandarin as my primary language probably contributes to this preference. Knowing the original name, then seeing it reversed in an English document throws me off quite a bit. Not to mention the fact that there are infinitely more different name formats out there, not just the English "First Middle Last" or the East Asian "Surname-Given_name".
 
-There's an exception to this: when the person / character already has an English name, I will use that instead.
+There's an exception to this: when the person already has an English name, I will use that instead.
 
-So, in my opinion, a name should always be translated by its sound unless otherwise specified.
+So, in conclusion, I think a name should always be translated by sound unless otherwise specified.
 
 Here is a table of some Japanese and Chinese names, how they would be translated with surname kept last, and how I would translate them.
 
