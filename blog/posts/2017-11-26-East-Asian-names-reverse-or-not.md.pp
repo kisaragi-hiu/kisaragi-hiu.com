@@ -3,7 +3,7 @@
     Date: 2017-11-26T17:55:59
     Tags: English, Translation, Grammar
 
-In English, some people write East Asian names (Chinese, Japanese etc.) with given name first, surname last (like "Kei Asai"). I personally dislike doing this, because names are whole word objects that shouldn't be reordered. To stay accurate with the source when translating, I prefer to simply transliterate, ◊ie romanize.
+In English, some people write East Asian names (Chinese, Japanese etc.) with given name first, surname last (like "Kei Asai"). I personally dislike doing this, because names are whole word objects that shouldn't be reordered. To stay accurate and somewhat respectful, I prefer to simply transliterate, ◊ie romanize when translating.
 
 Me being born in Taiwan using Mandarin as my primary language probably contributes to this preference. Knowing the original name, then seeing it reversed in an English document throws me off quite a bit. Not to mention the fact that there are infinitely more different name formats out there, not just the English "First Middle Last" or the East Asian "Surname-Given_name".
 
