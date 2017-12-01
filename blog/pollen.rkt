@@ -25,10 +25,13 @@
 (define (strike . text)
   (->html `(s ,@text)))
 
-(define (image src text #:width [width #f])
-  ;; "Backwards compatibility"
-  (->html `(img ([src ,src]
-                 [alt ,text]))))
+(define (image src [caption #f] #:width [width #f] #:txexpr? [txexpr? #f])
+  (let ([wrapper (if txexpr? identity ->html)])
+    ;; "Backwards compatibility"
+    (wrapper `(div (img ([src ,src]))
+                   ,(if caption
+                        `(p ([class "image-caption"]) ,caption)
+                        "")))))
 
 (define (R text ruby) `(ruby ,text (rt ,ruby)))
 
@@ -62,12 +65,21 @@
 
 #| link functions |#
 
-(define (link url #:class [class ""] #:target [target "_blank"] . text)
-  (->html
-   `(a ([href ,url]
-        [target ,target]
-        [class ,class])
-       ,@text)))
+(define (link url #:class [class ""]
+              #:target [target "_blank"]
+              #:txexpr? [txexpr? #f] . text)
+  (let ([wrapper (if txexpr? identity ->html)])
+    (wrapper
+     `(a ([href ,url]
+          [target ,target]
+          [class ,class])
+         ,@text))))
+
+(define (image/link url src caption)
+  (->html `(div
+            ,(link #:txexpr? #t url
+                   (image src #:txexpr? #t))
+            (p ([class "image-caption"]) ,caption))))
 
 (define (link/date url date . text)
   (->html

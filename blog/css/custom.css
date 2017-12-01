@@ -70,17 +70,16 @@ article {
     font-size: 1.8rem;
 }
 
-article img {
-  /* Make sure that images within blog articles never take more width
-     than the article width; `height: auto` ensures the height is also
-     resized proportionally.
+img {
+    /* this used to be article img, but non-post pages are not in <article> */
+    max-width: 100%;
+    height: auto;
+}
 
-     This is useful given that Markdown itself gives you little
-     control over image resizing, and in particular no way to achieve
-     this "best fit" behavior.
- */
-  max-width: 100%;
-  height: auto;
+.image-caption {
+    color: #444;
+    font-style: italic;
+    font-size: 2.0rem;
 }
 
 #social-links {
