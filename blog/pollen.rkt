@@ -86,11 +86,6 @@
    `(p ,(string-append date " ")
        ,(link url (string-join text)))))
 
-(define (site-ref post . text)
-  (->html 
-    `(a ([href ,(string-append "/blog/" post)])
-        ,@text)))
-
 (define (L site sub text #:class [class ""])
   (~> (hash 'github "https://github.com/"
             'youtube "https://youtube.com/"
