@@ -1,7 +1,25 @@
 #lang pollen
-# Works
+# Portfolio
 
 ## 3dcg
+
+I started learning Blender in 2015, doing a few practices every once in a while.
+
+◊(image/link "//pixiv.net/i/57817182"
+             "/images/3dcg/57817182.jpg"
+             "Zhi-An station")
+
+◊(image/link "//pixiv.net/i/58497611"
+	     "/images/3dcg/58497611.jpg"
+             "In the sunset")
+
+◊(image/link "//pixiv.net/i/60162777"
+	     "/images/3dcg/60162777.jpg"
+             "Closing")
+
+◊(image/link "//pixiv.net/i/63225033"
+	     "/images/3dcg/63225033.jpg"
+             "res.")
 
 ## UTAU Covers
 
