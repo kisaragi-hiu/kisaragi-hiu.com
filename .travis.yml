@@ -9,6 +9,9 @@ env:
   - RACKET_DIR: "~/racket"
   - RACKET_VERSION: 6.11
   - GH_REF: 'github.com/flyingfeather1501/flyingfeather1501.github.io.git'
+cache:
+  directories:
+    - $HOME/.racket/$RACKET_VERSION/
 before_install:
 - pushd ~/
 - git clone https://github.com/greghendershott/travis-racket.git ~/travis-racket
@@ -16,7 +19,7 @@ before_install:
 - export PATH="${RACKET_DIR}/bin:${PATH}"
 - popd
 install:
-- raco pkg install --deps search-auto pollen frog pollen-component txexpr threading css-expr
+- raco pkg install --skip-installed --deps search-auto pollen frog pollen-component txexpr threading css-expr
 - pip install pygments
 script:
 - bash ./build.sh publish
