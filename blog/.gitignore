@@ -6,3 +6,17 @@ posts/*.md
 
 # Assume templates are raw; these aren't.
 page-template.html
+
+!posts/2013-01-01-永遠.md
+!posts/2014-03-14-規律.md
+!posts/2014-03-14-逼迫.md
+!posts/2014-11-01-衝！衝！衝！.md
+!posts/2015-11-08-迷失.md
+!posts/2015-12-06-旅程.md
+!posts/2016-04-25-我仰望，滿天繁星.md
+!posts/2016-05-05-然後呢？.md
+!posts/2016-06-30-Han Characters.md
+!posts/2016-07-01-曙光.md
+!posts/2017-01-19-拖延了三年的廢墟.md
+!posts/2017-07-04-你.md
+!posts/2017-03-19-new-website.md
