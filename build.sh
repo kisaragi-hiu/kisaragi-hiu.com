@@ -30,7 +30,8 @@ build () {
     raco pollen render blog/css/ || exit 1
     raco frog --build || exit 1
 
-    cp -r blog/css public/ || exit 1
+    mkdir -p public/css || exit 1
+    cp -r blog/css/*.css public/css/ || exit 1
     cp -r blog/images public/ || exit 1
     cp CNAME public/ || exit 1
     cp favicon.ico public/ || exit 1
