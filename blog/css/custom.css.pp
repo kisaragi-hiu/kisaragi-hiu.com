@@ -1,3 +1,36 @@
+#lang pollen
+◊(require racket/string)
+
+◊(define cjk-fallback
+   ◊string-append{'Noto Sans CJK TC',
+                  'Microsoft Jhenghei',
+                  'Microsoft Yahei',
+                  'Meiryo',
+                  'Malgun Gothic'})
+
+◊(define title
+   ◊string-append{a,
+                  h1,
+                  h2,
+                  h3,
+                  h4,
+                  h5,
+                  h6,
+                  h7,
+                  .title})
+
+body {
+    font-family: 'Fira Sans', ◊|cjk-fallback|, sans-serif;
+}
+
+◊title {
+    font-family: 'Overpass', ◊|cjk-fallback|, sans-serif;
+}
+
+code {
+    font-family: 'Fira Mono', monospace, ◊|cjk-fallback|;
+}
+
 code {
     color: black;
 }
@@ -142,7 +175,6 @@ article header .date-and-tags {
 }
 
 body {
-    font-family: 'Overpass', 'Noto Sans CJK TC', 'Meiryo', 'Microsoft Jhenghei', 'Microsoft Yahei', sans-serif;
     color: #444;
     text-rendering: optimizeLegibility;
 }
