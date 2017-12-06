@@ -5,7 +5,7 @@
 
 After listening to Hanezeve Caradhina for a few days, I decided it would be interesting to try to create a language based on the lyrics. 
 
-Listen to Hanezeve Caradhina (and the rest of the Made in Abyss OST) on Spotify: [https://open.spotify.com/album/5oEzjkSYSfC0ITRiqK6m8l](https://open.spotify.com/album/5oEzjkSYSfC0ITRiqK6m8l)
+Listen to Hanezeve Caradhina (and the rest of the Made in Abyss OST) [on Spotify.](https://open.spotify.com/album/5oEzjkSYSfC0ITRiqK6m8l)
 
 The song doesn't actually have too much lyrics, as I will show in the next few paragraphs, which means this language isn't really going to be "deciphered". I'm simply going to create a new (very incomplete) language that barely makes sense. This is my progress in the first day.
 
