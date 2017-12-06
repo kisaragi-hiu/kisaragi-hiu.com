@@ -42,6 +42,7 @@
 (define (newline-decode . text)
   (~> (string-join text "")
       (string-replace _ #rx"\n\n+" "\nREPLACEWITHNEWLINNNNEE")
+      (string-replace _ #rx">\n" ">REPLACEWITHNEWLINNNNEE")
       (string-replace _ "\n" "<br>\n")
       (string-replace _ "REPLACEWITHNEWLINNNNEE" "\n")))
 
