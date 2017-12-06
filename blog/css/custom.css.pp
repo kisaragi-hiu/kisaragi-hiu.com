@@ -33,6 +33,7 @@ code {
 
 code {
     color: black;
+    overflow-x: auto;
 }
 
 /* When highlighted code blocks are too wide, they wrap. Resulting in the */
