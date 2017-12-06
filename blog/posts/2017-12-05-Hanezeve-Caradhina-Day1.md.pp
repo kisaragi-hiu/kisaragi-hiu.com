@@ -7,7 +7,7 @@ After listening to Hanezeve Caradhina for a few days, I decided it would be inte
 
 Listen to Hanezeve Caradhina (and the rest of the Made in Abyss OST) [on Spotify.](https://open.spotify.com/album/5oEzjkSYSfC0ITRiqK6m8l)
 
-The song doesn't actually have too much lyrics, as I will show in the next few paragraphs, which means this language isn't really going to be "deciphered". I'm simply going to create a new (very incomplete) language that barely makes sense. This is my progress in the first day.
+The song doesn't actually have too much lyrics, as I will show in the next few paragraphs, which means this language isn't really going to be "deciphered"; I'm simply going to create a new (very incomplete) language that might slightly makes sense. This is my progress in the first day.
 
 First, the lyrics.
 
@@ -44,7 +44,7 @@ First, the lyrics.
 >
 }
 
-As you can see, it's all just two paragraphs with slight variations in B. I'll explain why I grouped syllables this way.
+As you can see, it's all just two paragraphs with some slight variations in B. I'll explain why I grouped syllables like this in a little bit.
 
 There are a few patterns in the lyrics:
 
@@ -52,8 +52,9 @@ There are a few patterns in the lyrics:
 - "-dhina" appears quite a lot.
 - "colwele-la" progresses into "colwele-lo".
 - the syllables tend to be sung in groups of four.
+- …
 
-Unfortunately, there doesn't seem to be much more detail than this. The rest has to be imagined.
+But I still have to make up much of the grammar.
 
 ## Deep in the Abyss
 
@@ -71,7 +72,7 @@ However, I'm a little stuck here. What next? What should this song be about? Unt
 
 I now have to decide between "Riko's Journey" and "Hymn of the Abyss". Initially I was still thinking that Riko's Journey wouldn't suit the epic style this song has, but after listening to it a few more times and imagining the progression, it started to feel like a journey more and more. I eventually decided the vocal and the instruments combined suits "Riko's Journey" better.
 
-With that, "Hanezeve yulumaini" probably shouldn't just be a noun phrase. Plus, that "ni" really gives me the urge to connect it with the Japanese particle "に", ie. "to". Let's imagine it means "To the bottom of the Abyss". Now:
+With that, "Hanezeve yulumaini" probably shouldn't just be a noun phrase. Plus, that "ni" really gives me the urge to connect it with the Japanese particle "に", ie. "to". So let's imagine it means "To the bottom of the Abyss". Now:
 
 - Hanezeve: the Abyss
 - yulu-: particle meaning "at" or "of", sort of
@@ -120,7 +121,7 @@ As of the other two words, I just thought up "treasure" and "wonder" as two noun
 > Halalaha la forðe hala
 > helelele lelele
 > colwelela kalalila
-> To the Bottom of the Abyss
+> To the bottom of the Abyss
 >
 > A.
 > Halalaha zela halalelu
@@ -132,7 +133,7 @@ As of the other two words, I just thought up "treasure" and "wonder" as two noun
 > Kodo wodo hondo hondo-oh
 > helelele lelele
 > colwelelo kalalila
-> To the Bottom of the Abyss
+> To the bottom of the Abyss
 >
 > A.
 > Halalaha zela halalelu
