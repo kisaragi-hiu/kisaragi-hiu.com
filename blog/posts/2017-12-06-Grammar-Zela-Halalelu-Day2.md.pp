@@ -13,8 +13,9 @@ I started with how "halalaha" and "halalelu" both have the common prefix "hala-"
 
 - "hala-": word decorator (sort of an adjective), says that the word is thoughts-related
 - "-laha": noun, "fiction", "illusion"
+- "-lelu": "make", as in "make a dream"
 
-Matching up with my rough idea for the first line, I defined "halalelu" to be the verb "dream", and zela to be "I". This creates a syntax for a sentence: "Hala-laha zela hala-lelu" ⇒ "Imagination I Dream". It is a "Object Subject Verb" sentence structure.
+Matching up with my rough idea for the first line, I defined "halalelu" to be the verb "dream", and zela to be "I". This creates a syntax for a sentence: "Hala-laha zela hala-lelu" ⇒ "Imagination I Dream", making it a "Object Subject Verb" sentence structure.
 
 ## Today's progress
 
