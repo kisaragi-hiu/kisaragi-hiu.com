@@ -19,6 +19,8 @@
                   h7,
                   .title})
 
+◊import["inline-colors.css"]
+
 body {
     font-family: 'Fira Sans', ◊|cjk-fallback|, sans-serif;
 }

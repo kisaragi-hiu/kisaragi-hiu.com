@@ -6,6 +6,7 @@
          pollen/unstable/pygments
          racket/date
          racket/dict
+         racket/file
          racket/format
          racket/function
          racket/list
@@ -21,6 +22,8 @@
   (provide (all-defined-out))
   (require pollen/setup)
   (define block-tags (append '(subsection subsubsection label img pre) default-block-tags)))
+
+(define import file->string)
 
 (define (strike . text)
   (->html `(s ,@text)))
