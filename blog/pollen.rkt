@@ -25,6 +25,9 @@
 
 (define import file->string)
 
+(define (diff-old . elements) (->html `(span ([class "diff-old"]) ,@elements)))
+(define (diff-new . elements) (->html `(span ([class "diff-new"]) ,@elements)))
+
 (define (strike . text)
   (->html `(s ,@text)))
 

@@ -199,6 +199,15 @@ blockquote {
 
 p { font-size: 100%; }
 
+.diff-new {
+  color: green;
+}
+
+.diff-old {
+  color: red;
+  text-decoration: line-through;
+}
+
 @media print {
     .no-print,
     .no-print * {
