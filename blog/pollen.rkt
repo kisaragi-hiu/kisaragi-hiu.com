@@ -44,13 +44,16 @@
 (define (table . elements)
   (->html `(table ,@elements)))
 
-; newline-decode : (ListOf String) -> String
-(define (newline-decode . text)
-  (~> (string-join text "")
-      (string-replace _ #rx"\n\n+" "\nREPLACEWITHNEWLINNNNEE")
-      (string-replace _ #rx">\n" ">REPLACEWITHNEWLINNNNEE")
-      (string-replace _ "\n" "<br>\n")
-      (string-replace _ "REPLACEWITHNEWLINNNNEE" "\n")))
+(define (newline-decode . elements)
+  (string-join
+   (map (λ (x) (cond
+                  [(not (string? x)) x]
+                  [(regexp-match #rx"\n\n+" x) "<br>\n\n"]
+                  [(regexp-match #rx">\n+" x) ">\n"]
+                  [(regexp-match #rx"\n" x) "<br>\n"]
+                  [else x]))
+        elements)
+   ""))
 
 (define pagebreak (->html '(div ([class "page-break"]))))
 
