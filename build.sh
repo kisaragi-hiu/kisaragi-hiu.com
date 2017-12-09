@@ -72,8 +72,8 @@ case "$1" in
         ;;
     (new)
         test -z "$2" && echo "$helptext" && exit
-        echo New post: "$2"
-        new "$2" "$3"
+        new "$2" "$3" # creates $newfile
+        echo New post: "$newfile"
         ;;
     (*)
         echo "$helptext"
