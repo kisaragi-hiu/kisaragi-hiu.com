@@ -9,8 +9,7 @@
                   'Malgun Gothic'})
 
 ◊(define title
-   ◊string-append{a,
-                  h1,
+   ◊string-append{h1,
                   h2,
                   h3,
                   h4,
@@ -46,7 +45,8 @@ pre {
     width: inherit;
 }
 
-a {
+a,
+.tags a {
     color: #a868e8;
     -webkit-transition: all 0.4s ease;
     -moz-transition: all 0.4s ease;
@@ -145,7 +145,7 @@ a img:hover {
 }
 
 article header {
-    font-size: 3rem;
+    font-size: 2.4rem;
     margin-bottom: 1rem;
 }
 
@@ -154,11 +154,12 @@ article header p {
 }
 
 article header .date-and-tags {
+    font-family: 'Fira Mono', monospace;
     display: block;
     color: #888;
     margin-bottom: 0;
     margin-top: 0;
-    font-size: 1.8rem;
+    font-size: 1.6rem;
 }
 
 .post-header .title{
