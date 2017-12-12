@@ -1,19 +1,30 @@
 #lang pollen
-◊; This file is fed through pollen first. This `require`s eg. ->html for use as a preprocessor.
+◊; This file is fed through pollen first.
+◊; This `require`s eg. ->html for use as a preprocessor.
 ◊(require pollen/template)
 
 @;{ This is a frog template comment. }
 
-@;{ attr->string : (List Attr Value) -> String }
-@(define (attr->string attr)
-   (string-append
-    (symbol->string (first attr))
-    "="
-    "\"" (second attr) "\""))
+@;{ This needs local-require as it's a template }
+@(local-require (only-in xml string->xexpr)
+                txexpr threading racket/format)
 
-@;{(define rest-headline
-   (cond [(string-ci=? uri-path "/index.html") " / Blog"]
-         [else ""]))}
+@;{ tags-list-items looks like
+<li><a href="/tags/tagname.html">tagname.html</li> 
+<li><a href="/tags/tag2.html">tag2.html</li> 
+...
+}
+
+@(define all-tags
+   (~> (string-append "<tags>" tags-list-items "</tags>") ; force a top level tag needed by string->xexpr
+       string->xexpr
+       get-elements ; strip away the top level tag
+       (filter txexpr? _) ; strip away the leftover newlines between each element
+       (map (λ (x) (first (get-elements x))) _) ; extract the a tag
+       (map (λ (x) (cons (last x) (attr-ref x 'href))) _)
+   ))
+
+<!--@(~a all-tags)-->
 
 <!DOCTYPE html>
 <html lang="en">
