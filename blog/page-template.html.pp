@@ -7,12 +7,18 @@
 
 @;{ This needs local-require as it's a template }
 @(local-require (only-in xml string->xexpr)
-                txexpr threading racket/format)
+                txexpr threading racket/format racket/string)
+
+@;{ `tag` is already taken }
+@(struct tag-st (name url) #:transparent)
 
 @;{ tags-list-items looks like
-<li><a href="/tags/tagname.html">tagname.html</li> 
-<li><a href="/tags/tag2.html">tag2.html</li> 
-...
+<li><a href="/tags/tag1.html">Tag1</a></li>
+<li><a href="/tags/tag2.html">Tag2</a></li>
+
+This transforms it into all-tags in the form
+'((tag-st "Tag1" "/tags/tag1.html")
+  (tag-st "Tag2" "/tags/tag2.html"))
 }
 
 @(define all-tags
@@ -21,8 +27,17 @@
        get-elements ; strip away the top level tag
        (filter txexpr? _) ; strip away the leftover newlines between each element
        (map (λ (x) (first (get-elements x))) _) ; extract the a tag
-       (map (λ (x) (cons (last x) (attr-ref x 'href))) _)
+       (map (λ (x) (tag-st (last x) (attr-ref x 'href))) _)
    ))
+
+@(define (get-language-tags tags)
+   (filter (λ (x) (string-prefix? (tag-st-name x) "language:")) tags))
+
+@(define (taglist->li-a taglist)
+   ; listof tag-st -> string
+   (~> (map (λ (x) (xexpr->html `(li (a ([href ,(tag-st-url x)]) ,(tag-st-name x)))))
+            taglist)
+       (string-join _ "\n")))
 
 <!--@(~a all-tags)-->
 
@@ -69,13 +84,19 @@
             <li><a href="@|uri-prefix|/writing.html">Writing</a></li>
           </ul>
         </nav>
+        <nav>
+          <ul>
+            @(taglist->li-a (get-language-tags all-tags))
+          </ul>
+        </nav>
       </header>
 
       <div class="row">
         <div id="content" class="ten columns offset-by-one">
-          @;{ @tag in tag indexes is non-#f }
-          @(when tag
+          @;{ tags with ":" are special tags, ignore them for now }
+          @(when (and tag (string-contains? tag ":"))
             @list{<h1>Tag: <em>@|tag|</em></h1>})
+
           @|contents|
         </div>
       </div>
