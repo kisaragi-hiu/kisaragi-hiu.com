@@ -97,7 +97,7 @@ article header a:hover,
 }
 
 #topheader .logo img {
-    height: 2em;
+    max-height: 2em;
     margin-right: 0.4em;
 }
 

@@ -74,8 +74,8 @@ This transforms it into all-tags in the form
     <div class="container">
       <header id="topheader" class="ten columns offset-by-one">
         <div class="logo">
-          <img src="@|uri-prefix|/images/avatar.png" height="40px"/>
-          <a href="/">如月.飛羽</a>
+          <img src="@|uri-prefix|/images/avatar.png"/>
+          <a href="/"><img src="/images/text-logo.svg" alt="如月.飛羽"></img></a>
         </div>
         <nav>
           <ul>
