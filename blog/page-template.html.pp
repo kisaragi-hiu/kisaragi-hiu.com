@@ -81,7 +81,6 @@ This transforms it into all-tags in the form
           <ul>
             <li><a href="@|uri-prefix|/index.html">Blog</a></li>
             <li><a href="@|uri-prefix|/about.html">About</a></li>
-            <li><a href="@|uri-prefix|/writing.html">Writing</a></li>
           </ul>
         </nav>
         <nav>
