@@ -1,0 +1,1 @@
+unix philosophy: small components that talk with each other with common language
