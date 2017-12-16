@@ -1,7 +1,7 @@
 #lang pollen
     Title: Iterations of Learning
     Date: 2017-10-10T00:00:00
-    Tags: English
+    Tags: language:en
 
 Learning is based on iterations. Do something, then repeat, then repeat until you're familiar with it, is essentially the process; people call this "practice".
 

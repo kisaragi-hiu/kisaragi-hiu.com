@@ -1,7 +1,7 @@
 #lang pollen
     Title: Moving the blog, again
     Date: 2017-09-24T18:20:00
-    Tags: English, Meta, Pollen, Frog
+    Tags: language:en, Meta, Pollen, Frog
 
 So, I restructured this blog again, this time using ◊link["https://mstill.io"]{mstill.io} as a template, because I don't know how to use bootstrap. And I want to use Pollen markup.
 

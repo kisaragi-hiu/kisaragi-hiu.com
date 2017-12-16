@@ -1,7 +1,7 @@
 #lang pollen
     Title: Making up a language from Hanezeve Caradhina, Day 1
     Date: 2017-12-05T23:32:00
-    Tags: English, Language, Anime, Made in Abyss
+    Tags: language:en, Language, Anime, Made in Abyss
 
 After listening to Hanezeve Caradhina for a few days, I decided it would be interesting to try to create a language based on the lyrics. 
 

@@ -1,7 +1,7 @@
 #lang pollen
     Title: Colwelelo Kalalila (Day 3, 4)
     Date: 2017-12-08T19:03:56
-    Tags: English, Language, Anime, Made in Abyss
+    Tags: language:en, Language, Anime, Made in Abyss
 
 The last two days I listened to the song a few more times to check the lyrics, and then made up another line in section B.
 

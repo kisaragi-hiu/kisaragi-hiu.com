@@ -1,7 +1,7 @@
 #lang pollen
     Title: East Asian names, to reorder or not to reorder?
     Date: 2017-11-26T17:55:59
-    Tags: English, Translation, Grammar
+    Tags: language:en, Translation, Grammar
 
 In English, some people write East Asian names (Chinese, Japanese etc.) with given name first, surname last (like "Kei Asai"). I personally dislike doing this, because names are whole word objects that shouldn't be reordered. To stay accurate and somewhat respectful, I prefer to simply transliterate, ◊ie romanize when translating.
 

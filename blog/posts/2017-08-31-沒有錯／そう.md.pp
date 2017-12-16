@@ -1,7 +1,7 @@
 #lang pollen
     Title: 沒有錯
     Date: 2017-08-31T00:00:00
-    Tags: 中文, 詩
+    Tags: language:zh-tw, 詩
 
 ◊newline-decode{
 沒有錯，那是
