@@ -7,7 +7,7 @@ Like how a list can be created with `(list 'item 'item 'item)`, a function can b
 `(lambda (x y) (+ x y))` produces a function that takes two arguments and sends them to the + function. In a typical environment:
 
 ```
-((lambda (x y) (+ x y) 2 3)
+((lambda (x y) (+ x y)) 2 3)
 ; => 5
 ```
 
@@ -29,4 +29,11 @@ The way the argument list is given depends on the language. In Scheme-based lang
 - an empty list: `(lambda () "text")`
 - a symbol, it becomes the only "rest" argument: `(lambda input (string-join input))`
 
-`define` has a shorthand version for `(define function-name (lambda (x y) "function body"))`: `(define (function-name x y . rest) "function body")`. This somewhat masks the fact that lambdas are just values.
+`define` has a shorthand for creating functions:
+```
+(define my-add (lambda (x y) (+ x y)))
+```
+can be written as:
+```
+(define (my-add x y) (+ x y))
+```
