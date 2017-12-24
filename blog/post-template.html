@@ -5,7 +5,15 @@
 @(struct tag-st (name url) #:transparent)
 
 @(define (not-special? tag)
-   (not (string-prefix? (tag-st-name tag) "language:"))) ; add more inside an `or` in the future
+   ;; or here for adding more rules later
+   (not (or (string-prefix? (tag-st-name tag) "language:"))))
+
+@(define (taglist->comma-html taglist)
+   ; listof tag-st -> string
+   (~> (map (λ (x) (xexpr->html `(a ([href ,(tag-st-url x)]) ,(tag-st-name x))))
+            taglist)
+       (add-between _ ", ")
+       (string-join _ "")))
 
 @(define filtered-tags
    (~> (string-replace tags ", " "")
@@ -14,6 +22,7 @@
        (filter txexpr? _) ; strip away the leftover newlines between each element
        (map (λ (x) (tag-st (last x) (attr-ref x 'href))) _)
        (filter not-special? _)
+       taglist->comma-html
    ))
 
 <article>
