@@ -4,7 +4,7 @@ $0
 
 usage:
   $0 build: Build the site
-  $0 publish: Build the site then move built files to public/
+  $0 publish [dir]: Build the site and copy to dir (default ~/)
   $0 cleanup [interactive]: Clean up built files
   $0 new <Title>: Add a new post with the title <Title>, then edit it with \$EDITOR ($EDITOR)
 "
@@ -39,9 +39,14 @@ build () {
 }
 
 publish () {
+    if test -n "$1"; then
+        dir="$1"
+    else
+        dir="~/"
+    fi
     # Frog can already build to another dir
     build || exit 1
-    mv public ~/
+    mv public "$dir"
 }
 
 cleanup () {
@@ -64,7 +69,7 @@ case "$1" in
         ;;
     (publish)
         echo publishing
-        publish
+        publish "$2"
         ;;
     (clean|cleanup)
         echo cleaning up
