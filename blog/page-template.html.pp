@@ -31,7 +31,11 @@ This transforms it into all-tags in the form
    ))
 
 @(define (get-language-tags tags)
-   (filter (λ (x) (string-prefix? (tag-st-name x) "language:")) tags))
+   (map (lambda (tag) (cond
+                        [(string-prefix? (tag-st-name tag) "language:en") (tag-st "English" (tag-st-url tag))]
+                        [(string-prefix? (tag-st-name tag) "language:zh") (tag-st "中文" (tag-st-url tag))]
+                        [else tag]))
+        (filter (λ (x) (string-prefix? (tag-st-name x) "language:")) tags)))
 
 @(define (taglist->li-a taglist)
    ; listof tag-st -> string
@@ -93,7 +97,8 @@ This transforms it into all-tags in the form
       <div class="row">
         <div id="content" class="ten columns offset-by-one">
           @;{ tags with ":" are special tags, ignore them for now }
-          @(when (and tag (string-contains? tag ":"))
+          @(when (and tag
+                      (not (string-contains? tag ":")))
             @list{<h1>Tag: <em>@|tag|</em></h1>})
 
           @|contents|

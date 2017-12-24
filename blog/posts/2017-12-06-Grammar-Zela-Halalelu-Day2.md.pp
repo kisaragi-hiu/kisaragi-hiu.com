@@ -1,7 +1,7 @@
 #lang pollen
     Title: Grammar Zela Halalelu (Day 2)
     Date: 2017-12-06T23:23:00
-    Tags: English, Language, Anime, Made in Abyss
+    Tags: language:en, Language, Anime, Made in Abyss
 
 Today I watched the episodes where Hanezeve Caradhina was played (1, 8, 9), and further confirmed myself that it indeed feels like describing Riko's journey.
 

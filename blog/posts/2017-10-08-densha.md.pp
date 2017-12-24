@@ -1,7 +1,7 @@
 #lang pollen
     Title: 飛逝
     Date: 2017-10-08T22:13:00
-    Tags: 中文, 詩, 電車
+    Tags: language:zh-tw, 詩, 電車
 
 ◊;以電車景敘述人生，什麼的。
 

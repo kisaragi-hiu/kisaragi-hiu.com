@@ -46,7 +46,7 @@ pre {
 }
 
 a,
-.tags a {
+.date-and-tags a {
     color: #a868e8;
     -webkit-transition: all 0.4s ease;
     -moz-transition: all 0.4s ease;
