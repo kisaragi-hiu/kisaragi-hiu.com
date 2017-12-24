@@ -31,7 +31,11 @@ This transforms it into all-tags in the form
    ))
 
 @(define (get-language-tags tags)
-   (filter (λ (x) (string-prefix? (tag-st-name x) "language:")) tags))
+   (map (lambda (tag) (cond
+                        [(string-prefix? (tag-st-name tag) "language:en") (tag-st "English" (tag-st-url tag))]
+                        [(string-prefix? (tag-st-name tag) "language:zh") (tag-st "中文" (tag-st-url tag))]
+                        [else tag]))
+        (filter (λ (x) (string-prefix? (tag-st-name x) "language:")) tags)))
 
 @(define (taglist->li-a taglist)
    ; listof tag-st -> string
