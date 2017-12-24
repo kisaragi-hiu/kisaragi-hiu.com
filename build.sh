@@ -42,7 +42,7 @@ publish () {
     if test -n "$1"; then
         dir="$1"
     else
-        dir="~/"
+        dir="$HOME"
     fi
     # Frog can already build to another dir
     build || exit 1
