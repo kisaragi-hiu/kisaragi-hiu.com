@@ -1,6 +1,24 @@
+@; vim: filetype=scribble
+@(local-require (only-in xml string->xexpr)
+                txexpr threading racket/format racket/string)
+
+@(struct tag-st (name url) #:transparent)
+
+@(define (not-special? tag)
+   (not (string-prefix? (tag-st-name tag) "language:"))) ; add more inside an `or` in the future
+
+@(define filtered-tags
+   (~> (string-replace tags ", " "")
+       string->xexpr
+       get-elements ; strip away the top level span
+       (filter txexpr? _) ; strip away the leftover newlines between each element
+       (map (λ (x) (tag-st (last x) (attr-ref x 'href))) _)
+       (filter not-special? _)
+   ))
+
 <article>
   <header class="post-header">
-    <p class='date-and-tags'>@|date| :: @|tags|</p>
+    <p class='date-and-tags'>@|date| :: @|filtered-tags|</p>
     <p class='title'><a href='@|full-uri|'>@|title|</a></p>
   </header>
   @|content|
