@@ -97,7 +97,8 @@ This transforms it into all-tags in the form
       <div class="row">
         <div id="content" class="ten columns offset-by-one">
           @;{ tags with ":" are special tags, ignore them for now }
-          @(when (and tag (string-contains? tag ":"))
+          @(when (and tag
+                      (not (string-contains? tag ":")))
             @list{<h1>Tag: <em>@|tag|</em></h1>})
 
           @|contents|
