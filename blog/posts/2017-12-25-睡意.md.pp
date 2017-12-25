@@ -1,6 +1,6 @@
 #lang pollen
     Title: 睡意
-    Tags: language:zh, 詩
+    Tags: language:zh-tw, 詩
     Date: 2017-12-25T10:19:24
 
 ◊newline-decode{
