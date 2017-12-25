@@ -169,3 +169,13 @@
                        "&origin="
                        site-url)]
                [frameborder "0"])))))
+
+(define (google-adsense id)
+  (string-append "<script async src=\"//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js\"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: " id ",
+    enable_page_level_ads: true
+  });
+</script>"))
+

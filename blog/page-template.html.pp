@@ -73,6 +73,7 @@ This transforms it into all-tags in the form
     <!-- JS -->
     <script src="https://use.fontawesome.com/f9f3cd1f14.js"></script>
     @google-universal-analytics["UA-109874076-1"]
+    ◊google-adsense["ca-pub-6215394828182929"]
   </head>
   <body>
     <div class="container">
