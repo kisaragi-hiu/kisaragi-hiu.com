@@ -170,12 +170,22 @@
                        site-url)]
                [frameborder "0"])))))
 
-(define (google-adsense id)
-  (string-append "<script async src=\"//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js\"></script>
-<script>
-  (adsbygoogle = window.adsbygoogle || []).push({
-    google_ad_client: " id ",
-    enable_page_level_ads: true
-  });
-</script>"))
+(define (google-adsense/page-level id)
+  (string-append
+    "<script async src=\"//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js\"></script>\n"
+    "<script>\n"
+    "(adsbygoogle = window.adsbygoogle || []).push({\n"
+    "  google_ad_client: " id ",\n"
+    "  enable_page_level_ads: true\n"
+    "});\n"
+    "</script>"))
 
+(define google-adsense/banner
+  (->html
+   '((script ([async "async"]
+              [src "//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"]))
+     (ins ([class "adsbygoogle"]
+           [data-ad-client "ca-pub-6215394828182929"]
+           [data-ad-slot "7498976067"]
+           [style "display:inline-block;width:728px;height:90px"]))
+     (script "(adsbygoogle = window.adsbygoogle || []).push({});"))))
