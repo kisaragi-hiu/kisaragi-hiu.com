@@ -1,3 +1,4 @@
+#lang pollen
 @; vim: filetype=scribble
 @(local-require (only-in xml string->xexpr)
                 txexpr threading racket/format racket/string)
