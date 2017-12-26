@@ -36,7 +36,7 @@
     @twitter-share-button[full-uri]
     @google-plus-share-button[full-uri]
     @older/newer-links[older-uri older-title newer-uri newer-title]
-    ◊google-adsense/banner
+    ◊google-adsense/responsive
     @disqus-comments["kisaragi-hiu-blog"]
   </footer>
 </article>
