@@ -6,6 +6,7 @@ posts/*.md
 
 # Assume templates are raw; these aren't.
 page-template.html
+post-template.html
 
 !posts/2013-01-01-永遠.md
 !posts/2014-03-14-規律.md
