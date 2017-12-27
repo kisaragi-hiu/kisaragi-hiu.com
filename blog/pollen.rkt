@@ -97,56 +97,23 @@
    `(p ,(string-append date " ")
        ,(link url (string-join text)))))
 
-(define (L site sub text #:class [class ""])
-  (~> (hash 'github "https://github.com/"
-            'youtube "https://youtube.com/"
-            'pixiv "https://pixiv.net/"
-            'niconico "http://www.nicovideo.jp/"
-            'osuwiki "http://osu.ppy.sh/help/wiki/"
-            'transifex "https://www.transifex.com/user/profile/"
-            'noichigo "https://www.no-ichigo.jp/read/book/book_id/"
-            'twitter "https://twitter.com/")
-      (dict-ref _ site)
-      (string-append _ sub)
-      (link _ #:class class text)))
+(define-syntax (define-link stx)
+  (syntax-case stx ()
+    [(_ linkname url-prefix)
+     #'(begin
+         (define (linkname suburl [text suburl] #:class [class ""])
+           (link (string-append url-prefix suburl)
+                 text
+                 class)))]))
 
-; wrapper around L
-(define (twitter sub text)
-  (L 'twitter
-     sub
-     text))
-(define (github sub text)
-  (L 'github
-     sub
-     text))
-(define (youtube sub text)
-  (L 'youtube
-     sub
-     text
-     #:class "youtube"))
-(define (pixiv sub text)
-  (L 'pixiv
-     sub
-     text
-     #:class "pixiv"))
-(define (niconico sub text)
-  (L 'niconico
-     sub
-     text
-     #:class "niconico"))
-(define (osuwiki sub text)
-  (L 'osuwiki
-     sub
-     text
-     #:class "osuwiki"))
-(define (transifex sub text)
-  (L 'transifex
-     sub
-     text))
-(define (noichigo sub text)
-  (L 'noichigo
-     sub
-     text))
+(define-link github "https://github.com/")
+(define-link youtube "https://youtube.com/")
+(define-link pixiv "https://pixiv.net/")
+
+(define-link niconico "http://www.nicovideo.jp/")
+(define-link osuwiki "http://osu.ppy.sh/help/wiki/")
+(define-link transifex "https://www.transifex.com/user/profile/")
+(define-link noichigo "https://www.no-ichigo.jp/read/book/book_id/")
 
 (define site-url "http://kisaragi-hiu.com")
 (define (youtube/embed video-id)
