@@ -13,7 +13,8 @@
          racket/match
          racket/string
          threading
-         txexpr)
+         txexpr
+         (for-syntax racket/base))
 
 (provide (all-defined-out)
          (all-from-out pollen/template))
@@ -104,7 +105,7 @@
          (define (linkname suburl [text suburl] #:class [class ""])
            (link (string-append url-prefix suburl)
                  text
-                 class)))]))
+                 #:class class)))]))
 
 (define-link github "https://github.com/")
 (define-link youtube "https://youtube.com/")
