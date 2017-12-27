@@ -75,15 +75,16 @@
 
 #| link functions |#
 
-(define (link url #:class [class ""]
+(define (link url [text url]
+              #:class [class ""]
               #:target [target "_blank"]
-              #:txexpr? [txexpr? #f] . text)
+              #:txexpr? [txexpr? #f])
   (let ([wrapper (if txexpr? identity ->html)])
     (wrapper
      `(a ([href ,url]
           [target ,target]
           [class ,class])
-         ,@text))))
+         ,text))))
 
 (define (image/link url src caption)
   (->html `(div
