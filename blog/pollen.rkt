@@ -108,6 +108,7 @@
                  #:class class)))]))
 
 (define-link github "https://github.com/")
+(define-link twitter "https://twitter.com/")
 (define-link youtube "https://youtube.com/")
 (define-link pixiv "https://pixiv.net/")
 
