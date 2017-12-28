@@ -12,6 +12,7 @@
 
 ## Links
 
+◊newline-decode{
 ◊link{https://www.youtube.com/channel/UCl_hsqcvdX0XdgBimRQ6R3A}
 ◊link{http://www.nicovideo.jp/user/38995186}
 
@@ -19,5 +20,7 @@
 
 ◊link{https://episode.cc/about/flyin1501}
 
+◊link{https://instagram.com/kisaragi_hiu}
 ◊link{https://twitter.com/flyin1501}
 ◊link{https://github.com/flyingfeather1501}
+}
