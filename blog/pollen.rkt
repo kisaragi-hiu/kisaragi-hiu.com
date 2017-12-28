@@ -49,7 +49,7 @@
   (string-join
    (map (λ (x) (cond
                   [(not (string? x)) x]
-                  [(regexp-match #rx"\n\n+" x) "<br>\n\n"]
+                  [(regexp-match #rx"\n\n+" x) "\n\n"]
                   [(regexp-match #rx">\n+" x) ">\n"]
                   [(regexp-match #rx"\n" x) "<br>\n"]
                   [else x]))
