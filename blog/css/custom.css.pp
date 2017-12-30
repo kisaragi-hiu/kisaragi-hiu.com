@@ -198,7 +198,11 @@ blockquote {
     border-left: 0.5rem solid #ccc;
 }
 
-p { font-size: 100%; }
+p {
+    font-size: 100%;
+    margin-top: 0rem;
+    margin-bottom: 1.2rem;
+}
 
 .diff-new {
   color: green;
