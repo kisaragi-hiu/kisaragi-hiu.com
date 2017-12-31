@@ -29,6 +29,22 @@
 (define (diff-old . elements) (->html `(span ([class "diff-old"]) ,@elements)))
 (define (diff-new . elements) (->html `(span ([class "diff-new"]) ,@elements)))
 
+;; I'm naming the arguments so calls would be a little more readable
+(define (article-header #:date date ; :: string? ex: "@|date|"
+                        #:tags tags ; :: string? ex: "@|tags|"
+                        #:title title ; :: string? ex: "@|title|"
+                        #:uri uri ; :: string? ex: "@|full-uri|"
+                        #:class class) ; :: string? ex: "post-header"
+  (->html `(header ([class ,class])
+                   (p ([class "date-and-tags"])
+                      (span ,date)
+                      (span " :: ")
+                      (span ,tags))
+                   (p ([class "title"])
+                      (a ([href ,uri])
+                         ,title)))))
+
+
 (define (strike . text)
   (->html `(s ,@text)))
 
