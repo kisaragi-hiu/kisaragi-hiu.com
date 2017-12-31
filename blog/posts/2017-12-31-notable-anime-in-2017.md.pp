@@ -1,6 +1,6 @@
 #lang pollen
     Title: My list of notable anime series in 2017
-    Date: 2017-12-31T01:06:27
+    Date: 2018-01-01T23:59:57
     Tags: language:en, DRAFT, Anime
 
 ◊(require txexpr)
@@ -71,9 +71,13 @@ These two stories *kind of* work the same way, although Shuumatsu is focused muc
 
 I particularly really like how the city Chito and Yuuri travels in is portrayed. By the way, an episode of ◊youtube["channel/UCZFipeZtQM5CKUjx6grh54g"]{“Science and Futurism with Isaac Arthur”} actually talked about a concept *probably physically possible* similar to this story's, that involves building ◊youtube["watch?v=ioKidcpkZN0"]{“Mega Earths”} with layers and layers of living space.
 
-◊series{Houseki no Kuni} Huh, a full 3dcg series! Let's see… → WTF this is *really* good.
+◊series{Houseki no Kuni} I originally started watching this series to see how a CG anime would look like, but as I watch it, I started to simply appreciate it regardless if it's CG or not.
 
-A genderless society (of about 30 people)! Yay!
+Above that, I also like the story a lot. Phos is quite a lovable character, and shipping Shinsha and Phos is quite enjoyable.
 
-◊series{Just Because} The relationships actually don't feel too lame or forced into a story.
+I haven't seen any Buddhism-influenced stories in the past, so this one is quite refreshing to me.
 
+◊series{Just Because} This is a steady love story with not-too-bad visuals. It's a light story compared to many other series, and is quite relatable as a third grader in high school.
+
+
+Last year I didn't have the chance to follow anime every season, so this is a new one for me. I'm (mostly) looking forward to 2018. ◊rant{Except turning 18 soon...}
