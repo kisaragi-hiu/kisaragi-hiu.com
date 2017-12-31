@@ -18,7 +18,7 @@ new () {
         echo "    Tags: DRAFT"
     } >> "$newfile"
     if test -z "$2"; then
-        test -z "$EDITOR" && EDITOR=vi # use vi if EDITOR is not set
+        test -z "$EDITOR" && EDITOR="vi" # use vi if EDITOR is not set
         $EDITOR "$newfile"
     fi
 }
