@@ -1,14 +1,14 @@
+# kisaragi-hiu.com
+
 [![Build Status](https://travis-ci.org/flyingfeather1501/flyingfeather1501.github.io.svg?branch=source)](https://travis-ci.org/flyingfeather1501/flyingfeather1501.github.io)
 
-My personal website.
+My personal website, built on [Frog](https://github.com/greghendershott/frog) and [Pollen](https://github.com/mbutterick/pollen).
 
-# License
+## Build requirements
 
-All posts under are © Kisaragi Hiu, licensed under a Creative Commons Attribution-NoDerivatives 4.0 International License. (see CC-BY-ND.txt)
+- Racket
+- threading-lib `raco pkg install threading`
+- Pollen `raco pkg install pollen`
+- Frog `raco pkg install frog`
 
-Everything else is licensed under the BSD 3-clause license, see LICENSE.
-
-# Thanks
-
-This site is possible thanks to frog, pollen, and racket. It was previously based on <mstill.io>.
-I followed Lexi Lambda's [post](https://lexi-lambda.github.io/blog/2015/07/18/automatically-deploying-a-frog-powered-blog-to-github-pages/) when setting up Travis.
+- Bash. The site is largely duct taped together in `build.sh`.
