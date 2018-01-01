@@ -106,13 +106,13 @@ This transforms it into all-tags in the form
 
       <footer class="ten columns offset-by-one">
         <hr />
-        <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">
+        <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
            <img alt="Creative Commons License"
                 style="border-width:0"
-                src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" />
+                src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" />
         </a>
         <br />
-        <p>© Kisaragi Hiu 2017. Posts are licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">CC-BY-NC 4.0 International license</a>.</p>
+        <p>© Kisaragi Hiu 2017. Posts are licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">CC-BY-SA 4.0 International license</a>.</p>
         <ul id="social-links">
           ◊; ◊font-awesome returns a string so it can be used in a document
           ◊; here we want raw txexpr for input into ◊L and ◊link
