@@ -1,6 +1,6 @@
 #lang pollen
     Title: My list of notable anime series in 2017
-    Date: 2018-01-01T23:59:57
+    Date: 2017-12-31T23:59:57
     Tags: language:en, Anime
 
 ◊(require txexpr)
