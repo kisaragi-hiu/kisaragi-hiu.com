@@ -7,7 +7,7 @@ I have wanted to keep a personal site since 2015. I started on Jimdo, then moved
 
 # Github Pages
 
-In March this year, I discovered Github Pages, and wanted to revive my personal site. I started with the official tutorial, not understanding static site generators or Jekyll, even. I only wrote one post during this time, basically ◊site-ref["2017-03-19-new-website"]{the hello world post}.
+In March this year, I discovered Github Pages, and wanted to revive my personal site. I started with the official tutorial, not understanding static site generators or Jekyll, even. I only wrote one post during this time, basically ◊site-crossref["blog/2017-03-19-new-website"]{the hello world post}.
 
 I then moved to Hugo in June, with the next two posts being yet again, cover announcements. I didn't (and still don't) understand Hugo, and so I was in the dark when trying to get the site to look the way I want it to. After July, the site was left to rot again.
 

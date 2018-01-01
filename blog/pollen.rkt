@@ -44,7 +44,6 @@
                       (a ([href ,uri])
                          ,title)))))
 
-
 (define (strike . text)
   (->html `(s ,@text)))
 
@@ -132,6 +131,7 @@
 (define-link osuwiki "http://osu.ppy.sh/help/wiki/")
 (define-link transifex "https://www.transifex.com/user/profile/")
 (define-link noichigo "https://www.no-ichigo.jp/read/book/book_id/")
+(define-link site-crossref "https://kisaragi-hiu.com/")
 
 (define site-url "http://kisaragi-hiu.com")
 (define (youtube/embed video-id)
