@@ -29,7 +29,7 @@ build () {
     raco pollen render blog/posts/ || exit 1
     raco pollen render blog/css/ || exit 1
     raco frog --build || exit 1
-
+    # frog doesn't copy other files, do it here
     mkdir -p public/css || exit 1
     cp -r blog/css/*.css public/css/ || exit 1
     cp -r blog/images public/ || exit 1
