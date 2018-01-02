@@ -24,11 +24,13 @@
   (require pollen/setup)
   (define block-tags (append '(subsection subsubsection label img pre) default-block-tags)))
 
+(define current-return-txexpr? (make-parameter #f))
+
 (define-syntax (define/txexpr stx)
   (syntax-case stx ()
     [(_ (name args ... . rest) body ... last-body)
      #'(begin
-         (define (name #:return-txexpr? [return-txexpr? #f] args ... . rest)
+         (define (name #:return-txexpr? [return-txexpr? (current-return-txexpr?)] args ... . rest)
            body ...
            ((if return-txexpr? identity ->html) last-body)))]))
 
