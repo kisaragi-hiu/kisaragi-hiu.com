@@ -24,41 +24,47 @@
   (require pollen/setup)
   (define block-tags (append '(subsection subsubsection label img pre) default-block-tags)))
 
+(define-syntax (define/txexpr stx)
+  (syntax-case stx ()
+    [(_ (name args ... . rest) body ... last-body)
+     #'(begin
+         (define (name #:return-txexpr? [return-txexpr? #f] args ... . rest)
+           body ...
+           ((if return-txexpr? identity ->html) last-body)))]))
+
 (define import file->string)
 
-(define (diff-old . elements) (->html `(span ([class "diff-old"]) ,@elements)))
-(define (diff-new . elements) (->html `(span ([class "diff-new"]) ,@elements)))
+(define/txexpr (diff-old . elements) `(span ([class "diff-old"]) ,@elements))
+(define/txexpr (diff-new . elements) `(span ([class "diff-new"]) ,@elements))
 
 ;; I'm naming the arguments so calls would be a little more readable
-(define (article-header #:date date ; :: string? ex: "@|date|"
-                        #:tags tags ; :: string? ex: "@|tags|"
-                        #:title title ; :: string? ex: "@|title|"
-                        #:uri uri ; :: string? ex: "@|full-uri|"
-                        #:class class) ; :: string? ex: "post-header"
-  (->html `(header ([class ,class])
-                   (p ([class "date-and-tags"])
-                      (span ,date)
-                      (span " :: ")
-                      (span ,tags))
-                   (p ([class "title"])
-                      (a ([href ,uri])
-                         ,title)))))
+(define/txexpr (article-header #:date date ; :: string? ex: "@|date|"
+                               #:tags tags ; :: string? ex: "@|tags|"
+                               #:title title ; :: string? ex: "@|title|"
+                               #:uri uri ; :: string? ex: "@|full-uri|"
+                               #:class class) ; :: string? ex: "post-header"
+  `(header ([class ,class])
+           (p ([class "date-and-tags"])
+              (span ,date)
+              (span " :: ")
+              (span ,tags))
+           (p ([class "title"])
+              (a ([href ,uri])
+                 ,title))))
 
-(define (strike . text)
-  (->html `(s ,@text)))
+(define/txexpr (strike . text)
+  `(s ,@text))
 
-(define (image src [caption #f] #:width [width #f] #:txexpr? [txexpr? #f])
-  (let ([wrapper (if txexpr? identity ->html)])
-    ;; "Backwards compatibility"
-    (wrapper `(div (img ([src ,src]))
-                   ,(if caption
-                        `(p ([class "image-caption"]) ,caption)
-                        "")))))
+(define/txexpr (image src [caption #f] #:width [width #f])
+    `(div (img ([src ,src]))
+          ,(if caption
+             `(p ([class "image-caption"]) ,caption)
+             "")))
 
-(define (R text ruby) `(ruby ,text (rt ,ruby)))
+(define/txexpr (R text ruby) `(ruby ,text (rt ,ruby)))
 
-(define (table . elements)
-  (->html `(table ,@elements)))
+(define/txexpr (table . elements)
+  `(table ,@elements))
 
 (define (newline-decode . elements)
   (string-join
@@ -73,60 +79,51 @@
 
 (define pagebreak (->html '(div ([class "page-break"]))))
 
-(define (year . text)
-  (->html `(p ([class "year-in-page"]) ,@text)))
+(define/txexpr (year . text)
+  `(p ([class "year-in-page"]) ,@text))
 
 (define ie "i.e.")
 
-(define (font-awesome fa-icon
-                      #:aria [hidden #t]
-                      #:txexpr [return-txexpr #f])
-  (~>
-   `(i ([class ,(string-append "fa "
-                               fa-icon)]
-        [aria-hidden "true"]))
-   ((if return-txexpr
-        identity
-        ->html) _)))
+(define/txexpr (font-awesome fa-icon
+                      #:aria [hidden #t])
+  `(i ([class ,(string-append "fa "
+                              fa-icon)]
+       [aria-hidden "true"])))
 
 #| link functions |#
 
-(define (link url [text url]
-              #:class [class ""]
-              #:target [target "_blank"]
-              #:txexpr? [txexpr? #f])
-  (let ([wrapper (if txexpr? identity ->html)])
-    (wrapper
-     `(a ([href ,url]
-          [target ,target]
-          [class ,class])
-         ,text))))
+(define/txexpr (link url [text url]
+                     #:class [class ""]
+                     #:target [target "_blank"])
+  `(a ([href ,url]
+       [target ,target]
+       [class ,class])
+      ,text))
 
-(define (image/link url src caption)
-  (->html `(div
-            ,(link #:txexpr? #t url
-                   (image src #:txexpr? #t))
-            (p ([class "image-caption"]) ,caption))))
+(define/txexpr (image/link url src caption)
+  `(div
+     ,(link #:return-txexpr? #t url
+            (image src #:return-txexpr? #t))
+     (p ([class "image-caption"]) ,caption)))
 
-(define (link/date url date . text)
-  (->html
-   `(p ,(string-append date " ")
-       ,(link url (string-join text)))))
+(define/txexpr (link/date url date . text)
+  `(p ,(string-append date " ")
+      ,(link #:return-txexpr? #t url (string-join text))))
 
 (define-syntax (define-link stx)
   (syntax-case stx ()
     [(_ linkname url-prefix)
      #'(begin
-         (define (linkname suburl [text suburl] #:class [class ""])
+         (define/txexpr (linkname suburl [text suburl] #:class [class ""])
            (link (string-append url-prefix suburl)
                  text
-                 #:class class)))]))
+                 #:class class
+                 #:return-txexpr? #t)))]))
 
 (define-link github "https://github.com/")
 (define-link twitter "https://twitter.com/")
 (define-link youtube "https://youtube.com/")
 (define-link pixiv "https://pixiv.net/")
-
 (define-link niconico "http://www.nicovideo.jp/")
 (define-link osuwiki "http://osu.ppy.sh/help/wiki/")
 (define-link transifex "https://www.transifex.com/user/profile/")
@@ -134,27 +131,26 @@
 (define-link site-crossref "https://kisaragi-hiu.com/")
 
 (define site-url "http://kisaragi-hiu.com")
-(define (youtube/embed video-id)
-  (->html
-   `(div ([style "padding-bottom: 50%;
-                  position: relative;
-                  overflow: hidden;"])
-      (iframe ([id "ytplayer"]
-               [type "text/html"]
-               [width "640"]
-               [height "360"]
-               [style "position: absolute;
-                       top: 0;
-                       left: 0;
-                       width: 100%;
-                       height: 100%;"]
-               [src ,(string-append
-                       "http://www.youtube.com/embed/"
-                       video-id
-                       "?autoplay=0"
-                       "&origin="
-                       site-url)]
-               [frameborder "0"])))))
+(define/txexpr (youtube/embed video-id)
+  `(div ([style "padding-bottom: 50%;
+                position: relative;
+                overflow: hidden;"])
+        (iframe ([id "ytplayer"]
+                 [type "text/html"]
+                 [width "640"]
+                 [height "360"]
+                 [style "position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;"]
+                 [src ,(string-append
+                        "http://www.youtube.com/embed/"
+                        video-id
+                        "?autoplay=0"
+                        "&origin="
+                        site-url)]
+                 [frameborder "0"]))))
 
 (define (google-adsense/page-level id)
   (string-append
