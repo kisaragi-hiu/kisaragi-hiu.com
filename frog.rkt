@@ -10,7 +10,7 @@
   (current-permalink "/blog/{year}-{month}-{day}-{filename}/index.html")
   (current-source-dir "blog")
   (current-output-dir "public")
-  (current-posts-per-page 30))
+  (current-posts-per-page 100))
 
 ;; Called once per post and non-post page, on the contents.
 (define/contract (enhance-body xs)
