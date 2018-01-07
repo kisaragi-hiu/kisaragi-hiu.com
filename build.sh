@@ -7,7 +7,18 @@ usage:
   $0 publish [dir]: Build the site and copy to dir (default ~/)
   $0 cleanup [interactive]: Clean up built files
   $0 new <Title>: Add a new post with the title <Title>, then edit it with \$EDITOR ($EDITOR)
+  $0 loop: Build, wait for /tmp/trigger to be created, build again, notify, loop.
 "
+
+waitfor () {
+    # wait for $1 to come to existence then exit
+    while true; do
+        sleep 1
+        if test -e "$1"; then
+            break
+        fi
+    done
+}
 
 new () {
     date_full="$(date +%Y-%m-%dT%H:%M:%S)"
@@ -36,6 +47,15 @@ build () {
     cp CNAME public/ || exit 1
     cp favicon.ico public/ || exit 1
     touch public/.nojekyll
+}
+
+loop () {
+    build
+    while true; do
+        waitfor /tmp/trigger
+        build
+        notify-send "Build complete"
+    done
 }
 
 publish () {
@@ -79,6 +99,9 @@ case "$1" in
         test -z "$2" && echo "$helptext" && exit
         new "$2" "$3" # creates $newfile
         echo New post: "$newfile"
+        ;;
+    (loop)
+        loop
         ;;
     (*)
         echo "$helptext"
