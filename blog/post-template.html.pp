@@ -4,6 +4,7 @@
 <article>
   ◊article-header[#:date "@|date|" #:tags "@|filtered-tags|"
                   #:title "@|title|" #:uri "@|full-uri|"
+                  #:category "@|category-from-tags|"
                   #:class "post-header"]
   @|content|
   <footer>

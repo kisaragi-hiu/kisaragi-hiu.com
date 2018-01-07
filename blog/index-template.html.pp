@@ -4,6 +4,7 @@
 <article>
   ◊article-header[#:date "@|date|" #:tags "@|filtered-tags|"
                   #:title "@|title|" #:uri "@|uri-path|"
+                  #:category "@|category-from-tags|"
                   #:class "index-item"]
 </article>
 <br>

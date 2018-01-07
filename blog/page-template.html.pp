@@ -77,17 +77,13 @@ This transforms it into all-tags in the form
     <div class="container">
       <header id="topheader" class="ten columns offset-by-one">
         <div class="logo">
-          <img src="@|uri-prefix|/images/avatar.png"/>
           <a href="/"><img src="/images/text-logo.svg" alt="如月.飛羽"></img></a>
+          <img src="@|uri-prefix|/images/avatar.png"/>
         </div>
         <nav>
           <ul>
             <li><a href="@|uri-prefix|/index.html">Blog</a></li>
             <li><a href="@|uri-prefix|/about.html">About</a></li>
-          </ul>
-        </nav>
-        <nav>
-          <ul>
             @(taglist->li-a (get-language-tags all-tags))
           </ul>
         </nav>

@@ -1,5 +1,4 @@
-@; vim: filetype=scribble
-@; { Template for each item in an index }
+@; { BEGIN defined in special-tags-for-index-and-post.template }
 @(local-require (only-in xml string->xexpr)
                 txexpr threading racket/format racket/string)
 
@@ -7,7 +6,11 @@
 
 @(define (not-special? tag)
    ;; or here for adding more rules later
-   (not (or (string-prefix? (tag-st-name tag) "language:"))))
+   (not (or (string-prefix? (tag-st-name tag) "language:")
+            (string-prefix? (tag-st-name tag) "category:"))))
+
+@(define (category? tag)
+   (string-prefix? (tag-st-name tag) "category:"))
 
 @(define (taglist->comma-html taglist)
    ; listof tag-st -> string
@@ -21,7 +24,29 @@
        string->xexpr
        get-elements ; strip away the top level span
        (filter txexpr? _) ; strip away the leftover newlines between each element
+       ;; '((a ([href ".."]) "..") (a ([href ".."]) "..")) at this point
        (map (λ (x) (tag-st (last x) (attr-ref x 'href))) _)
        (filter not-special? _)
        taglist->comma-html
    ))
+
+@(define category-from-tags
+   (~> (string-replace tags ", " "")
+       string->xexpr
+       get-elements ; strip away the top level span
+       (filter txexpr? _) ; strip away non txexpr stuff
+       ;; move into tag-st struct
+       (map (λ (x) (tag-st (last x) (attr-ref x 'href))) _)
+       (filter category? _)
+       (map (λ (x)
+              (tag-st (string-replace (tag-st-name x) "category:" "")
+                      (tag-st-url x)))
+            _)
+       taglist->comma-html))
+
+@; vim: filetype=scribble
+@; emacs:
+@; # Local Variables:
+@; # mode: scribble
+@; # End:
+@; { END defined in special-tags-for-index-and-post.template }

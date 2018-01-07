@@ -14,6 +14,7 @@
          racket/string
          threading
          txexpr
+         (only-in xml string->xexpr)
          (for-syntax racket/base))
 
 (provide (all-defined-out)
@@ -40,19 +41,24 @@
 (define/txexpr (diff-new . elements) `(span ([class "diff-new"]) ,@elements))
 
 ;; I'm naming the arguments so calls would be a little more readable
+;; tag processing is done in special-tags-(ry .template
 (define/txexpr (article-header #:date date ; :: string? ex: "@|date|"
                                #:tags tags ; :: string? ex: "@|tags|"
+                               #:category category ; string? ex: "@|category|"
                                #:title title ; :: string? ex: "@|title|"
                                #:uri uri ; :: string? ex: "@|full-uri|"
                                #:class class) ; :: string? ex: "post-header"
   `(header ([class ,class])
-           (p ([class "date-and-tags"])
+           (p ([class "date-and-category"])
               (span ,date)
               (span " :: ")
-              (span ,tags))
+              (span ,category))
            (p ([class "title"])
               (a ([href ,uri])
-                 ,title))))
+                 ,title))
+           (p ([class "tags"])
+              (span ,(font-awesome "fa-tags" #:return-txexpr? #t))
+              (span ,tags))))
 
 (define/txexpr (strike . text)
   `(s ,@text))
