@@ -1,7 +1,7 @@
 #lang pollen
     Title: Discovering Racket through making a osu! skin
     Date: 2017-09-13T17:58:00
-    Tags: language:en, Programming, Racket
+    Tags: category:Kisaragi, language:en, Programming, Racket
 
 In around March this year, I started trying to make my own osu! skin, or at least mix a skin for my own use.
 I started with the ◊link["https://osu.ppy.sh/forum/t/454986"]{Emilia (Re:0) skin by Beatstatic}, with a git repo to track my changes, and copied the hitcircles from ◊link["https://osu.ppy.sh/forum/t/300001"]{Clear Skin Ultra 2.4} (I like its hitcircle design a lot).
