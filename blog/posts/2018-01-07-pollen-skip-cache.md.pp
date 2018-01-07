@@ -1,5 +1,5 @@
 #lang pollen
-    Title: Disabling pollen cache temporarily
+    Title: Disabling Pollen cache temporarily
     Date: 2018-01-07T23:20:35
     Tags: language:en, category:kisaragi, Programming, Pollen
 
