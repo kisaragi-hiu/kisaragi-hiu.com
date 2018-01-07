@@ -18,6 +18,9 @@
                   h7,
                   .title})
 
+/* Using Skeleton, 1.0rem = 10px, 1.5rem = 15px, etc. */
+/* I'm following a 0.3/0.6 multiplier */
+
 ◊import["inline-colors.css"]
 
 body {
@@ -46,7 +49,7 @@ pre {
 }
 
 a,
-.date-and-tags a {
+.date-and-category a {
     color: #a868e8;
     -webkit-transition: all 0.4s ease;
     -moz-transition: all 0.4s ease;
@@ -88,15 +91,11 @@ article header a:hover,
 #topheader .logo {
     font-weight: 300;
     display: flex;
-    margin-bottom: 0.4em;
-    border-bottom: 1px solid black;
+    justify-content: space-between;
+    margin-bottom: 0;
 }
 
-#topheader .logo a {
-    font-size: 3.6rem;
-}
-
-#topheader .logo img {
+#topheader img {
     max-height: 2em;
     margin-right: 0.4em;
 }
@@ -110,6 +109,7 @@ article header a:hover,
 }
 
 #topheader nav ul li a {
+    font-size: 2.1rem;
     padding-right: 0.4em;
     text-decoration: none;
 }
@@ -149,11 +149,11 @@ article header {
     margin-bottom: 1rem;
 }
 
-article header p {
-    display: inline;
-}
+/* article header p {
+     display: inline;
+} */
 
-article header .date-and-tags {
+article header .date-and-category {
     font-family: 'Fira Mono', monospace;
     display: block;
     color: #888;

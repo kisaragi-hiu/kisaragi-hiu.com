@@ -1,1 +1,73 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="56mm" height="12mm" viewBox="0 0 56 12"><g aria-label="如月.飛羽" style="line-height:1.25" font-weight="400" font-size="12.7" font-family="JKゴシックL" letter-spacing="0" word-spacing="0" stroke-width=".265"><path d="M6.734 10.202h3.721V2.14h-3.72zm-5.63-2.816q-.112.335-.285.757L.335 7.77q.781-1.985 1.24-4.329h-1.5V2.91h1.6q.21-1.129.334-2.195l.583.05q-.149 1.24-.322 2.145h3.15q0 3.15-1.625 5.742.943.794 1.96 1.935l-.422.397q-.992-1.091-1.86-1.848Q2.208 10.921.335 12L0 11.529q1.774-1.017 3.014-2.79-.906-.745-1.91-1.353zm.198-.558q1.116.695 2.022 1.426Q4.7 6.034 4.812 3.442H2.17q-.36 1.873-.868 3.386zm9.748-5.234v9.972h-.595v-.831h-3.72v.83h-.583v-9.97zM15.342 4.62v1.328q0 .744-.05 1.29h6.797V4.62zm0-.52h6.747V1.706h-6.747zm-.608-2.927h7.962v9.165q0 .905-.223 1.116-.223.224-1.104.224-.248 0-1.922-.062l-.013-.546q1.315.05 1.848.05.583 0 .695-.1.112-.099.112-.682V7.771h-6.847q-.322 2.443-1.947 4.043l-.459-.372q1.042-1.054 1.464-2.32.434-1.277.434-3.36zM26.057 10.921V9.358h.72v1.563zM39.44 4.93l.533.137q-.236 1.278-.806 1.451l.322.372q-.769.658-1.7 1.104l-.284-.459q.818-.397 1.575-1.004-.013 0-.037.012h-.025q-.831 0-1.724-1.364-.893-1.365-1.017-3.41h-7.032v-.534h7.59q0 1.03.248 1.96.248.917.595 1.5.348.57.695.918.36.335.608.335.26 0 .458-1.017zM37.33 2.575q.955-.595 1.761-1.476l.385.385q-.831.93-1.811 1.525zm.136 1.067l.249-.471q1.227.57 2.108 1.153l-.273.446q-.868-.558-2.084-1.128zm2.146 6.114l.533.149q-.272 1.823-1.004 1.823-.893 0-1.761-1.439-.856-1.45-.968-3.968h-2.021v5.37h-.596V6.32h-2.282q-.136 2.207-.645 3.423-.496 1.203-1.6 2.021l-.372-.483q.633-.472 1.017-1.005.385-.546.645-1.513.26-.98.348-2.443H28.76v-.534h2.183q.025-.83.025-1.339v-.72q-.732.273-1.848.497l-.162-.521q2.444-.509 4.031-1.662l.31.446q-.769.583-1.736 1.005v.905q0 .534-.025 1.39h2.257V2.263h.596v3.522h2.604q0 1.253.223 2.32.236 1.066.57 1.699.348.62.683.967.347.347.62.347.335 0 .521-1.364zm-1.997-1.128l.248-.484q1.166.508 2.121 1.042l-.285.47q-.819-.47-2.084-1.028zM42.156 3.083l.434-.335q1.165 1.401 2.07 2.828l-.433.31q-.88-1.34-2.071-2.803zm3.41 3.658q-1.438 1.563-3.634 2.803l-.285-.459q2.108-1.203 3.547-2.753zM47.7 2.96l.434-.335q1.253 1.525 2.096 2.828l-.446.31q-.819-1.265-2.084-2.803zm-.496 5.99q2.134-1.203 3.56-2.728l.36.396Q49.67 8.192 47.5 9.42zm-2.096 2.059q.583 0 .695-.1.111-.111.111-.694V1.83h-4.229v-.546h4.825v8.93q0 .893-.223 1.116-.211.224-1.092.224-.236 0-1.86-.062l-.013-.546q1.613.062 1.786.062zm5.581 0q.583 0 .683-.1.111-.111.111-.694V1.83h-4.23v-.546h4.85v8.93q0 .893-.223 1.116-.21.224-1.091.224-.248 0-1.886-.062l-.012-.546q1.625.062 1.798.062z" style="-inkscape-font-specification:JKゴシックL"/></g><path fill="#222" fill-opacity=".267" d="M3.624 8.125h51.717V12H3.624z"/></svg>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="56mm"
+   height="12mm"
+   viewBox="0 0 56 12"
+   version="1.1"
+   id="svg8"
+   sodipodi:docname="text-logo.svg"
+   inkscape:version="0.92.2 5c3e80d, 2017-08-06">
+  <metadata
+     id="metadata14">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs12" />
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1920"
+     inkscape:window-height="1052"
+     id="namedview10"
+     showgrid="false"
+     inkscape:zoom="3.4112351"
+     inkscape:cx="93.673526"
+     inkscape:cy="-6.9421187"
+     inkscape:window-x="0"
+     inkscape:window-y="28"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg8"
+     inkscape:pagecheckerboard="false" />
+  <g
+     aria-label="如月飛羽"
+     style="font-style:normal;font-weight:normal;font-size:13.78581238px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+     id="text4540">
+    <path
+       d="M 5.8727556,2.4877934 H 10.477217 V 10.952282 H 5.8727556 Z M 9.3881377,9.8494172 V 3.5906583 H 6.9618347 V 9.8494172 Z M 2.4952315,2.9151535 H 4.9077487 L 3.8738128,9.0360542 4.811248,9.6012725 V 10.897139 L 3.3775235,10.014847 1.9713707,11.627787 H 0.52386036 L 2.4263025,9.4358428 0.4549313,8.2364771 1.1855794,4.0180185 H -5.1212311e-7 V 2.9151535 H 1.3785807 L 1.6956544,1.1367837 h 1.102865 z M 2.8536627,8.4156927 3.5843107,4.0180185 H 2.2884443 L 1.6680828,7.6988304 Z"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'マキナス';-inkscape-font-specification:'マキナス';stroke-width:0.26458332"
+       id="path4572" />
+    <path
+       d="m 16.005328,1.3435709 h 7.444338 V 12.000004 H 22.360587 V 8.3054062 h -5.955471 l -0.344645,3.6945978 h -1.089079 z m 6.355259,1.0752934 h -5.390252 l -0.151644,1.7232265 h 5.541896 z m -5.831398,4.7147478 h 5.831398 V 5.3138849 h -5.665969 z"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'マキナス';-inkscape-font-specification:'マキナス';stroke-width:0.26458332"
+       id="path4574" />
+    <path
+       d="M 35.581181,6.9406107 36.57376,10.82821 h 1.888656 v 1.061507 H 35.760397 L 34.519674,7.0784689 H 32.892948 V 11.917289 H 31.83144 V 7.0784689 H 30.521788 L 29.405137,11.724288 H 28.316058 L 29.446495,7.0784689 H 27.888698 V 6.0307471 H 29.52921 V 4.7486666 L 27.985199,5.3138849 V 4.1972341 l 3.198308,-1.1304366 v 1.102865 l -0.59279,0.2067871 V 6.0307471 H 31.83144 V 2.9013677 h 1.061508 v 3.1293794 h 2.688233 z m 1.240723,-1.2131514 h 1.640512 V 6.7889668 H 36.063685 L 34.574817,2.6256515 V 2.4464359 H 28.247129 V 1.3711425 h 7.402981 v 1.0615076 z m 0.840935,1.2407231 V 8.098619 L 36.559974,8.5259792 V 7.4093284 Z M 36.559974,10.042419 V 8.9119819 l 1.102865,0.5100751 v 1.130437 z M 37.704196,1.1643554 V 2.2810062 L 36.752975,2.6394373 V 1.5090007 Z m 0,2.5090178 V 4.8038098 L 36.752975,4.4315929 V 3.3011563 Z"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'マキナス';-inkscape-font-specification:'マキナス';stroke-width:0.26458332"
+       id="path4576" />
+    <path
+       d="m 43.259879,3.687159 0.992578,1.6542975 H 42.942805 L 41.950227,3.687159 Z m 5.624611,0 1.006364,1.6542975 H 48.567416 L 47.561052,3.687159 Z m -7.058336,6.0381858 1.695655,-2.8812347 h 1.295867 l -1.695655,2.8812347 z m 5.610826,0 1.709441,-2.8812347 h 1.295866 L 48.746632,9.7253448 Z M 41.205793,2.5291508 V 1.4400716 h 5.00425 V 11.600215 h -1.08908 V 2.5291508 Z m 5.831398,-1.0890792 h 5.00425 V 11.600215 H 50.938576 V 2.5291508 h -3.901385 z"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'マキナス';-inkscape-font-specification:'マキナス';stroke-width:0.26458332"
+       id="path4578" />
+  </g>
+</svg>
