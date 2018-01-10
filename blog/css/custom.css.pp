@@ -8,6 +8,12 @@
                   'Meiryo',
                   'Malgun Gothic'})
 
+◊(define monospace
+   ◊string-append{'Fira Mono',
+                  'Noto Sans Mono CJK',
+                  ◊|cjk-fallback|,
+                  'monospace'})
+
 ◊(define title
    ◊string-append{h1,
                   h2,
