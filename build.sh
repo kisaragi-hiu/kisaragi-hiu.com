@@ -53,6 +53,7 @@ loop () {
     build
     while true; do
         waitfor /tmp/trigger
+        export POLLEN=$RANDOM
         build
         notify-send "Build complete"
     done
