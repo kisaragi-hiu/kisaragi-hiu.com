@@ -55,7 +55,8 @@ pre {
 }
 
 a,
-.date-and-category a {
+.date-and-category a,
+.tags a {
     color: #a868e8;
     -webkit-transition: all 0.4s ease;
     -moz-transition: all 0.4s ease;
@@ -150,16 +151,13 @@ a img:hover {
     margin-right: 6px;
 }
 
-article header {
+article header .title {
     font-size: 2.4rem;
-    margin-bottom: 1rem;
+    margin-bottom: 0;
 }
 
-/* article header p {
-     display: inline;
-} */
-
-article header .date-and-category {
+article header .date-and-category,
+article header .tags {
     font-family: 'Fira Mono', monospace;
     display: block;
     color: #888;

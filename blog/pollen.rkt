@@ -57,7 +57,7 @@
               (a ([href ,uri])
                  ,title))
            (p ([class "tags"])
-              (span ,(font-awesome "fa-tags" #:return-txexpr? #t))
+              (span "Tags: ")
               (span ,tags))))
 
 (define/txexpr (strike . text)

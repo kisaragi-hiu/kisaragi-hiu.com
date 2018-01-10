@@ -7,4 +7,4 @@
                   #:category "@|category-from-tags|"
                   #:class "index-item"]
 </article>
-<br>
+<hr>
