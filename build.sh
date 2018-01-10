@@ -101,6 +101,7 @@ case "$1" in
         echo New post: "$newfile"
         ;;
     (loop)
+	echo A new build is triggered if /tmp/trigger is present
         loop
         ;;
     (*)
