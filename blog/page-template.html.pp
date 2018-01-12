@@ -108,7 +108,7 @@ This transforms it into all-tags in the form
                 src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" />
         </a>
         <br />
-        <p>© Kisaragi Hiu 2017. Posts are licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">CC-BY-SA 4.0 International license</a>.</p>
+        <p>© Kisaragi Hiu 2017–2018. Posts are licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">CC-BY-SA 4.0 International license</a>.</p>
         <ul id="social-links">
           ◊; ◊font-awesome returns a string so it can be used in a document
           ◊; here we want raw txexpr for input into ◊L and ◊link
