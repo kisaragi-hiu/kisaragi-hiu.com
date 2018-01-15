@@ -139,6 +139,14 @@
 (define-link site-crossref "https://kisaragi-hiu.com/")
 
 (define site-url "http://kisaragi-hiu.com")
+
+(define/txexpr (video/gif-esque path)
+  `(video ([autoplay "autoplay"]
+           [style "max-width: 100%;"]
+           [muted "muted"]
+           [loop "loop"]
+           [src ,path])))
+
 (define/txexpr (youtube/embed video-id)
   `(div ([style "padding-bottom: 50%;
                 position: relative;
