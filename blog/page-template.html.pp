@@ -63,7 +63,7 @@ This transforms it into all-tags in the form
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="@|uri-prefix|/css/normalize.css">
     <link rel="stylesheet" type="text/css" href="@|uri-prefix|/css/skeleton.css">
-    <link rel="stylesheet" type="text/css" href="@|uri-prefix|/css/monokai.css">
+    <link rel="stylesheet" type="text/css" href="@|uri-prefix|/css/emacs.css">
     <link rel="stylesheet" type="text/css" href="@|uri-prefix|/css/custom.css">
     <!-- Feeds -->
     <link rel="alternate" type="application/atom+xml"
