@@ -22,7 +22,7 @@ waitfor () {
 
 new () {
     date_full="$(date +%Y-%m-%dT%H:%M:%S)"
-    newfile="./blog/posts/${date_full%T*}-$1.md.pp"
+    newfile="./drafts/${date_full%T*}-$1.md"
     {   echo '#lang pollen'
         echo "    Title: $1"
         echo "    Date: $date_full"
