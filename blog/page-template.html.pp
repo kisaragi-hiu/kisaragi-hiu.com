@@ -70,7 +70,7 @@ This transforms it into all-tags in the form
           href="@|atom-feed-uri|" title="Atom Feed">
     <!-- JS -->
     <script src="https://use.fontawesome.com/f9f3cd1f14.js"></script>
-    @google-universal-analytics["UA-109874076-1"]
+    ◊google-universal-analytics["UA-109874076-1"]
     ◊;google-adsense/page-level["ca-pub-6215394828182929"]
   </head>
   <body>
