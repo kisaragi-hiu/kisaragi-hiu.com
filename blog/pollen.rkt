@@ -85,6 +85,15 @@
         elements)
    ""))
 
+(define (highlight language . stuff)
+  (define lang-string
+    (if (symbol? language)
+      (symbol->string language)
+      language))
+  (string-append "```" lang-string "\n"
+                 (string-join stuff "")
+                 "\n```\n"))
+
 (define pagebreak (->html '(div ([class "page-break"]))))
 
 (define/txexpr (year . text)
