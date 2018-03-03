@@ -65,4 +65,4 @@ Reading into pam_env's documentation on the config format, it seems that `DEFAUL
    ◊string-append{◊|name| OVERRIDE=◊|content|})
 }|
 
-The full configuration file can be found [in my dotfiles repo](https://github.com/flyingfeather1501/dotfiles/blob/master/@linux/.pam_environment.pp).
+The full configuration file can be found [in my dotfiles repo](https://github.com/kisaragi-hiu/dotfiles/blob/master/@linux/.pam_environment.pp).

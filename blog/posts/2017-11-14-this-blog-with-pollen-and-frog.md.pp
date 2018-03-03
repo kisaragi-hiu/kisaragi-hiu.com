@@ -27,7 +27,7 @@ I thought about a few different static site generators. Hugo and Hexo both seeme
 
 ## Port over the posts, preprocess them with Pollen
 
-As it turned out, preprocessing the posts with Pollen actually means I can keep the tag functions I was using, and simply tell them to return an HTML or Markdown string. This way I basically have an extensible equivalent to Hugo's shortcodes: for instance, `◊"◊"github["flyingfeather1501"]{this link}` gets turned into ◊github["flyingfeather1501"]{this link}.
+As it turned out, preprocessing the posts with Pollen actually means I can keep the tag functions I was using, and simply tell them to return an HTML or Markdown string. This way I basically have an extensible equivalent to Hugo's shortcodes: for instance, `◊"◊"github["kisaragi-hiu"]{this link}` gets turned into ◊github["kisaragi-hiu"]{this link}.
 
 ## Dealing with Markdown newlines
 
@@ -45,4 +45,4 @@ In the end I spent two weeks from putting up an issue on the Github page to move
 
 I followed Alexis King's ◊link["https://lexi-lambda.github.io/blog/2015/07/18/automatically-deploying-a-frog-powered-blog-to-github-pages/"]{blog post} when setting up Travis when I still hadn't moved onto Frog. Instead of using just one deploy.sh though, I have a build.sh with a build and a publish function, and a deploy.sh which does the deployment.
 
-I develop this site on ◊github["flyingfeather1501/flyingfeather1501.github.io"]{Github}, with posts released under CC-BY-SA and code under BSD 3-clause.
+I develop this site on ◊github["kisaragi-hiu/kisaragi-hiu.github.io"]{Github}, with posts released under CC-BY-SA and code under BSD 3-clause.

@@ -3,7 +3,7 @@
 
 # Why benchmark hello-world?
 
-Sometimes I want to write interactive scripts for my graphical environment that simply wires some logic together. In such workloads where little calculation is involved, the biggest contributing factor to speed is the startup time of the script itself. For example, a language that takes 2 seconds to launch is certainly not the right choice for a input method switcher script like %lozenge%github{flyingfeather1501/scripts/blob/master/fcitx-switch-im}.
+Sometimes I want to write interactive scripts for my graphical environment that simply wires some logic together. In such workloads where little calculation is involved, the biggest contributing factor to speed is the startup time of the script itself. For example, a language that takes 2 seconds to launch is certainly not the right choice for a input method switcher script like %lozenge%github{kisaragi-hiu/scripts/blob/master/fcitx-switch-im}.
 
 This article provides the results from a script made to benchmark many languages.
 

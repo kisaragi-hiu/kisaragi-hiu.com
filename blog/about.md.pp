@@ -7,7 +7,7 @@
 
 ◊newline-decode{
 對Racket, Blender, Linux有興趣。
-能夠用Bash弄出簡單的腳本，見我的◊link["https://github.com/flyingfeather1501"]{Github}.
+能夠用Bash弄出簡單的腳本，見我的◊link["https://github.com/kisaragi-hiu"]{Github}.
 }
 
 ## Links
@@ -22,5 +22,5 @@
 
 ◊link{https://instagram.com/kisaragi_hiu}
 ◊link{https://twitter.com/flyin1501}
-◊link{https://github.com/flyingfeather1501}
+◊link{https://github.com/kisaragi-hiu}
 }
