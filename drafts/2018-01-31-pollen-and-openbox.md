@@ -1,9 +1,9 @@
 #lang pollen
     Title: Hide decorations for maximized windows in Openbox, and using Pollen to preprocess the configuration
     Date: 2018-01-31T19:52:07
-    Tags: DRAFT
+    Tags: language:en, category:Linux Configuration, Programming, Openbox, Pollen, Configuration
 
-Last week I switched from KWin to Openbox for my window manager, after thinking about getting off KWin for a while.
+I switched from KWin to Openbox for my window manager in January, after thinking about getting off KWin for a while.
 
 KWin is really powerful, but Plasma's configuration architecture prevents me from being able to keep it cleanly in version control. I tried out i3, but I can't (easily) use it in Plasma, which I do want to stay on. After reading a few articles on Openbox, and recalling my experience with its configuration around 2014, I decided to give it a try.
 
