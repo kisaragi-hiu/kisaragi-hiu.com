@@ -113,36 +113,34 @@ With this, we can transliterate most of the lyrics already:
 
 And the translated lyrics is now:
 
-◊newline-decode{
-> 
-> A.
-> I am dreaming a dream
-> to explore even deeper
-> the treasures, the wonder
-> Deep in the Abyss
-> 
-> B.
-> Holo loholo forðe holo
-> Helelele lelele
-> Let the journey begin
-> to the bottom of the Abyss
-> 
-> A.
-> I am dreaming a dream
-> to explore even deeper
-> the treasures, the wonder
-> Deep in the Abyss
-> 
-> 'B.
-> Holo loholo forðe holo
-> Helelele lelele
-> Let the journey continue
-> to the bottom of the Abyss
-> 
-> A.
-> I am dreaming a dream
-> to explore even deeper
-> the treasures, the wonder
-> Deep in the Abyss
-> 
+◊quotation{
+A.
+I am dreaming a dream
+to explore even deeper
+the treasures, the wonder
+Deep in the Abyss
+
+B.
+Holo loholo forðe holo
+Helelele lelele
+Let the journey begin
+to the bottom of the Abyss
+
+A.
+I am dreaming a dream
+to explore even deeper
+the treasures, the wonder
+Deep in the Abyss
+
+'B.
+Holo loholo forðe holo
+Helelele lelele
+Let the journey continue
+to the bottom of the Abyss
+
+A.
+I am dreaming a dream
+to explore even deeper
+the treasures, the wonder
+Deep in the Abyss
 }

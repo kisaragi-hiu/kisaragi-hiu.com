@@ -85,6 +85,12 @@
         elements)
    ""))
 
+(define (quotation . lines)
+  ;; lines :: (listof string?)
+  (~> (string-join lines)
+      (string-replace _ "\n" "\n> ")
+      (newline-decode _)))
+
 (define (highlight language . stuff)
   (define lang-string
     (if (symbol? language)
