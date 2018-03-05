@@ -11,37 +11,36 @@ The song doesn't actually have too much lyrics, as I will show in the next few p
 
 First, the lyrics.
 
-◊newline-decode{
-> A.
-> Halalaha zela halalelu
-> Sivivile shi-dhina
-> houwelela, lalelila
-> Hanezeve cara-dhina
->
-> B.
-> Halalaha la forðe hala
-> helelele lelele
-> colwelela kalalila
-> Hanezeve yulumai ni
->
-> A.
-> Halalaha zela halalelu
-> Sivivile shi-dhina
-> houwelela, lalelila
-> Hanezeve cara-dhina
->
-> 'B.
-> Kodo wodo hondo hondo-oh
-> helelele lelele
-> colwelelo kalalila
-> Hanezeve yulumai ni
->
-> A.
-> Halalaha zela halalelu
-> Sivivile shi-dhina
-> houwelela, lalelila
-> Hanezeve cara-dhina
->
+◊quotation{
+A.
+Halalaha zela halalelu
+Sivivile shi-dhina
+houwelela, lalelila
+Hanezeve cara-dhina
+
+B.
+Halalaha la forðe hala
+helelele lelele
+colwelela kalalila
+Hanezeve yulumai ni
+
+A.
+Halalaha zela halalelu
+Sivivile shi-dhina
+houwelela, lalelila
+Hanezeve cara-dhina
+
+'B.
+Kodo wodo hondo hondo-oh
+helelele lelele
+colwelelo kalalila
+Hanezeve yulumai ni
+
+A.
+Halalaha zela halalelu
+Sivivile shi-dhina
+houwelela, lalelila
+Hanezeve cara-dhina
 }
 
 As you can see, it's all just two paragraphs with some slight variations in B. I'll explain why I grouped syllables like this in a little bit.
@@ -85,16 +84,16 @@ Using this grammar, I can read `Hanezeve cara-dhina` as `Abyss in-deep`, and `Ha
 
 Another sentence I've managed to make up a structure, then somewhat make sense of, is:
 
-◊newline-decode{
-> Sivivile shi-dhina
-> houwelela, lalelila
+◊quotation{
+Sivivile shi-dhina
+houwelela, lalelila
 }
 
 I started by just listening to the vocal, thinking about the main idea of the song ("Riko's Journey"), and imagining what English lyrics would be fitting. After a bit, I came up with:
 
-◊newline-decode{
-> Explore even deeper
-> ...
+◊quotation{
+Explore even deeper
+...
 }
 
 which fits both Riko's desire to go deeper, and the grammar structure I established with -dhina in the previous section. So:
@@ -110,37 +109,36 @@ As of the other two words, I just thought up "treasure" and "wonder" as two noun
 
 ## What I have now
 
-◊newline-decode{
-> A.
-> Halalaha zela halalelu
-> Explore even deeper
-> the treasure, the wonder
-> Deep in the Abyss
->
-> B.
-> Halalaha la forðe hala
-> helelele lelele
-> colwelela kalalila
-> To the bottom of the Abyss
->
-> A.
-> Halalaha zela halalelu
-> Explore even deeper
-> the treasure, the wonder
-> Deep in the Abyss
->
-> 'B.
-> Kodo wodo hondo hondo-oh
-> helelele lelele
-> colwelelo kalalila
-> To the bottom of the Abyss
->
-> A.
-> Halalaha zela halalelu
-> Explore even deeper
-> the treasure, the wonder
-> Deep in the Abyss
->
+◊quotation{
+A.
+Halalaha zela halalelu
+Explore even deeper
+the treasure, the wonder
+Deep in the Abyss
+
+B.
+Halalaha la forðe hala
+helelele lelele
+colwelela kalalila
+To the bottom of the Abyss
+
+A.
+Halalaha zela halalelu
+Explore even deeper
+the treasure, the wonder
+Deep in the Abyss
+
+'B.
+Kodo wodo hondo hondo-oh
+helelele lelele
+colwelelo kalalila
+To the bottom of the Abyss
+
+A.
+Halalaha zela halalelu
+Explore even deeper
+the treasure, the wonder
+Deep in the Abyss
 }
 
 ## More to come (hopefully)

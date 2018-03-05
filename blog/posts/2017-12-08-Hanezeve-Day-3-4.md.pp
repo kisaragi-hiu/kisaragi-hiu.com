@@ -38,37 +38,36 @@ helelele lelele
 
 ## The lyrics, again
 
-◊newline-decode{
-> A.
-> Halalaha zela halalelu
-> Sivivile shi-dhina
-> houwelela, walelila
-> Hanezeve cara-dhina
->
-> B.
-> holo loholo forðe holo
-> helelele lelele
-> colwelela kalalila
-> Hanezeve yulumai ni
->
-> A.
-> Halalaha zela halalelu
-> Sivivile shi-dhina
-> houwelela, walelila
-> Hanezeve cara-dhina
->
-> 'B.
-> holo loholo forðe holo
-> helelele lelele
-> colwelelo kalalila
-> Hanezeve yulumai ni
->
-> A.
-> Halalaha zela halalelu
-> Sivivile shi-dhina
-> houwelela, walelila
-> Hanezeve cara-dhina
->
+◊quotation{
+A.
+Halalaha zela halalelu
+Sivivile shi-dhina
+houwelela, walelila
+Hanezeve cara-dhina
+
+B.
+holo loholo forðe holo
+helelele lelele
+colwelela kalalila
+Hanezeve yulumai ni
+
+A.
+Halalaha zela halalelu
+Sivivile shi-dhina
+houwelela, walelila
+Hanezeve cara-dhina
+
+'B.
+holo loholo forðe holo
+helelele lelele
+colwelelo kalalila
+Hanezeve yulumai ni
+
+A.
+Halalaha zela halalelu
+Sivivile shi-dhina
+houwelela, walelila
+Hanezeve cara-dhina
 }
 
 ## Let's continue our journey
@@ -97,18 +96,18 @@ The word order here with "start journey" / "continue journey" is different than 
 
 With this, we can transliterate most of the lyrics already:
 
-◊newline-decode{
-> A.
-> (thought-fiction = dream) I (thought-make = imagine)
-> explore even-deep
-> treasures, (idea-unknown = wonder)
-> Abyss in-deep
->
-> B.
-> ???? ????
-> ???? ????
-> start (seeking-unknown = journey)
-> Abyss at-bottom to
+◊quotation{
+A.
+(thought-fiction = dream) I (thought-make = imagine)
+explore even-deep
+treasures, (idea-unknown = wonder)
+Abyss in-deep
+
+B.
+???? ????
+???? ????
+start (seeking-unknown = journey)
+Abyss at-bottom to
 }
 
 And the translated lyrics is now:
