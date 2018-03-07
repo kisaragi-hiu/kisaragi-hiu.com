@@ -92,7 +92,13 @@
   ;; lines :: (listof string?)
   (~> (string-join lines)
       (string-replace _ "\n" "\n> ")
+      (string-append "> " _) ; first line has no ">" from above. add it
       (newline-decode _)))
+
+(define (quotation-html . lines)
+  ;; lines :: (listof string?)
+  (~> (apply newline-decode lines)
+      (string-append "<blockquote><p>" _ "</p></blockquote>")))
 
 (define (highlight language . stuff)
   (define lang-string
