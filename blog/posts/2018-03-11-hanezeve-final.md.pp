@@ -1,7 +1,7 @@
 #lang pollen
     Title: Making up a language from Hanezeve Caradhina, "Day 5"
     Date: 2018-03-11T21:24:47
-    Tags: category:Hanezeve Caradhina Language Construction, language:en, Language
+    Tags: category:Hanezeve Caradhina Language Construction, language:en, Language, Anime, Made in Abyss
 
 After putting this aside for three months, I finally spent another few minutes thinking what the last line can mean.
 
