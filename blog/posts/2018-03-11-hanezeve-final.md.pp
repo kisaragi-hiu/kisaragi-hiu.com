@@ -1,5 +1,5 @@
 #lang pollen
-    Title: Hanezeve Caradhina, "Day 5"
+    Title: Making up a language from Hanezeve Caradhina, "Day 5"
     Date: 2018-03-11T21:24:47
     Tags: category:Hanezeve Caradhina Language Construction, language:en, Language
 
@@ -63,7 +63,7 @@ to the bottom of the Abyss
 
 ### Hanezeve Caradhina / Deep in the Abyss
 
-<div style="display:flex;justify-content:space-between">
+<div style="display:flex">
 <span>
 
 ◊quotation-html{
