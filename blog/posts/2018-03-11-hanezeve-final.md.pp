@@ -1,6 +1,6 @@
 #lang pollen
     Title: Hanezeve Caradhina, "Day 5"
-    Date: ◊date◊
+    Date: 2018-03-11T21:24:47
     Tags: category:Hanezeve Caradhina Language Construction, language:en, Language
 
 After putting this aside for three months, I finally spent another few minutes thinking what the last line can mean.
@@ -20,11 +20,11 @@ Starting off from the part that's harder to break apart, I'm seeing "Helelele le
 
 - Helelele…: *Come…*
 
-◊quotation{
+```
 Halalaha zela halalelu
 => (thought-fiction = dream) I (thought-make = imagine)
 => I am dreaming a dream
-}
+```
 
 *The first sentence in section A.*
 
@@ -136,4 +136,5 @@ Deep in the Abyss
 </span>
 </div>
 
+Listen to Hanezeve Caradhina (and the rest of the Made in Abyss OST) [on Spotify.](https://open.spotify.com/album/5oEzjkSYSfC0ITRiqK6m8l)
 ◊; vim: filetype=pollen
