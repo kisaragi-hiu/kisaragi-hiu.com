@@ -6,7 +6,6 @@ usage:
   $0 build: Build the site
   $0 publish [dir]: Build the site and copy to dir (default ~/)
   $0 cleanup [interactive]: Clean up built files
-  $0 new <Title>: Add a new post with the title <Title>, then edit it with \$EDITOR ($EDITOR)
   $0 loop: Build, wait for /tmp/trigger to be created, build again, notify, loop.
 "
 
@@ -18,20 +17,6 @@ waitfor () {
             break
         fi
     done
-}
-
-new () {
-    date_full="$(date +%Y-%m-%dT%H:%M:%S)"
-    newfile="./drafts/${date_full%T*}-$1.md"
-    {   echo '#lang pollen'
-        echo "    Title: $1"
-        echo "    Date: $date_full"
-        echo "    Tags: DRAFT"
-    } >> "$newfile"
-    if test -z "$2"; then
-        test -z "$EDITOR" && EDITOR="vi" # use vi if EDITOR is not set
-        $EDITOR "$newfile"
-    fi
 }
 
 build () {
@@ -96,11 +81,6 @@ case "$1" in
     (clean|cleanup)
         echo cleaning up
         cleanup "$2"
-        ;;
-    (new)
-        test -z "$2" && echo "$helptext" && exit
-        new "$2" "$3" # creates $newfile
-        echo New post: "$newfile"
         ;;
     (loop)
         echo A new build is triggered if /tmp/trigger is present
