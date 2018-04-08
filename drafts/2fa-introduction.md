@@ -1,0 +1,24 @@
+#lang pollen
+    Title: Introduction to Two Factor Authorization
+    Date: 2018-04-08T19:38:06+09:00
+    Tags: language:en, category:kisaragi, Tutorial
+
+Two factor authorization (2FA) in online accounts is a strong way to limit account access. It involves a website (a point of access control) and a client (like Google Authenticator, FreeOTP, and others).
+
+When setting up 2FA, you store a randomly generated text (I'll call it the token) in the 2FA client.
+
+Both the website and the 2FA client will derive a 6-digit code from the token and the current time. When they share the same token and agree with the current time, the code will be the same. This is done so you can type in a 6-digit code while keeping the difficulty in guessing a long string of random text.
+
+When logging in, the website will ask for the password, as before, and the derived code. If one of the two isn't known, access will not be permitted. This adds an extra layer of security to crack, like adding an extra lock onto your door.
+
+In practice, this means:
+
+- Telling the website you want to setup 2FA. It should give you the token or a QR code.
+- Scan the QR code or enter the token into a 2FA client, like Google Authenticator.
+- The 2FA client generates the 6-digit code, which you enter into the website to confirm you now have the token.
+
+And when logging in:
+
+- Log into your account as usual.
+- When the website asks for it, give it the 6-digit code.
+- Website confirms you have both the token and password, and gives you access.
