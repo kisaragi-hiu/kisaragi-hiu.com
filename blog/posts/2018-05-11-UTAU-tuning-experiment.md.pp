@@ -1,8 +1,9 @@
 #lang pollen
 ◊; vim: filetype=pollen
+
     Title: UTAU Covering Experiment
-    Date: ◊date◊
-    Tags: language:◊lang◊, category:◊cat◊, ◊tags◊
+    Date: 2018-05-11T22:00:10
+    Tags: language:en, category:kisaragi, UTAU, Covers, Music, VOCALOID
 
 Back in March, I started getting back into doing UTAU covers, and have tried to finish one cover within two weeks. I'm so far happy with the results, although it is taking up too much of my attention.
 
