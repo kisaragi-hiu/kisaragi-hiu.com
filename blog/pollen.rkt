@@ -116,11 +116,9 @@
 
 (define ie "i.e.")
 
-(define/txexpr (font-awesome fa-icon
-                      #:aria [hidden #t])
-  `(i ([class ,(string-append "fa "
-                              fa-icon)]
-       [aria-hidden "true"])))
+(define (font-awesome fa-icon #:aria [hidden #t])
+  `(img ([src ,(string-append "https://icongr.am/fontawesome/" fa-icon ".svg")]
+         [alt ,fa-icon])))
 
 #| link functions |#
 
