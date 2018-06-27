@@ -58,7 +58,7 @@ This transforms it into all-tags in the form
     @(when rel-next @list{<link rel="next" href="@|rel-next|">})
     @(when rel-prev @list{<link rel="prev" href="@|rel-prev|">})
     <!-- Font -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira+Sans|Overpass">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira+Sans|Overpass+Mono|Overpass:400,600">
 
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="@|uri-prefix|/css/normalize.css">

@@ -9,7 +9,7 @@
                   'Malgun Gothic'})
 
 ◊(define monospace
-   ◊string-append{'Fira Mono',
+   ◊string-append{'Overpass Mono',
                   'Noto Sans Mono CJK',
                   ◊|cjk-fallback|,
                   'monospace'})
@@ -37,8 +37,8 @@ body {
     font-family: 'Overpass', ◊|cjk-fallback|, sans-serif;
 }
 
-code {
-    font-family: 'Fira Mono', monospace, ◊|cjk-fallback|;
+pre, code {
+    font-family: ◊|monospace|;
 }
 
 code {
