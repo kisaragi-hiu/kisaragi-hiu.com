@@ -36,10 +36,11 @@ build () {
 }
 
 loop () {
+    [ "$1" == rebuild ] && rebuild=1
     build
     while true; do
         waitfor /tmp/trigger
-        export POLLEN=$RANDOM
+        [ "$rebuild" == 1 ] && export POLLEN=$RANDOM # full rebuild
         build
         notify-send "Build complete"
     done
