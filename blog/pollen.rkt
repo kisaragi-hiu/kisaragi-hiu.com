@@ -111,7 +111,7 @@
 
 (define pagebreak (->html '(div ([class "page-break"]))))
 
-(define (filepath str)
+(define (filepath . strs)
   (string-join strs #:before-first "`" #:after-last "`"))
 
 (define/txexpr (year . text)
