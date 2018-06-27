@@ -54,6 +54,22 @@ pre {
     width: inherit;
 }
 
+h1, h2, h3, h4, h5, h6 {
+    font-size: 2.4rem;
+    line-height: 1.2;
+    margin-bottom: 1.2rem;
+    margin-top: 2.4rem;
+    letter-spacing: normal;
+}
+
+h1 {
+    font-weight: 600;
+}
+
+h2 {
+    font-weight: 400;
+}
+
 a,
 .date-and-category a,
 .tags a {
