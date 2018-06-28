@@ -127,7 +127,7 @@
 
 (define/txexpr (link url [text url]
                      #:class [class ""]
-                     #:target [target "_blank"])
+                     #:target [target "_self"])
   `(a ([href ,url]
        [target ,target]
        [class ,class])
