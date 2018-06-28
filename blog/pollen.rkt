@@ -154,6 +154,7 @@
                  #:return-txexpr? #t)))]))
 
 (define-link github "https://github.com/")
+(define-link gitlab "https://gitlab.com/")
 (define-link twitter "https://twitter.com/")
 (define-link youtube "https://youtube.com/")
 (define-link pixiv "https://pixiv.net/")
