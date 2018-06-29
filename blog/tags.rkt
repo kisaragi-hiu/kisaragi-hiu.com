@@ -11,12 +11,14 @@
 
 (struct tag-st (name url) #:transparent)
 
-;; tag-string:
-;; <li><a href="/tags/tag1.html">Tag1</a></li>
-;; <li><a href="/tags/tag2.html">Tag2</a></li>
 ;; "tags":
 ;; '((tag-st "Tag1" "/tags/tag1.html")
 ;;   (tag-st "Tag2" "/tags/tag2.html"))
+;; tag-string: `tags-list-items` format in page template
+;; <li><a href="/tags/tag1.html">Tag1</a></li>
+;; <li><a href="/tags/tag2.html">Tag2</a></li>
+;; comma-html: `tags` format in index & post templates
+;; <span><a href="/tags/tag1.html">Tag1</a>, <a href="/tags/tag2.html">Tag2</a></span>
 
 (define (tag-string->tags str)
   (~> (string-append "<tags>" str "</tags>") ; force a top level tag needed by string->xexpr
@@ -30,6 +32,30 @@
   (~> (map (λ (x) (xexpr->html `(li (a ([href ,(tag-st-url x)]) ,(tag-st-name x)))))
            tags)
       (string-join _ "\n")))
+
+(define (comma-html->tags str)
+  (~> (string-replace str ", " "")
+      string->xexpr
+      get-elements
+      (filter txexpr? _)
+      (map (λ (x) (tag-st (last x) (attr-ref x 'href))) _)))
+
+(define (tags->comma-html tags)
+  (~> (map (λ (x) (xexpr->html `(a ([href ,(tag-st-url x)]) ,(tag-st-name x))))
+           tags)
+      (add-between _ ", ")
+      (string-join _ "")
+      (string-append "<span>" _ "</span>")))
+
+(define (language? tag)
+  (string-prefix? (tag-st-name tag) "language:"))
+
+(define (category? tag)
+  (string-prefix? (tag-st-name tag) "category:"))
+
+(define (special? tag)
+  (or (language? tag)
+      (category? tag)))
 
 (define (get-language-tags tags)
   (map (lambda (tag) (cond
