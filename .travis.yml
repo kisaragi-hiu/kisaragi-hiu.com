@@ -7,8 +7,8 @@ branches:
 env:
   global:
   - RACKET_DIR: "~/racket"
-  - RACKET_VERSION: 6.11
-  - GH_REF: 'github.com/flyingfeather1501/flyingfeather1501.github.io.git'
+  - RACKET_VERSION: 6.12
+  - GH_REF: 'github.com/kisaragi-hiu/kisaragi-hiu.github.io.git'
 cache:
   directories:
     - $HOME/.racket/$RACKET_VERSION/
