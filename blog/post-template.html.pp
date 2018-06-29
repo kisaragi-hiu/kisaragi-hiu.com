@@ -1,5 +1,6 @@
 #lang pollen
-@(local-require "tags.rkt")
+@(local-require threading
+                "tags.rkt")
 @(define filtered-tags
    (~> (comma-html->tags tags)
        (filter-not special? _)

@@ -1,6 +1,4 @@
 #lang pollen
-◊; such a bloody hack
-◊import["special-tags-for-index-and-post.template"]
 @(local-require threading
                 "tags.rkt")
 @(define filtered-tags
