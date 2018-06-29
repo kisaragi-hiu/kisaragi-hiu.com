@@ -3,45 +3,15 @@
 ◊; This `require`s eg. ->html for use as a preprocessor.
 ◊(require pollen/template)
 
-@;{ This is a frog template comment. }
-
-@;{ This needs local-require as it's a template }
+@; This needs local-require as it's a template
 @(local-require (only-in xml string->xexpr)
-                txexpr threading racket/format racket/string)
+                txexpr
+                threading
+                racket/format
+                racket/string
+                "tags.rkt")
 
-@;{ `tag` is already taken }
-@(struct tag-st (name url) #:transparent)
-
-@;{ tags-list-items looks like
-<li><a href="/tags/tag1.html">Tag1</a></li>
-<li><a href="/tags/tag2.html">Tag2</a></li>
-
-This transforms it into all-tags in the form
-'((tag-st "Tag1" "/tags/tag1.html")
-  (tag-st "Tag2" "/tags/tag2.html"))
-}
-
-@(define all-tags
-   (~> (string-append "<tags>" tags-list-items "</tags>") ; force a top level tag needed by string->xexpr
-       string->xexpr
-       get-elements ; strip away the top level tag
-       (filter txexpr? _) ; strip away the leftover newlines between each element
-       (map (λ (x) (first (get-elements x))) _) ; extract the a tag
-       (map (λ (x) (tag-st (last x) (attr-ref x 'href))) _)
-   ))
-
-@(define (get-language-tags tags)
-   (map (lambda (tag) (cond
-                        [(string-prefix? (tag-st-name tag) "language:en") (tag-st "English" (tag-st-url tag))]
-                        [(string-prefix? (tag-st-name tag) "language:zh") (tag-st "中文" (tag-st-url tag))]
-                        [else tag]))
-        (filter (λ (x) (string-prefix? (tag-st-name x) "language:")) tags)))
-
-@(define (taglist->li-a taglist)
-   ; listof tag-st -> string
-   (~> (map (λ (x) (xexpr->html `(li (a ([href ,(tag-st-url x)]) ,(tag-st-name x)))))
-            taglist)
-       (string-join _ "\n")))
+@(define all-tags (tag-string->tags tags-list-items))
 
 <!DOCTYPE html>
 <html lang="en">
@@ -84,7 +54,7 @@ This transforms it into all-tags in the form
           <ul>
             <li><a href="@|uri-prefix|/index.html">Blog</a></li>
             <li><a href="@|uri-prefix|/about.html">About</a></li>
-            @(taglist->li-a (get-language-tags all-tags))
+            @(tags->tag-string (get-language-tags all-tags))
           </ul>
         </nav>
       </header>
