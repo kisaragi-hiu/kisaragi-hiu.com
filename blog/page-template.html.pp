@@ -45,6 +45,7 @@
   </head>
   <body>
     <div class="container">
+      ◊; Header
       <header id="topheader" class="ten columns offset-by-one">
         <div class="logo">
           <a href="/"><img src="/images/text-logo.svg" alt="如月.飛羽"/></a>
@@ -59,6 +60,7 @@
         </nav>
       </header>
 
+      ◊; Contents
       <div class="row">
         <div id="content" class="ten columns offset-by-one">
           @;{ tags with ":" are special tags, ignore them for now }
@@ -70,6 +72,7 @@
         </div>
       </div>
 
+      ◊; Footer
       <footer class="ten columns offset-by-one">
         <hr />
         <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
