@@ -12,6 +12,8 @@
        (map (λ (x) (tag-st (string-replace (tag-st-name x) "category:" "") (tag-st-url x)))
             _)
        tags->comma-html))
+{"type":"post"}
+<!-- end of metadata -->
 <article>
   ◊article-header[#:date "@|date|" #:tags "@|filtered-tags|"
                   #:title "@|title|" #:uri "@|full-uri|"
@@ -27,3 +29,7 @@
     @disqus-comments["kisaragi-hiu-blog"]
   </footer>
 </article>
+
+◊; Local Variables:
+◊; mode: pollen
+◊; End:

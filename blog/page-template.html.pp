@@ -9,7 +9,8 @@
                 threading
                 racket/format
                 racket/string
-                "tags.rkt")
+                "tags.rkt"
+                "content-processing.rkt")
 
 @(define all-tags (tag-string->tags tags-list-items))
 
@@ -27,21 +28,19 @@
 
     @(when rel-next @list{<link rel="next" href="@|rel-next|">})
     @(when rel-prev @list{<link rel="prev" href="@|rel-prev|">})
-    <!-- Font -->
+    ◊; Font
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira+Sans|Overpass+Mono|Overpass:400,600">
 
-    <!-- CSS -->
+    ◊; CSS
     <link rel="stylesheet" type="text/css" href="@|uri-prefix|/css/normalize.css">
     <link rel="stylesheet" type="text/css" href="@|uri-prefix|/css/skeleton.css">
     <link rel="stylesheet" type="text/css" href="@|uri-prefix|/css/emacs.css">
     <link rel="stylesheet" type="text/css" href="@|uri-prefix|/css/custom.css">
-    <!-- Feeds -->
+    ◊; Feed
     <link rel="alternate" type="application/atom+xml"
           href="@|atom-feed-uri|" title="Atom Feed">
-    <!-- JS -->
-    ◊;<script src="https://use.fontawesome.com/f9f3cd1f14.js"></script>
+    ◊; JS stuff
     ◊google-universal-analytics["UA-109874076-1"]
-    ◊;google-adsense/page-level["ca-pub-6215394828182929"]
   </head>
   <body>
     <div class="container">
@@ -68,7 +67,18 @@
                       (not (string-contains? tag ":")))
             @list{<h1>Tag: <em>@|tag|</em></h1>})
 
-          @|contents|
+          @(if (index? contents)
+
+               (map
+                 (λ (year)
+                    (string-append "<h2>" year "</h2>\n"
+                      (~> (string->indices contents)
+                          (filter (λ (index) (equal? (content-year index) year)) _)
+                          (map strip-metadata _)
+                          (string-join _ ""))))
+                 (get-years-in-indices (string->indices contents)))
+
+               (strip-metadata contents))
         </div>
       </div>
 
