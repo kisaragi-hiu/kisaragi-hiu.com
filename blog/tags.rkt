@@ -4,9 +4,7 @@
          txexpr
          (only-in xml string->xexpr))
 
-(provide tag-string->tags
-         tags->tag-string
-         get-language-tags
+(provide (all-defined-out)
          (struct-out tag-st))
 
 (struct tag-st (name url) #:transparent)
