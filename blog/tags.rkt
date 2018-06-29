@@ -11,12 +11,13 @@
 
 (struct tag-st (name url) #:transparent)
 
-;; from
+;; tag-string:
 ;; <li><a href="/tags/tag1.html">Tag1</a></li>
 ;; <li><a href="/tags/tag2.html">Tag2</a></li>
-;; to
+;; "tags":
 ;; '((tag-st "Tag1" "/tags/tag1.html")
 ;;   (tag-st "Tag2" "/tags/tag2.html"))
+
 (define (tag-string->tags str)
   (~> (string-append "<tags>" str "</tags>") ; force a top level tag needed by string->xexpr
       string->xexpr
@@ -25,16 +26,9 @@
       (map (λ (x) (first (get-elements x))) _) ; extract the a tag
       (map (λ (x) (tag-st (last x) (attr-ref x 'href))) _)))
 
-(define (tags->tag-string taglist)
-  ; listof tag-st -> string
-  ;; from
-  ;; '((tag-st "Tag1" "/tags/tag1.html")
-  ;;   (tag-st "Tag2" "/tags/tag2.html"))
-  ;; to
-  ;; <li><a href="/tags/tag1.html">Tag1</a></li>
-  ;; <li><a href="/tags/tag2.html">Tag2</a></li>
+(define (tags->tag-string tags)
   (~> (map (λ (x) (xexpr->html `(li (a ([href ,(tag-st-url x)]) ,(tag-st-name x)))))
-           taglist)
+           tags)
       (string-join _ "\n")))
 
 (define (get-language-tags tags)
