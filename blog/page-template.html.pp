@@ -71,7 +71,8 @@
 
                (map
                  (λ (year)
-                    (string-append "<h2>" year "</h2>\n"
+                    (string-append
+                      (xexpr->string `(h2 ([class "index-year"]) ,year))
                       (~> (string->indices contents)
                           (filter (λ (index) (equal? (content-year index) year)) _)
                           (map strip-metadata _)

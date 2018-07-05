@@ -182,7 +182,8 @@ article header .tags {
     font-size: 1.6rem;
 }
 
-.post-header .title{
+.post-header .title,
+.index-year {
     font-weight: 600;
 }
 
