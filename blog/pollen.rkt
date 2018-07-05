@@ -41,7 +41,6 @@
 (define/txexpr (diff-new . elements) `(span ([class "diff-new"]) ,@elements))
 
 ;; I'm naming the arguments so calls would be a little more readable
-;; tag processing is done in special-tags-(ry .template
 (define/txexpr (article-header #:date date ; :: string? ex: "@|date|"
                                #:tags tags ; :: string? ex: "@|tags|"
                                #:category category ; string? ex: "@|category|"
