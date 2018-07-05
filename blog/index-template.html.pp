@@ -14,17 +14,23 @@
        (map (λ (x) (tag-st (string-replace (tag-st-name x) "category:" "") (tag-st-url x)))
             _)
        tags->comma-html))
+@(define date-without-year
+    (~> (string->xexpr date)
+        (map-elements (λ (x) (if (string? x)
+                                 (substring x 5)
+                                 x))
+                      _)
+        xexpr->string))
 ◊; See content-processing.rkt for metadata handling
 {"type":"index",
  "date":"@(attr-ref (string->xexpr date) 'datetime)"}
 <!-- end of metadata -->
-<article>
-  ◊article-header[#:date "@|date|" #:tags "@|filtered-tags|"
+<article class="index-item">
+  ◊article-header[#:date "@|date-without-year|" #:tags "@|filtered-tags|"
                   #:title "@|title|" #:uri "@|uri-path|"
                   #:category "@|category-from-tags|"
-                  #:class "index-item"]
+                  #:class "index-header"]
 </article>
-<hr>
 <!-- end of index template -->
 
 ◊; Local Variables:

@@ -157,6 +157,10 @@ a img:hover {
     font-size: 2.0rem;
 }
 
+.index-item {
+    margin-bottom: 1.2em;
+}
+
 #social-links {
     list-style: none;
 }
