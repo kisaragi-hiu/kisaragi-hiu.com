@@ -158,7 +158,7 @@ a img:hover {
 }
 
 .index-item {
-    margin-bottom: 1.2em;
+    margin-bottom: 1.2rem;
 }
 
 #social-links {
