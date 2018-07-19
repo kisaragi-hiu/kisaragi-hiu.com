@@ -6,7 +6,7 @@ usage:
   $0 build: Build the site
   $0 publish [dir]: Build the site and copy to dir (default ~/)
   $0 cleanup [interactive]: Clean up built files
-  $0 loop: Build, wait for /tmp/trigger to be created, build again, notify, loop.
+  $0 loop [rebuild]: Build, wait until /tmp/trigger appears, build again, notify, loop.
 "
 
 waitfor () {
@@ -21,17 +21,17 @@ waitfor () {
 
 build () {
     # Build the site into public/
-    raco pollen render blog/ || exit 1
-    raco pollen render blog/posts/ || exit 1
-    raco pollen render blog/css/ || exit 1
-    raco frog --build || exit 1
+    raco pollen render blog/ || return 1
+    raco pollen render blog/posts/ || return 1
+    raco pollen render blog/css/ || return 1
+    raco frog --build || return 1
     # frog doesn't copy other files, do it here
-    mkdir -p public/css || exit 1
-    cp -r blog/css/*.css public/css/ || exit 1
-    cp -r blog/images public/ || exit 1
-    cp -r blog/videos public/ || exit 1
-    cp CNAME public/ || exit 1
-    cp favicon.ico public/ || exit 1
+    mkdir -p public/css || return 1
+    cp -r blog/css/*.css public/css/ || return 1
+    cp -r blog/images public/ || return 1
+    cp -r blog/videos public/ || return 1
+    cp CNAME public/ || return 1
+    cp favicon.ico public/ || return 1
     touch public/.nojekyll
 }
 
@@ -41,7 +41,7 @@ loop () {
     while true; do
         waitfor /tmp/trigger
         [ "$rebuild" == 1 ] && export POLLEN=$RANDOM # full rebuild
-        build
+        build || notify-send "Build error"
         notify-send "Build complete"
     done
 }
@@ -85,7 +85,7 @@ case "$1" in
         ;;
     (loop)
         echo A new build is triggered if /tmp/trigger is present
-        loop
+        loop "$2"
         ;;
     (*)
         echo "$helptext"
