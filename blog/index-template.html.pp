@@ -14,10 +14,10 @@
        (map (λ (x) (tag-st (string-replace (tag-st-name x) "category:" "") (tag-st-url x)))
             _)
        tags->comma-html))
-@(define date-without-year
+@(define processed-date
     (~> (string->xexpr date)
         (map-elements (λ (x) (if (string? x)
-                                 (substring x 5)
+                                 (string-replace "-" "/" (substring x 5))
                                  x))
                       _)
         xexpr->string))
@@ -26,7 +26,7 @@
  "date":"@(attr-ref (string->xexpr date) 'datetime)"}
 <!-- end of metadata -->
 <article class="index-item">
-  ◊article-header[#:date "@|date-without-year|" #:tags "@|filtered-tags|"
+  ◊article-header[#:date "@|processed-date|" #:tags "@|filtered-tags|"
                   #:title "@|title|" #:uri "@|uri-path|"
                   #:category "@|category-from-tags|"
                   #:class "index-header"]

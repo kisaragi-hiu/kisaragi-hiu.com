@@ -12,10 +12,14 @@
        (map (λ (x) (tag-st (string-replace (tag-st-name x) "category:" "") (tag-st-url x)))
             _)
        tags->comma-html))
+@(define processed-date
+    (~> (string->xexpr date)
+        (map-elements (λ (x) (if (string? x) (string-replace "-" "/" x))) _)
+        xexpr->string))
 {"type":"post"}
 <!-- end of metadata -->
 <article>
-  ◊article-header[#:date "@|date|" #:tags "@|filtered-tags|"
+  ◊article-header[#:date "@|processed-date|" #:tags "@|filtered-tags|"
                   #:title "@|title|" #:uri "@|full-uri|"
                   #:category "@|category-from-tags|"
                   #:class "post-header"]
