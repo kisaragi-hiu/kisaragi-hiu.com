@@ -4,16 +4,16 @@
                 (only-in xml string->xexpr)
                 "tags.rkt")
 @(define filtered-tags
-   (~> (comma-html->tags tags)
-       (filter-not special? _)
-       tags->comma-html))
+   (and~> (comma-html->tags tags)
+          (filter-not special? _)
+          tags->comma-html))
 @(define category-from-tags
-   (~> (comma-html->tags tags)
-       (filter category? _)
-       ;; remove "category:" prefix
-       (map (λ (x) (tag-st (string-replace (tag-st-name x) "category:" "") (tag-st-url x)))
+   (and~> (comma-html->tags tags)
+          (filter category? _)
+          ;; remove "category:" prefix
+          (map (λ (x) (tag-st (string-replace (tag-st-name x) "category:" "") (tag-st-url x)))
             _)
-       tags->comma-html))
+          tags->comma-html))
 @(define processed-date
     (~> (string->xexpr date)
         (map-elements (λ (x) (if (string? x) (string-replace x "-" "/") x)) _)

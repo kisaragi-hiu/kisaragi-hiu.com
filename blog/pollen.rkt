@@ -41,23 +41,23 @@
 (define/txexpr (diff-new . elements) `(span ([class "diff-new"]) ,@elements))
 
 ;; I'm naming the arguments so calls would be a little more readable
-(define/txexpr (article-header #:date date ; :: string? ex: "@|date|"
-                               #:tags tags ; :: string? ex: "@|tags|"
-                               #:category category ; string? ex: "@|category|"
-                               #:title title ; :: string? ex: "@|title|"
-                               #:uri uri ; :: string? ex: "@|full-uri|"
-                               #:class class) ; :: string? ex: "post-header"
-  `(header ([class ,class])
-           (p ([class "date-and-category"])
-              (span ,date)
-              (span " :: ")
-              (span ,category))
-           (p ([class "title"])
-              (a ([href ,uri])
-                 ,title))
-           (p ([class "tags"])
-              (span "Tags: ")
-              (span ,tags))))
+(define (article-header #:date date ; :: string? ex: "@|date|"
+                        #:tags tags ; :: string? ex: "@|tags|"
+                        #:category category ; string? ex: "@|category|"
+                        #:title title ; :: string? ex: "@|title|"
+                        #:uri uri ; :: string? ex: "@|full-uri|"
+                        #:class class) ; :: string? ex: "post-header"
+  (->html
+   `(header ([class ,class])
+            (p ([class "title"])
+               (a ([href ,uri])
+                  ,title))
+            (p ([class "date-and-category"])
+               (span ,date)
+               ,(string-append "@(when " category " \", \")")
+               ,category
+               ,(string-append "@(when " tags " \" :: \")")
+               ,tags))))
 
 (define/txexpr (strike . text)
   `(s ,@text))

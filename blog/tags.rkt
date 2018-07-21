@@ -39,11 +39,12 @@
       (map (λ (x) (tag-st (last x) (attr-ref x 'href))) _)))
 
 (define (tags->comma-html tags)
-  (~> (map (λ (x) (xexpr->html `(a ([href ,(tag-st-url x)]) ,(tag-st-name x))))
-           tags)
-      (add-between _ ", ")
-      (string-join _ "")
-      (string-append "<span>" _ "</span>")))
+  (and~> (map (λ (x) (xexpr->html `(a ([href ,(tag-st-url x)]) ,(tag-st-name x))))
+              tags)
+         (add-between _ ", ")
+         ((λ (lst) (if (empty? lst) #f lst)) _) ; short circuit out if it's empty
+         (string-join _ "")
+         (string-append "<span>" _ "</span>")))
 
 (define (language? tag)
   (string-prefix? (tag-st-name tag) "language:"))
