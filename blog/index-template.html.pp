@@ -17,7 +17,7 @@
 @(define processed-date
     (~> (string->xexpr date)
         (map-elements (λ (x) (if (string? x)
-                                 (string-replace "-" "/" (substring x 5))
+                                 (string-replace (substring x 5) "-" "/")
                                  x))
                       _)
         xexpr->string))
