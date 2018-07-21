@@ -1,5 +1,7 @@
 #lang pollen
 @(local-require threading
+                txexpr
+                (only-in xml string->xexpr)
                 "tags.rkt")
 @(define filtered-tags
    (~> (comma-html->tags tags)
