@@ -63,8 +63,8 @@
   `(s ,@text))
 
 (define/txexpr (image src [caption #f] #:width [width #f])
-    `(div (img ([src ,src]))
-          ,(if caption
+  `(div (img ([src ,src]))
+        ,(if caption
              `(p ([class "image-caption"]) ,caption)
              "")))
 
