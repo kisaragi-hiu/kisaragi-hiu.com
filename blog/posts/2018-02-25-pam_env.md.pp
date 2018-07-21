@@ -1,7 +1,7 @@
 #lang pollen
     Title: Switching to .pam_environment for environment variables
     Date: 2018-02-25T21:34:45
-    Tags: language:en, category:kisaragi, Linux, Pollen, Programming, Configuration
+    Tags: language:en, category:Linux, Pollen, Configuration
 
 The past month my system environment was in quite a mess.
 

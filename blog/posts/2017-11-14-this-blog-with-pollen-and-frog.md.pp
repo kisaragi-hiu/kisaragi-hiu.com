@@ -1,7 +1,7 @@
 #lang pollen
     Title: Setting up this site with Pollen and Frog
     Date: 2017-11-14T10:56:43
-    Tags: category:Kisaragi, language:en, Racket, Frog, Pollen, Meta
+    Tags: category:Meta, language:en, Racket, Frog, Pollen
 
 I have wanted to keep a personal site since 2015. I started on Jimdo, then moved to WordPress.com, then Blogger, then just let the site rot. I wasn't writing much, and the only posts I had were copies of my UTAU cover announcements.
 

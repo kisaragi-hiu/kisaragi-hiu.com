@@ -1,7 +1,7 @@
 #lang pollen
     Title: Introduction to Two Factor Authorization
     Date: 2018-04-08T19:38:06+09:00
-    Tags: language:en, category:kisaragi, Tutorial
+    Tags: language:en, category:Tutorials, Computing
 
 Two factor authorization (2FA) in online accounts is a strong way to limit account access. It involves a website (a point of access control) and a client (like Google Authenticator, FreeOTP, and others).
 

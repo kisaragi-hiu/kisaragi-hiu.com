@@ -1,7 +1,7 @@
 #lang pollen
     Title: Moving the blog, again
     Date: 2017-09-24T18:20:00
-    Tags: category:Kisaragi, language:en, Meta, Pollen, Frog
+    Tags: category:Meta, language:en, Pollen, Frog
 
 So, I restructured this blog again, this time using ◊link["https://mstill.io"]{mstill.io} as a template, because I don't know how to use bootstrap. And I want to use Pollen markup.
 

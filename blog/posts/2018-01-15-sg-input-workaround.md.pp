@@ -1,7 +1,7 @@
 #lang pollen
     Title: Working around Steins;Gate's input problem on Linux
     Date: 2018-01-15T13:51:00
-    Tags: language:en, category:kisaragi, Linux, Games, Wine
+    Tags: language:en, category:Linux, Games, Wine
 
 Steins;Gate was released on Steam on September 9, 2016, for Windows only. A few months later, as far as I can remember, Wine started being able to run it.
 
