@@ -14,7 +14,7 @@
        tags->comma-html))
 @(define processed-date
     (~> (string->xexpr date)
-        (map-elements (λ (x) (if (string? x) (string-replace "-" "/" x))) _)
+        (map-elements (λ (x) (if (string? x) (string-replace "-" "/" x) x)) _)
         xexpr->string))
 {"type":"post"}
 <!-- end of metadata -->
