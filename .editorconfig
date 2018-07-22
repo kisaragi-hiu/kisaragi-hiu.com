@@ -1,0 +1,11 @@
+root = true
+
+[*]
+end_of_line = lf
+insert_final_newline = true
+
+[*.{pp,md,sh,yml,html}]
+charset = utf-8
+
+[*.pp]
+file_type_emacs = pollen
