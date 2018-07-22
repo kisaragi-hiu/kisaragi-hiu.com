@@ -123,8 +123,9 @@ article header a:hover,
     margin-right: 0.4em;
 }
 
-#topheader nav ul {
+#topheader ul {
     list-style: none;
+    margin-bottom: 0.3rem;
 }
 
 #topheader nav ul li {
@@ -167,7 +168,7 @@ a img:hover {
 
 #social-links li {
     display: inline;
-    font-size: 4.8rem;
+    font-size: 2.2rem;
     margin-right: 6px;
 }
 
