@@ -1,7 +1,7 @@
 #lang pollen
     Title: Crossing
     Date: 2017-10-28T18:54:00
-    Tags: category:詩, language:en, 詩
+    Tags: category:詩, language:en
 
 ◊newline-decode{
 The green signal lights up

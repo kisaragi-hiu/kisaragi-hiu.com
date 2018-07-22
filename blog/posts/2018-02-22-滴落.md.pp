@@ -1,7 +1,7 @@
 #lang pollen
     Title: 滴落
     Date: 2018-02-22T16:45:25
-    Tags: language:zh-tw, category:詩, 詩
+    Tags: language:zh-tw, category:詩
 
 ◊newline-decode{
 澡後
