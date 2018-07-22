@@ -79,6 +79,7 @@ a,
     -o-transition: all 0.4s ease;
     -ms-transition: all 0.4s ease;
     transition: all 0.4s ease;
+    text-decoration: none;
 }
 
 img {
