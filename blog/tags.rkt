@@ -55,8 +55,8 @@
   (string-prefix? (tag-st-name tag) "category:"))
 
 (define (special? tag)
-  (or (language? tag)
-      (category? tag)))
+  (not (not ; cast to boolean
+        (regexp-match #rx"^.*:" (tag-st-name tag)))))
 
 (define (strip-tag-special-prefix tag)
   (tag-st (string-replace (tag-st-name tag) #rx"^.*:" "")
