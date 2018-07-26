@@ -64,6 +64,8 @@
             <li><a href="@|uri-prefix|/index.html">Blog</a></li>
             <li><a href="@|uri-prefix|/about.html">About</a></li>
             @(tags->tag-string (get-language-tags all-tags))
+            ◊; @(get-category-tags all-tags)
+            ◊; <li><a href="@|uri-prefix|/categories.html">Categories</a></li>
           </ul>
         </nav>
       </header>

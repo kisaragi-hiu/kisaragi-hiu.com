@@ -64,3 +64,9 @@
                         (tag-st "中文" (tag-st-url tag))]
                        [else tag]))
        (filter (λ (x) (string-prefix? (tag-st-name x) "language:")) tags)))
+
+(define (get-category-tags tags)
+  (map (lambda (tag)
+         (tag-st (string-replace (tag-st-name tag) #rx"^category:" "")
+                 (tag-st-url tag)))
+       (filter category? tags)))
