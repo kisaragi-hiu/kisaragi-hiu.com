@@ -155,8 +155,8 @@ a img:hover {
 
 .image-caption {
     color: #444;
-    font-style: italic;
-    font-size: 2.0rem;
+    font-family: ◊|monospace|;
+    font-size: 1.6rem;
 }
 
 .index-item {
