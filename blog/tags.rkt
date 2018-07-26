@@ -56,17 +56,19 @@
   (or (language? tag)
       (category? tag)))
 
+(define (strip-tag-special-prefix tag)
+  (tag-st (string-replace (tag-st-name tag) #rx"^.*:" "")
+          (tag-st-url tag)))
+
 (define (get-language-tags tags)
   (map (lambda (tag) (cond
                        [(string-prefix? (tag-st-name tag) "language:en")
                         (tag-st "English" (tag-st-url tag))]
                        [(string-prefix? (tag-st-name tag) "language:zh")
                         (tag-st "中文" (tag-st-url tag))]
-                       [else tag]))
-       (filter (λ (x) (string-prefix? (tag-st-name x) "language:")) tags)))
+                       [else (strip-tag-special-prefix tag)]))
+       (filter language? tags)))
 
 (define (get-category-tags tags)
-  (map (lambda (tag)
-         (tag-st (string-replace (tag-st-name tag) #rx"^category:" "")
-                 (tag-st-url tag)))
+  (map strip-tag-special-prefix
        (filter category? tags)))
