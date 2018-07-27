@@ -1,7 +1,6 @@
 #lang racket
 
-(require rackunit
-         threading
+(require threading
          txexpr
          (only-in xml
                   string->xexpr))
@@ -82,53 +81,54 @@
        (filter category? tags)))
 
 ;;; Unit Tests
-
-(check-equal? (tag-string->tags
-               "<li><a href=\"/tags/a.html\">a</a></li>
+(module+ test
+  (require rackunit)
+  (check-equal? (tag-string->tags
+                 "<li><a href=\"/tags/a.html\">a</a></li>
 <li><a href=\"/tags/b.html\">b</a></li>")
-              (list (tag-st "a" "/tags/a.html")
-                    (tag-st "b" "/tags/b.html")))
+                (list (tag-st "a" "/tags/a.html")
+                      (tag-st "b" "/tags/b.html")))
 
-(check-equal? (tags->tag-string (list (tag-st "a" "/tags/a.html")
-                                      (tag-st "b" "/tags/b.html")))
-              "<li><a href=\"/tags/a.html\">a</a></li>
+  (check-equal? (tags->tag-string (list (tag-st "a" "/tags/a.html")
+                                        (tag-st "b" "/tags/b.html")))
+                "<li><a href=\"/tags/a.html\">a</a></li>
 <li><a href=\"/tags/b.html\">b</a></li>")
 
-(check-equal? (tags->comma-html (list (tag-st "a" "/tags/a.html")
-                                      (tag-st "b" "/tags/b.html")))
-              "<span><a href=\"/tags/a.html\">a</a>, <a href=\"/tags/b.html\">b</a></span>")
+  (check-equal? (tags->comma-html (list (tag-st "a" "/tags/a.html")
+                                        (tag-st "b" "/tags/b.html")))
+                "<span><a href=\"/tags/a.html\">a</a>, <a href=\"/tags/b.html\">b</a></span>")
 
-(check-equal? (comma-html->tags "<span><a href=\"/tags/a.html\">a</a>, <a href=\"/tags/b.html\">b</a></span>")
-              (list (tag-st "a" "/tags/a.html")
-                    (tag-st "b" "/tags/b.html")))
+  (check-equal? (comma-html->tags "<span><a href=\"/tags/a.html\">a</a>, <a href=\"/tags/b.html\">b</a></span>")
+                (list (tag-st "a" "/tags/a.html")
+                      (tag-st "b" "/tags/b.html")))
 
-(check-true (language? (tag-st "language:en" "en.html")))
-(check-false (language? (tag-st "category:en" "en.html")))
-(check-false (language? (tag-st "en" "en.html")))
+  (check-true (language? (tag-st "language:en" "en.html")))
+  (check-false (language? (tag-st "category:en" "en.html")))
+  (check-false (language? (tag-st "en" "en.html")))
 
-(check-true (category? (tag-st "category:en" "en.html")))
-(check-false (category? (tag-st "language:en" "en.html")))
-(check-false (category? (tag-st "en" "en.html")))
+  (check-true (category? (tag-st "category:en" "en.html")))
+  (check-false (category? (tag-st "language:en" "en.html")))
+  (check-false (category? (tag-st "en" "en.html")))
 
-(check-true (special? (tag-st "special:abc" "abc.html")))
-(check-true (special? (tag-st "category:abc" "abc.html")))
-(check-true (special? (tag-st "language:abc" "abc.html")))
-(check-false (special? (tag-st "abc" "abc.html")))
+  (check-true (special? (tag-st "special:abc" "abc.html")))
+  (check-true (special? (tag-st "category:abc" "abc.html")))
+  (check-true (special? (tag-st "language:abc" "abc.html")))
+  (check-false (special? (tag-st "abc" "abc.html")))
 
-(check-equal? (strip-tag-special-prefix (tag-st "special:a" "a.html"))
-              (tag-st "a" "a.html"))
+  (check-equal? (strip-tag-special-prefix (tag-st "special:a" "a.html"))
+                (tag-st "a" "a.html"))
 
-(check-equal? (get-language-tags (list (tag-st "language:en" "en.html")
-                                       (tag-st "language:zh-tw" "zh-tw.html")
-                                       (tag-st "language:xyz" "xyz.html")
-                                       (tag-st "category:abc" "abc.html")
-                                       (tag-st "c" "c.html")))
-              (list (tag-st "English" "en.html")
-                    (tag-st "中文" "zh-tw.html")
-                    (tag-st "xyz" "xyz.html")))
+  (check-equal? (get-language-tags (list (tag-st "language:en" "en.html")
+                                         (tag-st "language:zh-tw" "zh-tw.html")
+                                         (tag-st "language:xyz" "xyz.html")
+                                         (tag-st "category:abc" "abc.html")
+                                         (tag-st "c" "c.html")))
+                (list (tag-st "English" "en.html")
+                      (tag-st "中文" "zh-tw.html")
+                      (tag-st "xyz" "xyz.html")))
 
-(check-equal? (get-category-tags (list (tag-st "category:a" "a.html")
-                                       (tag-st "category:b" "b.html")
-                                       (tag-st "c" "c.html")))
-              (list (tag-st "a" "a.html")
-                    (tag-st "b" "b.html")))
+  (check-equal? (get-category-tags (list (tag-st "category:a" "a.html")
+                                         (tag-st "category:b" "b.html")
+                                         (tag-st "c" "c.html")))
+                (list (tag-st "a" "a.html")
+                      (tag-st "b" "b.html"))))
