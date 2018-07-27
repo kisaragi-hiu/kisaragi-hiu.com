@@ -19,8 +19,8 @@
 ;; comma-html: `tags` format in index & post templates
 ;; <span><a href="/tags/tag1.html">Tag1</a>, <a href="/tags/tag2.html">Tag2</a></span>
 
-(define (tags->hash tags)
-  (~> (map (λ (x) (cons (tag-st-name x)
+(define (tags->jsexpr tags)
+  (~> (map (λ (x) (cons (string->symbol (tag-st-name x))
                         (tag-st-url x)))
            tags)
       make-hash))
