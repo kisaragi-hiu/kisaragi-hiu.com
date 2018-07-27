@@ -20,6 +20,12 @@
 ;; comma-html: `tags` format in index & post templates
 ;; <span><a href="/tags/tag1.html">Tag1</a>, <a href="/tags/tag2.html">Tag2</a></span>
 
+(define (tags->hash tags)
+  (~> (map (λ (x) (cons (tag-st-name x)
+                        (tag-st-url x)))
+           tags)
+      make-hash))
+
 (define (tag-string->tags str)
   (~> (string-append "<tags>" str "</tags>") ; force a top level tag needed by string->xexpr
       string->xexpr
