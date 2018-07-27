@@ -25,6 +25,9 @@
            tags)
       make-hash))
 
+(define (jsexpr->tags jsexpr)
+  (hash-map jsexpr (λ (k v) (tag-st (symbol->string k) v))))
+
 (define (tag-string->tags str)
   (~> (string-append "<tags>" str "</tags>") ; force a top level tag needed by string->xexpr
       string->xexpr
