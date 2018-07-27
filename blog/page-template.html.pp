@@ -6,6 +6,7 @@
 @; This needs local-require as it's a template
 @(local-require (only-in xml string->xexpr)
                 txexpr
+                json
                 threading
                 racket/format
                 racket/string
@@ -13,6 +14,12 @@
                 "content-processing.rkt")
 
 @(define all-tags (tag-string->tags tags-list-items))
+
+@(define tags.json (build-path (find-system-path 'temp-dir) "tags.json"))
+@(unless (file-exists? tags.json)
+  (define p (open-output-file tags.json))
+  (display (jsexpr->string (tags->jsexpr all-tags)) p)
+  (close-output-port p))
 
 <!DOCTYPE html>
 <html lang="en">
