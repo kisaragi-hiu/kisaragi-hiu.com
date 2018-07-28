@@ -33,6 +33,10 @@ build () {
     cp CNAME public/ || return 1
     cp favicon.ico public/ || return 1
     touch public/.nojekyll
+    # Clean up the tags.json. Needs Racket to know what (find-system-path 'temp-dir) is.
+    racket -e "(let ([tags.json (build-path (find-system-path 'temp-dir) \"tags.json\")])
+                 (when (file-exists? tags.json)
+                   (delete-file tags.json)))"
 }
 
 loop () {
