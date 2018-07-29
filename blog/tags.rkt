@@ -5,10 +5,22 @@
          (only-in xml
                   string->xexpr))
 
-(provide (all-defined-out)
-         (struct-out tag-st))
+(provide (all-defined-out))
+         ;; (struct-out tag-st))
 
-(struct tag-st (name url) #:transparent)
+;; (struct tag-st (name url) #:transparent)
+
+;; So that strings are tag-st as well…
+;; Probably doable with structs, but I don't understand them enough
+(define (tag-st name url) (cons name url))
+(define (tag-st? tag) (or (cons? tag) (string? tag)))
+(define (tag-st-name tag)
+  (cond [(string? tag) tag]
+        [(cons? tag) (car tag)]
+        [else #f]))
+(define (tag-st-url tag)
+  (cond [(cons? tag) (cdr tag)]
+        [else #f]))
 
 ;; "tags":
 ;; '((tag-st "Tag1" "/tags/tag1.html")
@@ -67,9 +79,17 @@
        (not (not ; cast to boolean
              (regexp-match #rx"^.*:" (tag-st-name tag))))))
 
+;; tag-st? -> string?
+(define (tag-special-prefix tag)
+  (string-replace (tag-st-name tag) #rx":.*$" ""))
+
+;; TODO: rename this… thing. I've been confused by it a few times now.
+;; tag-st? -> tag-st?
+;; (define (tag-strip-special-prefix tag)
 (define (strip-tag-special-prefix tag)
-  (tag-st (string-replace (tag-st-name tag) #rx"^.*:" "")
-          (tag-st-url tag)))
+  (cond [(string? tag) (string-replace tag #rx"^.*:" "")]
+        [else (tag-st (string-replace (tag-st-name tag) #rx"^.*:" "")
+                      (tag-st-url tag))]))
 
 (define (get-language-tags tags)
   (map (lambda (tag) (cond

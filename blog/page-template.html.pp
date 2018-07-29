@@ -81,13 +81,11 @@
       ◊; Contents
       <div class="row">
         <div id="content" class="ten columns offset-by-one">
-          @;{ tags with ":" are special tags, ignore them for now }
-          @(when (and tag
-                      (not (special? tag)))
-            @list{<h1>Tag: <em>@|tag|</em></h1>})
+          @(cond [(special? tag) @list{<h1>@(string-titlecase (tag-special-prefix tag)): <em>@(strip-tag-special-prefix tag)</em></h1>}]
+                 [tag @list{<h1>Tag: <em>@|tag|</em></h1>}]
+                 [else (void)])
 
           @(if (index? contents)
-
                (map
                  (λ (year)
                     (string-append
