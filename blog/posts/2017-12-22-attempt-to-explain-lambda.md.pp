@@ -1,7 +1,7 @@
 #lang pollen
     Title: A newbie's attempt to explain lambdas
     Date: 2017-12-22T15:44:25
-    Tags: category:Kisaragi, language:en, Programming
+    Tags: language:en, Programming
 
 A lambda is a function.
 

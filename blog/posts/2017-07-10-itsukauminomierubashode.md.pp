@@ -1,7 +1,7 @@
 #lang pollen
     Title: いつか海の見える街で Cover + PV
     Date: 2017-07-10T15:01:00
-    Tags: category:Own Vocal Experiment, language:zh-tw, Cover
+    Tags: category:Own Vocal Experiment, language:zh-tw, Covers
 
 ◊newline-decode{
 試著唱了いつか海の見える街で，然後弄了個簡單的歌詞PV。
