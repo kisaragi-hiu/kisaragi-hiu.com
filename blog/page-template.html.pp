@@ -82,8 +82,7 @@
       <div class="row">
         <div id="content" class="ten columns offset-by-one">
           @(cond [(special? tag) @list{<h1>@(string-titlecase (tag-special-prefix tag)): <em>@(strip-tag-special-prefix tag)</em></h1>}]
-                 [tag @list{<h1>Tag: <em>@|tag|</em></h1>}]
-                 [else (void)])
+                 [tag @list{<h1>Tag: <em>@|tag|</em></h1>}])
 
           @(if (index? contents)
                (map
