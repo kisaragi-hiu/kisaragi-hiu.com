@@ -9,3 +9,6 @@ charset = utf-8
 
 [*.pp]
 file_type_emacs = pollen
+
+[*.css.pp]
+file_type_emacs = css
