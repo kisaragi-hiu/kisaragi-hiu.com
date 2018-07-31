@@ -53,6 +53,11 @@
            tags)
       (string-join _ "\n")))
 
+(define (tags->link tags)
+  (~> (map (λ (x) (xexpr->html `(a ([href ,(tag-st-url x)]) ,(tag-st-name x))))
+           tags)
+      (string-join _ "\n")))
+
 (define (comma-html->tags str)
   (~> (string-replace str ", " "")
       string->xexpr
@@ -117,6 +122,11 @@
                                         (tag-st "b" "/tags/b.html")))
                 "<li><a href=\"/tags/a.html\">a</a></li>
 <li><a href=\"/tags/b.html\">b</a></li>")
+
+  (check-equal? (tags->link (list (tag-st "a" "/tags/a.html")
+                                  (tag-st "b" "/tags/b.html")))
+                "<a href=\"/tags/a.html\">a</a>
+<a href=\"/tags/b.html\">b</a>")
 
   (check-equal? (tags->comma-html (list (tag-st "a" "/tags/a.html")
                                         (tag-st "b" "/tags/b.html")))
