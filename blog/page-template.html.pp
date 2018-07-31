@@ -42,7 +42,6 @@
     <link rel="stylesheet" type="text/css" href="@|uri-prefix|/css/normalize.css">
     <link rel="stylesheet" type="text/css" href="@|uri-prefix|/css/skeleton.css">
     <link rel="stylesheet" type="text/css" href="@|uri-prefix|/css/emacs.css">
-    <link rel="stylesheet" type="text/css" href="@|uri-prefix|/css/custom.css">
     ◊; Feed
     <link rel="alternate" type="application/atom+xml"
           href="@|atom-feed-uri|" title="Atom Feed">
@@ -58,23 +57,21 @@
           <img src="@|uri-prefix|/images/avatar.png" alt="Icon"/>
         </div>
 
-        <ul id="social-links">
-          <li>◊link["@|atom-feed-uri|"]{◊font-awesome["rss"]}</li>
-          <li>◊twitter["flyin1501"]{◊font-awesome["twitter"]}</li>
-          <li>◊github["kisaragi-hiu"]{◊font-awesome["github"]}</li>
-          <li>◊gitlab["kisaragi-hiu"]{◊font-awesome["gitlab"]}</li>
-          <li>◊youtube["channel/UCl_hsqcvdX0XdgBimRQ6R3A"]{◊font-awesome["youtube"]}</li>
-        </ul>
+        <div id="social-links">
+          ◊link["@|atom-feed-uri|"]{◊font-awesome["rss"]}
+          ◊twitter["flyin1501"]{◊font-awesome["twitter"]}
+          ◊github["kisaragi-hiu"]{◊font-awesome["github"]}
+          ◊gitlab["kisaragi-hiu"]{◊font-awesome["gitlab"]}
+          ◊youtube["channel/UCl_hsqcvdX0XdgBimRQ6R3A"]{◊font-awesome["youtube"]}
+        </div>
 
         <nav>
-          <ul>
-            <li><a href="@|uri-prefix|/index.html">Blog</a></li>
-            <li><a href="@|uri-prefix|/about.html">About</a></li>
-            <li><a href="@|uri-prefix|/all-tags.html">Tags</a></li>
-            @(tags->tag-string (get-language-tags all-tags))
-            ◊; @(get-category-tags all-tags)
-            ◊; <li><a href="@|uri-prefix|/categories.html">Categories</a></li>
-          </ul>
+          <a href="@|uri-prefix|/index.html">Blog</a>
+          <a href="@|uri-prefix|/about.html">About</a>
+          <a href="@|uri-prefix|/all-tags.html">Tags</a>
+          @(tags->link (get-language-tags all-tags))
+          ◊; @(get-category-tags all-tags)
+          ◊; <li><a href="@|uri-prefix|/categories.html">Categories</a></li>
         </nav>
       </header>
 

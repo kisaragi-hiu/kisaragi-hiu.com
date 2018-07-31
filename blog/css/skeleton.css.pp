@@ -1,10 +1,32 @@
+#lang pollen
+◊(require racket/string)
+◊(define cjk-fallback
+   ◊string-append{'Noto Sans CJK TC',
+                  'Microsoft Jhenghei',
+                  'Microsoft Yahei',
+                  'Meiryo',
+                  'Malgun Gothic'})
+◊(define sans-serif
+   ◊string-append{'Fira Sans',
+                  ◊|cjk-fallback|,
+                  'sans-serif'})
+◊(define title-sans-serif
+   ◊string-append{'Overpass',
+                  ◊|cjk-fallback|,
+                  'sans-serif'})
+◊(define monospace
+   ◊string-append{'Overpass Mono',
+                  'Noto Sans Mono CJK',
+                  ◊|cjk-fallback|,
+                  'monospace'})
+◊(define title "h1,h2,h3,h4,h5,h6,h7,.title")
+
 /*
-* Skeleton V2.0.4
-* Copyright 2014, Dave Gamache
-* www.getskeleton.com
-* Free to use under the MIT license.
-* http://www.opensource.org/licenses/mit-license.php
-* 12/29/2014
+Modified from [Skeleton V2.0.4](www.getskeleton.com)
+Copyright 2014, Dave Gamache
+Free to use under the MIT license.
+http://www.opensource.org/licenses/mit-license.php
+12/29/2014
 */
 
 
@@ -119,48 +141,138 @@
 html is set to 62.5% so that all the REM measurements throughout Skeleton
 are based on 10px sizing. So basically 1.5rem = 15px :) */
 html {
-  font-size: 62.5%; }
+  font-size: 62.5%;
+  background-color: #fbfbfb; }
 body {
   font-size: 1.5em; /* currently ems cause chrome bug misinterpreting rems on body element */
   line-height: 1.6;
   font-weight: 400;
-  font-family: "Raleway", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  color: #222; }
+  font-family: ◊|sans-serif|;
+  color: #444;
+  background-color: #fbfbfb;
+  text-rendering: optimizeLegibility; }
 
 
 /* Typography
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 h1, h2, h3, h4, h5, h6 {
-  margin-top: 0;
-  margin-bottom: 2rem;
-  font-weight: 300; }
-h1 { font-size: 4.0rem; line-height: 1.2;  letter-spacing: -.1rem;}
-h2 { font-size: 3.6rem; line-height: 1.25; letter-spacing: -.1rem; }
-h3 { font-size: 3.0rem; line-height: 1.3;  letter-spacing: -.1rem; }
-h4 { font-size: 2.4rem; line-height: 1.35; letter-spacing: -.08rem; }
-h5 { font-size: 1.8rem; line-height: 1.5;  letter-spacing: -.05rem; }
-h6 { font-size: 1.5rem; line-height: 1.6;  letter-spacing: 0; }
+  font-size: 2.4rem;
+  line-height: 1.2;
+  margin-top: 2.4rem;
+  margin-bottom: 1.2rem;
+  font-weight: 300;
+  letter-spacing: normal; }
+h1 { font-weight: 600; }
+h2 { font-weight: 400; }
+/* h3 {  } */
+/* h4 {  } */
+/* h5 {  } */
+/* h6 {  } */
 
 /* Larger than phablet */
 @media (min-width: 550px) {
-  h1 { font-size: 5.0rem; }
-  h2 { font-size: 4.2rem; }
-  h3 { font-size: 3.6rem; }
-  h4 { font-size: 3.0rem; }
+  h1 { font-size: 2.4rem; }
+  h2 { font-size: 2.4rem; }
+  h3 { font-size: 2.4rem; }
+  h4 { font-size: 2.4rem; }
   h5 { font-size: 2.4rem; }
-  h6 { font-size: 1.5rem; }
+  h6 { font-size: 2.4rem; }
 }
 
 p {
-  margin-top: 0; }
+  font-size: 100%;
+  margin-top: 0;
+  margin-bottom: 1.2rem; }
+article {
+  font-size: 1.8rem; }
+
+
+/* Header
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+#topheader {
+  font-size: 2.4rem;
+  margin-top: 1em; }
+#topheader .logo {
+  font-weight: 300;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0; }
+#topheader img {
+  max-height: 2em;
+  margin-right: 0.4em; }
+#topheader nav {
+  display: flex; }
+#topheader nav a {
+  font-size: 2.1rem;
+  padding-right: 0.4em;
+  text-decoration: none; }
+
+#social-links a {
+  font-size: 2.2rem;
+  margin-right: 0.6rem; }
+
+
+/* Article / Index item
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.post-header .title,
+.index-year {
+  font-weight: 600; }
+article header .title {
+  font-size: 2.4rem;
+  margin-bottom: 0; }
+article header .date-and-category,
+article header .tags {
+  font-family: ◊|monospace|;
+  display: block;
+  color: #888;
+  margin-bottom: 0;
+  margin-top: 0;
+  font-size: 1.6rem; }
+.index-item {
+  margin-top: 1.2rem;
+  margin-bottom: 2.4rem; }
+◊title {
+  font-family: 'Overpass', ◊|cjk-fallback|, sans-serif; }
 
 
 /* Links
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
-a {
-  color: #1EAEDB; }
+a,
+.date-and-category a,
+.tags a {
+  color: #a868e8;
+  -webkit-transition: all 0.4s ease;
+  -moz-transition: all 0.4s ease;
+  -o-transition: all 0.4s ease;
+  -ms-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+  text-decoration: none; }
 a:hover {
-  color: #0FA0CE; }
+  color: #d0a3ff; }
+
+#topheader a, article header a, #social-links a {
+  color: #444; }
+#topheader a:hover, article header a:hover, #social-links a:hover {
+  color: #777; }
+
+
+/* Images
+-------------------------------------------------- */
+img {
+  max-width: 100%;
+  height: auto;
+  -webkit-transition: all 0.6s ease;
+  -moz-transition: all 0.6s ease;
+  -o-transition: all 0.6s ease;
+  -ms-transition: all 0.6s ease;
+  transition: all 0.6s ease; }
+a img:hover {
+  opacity: 0.8; }
+.image-caption {
+  color: #444;
+  font-family: ◊|monospace|;
+  font-size: 1.6rem; }
+
 
 
 /* Buttons
@@ -306,6 +418,7 @@ li {
 
 /* Code
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
+/* Frog doesn't seem to emit <code> though… */
 code {
   padding: .2rem .5rem;
   margin: 0 .2rem;
@@ -313,11 +426,31 @@ code {
   white-space: nowrap;
   background: #F1F1F1;
   border: 1px solid #E1E1E1;
-  border-radius: 4px; }
+  border-radius: 4px;
+  overflow-x: auto; }
 pre > code {
   display: block;
   padding: 1rem 1.5rem;
-  white-space: pre; }
+  /* When highlighted code blocks are too wide, they wrap. Resulting in the */
+  /* line numbers column's rows not lining up with the code rows. Prevent */
+  /* wrapping. */
+  white-space: pre;
+  width: inherit; }
+pre, code {
+  font-family: ◊|monospace|;
+  color: black; }
+
+
+/* Blockquote
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+blockquote {
+  font-size: 1.8rem;
+  font-style: italic;
+  margin-top: 1.0rem;
+  margin-bottom: 1.0rem;
+  margin-left: 0;
+  padding-left: 1.5rem;
+  border-left: 0.5rem solid #ccc; }
 
 
 /* Tables
@@ -379,6 +512,22 @@ hr {
   border-width: 0;
   border-top: 1px solid #E1E1E1; }
 
+.diff-new {
+  color: green; }
+.diff-old {
+  color: red;
+  text-decoration: line-through; }
+.pager {
+  list-style: none; }
+.pager li {
+  display: inline; }
+.pager .next {
+  float: right; }
+.inline-red {
+  color: red; }
+.inline-green {
+  color: green; }
+
 
 /* Clearing
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
@@ -416,3 +565,10 @@ there.
 
 /* Larger than Desktop HD */
 @media (min-width: 1200px) {}
+
+/* Print */
+@media print {
+  .no-print,
+  .no-print * {
+    display: none; }
+}
