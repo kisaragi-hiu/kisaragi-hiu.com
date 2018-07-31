@@ -101,7 +101,6 @@
 
       ◊; Footer
       <footer class="ten columns offset-by-one">
-        <hr />
         <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
            <img alt="Creative Commons License"
                 style="border-width:0"

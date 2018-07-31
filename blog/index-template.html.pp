@@ -32,6 +32,7 @@
                   #:category "@|category-from-tags|"
                   #:class "index-header"]
 </article>
+<hr class="index-seperator"/>
 <!-- end of index template -->
 
 ◊; Local Variables:
