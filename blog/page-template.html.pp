@@ -49,6 +49,7 @@
     ◊google-universal-analytics["UA-109874076-1"]
   </head>
   <body>
+    <a id="top"></a>
     <div class="container">
       ◊; Header
       <header id="topheader" class="ten columns offset-by-one">
@@ -94,6 +95,7 @@
 
                (strip-metadata contents))
         </div>
+        <a href="#top">Top</a>
       </div>
 
       ◊; Footer
