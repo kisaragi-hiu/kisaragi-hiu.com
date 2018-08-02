@@ -94,7 +94,7 @@
                  (get-years-in-indices (string->indices contents)))
 
                (strip-metadata contents))
-          <a href="#top">Top</a>
+          <a href="#top" id="top-link" style="display:block;width:2rem;height:2rem;border-radius:0.5rem;text-align:center;">Top</a>
         </div>
       </div>
 
