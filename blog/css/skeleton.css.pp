@@ -512,6 +512,12 @@ hr {
   border-width: 0;
   border-top: 1px solid #E1E1E1; }
 
+#top-link {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 0.5rem;
+  text-align: center;
+  margin-bottom: 2rem; }
 .diff-new {
   color: green; }
 .diff-old {
