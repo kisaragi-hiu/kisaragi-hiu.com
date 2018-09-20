@@ -5,7 +5,7 @@
 
 This is a quick guide for using Magit, a wonderful Git interface based in Emacs. Its base features are fairly simple, but it can be confusing if you're not already using Emacs, as I was a few months ago.
 
-◊video/gif-esque["/videos/emacs-magit-typical-workflow.mp4"]{Workflow as I edit Cangjie.el}
+◊video/gif-esque["/videos/emacs-magit-typical-workflow.mp4" #:controls? #t]{Workflow as I edit Cangjie.el}
 
 ## `magit`
 

@@ -169,7 +169,7 @@
 
 (define site-url "http://kisaragi-hiu.com")
 
-(define/txexpr (video/gif-esque path #:controls [controls? #f] . caption)
+(define/txexpr (video/gif-esque path #:controls? [controls? #f] . caption)
   ;; ignore caption for now
   (let ([result `(video ([autoplay "autoplay"]
                          [style "max-width: 100%;"]
