@@ -3,7 +3,7 @@
     Date: 2018-09-20T23:57:41
     Tags: language:en, category:Tutorials, Emacs, Magit
 
-This is a quick guide for using Magit, a wonderful Git interface based in Emacs. Its base features are fairly simple, but it can be confusing if you're not already using Emacs, as I was a few months ago.
+This is a quick guide for using [Magit](https://magit.vc/), a wonderful Git interface based in Emacs. Its base features are fairly simple, but it can be confusing if you're not already using Emacs, as I was a few months ago.
 
 ◊video/gif-esque["/videos/emacs-magit-typical-workflow.mp4" #:controls? #t]{Workflow as I edit Cangjie.el}
 
@@ -35,7 +35,7 @@ This will introduce Emacs package management with `use-package`, in a way that I
 
 Edit the file `~/.emacs.d/init.el`, then type this into it:
 
-```lisp
+```elisp
 (require 'package)
 ;; load packages ourselves
 ;; press C-h v on the variable for more documentation
