@@ -95,7 +95,6 @@
 
                (strip-metadata contents))
         </div>
-        <div><a href="#top" id="top-link">Top</a></div>
       </div>
 
       ◊; Footer
