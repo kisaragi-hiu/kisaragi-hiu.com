@@ -180,6 +180,9 @@
         (attr-set result 'controls "")
         result)))
 
+(define/txexpr (kbd . elements)
+  `(kbd ,@elements))
+
 (define/txexpr (youtube/embed video-id)
   `(div ([style "padding-bottom: 50%;
                 position: relative;
