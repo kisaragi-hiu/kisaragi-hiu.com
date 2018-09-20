@@ -1,5 +1,5 @@
 #lang pollen
-    Title: Getting started with Magit
+    Title: Getting started with Magit (Or what I hope I could've read when I first tried out Magit)
     Date: 2018-09-20T23:57:41
     Tags: language:en, category:Tutorials, Emacs, Magit
 
