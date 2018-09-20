@@ -31,7 +31,6 @@
     @google-plus-share-button[full-uri]
     <a href="#top" id="top-link" >back to top</a>
     @older/newer-links[older-uri older-title newer-uri newer-title]
-    ◊google-adsense/responsive
     <br>
     @disqus-comments["kisaragi-hiu-blog"]
   </footer>

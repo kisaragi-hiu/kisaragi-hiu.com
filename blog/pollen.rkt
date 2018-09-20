@@ -16,13 +16,11 @@
          threading
          txexpr
          (only-in xml
-                  string->xexpr)
-         "adsense.rkt")
+                  string->xexpr))
 
 
 (provide (all-defined-out)
-         (all-from-out pollen/template
-                       "adsense.rkt"))
+         (all-from-out pollen/template))
 
 (module setup racket/base
   (provide (all-defined-out))
