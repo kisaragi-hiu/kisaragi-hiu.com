@@ -169,12 +169,16 @@
 
 (define site-url "http://kisaragi-hiu.com")
 
-(define/txexpr (video/gif-esque path)
-  `(video ([autoplay "autoplay"]
-           [style "max-width: 100%;"]
-           [muted "muted"]
-           [loop "loop"]
-           [src ,path])))
+(define/txexpr (video/gif-esque path #:controls [controls? #f] . caption)
+  ;; ignore caption for now
+  (let ([result `(video ([autoplay "autoplay"]
+                         [style "max-width: 100%;"]
+                         [muted "muted"]
+                         [loop "loop"]
+                         [src ,path]))])
+    (if controls?
+        (attr-set result 'controls "")
+        result)))
 
 (define/txexpr (youtube/embed video-id)
   `(div ([style "padding-bottom: 50%;
