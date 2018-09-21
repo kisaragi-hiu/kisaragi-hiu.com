@@ -59,9 +59,16 @@ Edit the file `~/.emacs.d/init.el`, then type this into it:
 (require 'use-package)
 ;; tell use-package to install a package if it's not already installed
 (setq use-package-always-ensure t)
-
-(use-package magit)
 ```
+
+Then install Magit and set a keyboard shortcut to invoke it:
+
+```elisp
+(use-package magit
+  :bind (("C-x g" . magit)))
+```
+
+Read more about Magit in its manual. <https://magit.vc/manual/magit/>
 
 ## Emacs basics
 
