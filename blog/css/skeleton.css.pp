@@ -431,12 +431,14 @@ code {
 pre > code {
   display: block;
   padding: 1rem 1.5rem;
+  overflow-x: auto;
   /* When highlighted code blocks are too wide, they wrap. Resulting in the */
   /* line numbers column's rows not lining up with the code rows. Prevent */
   /* wrapping. */
   white-space: pre;
   width: inherit; }
 pre, code {
+  overflow-x: auto;
   font-family: ◊|monospace|;
   color: black; }
 
