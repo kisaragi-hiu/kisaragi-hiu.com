@@ -12,6 +12,6 @@ git config user.name "Built on Travis CI"
 git config user.email "mail@kisaragi-hiu.com"
 
 git add .
-git commit -m "Deploy to Github Pages"
+git commit -m "Deploy"
 
 git push --force "https://${GH_TOKEN}@${GH_REF}" master
