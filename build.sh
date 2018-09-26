@@ -30,6 +30,7 @@ build () {
     cp -r blog/css/*.css public/css/ || return 1
     cp -r blog/images public/ || return 1
     cp -r blog/videos public/ || return 1
+    cp _redirects public/ || return 1
     cp CNAME public/ || return 1
     cp favicon.ico public/ || return 1
     touch public/.nojekyll
