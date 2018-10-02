@@ -8,7 +8,7 @@ env:
   global:
   - RACKET_DIR: "~/racket"
   - RACKET_VERSION: 6.12
-  - GH_REF: 'github.com/kisaragi-hiu/kisaragi-hiu.com'
+  - GH_REF: 'github.com/kisaragi-hiu/kisaragi-hiu.com.git'
 cache:
   directories:
     - $HOME/.racket/$RACKET_VERSION/
