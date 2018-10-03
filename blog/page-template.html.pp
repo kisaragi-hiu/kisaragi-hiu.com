@@ -35,21 +35,21 @@
           #:content "@|keywords|"]
     ◊meta[#:name "viewport"
           #:content "width=device-width, initial-scale=1, shrink-to-fit=no"]
-    <link rel="icon"      href="@|uri-prefix|/favicon.ico">
-    <link rel="canonical" href="@|full-uri|">
+    ◊link/head[#:rel="icon"      #:href="@|uri-prefix|/favicon.ico"]
+    ◊link/head[#:rel="canonical" #:href="@|full-uri|"]
 
-    @(when rel-next @list{<link rel="next" href="@|rel-next|">})
-    @(when rel-prev @list{<link rel="prev" href="@|rel-prev|">})
+    @(when rel-next @list{◊link/head[#:rel="next" #:href="@|rel-next|"]})
+    @(when rel-prev @list{◊link/head[ #:rel="prev" #:href="@|rel-prev|"]})
     ◊; Font
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira+Sans|Overpass+Mono|Overpass:400,600">
+    ◊link/head[#:rel="stylesheet" #:href="https://fonts.googleapis.com/css?family=Fira+Sans|Overpass+Mono|Overpass:400,600"]
 
     ◊; CSS
-    <link rel="stylesheet" type="text/css" href="@|uri-prefix|/css/normalize.css">
-    <link rel="stylesheet" type="text/css" href="@|uri-prefix|/css/skeleton.css">
-    <link rel="stylesheet" type="text/css" href="@|uri-prefix|/css/emacs.css">
+    ◊link/head[#:rel="stylesheet" #:type="text/css" #:href="@|uri-prefix|/css/normalize.css"]
+    ◊link/head[#:rel="stylesheet" #:type="text/css" #:href="@|uri-prefix|/css/skeleton.css"]
+    ◊link/head[#:rel="stylesheet" #:type="text/css" #:href="@|uri-prefix|/css/emacs.css"]
     ◊; Feed
-    <link rel="alternate" type="application/atom+xml"
-          href="@|atom-feed-uri|" title="Atom Feed">
+    ◊link/head[#:rel="alternate" #:type="application/atom+xml"
+               #:href="@|atom-feed-uri|" #:title="Atom Feed"]
   </head>
   <body>
     <!--[if lte IE 9]>

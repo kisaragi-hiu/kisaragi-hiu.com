@@ -61,6 +61,9 @@
                ,(string-append "@(when " tags " \" :: \")")
                ,tags))))
 
+;; As ◊link is used for hyperlinks, <link> needs another name
+(define link/head (default-tag-function 'link))
+
 (define/txexpr (strike . text)
   `(s ,@text))
 
