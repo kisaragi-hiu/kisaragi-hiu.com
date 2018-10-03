@@ -24,12 +24,17 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <title>@|title|</title>
-    <meta name="description" content="@|description|">
-    <meta name="author"      content="@|author|">
-    <meta name="keywords"    content="@|keywords|">
-    <meta name="viewport"    content="width=device-width, initial-scale=1">
+    ◊meta[#:charset "utf-8"]
+    ◊meta[#:http-equiv "x-ua-compatible" #:content "ie=edge"]
+    ◊title{@title}
+    ◊meta[#:name "description"
+          #:content "@|description|"]
+    ◊meta[#:name "author"
+          #:content "@|author|"]
+    ◊meta[#:name "keywords"
+          #:content "@|keywords|"]
+    ◊meta[#:name "viewport"
+          #:content "width=device-width, initial-scale=1, shrink-to-fit=no"]
     <link rel="icon"      href="@|uri-prefix|/favicon.ico">
     <link rel="canonical" href="@|full-uri|">
 
@@ -49,7 +54,11 @@
     ◊google-universal-analytics["UA-109874076-1"]
   </head>
   <body>
+    <!--[if lte IE 9]>
+      <p>For the love of god, please stop using IE 9. Thanks.</p>
+    <![endif]-->
     <a id="top"></a>
+
     <div class="container">
       ◊; Header
       <header id="topheader" class="ten columns offset-by-one">
@@ -111,5 +120,11 @@
         ◊(->html ◊p{Style based on ◊a[#:href "http://getskeleton.com/"]{Skeleton}.})
       </footer>
     </div>
+    ◊; Google Analytics
+    <script>
+      window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;
+      ga('create', 'UA-XXXXX-Y', 'auto'); ga('send', 'pageview')
+    </script>
+    <script src="https://www.google-analytics.com/analytics.js" async defer></script>
   </body>
 </html>
