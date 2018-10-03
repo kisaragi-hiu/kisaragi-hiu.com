@@ -50,8 +50,6 @@
     ◊; Feed
     <link rel="alternate" type="application/atom+xml"
           href="@|atom-feed-uri|" title="Atom Feed">
-    ◊; JS stuff
-    ◊google-universal-analytics["UA-109874076-1"]
   </head>
   <body>
     <!--[if lte IE 9]>
