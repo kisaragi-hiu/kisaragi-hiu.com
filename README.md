@@ -1,6 +1,6 @@
 # kisaragi-hiu.com
 
-[![Build Status](https://travis-ci.org/kisaragi-hiu/kisaragi-hiu.github.io.svg?branch=source)](https://travis-ci.org/kisaragi-hiu/kisaragi-hiu.github.io)
+[![Build Status](https://travis-ci.org/kisaragi-hiu/kisaragi-hiu.com.svg?branch=source)](https://travis-ci.org/kisaragi-hiu/kisaragi-hiu.github.io)
 
 My personal website, built on [Frog](https://github.com/greghendershott/frog) and [Pollen](https://github.com/mbutterick/pollen).
 
