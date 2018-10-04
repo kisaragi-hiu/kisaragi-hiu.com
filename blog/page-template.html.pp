@@ -52,53 +52,57 @@
 
     <div class="container">
       ◊; Header
-      <header id="topheader" class="ten columns offset-by-one">
-        <div class="logo">
-          <a href="/"><img src="/images/text-logo.svg" alt="如月.飛羽"/></a>
-          <img src="@|uri-prefix|/images/avatar.png" alt="Icon"/>
+      <header id="header" class="py-2">
+        <div class="row flex-nowrap justify-content-between alien-items-center">
+          <div id="logo" class="col-6 pt-1">
+            <img src="@|uri-prefix|/images/avatar.png" alt="Kisaragi Hiu"/>
+          </div>
         </div>
+      </header>
 
-        <div id="social-links">
-          ◊link["@|atom-feed-uri|"]{◊font-awesome["rss"]}
-          ◊twitter["flyin1501"]{◊font-awesome["twitter"]}
-          ◊github["kisaragi-hiu"]{◊font-awesome["github"]}
-          ◊gitlab["kisaragi-hiu"]{◊font-awesome["gitlab"]}
-          ◊youtube["channel/UCl_hsqcvdX0XdgBimRQ6R3A"]{◊font-awesome["youtube"]}
-        </div>
-
-        <nav>
-          <a href="@|uri-prefix|/index.html">Blog</a>
-          <a href="@|uri-prefix|/about.html">About</a>
-          <a href="@|uri-prefix|/all-tags.html">Tags</a>
-          @(tags->link (get-language-tags all-tags))
+      <div class="nav-scroller py-1">
+        <nav class="nav d-flex justify-content-between">
+          <a class="p-2 text-muted" href="@|uri-prefix|/index.html">Blog</a>
+          <a class="p-2 text-muted" href="@|uri-prefix|/about.html">About</a>
+          <a class="p-2 text-muted" href="@|uri-prefix|/all-tags.html">Tags</a>
+          @(~> (map (lambda (tx) (attr-set* tx 'class "p-2 text-muted"))
+                    (tags->link/txexpr (get-language-tags all-tags)))
+               (map xexpr->html _)
+               (string-join _ "\n"))
           ◊; @(get-category-tags all-tags)
           ◊; <li><a href="@|uri-prefix|/categories.html">Categories</a></li>
         </nav>
-      </header>
+      </div>
+
+      <div id="social-links">
+        ◊link["@|atom-feed-uri|"]{◊font-awesome["rss"]}
+        ◊twitter["flyin1501"]{◊font-awesome["twitter"]}
+        ◊github["kisaragi-hiu"]{◊font-awesome["github"]}
+        ◊gitlab["kisaragi-hiu"]{◊font-awesome["gitlab"]}
+        ◊youtube["channel/UCl_hsqcvdX0XdgBimRQ6R3A"]{◊font-awesome["youtube"]}
+      </div>
 
       ◊; Contents
-      <div class="row">
-        <div id="content" class="ten columns offset-by-one">
-          @(cond [(special? tag) @list{<h1>@(string-titlecase (tag-special-prefix tag)): <em>@(strip-tag-special-prefix tag)</em></h1>}]
-                 [tag @list{<h1>Tag: <em>@|tag|</em></h1>}])
+      <div id="content" class="">
+        @(cond [(special? tag) @list{<h1>@(string-titlecase (tag-special-prefix tag)): <em>@(strip-tag-special-prefix tag)</em></h1>}]
+               [tag @list{<h1>Tag: <em>@|tag|</em></h1>}])
 
-          @(if (index? contents)
-               (map
-                 (λ (year)
-                    (string-append
-                      (xexpr->string `(h2 ([class "index-year"]) ,year))
-                      (~> (string->indices contents)
-                          (filter (λ (index) (equal? (content-year index) year)) _)
-                          (map strip-metadata _)
-                          (string-join _ ""))))
-                 (get-years-in-indices (string->indices contents)))
+        @(if (index? contents)
+             (map
+               (λ (year)
+                  (string-append
+                    (xexpr->string `(h2 ([class "index-year"]) ,year))
+                    (~> (string->indices contents)
+                        (filter (λ (index) (equal? (content-year index) year)) _)
+                        (map strip-metadata _)
+                        (string-join _ ""))))
+               (get-years-in-indices (string->indices contents)))
 
-               (strip-metadata contents))
-        </div>
+             (strip-metadata contents))
       </div>
 
       ◊; Footer
-      <footer class="ten columns offset-by-one">
+      <footer class="">
         <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
            <img alt="Creative Commons License"
                 style="border-width:0"

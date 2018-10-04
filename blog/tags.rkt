@@ -58,6 +58,11 @@
            tags)
       (string-join _ "\n")))
 
+;; tags->link but as a txexpr
+(define (tags->link/txexpr tags)
+  (map (λ (x) `(a ([href ,(tag-st-url x)]) ,(tag-st-name x)))
+       tags))
+
 (define (comma-html->tags str)
   (~> (string-replace str ", " "")
       string->xexpr
