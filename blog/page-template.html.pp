@@ -24,34 +24,28 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    ◊meta[#:charset "utf-8"]
-    ◊meta[#:http-equiv "x-ua-compatible" #:content "ie=edge"]
-    ◊title{@title}
-    ◊meta[#:name "description"
-          #:content "@|description|"]
-    ◊meta[#:name "author"
-          #:content "@|author|"]
-    ◊meta[#:name "keywords"
-          #:content "@|keywords|"]
-    ◊meta[#:name "viewport"
-          #:content "width=device-width, initial-scale=1, shrink-to-fit=no"]
-    ◊link/head[#:rel="icon"      #:href="@|uri-prefix|/favicon.ico"]
-    ◊link/head[#:rel="canonical" #:href="@|full-uri|"]
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>@title</title>
+    <meta name="description" content="@|description|">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="@|author|">
+    <meta name="keywords" content="@|keywords|">
+    <link rel="icon" href="@|uri-prefix|/favicon.ico">
+    <link rel="canonical" href="@|full-uri|">
 
-    @(when rel-next @list{◊link/head[#:rel="next" #:href="@|rel-next|"]})
-    @(when rel-prev @list{◊link/head[ #:rel="prev" #:href="@|rel-prev|"]})
+    @(when rel-next @list{<link rel="next" href="@|rel-next|">})
+    @(when rel-prev @list{<link rel="prev" href="@|rel-prev|">})
     ◊; Font
-    ◊link/head[#:rel="stylesheet" #:href="https://fonts.googleapis.com/css?family=Fira+Sans|Overpass+Mono|Overpass:400,600"]
-
-    ◊; CSS
-    ◊link/head[#:rel="stylesheet" #:href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" #:integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" #:crossorigin="anonymous"]
-    ◊link/head[#:rel="stylesheet" #:type="text/css" #:href="@|uri-prefix|/css/emacs.css"]
-    ◊; Feed
-    ◊link/head[#:rel="alternate" #:type="application/atom+xml"
-               #:href="@|atom-feed-uri|" #:title="Atom Feed"]
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira+Sans|Overpass+Mono|Overpass:400,600">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="@|uri-prefix|/css/emacs.css">
+    <link rel="alternate" type="application/atom+xml"
+          href="@|atom-feed-uri|" title="Atom Feed">
   </head>
   <body>
     <!--[if lte IE 9]>
+      ◊; … too aggressive?
       <p>For the love of god, please stop using IE 9. Thanks.</p>
     <![endif]-->
     <a id="top"></a>
