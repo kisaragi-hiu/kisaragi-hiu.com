@@ -55,15 +55,6 @@
       ◊; Header
       <header id="header" class="py-2">
         <div class="row flex-nowrap justify-content-between alien-items-center">
-          <div id="logo" class="col-6 pt-1">
-            <img src="@|uri-prefix|/images/avatar.png" alt="Kisaragi Hiu"/>
-          </div>
-        </div>
-      </header>
-
-      ◊; new header
-      <header id="header" class="py-2">
-        <div class="row flex-nowrap justify-content-between alien-items-center">
           <div id="logo" class="col-4 pt-1">
             <div class="d-flex justify-content-begin">
               <a href="/" target="_self" class="p-2"><img src="/images/avatar.png" alt="Kisaragi Hiu"/></a>
