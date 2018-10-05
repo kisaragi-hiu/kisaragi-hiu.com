@@ -57,7 +57,7 @@
         <div class="row flex-nowrap justify-content-between alien-items-center">
           <div id="logo" class="col-4 pt-1">
             <div class="d-flex justify-content-begin">
-              <a href="/" target="_self" class="p-2"><img src="/images/avatar.png" alt="Kisaragi Hiu"/></a>
+              <a href="/" target="_self" class="py-2 pr-2"><img src="/images/avatar.png" alt="Kisaragi Hiu"/></a>
             </div>
           </div>
           <div id="social-links" class="col-4 pt-1">
