@@ -21,6 +21,10 @@
                   'monospace'})
 ◊(define title "h1,h2,h3,h4,h5,h6,h7,.title")
 
+body {
+    font-family: ◊|sans-serif|;
+}
+
 #logo img {
     max-height: 2em;
     margin-right: 0.4em;
@@ -67,3 +71,21 @@ article header .tags {
   margin-top: 0;
   font-size: 1rem;
 }
+
+.highlight {
+  overflow-x: auto;
+  font-family: ◊|monospace|;
+  color: black;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-size: 1.5rem;
+  line-height: 1.2;
+  margin-top: 1.5rem;
+  margin-bottom: .5rem;
+  font-weight: 300;
+  letter-spacing: normal;
+}
+
+h1 { font-weight: 600; }
+h2 { font-weight: 400; }
