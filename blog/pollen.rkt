@@ -65,6 +65,20 @@
 (define/txexpr (strike . text)
   `(s ,@text))
 
+(define/txexpr (stylized-item text)
+  (txexpr* 'div '()
+           `(span ([style "font-weight: 700;"]) ,text)
+           `(hr ([style
+                     ,(string-append "height: 1px;"
+                                     "width: 6rem;"
+                                     "margin: 0.3rem auto 1.2rem;"
+                                     "text-align: left;"
+                                     "margin-right: 100%;"
+                                     "background-color: #444;")]))))
+
+(define/txexpr (rant . text)
+  `(span ([style "color: #777;"]) "(" ,@text ")"))
+
 (define/txexpr (image src [caption #f] #:width [width #f])
   `(div (img ([src ,src]))
         ,(if caption
