@@ -25,3 +25,12 @@
     max-height: 2em;
     margin-right: 0.4em;
 }
+
+.text-primary {
+  color: #333 !important;
+}
+
+a.text-primary:hover, a.text-primary:focus {
+  color: #d0a3ff !important;
+}
+

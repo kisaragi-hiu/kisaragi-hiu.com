@@ -51,8 +51,9 @@
                         #:class class) ; :: string? ex: "post-header"
   (->html
    `(header ([class ,class])
-            (p ([class "title"])
-               (a ([href ,uri])
+            (p ([class "title mb-0"])
+               (a ([href ,uri]
+                   [class "text-primary"])
                   ,title))
             (p ([class "date-and-category"])
                (span ,date)
