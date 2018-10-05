@@ -61,7 +61,7 @@
             </div>
           </div>
           <div id="social-links" class="col-4 pt-1">
-            <div class="d-flex justify-content-end">
+            <div class="d-flex justify-content-center">
               ◊link["@|atom-feed-uri|" #:class "p-2"]{
                 ◊font-awesome["rss" #:color "6c757d"]
               }
@@ -75,7 +75,7 @@
                 ◊font-awesome["gitlab" #:color "6c757d"]
               }
               ◊youtube["channel/UCl_hsqcvdX0XdgBimRQ6R3A" #:class "p-2"]{
-                ◊font-awesome["youtube" #:color "6c757d"]
+                ◊font-awesome["youtube-play" #:color "6c757d"]
               }
             </div>
           </div>
