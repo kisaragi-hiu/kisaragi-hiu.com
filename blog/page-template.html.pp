@@ -39,7 +39,8 @@
     ◊; Font
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira+Sans|Overpass+Mono|Overpass:400,600">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="@|uri-prefix|/css/emacs.css">
+    <link rel="stylesheet" type="text/css" href="/css/emacs.css">
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
     <link rel="alternate" type="application/atom+xml"
           href="@|atom-feed-uri|" title="Atom Feed">
   </head>
@@ -60,27 +61,39 @@
         </div>
       </header>
 
-      <div class="nav-scroller py-1">
-        <nav class="nav d-flex justify-content-between">
-          <a class="p-2 text-muted" href="@|uri-prefix|/index.html">Blog</a>
-          <a class="p-2 text-muted" href="@|uri-prefix|/about.html">About</a>
-          <a class="p-2 text-muted" href="@|uri-prefix|/all-tags.html">Tags</a>
-          @(~> (map (lambda (tx) (attr-set* tx 'class "p-2 text-muted"))
-                    (tags->link/txexpr (get-language-tags all-tags)))
-               (map xexpr->html _)
-               (string-join _ "\n"))
-          ◊; @(get-category-tags all-tags)
-          ◊; <li><a href="@|uri-prefix|/categories.html">Categories</a></li>
-        </nav>
-      </div>
-
-      <div id="social-links">
-        ◊link["@|atom-feed-uri|"]{◊font-awesome["rss"]}
-        ◊twitter["flyin1501"]{◊font-awesome["twitter"]}
-        ◊github["kisaragi-hiu"]{◊font-awesome["github"]}
-        ◊gitlab["kisaragi-hiu"]{◊font-awesome["gitlab"]}
-        ◊youtube["channel/UCl_hsqcvdX0XdgBimRQ6R3A"]{◊font-awesome["youtube"]}
-      </div>
+      ◊; new header
+      <header id="header" class="py-2">
+        <div class="row flex-nowrap justify-content-between alien-items-center">
+          <div id="logo" class="col-4 pt-1">
+            <div class="d-flex justify-content-begin">
+              <a href="/" target="_self" class="p-2"><img src="/images/avatar.png" alt="Kisaragi Hiu"/></a>
+            </div>
+          </div>
+          <div id="social-links" class="col-4 pt-1">
+            <div class="d-flex justify-content-end">
+              ◊link["@|atom-feed-uri|" #:class "p-2"]{◊font-awesome["rss"]}
+              ◊twitter["flyin1501" #:class "p-2"]{◊font-awesome["twitter"]}
+              ◊github["kisaragi-hiu" #:class "p-2"]{◊font-awesome["github"]}
+              ◊gitlab["kisaragi-hiu" #:class "p-2"]{◊font-awesome["gitlab"]}
+              ◊youtube["channel/UCl_hsqcvdX0XdgBimRQ6R3A"
+                       #:class "p-2"]{◊font-awesome["youtube"]}
+            </div>
+          </div>
+          <div class="col-4 nav-scroller py-1">
+            <nav class="nav d-flex justify-content-end">
+              <a class="p-2 text-secondary" href="/">Blog</a>
+              <a class="p-2 text-secondary" href="/about.html">About</a>
+              <a class="p-2 text-secondary" href="/all-tags.html">Tags</a>
+              @(~> (map (lambda (tx) (attr-set* tx 'class "p-2 text-secondary"))
+                          (tags->link/txexpr (get-language-tags all-tags)))
+                  (map xexpr->html _)
+                  (string-join _ "\n"))
+              ◊; @(get-category-tags all-tags)
+              ◊; <li><a href="@|uri-prefix|/categories.html">Categories</a></li>
+            </nav>
+          </div>
+        </div>
+      </header>
 
       ◊; Contents
       <div id="content" class="">
