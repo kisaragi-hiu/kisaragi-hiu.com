@@ -26,6 +26,28 @@
     margin-right: 0.4em;
 }
 
+a {
+    color: #a868e8;
+    -webkit-transition: all 0.4s ease;
+    -moz-transition: all 0.4s ease;
+    -o-transition: all 0.4s ease;
+    -ms-transition: all 0.4s ease;
+    transition: all 0.4s ease;
+}
+
+a:hover {
+    color: #d0a3ff;
+    text-decoration: none;
+}
+
+.index-item {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+.index-header .title {
+    font-size: 1.5rem;
+}
+
 .text-primary {
   color: #333 !important;
 }
@@ -34,3 +56,13 @@ a.text-primary:hover, a.text-primary:focus {
   color: #d0a3ff !important;
 }
 
+article header .date-and-category,
+article header .tags {
+  font-family: ◊|monospace|;
+  font-family: monospace;
+  display: block;
+  color: #888;
+  margin-bottom: 0;
+  margin-top: 0;
+  font-size: 1rem;
+}
