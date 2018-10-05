@@ -44,7 +44,8 @@ a:hover {
     margin-top: 0.5rem;
     margin-bottom: 0.5rem;
 }
-.index-header .title {
+.index-header .title,
+.post-header .title {
     font-size: 1.5rem;
 }
 
