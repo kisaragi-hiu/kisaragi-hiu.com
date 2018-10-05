@@ -62,12 +62,21 @@
           </div>
           <div id="social-links" class="col-4 pt-1">
             <div class="d-flex justify-content-end">
-              ◊link["@|atom-feed-uri|" #:class "p-2"]{◊font-awesome["rss"]}
-              ◊twitter["flyin1501" #:class "p-2"]{◊font-awesome["twitter"]}
-              ◊github["kisaragi-hiu" #:class "p-2"]{◊font-awesome["github"]}
-              ◊gitlab["kisaragi-hiu" #:class "p-2"]{◊font-awesome["gitlab"]}
-              ◊youtube["channel/UCl_hsqcvdX0XdgBimRQ6R3A"
-                       #:class "p-2"]{◊font-awesome["youtube"]}
+              ◊link["@|atom-feed-uri|" #:class "p-2"]{
+                ◊font-awesome["rss" #:color "6c757d"]
+              }
+              ◊twitter["flyin1501" #:class "p-2"]{
+                ◊font-awesome["twitter" #:color "6c757d"]
+              }
+              ◊github["kisaragi-hiu" #:class "p-2"]{
+                ◊font-awesome["github" #:color "6c757d"]
+              }
+              ◊gitlab["kisaragi-hiu" #:class "p-2"]{
+                ◊font-awesome["gitlab" #:color "6c757d"]
+              }
+              ◊youtube["channel/UCl_hsqcvdX0XdgBimRQ6R3A" #:class "p-2"]{
+                ◊font-awesome["youtube" #:color "6c757d"]
+              }
             </div>
           </div>
           <div class="col-4 nav-scroller py-1">
