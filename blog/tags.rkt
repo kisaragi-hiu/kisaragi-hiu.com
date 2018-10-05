@@ -63,20 +63,26 @@
   (map (λ (x) `(a ([href ,(tag-st-url x)]) ,(tag-st-name x)))
        tags))
 
-(define (comma-html->tags str)
-  (~> (string-replace str ", " "")
+(define (seperator-html->tags str [seperator ", "])
+  (~> (string-replace str seperator "")
       string->xexpr
       get-elements
       (filter txexpr? _)
       (map (λ (x) (tag-st (last x) (attr-ref x 'href))) _)))
 
-(define (tags->comma-html tags)
+(define (tags->seperator-html tags [seperator ", "])
   (and~> (map (λ (x) (xexpr->html `(a ([href ,(tag-st-url x)]) ,(tag-st-name x))))
               tags)
-         (add-between _ ", ")
+         (add-between _ seperator)
          ((λ (lst) (if (empty? lst) #f lst)) _) ; short circuit out if it's empty
          (string-join _ "")
          (string-append "<span>" _ "</span>")))
+
+(define (tags->comma-html tags)
+  (tags->seperator-html tags ", "))
+
+(define (comma-html->tags tags)
+  (seperator-html->tags tags ", "))
 
 (define (language? tag)
   (string-prefix? (tag-st-name tag) "language:"))
