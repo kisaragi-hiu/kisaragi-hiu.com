@@ -98,3 +98,10 @@ h1, h2, h3, h4, h5, h6 {
 
 h1 { font-weight: 600; }
 h2 { font-weight: 400; }
+
+.index-year {
+    font-size: 1.5rem;
+    margin-top: 1.5rem;
+    margin-bottom: .5rem;
+    font-weight: 500;
+}

@@ -97,20 +97,49 @@
 
       ◊; Contents
       <div id="content" class="">
-        @(cond [(special? tag) @list{<h1>@(string-titlecase (tag-special-prefix tag)): <em>@(strip-tag-special-prefix tag)</em></h1>}]
-               [tag @list{<h1>Tag: <em>@|tag|</em></h1>}])
-
         @(if (index? contents)
-             (map
-               (λ (year)
-                  (string-append
-                    (xexpr->string `(h2 ([class "index-year"]) ,year))
-                    (~> (string->indices contents)
-                        (filter (λ (index) (equal? (content-year index) year)) _)
-                        (map strip-metadata _)
-                        (string-join _ ""))))
-               (get-years-in-indices (string->indices contents)))
+             ◊; When the current page is an index
+             (begin
+               (let* ([indices (string->indices contents)]
+                      [filtered-indices
+                       (~>
+                        (filter-not
+                         (lambda (x) (equal? (content-ref x 'category) "Fiction"))
+                         indices))]
+                      [years (get-years-in-indices filtered-indices)]
+                      ◊; tags are available in all-tags already
+                      [categories (filter category? all-tags)])
+                 (string-append
+                   (cond [(special? tag)
+                          (xexpr->string `(h1 ,(string-titlecase
+                                                (tag-special-prefix tag))
+                                              ": "
+                                              (strong ,(strip-tag-special-prefix tag))))]
+                         [tag
+                          (xexpr->string `(h1 "Tag: " (strong ,tag)))]
+                         [else
+                          ◊; This is where the landing text should be
+                          (xexpr->string
+                           `(h1 ([class "blog-title"]) "Blog"))])
+                   (string-join
+                    (map (lambda (year)
+                           (~> filtered-indices
+                               (filter-indices-to-string
+                                (lambda (x) (equal? (content-year x) year))
+                                _)
+                               (string-append
+                                (xexpr->string
+                                 `(p ([class "index-year text-secondary"]) ,year))
+                                _)))
+                         years))
+                   ◊; Indicies with the category "Fiction"
+                   (xexpr->string
+                    `(h1 ([class "index-stream"]) "Fiction"))
+                   (filter-indices-to-string
+                    (lambda (x) (equal? (content-ref x 'category) "Fiction"))
+                    indices))))
 
+             ◊; If not an index, just show the contents
              (strip-metadata contents))
       </div>
 
