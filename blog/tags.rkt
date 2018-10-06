@@ -64,15 +64,16 @@
        tags))
 
 (define (seperator-html->tags str [seperator ", "])
-  (~> (string-replace str seperator "")
-      string->xexpr
-      get-elements
-      (filter txexpr? _)
-      (map (λ (x) (tag-st (last x) (attr-ref x 'href))) _)))
+  (and~> str
+         (string-replace _ seperator "")
+         string->xexpr
+         get-elements
+         (filter txexpr? _)
+         (map (λ (x) (tag-st (last x) (attr-ref x 'href))) _)))
 
 (define (tags->seperator-html tags [seperator ", "])
-  (and~> (map (λ (x) (xexpr->html `(a ([href ,(tag-st-url x)]) ,(tag-st-name x))))
-              tags)
+  (and~> tags
+         (map (λ (x) (xexpr->html `(a ([href ,(tag-st-url x)]) ,(tag-st-name x)))) _)
          (add-between _ seperator)
          ((λ (lst) (if (empty? lst) #f lst)) _) ; short circuit out if it's empty
          (string-join _ "")
