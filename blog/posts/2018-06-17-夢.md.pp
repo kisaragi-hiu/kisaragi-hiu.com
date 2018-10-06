@@ -1,7 +1,7 @@
 #lang pollen
     Title: 夢
     Date: 2018-06-17T19:45:44
-    Tags: language:zh-tw, category:極短篇, 虛構, 寫作
+    Tags: language:zh-tw, category:Fiction, 極短篇, 寫作
 
 高架橋下，有著三條路的交叉口，跟著橋下的是雙向的電車軌道。
 
