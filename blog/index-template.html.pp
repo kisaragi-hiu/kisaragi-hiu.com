@@ -7,7 +7,7 @@
 @(define filtered-tags
    (and~> (comma-html->tags tags)
           (filter-not special? _)
-          (tags->seperator-html _ ", ")))
+          (tags->comma-html _)))
 @(define category-from-tags
    (and~> (comma-html->tags tags)
           (filter category? _)
