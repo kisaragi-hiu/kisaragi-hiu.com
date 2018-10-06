@@ -34,6 +34,8 @@
   ;; Does this content declare it's from the post template?
   (equal? (dict-ref (content-metadata content) 'type #f) "post"))
 
+(define (content-ref content key)
+  (dict-ref (content-metadata content) key #f))
 
 (define (content-date content)
   (content-ref content 'date))
@@ -54,7 +56,18 @@
   ;; split content from index-template into individual indices
   (string-split (string-trim str) index-template-marker))
 
+;; Note that because I don't add the marker back, the string can't be converted back
+(define (indicies->string indices)
+  (string-join (map strip-metadata indices) ""))
+
 (define (get-years-in-indices lst)
   ;; get the years that are in the indices
   (remove-duplicates (map content-year lst)))
 
+(define (content-key-values contents key)
+  ;; get each unique value of key from contents
+  (remove-duplicates (map (λ (c) (content-ref c key)) contents)))
+
+(define (filter-indices-to-string func indices)
+  (indicies->string (filter func
+                            indices)))
