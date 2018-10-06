@@ -24,7 +24,10 @@
         xexpr->string))
 ◊; See content-processing.rkt for metadata handling
 {"type":"index",
- "date":"@(attr-ref (string->xexpr date) 'datetime)"}
+ "date":"@(attr-ref (string->xexpr date) 'datetime)",
+ "tags":"@(comma-html->tags tags)",
+ "filtered-tags":"@(comma-html->tags filtered-tags)",
+ "category":"@(and~> category-from-tags comma-html->tags first tag-st-name)"}
 <!-- end of metadata -->
 <article class="index-item">
   ◊article-header[#:date "@|processed-date|" #:tags "@|filtered-tags|"
