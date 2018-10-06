@@ -133,11 +133,16 @@
                                 _)))
                          years))
                    ◊; Indicies with the category "Fiction"
-                   (xexpr->string
-                    `(h1 ([class "index-stream"]) "Fiction"))
-                   (filter-indices-to-string
-                    (lambda (x) (equal? (content-ref x 'category) "Fiction"))
-                    indices))))
+                   (let ([fiction-indices
+                          (filter-indices-to-string
+                           (lambda (x) (equal? (content-ref x 'category) "Fiction"))
+                           indices)])
+                     (if (equal? fiction-indices "")
+                         ""
+                         (string-append
+                          (xexpr->string
+                           `(h1 ([class "index-stream"]) "Fiction"))
+                          fiction-indices))))))
 
              ◊; If not an index, just show the contents
              (strip-metadata contents))
