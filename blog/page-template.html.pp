@@ -85,9 +85,9 @@
               <a class="p-2 text-secondary" href="/about.html">About</a>
               <a class="p-2 text-secondary" href="/all-tags.html">Tags</a>
               @(~> (map (lambda (tx) (attr-set* tx 'class "p-2 text-secondary"))
-                          (tags->link/txexpr (get-language-tags all-tags)))
-                  (map xexpr->html _)
-                  (string-join _ "\n"))
+                        (tags->link/txexpr (get-language-tags all-tags)))
+                   (map xexpr->html _)
+                   (string-join _ "\n"))
               ◊; @(get-category-tags all-tags)
               ◊; <li><a href="@|uri-prefix|/categories.html">Categories</a></li>
             </nav>
