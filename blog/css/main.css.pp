@@ -56,43 +56,44 @@ a:hover {
     margin-top: 0.5rem;
     margin-bottom: 0.5rem;
 }
+
 .index-header .title,
 .post-header .title {
     font-size: 1.5rem;
 }
 
 .text-primary {
-  color: #333 !important;
+    color: #333 !important;
 }
 
 a.text-primary:hover, a.text-primary:focus {
-  color: #d0a3ff !important;
+    color: #d0a3ff !important;
 }
 
 article header .date-and-category,
 article header .tags {
-  font-family: ◊|monospace|;
-  font-family: monospace;
-  display: block;
-  color: #888;
-  margin-bottom: 0;
-  margin-top: 0;
-  font-size: 1rem;
+    font-family: ◊|monospace|;
+    font-family: monospace;
+    display: block;
+    color: #888;
+    margin-bottom: 0;
+    margin-top: 0;
+    font-size: 1rem;
 }
 
 .highlight {
-  overflow-x: auto;
-  font-family: ◊|monospace|;
-  color: black;
+    overflow-x: auto;
+    font-family: ◊|monospace|;
+    color: black;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-size: 1.5rem;
-  line-height: 1.2;
-  margin-top: 1.5rem;
-  margin-bottom: .5rem;
-  font-weight: 300;
-  letter-spacing: normal;
+    font-size: 1.5rem;
+    line-height: 1.2;
+    margin-top: 1.5rem;
+    margin-bottom: .5rem;
+    font-weight: 300;
+    letter-spacing: normal;
 }
 
 h1 { font-weight: 600; }
