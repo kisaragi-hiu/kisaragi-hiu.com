@@ -82,8 +82,8 @@
 (define (tags->comma-html tags)
   (tags->seperator-html tags ", "))
 
-(define (comma-html->tags tags)
-  (seperator-html->tags tags ", "))
+(define (comma-html->tags str)
+  (seperator-html->tags str ", "))
 
 (define (language? tag)
   (string-prefix? (tag-st-name tag) "language:"))
