@@ -16,7 +16,7 @@
 ◊link{https://www.youtube.com/channel/UCl_hsqcvdX0XdgBimRQ6R3A}
 ◊link{http://www.nicovideo.jp/user/38995186}
 
-◊link{https://pixiv.me/flyingfeather1501}
+◊link{https://pixiv.me/kisaragi-hiu}
 
 ◊link{https://episode.cc/about/flyin1501}
 
