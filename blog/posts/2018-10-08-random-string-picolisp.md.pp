@@ -43,7 +43,7 @@ The last section is the entry point; when there are arguments passed into the sc
   (displayln (random-string (string->number (vector-ref (current-command-line-arguments) 0)))))
 ```
 
-## Common Lisp rewrite
+## Common Lisp rewrite [◊link["https://gitlab.com/kisaragi-hiu/dotfiles/blob/ed9483a72adcc32ac8935a59f85b61b7e574240f/random-string.cl"]{link}]
 
 ```lisp
 #!/usr/bin/env clisp
@@ -98,19 +98,28 @@ The shebang tells the kernel to pass this file to the specified program, like `#
 
 In the end, my shebang looks like `#!/usr/bin/pil -argv dummy len`: bind the first argument (path to script) to `dummy`, second argument to `len`; `len` isn't actually going to be loaded because `(bye)` has been called before its loading starts.
 
-```picolisp
+```lisp
 #!/usr/bin/pil -argv dummy len
 # a bit of a hack around Picolisp's loading mechanism
 # random-string [length]
+```
 
-# (time) is only down to seconds, can't just seed the PRNG on every call to select-random-item.
+Here I have to seed the PRNG with current time before running `select-random-item`, because I couldn't find a way to get time more accurate than seconds. If I seed it inside `select-random-item`, it'd receive the same (fresh) seed and thus return the same character throughout the second.
+
+```lisp
 (seed (+ (date) (time)))
 (setq *charset* (chop "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"))
 
 (de select-random-item (seq)
   (car (nth seq
             (rand 1 (length seq)))))
+```
 
+Picolisp doesn't have defaults for optional arguments, so I have to set it myself when the input is nil.
+
+Another interesting thing about Picolisp is that it actually uses a list of form `((arg1 arg2 ...) body)` as functions. Personally I think this is quite elegant, and would like to see more non-functions that are applicable like this in other Lisps as well. Allowing lists to be applicable like functions shouldn't break anything… I think.
+
+```lisp
 (de random-string (len)
   (if (not len) (setq len 16))
   (if (str? len) (setq len (format len)))
@@ -119,5 +128,4 @@ In the end, my shebang looks like `#!/usr/bin/pil -argv dummy len`: bind the fir
 
 (prinl (random-string len))
 (bye)
-# vim: filetype=picolisp
 ```
