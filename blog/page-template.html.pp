@@ -109,6 +109,7 @@
                       [years (get-years-in-indices filtered-indices)]
                       ◊; tags are available in all-tags already
                       [categories (filter category? all-tags)])
+                 ◊; Top section
                  (string-append
                    (cond [(special? tag)
                           (xexpr->string `(h1 ,(string-titlecase
@@ -118,6 +119,7 @@
                          [tag
                           (xexpr->string `(h1 "Tag: " (strong ,tag)))]
                          [else
+                          ◊; at index page
                           ◊; This is where the landing text should be
                           (xexpr->string
                            `(h1 ([class "blog-title"]) "Blog"))])
@@ -126,10 +128,18 @@
                     (map (lambda (year)
                            (string-append
                             (xexpr->string
-                             `(p ([class "index-year text-secondary"]) ,year))
+                             `(a ([class "btn index-year text-secondary"]
+                                  [data-toggle "collapse"]
+                                  [href ,(~a "#collapse-year-" year)]
+                                  [role "button"]
+                                  [aria-expanded "false"]
+                                  [aria-controls ,(~a "#collapse-year-" year)])
+                                 ,year))
+                            "<div class=\"collapse\" id=\"collapse-year-" year "\">"
                             (filter-indices-to-string
                              (lambda (x) (equal? (content-year x) year))
-                             filtered-indices)))
+                             filtered-indices)
+                            "</div>"))
                          years))
                    ◊; Indicies with the category "Fiction"
                    (let ([fiction-indices
