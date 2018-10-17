@@ -130,12 +130,12 @@
                             (xexpr->string
                              `(a ([class "btn index-year text-secondary"]
                                   [data-toggle "collapse"]
-                                  [href ,(~a "#collapse-year-" year)]
+                                  [href ,(~a "#collapseYear" year)]
                                   [role "button"]
                                   [aria-expanded "false"]
-                                  [aria-controls ,(~a "#collapse-year-" year)])
+                                  [aria-controls ,(~a "collapseYear" year)])
                                  ,year))
-                            "<div class=\"collapse\" id=\"collapse-year-" year "\">"
+                            "<div class=\"collapse show\" id=\"collapseYear" year "\">"
                             (filter-indices-to-string
                              (lambda (x) (equal? (content-year x) year))
                              filtered-indices)
