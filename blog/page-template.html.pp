@@ -128,13 +128,13 @@
                     (map (lambda (year)
                            (string-append
                             (xexpr->string
-                             `(a ([class "btn index-year text-secondary"]
-                                  [data-toggle "collapse"]
-                                  [href ,(~a "#collapseYear" year)]
-                                  [role "button"]
-                                  [aria-expanded "false"]
-                                  [aria-controls ,(~a "collapseYear" year)])
-                                 ,year))
+                             `(div (a ([class "index-year text-secondary"]
+                                       [data-toggle "collapse"]
+                                       [href ,(~a "#collapseYear" year)]
+                                       [role "button"]
+                                       [aria-expanded "false"]
+                                       [aria-controls ,(~a "collapseYear" year)])
+                                      ,year)))
                             "<div class=\"collapse show\" id=\"collapseYear" year "\">"
                             (filter-indices-to-string
                              (lambda (x) (equal? (content-year x) year))
