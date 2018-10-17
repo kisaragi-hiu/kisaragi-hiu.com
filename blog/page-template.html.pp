@@ -122,15 +122,14 @@
                           (xexpr->string
                            `(h1 ([class "blog-title"]) "Blog"))])
                    (string-join
+                    ◊; for each year, grab the index items from that year
                     (map (lambda (year)
-                           (~> filtered-indices
-                               (filter-indices-to-string
-                                (lambda (x) (equal? (content-year x) year))
-                                _)
-                               (string-append
-                                (xexpr->string
-                                 `(p ([class "index-year text-secondary"]) ,year))
-                                _)))
+                           (string-append
+                            (xexpr->string
+                             `(p ([class "index-year text-secondary"]) ,year))
+                            (filter-indices-to-string
+                             (lambda (x) (equal? (content-year x) year))
+                             filtered-indices)))
                          years))
                    ◊; Indicies with the category "Fiction"
                    (let ([fiction-indices
