@@ -73,7 +73,6 @@ a.text-primary:hover, a.text-primary:focus {
 article header .date-and-category,
 article header .tags {
     font-family: ◊|monospace|;
-    font-family: monospace;
     display: block;
     color: #888;
     margin-bottom: 0;
