@@ -80,7 +80,10 @@
   `(span ([style "color: #777;"]) "(" ,@text ")"))
 
 (define/txexpr (image src [caption #f] #:width [width #f])
-  `(div (img ([src ,src]))
+  (define image-style "max-width:100%;")
+  (when width
+    (set! image-style (~a image-style "width:" width ";")))
+  `(div (img ([src ,src] [style ,image-style]))
         ,(if caption
              `(p ([class "image-caption"]) ,caption)
              "")))
