@@ -15,12 +15,6 @@
 
 @(define all-tags (tag-string->tags tags-list-items))
 
-@(define tags.json (build-path (find-system-path 'temp-dir) "tags.json"))
-@(unless (file-exists? tags.json)
-  (define p (open-output-file tags.json))
-  (display (jsexpr->string (tags->jsexpr all-tags)) p)
-  (close-output-port p))
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -83,7 +77,6 @@
             <nav class="nav d-flex justify-content-end">
               <a class="p-2 text-secondary" href="/">Blog</a>
               <a class="p-2 text-secondary" href="/about.html">About</a>
-              <a class="p-2 text-secondary" href="/all-tags.html">Tags</a>
               @(~> (map (lambda (tx) (attr-set* tx 'class "p-2 text-secondary"))
                         (tags->link/txexpr (get-language-tags all-tags)))
                    (map xexpr->html _)
