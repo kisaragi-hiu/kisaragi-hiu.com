@@ -77,10 +77,16 @@
             <nav class="nav d-flex justify-content-end">
               <a class="p-2 text-secondary" href="/">Blog</a>
               <a class="p-2 text-secondary" href="/about.html">About</a>
-              @(~> (map (lambda (tx) (attr-set* tx 'class "p-2 text-secondary"))
-                        (tags->link/txexpr (get-language-tags all-tags)))
-                   (map xexpr->html _)
-                   (string-join _ "\n"))
+              @(tags->dropdown-links
+                #:button-id "dropdownLanguages"
+                #:button-extra-classes "text-secondary p-2"
+                #:button-label "Languages"
+                (get-language-tags all-tags))
+              @(tags->dropdown-links
+                #:button-id "dropdownTags"
+                #:button-extra-classes "text-secondary p-2"
+                #:button-label "Tags"
+                (filter-not special? all-tags))
               ◊; @(get-category-tags all-tags)
               ◊; <li><a href="@|uri-prefix|/categories.html">Categories</a></li>
             </nav>

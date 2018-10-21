@@ -108,6 +108,7 @@
         [else (tag-st (string-replace (tag-st-name tag) #rx"^.*:" "")
                       (tag-st-url tag))]))
 
+;; (filter language? tags) then convert their names for display
 (define (get-language-tags tags)
   (map (lambda (tag) (cond
                        [(string-prefix? (tag-st-name tag) "language:en")
@@ -178,3 +179,23 @@
                                          (tag-st "c" "c.html")))
                 (list (tag-st "a" "a.html")
                       (tag-st "b" "b.html"))))
+
+(define (tags->dropdown-links tags
+                              #:button-id button-id
+                              #:button-extra-classes button-extra-classes
+                              #:button-label button-label)
+  (define dropdown-menu
+    (~> (map (lambda (tx) (attr-set* tx 'class "dropdown-item"))
+             (tags->link/txexpr tags))
+        (txexpr 'div `((class "dropdown-menu") (aria-labelledby ,button-id)) _)))
+  (~> `(div ([class "dropdown"])
+            (a ([class ,(~a "btn dropdown-toggle " button-extra-classes)]
+                [href "#"]
+                [role "button"]
+                [id ,button-id]
+                [data-toggle "dropdown"]
+                [aria-haspopup "true"]
+                [aria-expanded "false"])
+               ,button-label)
+            ,dropdown-menu)
+      xexpr->html))
