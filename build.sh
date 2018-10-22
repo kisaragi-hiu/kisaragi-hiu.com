@@ -42,8 +42,13 @@ loop () {
     while true; do
         waitfor /tmp/trigger
         [ "$rebuild" == 1 ] && export POLLEN=$RANDOM # full rebuild
-        build || notify-send "Build error"
-        notify-send "Build complete"
+        if build; then
+            echo "build.sh: complete"
+            notify-send "Build complete"
+        else
+            echo "build.sh: error"
+            notify-send "Build error"
+        fi
     done
 }
 
