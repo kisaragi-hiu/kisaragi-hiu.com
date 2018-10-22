@@ -32,4 +32,4 @@
   `(div ([class "project"])
         (a ([href ,url])
            ,title)
-        ,description))
+        (p ,description)))
