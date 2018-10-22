@@ -99,6 +99,10 @@ h1, h2, h3, h4, h5, h6 {
     letter-spacing: normal;
 }
 
+.project {
+    width: 50%;
+}
+
 h1 { font-weight: 600; }
 h2 { font-weight: 400; }
 

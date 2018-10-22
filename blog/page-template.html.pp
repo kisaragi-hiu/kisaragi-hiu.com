@@ -121,8 +121,17 @@
                          [else
                           ◊; at index page
                           ◊; This is where the landing text should be
-                          (xexpr->string
-                           `(h1 ([class "blog-title"]) "Blog"))])
+                          (~a
+                           (xexpr->string
+                            `(div
+                              (h1 ([class "projects-title"]) "Projects")
+                              (div ([class "d-flex"])
+                               ,(project "/utau.html" "UTAU Covers" "Song covers made with UTAU.")
+                               ,(project "//github.com/kisaragi-hiu/cangjie.el" "Cangjie.el" "Retrieve Cangjie code for Han character in Emacs.")
+                               )))
+                           (xexpr->string
+                            `(h1 ([class "blog-title"]) "Blog"))
+                          )])
                    (string-join
                     ◊; for each year, grab the index items from that year
                     (map (lambda (year)
