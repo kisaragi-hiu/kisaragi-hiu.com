@@ -99,13 +99,20 @@ h1, h2, h3, h4, h5, h6 {
     letter-spacing: normal;
 }
 
-.project {
-    width: 50%;
+.project-title {
+    color: #444;
+    font-weight: 600;
+    margin-bottom: 0;
+}
+
+.project-desciption {
+    color: #555;
 }
 
 .project-list {
     column-count: 2;
     list-style: none;
+    padding-left: 0;
 }
 
 h1 { font-weight: 600; }

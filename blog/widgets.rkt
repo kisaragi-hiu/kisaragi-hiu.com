@@ -31,5 +31,8 @@
 (define (project url title description)
   `(li ([class "project"])
        (a ([href ,url])
-          ,title)
-       (p ,description)))
+          (p ([class "project-title"])
+             ,title
+             nbsp)
+          (p ([class "project-description"])
+             ,description))))

@@ -124,7 +124,7 @@
                           (~a
                            (xexpr->string
                             `(div
-                              (h1 ([class "project-title"]) "Projects")
+                              (h1 ([class "projects-title"]) "Projects")
                               (ul ([class "project-list"])
                                ,(project "/utau.html" "UTAU Covers" "Song covers made with UTAU.")
                                ,(project "//github.com/kisaragi-hiu/cangjie.el" "Cangjie.el" "Retrieve Cangjie code for Han character in Emacs.")
