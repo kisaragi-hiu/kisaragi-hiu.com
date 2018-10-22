@@ -122,9 +122,14 @@
                           ◊; at index page
                           ◊; This is where the landing text should be
                           (~a
+                           (collapse-button
+                            #:div-id "collapseProjects"
+                            #:button-class "index-stream-title"
+                            "Projects")
                            (xexpr->string
                             `(div
-                              (h1 ([class "projects-title"]) "Projects")
+                              ([class "collapse show"]
+                               [id "collapseProjects"])
                               (ul ([class "project-list"])
                                ,(project "https://www.nicovideo.jp/user/38995186/video" "UTAU Covers" "Song covers made with UTAU.")
                                ,(project "https://github.com/kisaragi-hiu/cangjie.el" "Cangjie.el" "Retrieve Cangjie code for Han character in Emacs.")
