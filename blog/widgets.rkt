@@ -36,3 +36,33 @@
              nbsp)
           (p ([class "project-description"])
              ,description))))
+
+(define (collapse #:button-classes button-classes
+                  #:button-label button-label
+                  #:div-id div-id
+                  #:div-extra-classes div-extra-classes
+                  .
+                  elements)
+  (xexpr->html
+   `(div (a ([class ,button-classes]
+             [data-toggle "collapse"]
+             [href ,(~a "#" div-id)]
+             [role "button"]
+             [aria-expanded "false"]
+             [aria-controls ,div-id])
+            ,button-label))
+   `(div ([class ,(~a "collapse " div-extra-classes) [id ,div-id]])
+         ,@elements)))
+
+(define (collapse-button #:button-class [button-class ""]
+                         #:div-id [div-id ""]
+                         .
+                         elements)
+  (xexpr->html
+   `(div (a ([class ,button-class]
+             [data-toggle "collapse"]
+             [href ,(~a "#" div-id)]
+             [role "button"]
+             [aria-expanded "false"]
+             [aria-controls ,div-id])
+            ,@elements))))

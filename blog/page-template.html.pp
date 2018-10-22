@@ -133,13 +133,17 @@
                                ,(project "//gitlab.com/kisaragi-hiu/dotfiles" "Scripts" "Small scripts I've written over the years.")
                                ,(project "//gitlab.com/kisaragi-hiu/language-startup-benchmark" "Language Startup Benchmark" "Time hello world in various languages to benchmark their startup times")
                                )))
-                           (xexpr->string
-                            `(h1 ([class "blog-title"]) "Blog"))
+                           (collapse-button
+                            #:div-id "collapseBlog"
+                            #:button-class "index-stream-title"
+                            "Blog")
                           )])
+                   "<div class=\"collapse show\" id=\"collapseBlog\">"
                    (string-join
                     ◊; for each year, grab the index items from that year
                     (map (lambda (year)
                            (string-append
+                            ◊; not using `collapse` since indices are strings
                             (xexpr->string
                              `(div (a ([class "index-year text-secondary"]
                                        [data-toggle "collapse"]
@@ -154,6 +158,7 @@
                              filtered-indices)
                             "</div>"))
                          years))
+                   "</div>" ◊; collapseBlog
                    ◊; Indicies with the category "Fiction"
                    (let ([fiction-indices
                           (filter-indices-to-string
@@ -162,9 +167,14 @@
                      (if (equal? fiction-indices "")
                          ""
                          (string-append
-                          (xexpr->string
-                           `(h1 ([class "index-stream"]) "Fiction"))
-                          fiction-indices))))))
+                          (collapse-button
+                           #:button-class "index-stream-title"
+                           #:div-id "collapseFiction"
+                           "Fiction")
+                          "<div class=\"collapse show\" id=\"collapseFiction\">"
+                          fiction-indices
+                          "</div>"
+                          ))))))
 
              ◊; If not an index, just show the contents
              (strip-metadata contents))
