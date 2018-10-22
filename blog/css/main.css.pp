@@ -33,6 +33,10 @@ footer {
     margin-top: 2rem;
 }
 
+.collapsed:after {
+    content: "...";
+}
+
 html, body {
     background-color: #fbfbfb;
 }
