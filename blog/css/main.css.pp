@@ -141,7 +141,7 @@ h2 { font-weight: 400; }
     content: "* ";
     font-size: 1.5rem;
     margin-right: -0.5rem;
-    color: #ccc;
+    color: #aaa;
 }
 
 .collapsed::after {
