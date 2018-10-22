@@ -103,6 +103,11 @@ h1, h2, h3, h4, h5, h6 {
     width: 50%;
 }
 
+.project-list {
+    column-count: 2;
+    list-style: none;
+}
+
 h1 { font-weight: 600; }
 h2 { font-weight: 400; }
 

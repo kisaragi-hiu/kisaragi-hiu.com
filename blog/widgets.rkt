@@ -29,7 +29,7 @@
 
 
 (define (project url title description)
-  `(div ([class "project"])
-        (a ([href ,url])
-           ,title)
-        (p ,description)))
+  `(li ([class "project"])
+       (a ([href ,url])
+          ,title)
+       (p ,description)))

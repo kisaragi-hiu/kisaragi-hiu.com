@@ -125,7 +125,7 @@
                            (xexpr->string
                             `(div
                               (h1 ([class "projects-title"]) "Projects")
-                              (div ([class "d-flex justify-content-between"])
+                              (ul ([class "projects-list"])
                                ,(project "/utau.html" "UTAU Covers" "Song covers made with UTAU.")
                                ,(project "//github.com/kisaragi-hiu/cangjie.el" "Cangjie.el" "Retrieve Cangjie code for Han character in Emacs.")
                                ,(project "//github.com/kisaragi-hiu/tr.el" "Tr.el" "Minimal tr implementation for Emacs.")
