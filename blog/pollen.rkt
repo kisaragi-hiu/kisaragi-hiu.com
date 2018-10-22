@@ -15,12 +15,14 @@
          racket/string
          threading
          txexpr
+         "widgets.rkt"
          (only-in xml
                   string->xexpr))
 
 
 (provide (all-defined-out)
-         (all-from-out pollen/template))
+         (all-from-out pollen/template
+                       "widgets.rkt"))
 
 (module setup racket/base
   (provide (all-defined-out))
