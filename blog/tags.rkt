@@ -2,6 +2,7 @@
 
 (require threading
          txexpr
+         "widgets.rkt"
          (only-in xml
                   string->xexpr))
 
@@ -184,18 +185,8 @@
                               #:button-id button-id
                               #:button-extra-classes button-extra-classes
                               #:button-label button-label)
-  (define dropdown-menu
-    (~> (map (lambda (tx) (attr-set* tx 'class "dropdown-item"))
-             (tags->link/txexpr tags))
-        (txexpr 'div `((class "dropdown-menu") (aria-labelledby ,button-id)) _)))
-  (~> `(div ([class "dropdown"])
-            (a ([class ,(~a "btn dropdown-toggle " button-extra-classes)]
-                [href "#"]
-                [role "button"]
-                [id ,button-id]
-                [data-toggle "dropdown"]
-                [aria-haspopup "true"]
-                [aria-expanded "false"])
-               ,button-label)
-            ,dropdown-menu)
-      xexpr->html))
+  (apply dropdown
+         #:button-id button-id
+         #:button-extra-classes button-extra-classes
+         #:button-label button-label
+         (tags->link/txexpr tags)))

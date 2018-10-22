@@ -11,6 +11,7 @@
                 racket/format
                 racket/string
                 "tags.rkt"
+                "widgets.rkt"
                 "content-processing.rkt")
 
 @(define all-tags (tag-string->tags tags-list-items))
