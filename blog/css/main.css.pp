@@ -126,18 +126,17 @@ a.project-link {
     padding-left: 0;
 }
 
-
 .index-year {
     font-size: 1.5rem;
     margin-top: 1.5rem;
     margin-bottom: .5rem;
     font-weight: 500;
-    ◊; bit of a magic number…
+    /* bit of a magic number… */
     margin-left: -1.29rem;
 }
 
 .index-stream-title {
-    ◊; magic number again…
+    /* magic number again… */
     margin-left: -1.5rem;
 }
 
@@ -158,4 +157,23 @@ a.project-link {
 
 .collapsed::after {
     content: "...";
+}
+
+/* Smaller than phablet */
+@media (max-width: 600px) {
+    .project-list {
+        column-count: 1;
+    }
+
+    .index-year {
+        margin-left: 0;
+    }
+
+    .index-stream-title {
+        margin-left: 0;
+    }
+
+    .index-year::before, .index-stream-title::before {
+        content: none;
+    }
 }
