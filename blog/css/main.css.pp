@@ -29,6 +29,10 @@ body {
     text-rendering: optimizeLegibility;
 }
 
+footer {
+    margin-top: 2rem;
+}
+
 html, body {
     background-color: #fbfbfb;
 }
