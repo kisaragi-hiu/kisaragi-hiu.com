@@ -126,18 +126,19 @@
                             `(div
                               (h1 ([class "projects-title"]) "Projects")
                               (ul ([class "project-list"])
-                               ,(project "/utau.html" "UTAU Covers" "Song covers made with UTAU.")
-                               ,(project "//github.com/kisaragi-hiu/cangjie.el" "Cangjie.el" "Retrieve Cangjie code for Han character in Emacs.")
-                               ,(project "//github.com/kisaragi-hiu/tr.el" "Tr.el" "Minimal tr implementation for Emacs.")
-                               ,(project "//github.com/kisaragi-hiu/osuskin-retome" "Retome" "Personal osu! skin.")
-                               ,(project "//gitlab.com/kisaragi-hiu/dotfiles" "Scripts" "Small scripts I've written over the years.")
-                               ,(project "//gitlab.com/kisaragi-hiu/language-startup-benchmark" "Language Startup Benchmark" "Time hello world in various languages to benchmark their startup times")
+                               ,(project "https://www.nicovideo.jp/user/38995186/video" "UTAU Covers" "Song covers made with UTAU.")
+                               ,(project "https://github.com/kisaragi-hiu/cangjie.el" "Cangjie.el" "Retrieve Cangjie code for Han character in Emacs.")
+                               ,(project "https://github.com/kisaragi-hiu/tr.el" "Tr.el" "Minimal tr implementation for Emacs.")
+                               ,(project "https://github.com/kisaragi-hiu/osuskin-retome" "Retome" "Personal osu! skin.")
+                               ,(project "https://gitlab.com/kisaragi-hiu/dotfiles" "Scripts" "Small scripts I've written over the years.")
+                               ,(project "https://gitlab.com/kisaragi-hiu/language-startup-benchmark" "Language Startup Benchmark" "Time hello world in various languages to benchmark their startup times")
                                )))
                            (collapse-button
                             #:div-id "collapseBlog"
                             #:button-class "index-stream-title"
                             "Blog")
                           )])
+
                    "<div class=\"collapse show\" id=\"collapseBlog\">"
                    (string-join
                     ◊; for each year, grab the index items from that year
@@ -159,6 +160,7 @@
                             "</div>"))
                          years))
                    "</div>" ◊; collapseBlog
+
                    ◊; Indicies with the category "Fiction"
                    (let ([fiction-indices
                           (filter-indices-to-string
@@ -173,7 +175,7 @@
                            "Fiction")
                           "<div class=\"collapse show\" id=\"collapseFiction\">"
                           fiction-indices
-                          "</div>"
+                          "</div>" ◊; collapseFiction
                           ))))))
 
              ◊; If not an index, just show the contents
