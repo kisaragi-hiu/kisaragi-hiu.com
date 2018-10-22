@@ -30,7 +30,8 @@
 
 (define (project url title description)
   `(li ([class "project"])
-       (a ([href ,url])
+       (a ([class "project-link"]
+           [href ,url])
           (p ([class "project-title"])
              ,title
              nbsp)

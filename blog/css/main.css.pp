@@ -116,7 +116,7 @@ h2 { font-weight: 400; }
     margin-bottom: 0;
 }
 
-.project-description {
+a.project-link {
     color: #555;
 }
 
@@ -136,12 +136,24 @@ h2 { font-weight: 400; }
     margin-left: -1.29rem;
 }
 
-.index-year::before {
+.index-stream-title {
+    ◊; magic number again…
+    margin-left: -1.5rem;
+}
+
+.index-year::before, .index-stream-title::before {
     font-family: "Overpass Mono";
-    content: "* ";
     font-size: 1.5rem;
     margin-right: -0.5rem;
     color: #aaa;
+}
+
+.index-year::before {
+    content: "+ ";
+}
+
+.index-stream-title::before {
+    content: "* ";
 }
 
 .collapsed::after {
