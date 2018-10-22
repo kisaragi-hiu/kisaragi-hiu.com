@@ -33,10 +33,6 @@ footer {
     margin-top: 2rem;
 }
 
-.collapsed:after {
-    content: "...";
-}
-
 html, body {
     background-color: #fbfbfb;
 }
@@ -111,4 +107,18 @@ h2 { font-weight: 400; }
     margin-top: 1.5rem;
     margin-bottom: .5rem;
     font-weight: 500;
+    ◊; bit of a magic number…
+    margin-left: -1.29rem;
+}
+
+.index-year::before {
+    font-family: "Overpass Mono";
+    content: "* ";
+    font-size: 1.5rem;
+    margin-right: -0.5rem;
+    color: #ccc;
+}
+
+.collapsed::after {
+    content: "...";
 }
