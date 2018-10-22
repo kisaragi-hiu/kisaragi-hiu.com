@@ -125,9 +125,13 @@
                            (xexpr->string
                             `(div
                               (h1 ([class "projects-title"]) "Projects")
-                              (div ([class "d-flex"])
+                              (div ([class "d-flex justify-content-between"])
                                ,(project "/utau.html" "UTAU Covers" "Song covers made with UTAU.")
                                ,(project "//github.com/kisaragi-hiu/cangjie.el" "Cangjie.el" "Retrieve Cangjie code for Han character in Emacs.")
+                               ,(project "//github.com/kisaragi-hiu/tr.el" "Tr.el" "Minimal tr implementation for Emacs.")
+                               ,(project "//github.com/kisaragi-hiu/osuskin-retome" "Retome" "Personal osu! skin.")
+                               ,(project "//gitlab.com/kisaragi-hiu/dotfiles" "Scripts" "Small scripts I've written over the years.")
+                               ,(project "//gitlab.com/kisaragi-hiu/language-startup-benchmark" "Language Startup Benchmark" "Time hello world in various languages to benchmark their startup times")
                                )))
                            (xexpr->string
                             `(h1 ([class "blog-title"]) "Blog"))
