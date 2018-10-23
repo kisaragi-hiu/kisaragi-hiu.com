@@ -128,7 +128,7 @@
                             "Projects")
                            (xexpr->string
                             `(div
-                              ([class "collapse"]
+                              ([class "collapse collapsed"]
                                [id "collapseProjects"])
                               (ul ([class "project-list"])
                                ,(project "https://www.nicovideo.jp/user/38995186/video" "UTAU Covers" "Song covers made with UTAU.")
