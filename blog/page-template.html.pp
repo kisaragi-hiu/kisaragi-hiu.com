@@ -216,7 +216,7 @@
     ◊; Google Analytics
     <script>
       window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;
-      ga('create', 'UA-XXXXX-Y', 'auto'); ga('send', 'pageview')
+      ga('create', 'UA-109874076-1', 'auto'); ga('send', 'pageview')
     </script>
     <script src="https://www.google-analytics.com/analytics.js" async defer></script>
   </body>
