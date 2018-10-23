@@ -173,7 +173,7 @@ a.project-link {
         margin-left: 0;
     }
 
-    .index-year::before, .index-stream-title::before {
-        content: none;
-    }
+    /* .index-year::before, .index-stream-title::before { */
+    /*     content: none; */
+    /* } */
 }
