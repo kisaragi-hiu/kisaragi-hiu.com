@@ -50,31 +50,12 @@
       ◊; Header
       <header id="header" class="py-2">
         <div class="row flex-nowrap justify-content-between alien-items-center">
-          <div id="logo" class="col-4 pt-1">
+          <div id="logo" class="col-6 pt-1">
             <div class="d-flex justify-content-begin">
               <a href="/" target="_self" class="py-2 pr-2"><img src="/images/avatar.png" alt="Kisaragi Hiu"/></a>
             </div>
           </div>
-          <div id="social-links" class="col-4 pt-1">
-            <div class="d-flex justify-content-center">
-              ◊link["@|atom-feed-uri|" #:class "p-2"]{
-                ◊font-awesome["rss" #:color "6c757d"]
-              }
-              ◊twitter["flyin1501" #:class "p-2"]{
-                ◊font-awesome["twitter" #:color "6c757d"]
-              }
-              ◊github["kisaragi-hiu" #:class "p-2"]{
-                ◊font-awesome["github" #:color "6c757d"]
-              }
-              ◊gitlab["kisaragi-hiu" #:class "p-2"]{
-                ◊font-awesome["gitlab" #:color "6c757d"]
-              }
-              ◊youtube["channel/UCl_hsqcvdX0XdgBimRQ6R3A" #:class "p-2"]{
-                ◊font-awesome["youtube-play" #:color "6c757d"]
-              }
-            </div>
-          </div>
-          <div class="col-4 nav-scroller py-1">
+          <div class="col-6 nav-scroller py-1">
             <nav class="nav d-flex justify-content-end">
               <a class="p-2 text-secondary" href="/">Blog</a>
               <a class="p-2 text-secondary" href="/about.html">About</a>
@@ -122,6 +103,25 @@
                           ◊; at index page
                           ◊; This is where the landing text should be
                           (~a
+                           @~a{
+<div class="d-flex justify-content-begin">
+  ◊link["@|atom-feed-uri|" #:class "py-2"]{
+    ◊font-awesome["rss" #:color "6c757d"]
+  }
+  ◊twitter["flyin1501" #:class "p-2"]{
+    ◊font-awesome["twitter" #:color "6c757d"]
+  }
+  ◊github["kisaragi-hiu" #:class "p-2"]{
+    ◊font-awesome["github" #:color "6c757d"]
+  }
+  ◊gitlab["kisaragi-hiu" #:class "p-2"]{
+    ◊font-awesome["gitlab" #:color "6c757d"]
+  }
+  ◊youtube["channel/UCl_hsqcvdX0XdgBimRQ6R3A" #:class "p-2"]{
+    ◊font-awesome["youtube-play" #:color "6c757d"]
+  }
+</div>
+                           }
                            (collapse-button
                             #:div-id "collapseProjects"
                             #:button-class "index-stream-title collapsed"
