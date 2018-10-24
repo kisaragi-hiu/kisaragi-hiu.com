@@ -124,11 +124,11 @@
                           (~a
                            (collapse-button
                             #:div-id "collapseProjects"
-                            #:button-class "index-stream-title"
+                            #:button-class "index-stream-title collapsed"
                             "Projects")
                            (xexpr->string
                             `(div
-                              ([class "collapse collapsed"]
+                              ([class "collapse"]
                                [id "collapseProjects"])
                               (ul ([class "project-list"])
                                ,(project "https://www.nicovideo.jp/user/38995186/video" "UTAU Covers" "Song covers made with UTAU.")
