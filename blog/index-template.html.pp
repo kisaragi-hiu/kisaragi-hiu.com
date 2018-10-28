@@ -21,7 +21,14 @@
                                  (string-replace (substring x 5) "-" "/")
                                  x))
                       _)
+        ;; remove all attributes except datetime
+        ;; which is just removing `pubdate`, really
+        ((λ (tx)
+           (~> (remove-attrs tx)
+               (attr-set _ 'datetime (attr-ref tx 'datetime))))
+         _)
         xexpr->string))
+        ◊; <time datetime="2018-07-27">07/27</time>
 ◊; See content-processing.rkt for metadata handling
 {"type":"index",
  "date":"@(attr-ref (string->xexpr date) 'datetime)",
