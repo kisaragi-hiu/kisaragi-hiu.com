@@ -64,6 +64,8 @@ a:hover {
 .index-header .title,
 .post-header .title {
     font-size: 1.5rem;
+    line-height: 1.6;
+    margin-top: 0;
 }
 
 .text-primary {
