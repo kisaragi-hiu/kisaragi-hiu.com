@@ -161,6 +161,12 @@ a.project-link {
     content: "...";
 }
 
+.ytembed-default {
+    padding-bottom: 50%;
+    position: relative;
+    overflow: hidden;
+}
+
 /* Smaller than phablet */
 @media (max-width: 600px) {
     .project-list {

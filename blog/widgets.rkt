@@ -127,23 +127,24 @@
 (define/txexpr (kbd . elements)
   `(kbd ,@elements))
 
-(define/txexpr (youtube/embed video-id)
-  `(div ([style "padding-bottom: 50%;
-                position: relative;
-                overflow: hidden;"])
-        (iframe ([id "ytplayer"]
-                 [type "text/html"]
-                 [width "640"]
-                 [height "360"]
-                 [style "position: absolute;
-                        top: 0;
-                        left: 0;
-                        width: 100%;
-                        height: 100%;"]
-                 [src ,(string-append
-                        "http://www.youtube.com/embed/"
-                        video-id
-                        "?autoplay=0"
-                        "&origin="
-                        "http://kisaragi-hiu.com")]
-                 [frameborder "0"]))))
+(define/txexpr (youtube/embed video-id
+                              #:class [class "ytembed-default"]
+                              #:style [style ""])
+  `(p ([class ,class]
+       [style ,style])
+      (iframe ([id "ytplayer"]
+               [type "text/html"]
+               [width "640"]
+               [height "360"]
+               [style "position: absolute;
+                       top: 0;
+                       left: 0;
+                       width: 100%;
+                       height: 100%;"]
+               [src ,(string-append
+                      "http://www.youtube.com/embed/"
+                      video-id
+                      "?autoplay=0"
+                      "&origin="
+                      "http://kisaragi-hiu.com")]
+               [frameborder "0"]))))
