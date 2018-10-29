@@ -16,6 +16,7 @@
          threading
          txexpr
          "widgets.rkt"
+         "define-txexpr.rkt"
          (only-in xml
                   string->xexpr))
 
@@ -28,16 +29,6 @@
   (provide (all-defined-out))
   (require pollen/setup)
   (define block-tags (append '(subsection subsubsection label img pre) default-block-tags)))
-
-(define current-return-txexpr? (make-parameter #f))
-
-(define-syntax (define/txexpr stx)
-  (syntax-case stx ()
-    [(_ (name args ... . rest) body ... last-body)
-     #'(begin
-         (define (name #:return-txexpr? [return-txexpr? (current-return-txexpr?)] args ... . rest)
-           body ...
-           ((if return-txexpr? identity ->html) last-body)))]))
 
 (define import file->string)
 
@@ -63,51 +54,6 @@
                ,category
                ,(string-append "@(when " tags " \" :: \")")
                ,tags))))
-
-(define/txexpr (strike . text)
-  `(s ,@text))
-
-(define/txexpr (stylized-item text)
-  (txexpr* 'div '()
-           `(span ([style "font-weight: 700;"]) ,text)
-           `(hr ([style
-                     ,(string-append "height: 1px;"
-                                     "width: 6rem;"
-                                     "margin: 0.3rem auto 1.2rem;"
-                                     "text-align: left;"
-                                     "margin-right: 100%;"
-                                     "background-color: #444;")]))))
-
-(define/txexpr (rant . text)
-  `(span ([style "color: #777;"]) "(" ,@text ")"))
-
-(define/txexpr (image src [caption #f] #:width [width #f])
-  (define image-style "max-width:100%;")
-  (when width
-    (set! image-style (~a image-style "width:" width ";")))
-  `(div (img ([src ,src] [style ,image-style]))
-        ,(if caption
-             `(p ([class "image-caption"]) ,caption)
-             "")))
-
-(define/txexpr (R text ruby) `(ruby ,text (rt ,ruby)))
-
-(define/txexpr (table . elements)
-  `(table ,@elements))
-
-(define (newline-decode . elements)
-  (string-join
-   (map (λ (x) (cond
-                  [(not (string? x)) x]
-                  [(regexp-match #rx"\n\n+" x)
-                   (string-replace x #rx"\n\n+" "\n\n")]
-                  [(regexp-match #rx">\n+" x) ">\n"
-                   (string-replace x #rx">\n+" ">\n")]
-                  [(regexp-match #rx"\n" x) "<br>\n"
-                   (string-replace x #rx"\n" "<br>\n")]
-                  [else x]))
-        elements)
-   ""))
 
 (define (quotation . lines)
   ;; lines :: (listof string?)
@@ -187,40 +133,3 @@
 (define-link transifex "https://www.transifex.com/user/profile/")
 (define-link noichigo "https://www.no-ichigo.jp/read/book/book_id/")
 (define-link site-crossref "https://kisaragi-hiu.com/")
-
-(define site-url "http://kisaragi-hiu.com")
-
-(define/txexpr (video/gif-esque path #:controls? [controls? #f] . caption)
-  ;; ignore caption for now
-  (let ([result `(video ([autoplay "autoplay"]
-                         [style "max-width: 100%;"]
-                         [muted "muted"]
-                         [loop "loop"]
-                         [src ,path]))])
-    (if controls?
-        (attr-set result 'controls "")
-        result)))
-
-(define/txexpr (kbd . elements)
-  `(kbd ,@elements))
-
-(define/txexpr (youtube/embed video-id)
-  `(div ([style "padding-bottom: 50%;
-                position: relative;
-                overflow: hidden;"])
-        (iframe ([id "ytplayer"]
-                 [type "text/html"]
-                 [width "640"]
-                 [height "360"]
-                 [style "position: absolute;
-                        top: 0;
-                        left: 0;
-                        width: 100%;
-                        height: 100%;"]
-                 [src ,(string-append
-                        "http://www.youtube.com/embed/"
-                        video-id
-                        "?autoplay=0"
-                        "&origin="
-                        site-url)]
-                 [frameborder "0"]))))

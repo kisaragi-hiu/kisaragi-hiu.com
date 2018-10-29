@@ -12,10 +12,15 @@
                 racket/string
                 pollen/template/html
                 "tags.rkt"
+                "define-txexpr.rkt"
                 "widgets.rkt"
                 "content-processing.rkt")
 
 @(define all-tags (tag-string->tags tags-list-items))
+◊; Return txexpr from frog template
+@(current-return-txexpr? #t)
+◊; Return HTML from Pollen
+◊(void (current-return-txexpr? #f))
 
 <!DOCTYPE html>
 <html lang="en">
@@ -133,12 +138,14 @@
 </div>
                            }
                            (collapse
+                            #:return-txexpr? #f
                             #:div-id "collapseAbout"
                             #:div-extra-classes "show"
                             #:button-classes "index-stream-title"
                             #:button-label "About"
                             '(p "I'm a college student interested in Free Software, programming, VOCALOID / UTAU culture, and language learning."))
                            (collapse
+                            #:return-txexpr? #f
                             #:div-id "collapseProjects"
                             #:button-classes "index-stream-title collapsed"
                             #:button-label "Projects"
@@ -150,6 +157,7 @@
                               ,(project "https://gitlab.com/kisaragi-hiu/dotfiles/tree/master/scripts/.local/bin" "Scripts" "Small scripts I've written over the years.")
                               ,(project "https://gitlab.com/kisaragi-hiu/language-startup-benchmark" "Language Startup Benchmark" "Time hello world in various languages to benchmark their startup times.")))
                            (collapse-button
+                            #:return-txexpr? #f
                             #:div-id "collapseBlog"
                             #:button-class "index-stream-title"
                             "Blog")
@@ -186,6 +194,7 @@
                          ""
                          (string-append
                           (collapse-button
+                           #:return-txexpr? #f
                            #:button-class "index-stream-title"
                            #:div-id "collapseFiction"
                            "Fiction")
