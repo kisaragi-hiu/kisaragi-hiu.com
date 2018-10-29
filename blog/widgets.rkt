@@ -142,9 +142,9 @@
                        width: 100%;
                        height: 100%;"]
                [src ,(string-append
-                      "http://www.youtube.com/embed/"
+                      "https://www.youtube.com/embed/"
                       video-id
                       "?autoplay=0"
                       "&origin="
-                      "http://kisaragi-hiu.com")]
+                      "https://kisaragi-hiu.com")]
                [frameborder "0"]))))
