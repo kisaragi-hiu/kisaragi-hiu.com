@@ -74,16 +74,20 @@
           <div class="col-11 nav-scroller py-1">
             <nav class="nav d-flex justify-content-end">
               <a class="p-2 text-secondary" href="/">Blog</a>
-              @(tags->dropdown-links
+              @(apply
+                dropdown
+                #:return-txexpr? #f
                 #:button-id "dropdownLanguages"
                 #:button-extra-classes "text-secondary p-2"
                 #:button-label "Languages"
-                (get-language-tags all-tags))
-              @(tags->dropdown-links
+                (tags->link/txexpr (get-language-tags all-tags)))
+              @(apply
+                dropdown
+                #:return-txexpr? #f
                 #:button-id "dropdownTags"
                 #:button-extra-classes "text-secondary p-2"
                 #:button-label "Tags"
-                (filter-not special? all-tags))
+                (tags->link/txexpr (filter-not special? all-tags)))
               ◊; @(get-category-tags all-tags)
               ◊; <li><a href="@|uri-prefix|/categories.html">Categories</a></li>
             </nav>

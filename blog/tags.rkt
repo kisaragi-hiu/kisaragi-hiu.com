@@ -180,13 +180,3 @@
                                          (tag-st "c" "c.html")))
                 (list (tag-st "a" "a.html")
                       (tag-st "b" "b.html"))))
-
-(define (tags->dropdown-links tags
-                              #:button-id button-id
-                              #:button-extra-classes button-extra-classes
-                              #:button-label button-label)
-  (apply dropdown
-         #:button-id button-id
-         #:button-extra-classes button-extra-classes
-         #:button-label button-label
-         (tags->link/txexpr tags)))
