@@ -138,22 +138,17 @@
                             #:button-classes "index-stream-title"
                             #:button-label "About"
                             '(p "I'm a college student interested in Free Software, programming, VOCALOID / UTAU culture, and language learning."))
-                           (collapse-button
+                           (collapse
                             #:div-id "collapseProjects"
-                            #:button-class "index-stream-title collapsed"
-                            "Projects")
-                           (xexpr->string
-                            `(div
-                              ([class "collapse"]
-                               [id "collapseProjects"])
-                              (ul ([class "project-list"])
-                               ,(project "https://www.nicovideo.jp/user/38995186/video" "UTAU Covers" "Song covers made with UTAU.")
-                               ,(project "https://github.com/kisaragi-hiu/cangjie.el" "Cangjie.el" "Retrieve Cangjie code for Han character in Emacs.")
-                               ,(project "https://github.com/kisaragi-hiu/tr.el" "Tr.el" "Minimal tr implementation for Emacs.")
-                               ,(project "https://github.com/kisaragi-hiu/osuskin-retome" "Retome" "Personal osu! skin.")
-                               ,(project "https://gitlab.com/kisaragi-hiu/dotfiles/tree/master/scripts/.local/bin" "Scripts" "Small scripts I've written over the years.")
-                               ,(project "https://gitlab.com/kisaragi-hiu/language-startup-benchmark" "Language Startup Benchmark" "Time hello world in various languages to benchmark their startup times.")
-                               )))
+                            #:button-classes "index-stream-title collapsed"
+                            #:button-label "Projects"
+                            `(ul ([class "project-list"])
+                              ,(project "https://www.nicovideo.jp/user/38995186/video" "UTAU Covers" "Song covers made with UTAU.")
+                              ,(project "https://github.com/kisaragi-hiu/cangjie.el" "Cangjie.el" "Retrieve Cangjie code for Han character in Emacs.")
+                              ,(project "https://github.com/kisaragi-hiu/tr.el" "Tr.el" "Minimal tr implementation for Emacs.")
+                              ,(project "https://github.com/kisaragi-hiu/osuskin-retome" "Retome" "Personal osu! skin.")
+                              ,(project "https://gitlab.com/kisaragi-hiu/dotfiles/tree/master/scripts/.local/bin" "Scripts" "Small scripts I've written over the years.")
+                              ,(project "https://gitlab.com/kisaragi-hiu/language-startup-benchmark" "Language Startup Benchmark" "Time hello world in various languages to benchmark their startup times.")))
                            (collapse-button
                             #:div-id "collapseBlog"
                             #:button-class "index-stream-title"
