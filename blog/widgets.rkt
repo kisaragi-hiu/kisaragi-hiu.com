@@ -53,7 +53,8 @@
               [aria-expanded "false"]
               [aria-controls ,div-id])
              ,button-label))
-     (div ([class ,(~a "collapse " div-extra-classes) [id ,div-id]])
+     (div ([class ,(~a "collapse " div-extra-classes)]
+           [id ,div-id])
           ,@elements))))
 
 (define (collapse-button #:button-class [button-class ""]
