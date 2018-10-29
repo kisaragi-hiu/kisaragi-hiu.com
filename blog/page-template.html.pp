@@ -61,12 +61,12 @@
       ◊; Header
       <header id="header" class="py-2">
         <div class="row flex-nowrap justify-content-between alien-items-center">
-          <div id="logo" class="col-6 pt-1">
+          <div id="logo" class="col-1 pt-1">
             <div class="d-flex justify-content-begin">
               <a href="/" target="_self" class="py-2 pr-2"><img src="/images/avatar.png" alt="Kisaragi Hiu"/></a>
             </div>
           </div>
-          <div class="col-6 nav-scroller py-1">
+          <div class="col-11 nav-scroller py-1">
             <nav class="nav d-flex justify-content-end">
               <a class="p-2 text-secondary" href="/">Blog</a>
               @(tags->dropdown-links
