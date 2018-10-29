@@ -69,7 +69,6 @@
           <div class="col-6 nav-scroller py-1">
             <nav class="nav d-flex justify-content-end">
               <a class="p-2 text-secondary" href="/">Blog</a>
-              <a class="p-2 text-secondary" href="/about.html">About</a>
               @(tags->dropdown-links
                 #:button-id "dropdownLanguages"
                 #:button-extra-classes "text-secondary p-2"
@@ -133,6 +132,12 @@
   }
 </div>
                            }
+                           (collapse
+                            #:div-id "collapseAbout"
+                            #:div-extra-classes "show"
+                            #:button-classes "index-stream-title"
+                            #:button-label "About"
+                            '(p "I'm a college student interested in Free Software, programming, VOCALOID / UTAU culture, and language learning."))
                            (collapse-button
                             #:div-id "collapseProjects"
                             #:button-class "index-stream-title collapsed"
