@@ -42,7 +42,7 @@
 (define (collapse #:button-classes button-classes
                   #:button-label button-label
                   #:div-id div-id
-                  #:div-extra-classes div-extra-classes
+                  #:div-extra-classes [div-extra-classes ""]
                   .
                   elements)
   (->html
