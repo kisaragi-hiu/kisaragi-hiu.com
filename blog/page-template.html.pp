@@ -174,7 +174,7 @@
                            (string-append
                             ◊; not using `collapse` since indices are strings
                             (xexpr->string
-                             `(div (a ([class "index-year text-secondary"]
+                             `(div (a ([class "collapse-level-2 text-secondary"]
                                        [data-toggle "collapse"]
                                        [href ,(~a "#collapseYear" year)]
                                        [role "button"]

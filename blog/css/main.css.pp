@@ -128,7 +128,7 @@ a.project-link {
     padding-left: 0;
 }
 
-.index-year {
+.collapse-level-2 {
     font-size: 1.5rem;
     margin-top: 1.5rem;
     margin-bottom: .5rem;
@@ -142,14 +142,14 @@ a.project-link {
     margin-left: -1.5rem;
 }
 
-.index-year::before, .index-stream-title::before {
+.collapse-level-2::before, .index-stream-title::before {
     font-family: "Overpass Mono";
     font-size: 1.5rem;
     margin-right: -0.5rem;
     color: #aaa;
 }
 
-.index-year::before {
+.collapse-level-2::before {
     content: "+ ";
 }
 
@@ -173,7 +173,7 @@ a.project-link {
         column-count: 1;
     }
 
-    .index-year {
+    .collapse-level-2 {
         margin-left: 0;
     }
 
@@ -181,7 +181,7 @@ a.project-link {
         margin-left: 0;
     }
 
-    /* .index-year::before, .index-stream-title::before { */
+    /* .collapse-level-2::before, .index-stream-title::before { */
     /*     content: none; */
     /* } */
 }
