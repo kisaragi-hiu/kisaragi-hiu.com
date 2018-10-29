@@ -150,16 +150,29 @@
                             '(p "I'm a college student interested in Free Software, programming, VOCALOID / UTAU culture, and language learning."))
                            (collapse
                             #:return-txexpr? #f
-                            #:div-id "collapseProjects"
+                            #:div-id "collapseWorks"
                             #:button-classes "index-stream-title collapsed"
-                            #:button-label "Projects"
-                            `(ul ([class "project-list"])
-                              ,(project "https://www.nicovideo.jp/user/38995186/video" "UTAU Covers" "Song covers made with UTAU.")
+                            #:button-label "Works"
+                            (collapse
+                             #:div-id "collapseCode"
+                             #:div-extra-classes "show"
+                             #:button-classes "collapse-level-2 text-secondary"
+                             #:button-label "Code"
+                             `(ul ([class "project-list"])
                               ,(project "https://github.com/kisaragi-hiu/cangjie.el" "Cangjie.el" "Retrieve Cangjie code for Han character in Emacs.")
                               ,(project "https://github.com/kisaragi-hiu/tr.el" "Tr.el" "Minimal tr implementation for Emacs.")
-                              ,(project "https://github.com/kisaragi-hiu/osuskin-retome" "Retome" "Personal osu! skin.")
                               ,(project "https://gitlab.com/kisaragi-hiu/dotfiles/tree/master/scripts/.local/bin" "Scripts" "Small scripts I've written over the years.")
                               ,(project "https://gitlab.com/kisaragi-hiu/language-startup-benchmark" "Language Startup Benchmark" "Time hello world in various languages to benchmark their startup times.")))
+                            (collapse
+                             #:div-id "collapseUTAU"
+                             #:div-extra-classes "show"
+                             #:button-classes "collapse-level-2 text-secondary"
+                             #:button-label "UTAU Covers"
+                             '(p "I upload covers on " '(a ([href "https://youtube.com/channel/UCl_hsqcvdX0XdgBimRQ6R3A"]) "Youtube ") "and " '(a ([href "https://www.nicovideo.jp/user/38995186"]) "niconico") ".")
+                             `(ul ([class "project-list"])
+                               (li ,(youtube/embed "6rcSTAgQAkM"))
+                               (li ,(youtube/embed "4OsnqVBqPqQ"))))
+                              )
                            (collapse-button
                             #:return-txexpr? #f
                             #:div-id "collapseBlog"
