@@ -147,7 +147,8 @@
                             #:div-extra-classes "show"
                             #:button-classes "index-stream-title"
                             #:button-label "About"
-                            '(p "I'm a college student interested in Free Software, programming, VOCALOID / UTAU culture, and language learning."))
+                            '(p "I'm a college student interested in Free Software, programming, VOCALOID / UTAU culture, and language learning.")
+                            '(p "Contact:" (br) "mail@kisaragi-hiu.com"))
                            (collapse
                             #:return-txexpr? #f
                             #:div-id "collapseWorks"
