@@ -1,6 +1,5 @@
-#lang racket
-(require threading
-         xml
+#lang rackjure
+(require xml
          pollen/template/html
          txexpr
          "define-txexpr.rkt")
@@ -148,3 +147,21 @@
                       "&origin="
                       "https://kisaragi-hiu.com")]
                [frameborder "0"]))))
+
+(define global-translation-dict
+  {"Kisaragi Hiu"
+   {'ja "如月飛羽"
+    'zh "如月飛羽"
+    'en "Kisaragi Hiu"}
+   "Contact:"
+   {'ja "連絡："
+    'zh "聯絡："
+    'en "Contact:"}})
+
+(define (translate #:translation-dict [translation-dict global-translation-dict]
+                   .
+                   strings)
+  (define str (string-join strings ""))
+  (~> (translation-dict str) 'en))
+
+(define ! translate)
