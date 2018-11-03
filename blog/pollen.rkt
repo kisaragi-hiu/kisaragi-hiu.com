@@ -15,29 +15,20 @@
          racket/string
          threading
          txexpr
+         "widgets.rkt"
+         "define-txexpr.rkt"
          (only-in xml
-                  string->xexpr)
-         "adsense.rkt")
+                  string->xexpr))
 
 
 (provide (all-defined-out)
          (all-from-out pollen/template
-                       "adsense.rkt"))
+                       "widgets.rkt"))
 
 (module setup racket/base
   (provide (all-defined-out))
   (require pollen/setup)
   (define block-tags (append '(subsection subsubsection label img pre) default-block-tags)))
-
-(define current-return-txexpr? (make-parameter #f))
-
-(define-syntax (define/txexpr stx)
-  (syntax-case stx ()
-    [(_ (name args ... . rest) body ... last-body)
-     #'(begin
-         (define (name #:return-txexpr? [return-txexpr? (current-return-txexpr?)] args ... . rest)
-           body ...
-           ((if return-txexpr? identity ->html) last-body)))]))
 
 (define import file->string)
 
@@ -53,43 +44,16 @@
                         #:class class) ; :: string? ex: "post-header"
   (->html
    `(header ([class ,class])
-            (p ([class "title"])
-               (a ([href ,uri])
-                  ,title))
+            (h2 ([class "title mb-0"])
+                (a ([href ,uri]
+                    [class "text-primary"])
+                   ,title))
             (p ([class "date-and-category"])
                (span ,date)
                ,(string-append "@(when " category " \", \")")
                ,category
                ,(string-append "@(when " tags " \" :: \")")
                ,tags))))
-
-(define/txexpr (strike . text)
-  `(s ,@text))
-
-(define/txexpr (image src [caption #f] #:width [width #f])
-  `(div (img ([src ,src]))
-        ,(if caption
-             `(p ([class "image-caption"]) ,caption)
-             "")))
-
-(define/txexpr (R text ruby) `(ruby ,text (rt ,ruby)))
-
-(define/txexpr (table . elements)
-  `(table ,@elements))
-
-(define (newline-decode . elements)
-  (string-join
-   (map (λ (x) (cond
-                  [(not (string? x)) x]
-                  [(regexp-match #rx"\n\n+" x)
-                   (string-replace x #rx"\n\n+" "\n\n")]
-                  [(regexp-match #rx">\n+" x) ">\n"
-                   (string-replace x #rx">\n+" ">\n")]
-                  [(regexp-match #rx"\n" x) "<br>\n"
-                   (string-replace x #rx"\n" "<br>\n")]
-                  [else x]))
-        elements)
-   ""))
 
 (define (quotation . lines)
   ;; lines :: (listof string?)
@@ -122,8 +86,11 @@
 
 (define ie "i.e.")
 
-(define (font-awesome fa-icon #:aria [hidden #t])
-  `(img ([src ,(string-append "https://icongr.am/fontawesome/" fa-icon ".svg")]
+(define (font-awesome fa-icon #:aria [hidden #t] #:color [color #f] #:size [size #f])
+  (define options (if (or color size) "?" ""))
+  (when color (set! options (string-append options "color=" color)))
+  (when size (set! options (string-append options "size=" size)))
+  `(img ([src ,(string-append "https://icongr.am/fontawesome/" fa-icon ".svg" options)]
          [alt ,fa-icon])))
 
 #| link functions |#
@@ -166,33 +133,3 @@
 (define-link transifex "https://www.transifex.com/user/profile/")
 (define-link noichigo "https://www.no-ichigo.jp/read/book/book_id/")
 (define-link site-crossref "https://kisaragi-hiu.com/")
-
-(define site-url "http://kisaragi-hiu.com")
-
-(define/txexpr (video/gif-esque path)
-  `(video ([autoplay "autoplay"]
-           [style "max-width: 100%;"]
-           [muted "muted"]
-           [loop "loop"]
-           [src ,path])))
-
-(define/txexpr (youtube/embed video-id)
-  `(div ([style "padding-bottom: 50%;
-                position: relative;
-                overflow: hidden;"])
-        (iframe ([id "ytplayer"]
-                 [type "text/html"]
-                 [width "640"]
-                 [height "360"]
-                 [style "position: absolute;
-                        top: 0;
-                        left: 0;
-                        width: 100%;
-                        height: 100%;"]
-                 [src ,(string-append
-                        "http://www.youtube.com/embed/"
-                        video-id
-                        "?autoplay=0"
-                        "&origin="
-                        site-url)]
-                 [frameborder "0"]))))

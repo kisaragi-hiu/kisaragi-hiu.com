@@ -13,32 +13,35 @@
 (define metadata-marker "<!-- end of metadata -->")
 (define index-template-marker "<!-- end of index template -->")
 
-(define (content-metadata contents)
-  ;; Extract the metadata from contents as a jsexpr.
-  (if (string-contains? contents metadata-marker)
+(define (content-metadata content)
+  ;; Extract the metadata from content as a jsexpr.
+  (if (string-contains? content metadata-marker)
       (string->jsexpr
-       (first (string-split contents metadata-marker)))
+       (first (string-split content metadata-marker)))
       (hasheq)))
 
-(define (strip-metadata contents)
-  ;; Strip away the metadata from the contents.
-  (cond [(string-contains? contents metadata-marker)
-         (second (string-split contents metadata-marker))]
-        [else contents]))
+(define (strip-metadata content)
+  ;; Strip away the metadata from the content.
+  (cond [(string-contains? content metadata-marker)
+         (second (string-split content metadata-marker))]
+        [else content]))
 
-(define (index? contents)
+(define (index? content)
   ;; Does this content declare it's from the index template?
-  (equal? (dict-ref (content-metadata contents) 'type #f) "index"))
+  (equal? (dict-ref (content-metadata content) 'type #f) "index"))
 
-(define (post? contents)
+(define (post? content)
   ;; Does this content declare it's from the post template?
-  (equal? (dict-ref (content-metadata contents) 'type #f) "post"))
+  (equal? (dict-ref (content-metadata content) 'type #f) "post"))
 
-(define (content-date contents)
-  (dict-ref (content-metadata contents) 'date #f))
+(define (content-ref content key)
+  (dict-ref (content-metadata content) key #f))
 
-(define (content-year contents)
-  (date-string-year (content-date contents)))
+(define (content-date content)
+  (content-ref content 'date))
+
+(define (content-year content)
+  (date-string-year (content-date content)))
 
 (define (date-string-year str)
   ;; "2018-06-17" -> "2018"
@@ -50,9 +53,21 @@
   (substring str 5))
 
 (define (string->indices str)
-  ;; split contents from index-template into individual indices
+  ;; split content from index-template into individual indices
   (string-split (string-trim str) index-template-marker))
+
+;; Note that because I don't add the marker back, the string can't be converted back
+(define (indicies->string indices)
+  (string-join (map strip-metadata indices) ""))
 
 (define (get-years-in-indices lst)
   ;; get the years that are in the indices
-  (remove-duplicates (map (compose1 date-string-year content-date) lst)))
+  (remove-duplicates (map content-year lst)))
+
+(define (content-key-values contents key)
+  ;; get each unique value of key from contents
+  (remove-duplicates (map (λ (c) (content-ref c key)) contents)))
+
+(define (filter-indices-to-string func indices)
+  (indicies->string (filter func
+                            indices)))

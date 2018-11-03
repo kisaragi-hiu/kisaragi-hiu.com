@@ -15,9 +15,13 @@
             _)
           tags->comma-html))
 @(define processed-date
-    (~> (string->xexpr date)
-        (map-elements (λ (x) (if (string? x) (string-replace x "-" "/") x)) _)
-        xexpr->string))
+   ◊; <time datetime="2018-07-27T00:00:00">07/27</time>
+   (xexpr->string
+    `(time
+      ([datetime ,date-8601])
+      ,(~> (substring date-8601 5)
+           (string-replace _ #rx"T.*$" "")
+           (string-replace _ "-" "/")))))
 {"type":"post"}
 <!-- end of metadata -->
 <article>
@@ -29,8 +33,8 @@
   <footer>
     @twitter-share-button[full-uri]
     @google-plus-share-button[full-uri]
+    <a href="#top" id="top-link" >back to top</a>
     @older/newer-links[older-uri older-title newer-uri newer-title]
-    ◊google-adsense/responsive
     <br>
     @disqus-comments["kisaragi-hiu-blog"]
   </footer>

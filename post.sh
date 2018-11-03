@@ -10,7 +10,7 @@ usage:
 new () {
     [ -z "$1" ] && return
     title="$1"
-    newfile="drafts/$title.md.pp"
+    newfile="$title.md.pp"
     {   echo '#lang pollen'
         echo "    Title: $title"
         echo "    Date: ◊date◊"
@@ -28,7 +28,7 @@ publish () {
     read -r -p "category: " category
     read -r -p "tags (same format in file): " tags
     # shellcheck disable=SC2002 # Use sed as a filter.
-    cat drafts/"$file" \
+    cat "$file" \
     | sed s/◊date◊/"$date_full"/g \
     | sed s/◊lang◊/"$language"/g \
     | sed s/◊cat◊/"$category"/g \

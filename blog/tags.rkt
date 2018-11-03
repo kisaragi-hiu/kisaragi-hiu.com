@@ -2,6 +2,7 @@
 
 (require threading
          txexpr
+         "widgets.rkt"
          (only-in xml
                   string->xexpr))
 
@@ -58,20 +59,32 @@
            tags)
       (string-join _ "\n")))
 
-(define (comma-html->tags str)
-  (~> (string-replace str ", " "")
-      string->xexpr
-      get-elements
-      (filter txexpr? _)
-      (map (λ (x) (tag-st (last x) (attr-ref x 'href))) _)))
+;; tags->link but as a txexpr
+(define (tags->link/txexpr tags)
+  (map (λ (x) `(a ([href ,(tag-st-url x)]) ,(tag-st-name x)))
+       tags))
 
-(define (tags->comma-html tags)
-  (and~> (map (λ (x) (xexpr->html `(a ([href ,(tag-st-url x)]) ,(tag-st-name x))))
-              tags)
-         (add-between _ ", ")
+(define (seperator-html->tags str [seperator ", "])
+  (and~> str
+         (string-replace _ seperator "")
+         string->xexpr
+         get-elements
+         (filter txexpr? _)
+         (map (λ (x) (tag-st (last x) (attr-ref x 'href))) _)))
+
+(define (tags->seperator-html tags [seperator ", "])
+  (and~> tags
+         (map (λ (x) (xexpr->html `(a ([href ,(tag-st-url x)]) ,(tag-st-name x)))) _)
+         (add-between _ seperator)
          ((λ (lst) (if (empty? lst) #f lst)) _) ; short circuit out if it's empty
          (string-join _ "")
          (string-append "<span>" _ "</span>")))
+
+(define (tags->comma-html tags)
+  (tags->seperator-html tags ", "))
+
+(define (comma-html->tags str)
+  (seperator-html->tags str ", "))
 
 (define (language? tag)
   (string-prefix? (tag-st-name tag) "language:"))
@@ -96,6 +109,7 @@
         [else (tag-st (string-replace (tag-st-name tag) #rx"^.*:" "")
                       (tag-st-url tag))]))
 
+;; (filter language? tags) then convert their names for display
 (define (get-language-tags tags)
   (map (lambda (tag) (cond
                        [(string-prefix? (tag-st-name tag) "language:en")

@@ -30,13 +30,10 @@ build () {
     cp -r blog/css/*.css public/css/ || return 1
     cp -r blog/images public/ || return 1
     cp -r blog/videos public/ || return 1
+    cp _redirects public/ || return 1
     cp CNAME public/ || return 1
     cp favicon.ico public/ || return 1
     touch public/.nojekyll
-    # Clean up the tags.json. Needs Racket to know what (find-system-path 'temp-dir) is.
-    racket -e "(let ([tags.json (build-path (find-system-path 'temp-dir) \"tags.json\")])
-                 (when (file-exists? tags.json)
-                   (delete-file tags.json)))"
 }
 
 loop () {
@@ -45,8 +42,13 @@ loop () {
     while true; do
         waitfor /tmp/trigger
         [ "$rebuild" == 1 ] && export POLLEN=$RANDOM # full rebuild
-        build || notify-send "Build error"
-        notify-send "Build complete"
+        if build; then
+            echo "build.sh: complete"
+            notify-send "Build complete"
+        else
+            echo "build.sh: error"
+            notify-send "Build error"
+        fi
     done
 }
 

@@ -7,7 +7,7 @@
 @(define filtered-tags
    (and~> (comma-html->tags tags)
           (filter-not special? _)
-          tags->comma-html))
+          (tags->comma-html _)))
 @(define category-from-tags
    (and~> (comma-html->tags tags)
           (filter category? _)
@@ -16,15 +16,19 @@
                _)
           tags->comma-html))
 @(define processed-date
-    (~> (string->xexpr date)
-        (map-elements (λ (x) (if (string? x)
-                                 (string-replace (substring x 5) "-" "/")
-                                 x))
-                      _)
-        xexpr->string))
+   ◊; <time datetime="2018-07-27T00:00:00">07/27</time>
+   (xexpr->string
+    `(time
+      ([datetime ,date-8601])
+      ,(~> (substring date-8601 5)
+           (string-replace _ #rx"T.*$" "")
+           (string-replace _ "-" "/")))))
 ◊; See content-processing.rkt for metadata handling
 {"type":"index",
- "date":"@(attr-ref (string->xexpr date) 'datetime)"}
+ "date":"@(attr-ref (string->xexpr date) 'datetime)",
+ "tags":"@(comma-html->tags tags)",
+ "filtered-tags":"@(comma-html->tags filtered-tags)",
+ "category":"@(and~> category-from-tags comma-html->tags first tag-st-name)"}
 <!-- end of metadata -->
 <article class="index-item">
   ◊article-header[#:date "@|processed-date|" #:tags "@|filtered-tags|"
