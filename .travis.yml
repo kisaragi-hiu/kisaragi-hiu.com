@@ -7,7 +7,7 @@ branches:
 env:
   global:
   - RACKET_DIR: "~/racket"
-  - RACKET_VERSION: 6.12
+  - RACKET_VERSION: 7.1
   - GH_REF: 'github.com/kisaragi-hiu/kisaragi-hiu.com.git'
 cache:
   directories:
