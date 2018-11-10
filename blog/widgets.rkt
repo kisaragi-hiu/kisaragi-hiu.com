@@ -94,11 +94,11 @@
 (define/txexpr (rant . text)
   `(span ([style "color: #777;"]) "(" ,@text ")"))
 
-(define/txexpr (image src [caption #f] #:width [width #f])
+(define/txexpr (image src [caption #f] #:width [width #f] #:class [class ""])
   (define image-style "max-width:100%;")
   (when width
     (set! image-style (~a image-style "width:" width ";")))
-  `(div (img ([src ,src] [style ,image-style]))
+  `(div (img ([src ,src] [style ,image-style] [class ,class]))
         ,(if caption
              `(p ([class "image-caption"]) ,caption)
              "")))
