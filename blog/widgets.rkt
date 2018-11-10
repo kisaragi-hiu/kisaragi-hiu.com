@@ -189,11 +189,15 @@
 (define/txexpr (image/link url src [caption #f] #:class [class ""])
   (define img-link
     (parameterize ([current-return-txexpr? #t])
-      (link #:class (format "image-link ~a" class)
-            url (image src))))
+      `(div
+        ([class ,(format "image-link ~a" class)])
+        ,(link url
+               (image src)))))
   (when (string? caption)
     (set! img-link
-          `(div ,img-link (p ([class "image-caption"]) ,caption))))
+          ;; (append '(a) '(b)) is '(a b).
+          ;; We want '(a (b)), so we put 'p in another list.
+          (append img-link `((p ([class "image-caption"]) ,caption)))))
   img-link)
 
 (define/txexpr (link/date url date . text)
