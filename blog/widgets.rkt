@@ -186,11 +186,15 @@
 
 ;;; Link functions
 
-(define/txexpr (image/link url src caption)
-  `(div
-     ,(link #:return-txexpr? #t url
-            (image src #:return-txexpr? #t))
-     (p ([class "image-caption"]) ,caption)))
+(define/txexpr (image/link url src [caption #f] #:class [class ""])
+  (define img-link
+    (parameterize ([current-return-txexpr? #t])
+      (link #:class (format "image-link ~a" class)
+            url (image src))))
+  (when (string? caption)
+    (set! img-link
+          `(div ,img-link (p ([class "image-caption"]) ,caption))))
+  img-link)
 
 (define/txexpr (link/date url date . text)
   `(p ,(string-append date " ")
