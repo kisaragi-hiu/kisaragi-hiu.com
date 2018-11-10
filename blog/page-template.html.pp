@@ -152,7 +152,8 @@
                            (collapse
                             #:return-txexpr? #f
                             #:div-id "collapseWorks"
-                            #:button-classes "index-stream-title collapsed"
+                            #:div-extra-classes "show"
+                            #:button-classes "index-stream-title"
                             #:button-label "Works"
                             (collapse
                              #:div-id "collapseCode"
@@ -166,8 +167,7 @@
                               ,(project "https://gitlab.com/kisaragi-hiu/language-startup-benchmark" "Language Startup Benchmark" "Time hello world in various languages to benchmark their startup times.")))
                             (collapse
                              #:div-id "collapseUTAU"
-                             #:div-extra-classes "show"
-                             #:button-classes "collapse-level-2 text-secondary"
+                             #:button-classes "collapse-level-2 text-secondary collapsed"
                              #:button-label "UTAU Covers"
                              '(p "I upload covers on " '(a ([href "https://youtube.com/channel/UCl_hsqcvdX0XdgBimRQ6R3A"]) "Youtube ") "and " '(a ([href "https://www.nicovideo.jp/user/38995186"]) "niconico") ".")
                              `(div ([class "project-list"])
