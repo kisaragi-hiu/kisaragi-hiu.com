@@ -163,7 +163,7 @@
         #:class (format "ytimglink ~a" class)
         (~a "https://youtu.be/" video-id)
         (image #:return-txexpr? #t
-               (format "https://img.youtube.com/vi/~a/hqdefault.jpg"
+               (format "https://img.youtube.com/vi/~a/maxresdefault.jpg"
                        video-id))))
 
 (define global-translation-dict
