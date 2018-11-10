@@ -163,7 +163,7 @@
     (image/link #:class class
                 (~a "https://youtu.be/" video-id)
                 (format
-                 "https://img.youtube.com/vi/~a/maxresdefault.jpg"
+                 "https://img.youtube.com/vi/~a/hqdefault.jpg"
                  video-id))))
 
 (define global-translation-dict
