@@ -158,6 +158,14 @@
                       "https://kisaragi-hiu.com")]
                [frameborder "0"]))))
 
+(define/txexpr (youtube/image-link video-id #:class [class ""])
+  (link #:return-txexpr? #t
+        #:class (format "ytimglink ~a" class)
+        (~a "https://youtu.be/" video-id)
+        (image #:return-txexpr? #t
+               (format "https://img.youtube.com/vi/~a/hqdefault.jpg"
+                       video-id))))
+
 (define global-translation-dict
   {"Kisaragi Hiu"
    {'ja "如月飛羽"

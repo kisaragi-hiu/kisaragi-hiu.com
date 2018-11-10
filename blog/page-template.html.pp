@@ -171,8 +171,8 @@
                              #:button-label "UTAU Covers"
                              '(p "I upload covers on " '(a ([href "https://youtube.com/channel/UCl_hsqcvdX0XdgBimRQ6R3A"]) "Youtube ") "and " '(a ([href "https://www.nicovideo.jp/user/38995186"]) "niconico") ".")
                              `(ul ([class "project-list"])
-                               (li ,(youtube/embed "6rcSTAgQAkM"))
-                               (li ,(youtube/embed "4OsnqVBqPqQ"))))
+                               (li ,(youtube/image-link "6rcSTAgQAkM"))
+                               (li ,(youtube/image-link "4OsnqVBqPqQ"))))
                               )
                            (collapse-button
                             #:return-txexpr? #f
