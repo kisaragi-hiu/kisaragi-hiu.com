@@ -6,6 +6,16 @@
 
 (provide (all-defined-out))
 
+;;; widgets
+
+(define/txexpr (link url [text url]
+                     #:class [class ""]
+                     #:target [target "_self"])
+  `(a ([href ,url]
+       [target ,target]
+       [class ,class])
+    ,text))
+
 (define/txexpr (dropdown #:button-id button-id
                          #:button-extra-classes button-extra-classes
                          #:button-label button-label
@@ -165,3 +175,36 @@
   (~> (translation-dict str) 'en))
 
 (define ! translate)
+
+;;; Link functions
+
+(define/txexpr (image/link url src caption)
+  `(div
+     ,(link #:return-txexpr? #t url
+            (image src #:return-txexpr? #t))
+     (p ([class "image-caption"]) ,caption)))
+
+(define/txexpr (link/date url date . text)
+  `(p ,(string-append date " ")
+      ,(link #:return-txexpr? #t url (string-join text))))
+
+(define-syntax (define-link stx)
+  (syntax-case stx ()
+    [(_ linkname url-prefix)
+     #'(begin
+         (define/txexpr (linkname suburl [text suburl] #:class [class ""])
+           (link (string-append url-prefix suburl)
+                 text
+                 #:class class
+                 #:return-txexpr? #t)))]))
+
+(define-link github "https://github.com/")
+(define-link gitlab "https://gitlab.com/")
+(define-link twitter "https://twitter.com/")
+(define-link youtube "https://youtube.com/")
+(define-link pixiv "https://pixiv.net/")
+(define-link niconico "http://www.nicovideo.jp/")
+(define-link osuwiki "http://osu.ppy.sh/help/wiki/")
+(define-link transifex "https://www.transifex.com/user/profile/")
+(define-link noichigo "https://www.no-ichigo.jp/read/book/book_id/")
+(define-link site-crossref "https://kisaragi-hiu.com/")
