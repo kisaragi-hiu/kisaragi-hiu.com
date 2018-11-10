@@ -170,9 +170,9 @@
                              #:button-classes "collapse-level-2 text-secondary"
                              #:button-label "UTAU Covers"
                              '(p "I upload covers on " '(a ([href "https://youtube.com/channel/UCl_hsqcvdX0XdgBimRQ6R3A"]) "Youtube ") "and " '(a ([href "https://www.nicovideo.jp/user/38995186"]) "niconico") ".")
-                             `(ul ([class "project-list"])
-                               (li ,(youtube/image-link "6rcSTAgQAkM"))
-                               (li ,(youtube/image-link "4OsnqVBqPqQ"))))
+                             `(div ([class "project-list"])
+                               ,(youtube/image-link "6rcSTAgQAkM")
+                               ,(youtube/image-link "4OsnqVBqPqQ")))
                               )
                            (collapse-button
                             #:return-txexpr? #f

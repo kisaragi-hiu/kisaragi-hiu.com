@@ -122,10 +122,17 @@ a.project-link {
     color: #555;
 }
 
-.project-list {
+ul.project-list {
     column-count: 2;
     list-style: none;
     padding-left: 0;
+}
+
+div.project-list {
+    display: flex;
+    padding-left: 0;
+    padding-bottom: 2em;
+    justify-content: space-around;
 }
 
 .image-link {
