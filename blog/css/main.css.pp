@@ -128,6 +128,12 @@ a.project-link {
     padding-left: 0;
 }
 
+.image-link {
+    -webkit-box-shadow: 0px 0px 10px 0px rgba(50, 50, 50, 0.68);
+    -moz-box-shadow:    0px 0px 10px 0px rgba(50, 50, 50, 0.68);
+    box-shadow:         0px 0px 10px 0px rgba(50, 50, 50, 0.68);
+}
+
 .collapse-level-2 {
     font-size: 1.5rem;
     margin-top: 1.5rem;
