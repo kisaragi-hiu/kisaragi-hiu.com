@@ -191,7 +191,7 @@
    (lambda (kws kw-args . rest)
      (~> (map (lambda (kw kw-arg)
                 `(span
-                  ([class ,(~a "lang-" kw)])
+                  ([class ,(~a "lang-" (keyword->string kw))])
                   ,kw-arg))
               kws kw-args)
          (cons 'span _)
