@@ -159,12 +159,12 @@
                [frameborder "0"]))))
 
 (define/txexpr (youtube/image-link video-id #:class [class ""])
-  (link #:return-txexpr? #t
-        #:class (format "ytimglink ~a" class)
-        (~a "https://youtu.be/" video-id)
-        (image #:return-txexpr? #t
-               (format "https://img.youtube.com/vi/~a/maxresdefault.jpg"
-                       video-id))))
+  (parameterize ([current-return-txexpr? #t])
+    (image/link #:class class
+                (~a "https://youtu.be/" video-id)
+                (image (format
+                        "https://img.youtube.com/vi/~a/maxresdefault.jpg"
+                        video-id)))))
 
 (define global-translation-dict
   {"Kisaragi Hiu"
