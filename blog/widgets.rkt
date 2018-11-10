@@ -162,9 +162,9 @@
   (parameterize ([current-return-txexpr? #t])
     (image/link #:class class
                 (~a "https://youtu.be/" video-id)
-                (image (format
-                        "https://img.youtube.com/vi/~a/maxresdefault.jpg"
-                        video-id)))))
+                (format
+                 "https://img.youtube.com/vi/~a/maxresdefault.jpg"
+                 video-id))))
 
 (define global-translation-dict
   {"Kisaragi Hiu"
