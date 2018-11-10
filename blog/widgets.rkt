@@ -9,12 +9,12 @@
 ;;; widgets
 
 (define/txexpr (link url [text url]
-                     #:class [class ""]
-                     #:target [target "_self"])
-  `(a ([href ,url]
-       [target ,target]
-       [class ,class])
-    ,text))
+                     #:class [class #f]
+                     #:target [target #f])
+  (define result `(a ([href ,url]) ,text))
+  (when class (set! result (attr-set result 'class class)))
+  (when target (set! result (attr-set result 'target target)))
+  result)
 
 (define/txexpr (dropdown #:button-id button-id
                          #:button-extra-classes button-extra-classes
