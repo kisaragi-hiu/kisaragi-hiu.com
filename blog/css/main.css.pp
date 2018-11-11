@@ -122,6 +122,12 @@ a.project-link {
     color: #555;
 }
 
+.pager {
+    column-count: 2;
+    list-style: none;
+    padding: 0 0 0 0;
+}
+
 ul.project-list {
     column-count: 2;
     list-style: none;
