@@ -23,6 +23,7 @@ build () {
     # Build the site into public/
     raco pollen render blog/ || return 1
     raco pollen render blog/posts/ || return 1
+    raco pollen render blog/fictions/ || return 1
     raco pollen render blog/css/ || return 1
     raco frog --build || return 1
     # frog doesn't copy other files, do it here

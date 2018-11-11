@@ -105,7 +105,9 @@
                       [filtered-indices
                        (~>
                         (filter-not
-                         (lambda (x) (equal? (content-ref x 'category) "Fiction"))
+                         ;; filter out nothing.
+                         ;; add things to filter out here
+                         (lambda (_x) #f)
                          indices))]
                       [years (get-years-in-indices filtered-indices)]
                       ◊; tags are available in all-tags already
@@ -198,24 +200,7 @@
                             "</div>"))
                          years))
                    "</div>" ◊; collapseBlog
-
-                   ◊; Indicies with the category "Fiction"
-                   (let ([fiction-indices
-                          (filter-indices-to-string
-                           (lambda (x) (equal? (content-ref x 'category) "Fiction"))
-                           indices)])
-                     (if (equal? fiction-indices "")
-                         ""
-                         (string-append
-                          (collapse-button
-                           #:return-txexpr? #f
-                           #:button-class "index-stream-title"
-                           #:div-id "collapseFiction"
-                           "Fiction")
-                          "<div class=\"collapse show\" id=\"collapseFiction\">"
-                          fiction-indices
-                          "</div>" ◊; collapseFiction
-                          ))))))
+                   )))
 
              ◊; If not an index, just show the contents
              (strip-metadata contents))
