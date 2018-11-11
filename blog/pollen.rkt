@@ -17,13 +17,16 @@
          txexpr
          "widgets.rkt"
          "define-txexpr.rkt"
+         "translate.rkt"
          (only-in xml
                   string->xexpr))
 
 
 (provide (all-defined-out)
          (all-from-out pollen/template
-                       "widgets.rkt"))
+                       "widgets.rkt")
+         (rename-out [translate !])
+         (rename-out [translate-inline $]))
 
 (module setup racket/base
   (provide (all-defined-out))
@@ -92,4 +95,3 @@
   (when size (set! options (string-append options "size=" size)))
   `(img ([src ,(string-append "https://icongr.am/fontawesome/" fa-icon ".svg" options)]
          [alt ,fa-icon])))
-
