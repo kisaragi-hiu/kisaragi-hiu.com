@@ -33,13 +33,18 @@ footer {
     margin-top: 2rem;
 }
 
+p {
+    font-size: 1.2em;
+}
+
 html, body {
     background-color: #fbfbfb;
 }
 
 #logo img {
-    max-height: 2em;
-    margin-right: 0.4em;
+    max-height: 2rem;
+    margin-right: 0.4rem;
+    font-size: 1rem;
 }
 
 a {
@@ -125,7 +130,7 @@ a.project-link {
 .pager {
     display: flex;
     justify-content: space-between;
-    padding: 1em 0 0 0;
+    padding: 1em 0 1em 0;
 }
 
 .pager-prev::before { content: "←"; }
