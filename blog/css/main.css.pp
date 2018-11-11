@@ -123,9 +123,19 @@ a.project-link {
 }
 
 .pager {
-    column-count: 2;
-    list-style: none;
-    padding: 0 0 0 0;
+    display: flex;
+    justify-content: space-between;
+    padding: 1em 0 0 0;
+}
+
+.pager-prev::before { content: "←"; }
+.pager-next::after  { content: "→"; }
+.pager a {
+    font-weight: 700;
+}
+
+.linenodiv pre {
+    color: #aaa;
 }
 
 ul.project-list {
@@ -199,8 +209,4 @@ div.project-list {
     .index-stream-title {
         margin-left: 0;
     }
-
-    /* .collapse-level-2::before, .index-stream-title::before { */
-    /*     content: none; */
-    /* } */
 }

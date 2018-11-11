@@ -33,8 +33,10 @@
   <footer>
     @twitter-share-button[full-uri]
     <a href="#top" id="top-link" >back to top</a>
-    @older/newer-links[older-uri older-title newer-uri newer-title]
-    <br>
+    <div class="pager">
+      <a href="@|older-uri|" id="pager-prev">@|older-title|</a>
+      <a href="@|newer-uri|" id="pager-next">@|newer-title|</a>
+    </div>
     @disqus-comments["kisaragi-hiu-blog"]
   </footer>
 </article>
