@@ -4,7 +4,8 @@
          "define-txexpr.rkt"
          pollen/template/html)
 
-(provide (all-defined-out))
+(provide (rename-out [translate !])
+         (rename-out [translate-inline $]))
 
 (define global-translation-dict
   {"Kisaragi Hiu"

@@ -24,9 +24,8 @@
 
 (provide (all-defined-out)
          (all-from-out pollen/template
-                       "widgets.rkt")
-         (rename-out [translate !])
-         (rename-out [translate-inline $]))
+                       "widgets.rkt"
+                       "translate.rkt"))
 
 (module setup racket/base
   (provide (all-defined-out))
