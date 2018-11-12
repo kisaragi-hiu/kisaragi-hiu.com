@@ -20,8 +20,16 @@
 (define (translate #:translation-dict [translation-dict global-translation-dict]
                    .
                    strings)
-  (define str (string-join strings ""))
-  (~> (translation-dict str) 'en))
+  ;; dictionary representing this string's translations
+  (define this-dict
+    (~> (dict-ref translation-dict (string-join strings ""))
+        dict->list ; ensure it's an alist
+        (sort _ (lambda (x y) (symbol<? (car x) (car y))))))
+
+  (define kws (~>> (dict-keys this-dict)
+                   (map (compose1 string->keyword symbol->string))))
+  (define kw-args (dict-values this-dict))
+  (keyword-apply translate-inline kws kw-args empty))
 
 ;; ◊$[#:en "Eng" #:zh "華"] ->
 ;; '(span ([class "translate"])
