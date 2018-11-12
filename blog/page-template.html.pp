@@ -144,9 +144,8 @@
   }
 </div>
 <p>◊$[#:en "I'm a college student interested in Free Software, programming, VOCALOID / UTAU culture, and language learning."]</p>
+<p>◊!{Contact:}<br>contact@"@"kisaragi-hiu.com</p>
                            }
-                           (xexpr->html
-                            '(p "◊!{Contact:}" (br) "contact@kisaragi-hiu.com"))
                            (collapse
                             #:return-txexpr? #f
                             #:div-id "collapseWorks"
