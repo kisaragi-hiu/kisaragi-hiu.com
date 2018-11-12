@@ -17,7 +17,7 @@
     'zh "聯絡："
     'en "Contact:"}})
 
-(define (translate #:translation-dict [translation-dict global-translation-dict]
+(define/txexpr (translate #:translation-dict [translation-dict global-translation-dict]
                    .
                    strings)
   ;; dictionary representing this string's translations
@@ -29,7 +29,8 @@
   (define kws (~>> (dict-keys this-dict)
                    (map (compose1 string->keyword symbol->string))))
   (define kw-args (dict-values this-dict))
-  (keyword-apply translate-inline kws kw-args empty))
+  (parameterize ([current-return-txexpr? #t])
+    (keyword-apply translate-inline kws kw-args empty)))
 
 ;; ◊$[#:en "Eng" #:zh "華"] ->
 ;; '(span ([class "translate"])
