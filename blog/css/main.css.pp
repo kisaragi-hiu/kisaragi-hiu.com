@@ -29,6 +29,14 @@ body {
     text-rendering: optimizeLegibility;
 }
 
+.translate .lang-en, .translate .lang-zh, .translate .lang-ja {
+    display: none;
+}
+
+.translate .lang-en:lang(en), .translate .lang-zh:lang(zh), .translate .lang-ja:lang(ja) {
+    display: unset;
+}
+
 footer {
     margin-top: 2rem;
 }
