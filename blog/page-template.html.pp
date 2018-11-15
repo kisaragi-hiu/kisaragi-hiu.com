@@ -14,6 +14,7 @@
                 "tags.rkt"
                 "define-txexpr.rkt"
                 "widgets.rkt"
+                "translate.rkt"
                 "content-processing.rkt")
 
 @(define all-tags (tag-string->tags tags-list-items))
@@ -143,7 +144,8 @@
     ◊font-awesome["youtube-play" #:color "6c757d"]
   }
 </div>
-<p>◊$[#:en "I'm a college student interested in Free Software, programming, VOCALOID / UTAU culture, and language learning."]</p>
+<p>◊$[#:en "I'm a college student interested in Free Software, programming, VOCALOID / UTAU culture, and language learning."
+      #:zh "語言學習、自由軟體、程式、VOCALOID / UTAU 文化相關。"]</p>
 <p>◊!{Contact:}<br>contact@"@"kisaragi-hiu.com</p>
                            }
                            (collapse
@@ -158,10 +160,22 @@
                              #:button-classes "collapse-level-2 text-secondary"
                              #:button-label "Code"
                              `(ul ([class "project-list"])
-                              ,(project "https://github.com/kisaragi-hiu/cangjie.el" "Cangjie.el" "Retrieve Cangjie code for Han character in Emacs.")
-                              ,(project "https://github.com/kisaragi-hiu/tr.el" "Tr.el" "Minimal tr implementation for Emacs.")
-                              ,(project "https://gitlab.com/kisaragi-hiu/dotfiles/tree/master/scripts/.local/bin" "Scripts" "Small scripts I've written over the years.")
-                              ,(project "https://gitlab.com/kisaragi-hiu/language-startup-benchmark" "Language Startup Benchmark" "Time hello world in various languages to benchmark their startup times.")))
+                              ,(project "https://github.com/kisaragi-hiu/cangjie.el"
+                                        "Cangjie.el"
+                                        ($ #:en "Retrieve Cangjie code for Han character in Emacs."
+                                           #:zh "在 Emacs 中查漢字的倉頡碼。"))
+                              ,(project "https://github.com/kisaragi-hiu/tr.el"
+                                        "Tr.el"
+                                        ($ #:en "Minimal tr implementation for Emacs."
+                                           #:zh "簡單的 tr 實作。"))
+                              ,(project "https://gitlab.com/kisaragi-hiu/dotfiles/tree/master/scripts/.local/bin"
+                                        "Scripts"
+                                        ($ #:en "Small scripts I've written over the years."
+                                           #:zh "幾年來寫的小腳本。"))
+                              ,(project "https://gitlab.com/kisaragi-hiu/language-startup-benchmark"
+                                        "Language Startup Benchmark"
+                                        ($ #:en "Time hello world in various languages to benchmark their startup times."
+                                           #:zh "為一些語言的 hello world 計時來看它們的啟動時間。"))))
                             (collapse
                              #:div-id "collapseUTAU"
                              #:button-classes "collapse-level-2 text-secondary collapsed"
