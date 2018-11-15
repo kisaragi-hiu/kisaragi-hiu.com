@@ -8,6 +8,7 @@
          (rename-out [translate-inline $]))
 
 (define global-translation-dict
+  ;; TODO: automatically transform ({'en "abc"}) into {"abc" {'en "abc"}}
   {"Kisaragi Hiu"
    {'ja "如月飛羽"
     'zh "如月飛羽"
@@ -15,7 +16,11 @@
    "Contact:"
    {'ja "連絡："
     'zh "聯絡："
-    'en "Contact:"}})
+    'en "Contact:"}
+   "Tag"
+   {'ja "タグ"
+    'zh "標籤"
+    'en "Tag"}})
 
 (define/txexpr (translate #:translation-dict [translation-dict global-translation-dict]
                    .

@@ -76,13 +76,20 @@
           <div class="col-6 nav-scroller py-1">
             <nav class="nav d-flex justify-content-end">
               <a class="p-2 text-secondary" href="/">Blog</a>
-              @(apply
-                dropdown
+              @(dropdown
                 #:return-txexpr? #f
                 #:button-id "dropdownLanguages"
                 #:button-extra-classes "text-secondary p-2"
                 #:button-label "Languages"
-                (tags->link/txexpr (get-language-tags all-tags)))
+                '(button
+                  ([onclick "(() => document.documentElement.lang = 'zh')()"])
+                  "中文")
+                ◊; '(button
+                ◊;   ([onclick "(() => document.documentElement.lang = 'ja')()"])
+                ◊;   "日本語")
+                '(button
+                  ([onclick "(() => document.documentElement.lang = 'en')()"])
+                  "English"))
               @(apply
                 dropdown
                 #:return-txexpr? #f
@@ -121,7 +128,7 @@
                                               ": "
                                               (strong ,(strip-tag-special-prefix tag))))]
                          [tag
-                          (xexpr->string `(h1 "Tag: " (strong ,tag)))]
+                          (xexpr->string `(h1 ,(! "Tag") ": " (strong ,tag)))]
                          [else
                           ◊; at index page
                           ◊; This is where the landing text should be
