@@ -1,0 +1,16 @@
+#lang pollen
+◊index{
+    ◊blog{
+        post
+        post
+    }
+    ◊fiction{
+        post
+        post
+    }
+    about
+    ◊poems{
+        poem
+        poem
+    }
+}
