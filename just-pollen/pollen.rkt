@@ -1,5 +1,6 @@
 #lang racket
 (require threading
+         txexpr
          pollen/core
          pollen/template
          pollen/decode
@@ -11,7 +12,13 @@
                      threading))
 
 (provide (all-defined-out)
+         highlight
          (all-from-out "widgets.rkt"))
+
+(define (root . elements)
+  (txexpr 'root '() (decode-elements
+                     elements
+                     #:txexpr-elements-proc decode-paragraphs)))
 
 (define-syntax (->2to-define stx)
   (syntax-case stx ()
