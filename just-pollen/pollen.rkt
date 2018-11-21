@@ -6,8 +6,12 @@
          pollen/pagetree
          pollen/tag
          pollen/unstable/pygments
+         "widgets.rkt"
          (for-syntax racket/string
                      threading))
+
+(provide (all-defined-out)
+         (all-from-out "widgets.rkt"))
 
 (define-syntax (->2to-define stx)
   (syntax-case stx ()
