@@ -18,7 +18,8 @@
 (define (root . elements)
   (txexpr 'root '() (decode-elements
                      elements
-                     #:txexpr-elements-proc decode-paragraphs)))
+                     #:txexpr-elements-proc decode-paragraphs
+                     #:exclude-tags '(pre))))
 
 (define-syntax (->2to-define stx)
   (syntax-case stx ()
