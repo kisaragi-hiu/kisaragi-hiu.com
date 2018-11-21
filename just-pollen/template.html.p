@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>◊(dict-ref metas title)</title>
+    <title>◊(select-from-metas 'title metas)</title>
     <meta name="description" content="◊|description|">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="author" content="◊|author|">
@@ -11,8 +11,8 @@
     <link rel="icon" href="/favicon.ico">
     <link rel="canonical" href="◊|full-uri|">
 
-    ◊(when rel-next @list{<link rel="next" href="@|rel-next|">})
-    ◊(when rel-prev @list{<link rel="prev" href="@|rel-prev|">})
+    ◊;(when rel-next @list{<link rel="next" href="@|rel-next|">})
+    ◊;(when rel-prev @list{<link rel="prev" href="@|rel-prev|">})
     ◊; Font
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Fira+Sans%7COverpass+Mono%7COverpass:400,600">
@@ -37,7 +37,7 @@
 
       ◊; Contents
       <div id="content" class="">
-        ◊(to-html doc)
+        ◊(->html doc)
       </div>
 
       ◊; Footer
