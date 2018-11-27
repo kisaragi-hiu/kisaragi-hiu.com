@@ -1,5 +1,6 @@
 #lang rackjure
 (require xml
+         pollen/tag
          pollen/template/html
          txexpr)
 
@@ -36,6 +37,8 @@
           elements)
          (txexpr 'div '([class "dropdown-menu"]) _))))
 
+(define heading (default-tag-function 'h1))
+(define subheading (default-tag-function 'h2))
 
 (define (project url title description)
   `(li ([class "project"])
