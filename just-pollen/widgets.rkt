@@ -184,7 +184,7 @@
 
 (define (link/date url date . text)
   `(p ,(string-append date " ")
-    ,(link #:return-txexpr? #t url (string-join text))))
+    ,(link url (string-join text))))
 
 (define-syntax (define-link stx)
   (syntax-case stx ()
@@ -193,8 +193,7 @@
          (define (linkname suburl [text suburl] #:class [class ""])
            (link (string-append url-prefix suburl)
                  text
-                 #:class class
-                 #:return-txexpr? #t)))]))
+                 #:class class)))]))
 
 (define-link github "https://github.com/")
 (define-link gitlab "https://gitlab.com/")
