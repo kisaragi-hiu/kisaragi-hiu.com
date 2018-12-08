@@ -3,16 +3,14 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>◊(select-from-metas 'title metas)</title>
+    <title>◊(select-from-metas 'title metas) | Kisaragi Hiu</title>
     <meta name="description" content="◊|description|">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="author" content="◊|author|">
-    <meta name="keywords" content="◊|keywords|">
-    <link rel="icon" href="/favicon.ico">
-    <link rel="canonical" href="◊|full-uri|">
+    <meta name="keywords" content="Coding, Programming, Language, LGBT, Blog">
+    <link rel="icon" href="◊(relative favicon.ico)">
+    <link rel="canonical" href="◊(absolute here)">
 
-    ◊;(when rel-next @list{<link rel="next" href="@|rel-next|">})
-    ◊;(when rel-prev @list{<link rel="prev" href="@|rel-prev|">})
     ◊; Font
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Fira+Sans%7COverpass+Mono%7COverpass:400,600">

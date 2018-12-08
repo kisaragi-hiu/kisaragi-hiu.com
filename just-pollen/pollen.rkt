@@ -16,6 +16,13 @@
          (all-from-out "widgets.rkt"
                        pollen/pagetree))
 
+(define author "Kisaragi Hiu")
+(define site-prefix "/")
+(define site-title "Kisaragi Hiu")
+(define site-host "https://kisaragi-hiu.com")
+(define (relative . rest) (apply ~a site-prefix rest)) ; append relative site prefix
+(define (absolute . rest) (apply ~a site-host rest)) ; append absolute site prefix
+
 (define (root . elements)
   (txexpr 'root '() (decode-elements
                      elements
