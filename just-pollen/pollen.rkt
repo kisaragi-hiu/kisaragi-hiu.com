@@ -13,7 +13,8 @@
 
 (provide (all-defined-out)
          highlight
-         (all-from-out "widgets.rkt"))
+         (all-from-out "widgets.rkt"
+                       pollen/pagetree))
 
 (define (root . elements)
   (txexpr 'root '() (decode-elements
