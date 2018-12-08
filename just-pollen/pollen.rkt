@@ -37,3 +37,28 @@
        #'(define new-name name))]))
 
 (->2to-define ->html)
+
+(define/contract (children-to-index p [pagetree (current-pagetree)])
+  (->* (pagenodeish?) ([or/c pagetree? pagenodeish?])
+       txexpr?)
+  (txexpr 'div '([class "index"])
+          (map index-item (children p pagetree))))
+
+(define (index-item pagenode #:class [class ""])
+  (define uri (~a pagenode))
+  (define date     (select-from-metas 'date pagenode))
+  (define title    (select-from-metas 'title pagenode))
+  (define category (select-from-metas 'category pagenode))
+  (define tags     (select-from-metas 'tags pagenode))
+  (unless title
+    (error pagenode "title is mandatory"))
+  `(header ([class ,class])
+    (h2 ([class "title mb-0"])
+     (a ([href ,uri]
+         [class "text-primary"])
+      ,title))
+    (p ([class "date-and-category"])
+     ,(~a (or date "")
+          (if category (~a ", " category) "")
+          (if tags (~a " :: " tags) "")))))
+
