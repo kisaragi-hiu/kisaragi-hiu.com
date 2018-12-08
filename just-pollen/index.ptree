@@ -1,35 +1,34 @@
 #lang pollen
-◊index.html{
-    ◊blog{
-        blog/2016-06-30-han-characters.html
-        blog/2017-03-19-new-website.html
-        blog/2017-06-28-redire.html
-        blog/2017-07-10-itsukauminomierubashode.html
-        blog/2017-09-12-termux-and-linux-deploy.html
-        blog/2017-09-13-discovering-racket.html
-        blog/2017-09-24-pollen.html
-        blog/2017-10-10-iterations.html
-        blog/2017-11-14-this-blog-with-pollen-and-frog.html
-        blog/2017-11-26-east-asian-names-reverse-or-not.html
-        blog/2017-12-05-hanezeve-caradhina-day1.html
-        blog/2017-12-06-grammar-zela-halalelu-day2.html
-        blog/2017-12-08-hanezeve-day-3-4.html
-        blog/2017-12-22-attempt-to-explain-lambda.html
-        blog/2017-12-31-notable-anime-in-2017.html
-        blog/2018-01-07-pollen-skip-cache.html
-        blog/2018-01-15-sg-input-workaround.html
-        blog/2018-02-25-pam_env.html
-        blog/2018-03-11-hanezeve-final.html
-        blog/2018-04-08-2fa-introduction.html
-        blog/2018-05-11-utau-tuning-experiment.html
-        blog/2018-07-27-utau-tip-labels.html
-        blog/2018-09-20-magit-introduction.html
-        blog/2018-10-08-random-string-picolisp.html
-        blog/2018-11-04-synthv-hope.html
-    }
-    ◊; ◊fiction{
-    ◊; }
-    about
-    ◊poems{
-    }
+index.html
+◊blog{
+    blog/2016-06-30-han-characters.html
+    blog/2017-03-19-new-website.html
+    blog/2017-06-28-redire.html
+    blog/2017-07-10-itsukauminomierubashode.html
+    blog/2017-09-12-termux-and-linux-deploy.html
+    blog/2017-09-13-discovering-racket.html
+    blog/2017-09-24-pollen.html
+    blog/2017-10-10-iterations.html
+    blog/2017-11-14-this-blog-with-pollen-and-frog.html
+    blog/2017-11-26-east-asian-names-reverse-or-not.html
+    blog/2017-12-05-hanezeve-caradhina-day1.html
+    blog/2017-12-06-grammar-zela-halalelu-day2.html
+    blog/2017-12-08-hanezeve-day-3-4.html
+    blog/2017-12-22-attempt-to-explain-lambda.html
+    blog/2017-12-31-notable-anime-in-2017.html
+    blog/2018-01-07-pollen-skip-cache.html
+    blog/2018-01-15-sg-input-workaround.html
+    blog/2018-02-25-pam_env.html
+    blog/2018-03-11-hanezeve-final.html
+    blog/2018-04-08-2fa-introduction.html
+    blog/2018-05-11-utau-tuning-experiment.html
+    blog/2018-07-27-utau-tip-labels.html
+    blog/2018-09-20-magit-introduction.html
+    blog/2018-10-08-random-string-picolisp.html
+    blog/2018-11-04-synthv-hope.html
+}
+◊; ◊fiction{
+◊; }
+about
+◊poems{
 }
