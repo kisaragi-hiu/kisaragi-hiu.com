@@ -41,8 +41,8 @@
           <div class="col-6 nav-scroller py-1">
             <nav class="nav d-flex justify-content-end">
               <a class="p-2 text-secondary" href="/">Blog</a>
-              <a class="p-2 text-secondary" href="/projects">Projects</a>
-              <a class="p-2 text-secondary" href="/about">About</a>
+              <a class="p-2 text-secondary" href="/projects.html">Projects</a>
+              <a class="p-2 text-secondary" href="/about.html">About</a>
             </nav>
           </div>
         </div>
