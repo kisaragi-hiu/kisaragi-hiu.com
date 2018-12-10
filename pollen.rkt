@@ -52,7 +52,7 @@
           (map index-item (children p pagetree))))
 
 (define (index-item pagenode #:class [class ""])
-  (define uri (~a pagenode))
+  (define uri (local (~a pagenode)))
   (define date     (select-from-metas 'date pagenode))
   (define title    (select-from-metas 'title pagenode))
   (define category (select-from-metas 'category pagenode))
