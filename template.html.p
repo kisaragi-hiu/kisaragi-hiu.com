@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>◊(select-from-metas 'title metas) | Kisaragi Hiu</title>
+    <title>◊(extract-xexpr-strings (select-from-metas 'title metas)) | Kisaragi Hiu</title>
     <meta name="description" content="◊|description|">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="author" content="◊|author|">

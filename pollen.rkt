@@ -22,6 +22,10 @@
 (define site-host "https://kisaragi-hiu.com")
 (define (local . rest) (apply ~a site-prefix rest)) ; append local site prefix
 (define (global . rest) (apply ~a site-host rest)) ; append global site prefix
+(define (extract-xexpr-strings xexpr)
+  (if (list? xexpr)
+      (filter string? (flatten xexpr))
+      xexpr))
 
 (define (root . elements)
   (txexpr 'root '() (decode-elements
