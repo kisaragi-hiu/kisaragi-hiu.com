@@ -14,7 +14,9 @@
 (provide (all-defined-out)
          highlight
          (all-from-out "widgets.rkt"
-                       pollen/pagetree))
+                       pollen/pagetree
+                       pollen/template
+                       txexpr))
 
 (define author "Kisaragi Hiu")
 (define site-prefix "/")
