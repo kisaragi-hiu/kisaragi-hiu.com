@@ -20,8 +20,8 @@
 (define site-prefix "/")
 (define site-title "Kisaragi Hiu")
 (define site-host "https://kisaragi-hiu.com")
-(define (relative . rest) (apply ~a site-prefix rest)) ; append relative site prefix
-(define (absolute . rest) (apply ~a site-host rest)) ; append absolute site prefix
+(define (local . rest) (apply ~a site-prefix rest)) ; append local site prefix
+(define (global . rest) (apply ~a site-host rest)) ; append global site prefix
 
 (define (root . elements)
   (txexpr 'root '() (decode-elements
