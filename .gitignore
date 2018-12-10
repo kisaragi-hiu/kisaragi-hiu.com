@@ -12,3 +12,6 @@ feeds/*
 tags/*
 index.html
 sitemap.txt
+main.css
+*.html
+css/main.css
