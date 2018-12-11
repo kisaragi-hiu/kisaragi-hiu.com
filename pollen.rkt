@@ -93,7 +93,12 @@
     ,(if category
          `(p ([class "category"])
            "C: "
-           (a ([href ,(abs-local "category/" (string-downcase category) ".html")])
+           (a ([href ,(abs-local "category/"
+                                 (string-replace
+                                  (string-downcase category)
+                                  " "
+                                  "-")
+                                 ".html")])
             ,(string-titlecase category)))
          "")
     ,(if (list? tags)
