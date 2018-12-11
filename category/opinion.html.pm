@@ -2,6 +2,7 @@
 ◊(require threading)
 ◊(current-pagetree "../index.ptree")
 
+◊define-meta[title]{opinion}
 ◊define-meta[type]{category-index}
 
 ◊(~> (children 'blog (current-pagetree))
