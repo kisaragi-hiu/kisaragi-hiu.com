@@ -8,8 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="author" content="◊|author|">
     <meta name="keywords" content="Coding, Programming, Language, LGBT, Blog">
-    <link rel="icon" href="◊local{favicon.ico}">
-    <link rel="canonical" href="◊(global here)">
+    <link rel="icon" href="◊abs-local{favicon.ico}">
+    <link rel="canonical" href="◊(abs-global here)">
 
     ◊; Font
     <link rel="stylesheet"

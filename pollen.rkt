@@ -25,8 +25,8 @@
 (define site-prefix "/")
 (define site-title "Kisaragi Hiu")
 (define site-host "https://kisaragi-hiu.com/")
-(define (local . rest) (apply ~a site-prefix rest)) ; append local site prefix
-(define (global . rest) (apply ~a site-host rest)) ; append global site prefix
+(define (abs-local . rest) (apply ~a site-prefix rest)) ; append local site prefix
+(define (abs-global . rest) (apply ~a site-host rest)) ; append global site prefix
 (define (extract-xexpr-strings xexpr)
   (if (list? xexpr)
       (filter string? (flatten xexpr))
@@ -74,7 +74,7 @@
           (map index-item (children p pagetree))))
 
 (define (index-item pagenode #:class [class ""])
-  (define uri (local (~a pagenode)))
+  (define uri (abs-local (~a pagenode)))
   (define date     (select-from-metas 'date pagenode))
   (define title    (select-from-metas 'title pagenode))
   (define category (select-from-metas 'category pagenode))
@@ -93,14 +93,14 @@
     ,(if category
          `(p ([class "category"])
            "C: "
-           (a ([href ,(local "category/" (string-downcase category) ".html")])
+           (a ([href ,(abs-local "category/" (string-downcase category) ".html")])
             ,(string-titlecase category)))
          "")
     ,(if (list? tags)
          `(p ([class "tags"])
            "T: "
            ,(~> (for/list ((tag tags))
-                  `(a ([href ,(local "tags/" tag)])
+                  `(a ([href ,(abs-local "tags/" tag)])
                     ,tag))
                 (string-join _ ", ")))
          "")))
