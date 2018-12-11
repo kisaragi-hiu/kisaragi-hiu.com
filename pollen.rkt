@@ -78,8 +78,8 @@
     ,(if category
          `(p ([class "category"])
            "C: "
-           (a ([href ,(local "category/" category)])
-            ,category))
+           (a ([href ,(local "category/" (string-downcase category) ".html")])
+            ,(string-titlecase category)))
          "")
     ,(if (list? tags)
          `(p ([class "tags"])
