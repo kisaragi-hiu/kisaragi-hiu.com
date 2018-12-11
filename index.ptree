@@ -28,7 +28,13 @@ index.html
     blog/2016-06-30-han-characters.html
 }
 ◊category{
-    category/opinion.html.pm
+    category/opinions.html
+    category/meta.html
+    category/hanezeve-caradhina-language-construction.html
+    category/tutorials.html
+    category/opinions.html
+    category/own-vocal-experiment.html
+    category/linux.html
 }
 ◊; ◊fiction{
 ◊; }
