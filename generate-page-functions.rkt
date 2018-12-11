@@ -10,8 +10,10 @@
       ◊(require threading)
       ◊(current-pagetree "../index.ptree")
 
-      ◊define-meta[title]{@|category|}
+      ◊define-meta[title]{@(string-titlecase category)}
       ◊define-meta[type]{category-index}
+
+      ◊h1{Category: @(string-titlecase category)}
 
       ◊(~> (children 'blog (current-pagetree))
         (filter
