@@ -78,14 +78,14 @@
     ,(if category
          `(p ([class "category"])
            "C: "
-           (a ([href ,(global "category/" category)])
+           (a ([href ,(lobal "category/" category)])
             ,category))
          "")
     ,(if (list? tags)
          `(p ([class "tags"])
            "T: "
            ,(~> (for/list ((tag tags))
-                  `(a ([href ,(global "tags/" tag)])
+                  `(a ([href ,(local "tags/" tag)])
                     ,tag))
                 (string-join _ ", ")))
          "")))
