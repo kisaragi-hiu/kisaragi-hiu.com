@@ -27,6 +27,9 @@ index.html
     blog/2017-03-19-new-website.html
     blog/2016-06-30-han-characters.html
 }
+◊category{
+    category/opinion.html.pm
+}
 ◊; ◊fiction{
 ◊; }
 about
