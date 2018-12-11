@@ -57,7 +57,10 @@
 (define (in-category? pagenode category)
   (define cat (select-from-metas 'category pagenode))
   (and (string? cat)
-       (string-ci=? cat category)))
+       (string-ci=?
+        ;; special case for categories with spaces
+        (string-replace cat " " "-")
+        category)))
 
 (define (has-tag? pagenode tag)
   ;; select-from-metas is #f or txexpr only.
