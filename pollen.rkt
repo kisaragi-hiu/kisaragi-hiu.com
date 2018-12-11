@@ -8,6 +8,7 @@
          pollen/tag
          pollen/unstable/pygments
          "widgets.rkt"
+         "date.rkt"
          (for-syntax racket/string
                      threading))
 
@@ -71,7 +72,9 @@
          [class "text-primary"])
       ,title))
     (p ([class "date"])
-     ,(or date ""))
+     ,(if date
+          (iso8601-date->year-and-month-str date)
+          ""))
     ,(if category
          (txexpr* 'p '([class "category"]) (~a "C: " category))
          "")
