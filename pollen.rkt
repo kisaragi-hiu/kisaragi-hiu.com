@@ -75,3 +75,7 @@
           (if category (~a ", " category) "")
           (if tags (~a " :: " tags) "")))))
 
+;; get type of current document
+(define (document-type metas)
+  (or (select-from-metas 'type metas)
+      "post"))

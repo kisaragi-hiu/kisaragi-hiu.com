@@ -50,14 +50,14 @@
 
       ◊; Contents
       <div id="content" class="">
-        ◊(when/splice (select-from-metas 'root-index metas)
+        ◊(when/splice (string=? (document-type metas) "root-index")
           ◊list{
 <p>I'm a college student interested in Free Software, programming, VOCALOID / UTAU culture, and language learning.</p>
 
 <p>Contact:<br>
 contact@kisaragi-hiu.com</p>
 })
-        ◊(when/splice (member here (children 'blog))
+        ◊(when/splice (string=? (document-type metas) "post")
            (to-html (index-item here)))
         ◊(to-html doc)
       </div>
