@@ -78,7 +78,7 @@
     ,(if category
          `(p ([class "category"])
            "C: "
-           (a ([href ,(lobal "category/" category)])
+           (a ([href ,(local "category/" category)])
             ,category))
          "")
     ,(if (list? tags)
