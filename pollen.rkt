@@ -76,10 +76,18 @@
           (iso8601-date->year-and-month-str date)
           ""))
     ,(if category
-         (txexpr* 'p '([class "category"]) (~a "C: " category))
+         `(p ([class "category"])
+           "C: "
+           (a ([href ,(global "category/" category)])
+            ,category))
          "")
-    ,(if tags
-         (txexpr* 'p '([class "tags"]) (~a "T: " tags))
+    ,(if (list? tags)
+         `(p ([class "tags"])
+           "T: "
+           ,(~> (for/list ((tag tags))
+                  `(a ([href ,(global "tags/" tag)])
+                    ,tag))
+                (string-join _ ", ")))
          "")))
 
 ;; get type of current document
