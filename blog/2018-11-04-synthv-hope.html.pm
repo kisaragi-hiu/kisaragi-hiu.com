@@ -2,7 +2,7 @@
 ◊define-meta[title]{SynthesizerV hopes before trying it out}
 ◊define-meta[date]{2018-11-04T00:37:50}
 ◊define-meta[language]{en}
-◊define-meta[category]{Opinion}
+◊define-meta[category]{Opinions}
 
 ◊em{(I initially posted this as ◊link["https://twitter.com/flyin1501/status/1031078524830932993"](a Twitter thread). I then let it sit in a branch, unpushed, for almost three months. I've since tried SynthV; will put up my thoughts later.)}
 
