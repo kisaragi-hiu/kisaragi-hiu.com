@@ -7,6 +7,7 @@
          pollen/pagetree
          pollen/tag
          pollen/unstable/pygments
+         racket/function
          "widgets.rkt"
          "date.rkt"
          (for-syntax racket/string
@@ -17,6 +18,7 @@
          (all-from-out "widgets.rkt"
                        pollen/pagetree
                        pollen/template
+                       racket/function
                        txexpr))
 
 (define author "Kisaragi Hiu")
@@ -51,6 +53,11 @@
        #'(define new-name name))]))
 
 (->2to-define ->html)
+
+(define (in-category? category pagenode)
+  (define cat (select-from-metas 'category pagenode))
+  (and (string? cat)
+       (string-ci=? cat category)))
 
 (define/contract (children-to-index p [pagetree (current-pagetree)])
   (->* (pagenodeish?) ([or/c pagetree? pagenodeish?])
