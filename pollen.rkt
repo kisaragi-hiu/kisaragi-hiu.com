@@ -70,10 +70,14 @@
      (a ([href ,uri]
          [class "text-primary"])
       ,title))
-    (p ([class "date-and-category"])
-     ,(~a (or date "")
-          (if category (~a ", " category) "")
-          (if tags (~a " :: " tags) "")))))
+    (p ([class "date"])
+     ,(or date ""))
+    ,(if category
+         (txexpr* 'p '([class "category"]) (~a "C: " category))
+         "")
+    ,(if tags
+         (txexpr* 'p '([class "tags"]) (~a "T: " tags))
+         "")))
 
 ;; get type of current document
 (define (document-type metas)

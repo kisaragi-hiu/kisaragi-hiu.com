@@ -89,7 +89,8 @@ a.text-primary:hover, a.text-primary:focus {
     color: #d0a3ff !important;
 }
 
-header .date-and-category,
+header .date,
+header .category,
 header .tags {
     font-family: ◊|monospace|;
     display: block;
