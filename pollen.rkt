@@ -59,6 +59,14 @@
   (and (string? cat)
        (string-ci=? cat category)))
 
+(define (has-tag? pagenode tag)
+  ;; select-from-metas is #f or txexpr only.
+  ;; tags need to be some sort of list. use (select)?
+  ;; or should tags be a comma-seperated string?
+  (define this-tags (select-from-metas 'tags pagenode))
+  (and (not (empty? this-tags))
+       (member tag this-tags)))
+
 (define/contract (children-to-index p [pagetree (current-pagetree)])
   (->* (pagenodeish?) ([or/c pagetree? pagenodeish?])
        txexpr?)
