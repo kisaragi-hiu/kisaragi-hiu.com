@@ -6,7 +6,7 @@
 
 ◊(~> (children 'blog (current-pagetree))
      (filter
-      (curry in-category? "opinion")
+      (curryr in-category? "opinion")
       _)
      (map index-item _)
      (txexpr 'div '([class "index"]) _))

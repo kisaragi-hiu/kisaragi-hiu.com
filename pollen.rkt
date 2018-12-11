@@ -54,7 +54,7 @@
 
 (->2to-define ->html)
 
-(define (in-category? category pagenode)
+(define (in-category? pagenode category)
   (define cat (select-from-metas 'category pagenode))
   (and (string? cat)
        (string-ci=? cat category)))
