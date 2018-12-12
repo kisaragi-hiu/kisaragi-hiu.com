@@ -20,21 +20,8 @@ waitfor () {
 }
 
 build () {
-    # Build the site into public/
-    raco pollen render blog/ || return 1
-    raco pollen render blog/posts/ || return 1
-    raco pollen render blog/fictions/ || return 1
-    raco pollen render blog/css/ || return 1
-    raco frog --build || return 1
-    # frog doesn't copy other files, do it here
-    mkdir -p public/css || return 1
-    cp -r blog/css/*.css public/css/ || return 1
-    cp -r blog/images public/ || return 1
-    cp -r blog/videos public/ || return 1
-    cp _redirects public/ || return 1
-    cp CNAME public/ || return 1
-    cp favicon.ico public/ || return 1
-    touch public/.nojekyll
+    racket generate-pages.rkt
+    raco pollen render index.ptree || return 1
 }
 
 loop () {

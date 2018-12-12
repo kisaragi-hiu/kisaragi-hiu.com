@@ -7,6 +7,7 @@
          pollen/pagetree
          pollen/tag
          pollen/unstable/pygments
+         racket/function
          "widgets.rkt"
          "date.rkt"
          (for-syntax racket/string
@@ -17,14 +18,15 @@
          (all-from-out "widgets.rkt"
                        pollen/pagetree
                        pollen/template
+                       racket/function
                        txexpr))
 
 (define author "Kisaragi Hiu")
 (define site-prefix "/")
 (define site-title "Kisaragi Hiu")
 (define site-host "https://kisaragi-hiu.com/")
-(define (local . rest) (apply ~a site-prefix rest)) ; append local site prefix
-(define (global . rest) (apply ~a site-host rest)) ; append global site prefix
+(define (abs-local . rest) (apply ~a site-prefix rest)) ; append local site prefix
+(define (abs-global . rest) (apply ~a site-host rest)) ; append global site prefix
 (define (extract-xexpr-strings xexpr)
   (if (list? xexpr)
       (filter string? (flatten xexpr))
@@ -52,6 +54,19 @@
 
 (->2to-define ->html)
 
+(define (in-category? pagenode category)
+  (define cat (select-from-metas 'category pagenode))
+  (and (string? cat)
+       (string-ci=? cat category)))
+
+(define (has-tag? pagenode tag)
+  ;; select-from-metas is #f or txexpr only.
+  ;; tags need to be some sort of list. use (select)?
+  ;; or should tags be a comma-seperated string?
+  (define this-tags (select-from-metas 'tags pagenode))
+  (and (not (empty? this-tags))
+       (member tag this-tags)))
+
 (define/contract (children-to-index p [pagetree (current-pagetree)])
   (->* (pagenodeish?) ([or/c pagetree? pagenodeish?])
        txexpr?)
@@ -59,7 +74,7 @@
           (map index-item (children p pagetree))))
 
 (define (index-item pagenode #:class [class ""])
-  (define uri (local (~a pagenode)))
+  (define uri (abs-local (~a pagenode)))
   (define date     (select-from-metas 'date pagenode))
   (define title    (select-from-metas 'title pagenode))
   (define category (select-from-metas 'category pagenode))
@@ -78,14 +93,19 @@
     ,(if category
          `(p ([class "category"])
            "C: "
-           (a ([href ,(local "category/" category)])
-            ,category))
+           (a ([href ,(abs-local "category/"
+                                 (string-replace
+                                  (string-downcase category)
+                                  " "
+                                  "-")
+                                 ".html")])
+            ,(string-titlecase category)))
          "")
     ,(if (list? tags)
          `(p ([class "tags"])
            "T: "
            ,(~> (for/list ((tag tags))
-                  `(a ([href ,(local "tags/" tag)])
+                  `(a ([href ,(abs-local "tags/" tag)])
                     ,tag))
                 (string-join _ ", ")))
          "")))
