@@ -114,3 +114,23 @@
 (define (document-type metas)
   (or (select-from-metas 'type metas)
       "post"))
+
+;; before and after are labels, so they must be strings
+(define (navbutton pagenode [before ""] [after ""])
+  `(a ([href ,(abs-local (~a pagenode))])
+    ,before
+    ,(select-from-metas 'title pagenode)
+    ,after))
+
+(define (previous-and-next pagenode)
+  ;; FIXME: handle first and last post
+  `(div ([class "prev-and-next"])
+    ,(navbutton (previous pagenode) "<")
+    ,(navbutton (next pagenode) "" ">")))
+
+(define (previous-and-next-same-category pagenode)
+  ;; TODO: get previous/next in category by filtering article list, splitting
+  ;; on this pagenode, then selecting the closest one
+  `(div ([class "prev-and-next-same-category"])
+    ,(navbutton (previous pagenode) "<")
+    ,(navbutton (next pagenode) "" ">")))
