@@ -122,15 +122,31 @@
     ,(select-from-metas 'title pagenode)
     ,after))
 
+(define (page-navigation prev next #:extra-classes [extra-classes ""])
+  `(div ([class ,(~a "page-navigation " extra-classes)])
+    ,(if prev (navbutton prev "<") "")
+    ,(if next (navbutton next "" ">") "")))
+
 (define (previous-and-next pagenode)
-  ;; FIXME: handle first and last post
-  `(div ([class "prev-and-next"])
-    ,(navbutton (previous pagenode) "<")
-    ,(navbutton (next pagenode) "" ">")))
+  (page-navigation #:extra-classes "prev-next-all"
+                   (previous pagenode)
+                   (next pagenode)))
 
 (define (previous-and-next-same-category pagenode)
-  ;; TODO: get previous/next in category by filtering article list, splitting
-  ;; on this pagenode, then selecting the closest one
-  `(div ([class "prev-and-next-same-category"])
-    ,(navbutton (previous pagenode) "<")
-    ,(navbutton (next pagenode) "" ">")))
+  ;; Fixme: This seems to take forever during first run in a REPL.
+  ;; Is this a serious issue?
+  (define posts-in-this-category
+    (filter (curryr in-category? (select-from-metas 'category pagenode))
+            (children 'blog)))
+  ;; take everything from the start until the function is #f
+  ;; ie. until we hit the input pagenode
+  (define before-this
+    (takef posts-in-this-category
+           (lambda (p) (not (eq? pagenode p)))))
+  ;; same, but from the end
+  (define after-this
+    (takef-right posts-in-this-category
+                 (lambda (p) (not (eq? pagenode p)))))
+  (page-navigation #:extra-classes "prev-next-category"
+                   (last before-this)
+                   (first after-this)))
