@@ -52,6 +52,26 @@
       <div id="content" class="">
         ◊(when/splice (string=? (document-type metas) "root-index")
           ◊list{
+
+◊to-html{
+◊div[#:class "d-flex justify-content-begin"]{
+  ◊link["@|atom-feed-uri|" #:class "py-2"]{
+    ◊font-awesome["rss" #:color "6c757d"]
+  }
+  ◊twitter["flyin1501" #:class "p-2"]{
+    ◊font-awesome["twitter" #:color "6c757d"]
+  }
+  ◊github["kisaragi-hiu" #:class "p-2"]{
+    ◊font-awesome["github" #:color "6c757d"]
+  }
+  ◊gitlab["kisaragi-hiu" #:class "p-2"]{
+    ◊font-awesome["gitlab" #:color "6c757d"]
+  }
+  ◊youtube["channel/UCl_hsqcvdX0XdgBimRQ6R3A" #:class "p-2"]{
+    ◊font-awesome["youtube-play" #:color "6c757d"]
+  }
+}}
+
 <p>I'm a college student interested in Free Software, programming, VOCALOID / UTAU culture, and language learning.</p>
 
 <p>Contact:<br>
