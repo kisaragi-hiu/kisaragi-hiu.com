@@ -29,6 +29,11 @@ body {
     text-rendering: optimizeLegibility;
 }
 
+.page-navigation {
+    display: flex;
+    justify-content: space-between;
+}
+
 .translate .lang-en, .translate .lang-zh, .translate .lang-ja {
     display: none;
 }
