@@ -29,7 +29,7 @@
 (define (abs-global . rest) (apply ~a site-host rest)) ; append global site prefix
 (define (extract-xexpr-strings xexpr)
   (if (list? xexpr)
-      (filter string? (flatten xexpr))
+      (string-join (filter string? (flatten xexpr)) "")
       xexpr))
 
 (define (root . elements)
