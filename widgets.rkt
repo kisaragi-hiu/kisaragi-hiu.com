@@ -195,6 +195,13 @@
                  text
                  #:class class)))]))
 
+(define (font-awesome fa-icon #:aria [hidden #t] #:color [color #f] #:size [size #f])
+  (define options (if (or color size) "?" ""))
+  (when color (set! options (string-append options "color=" color)))
+  (when size (set! options (string-append options "size=" size)))
+  `(img ([src ,(string-append "https://icongr.am/fontawesome/" fa-icon ".svg" options)]
+         [alt ,fa-icon])))
+
 (define-link github "https://github.com/")
 (define-link gitlab "https://gitlab.com/")
 (define-link twitter "https://twitter.com/")
