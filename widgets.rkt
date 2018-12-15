@@ -2,7 +2,9 @@
 (require xml
          pollen/tag
          pollen/template/html
-         txexpr)
+         txexpr
+         "download.rkt"
+         "path.rkt")
 
 (provide (all-defined-out))
 
@@ -199,7 +201,9 @@
   (define options (if (or color size) "?" ""))
   (when color (set! options (string-append options "color=" color)))
   (when size (set! options (string-append options "size=" size)))
-  `(img ([src ,(string-append "https://icongr.am/fontawesome/" fa-icon ".svg" options)]
+  (download (~a "https://icongr.am/fontawesome/" fa-icon ".svg" options)
+            (path-from-project-root "static/ext/fa/" fa-icon ".svg"))
+  `(img ([src ,(abs-local "static/ext/fa/" fa-icon ".svg")]
          [alt ,fa-icon])))
 
 (define-link github "https://github.com/")
