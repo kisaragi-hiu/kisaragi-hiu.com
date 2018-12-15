@@ -141,20 +141,6 @@
                    (next pagenode)))
 
 (define (previous-and-next-same-category pagenode)
-  ;; Fixme: This seems to take forever during first run in a REPL.
-  ;; Is this a serious issue?
-  (define posts-in-this-category
-    (filter (curryr in-category? (select-from-metas 'category pagenode))
-            (siblings pagenode)))
-  ;; take everything from the start until the function is #f
-  ;; ie. until we hit the input pagenode
-  (define before-this
-    (takef posts-in-this-category
-           (lambda (p) (not (eq? pagenode p)))))
-  ;; same, but from the end
-  (define after-this
-    (takef-right posts-in-this-category
-                 (lambda (p) (not (eq? pagenode p)))))
   (page-navigation #:extra-classes "prev-next-category"
-                   (last before-this)
-                   (first after-this)))
+                   (last (previous* pagenode))
+                   (first (next* pagenode))))
