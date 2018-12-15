@@ -34,7 +34,7 @@
         <div class="row flex-nowrap justify-content-between alien-items-center">
           <div id="logo" class="col-6 pt-1">
             <div class="d-flex justify-content-begin">
-              <a href="/" target="_self" class="py-2 pr-2"><img src="/images/avatar.png" alt="Kisaragi Hiu"/></a>
+              <a href="/" target="_self" class="py-2 pr-2"><img src="/static/avatar.png" alt="Kisaragi Hiu"/></a>
               <h1 style="margin-top: 0.4em;">Kisaragi&nbsp;Hiu</h1>
             </div>
           </div>

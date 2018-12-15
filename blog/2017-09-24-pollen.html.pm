@@ -17,4 +17,4 @@ Overall I like this setup a bit more.
 
 ◊em{Update: The not updating date was just me hard-coding the date during testing, then forgetting it there.}
 
-◊image["/images/newsite-directory.jpg"]{New site directory structure}
+◊image["/static/newsite-directory.jpg"]{New site directory structure}

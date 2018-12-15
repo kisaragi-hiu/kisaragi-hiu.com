@@ -6,7 +6,7 @@
 
 This is a quick guide for using ◊link["https://magit.vc/"]{Magit}, a wonderful Git interface based in Emacs. Its base features are fairly simple, but it can be confusing if you're not already using Emacs, as I was a few months ago.
 
-◊video/gif-esque["/videos/emacs-magit-typical-workflow.mp4" #:controls? #t]{Workflow as I edit Cangjie.el}
+◊video/gif-esque["/static/emacs-magit-typical-workflow.mp4" #:controls? #t]{Workflow as I edit Cangjie.el}
 
 ◊heading{The ◊code{magit} command}
 
@@ -16,7 +16,7 @@ The stage / committing workflow with Magit is centered around an interactive ver
 
 Call ◊code{magit} in a git repository, ie. when you have a file or folder open in the repo. The window that pops up is that interactive ◊code{git status}.
 
-◊video/gif-esque["/videos/emacs-magit-status.mp4"]{5 second screencast of M-x magit RET}
+◊video/gif-esque["/static/emacs-magit-status.mp4"]{5 second screencast of M-x magit RET}
 
 Move the cursor onto a hunk and press ◊kbd["Tab"]. This toggles display of its contents. Press ◊kbd["s"] to stage, ◊kbd["u"] to unstage, ◊kbd["c"] for commit options, ◊kbd["F"] for pulling options, and ◊kbd["P"] for pushing options.
 
@@ -26,7 +26,7 @@ Pressing ◊kbd["Enter"] will visit the hunk under cursor.
 
 Also check out other options in the "Magit" menu located in the menu bar, when you're in the Magit window.
 
-◊video/gif-esque["/videos/emacs-magit-quick-workflow.mp4"]{15 seconds of quick showcase}
+◊video/gif-esque["/static/emacs-magit-quick-workflow.mp4"]{15 seconds of quick showcase}
 
 ◊heading{Setting up Magit (and Emacs)}
 
