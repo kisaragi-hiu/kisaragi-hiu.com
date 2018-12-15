@@ -8,7 +8,7 @@
 
 (provide download)
 
-(define (download url path)
+(define (download url-string path)
   (with-handlers ([exn:fail:filesystem?
                    (thunk* (displayln "file exists, skipping download"))])
     ;; Ensure path exists.
@@ -18,4 +18,4 @@
     (with-output-to-file path
       (thunk
        (display
-        (port->string (get-pure-port url)))))))
+        (port->string (get-pure-port (string->url url-string))))))))
