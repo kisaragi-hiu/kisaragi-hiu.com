@@ -22,6 +22,15 @@
                        pollen/template
                        racket/function
                        txexpr))
+(module+ setup
+  (require syntax/modresolve)
+  (provide (all-defined-out))
+  (define cache-watchlist
+    (map resolve-module-path
+         '("date.rkt"
+           "download.rkt"
+           "path.rkt"
+           "widgets.rkt"))))
 
 (define author "Kisaragi Hiu")
 (define site-title "Kisaragi Hiu")
