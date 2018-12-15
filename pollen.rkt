@@ -145,7 +145,7 @@
   ;; Is this a serious issue?
   (define posts-in-this-category
     (filter (curryr in-category? (select-from-metas 'category pagenode))
-            (children 'blog)))
+            (siblings pagenode)))
   ;; take everything from the start until the function is #f
   ;; ie. until we hit the input pagenode
   (define before-this
