@@ -10,23 +10,22 @@
          racket/function
          "widgets.rkt"
          "date.rkt"
+         "path.rkt"
          (for-syntax racket/string
                      threading))
 
 (provide (all-defined-out)
          highlight
          (all-from-out "widgets.rkt"
+                       "path.rkt"
                        pollen/pagetree
                        pollen/template
                        racket/function
                        txexpr))
 
 (define author "Kisaragi Hiu")
-(define site-prefix "/")
 (define site-title "Kisaragi Hiu")
-(define site-host "https://kisaragi-hiu.com/")
-(define (abs-local . rest) (apply ~a site-prefix rest)) ; append local site prefix
-(define (abs-global . rest) (apply ~a site-host rest)) ; append global site prefix
+
 (define (extract-xexpr-strings xexpr)
   (if (list? xexpr)
       (string-join (filter string? (flatten xexpr)) "")
