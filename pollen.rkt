@@ -136,11 +136,21 @@
     ,(if next (navbutton next "" ">") "")))
 
 (define (previous-and-next pagenode)
-  (page-navigation #:extra-classes "prev-next-all"
-                   (previous pagenode)
-                   (next pagenode)))
+  (parameterize ([current-pagetree `(root ,@(siblings pagenode))])
+    (page-navigation #:extra-classes "prev-next-all"
+                     (previous pagenode)
+                     (next pagenode))))
 
 (define (previous-and-next-same-category pagenode)
-  (page-navigation #:extra-classes "prev-next-category"
-                   (last (previous* pagenode))
-                   (first (next* pagenode))))
+  (parameterize ([current-pagetree `(root ,@(siblings pagenode))])
+    (define previous-page (and~> (previous* pagenode) last))
+    (define next-page (and~> (next* pagenode)
+                             ;; workaround next* returning '()
+                             ((λ (l) (and (not (empty? l))
+                                          l))
+                              _)
+                             first))
+
+    (page-navigation #:extra-classes "prev-next-category"
+                     previous-page
+                     next-page)))
