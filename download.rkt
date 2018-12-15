@@ -4,6 +4,7 @@
          racket/format
          racket/function
          racket/port
+         racket/path
          racket/system)
 
 (provide download)
@@ -12,8 +13,7 @@
   (with-handlers ([exn:fail:filesystem?
                    (thunk* (displayln "file exists, skipping download"))])
     ;; Ensure path exists.
-    ;; FIXME: how do I get a simple dirname function without shelling out?
-    (make-directory* (system (~a "dirname " path)))
+    (make-directory* (path-only path))
 
     (with-output-to-file path
       (thunk
