@@ -41,10 +41,12 @@
       xexpr))
 
 (define (root . elements)
-  (txexpr 'root '() (decode-elements
-                     elements
-                     #:txexpr-elements-proc decode-paragraphs
-                     #:exclude-tags '(pre))))
+  (if (txexpr-elements? elements)
+      (txexpr 'root '() (decode-elements
+                         elements
+                         #:txexpr-elements-proc decode-paragraphs
+                         #:exclude-tags '(pre)))
+      (txexpr 'root '() elements)))
 
 (define-syntax (->2to-define stx)
   (syntax-case stx ()
