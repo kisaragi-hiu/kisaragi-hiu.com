@@ -5,6 +5,7 @@
          pollen/template
          pollen/decode
          pollen/pagetree
+         pollen/render
          pollen/tag
          pollen/unstable/pygments
          racket/function
@@ -46,7 +47,7 @@
                          elements
                          #:txexpr-elements-proc decode-paragraphs
                          #:exclude-tags '(pre)))
-      (txexpr 'root '() elements)))
+      elements))
 
 (define-syntax (->2to-define stx)
   (syntax-case stx ()
@@ -96,6 +97,15 @@
   (define category    (select-from-metas 'category pagenode))
   (define tags        (select-from-metas 'tags pagenode))
   (define this-author (select-from-metas 'author pagenode))
+  (define source
+    (~>
+     (map path->string (directory-list #:build? #t (path-only (~a "../" pagenode))))
+     (filter (λ (p) (and (string-contains? p (~a pagenode))
+                         (not (string-suffix? p (~a pagenode)))))
+             _)
+     first
+     path->complete-path
+     normalize-path))
   `(entry
     (title ([type "text"]) ,title)
     (id ,(urn full-uri))
@@ -103,10 +113,11 @@
     (updated ,(ensure-timezone date))
     (author (name ,(or this-author author)))
     (content ([type "html"])
-     (render (path->complete-path (~a pagenode))))))
+     ,(render source
+              (normalize-path (path->complete-path "../template.html"))))))
 
 (define (children-to-atom-entries p [pagetree (current-pagetree)])
-  (@ (map atom-entry (children p pagetree))))
+  (map atom-entry (children p pagetree)))
 
 (define (index-item pagenode #:class [class ""])
   (define uri (abs-local (~a pagenode)))

@@ -5,5 +5,6 @@
  <link href="http://kisaragi-hiu.com/index.html" />
  <id>urn:http-kisaragi-hiu-com:-index-html</id>
  <updated>2018-11-04T00:37:50Z</updated>
- ◊(xexpr->string doc)
+ ◊; first element is \n from current-pagetree call
+ ◊(map xexpr->string (cadr doc))
 </feed>
