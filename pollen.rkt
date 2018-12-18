@@ -100,8 +100,9 @@
   (define source
     (~>
      (map path->string (directory-list #:build? #t (path-only (~a "../" pagenode))))
-     (filter (λ (p) (and (string-contains? p (~a pagenode))
-                         (not (string-suffix? p (~a pagenode)))))
+     (filter (λ (p) (and
+                      (string-contains? p (~a pagenode))
+                      (not (string-suffix? p (~a pagenode)))))
              _)
      first
      path->complete-path
@@ -113,8 +114,9 @@
     (updated ,(ensure-timezone date))
     (author (name ,(or this-author author)))
     (content ([type "html"])
-     ,(render source
-              (normalize-path (path->complete-path "../template.html"))))))
+     ,(~> (render source (normalize-path (path->complete-path "../template.html")))
+          (string-replace _ #rx"^.*<body>" "")
+          (string-replace _ #rx"</body>.*$" "")))))
 
 (define (children-to-atom-entries p [pagetree (current-pagetree)])
   (map atom-entry (children p pagetree)))
