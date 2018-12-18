@@ -7,8 +7,8 @@ pollen.cache
 *#
 .#*
 .frog
+*.xml
 /*.html
-feeds/*
 tags/*
 index.html
 sitemap.txt

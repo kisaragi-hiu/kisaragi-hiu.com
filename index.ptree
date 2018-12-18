@@ -35,6 +35,11 @@ index.html
     category/own-vocal-experiment.html
     category/linux.html
 }
+
+◊feeds{
+    feeds/all.atom.xml
+}
+
 ◊; ◊fiction{
 ◊; }
 about.html

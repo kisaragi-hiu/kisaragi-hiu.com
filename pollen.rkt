@@ -81,6 +81,31 @@
   (txexpr 'div '([class "index"])
           (map index-item (children p pagetree))))
 
+(define (ensure-timezone str)
+  ;; default to +8 timezone
+  (if (regexp-match? #rx"\\+|Z" str)
+      str
+      (~a str "+08:00")))
+
+(define (atom-entry pagenode [pagetree (current-pagetree)])
+  (define full-uri (abs-global (~a pagenode)))
+  (define date        (select-from-metas 'date pagenode))
+  (define title       (select-from-metas 'title pagenode))
+  (define category    (select-from-metas 'category pagenode))
+  (define tags        (select-from-metas 'tags pagenode))
+  (define this-author (select-from-metas 'author pagenode))
+  `(entry
+    (title ([type "text"]) ,title)
+    (id ,(urn full-uri))
+    (published ,(ensure-timezone date))
+    (updated ,(ensure-timezone date))
+    (author (name ,(or this-author author)))
+    (content ([type "html"])
+     (render (path->complete-path (~a pagenode))))))
+
+(define (children-to-atom-entries p [pagetree (current-pagetree)])
+  (@ (map atom-entry (children p pagetree))))
+
 (define (index-item pagenode #:class [class ""])
   (define uri (abs-local (~a pagenode)))
   (define date     (select-from-metas 'date pagenode))
