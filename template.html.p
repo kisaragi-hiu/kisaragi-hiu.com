@@ -55,7 +55,7 @@
 
 ◊to-html{
 ◊div[#:class "d-flex justify-content-begin"]{
-  ◊link["@|atom-feed-uri|" #:class "py-2"]{
+  ◊link[◊(abs-local "feeds/all.atom.xml") #:class "py-2"]{
     ◊font-awesome["rss" #:color "6c757d"]
   }
   ◊twitter["flyin1501" #:class "p-2"]{
