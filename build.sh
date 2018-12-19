@@ -47,8 +47,10 @@ publish () {
         dir="$HOME"
     fi
     build || exit 1
-    raco pollen publish "$dir"
-    # mv public "$dir"
+    raco pollen publish . "$HOME"/public
+    mv ~/public .
+
+    mv public "$dir"
 }
 
 cleanup () {
