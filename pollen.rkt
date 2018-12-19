@@ -2,6 +2,7 @@
 (require threading
          txexpr
          pollen/core
+         pollen/cache
          pollen/template
          pollen/decode
          pollen/pagetree
@@ -109,14 +110,14 @@
      normalize-path))
   `(entry
     (title ([type "text"]) ,title)
-    (id ,(urn full-uri))
+    (id ,(urn (~a pagenode)))
     (published ,(ensure-timezone date))
     (updated ,(ensure-timezone date))
+    (link ([rel "alternate"] [href ,(~a full-uri "?utm_source=all&utm_medium=Atom")]))
     (author (name ,(or this-author author)))
     (content ([type "html"])
-     ,(~> (render source (normalize-path (path->complete-path "../template.html")))
-          (string-replace _ #rx"^.*<!-- BEGIN CONTENT -->" "")
-          (string-replace _ #rx"<!-- END CONTENT -->.*$" "")))))
+     ,(~> (cached-doc source)
+          ->html))))
 
 (define (children-to-atom-entries p [pagetree (current-pagetree)])
   (map atom-entry (children p pagetree)))
