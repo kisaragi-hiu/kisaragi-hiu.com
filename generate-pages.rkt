@@ -6,6 +6,7 @@
 
 (current-pagetree "index.ptree")
 
+(make-directory* "category")
 (for ((cat (children 'category)))
   (define category-path (symbol->string cat))
   (define category (~> category-path
