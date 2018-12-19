@@ -20,7 +20,8 @@ waitfor () {
 }
 
 build () {
-    racket generate-pages.rkt
+    racket generate-pages.rkt || return 1
+    raco pollen render css || return 1
     raco pollen render index.ptree || return 1
 }
 
