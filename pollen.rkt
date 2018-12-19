@@ -109,7 +109,7 @@
      path->complete-path
      normalize-path))
   `(entry
-    (title ([type "text"]) ,title)
+    (title ([type "text"]) ,(extract-xexpr-strings title))
     (id ,(urn (~a pagenode)))
     (published ,(ensure-timezone date))
     (updated ,(ensure-timezone date))
