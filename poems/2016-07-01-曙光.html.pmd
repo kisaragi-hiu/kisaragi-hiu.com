@@ -1,6 +1,8 @@
-    Title: 曙光
-    Date: 2016-07-01T00:00:00
-    Tags: category:Fiction, 詩, language:zh-tw
+#lang pollen
+◊define-meta[title]{曙光}
+◊define-meta[date]{2016-07-01T00:00:00}
+◊define-meta[category]{Fiction}
+◊define-meta[language]{zh-tw}
 
 陰日中，曙光乍現<br>
 而又隨即消失<br>

@@ -1,27 +1,27 @@
 #lang pollen
-    Title: Crossing
-    Date: 2017-10-28T18:54:00
-    Tags: category:Fiction, 詩, language:en
+#lang pollen
+◊define-meta[title]{Crossing}
+◊define-meta[date]{2017-10-28T18:54:00}
+◊define-meta[category]{Fiction}
+◊define-meta[language]{en}
 
-◊newline-decode{
-The green signal lights up
-As the overpass overlooks us
-Everyone has moved on
-As the signal turns red
+The green signal lights up<br>
+As the overpass overlooks us<br>
+Everyone has moved on<br>
+As the signal turns red<br>
 
-Let's go through the underpass
+Let's go through the underpass<br>
 
-Maybe someone's on the overpass
-Maybe you're on the overpass
-I can't know anyways
-I'm on a different route after all
+Maybe someone's on the overpass<br>
+Maybe you're on the overpass<br>
+I can't know anyways<br>
+I'm on a different route after all<br>
 
-Everything goes its own route
-The eagle and the peng
-I've drifted off, while you're on the ground
-Without destination, the feather I am
+Everything goes its own route<br>
+The eagle and the peng<br>
+I've drifted off, while you're on the ground<br>
+Without destination, the feather I am<br>
 
-Coming out from the underpass
-Looking back at the crossing
+Coming out from the underpass<br>
+Looking back at the crossing<br>
 There's only a crowd, without you
-}

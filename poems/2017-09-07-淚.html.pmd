@@ -1,20 +1,20 @@
 #lang pollen
-    Title: 淚
-    Date: 2017-09-07T17:00:00
-    Tags: category:Fiction, 詩, language:zh-tw
+◊define-meta[title]{淚}
+◊define-meta[date]{2017-09-07T17:00:00}
+◊define-meta[category]{Fiction}
+◊define-meta[language]{zh-tw}
 
-◊newline-decode{
-雨時
-天並沒有流淚
 
-只有流淚的人
-讓淚水被洗去
-而已
+雨時<br>
+天並沒有流淚<br>
 
-沒有淚水的人
-期待著雨
-能夠為他流淚
+只有流淚的人<br>
+讓淚水被洗去<br>
+而已<br>
 
-換來的
-只是被沖刷的心
-}
+沒有淚水的人<br>
+期待著雨<br>
+能夠為他流淚<br>
+
+換來的<br>
+只是被沖刷的心<br>

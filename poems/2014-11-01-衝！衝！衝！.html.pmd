@@ -1,6 +1,8 @@
-    Title: 衝！衝！衝！
-    Date: 2014-11-01T00:00:00
-    Tags: category:Fiction, 詩, language:zh-tw
+#lang pollen
+◊define-meta[title]{衝！衝！衝！}
+◊define-meta[date]{2014-11-01T00:00:00}
+◊define-meta[category]{Fiction}
+◊define-meta[language]{zh-tw}
 
 衝！衝！衝！　踩著人頭向上衝！<br>
 考！考！考！　考到好人生！<br>

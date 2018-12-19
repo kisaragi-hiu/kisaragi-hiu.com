@@ -1,20 +1,20 @@
 #lang pollen
-    Title: 沒有錯
-    Date: 2017-08-31T00:00:00
-    Tags: category:Fiction, 詩, language:zh-tw, 詩
+◊define-meta[title]{沒有錯}
+◊define-meta[date]{2017-08-31T00:00:00}
+◊define-meta[category]{Fiction}
+◊define-meta[language]{zh-tw}
 
-◊newline-decode{
-沒有錯，那是
-一年前
 
-沒有錯，那是
-兩年前
+沒有錯，那是<br>
+一年前<br>
 
-沒有錯，那是
-五年前
-的事
+沒有錯，那是<br>
+兩年前<br>
 
-沒有錯，你
-早已遠離了
+沒有錯，那是<br>
+五年前<br>
+的事<br>
+
+沒有錯，你<br>
+早已遠離了<br>
 居身之處
-}

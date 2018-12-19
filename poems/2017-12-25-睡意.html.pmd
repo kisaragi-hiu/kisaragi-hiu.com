@@ -1,21 +1,20 @@
 #lang pollen
-    Title: 睡意
-    Tags: category:Fiction, 詩, language:zh-tw
-    Date: 2017-12-25T10:19:24
+◊define-meta[title]{睡意}
+◊define-meta[category]{Fiction}
+◊define-meta[language]{zh-tw}
+◊define-meta[date]{2017-12-25T10:19:24}
 
-◊newline-decode{
-什麼都做不了
-對這樣的自己
-發怒
+什麼都做不了<br>
+對這樣的自己<br>
+發怒<br>
 
-試著潛入夢中
-無論日夜
-找尋不存在的救贖
+試著潛入夢中<br>
+無論日夜<br>
+找尋不存在的救贖<br>
 
-將不安包覆在
-外套的內側裡
-想像暖意湧出的心情
+將不安包覆在<br>
+外套的內側裡<br>
+想像暖意湧出的心情<br>
 
-想睡了
-在流完淚之後
-}
+想睡了<br>
+在流完淚之後<br>
