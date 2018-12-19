@@ -115,8 +115,8 @@
     (author (name ,(or this-author author)))
     (content ([type "html"])
      ,(~> (render source (normalize-path (path->complete-path "../template.html")))
-          (string-replace _ #rx"^.*<body>" "")
-          (string-replace _ #rx"</body>.*$" "")))))
+          (string-replace _ #rx"^.*<!-- BEGIN CONTENT -->" "")
+          (string-replace _ #rx"<!-- END CONTENT -->.*$" "")))))
 
 (define (children-to-atom-entries p [pagetree (current-pagetree)])
   (map atom-entry (children p pagetree)))

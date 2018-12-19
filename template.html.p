@@ -50,6 +50,7 @@
 
       ◊; Contents
       <div id="content" class="">
+      <!-- BEGIN CONTENT -->
         ◊(when/splice (string=? (document-type metas) "root-index")
           ◊list{
 
@@ -84,6 +85,7 @@ contact@kisaragi-hiu.com</p>
            (to-html (div '([class "prev-and-next-div"])
                           (previous-and-next here)
                           (previous-and-next-same-category here))))
+      <!-- END CONTENT -->
       </div>
 
       ◊; Footer
