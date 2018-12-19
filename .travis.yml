@@ -19,7 +19,7 @@ before_install:
 - export PATH="${RACKET_DIR}/bin:${PATH}"
 - popd
 install:
-- raco pkg install --skip-installed --deps search-auto pollen frog pollen-component txexpr threading css-expr
+- raco pkg install --skip-installed --deps search-auto pollen txexpr threading
 - pip install pygments
 script:
 - bash ./build.sh publish

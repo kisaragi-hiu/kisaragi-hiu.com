@@ -46,9 +46,9 @@ publish () {
     else
         dir="$HOME"
     fi
-    # Frog can already build to another dir
     build || exit 1
-    mv public "$dir"
+    raco pollen publish "$dir"
+    # mv public "$dir"
 }
 
 cleanup () {
