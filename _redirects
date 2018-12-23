@@ -5,5 +5,5 @@
 /niconico http://www.nicovideo.jp/user/38995186
 # /projects/tr-clj https://github.com/kisaragi-hiu/tr-clj
 
-/tags/category-* /categories/:splat
+/tags/category-* /category/:splat
 /tags/* /tags/:splat
