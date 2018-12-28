@@ -31,7 +31,13 @@ body {
 
 .page-navigation {
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
+    font-size: 1.2rem
+}
+
+.disabled {
+    color: #888;
 }
 
 .translate .lang-en, .translate .lang-zh, .translate .lang-ja {
@@ -47,7 +53,7 @@ footer {
 }
 
 p {
-    font-size: 1.2em;
+    font-size: 1.2rem;
 }
 
 html, body {

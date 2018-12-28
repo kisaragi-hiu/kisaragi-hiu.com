@@ -173,13 +173,16 @@
 
 (define (page-navigation prev next #:extra-classes [extra-classes ""])
   `(div ([class ,(~a "page-navigation " extra-classes)])
-    ,(if prev (navbutton prev "<") "")
-    ,(if next (navbutton next "" ">") "")))
+    ,(if prev
+         (navbutton prev "< ")
+         `(span ([class "disabled"]) "< No previous article"))
+    ,(if next
+         (navbutton next "> " "")
+         `(span ([class "disabled"]) "> No next article"))))
 
 (define (previous-and-next pagenode)
   (parameterize ([current-pagetree `(root ,@(siblings pagenode))])
-    (page-navigation #:extra-classes "prev-next-all"
-                     (previous pagenode)
+    (page-navigation (previous pagenode)
                      (next pagenode))))
 
 (define (previous-and-next-same-category pagenode)

@@ -81,9 +81,9 @@ contact@kisaragi-hiu.com</p>
            (to-html (index-item here)))
         ◊(to-html doc)
         ◊(when/splice (string=? (document-type metas) "post")
-           (to-html (div '([class "prev-and-next-div"])
-                          (previous-and-next here)
-                          (previous-and-next-same-category here))))
+           (to-html (previous-and-next here)))
+        ◊; (when/splice (string=? (document-type metas) "post")
+        ◊;   (to-html (previous-and-next-same-category here)))
       </div>
 
       ◊; Footer
