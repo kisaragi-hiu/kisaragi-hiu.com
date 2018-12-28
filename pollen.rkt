@@ -10,6 +10,7 @@
          pollen/tag
          pollen/unstable/pygments
          racket/function
+         racket/list
          "widgets.rkt"
          "date.rkt"
          "path.rkt"
@@ -18,12 +19,15 @@
 
 (provide (all-defined-out)
          highlight
-         (all-from-out "widgets.rkt"
-                       "path.rkt"
-                       pollen/pagetree
-                       pollen/template
-                       racket/function
-                       txexpr))
+         (all-from-out
+          "widgets.rkt"
+          "path.rkt"
+          pollen/pagetree
+          pollen/template
+          racket/function
+          racket/list
+          txexpr))
+
 (module+ setup
   (require syntax/modresolve)
   (provide (all-defined-out))
@@ -79,11 +83,22 @@
   (and (not (empty? this-tags))
        (member tag this-tags)))
 
-(define/contract (children-to-index p [pagetree (current-pagetree)])
-  (->* (pagenodeish?) ([or/c pagetree? pagenodeish?])
-       txexpr?)
+(define/contract (pagetree-to-index pagetree)
+  (-> pagetree? txexpr?)
   (txexpr 'div '([class "index"])
-          (map index-item (children p pagetree))))
+          (map index-item (pagetree->list pagetree))))
+
+(define/contract (post-year pagenode)
+  (-> (or/c pagenode? pagenodeish?)
+      number?)
+  (string->number
+   (substring (select-from-metas 'date pagenode)
+              0 4)))
+
+(define/contract (post-year=? pagenode year)
+  (-> (or/c pagenode? pagenodeish?) number?
+      boolean?)
+  (= year (post-year pagenode)))
 
 (define (ensure-timezone str)
   ;; default to +8 timezone
