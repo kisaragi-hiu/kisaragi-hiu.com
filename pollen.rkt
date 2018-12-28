@@ -185,12 +185,7 @@
 (define (previous-and-next-same-category pagenode)
   (parameterize ([current-pagetree `(root ,@(siblings pagenode))])
     (define previous-page (and~> (previous* pagenode) last))
-    (define next-page (and~> (next* pagenode)
-                             ;; workaround next* returning '()
-                             ((λ (l) (and (not (empty? l))
-                                          l))
-                              _)
-                             first))
+    (define next-page (and~> (next* pagenode) first))
 
     (page-navigation #:extra-classes "prev-next-category"
                      previous-page
