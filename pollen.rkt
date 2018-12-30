@@ -152,7 +152,7 @@
       ,title))
     (p ([class "date"])
      ,(if date
-          (iso8601-date->year-and-month-str date)
+          (string-replace (substring date 0 10) "-" "/")
           ""))
     ,(if category
          `(p ([class "category"])
