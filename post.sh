@@ -10,11 +10,12 @@ usage:
 new () {
     [ -z "$1" ] && return
     title="$1"
-    newfile="$title.md.pp"
+    newfile="$title.html.pm"
     {   echo '#lang pollen'
-        echo "    Title: $title"
-        echo "    Date: ◊date◊"
-        echo "    Tags: language:◊lang◊, category:◊cat◊, ◊tags◊"
+        echo "◊define-meta[title]{$title}"
+        echo "◊define-meta[date]{◊date◊}"
+        echo "◊define-meta[category]{◊cat◊}"
+        echo "◊define-meta[language]{◊lang◊}"
     } >> "$newfile"
     echo "$newfile"
 }
@@ -26,7 +27,8 @@ publish () {
     date_truncated="${date_full%T*}"
     read -r -p "language (en or zh-tw?): " language
     read -r -p "category: " category
-    read -r -p "tags (same format in file): " tags
+    # read -r -p "tags (same format in file): " tags
+    tags="" # tags are not yet implemented
     # shellcheck disable=SC2002 # Use sed as a filter.
     cat "$file" \
     | sed s/◊date◊/"$date_full"/g \
