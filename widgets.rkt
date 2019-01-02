@@ -112,6 +112,8 @@
 (define (table . elements)
   `(table ,@elements))
 
+(define (command . elements) `(code ([class "command"]) ,@elements))
+
 (define (newline-decode . elements)
   (string-join
    (map (λ (x) (cond
@@ -207,6 +209,7 @@
          [alt ,fa-icon])))
 
 (define-link github "https://github.com/")
+(define-link gist "https://gist.github.com/")
 (define-link gitlab "https://gitlab.com/")
 (define-link twitter "https://twitter.com/")
 (define-link youtube "https://youtube.com/")
