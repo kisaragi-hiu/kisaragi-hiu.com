@@ -21,12 +21,23 @@ new () {
 }
 
 publish () {
-    [ -z "$1" ] && return
+    [[ -z "$1" ]] && return
     file="$1" # no date
     date_full="$(date +%Y-%m-%dT%H:%M:%S)"
     date_truncated="${date_full%T*}"
-    read -r -p "language (en or zh-tw?): " language
-    read -r -p "category: " category
+
+    if [[ -n "$2" ]]; then
+        language="$2"
+    else
+        read -r -p "language (en or zh-tw?): " language
+    fi
+
+    if [[ -n "$3" ]]; then
+        category="$3"
+    else
+        read -r -p "category: " category
+    fi
+
     # read -r -p "tags (same format in file): " tags
     tags="" # tags are not yet implemented
     # shellcheck disable=SC2002 # Use sed as a filter.
@@ -35,7 +46,7 @@ publish () {
     | sed s/◊lang◊/"$language"/g \
     | sed s/◊cat◊/"$category"/g \
     | sed s/◊tags◊/"$tags"/g \
-    > blog/posts/"$date_truncated"-"$file"
+    > blog/"$date_truncated"-"$file"
 }
 
 case "$1" in
@@ -43,7 +54,7 @@ case "$1" in
         new "$2"
         ;;
     publish)
-        publish "$2"
+        publish "$2" "$3" "$4"
         ;;
     *)
         echo "$helptext"
