@@ -12,6 +12,8 @@ I wrote the ◊gitlab["kisaragi-hiu/dotfiles/commit/c5946b85625d0f10d93b0350f9a3
 
 ◊heading{the Racket version}
 
+◊gitlab["kisaragi-hiu/dotfiles/blob/ed9483a72adcc32ac8935a59f85b61b7e574240f/random-string.rkt"]{◊code{random-string.rkt}}
+
 Define all the characters that could be used — it's just hardcoded alphanumeric characters because this is my only use case. Here if the environment variable ◊code{CHARSET} is set it would use that instead.
 
 ◊highlight['racket]{
@@ -39,7 +41,9 @@ The last section is the entry point; when there are arguments passed into the sc
   (displayln (random-string (string->number (vector-ref (current-command-line-arguments) 0)))))
 }
 
-◊heading{Common Lisp ◊gitlab["kisaragi-hiu/dotfiles/blob/ed9483a72adcc32ac8935a59f85b61b7e574240f/random-string.cl"]{rewrite}}
+◊heading{Common Lisp rewrite}
+
+◊gitlab["kisaragi-hiu/dotfiles/blob/ed9483a72adcc32ac8935a59f85b61b7e574240f/random-string.cl"]{◊code{random-string.cl}}
 
 The logic is almost exactly the same as the Racket version, though here I didn't bother with looking for the ◊code{CHARSET} environment variable.
 
@@ -74,6 +78,8 @@ Here I depend on CLISP by using ◊code{*args*}
 }
 
 ◊heading{Writing the Picolisp version}
+
+◊gitlab["kisaragi-hiu/dotfiles/blob/5e39e6c94b2c4fd3c595e10280ce8a38284bd149/random-string"]{◊code{random-string}}
 
 I first saw Picolisp because it is currently (as of 2018-10) the only Lisp family language packaged in Termux.
 
