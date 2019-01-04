@@ -1,5 +1,7 @@
 #lang pollen
-◊(require racket/string)
+◊(require racket/string
+          racket/file)
+◊(provide (all-defined-out))
 ◊(define cjk-fallback
    ◊string-append{'Noto Sans CJK TC',
                   'Microsoft Jhenghei',
@@ -20,6 +22,63 @@
                   ◊|cjk-fallback|,
                   'monospace'})
 ◊(define title "h1,h2,h3,h4,h5,h6,h7,.title")
+◊(define text-secondary "#6c757d")
+
+/*
+* Site Header
+*/
+
+#siteheader {
+    display: flex;
+    justify-content: space-between;
+}
+#logo {
+    display: flex;
+    align-items: center;
+}
+#logo h1 {
+    margin-top: 0;
+}
+nav {
+    display: flex;
+    justify-content: flex-end;
+}
+nav a {
+    color: #6c757d;
+    padding: 0.5rem;
+    font-size: 1.2rem;
+}
+
+/*
+* TOC
+*/
+#toc-title {
+    font-size: 1rem;
+}
+.toc {
+    display: flex;
+    flex-direction: column;
+}
+.toc-h1, .toc-h2 {
+    font-weight: 400;
+    font-size: 1rem;
+}
+.toc-h2 { text-indent: 1rem; }
+.toc-h3 { text-indent: 2rem; }
+.toc-h4 { text-indent: 3rem; }
+.toc-h5 { text-indent: 4rem; }
+.toc-h6 { text-indent: 5rem; }
+
+/*
+* Misc.
+*/
+
+.container {
+    margin: 2rem 20% 3rem 20%;
+}
+a {
+    text-decoration: none;
+}
 
 body {
     line-height: 1.6;
