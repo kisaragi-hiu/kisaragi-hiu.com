@@ -190,10 +190,10 @@
   `(div ([class ,(~a "page-navigation " extra-classes)])
     ,(if prev
          (navbutton prev "< ")
-         `(span ([class "disabled"]) "< No previous article"))
+         `(span ([class "disabled"]) "< No newer article"))
     ,(if next
          (navbutton next "> " "")
-         `(span ([class "disabled"]) "> No next article"))))
+         `(span ([class "disabled"]) "> No older article"))))
 
 (define (previous-and-next pagenode)
   (parameterize ([current-pagetree `(root ,@(siblings pagenode))])
