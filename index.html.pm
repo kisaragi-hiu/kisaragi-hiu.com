@@ -11,4 +11,5 @@
 ◊(for/splice ([year blog-entry-years])
    `(div ([class "index-year"])
       ,(heading (number->string year))
-      ,(pagetree-to-index (filter (curryr post-year=? year) blog-entries))))
+      ,(pagetree-to-index
+        (txexpr 'root empty (filter (curryr post-year=? year) blog-entries)))))
