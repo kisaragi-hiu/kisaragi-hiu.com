@@ -10,10 +10,15 @@
     <meta name="keywords" content="Coding, Programming, Language, LGBT, Blog">
     <link rel="icon" href="◊abs-local{favicon.ico}">
     <link rel="canonical" href="◊(abs-global here)">
-
     ◊; Font
-    <link rel="stylesheet"
-          href="https://fonts.googleapis.com/css?family=Fira+Sans%7COverpass+Mono%7COverpass:400,600">
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+    <script>
+      WebFont.load({
+          google: {
+              families: ['Fira Sans', 'Overpass Mono', 'Overpass:400,600']
+          }
+      });
+    </script>
     <link rel="stylesheet" href="/css/emacs.css">
     <link rel="stylesheet" href="/css/main.css">
     <link rel="alternate" type="application/atom+xml" href="/feed.xml" title="Atom Feed">
