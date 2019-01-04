@@ -20,6 +20,7 @@ waitfor () {
 }
 
 build () {
+    [ "$1" == rebuild ] && export POLLEN=$RANDOM
     racket generate-pages.rkt || return 1
     raco pollen render css || return 1
     raco pollen render index.ptree || return 1
@@ -70,7 +71,7 @@ cleanup () {
 case "$1" in
     (""|build) # automatically build if not given an option
         echo building
-        build
+        build "$2"
         ;;
     (publish)
         echo publishing
