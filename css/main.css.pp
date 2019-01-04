@@ -108,7 +108,13 @@ body {
 }
 
 footer {
-    margin-top: 2rem;
+    color: #888;
+}
+#footer-sep {
+    margin-top: 2.5rem;
+    margin-bottom: 2.5rem;
+    text-align: center;
+    font-weight: 700;
 }
 
 p {
