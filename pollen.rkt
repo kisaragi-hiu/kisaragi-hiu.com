@@ -132,7 +132,7 @@
     (author (name ,(or this-author author)))
     (content ([type "html"])
      ,(~> (cached-doc source)
-          ->html))))
+          (->html #:splice #t)))))
 
 (define (children-to-atom-entries p [pagetree (current-pagetree)])
   (map atom-entry (children p pagetree)))
