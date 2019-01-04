@@ -22,7 +22,7 @@
                   ◊|cjk-fallback|,
                   'monospace'})
 ◊(define title "h1,h2,h3,h4,h5,h6,h7,.title")
-◊(define text-secondary "#6c757d")
+◊(define text-secondary "#888")
 
 /*
 * Site Header
@@ -96,19 +96,11 @@ body {
 }
 
 .disabled {
-    color: #888;
-}
-
-.translate .lang-en, .translate .lang-zh, .translate .lang-ja {
-    display: none;
-}
-
-.translate .lang-en:lang(en), .translate .lang-zh:lang(zh), .translate .lang-ja:lang(ja) {
-    display: unset;
+    color: ◊|text-secondary|;
 }
 
 footer {
-    color: #888;
+    color: ◊|text-secondary|;
 }
 #footer-sep {
     margin-top: 2.5rem;
@@ -170,7 +162,7 @@ header .category,
 header .tags {
     font-family: ◊|monospace|;
     display: block;
-    color: #888;
+    color: ◊|text-secondary|;
     margin-bottom: 0;
     margin-top: 0;
     font-size: 1rem;
