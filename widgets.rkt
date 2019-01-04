@@ -40,8 +40,15 @@
           elements)
          (txexpr 'div '([class "dropdown-menu"]) _))))
 
-(define heading (default-tag-function 'h1))
-(define subheading (default-tag-function 'h2))
+(define (h1 . elements)
+  `(h1 ([id ,(~a (gensym))]) ,@elements))
+(define (h2 . elements)
+  `(h2 ([id ,(~a (gensym))]) ,@elements))
+(define (h3 . elements)
+  `(h3 ([id ,(~a (gensym))]) ,@elements))
+(define heading h1)
+(define subheading h2)
+(define subsubheading h3)
 
 (define (project url title description)
   `(li ([class "project"])

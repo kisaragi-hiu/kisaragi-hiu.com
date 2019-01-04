@@ -3,12 +3,13 @@
 ◊define-meta[date]{2019-01-03T03:50:00}
 ◊define-meta[category]{Programming}
 ◊define-meta[language]{en}
+◊define-meta[toc #t]
 
 Pollen's manual has a ◊link["http://docs.racket-lang.org/pollen/fourth-tutorial.html#(part._.Adding_support_for_.P.D.F_output)"]{tutorial} on how to make ◊link["http://docs.racket-lang.org/pollen/second-tutorial.html#%28part._tutorial-2._.Templates%29"]{templates} for PDF. It first builds a LaTeX source file, then renders that with ◊command{pdflatex}, then returns the bytes from the PDF, deleting the temporary files. The problem with this in my use case is that I don't use LaTeX, and would like a way to just turn the HTML version of my pages into PDF. So far I had always just manually rendered my pages in Firefox (my primary browser) or Chrome (offers a print preview), which I'd like to automate.
 
 First was finding a programmable interface to render an HTML to PDF. I knew Chrom/ium has a ◊code{--print-to-pdf} option, but initially I thought it's going to have unavoidable headers and footers. So I started working with ◊link["https://wkhtmltopdf.org/"]{◊command{wkhtmltopdf}}.
 
-◊subheading{First version with ◊command{wkhtmltopdf}}
+◊heading{First version with ◊command{wkhtmltopdf}}
 
 First we check for ◊command{wkhtmltopdf}'s existance.
 
@@ -41,7 +42,7 @@ After getting the rendered PDF and happily printing them out, I found that the o
 
 One problem with this is that Chrome has to output to a file, so I couldn't avoid using a temporary file by writing to stdout, which I think is a bit of a shame.
 
-◊subheading{Second version with Chrome}
+◊heading{Second version with Chrome}
 
 First we try to find the command for Chrome. The ◊code{error} only runs when all above fails.
 

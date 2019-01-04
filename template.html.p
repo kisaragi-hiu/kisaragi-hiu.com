@@ -79,6 +79,8 @@ contact@kisaragi-hiu.com</p>
 })
         ◊(when/splice (string=? (document-type metas) "post")
            (to-html (index-item here)))
+        ◊(when/splice (select-from-metas 'toc metas)
+           (to-html (toc here)))
         ◊(to-html doc)
         ◊(when/splice (string=? (document-type metas) "post")
            (to-html (previous-and-next here)))

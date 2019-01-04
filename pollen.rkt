@@ -208,3 +208,33 @@
     (page-navigation #:extra-classes "prev-next-category"
                      previous-page
                      next-page)))
+
+(define (toc pagenode)
+  ;; as this depends on tagging headings with ids, this won't work with pmd files.
+  (define doc (get-doc pagenode))
+  (define (toc-item tx level)
+    (txexpr 'a `([href ,(~a "#" (attr-ref tx 'id))]
+                 [class ,(~a "toc-" level)])
+            (get-elements tx)))
+  `(@
+    (h1 ([id "toc-title"])
+     "Table of Contents")
+    (div ([class "toc"])
+     ,@(filter
+        txexpr?
+        (for/list ([elem doc])
+          (case (and (txexpr? elem)
+                     (car elem))
+            [(h1)
+             (toc-item elem 'h1)]
+            [(h2)
+             (toc-item elem 'h2)]
+            [(h3)
+             (toc-item elem 'h3)]
+            [(h4)
+             (toc-item elem 'h4)]
+            [(h5)
+             (toc-item elem 'h5)]
+            [(h6)
+             (toc-item elem 'h6)]
+            [else #f]))))))
