@@ -4,7 +4,8 @@
          pollen/template/html
          txexpr
          "download.rkt"
-         "path.rkt")
+         "path.rkt"
+         (for-syntax threading))
 
 (provide (all-defined-out))
 
@@ -194,9 +195,17 @@
   (syntax-case stx ()
     [(_ linkname url-prefix)
      #'(begin
-         (define (linkname suburl [text suburl] #:class [class ""])
+         (define (linkname suburl [text #f] #:class [class ""])
            (link (string-append url-prefix suburl)
-                 text
+                 (if text
+                     text
+                     ;; linkname ends up being a function...
+                     (~a (~> (~a linkname)
+                             ;; #<procedure:gist> -> procedure:gist
+                             (string-trim #px"[#<>]+")
+                             ;; procedure:gist -> gist
+                             (string-replace "procedure:" ""))
+                         ":" suburl))
                  #:class class)))]))
 
 (define (font-awesome fa-icon #:aria [hidden #t] #:color [color #f] #:size [size #f])
