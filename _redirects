@@ -8,4 +8,4 @@
 /tags/category-* /category/:splat
 /tags/* /tags/:splat
 
-/projects/timetrack https://gitlab.com/kisaragi-hiu/timetrack.el
+/projects/timetrack https://gitlab.com/canrylog
