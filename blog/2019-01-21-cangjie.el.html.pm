@@ -11,13 +11,13 @@ In August 2018, I wanted to start learning ◊link["https://en.wikipedia.org/wik
 
 Getting that data from Wiktionary is simple: ◊code{curl "https://zh.wiktionary.org/wiki/<character>" | grep "仓颉"}. I initially had this saved as a shell script, but as I use Emacs a lot, I wanted to have the function available in Emacs. The ◊code{cangjie} function receives the character and passes it to the pipeline, written in Emacs Lisp with ◊link["https://github.com/magnars/dash.el"]{◊code{dash.el}}’s threading macro.
 
-This approach has a problem. Even though most Wiktionary pages do contain the information I need, that’s not guaranteed in any way. Plus, reaching for a server everytime I want to look up a character means it’s going to be slow. So I wanted to look for a Cangjie dictionary, and the best option that came to my mind was to use the dictionary from ◊link["https://rime.im/"]{RIME}.
+This approach has a problem. Even though most Wiktionary pages do contain the information I need, that’s not guaranteed in any way. Plus, reaching for a server everytime I want to look up a character means it’s going to be slow. So I wanted to look for a Cangjie dictionary, and the best option that came to mind was to use the dictionary from ◊link["https://rime.im/"]{RIME}.
 
 ◊heading{Using RIME’s Cangjie dictionary}
 
 RIME is an ◊link["https://en.wikipedia.org/wiki/Input_method"]{IME} for Chinese languages. It has built-in support for Cangjie (all Han characters), Pinyin, Zhuyin (Mandarin), Jyutping (Cantonese), among other input methods. For my use case, it has a Cangjie dictionary ◊github["rime/rime-cangjie"]{available on GitHub} that uses a much more stable format than Wiktionary entries.
 
-The first version I committed to the ◊github["kisaragi-hiu/cangjie.el"]{cangjie.el repository} already had both of these approaches; which one to use is controlled whether a valid RIME dictionary exists or not.
+The first version I committed to the ◊github["kisaragi-hiu/cangjie.el"]{cangjie.el repository} already had both of these approaches; in this version, which approach to use is controlled by whether a valid RIME dictionary exists or not.
 
 RIME dictionaries (◊link["https://github.com/rime/home/wiki/RimeWithSchemata#%E7%A2%BC%E8%A1%A8%E8%88%87%E8%A9%9E%E5%85%B8"]{official documentation}) are ◊code{\t}-seperated values with a YAML header in front, using # as the comment character. To get the Cangjie encoding for a character from the dictionary, we grab the lines matching the character, remove any matches starting with a #, then select the second element delimited by ◊code{\t}. This encoding is written in the alphabetical representation of the Cangjie code (like ◊code{jnd}), so we convert that to the Han character representation (like ◊code{十弓木}), implemented with ◊code{cangjie--abc-to-han}.
 
