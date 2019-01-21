@@ -1,5 +1,5 @@
 #lang pollen
-◊define-meta[title]{Lookup Cangjie encoding in Emacs with ◊code{cangjie.el}}
+◊define-meta[title]{◊span{Lookup Cangjie encoding in Emacs with ◊code{cangjie.el}}}
 ◊define-meta[date]{2019-01-21T19:43:47+09:00}
 ◊define-meta[category]{Programming}
 ◊define-meta[language]{en}
