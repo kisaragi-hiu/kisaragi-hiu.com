@@ -2,14 +2,14 @@
 
 The files in this repository, unless otherwise noted, are © Kisaragi Hiu, licensed as below:
 
-- The *source code* — comprised of all `.rkt`, `.sh`, `.html`, `.html.pp`, `.css`, and `.css.pp` files — is licensed under the MIT license, a copy of which is provided below.
+- All *prose writing* (all files under `poems/` and `blog/`), and all static files (under `static/`) not otherwise attributed, are provided under a Creative Commons Attribution-ShareAlike 4.0 International License; a copy of which is provided below.
 
-- All *prose writing*, as well as the actual HTML files containing this prose, and all images not otherwise attributed, are provided under a Creative Commons Attribution-ShareAlike 4.0 International License. A copy is provided below as well.
+- The *source code* — comprised of all `.rkt`, `.sh`, `.yml`, `template.html`, `.css`, and `.css.pp` files — is licensed under the MIT license. A copy is provided below as well.
 
 ## The MIT License
 
-````
-    Copyright 2017 Kisaragi Hiu
+```
+    Copyright 2019 Kisaragi Hiu
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the
@@ -29,11 +29,11 @@ The files in this repository, unless otherwise noted, are © Kisaragi Hiu, licen
     CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
     TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
     SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-````
+```
 
 ## Creative Commons Attribution-ShareAlike 4.0 International Public License
 
-````
+```
     Creative Commons Attribution-ShareAlike 4.0 International Public License
     ========================================================================
 
@@ -383,4 +383,4 @@ The files in this repository, unless otherwise noted, are © Kisaragi Hiu, licen
          as a limitation upon, or waiver of, any privileges and immunities
          that apply to the Licensor or You, including from the legal
          processes of any jurisdiction or authority.
-````
+```
