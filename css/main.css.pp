@@ -169,6 +169,7 @@ header .tags {
 }
 
 .highlight {
+    font-size: 1rem;
     overflow-x: auto;
     font-family: ◊|monospace|;
     color: black;
