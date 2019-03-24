@@ -73,6 +73,14 @@ nav a {
 * Misc.
 */
 
+blockquote {
+    border-left: 0.3rem solid #ccc;
+    margin: 1rem 0;
+    padding: 0 0.3rem;
+    font-style: italic;
+    background: #f3f3f3;
+}
+
 .container {
     margin: 2rem 20% 3rem 20%;
 }
