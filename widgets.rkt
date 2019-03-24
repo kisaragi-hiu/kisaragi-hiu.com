@@ -39,6 +39,9 @@
      (p ([class "project-description"])
       ,description))))
 
+(define (edit date . text)
+  `(blockquote () "Edit " ,date ": " ,@text))
+
 (define (strike . text)
   `(s ,@text))
 
