@@ -3,15 +3,21 @@
 ◊define-meta[title]{Projects}
 ◊heading{Projects}
 
-◊link{https://github.com/kisaragi-hiu}
+I publish coding projects to ◊link["https://github.com/kisaragi-hiu"]{Github}, ◊gitlab["https://gitlab.com/kisaragi-hiu"]{Gitlab}, and ◊link["https://git.sr.ht/~kisaragi_hiu/"]{sr.ht}. Here are a few that aren't just one-off experiments.
 
 ◊subheading{◊link["https://github.com/kisaragi-hiu/cangjie.el"]{Cangjie.el}}
 
 Retrieve Cangjie code for Han character in Emacs.
 
-◊subheading{◊link["https://github.com/kisaragi-hiu/tr.el"]{Tr.el}}
+◊subheading{◊link["https://gitlab.com/canrylog"]{Canrylog}}
 
-Minimal tr implementation for Emacs.
+An experimental time tracking application.
+
+◊subheading{◊link["https://gitlab.com/kisaragi-hiu/yasearch"]{yasearch}}
+
+Yet Another web Search plugin for Emacs.
+
+Search the word under point or region on the web.
 
 ◊subheading{◊link["https://gitlab.com/kisaragi-hiu/scripts"]{Scripts}}
 
