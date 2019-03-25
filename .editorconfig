@@ -8,6 +8,9 @@ charset = utf-8
 [*.{pp,pm}]
 file_type_emacs = pollen
 
+[*.pmd]
+file_type_emacs = markdown
+
 # JSON-like formatting works better
 [index.ptree]
 file_type_emacs = javascript

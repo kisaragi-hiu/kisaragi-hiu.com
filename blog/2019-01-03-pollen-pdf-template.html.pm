@@ -5,6 +5,7 @@
 ◊define-meta[language]{en}
 ◊define-meta[toc #t]
 
+<<<<<<< HEAD
 ◊edit["2019-03-24"]{
 I forgot to mention that Chrom/ium adds a header and footer when printing to PDF from the command line. To work around this, set the top/bottom margin to 0, eg.:
 
@@ -17,6 +18,9 @@ I forgot to mention that Chrom/ium adds a header and footer when printing to PDF
 }}
 
 Pollen's manual has a ◊link["http://docs.racket-lang.org/pollen/fourth-tutorial.html#(part._.Adding_support_for_.P.D.F_output)"]{tutorial} on how to make ◊link["http://docs.racket-lang.org/pollen/second-tutorial.html#%28part._tutorial-2._.Templates%29"]{templates} for PDF. It first builds a LaTeX source file, then renders that with ◊command{pdflatex}, then returns the bytes from the PDF, deleting the temporary files. The problem with this in my use case is that I don't use LaTeX, and would like a way to just turn the HTML version of my pages into PDF. So far I had always just manually rendered my pages in Firefox (my primary browser) or Chrome (offers a print preview), which I'd like to automate.
+=======
+Pollen's manual has a ◊link["http://docs.racket-lang.org/pollen/fourth-tutorial.html#(part._.Adding_support_for_.P.D.F_output)"]{tutorial} on how to make ◊link["http://docs.racket-lang.org/pollen/second-tutorial.html#%28part._tutorial-2._.Templates%29"]{templates} for PDF. It first builds a LaTeX source file, then renders that with ◊command{pdflatex}, then returns the bytes from the PDF, deleting the temporary files. The problem with this in my use case is that I don't use LaTeX, and would like a way to turn the HTML version of my pages into PDF. So far I had always manually rendered my pages in Firefox (my primary browser) or Chrome (offers a print preview), which I'd like to automate.
+>>>>>>> origin/source
 
 First was finding a programmable interface to render an HTML to PDF. I knew Chrom/ium has a ◊code{--print-to-pdf} option, but initially I thought it's going to have unavoidable headers and footers. So I started working with ◊link["https://wkhtmltopdf.org/"]{◊command{wkhtmltopdf}}.
 
@@ -49,9 +53,9 @@ The entire thing: ◊gist{kisaragi-hiu/47578b77677bf659982819125cc34df4}
 
 ◊subheading{◊command{wkhtmltopdf} troubles}
 
-After getting the rendered PDF and happily printing them out, I found that the output from ◊command{wkhtmltopdf} differed too much from what I get from either Firefox or Chrome. Some of the CSS I have didn't seem to work as well. I then realized Chrome's ◊code{--print-to-pdf} option doesn't give me the headers and footers with the CSS I have, so I decided using Chrome was less trouble.
+After getting the rendered PDF and printing them out, I found that the output from ◊command{wkhtmltopdf} differed too much from what I get from either Firefox or Chrome. Some of the CSS I have didn't seem to work as well. I then realized Chrome's ◊code{--print-to-pdf} option doesn't give me the headers and footers with the CSS I have, so I decided using Chrome was less trouble.
 
-One problem with this is that Chrome has to output to a file, so I couldn't avoid using a temporary file by writing to stdout, which I think is a bit of a shame.
+One problem with this is that Chrome has to output to a file, so I couldn't write to stdout to avoid using a temporary file, like I did with ◊command{wkhtmltopdf}.
 
 ◊heading{Second version with Chrome}
 
