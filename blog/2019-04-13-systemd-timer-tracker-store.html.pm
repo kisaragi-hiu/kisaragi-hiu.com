@@ -1,7 +1,6 @@
 #lang pollen
 ◊define-meta[title]{systemd units to kill a daemon on loop}
 ◊define-meta[date]{2019-04-13T13:30:20}
-◊define-meta[category]{}
 ◊define-meta[language]{en}
 
 ◊code{tracker-store} leaks memory on my system, and after approximately 1 day of uptime, it'll leak everything and send my system into a lockup. The kernel out-of-memory (OOM) killer isn't going to do anything, and I'm not sure if ◊code{earlyoom} is going to help either. This means the simplest solution is just going to be:
