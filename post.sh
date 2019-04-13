@@ -3,9 +3,11 @@ helptext="
 $0
 
 usage:
-  $0 new <Title>: Add a new draft with the title <Title>
-  $0 publish <filename>: Publish <filename> under drafts/, filling in publish date and special tags
-"
+  $0 new <Title>
+    Add a new draft with the title <Title>.
+  $0 publish <filename>
+    Publish <filename>, filling in publish date and special tags, and
+    adding date to the filename."
 
 new () {
     [ -z "$1" ] && return
