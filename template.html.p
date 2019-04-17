@@ -59,8 +59,6 @@ contact@kisaragi-hiu.com</p>
         ◊(when/splice (select-from-metas 'toc metas)
            (to-html (toc here)))
         ◊(to-html doc)
-        ◊(when/splice (string=? (document-type metas) "post")
-           (to-html (previous-and-next here)))
         ◊; (when/splice (string=? (document-type metas) "post")
         ◊;   (to-html (previous-and-next-same-category here)))
       </div>
@@ -68,6 +66,8 @@ contact@kisaragi-hiu.com</p>
       ◊; Footer
       <footer>
         <div id="footer-sep">・・・</div>
+        ◊(when/splice (string=? (document-type metas) "post")
+           (to-html (previous-and-next here)))
         <p>I don't necessarily know what I'm talking about.</p>
         ◊to-html{
         ◊div{
