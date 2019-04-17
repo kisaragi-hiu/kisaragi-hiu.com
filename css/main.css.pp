@@ -1,6 +1,8 @@
 #lang pollen
-◊(require racket/string
-          racket/file)
+◊(require
+  racket/string
+  racket/file
+  css-expr)
 ◊(provide (all-defined-out))
 ◊(define cjk-fallback
    ◊string-append{'Noto Sans CJK TC',
@@ -80,6 +82,12 @@ blockquote {
     font-style: italic;
     background: #f3f3f3;
 }
+
+◊(css-expr->css
+  (css-expr
+   [|div#references|
+    #:margin-top 3rem
+    [p #:margin-top 0 #:margin-bottom 0]]))
 
 .container {
     margin: 2rem 20% 3rem 20%;
