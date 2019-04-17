@@ -32,6 +32,6 @@ Which simply runs ◊code{$(UTAU) <ust full path>} for each UST that's newer tha
 Now when I run ◊code{make render}, UTAU windows will pop up one by one for me to manually do the render◊ref[""]. This may not be quite automatic, but it's at least better than manually opening every UST in the project and rendering them.
 
 ◊references{
-◊reftxt{References used: ◊link["https://learnxinyminutes.com/docs/make/"]{Learn X in Y minutes}, ◊link["https://medium.freecodecamp.org/eec453adf7fe"]{Use `make`! by freeCodeCamp}, and ◊link["https://www.gnu.org/software/make/manual/html_node/File-Name-Functions.html"]{File Name Functions in the official manual}.}
+◊reftxt{References used: ◊link["https://learnxinyminutes.com/docs/make/"]{Learn X in Y minutes}, ◊link["https://medium.freecodecamp.org/eec453adf7fe"]{Use `make`! by freeCodeCamp}, and ◊link["https://www.gnu.org/software/make/manual/html_node/File-Name-Functions.html"]{File Name Functions in the manual}.}
 ◊reftxt{◊kbd{Alt-p g RET} if the output file name has been set.}
 }
