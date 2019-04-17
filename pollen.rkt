@@ -47,12 +47,10 @@
       xexpr))
 
 (define (root . elements)
-  (if (txexpr-elements? elements)
-      (txexpr 'root '() (decode-elements
-                         elements
-                         #:txexpr-elements-proc decode-paragraphs
-                         #:exclude-tags '(pre)))
-      elements))
+  (decode (txexpr 'root '() elements)
+          #:txexpr-elements-proc decode-paragraphs
+          #:exclude-tags '(style pre script)
+          #:exclude-attrs '((class "tweet"))))
 
 (define-syntax (->2to-define stx)
   (syntax-case stx ()

@@ -177,6 +177,26 @@
   `(img ([src ,(abs-local "static/ext/fa/" fa-icon ".svg")]
          [alt ,fa-icon])))
 
+(define (tweet url
+               #:summary summary
+               #:author author
+               #:profile profile
+               #:date date)
+  ;; a translation of Twitter's default embed code
+  `(div ([class "tweet"])
+    (blockquote ([class "twitter-tweet"]
+                 [data-lang "ja"])
+     (p ([lang "en"]
+         [dir "ltr"])
+      ,summary)
+     mdash
+     ,author " (@" ,profile ")"
+     (a ([href ,url])
+      ,date))
+    (script ([async "async"]
+             [src "https://platform.twitter.com/widgets.js"]
+             [charset "utf-8"]))))
+
 (define-link github "https://github.com/")
 (define-link gist "https://gist.github.com/")
 (define-link gitlab "https://gitlab.com/")
