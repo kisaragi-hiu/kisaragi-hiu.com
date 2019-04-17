@@ -189,7 +189,7 @@
      (p ([lang "en"]
          [dir "ltr"])
       ,summary)
-     mdash
+     "—"
      ,author " (@" ,profile ")"
      (a ([href ,url])
       ,date))
