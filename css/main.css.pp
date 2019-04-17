@@ -299,8 +299,11 @@ div.project-list {
     overflow: hidden;
 }
 
-/* Smaller than phablet */
-@media (max-width: 600px) {
+@media (max-width: 1200px) {
+    .container {
+        margin: 2rem 5% 3rem 5%;
+    }
+
     .project-list {
         column-count: 1;
     }
