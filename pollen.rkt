@@ -12,6 +12,7 @@
          racket/function
          racket/list
          "widgets.rkt"
+         "reference.rkt"
          "date.rkt"
          "path.rkt"
          (for-syntax racket/string
@@ -22,6 +23,7 @@
          (all-from-out
           "widgets.rkt"
           "path.rkt"
+          "reference.rkt"
           pollen/pagetree
           pollen/template
           racket/function
