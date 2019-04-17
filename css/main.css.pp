@@ -89,6 +89,10 @@ blockquote {
     #:margin-top 3rem
     [p #:margin-top 0 #:margin-bottom 0]]))
 
+.ref-desc-id {
+    font-family: ◊|monospace|;
+}
+
 .container {
     margin: 2rem 20% 3rem 20%;
 }

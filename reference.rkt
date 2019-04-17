@@ -37,8 +37,11 @@
     (set! text `(strong ,(~a (reference-text this-ref) ": "))))
   `(p ([class "ref-desc"]
        [id ,(format "ref-desc-~a" this-id)])
-    (a ([href ,(format "#ref-~a" this-id)])
-     "[" ,(~a (reference-id this-ref)) "] ")
+    "["
+    (a ([class "ref-desc-id"]
+        [href ,(format "#ref-~a" this-id)])
+      ,(~a (reference-id this-ref)))
+    "] "
     ,text
     ,@desc))
 
