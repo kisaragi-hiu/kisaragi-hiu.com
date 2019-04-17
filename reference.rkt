@@ -4,11 +4,14 @@
 ;; ◊ref{Another Thing}: add Another Thing to refs
 ;; ◊reftxt{expl1}: explanation for Something
 ;; ◊reftxt{expl2}: explanation for Another Thing
+;;
+;; Wrap ◊reftxt forms in ◊references{} for better styling.
 
 (require racket/format)
 
 (provide ref
-         reftxt)
+         reftxt
+         references)
 
 (define current-refs (make-parameter '()))
 (define current-ref-# (make-parameter 1))
@@ -38,3 +41,7 @@
      "[" ,(~a (reference-id this-ref)) "] ")
     ,text
     ,@desc))
+
+(define (references . expr)
+  `(div ([id "references"])
+    ,@expr))
