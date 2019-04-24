@@ -23,7 +23,8 @@ build () {
     [ "$1" == rebuild ] && export POLLEN=$RANDOM
     racket generate-pages.rkt || return 1
     raco pollen render css || return 1
-    raco pollen render index.ptree || return 1
+    raco pollen setup
+    raco pollen render -p || return 1
 }
 
 loop () {
