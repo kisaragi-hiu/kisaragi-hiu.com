@@ -19,7 +19,6 @@
           }
       });
     </script>
-    <link rel="stylesheet" href="/css/emacs.css">
     <link rel="stylesheet" href="/css/main.css">
     <link rel="alternate" type="application/atom+xml" href="/feed.xml" title="Atom Feed">
   </head>

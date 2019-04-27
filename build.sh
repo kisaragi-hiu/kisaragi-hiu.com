@@ -22,7 +22,7 @@ waitfor () {
 build () {
     [ "$1" == rebuild ] && export POLLEN=$RANDOM
     racket generate-pages.rkt || return 1
-    raco pollen render css || return 1
+    raco pollen render css/main.css.pp || return 1
     raco pollen setup
     raco pollen render -p || return 1
 }
