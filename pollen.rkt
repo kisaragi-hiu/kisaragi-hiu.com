@@ -47,7 +47,7 @@
       (txexpr 'root '() (decode-elements
                          elements
                          #:txexpr-elements-proc decode-paragraphs
-                         #:exclude-tags '(pre)
+                         #:exclude-tags '(pre blockquote)
                          #:exclude-attrs '((class "tweet"))))
       elements))
 
