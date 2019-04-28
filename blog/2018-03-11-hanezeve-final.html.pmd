@@ -62,10 +62,9 @@ So the rough translation is now:
 
 <div style="display:flex">
 <span>
-◊div[#:style "display:flex"]{
-◊span{
-◊blockquote{
-◊pre{A.
+<blockquote>
+<pre>
+A.
 Halalaha zela halalelu
 Sivivile shi-dhina
 houwelela, walelila
@@ -94,13 +93,14 @@ Halalaha zela halalelu
 Sivivile shi-dhina
 houwelela, walelila
 Hanezeve cara-dhina
-}
-}
-}
+</pre>
+</blockquote>
+</span>
 
-◊span{
-◊blockquote{
-◊pre{A.
+<span>
+<blockquote>
+<pre>
+A.
 I am dreaming a dream
 to explore even deeper
 the treasures, the wonder
@@ -129,9 +129,9 @@ I am dreaming a dream
 to explore even deeper
 the treasures, the wonder
 Deep in the Abyss
-}
-}
-}
-}
+</pre>
+</blockquote>
+</span>
+</div>
 
 Listen to Hanezeve Caradhina (and the rest of the Made in Abyss OST) [on Spotify.](https://open.spotify.com/album/5oEzjkSYSfC0ITRiqK6m8l)
