@@ -49,7 +49,7 @@ index.html
 about.html
 projects.html
 ◊projects{
-    projects/org-msr/index.html
+    projects/org-msr.html
 }
 ◊poems{
     poems/2013-01-01-永遠.html
