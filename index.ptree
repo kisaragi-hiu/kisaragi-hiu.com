@@ -48,6 +48,9 @@ index.html
 ◊; }
 about.html
 projects.html
+◊projects{
+    projects/org-msr/index.html
+}
 ◊poems{
     poems/2013-01-01-永遠.html
     poems/2014-03-14-規律.html

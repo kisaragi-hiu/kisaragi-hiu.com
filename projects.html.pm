@@ -26,3 +26,7 @@ Small scripts I've written over the years.
 ◊subheading{◊link["https://gitlab.com/kisaragi-hiu/language-startup-benchmark"]{Language Startup Benchmark}}
 
 Time hello world in various languages to benchmark their startup times.
+
+◊subheading{◊link["/projects/org-msr"]{org-msr}}
+
+Minimal Spaced Repetition in Org mode.
