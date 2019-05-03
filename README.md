@@ -21,3 +21,7 @@ My personal website, built with [Pollen](https://github.com/mbutterick/pollen).
 `◊define-meta[name]{content ◊tag{content}}` gets expanded to `(define-meta name "content" (tag "content"))`, which is invalid syntax.
 
 `◊define-meta[name]{◊span{content ◊tag{content}}}` becomes `(define-meta name (span "content" (tag "content")))`.
+
+## Categories
+
+The canonical list of categories is taken from `index.ptree`, *not* from all blog posts. To add a new category, an entry must be added to `index.ptree`.

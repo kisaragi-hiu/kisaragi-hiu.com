@@ -1,7 +1,7 @@
 #lang pollen
 ◊define-meta[title]{A Makefile for UTAU Projects}
 ◊define-meta[date]{2019-04-17T19:50:52}
-◊define-meta[category]{Tutorial}
+◊define-meta[category]{Tutorials}
 ◊define-meta[language]{en}
 
 I'm currently making a new cover using UTAU, after having broken the last streak of covers. This time, I thought I'd try using ◊command{make} to help with rendering.

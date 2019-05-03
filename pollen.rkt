@@ -32,13 +32,7 @@
 
 (module+ setup
   (require syntax/modresolve)
-  (provide (all-defined-out))
-  (define cache-watchlist
-    (map resolve-module-path
-         '("date.rkt"
-           "download.rkt"
-           "path.rkt"
-           "widgets.rkt"))))
+  (provide (all-defined-out)))
 
 (define author "Kisaragi Hiu")
 (define site-title "Kisaragi Hiu")
@@ -53,7 +47,7 @@
       (txexpr 'root '() (decode-elements
                          elements
                          #:txexpr-elements-proc decode-paragraphs
-                         #:exclude-tags '(pre)
+                         #:exclude-tags '(pre blockquote)
                          #:exclude-attrs '((class "tweet"))))
       elements))
 

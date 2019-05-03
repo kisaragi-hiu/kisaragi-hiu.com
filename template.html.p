@@ -19,7 +19,6 @@
           }
       });
     </script>
-    <link rel="stylesheet" href="/css/emacs.css">
     <link rel="stylesheet" href="/css/main.css">
     <link rel="alternate" type="application/atom+xml" href="/feed.xml" title="Atom Feed">
   </head>
@@ -50,9 +49,6 @@
         ◊(when/splice (string=? (document-type metas) "root-index")
           ◊list{
 <p>I'm a college student interested in Free Software, programming, VOCALOID / UTAU culture, and language learning.</p>
-
-<p>Contact:<br>
-contact@kisaragi-hiu.com</p>
 })
         ◊(when/splice (string=? (document-type metas) "post")
            (to-html (index-item here)))
@@ -91,7 +87,7 @@ contact@kisaragi-hiu.com</p>
           <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
            <img alt="Creative Commons License"
                 style="border-width:0"
-                src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" />
+                src="/static/cc-by-sa-88x31.png" />
           </a>
           <br />
         © Kisaragi Hiu 2017~2019. Posts are licensed under a <a href="http://creativecommons.org/licenses/by-sa/4.0/">CC-BY-SA 4.0 International license</a>; <a href="https://github.com/kisaragi-hiu/kisaragi-hiu.com">source code</a> is licensed under MIT. See <a rel="license" href="https://github.com/kisaragi-hiu/kisaragi-hiu.com/blob/source/LICENSE.md">LICENSE.md</a> for details.</p>
