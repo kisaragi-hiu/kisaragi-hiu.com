@@ -3,7 +3,7 @@
 ◊define-meta[title]{Projects}
 ◊heading{Projects}
 
-I publish coding projects to ◊link["https://github.com/kisaragi-hiu"]{Github}, ◊gitlab["https://gitlab.com/kisaragi-hiu"]{Gitlab}, and ◊link["https://git.sr.ht/~kisaragi_hiu/"]{sr.ht}. Here are a few that aren't just one-off experiments.
+I publish coding projects to both ◊link["https://github.com/kisaragi-hiu"]{Github} and ◊gitlab["https://gitlab.com/kisaragi-hiu"]{Gitlab}. Here are a few that aren't just one-off experiments.
 
 ◊subheading{◊link["https://github.com/kisaragi-hiu/cangjie.el"]{Cangjie.el}}
 
