@@ -1,6 +1,7 @@
 #lang pollen
 index.html
 ◊blog{
+    blog/2019-05-15-closure.html
     blog/2019-04-17-utau-make-file.html
     blog/2019-04-13-systemd-timer-tracker-store.html
     blog/2019-01-21-cangjie.el.html
@@ -32,11 +33,12 @@ index.html
     blog/2016-06-30-han-characters.html
 }
 ◊category{
-    category/meta.html
-    category/hanezeve-caradhina-language-construction.html
-    category/tutorials.html
     category/opinions.html
+    category/meta.html
     category/own-vocal-experiment.html
+    category/hanezeve-caradhina-language-construction.html
+    category/trying-to-explain.html
+    category/tutorials.html
     category/linux.html
 }
 
