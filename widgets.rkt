@@ -19,6 +19,14 @@
   (when target (set! result (attr-set result 'target target)))
   result)
 
+;; TODO: actually implement tabbed stuff
+(define (tabbed . language-examples)
+  `(div ([class "tabbed"])
+        ,@(for/list ([example language-examples])
+            `(div
+              (span ,(first example) ":")
+              ,(second example)))))
+
 (define (h1 . elements)
   `(h1 ([id ,(~a (gensym))]) ,@elements))
 (define (h2 . elements)
