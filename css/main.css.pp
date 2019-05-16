@@ -77,6 +77,16 @@ nav a {
 * Misc.
 */
 
+.image p {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+.image-caption {
+    text-align: center;
+    font-family: monospace;
+    font-style: italic;
+}
+
 blockquote {
     border-left: 0.3rem solid #ccc;
     margin: 1rem 0;

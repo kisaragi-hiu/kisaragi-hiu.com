@@ -75,7 +75,8 @@
   (define image-style "max-width:100%;")
   (when width
     (set! image-style (~a image-style "width:" width ";")))
-  `(div (img ([src ,src] [style ,image-style] [class ,class]))
+  `(div ([class "image"])
+    (img ([src ,src] [style ,image-style] [class ,class]))
     ,(if caption
          `(p ([class "image-caption"]) ,caption)
          "")))
