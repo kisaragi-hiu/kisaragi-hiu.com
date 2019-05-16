@@ -26,4 +26,6 @@ Here is a minor mode to do it:
           (caar profiler-report-memory-line-format) 55)))
 }
 
-This relies on how ◊emacs-source[#:branch "emacs-26" #:file "lisp/profiler.el" #:line "74"]{profiler-format} refers to the two variables, ◊code{profiler-report-cpu-line-format} and ◊code{profiler-report-memory-line-format}, for its formatting. I found this tip on ◊link["https://emacs.stackexchange.com/questions/7344/make-profiler-report-columns-wider"]{StackExchange}.
+This relies on how ◊emacs-source[#:branch "emacs-26" #:file "lisp/profiler.el" #:line "74"]{profiler-format} refers to the two variables, ◊code{profiler-report-cpu-line-format} and ◊code{profiler-report-memory-line-format}, for its formatting.
+
+This is a solution to ◊link["https://emacs.stackexchange.com/questions/7344/make-profiler-report-columns-wider"]{this StackExchange question}. Specifically, a comment there pointed out that ◊code{profiler-report} mentions "width", which led me to find the relevant variables.
