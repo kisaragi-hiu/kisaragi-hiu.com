@@ -33,8 +33,7 @@
 
 (module+ setup
   (provide (all-defined-out))
-  (define compile-cache-active #f)
-  (define render-cache-active #f))
+  (define compile-cache-active #f))
 
 (define author "Kisaragi Hiu")
 (define site-title "Kisaragi Hiu")
