@@ -246,4 +246,6 @@
    `(code ,@content)))
 
 (define (tldr . exprs)
-  `(em (strong "TL;DR: ") ,@exprs))
+  `(div
+    (span (strong "TL;DR: ") ,@exprs)
+    (hr)))
