@@ -33,8 +33,8 @@ In ◊emacs-source[#:branch "emacs-26" #:file "lisp/profiler.el" #:line "446"]{p
 To change the width of lines in the profiler report, simply set these to what you want.
 
 ◊highlight['elisp]{
-(setf (caar profiler-report-cpu-line-format) 100
-      (caar profiler-report-memory-line-format) 100)
+(setf (caar profiler-report-cpu-line-format) 80
+      (caar profiler-report-memory-line-format) 80)
 }
 
 And here is a minor mode to do it:
@@ -45,10 +45,12 @@ And here is a minor mode to do it:
   "Minor mode to widen profiler reports."
   :global t
   (if kisaragi/profiler-wide-mode
-      (setf (caar profiler-report-cpu-line-format) 100
-            (caar profiler-report-memory-line-format) 100)
+      (setf (caar profiler-report-cpu-line-format) 80
+            (caar profiler-report-memory-line-format) 80)
     (setf (caar profiler-report-cpu-line-format) 50
           (caar profiler-report-memory-line-format) 55)))
 }
+
+I'm sure there are ways to make the width update when Emacs is resized, but IMO that should be implemented inside ◊code{profiler.el} itself, not as an extension. For now, this is a good enough workaround for me.
 
 This is a solution to ◊link["https://emacs.stackexchange.com/questions/7344/make-profiler-report-columns-wider"]{this StackExchange question}. Specifically, a comment there pointed out that ◊code{profiler-report} mentions "width", which led me to find the relevant variables.
