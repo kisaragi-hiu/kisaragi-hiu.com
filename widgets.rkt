@@ -1,7 +1,6 @@
 #lang rackjure
 (require xml
          pollen/tag
-         pollen/setup
          pollen/template/html
          txexpr
          "download.rkt"
@@ -187,7 +186,7 @@
   (when color (set! options (string-append options "color=" color)))
   (when size (set! options (string-append options "size=" size)))
   (download (~a "https://icongr.am/fontawesome/" fa-icon ".svg" options)
-            (build-path (current-project-root) "static/ext/fa/" fa-icon ".svg"))
+            (path-from-project-root "static/ext/fa/" fa-icon ".svg"))
   `(img ([src ,(abs-local "static/ext/fa/" fa-icon ".svg")]
          [alt ,fa-icon])))
 
