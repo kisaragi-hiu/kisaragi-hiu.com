@@ -24,6 +24,7 @@ To define a function that has persistent local variables in a language that supp
 
   (list "Emacs Lisp" ◊highlight['elisp]{
 ◊;#+BEGIN_SRC elisp
+;;; -*- lexical-binding: t; -*-
 (defalias 'a-closure
   (let ((x 10))
     ;; function created in environment where x = 10
