@@ -11,10 +11,14 @@
 
 ;;; widgets
 
-(define (link url [text url]
+(define (link url
               #:class [class #f]
-              #:target [target #f])
-  (define result `(a ([href ,url]) ,text))
+              #:target [target #f]
+              . text)
+  ;; text is set to url if not given
+  (when (empty? text)
+    (set! text (list url)))
+  (define result `(a ([href ,url]) ,@text))
   (when class (set! result (attr-set result 'class class)))
   (when target (set! result (attr-set result 'target target)))
   result)
