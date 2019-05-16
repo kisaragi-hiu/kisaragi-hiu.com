@@ -244,3 +244,6 @@
                  file arguments line)
          #:class "emacs-source"
          `(code ,@content)))
+
+(define (tldr . exprs)
+  `(em (strong "TL;DR: ") ,@exprs))
