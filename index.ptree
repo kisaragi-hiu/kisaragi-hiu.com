@@ -1,6 +1,7 @@
 #lang pollen
 index.html
 ◊blog{
+    blog/2019-05-16-emacs-profiler-width.html
     blog/2019-05-15-closure.html
     blog/2019-04-17-utau-make-file.html
     blog/2019-04-13-systemd-timer-tracker-store.html
