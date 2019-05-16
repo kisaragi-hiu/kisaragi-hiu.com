@@ -7,6 +7,7 @@
          pollen/decode
          pollen/pagetree
          pollen/render
+         pollen/setup
          pollen/tag
          pollen/unstable/pygments
          racket/function
