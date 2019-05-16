@@ -1,5 +1,5 @@
 #lang pollen
-◊define-meta[title]{My attempt at explaining Closures}
+◊define-meta[title]{My attempt at explaining closures}
 ◊define-meta[date]{2019-05-15T18:16:51}
 ◊define-meta[category]{Trying to explain}
 ◊define-meta[language]{en}
