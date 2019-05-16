@@ -227,7 +227,7 @@
                       #:line [line ""]
                       . content)
   (define arguments "")
-  (when line
+  (unless (string=? line "")
     (set! line (~a "#n" line)))
   (when branch
     (set! branch (~a "h=" branch)))
