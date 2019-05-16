@@ -239,11 +239,11 @@
      "&" #:before-first "?"))
   (unless file
     (set! file (first content)))
-  (apply link
-         (format "https://git.savannah.gnu.org/cgit/emacs.git/tree/~a~a~a"
-                 file arguments line)
-         #:class "emacs-source"
-         `(code ,@content)))
+  (link
+   (format "https://git.savannah.gnu.org/cgit/emacs.git/tree/~a~a~a"
+           file arguments line)
+   #:class "emacs-source"
+   `(code ,@content)))
 
 (define (tldr . exprs)
   `(em (strong "TL;DR: ") ,@exprs))
