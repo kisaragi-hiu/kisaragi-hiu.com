@@ -18,5 +18,5 @@ css/main.css
 category/*.pm
 static/ext/
 static/
-!:/static/
+!/static/
 category/
