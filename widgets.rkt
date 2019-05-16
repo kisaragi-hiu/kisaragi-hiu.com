@@ -220,3 +220,27 @@
 (define-link transifex "https://www.transifex.com/user/profile/")
 (define-link noichigo "https://www.no-ichigo.jp/read/book/book_id/")
 (define-link site-crossref "https://kisaragi-hiu.com/")
+
+(define (emacs-source #:branch [branch #f]
+                      #:commit [commit #f]
+                      #:file [file #f]
+                      #:line [line ""]
+                      . content)
+  (define arguments "")
+  (when line
+    (set! line (~a "#n" line)))
+  (when branch
+    (set! branch (~a "h=" branch)))
+  (when commit
+    (set! commit (~a "id=" commit)))
+  (set! arguments
+    (string-join
+     (filter identity (list branch commit)) ; get rid of #f's
+     "&" #:before-first "?"))
+  (unless file
+    (set! file (first content)))
+  (apply link
+         (format "https://git.savannah.gnu.org/cgit/emacs.git/tree/~a~a~a"
+                 file arguments line)
+         #:class "emacs-source"
+         `(code ,@content)))
