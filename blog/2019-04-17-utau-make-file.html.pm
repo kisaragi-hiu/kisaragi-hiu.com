@@ -18,7 +18,7 @@ As it turned out, automating the rest of the rendering process is still really h
 
 ◊highlight['make]{
 UTAU = env WINEPREFIX=/home/kisaragi-hiu/.wineprefix/UTAU wine "C:\\Program Files (x86)\\UTAU\\utau.exe"
-WAV = V1…R1.wav V2…R2.wav harm.wav intro.wav outro.wav ああ-harm.wav ああ-main.wav intro-harm.wav outro-harm.wav
+WAV = $(patsubst %.ust,%.wav,$(wildcard *.ust))
 
 render: $(WAV)
 .PHONY: render
@@ -27,7 +27,7 @@ $(WAV): %.wav: %.ust
 	$(UTAU) "$(realpath $<)"
 }
 
-Which simply runs ◊code{$(UTAU) <ust full path>} for each UST that's newer than its corresponding output file. The caveat here is that the UST needs to share its name with its output, which has to be set manually.
+Which simply runs ◊code{$(UTAU) <ust full path>} for each UST that's newer than its corresponding output file. ◊strike{The caveat here is that the UST needs to share its name with its output, which has to be set manually.} ◊update["2019-05-24"]{Updated Makefile to generate file list automatically (line 2).}
 
 Now when I run ◊code{make render}, UTAU windows will pop up one by one for me to manually do the render◊ref[""]. This may not be quite automatic, but it's at least better than manually opening every UST in the project and rendering them.
 

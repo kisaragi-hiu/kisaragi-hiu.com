@@ -58,6 +58,9 @@
 (define (strike . text)
   `(s ,@text))
 
+(define (update timestamp . text)
+  `(em (strong "Update " timestamp) ": " ,@text))
+
 (define (stylized-item text)
   (txexpr* 'div '()
            `(span ([style "font-weight: 700;"]) ,text)
