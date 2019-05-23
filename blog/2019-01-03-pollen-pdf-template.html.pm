@@ -5,7 +5,7 @@
 ◊define-meta[language]{en}
 ◊define-meta[toc #t]
 
-◊edit["2019-03-24"]{
+◊update-block["2019-03-24"]{
 I forgot to mention that Chrom/ium adds a header and footer when printing to PDF from the command line. To work around this, set the top/bottom margin to 0, eg.:
 
 ◊highlight['css]{

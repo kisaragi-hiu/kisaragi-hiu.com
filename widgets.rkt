@@ -52,14 +52,17 @@
      (p ([class "project-description"])
       ,description))))
 
-(define (edit date . text)
-  `(blockquote () "Edit " ,date ": " ,@text))
-
 (define (strike . text)
   `(s ,@text))
 
 (define (update timestamp . text)
   `(em (strong "Edit " ,timestamp) ": " ,@text))
+
+(define (update-block timestamp . text)
+  `(blockquote () "Edit " ,timestamp ": " ,@text))
+
+(define edit update)
+(define edit-block update-block)
 
 (define (stylized-item text)
   (txexpr* 'div '()
