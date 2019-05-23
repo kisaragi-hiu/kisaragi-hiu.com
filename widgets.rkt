@@ -59,7 +59,7 @@
   `(s ,@text))
 
 (define (update timestamp . text)
-  `(em (strong "Update " timestamp) ": " ,@text))
+  `(em (strong "Edit " ,timestamp) ": " ,@text))
 
 (define (stylized-item text)
   (txexpr* 'div '()
