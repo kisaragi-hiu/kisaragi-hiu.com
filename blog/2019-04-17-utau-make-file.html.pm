@@ -4,6 +4,8 @@
 ◊define-meta[category]{Tutorials}
 ◊define-meta[language]{en}
 
+◊update-block["2019-05-24"]{Updated Makefile to generate file list automatically (line 2).}
+
 I'm currently making a new cover using UTAU, after having broken the last streak of covers. This time, I thought I'd try using ◊command{make} to help with rendering.
 
 My biggest obstacle is automating the rendering itself: I don't know if UTAU has a command line interface, and using ◊command{xdotool} proved to be too unreliable when I tried. (It was frustrating.)
@@ -27,7 +29,7 @@ $(WAV): %.wav: %.ust
 	$(UTAU) "$(realpath $<)"
 }
 
-Which simply runs ◊code{$(UTAU) <ust full path>} for each UST that's newer than its corresponding output file. ◊strike{The caveat here is that the UST needs to share its name with its output, which has to be set manually.} ◊update["2019-05-24"]{Updated Makefile to generate file list automatically (line 2).}
+Which simply runs ◊code{$(UTAU) <ust full path>} for each UST that's newer than its corresponding output file. The caveat here is that the UST needs to share its name with its output, which has to be set manually.
 
 Now when I run ◊code{make render}, UTAU windows will pop up one by one for me to manually do the render◊ref[""]. This may not be quite automatic, but it's at least better than manually opening every UST in the project and rendering them.
 
