@@ -223,7 +223,7 @@
 (define-link twitter "https://twitter.com/")
 (define-link youtube "https://youtube.com/")
 (define-link pixiv "https://pixiv.net/")
-(define-link niconico "http://www.nicovideo.jp/")
+(define-link niconico "https://www.nicovideo.jp/")
 (define-link osuwiki "http://osu.ppy.sh/help/wiki/")
 (define-link transifex "https://www.transifex.com/user/profile/")
 (define-link noichigo "https://www.no-ichigo.jp/read/book/book_id/")
