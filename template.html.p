@@ -66,22 +66,14 @@
            (to-html (previous-and-next here)))
         <p>I don't necessarily know what I'm talking about.</p>
         ◊to-html{
-        ◊div{
-          ◊link[◊(abs-local "feeds/all.atom.xml")]{
-            ◊font-awesome["rss" #:color "6c757d"]
-          }
-          ◊twitter["flyin1501"]{
-            ◊font-awesome["twitter" #:color "6c757d"]
-          }
-          ◊github["kisaragi-hiu"]{
-            ◊font-awesome["github" #:color "6c757d"]
-          }
-          ◊gitlab["kisaragi-hiu"]{
-            ◊font-awesome["gitlab" #:color "6c757d"]
-          }
-          ◊youtube["channel/UCl_hsqcvdX0XdgBimRQ6R3A"]{
-            ◊font-awesome["youtube-play" #:color "6c757d"]
-          }
+        ◊ul{
+          ◊li{◊link[◊(abs-local "feeds/all.atom.xml")]{Atom / RSS feed}}
+          ◊li{◊twitter["flyin1501"]{Twitter}}
+          ◊li{◊github["kisaragi-hiu"]{Github}}
+          ◊li{◊gitlab["kisaragi-hiu"]{Gitlab.com}}
+          ◊li{◊link["https://git.sr.ht/~kisaragi_hiu/"]{Sourcehut}}
+          ◊li{◊youtube["channel/UCl_hsqcvdX0XdgBimRQ6R3A"]{Youtube}}
+          ◊li{◊niconico["user/38995186"]{niconico}}
         }}
         <p>
           <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
