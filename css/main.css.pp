@@ -35,6 +35,7 @@
 #siteheader {
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
 }
 #logo {
     display: flex;
