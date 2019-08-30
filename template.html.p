@@ -89,21 +89,5 @@
         }}
       </footer>
     </div>
-    ◊; Google Analytics
-    <script>
-      ◊; reference: https://gist.github.com/JeffJacobson/9513812
-      if (navigator.doNotTrack !== "yes" && navigator.doNotTrack != 1) {
-          window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;
-          ga('create', 'UA-109874076-1', 'auto');
-          ga('send', 'pageview');
-
-          // Load GA
-          scriptTag = document.createElement("script");
-          scriptTag.src = "https://www.google-analytics.com/analytics.js";
-          scriptTag.async = true;
-          scriptTag.defer = true;
-          document.head.appendChild(scriptTag);
-      }
-    </script>
   </body>
 </html>
