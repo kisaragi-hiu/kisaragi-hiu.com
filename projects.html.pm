@@ -5,6 +5,12 @@
 
 I publish coding projects to both ◊link["https://github.com/kisaragi-hiu"]{Github} and ◊gitlab["https://gitlab.com/kisaragi-hiu"]{Gitlab}. Here are a few that aren't just one-off experiments.
 
+◊subheading{◊link["https://gitlab.com/kisaragi-hiu/didyoumean.el"]{DidYouMean.el}}
+
+Ask for the right file to open.
+
+Emacs port of the ◊github["EinfachToll/DidYouMean"]{DidYouMean} Vim plugin.
+
 ◊subheading{◊link["https://github.com/kisaragi-hiu/cangjie.el"]{Cangjie.el}}
 
 Retrieve Cangjie code for Han character in Emacs.
