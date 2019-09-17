@@ -316,6 +316,10 @@ div.project-list {
     overflow: hidden;
 }
 
+.highlight .linenos {
+    padding-right: 0.3rem;
+}
+
 @media (max-width: 1200px) {
     .container {
         margin: 2rem 5% 3rem 5%;
