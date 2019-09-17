@@ -13,7 +13,7 @@ file_type_emacs = markdown
 
 # JSON-like formatting works better
 [index.ptree]
-file_type_emacs = javascript
+file_type_emacs = pollen
 
 [*.css.pp]
 file_type_emacs = css
