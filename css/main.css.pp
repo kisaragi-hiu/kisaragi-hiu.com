@@ -13,7 +13,7 @@
                   'Meiryo',
                   'Malgun Gothic'})
 ◊(define sans-serif
-   ◊string-append{'Fira Sans',
+   ◊string-append{'Overpass',
                   ◊|cjk-fallback|,
                   'sans-serif'})
 ◊(define title-sans-serif
@@ -26,7 +26,7 @@
                   ◊|cjk-fallback|,
                   'monospace'})
 ◊(define title "h1,h2,h3,h4,h5,h6,h7,.title")
-◊(define text-secondary "#888")
+◊(define text-secondary "#666")
 
 /*
 * Site Header
@@ -42,7 +42,7 @@
     align-items: center;
 }
 #logo h1 {
-    margin-top: 0;
+    margin-top: 0.25rem;
 }
 nav {
     display: flex;
@@ -100,6 +100,7 @@ blockquote {
   (css-expr
    [|div#references|
     #:margin-top 3rem
+    #:color |#666|
     [p #:margin-top 0 #:margin-bottom 0]]))
 
 .ref-desc-id {

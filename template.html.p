@@ -15,7 +15,7 @@
     <script>
       WebFont.load({
           google: {
-              families: ['Fira Sans', 'Overpass Mono', 'Overpass:400,600']
+              families: ['Overpass Mono', 'Overpass:200,400,600']
           }
       });
     </script>
