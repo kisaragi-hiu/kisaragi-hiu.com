@@ -81,10 +81,10 @@
   (and (not (empty? this-tags))
        (member tag this-tags)))
 
-(define/contract (pagetree-to-index pagetree)
+(define/contract (pagetree-to-index pagetree [index-item-function index-item])
   (-> pagetree? txexpr?)
   (txexpr 'div '([class "index"])
-          (map index-item (pagetree->list pagetree))))
+          (map index-item-function (pagetree->list pagetree))))
 
 (define/contract (post-year pagenode)
   (-> (or/c pagenode? pagenodeish?)
