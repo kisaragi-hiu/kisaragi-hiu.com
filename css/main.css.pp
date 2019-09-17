@@ -50,7 +50,7 @@ nav {
 }
 nav a {
     color: #6c757d;
-    margin: 0.5rem 0.5rem 0.5rem 0;
+    margin: 0.5rem 0.8rem 0.5rem 0;
     font-size: 1.2rem;
 }
 
