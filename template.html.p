@@ -67,7 +67,7 @@
         <p>I don't necessarily know what I'm talking about.</p>
         ◊to-html{
         ◊ul{
-          ◊li{◊link[◊(abs-local "feeds/all.atom.xml")]{Atom / RSS feed}}
+          ◊li{◊link[◊(abs-local "feeds.html")]{Atom / RSS} (◊link[◊(abs-local "feeds/all.atom.xml")]{direct link})}
           ◊li{◊twitter["flyin1501"]{Twitter}}
           ◊li{◊github["kisaragi-hiu"]{Github}}
           ◊li{◊gitlab["kisaragi-hiu"]{Gitlab.com}}
