@@ -136,6 +136,9 @@ body {
 footer {
     color: ◊|text-secondary|;
 }
+footer p {
+    line-height: 0.8;
+}
 #footer-sep {
     margin-top: 2.5rem;
     margin-bottom: 2.5rem;
