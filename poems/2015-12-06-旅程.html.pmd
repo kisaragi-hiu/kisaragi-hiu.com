@@ -1,7 +1,6 @@
 #lang pollen
 ◊define-meta[title]{旅程}
 ◊define-meta[date]{2015-12-06T00:00:00}
-◊define-meta[category]{Fiction}
 ◊define-meta[language]{zh-tw}
 
 如同一趟旅程一般的、美妙的人生，

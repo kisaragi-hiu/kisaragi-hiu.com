@@ -1,7 +1,6 @@
 #lang pollen
 ◊define-meta[title]{你}
 ◊define-meta[date]{2017-07-04T00:00:00}
-◊define-meta[category]{Fiction}
 ◊define-meta[language]{zh-tw}
 
 你總是走在兩個人後面。只是跟著。<br>
