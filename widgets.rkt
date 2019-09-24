@@ -32,12 +32,13 @@
               (span ,(first example) ":")
               ,(second example)))))
 
-(define (h1 . elements)
-  `(h1 ([id ,(~a (gensym))]) ,@elements))
-(define (h2 . elements)
-  `(h2 ([id ,(~a (gensym))]) ,@elements))
-(define (h3 . elements)
-  `(h3 ([id ,(~a (gensym))]) ,@elements))
+(define (make-heading-widget type)
+  (lambda (#:id [id #f] . elements)
+    `(,type ([id ,(~a (or id (gensym)))]) ,@elements)))
+
+(define h1 (make-heading-widget 'h1))
+(define h2 (make-heading-widget 'h2))
+(define h3 (make-heading-widget 'h3))
 (define heading h1)
 (define subheading h2)
 (define subsubheading h3)
@@ -78,10 +79,14 @@
 (define (rant . text)
   `(span ([style "color: #777;"]) "(" ,@text ")"))
 
-(define (image src [caption #f] #:width [width #f] #:class [class ""])
+(define (image src [caption #f]
+               #:width [width #f] #:max-height [max-height #f]
+               #:class [class ""])
   (define image-style "max-width:100%;")
   (when width
     (set! image-style (~a image-style "width:" width ";")))
+  (when max-height
+    (set! image-style (~a image-style "max-height:" max-height ";")))
   `(div ([class "image"])
     (img ([src ,src] [style ,image-style] [class ,class]))
     ,(if caption
@@ -109,10 +114,19 @@
         elements)
    ""))
 
-(define (video/gif-esque path #:controls? [controls? #f] . caption)
+(define (video/gif-esque path
+                         #:controls? [controls? #f]
+                         #:width [width #f]
+                         #:max-height [max-height #f]
+                         . caption)
   ;; ignore caption for now
+  (define style "max-width:100%;")
+  (when width
+    (set! style (~a style "width:" width ";")))
+  (when max-height
+    (set! style (~a style "max-height:" max-height ";")))
   (let ([result `(video ([autoplay "autoplay"]
-                         [style "max-width: 100%;"]
+                         [style ,style]
                          [muted "muted"]
                          [loop "loop"]
                          [src ,path]))])
