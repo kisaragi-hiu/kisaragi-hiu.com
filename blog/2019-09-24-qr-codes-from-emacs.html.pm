@@ -41,9 +41,10 @@ Return a new buffer or BUF with the code in it."
      :name "qrencode" :buffer buffer                     ; that writes stdout to `buffer'
      :command `("qrencode" ,str "-t" "PNG" "-o" "-")     ; "-o -" sends output to stdout
      :coding 'no-conversion                              ; Don't encode stdout as string
-     :sentinel (lambda (_process change)
+     :sentinel (lambda (process change)
                  (when (string= change "finished\n")     ; If the process successfully exits,
-                   (with-current-buffer buffer           ; then go to the buffer,
+                   (with-current-buffer
+                       (process-buffer process)          ; then go to the buffer,
                      (image-mode)                        ; display its contents as PNG,
                      (image-transform-fit-to-height))))) ; and resize it so it's not tiny
     (when (called-interactively-p 'interactive)
@@ -80,9 +81,9 @@ Return a new buffer or BUF with the code in it."
                  (insert string)                              ; top of the output buffer
                  (goto-char (point-min))
                  (set-marker (process-mark process) (point))))
-     :sentinel (lambda (_process change)
+     :sentinel (lambda (process change)
                  (when (string= change "finished\n")
-                   (with-current-buffer buffer
+                   (with-current-buffer (process-buffer process)
                      (cond ((string= format "PNG")
                             (image-mode)
                             (image-transform-fit-to-height))
