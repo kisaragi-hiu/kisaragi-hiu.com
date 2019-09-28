@@ -2,6 +2,10 @@
 /niconico https://www.nicovideo.jp/user/38995186
 /pixiv https://www.pixiv.net/member.php?id=14235181
 
+# / is /blog
+/blog /
+/posts /
+
 # old frog/pollen hybrid site URLs
 /tags/category-* /category/:splat
 /tags/* /tags/:splat
