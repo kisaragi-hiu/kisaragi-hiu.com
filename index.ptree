@@ -45,6 +45,7 @@ category.html
     category/linux.html
 }
 
+feeds.html
 ◊feeds{
     feeds/all.atom.xml
 }
