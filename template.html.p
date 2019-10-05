@@ -86,7 +86,7 @@
         ◊to-html{◊@{
         ◊p{Posts are licensed under a ◊a[#:href "http://creativecommons.org/licenses/by-sa/4.0/"]{CC-BY-SA 4.0 International} license.}
         ◊p{◊a[#:href "https://github.com/kisaragi-hiu/kisaragi-hiu.com"]{Source code} is licensed under MIT. See ◊a[#:rel "license" #:href "https://github.com/kisaragi-hiu/kisaragi-hiu.com/blob/source/LICENSE.md"]{LICENSE.md} for details.}
-        ◊p{© Kisaragi Hiu 2017~2019}
+        ◊p{© Kisaragi Hiu 2017~2019. GPG fingerprint: ◊abs-local["KisaragiHiu.gpg"]{BCC74B1041D4B7D7CC8BF40240ECBEAEA8775FC2}}
         }}
       </footer>
     </div>
