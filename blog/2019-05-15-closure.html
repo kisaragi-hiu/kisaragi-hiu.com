@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>My attempt at explaining closures | Kisaragi Hiu</title>
+    <meta name="description" content="description">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="Kisaragi Hiu">
+    <meta name="keywords" content="Coding, Programming, Language, LGBT, Blog">
+    <link rel="icon" href="/favicon.ico">
+    <link rel="canonical" href="https://kisaragi-hiu.com/blog/2019-05-15-closure.html">
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+    <script>
+      WebFont.load({
+          google: {
+              families: ['Overpass Mono', 'Overpass:200,400,600']
+          }
+      });
+    </script>
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="alternate" type="application/atom+xml" href="/feed.xml" title="Atom Feed">
+  </head>
+  <body>
+    <a id="top"></a>
+    <div class="container">
+      <!--[if lte IE 9]>
+        <h1>For the love of god, please stop using IE9. Thanks.</h1>
+      <![endif]-->
+      <header id="siteheader">
+        <div id="logo">
+          <a href="/">
+            <img src="/static/avatar.png" alt="Kisaragi Hiu"/>
+          </a>
+          <h1>Kisaragi&nbsp;Hiu</h1>
+        </div>
+        <nav>
+          <a href="/">Blog</a>
+          <a href="/projects.html">Projects</a>
+          <a href="/about.html">About</a>
+        </nav>
+      </header>
+
+      <div id="content" class="">
+
+        <header class=""><h2 class="title mb-0"><a href="/blog/2019-05-15-closure.html" class="text-primary">My attempt at explaining closures</a></h2><p class="date">2019/05/15</p><p class="category">C: <a href="/category/trying-to-explain.html">Trying To Explain</a></p></header>
+
+        <root><p>A closure is a function associated with a local, persistent, environment. It is a language feature — some languages attach local environments to functions, some languages don’t.</p><p>This lets functions keep a persistent state without using global variables.</p><p>To define a function that has persistent local variables in a language that supports this, create it in a local environment where you’d define these local variables. In Lisp family languages, this means a <code>lambda</code> wrapped inside a <code>let</code>: the local binding of that let will become part of the lambda’s environment.</p><div class="tabbed"><div><p><span>Scheme:</span></p><div class="highlight"><table class="sourcetable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="source"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="nv">a-closure</span>
+  <span class="p">(</span><span class="k">let </span><span class="p">((</span><span class="nf">x</span> <span class="mi">10</span><span class="p">))</span>
+    <span class="c1">;; function created in environment where x = 10</span>
+    <span class="p">(</span><span class="k">lambda </span><span class="p">(</span><span class="nf">y</span><span class="p">)</span>
+      <span class="p">(</span><span class="k">set! </span><span class="nv">x</span> <span class="p">(</span><span class="nb">+ </span><span class="nv">x</span> <span class="nv">y</span><span class="p">))</span>
+      <span class="nv">x</span><span class="p">)))</span>
+</pre></div></td></tr></tbody></table></div></div><div><p><span>Emacs Lisp:</span></p><div class="highlight"><table class="sourcetable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="source"><pre><span></span><span class="c1">;;; -*- lexical-binding: t; -*-</span>
+<span class="p">(</span><span class="nb">defalias</span> <span class="ss">&#39;a-closure</span>
+  <span class="p">(</span><span class="k">let</span> <span class="p">((</span><span class="nv">x</span> <span class="mi">10</span><span class="p">))</span>
+    <span class="c1">;; function created in environment where x = 10</span>
+    <span class="p">(</span><span class="nb">lambda</span> <span class="p">(</span><span class="nv">y</span><span class="p">)</span>
+      <span class="p">(</span><span class="k">setq</span> <span class="nv">x</span> <span class="p">(</span><span class="nf">+</span> <span class="nv">x</span> <span class="nv">y</span><span class="p">))</span>
+      <span class="nv">x</span><span class="p">)))</span>
+</pre></div></td></tr></tbody></table></div></div><div><p><span>JavaScript:</span></p><div class="highlight"><table class="sourcetable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8</pre></div></td><td class="code"><div class="source"><pre><span></span><span class="p">{</span>
+  <span class="kd">let</span> <span class="nx">x</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+  <span class="c1">// function created in environment where x = 10</span>
+  <span class="kd">function</span> <span class="nx">a_closure</span><span class="p">(</span><span class="nx">y</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">x</span> <span class="o">+=</span> <span class="nx">y</span><span class="p">;</span>
+    <span class="k">return</span> <span class="nx">x</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div></td></tr></tbody></table></div></div></div><p>As far as <code>a_closure</code> is concerned, <code>x</code> might as well be a global variable. It is a persistent variable outside of the function that happens to only be accessible to the function.</p></root>
+        </div>
+
+      <footer>
+        <div id="footer-sep">・・・</div>
+        <div class="page-navigation "><a href="/blog/2019-05-16-emacs-profiler-width.html">&lt; Setting the width of Emacs profiler reports</a><a href="/blog/2019-04-17-utau-make-file.html">&gt; A Makefile for UTAU Projects</a></div>
+        <p>I don't necessarily know what I'm talking about.</p>
+        <ul><li><a href="/feeds.html">Atom / RSS</a> (<a href="/feeds/all.atom.xml">direct link</a>)</li>
+<li><a href="https://twitter.com/flyin1501" class="">Twitter</a></li>
+<li><a href="https://github.com/kisaragi-hiu" class="">Github</a></li>
+<li><a href="https://gitlab.com/kisaragi-hiu" class="">Gitlab.com</a></li>
+<li><a href="https://git.sr.ht/~kisaragi_hiu/">Sourcehut</a></li>
+<li><a href="https://youtube.com/channel/UCl_hsqcvdX0XdgBimRQ6R3A" class="">Youtube</a></li>
+<li><a href="https://www.nicovideo.jp/user/38995186" class="">niconico</a></li></ul>
+        <p>
+          <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
+           <img alt="Creative Commons License"
+                style="border-width:0"
+                src="/static/cc-by-sa-88x31.png" />
+          </a>
+        </p>
+        <p>Posts are licensed under a <a href="http://creativecommons.org/licenses/by-sa/4.0/">CC-BY-SA 4.0 International</a> license.</p>
+<p><a href="https://github.com/kisaragi-hiu/kisaragi-hiu.com">Source code</a> is licensed under MIT. See <a href="https://github.com/kisaragi-hiu/kisaragi-hiu.com/blob/source/LICENSE.md" rel="license">LICENSE.md</a> for details.</p>
+<p>© Kisaragi Hiu 2017~2019. GPG fingerprint: /KisaragiHiu.gpgBCC74B1041D4B7D7CC8BF40240ECBEAEA8775FC2</p>
+      </footer>
+    </div>
+  </body>
+</html>

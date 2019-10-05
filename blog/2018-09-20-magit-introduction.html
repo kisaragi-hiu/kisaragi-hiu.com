@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Getting started with Magit (Or what I hope I could've read when I first tried out Magit) | Kisaragi Hiu</title>
+    <meta name="description" content="description">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="Kisaragi Hiu">
+    <meta name="keywords" content="Coding, Programming, Language, LGBT, Blog">
+    <link rel="icon" href="/favicon.ico">
+    <link rel="canonical" href="https://kisaragi-hiu.com/blog/2018-09-20-magit-introduction.html">
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+    <script>
+      WebFont.load({
+          google: {
+              families: ['Overpass Mono', 'Overpass:200,400,600']
+          }
+      });
+    </script>
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="alternate" type="application/atom+xml" href="/feed.xml" title="Atom Feed">
+  </head>
+  <body>
+    <a id="top"></a>
+    <div class="container">
+      <!--[if lte IE 9]>
+        <h1>For the love of god, please stop using IE9. Thanks.</h1>
+      <![endif]-->
+      <header id="siteheader">
+        <div id="logo">
+          <a href="/">
+            <img src="/static/avatar.png" alt="Kisaragi Hiu"/>
+          </a>
+          <h1>Kisaragi&nbsp;Hiu</h1>
+        </div>
+        <nav>
+          <a href="/">Blog</a>
+          <a href="/projects.html">Projects</a>
+          <a href="/about.html">About</a>
+        </nav>
+      </header>
+
+      <div id="content" class="">
+
+        <header class=""><h2 class="title mb-0"><a href="/blog/2018-09-20-magit-introduction.html" class="text-primary">Getting started with Magit (Or what I hope I could've read when I first tried out Magit)</a></h2><p class="date">2018/09/20</p><p class="category">C: <a href="/category/tutorials.html">Tutorials</a></p></header>
+        <h1 id="toc-title">Table of Contents</h1><div class="toc"><a href="#g2401" class="toc-h1">The <code>magit</code> command</a><a href="#g2402" class="toc-h1">Setting up Magit (and Emacs)</a><a href="#g2403" class="toc-h1">Emacs basics</a></div>
+        <root><p>This is a quick guide for using <a href="https://magit.vc/">Magit</a>, a wonderful Git interface based in Emacs. Its base features are fairly simple, but it can be confusing if you're not already using Emacs, as I was a few months ago.</p><video muted="muted" autoplay="autoplay" src="/static/emacs-magit-typical-workflow.mp4" loop="loop" style="max-width:100%;" controls=""></video><h1 id="g2401">The <code>magit</code> command</h1><p>I'll explain Emacs basics in the last paragraph.</p><p>The stage / committing workflow with Magit is centered around an interactive version of <code>git status</code>.</p><p>Call <code>magit</code> in a git repository, ie. when you have a file or folder open in the repo. The window that pops up is that interactive <code>git status</code>.</p><video autoplay="autoplay" style="max-width:100%;" muted="muted" loop="loop" src="/static/emacs-magit-status.mp4"></video><p>Move the cursor onto a hunk and press <kbd>Tab</kbd>. This toggles display of its contents. Press <kbd>s</kbd> to stage, <kbd>u</kbd> to unstage, <kbd>c</kbd> for commit options, <kbd>F</kbd> for pulling options, and <kbd>P</kbd> for pushing options.</p><p>This alone, I feel, is many times faster than using <code>git status</code>, <code>git diff</code>, <code>git add</code>, <code>git commit</code>, etc. directly.</p><p>Pressing <kbd>Enter</kbd> will visit the hunk under cursor.</p><p>Also check out other options in the "Magit" menu located in the menu bar, when you're in the Magit window.</p><video autoplay="autoplay" style="max-width:100%;" muted="muted" loop="loop" src="/static/emacs-magit-quick-workflow.mp4"></video><h1 id="g2402">Setting up Magit (and Emacs)</h1><p>If you have an Emacs configuration already, just install Magit from MELPA and ignore this.</p><p>This will introduce Emacs package management with <code>use-package</code>, in a way that I think is easier to maintain.</p><p>Edit the file <code>~/.emacs.d/init.el</code>, then type this into it:</p><div class="highlight"><table class="sourcetable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23</pre></div></td><td class="code"><div class="source"><pre><span></span><span class="p">(</span><span class="nb">require</span> <span class="ss">&#39;package</span><span class="p">)</span>
+<span class="c1">;; load packages ourselves</span>
+<span class="c1">;; press C-h v on the variable for more documentation</span>
+<span class="p">(</span><span class="k">setq</span> <span class="nv">package-enable-at-startup</span> <span class="no">nil</span><span class="p">)</span>
+<span class="c1">;; Add MELPA to package-archives</span>
+<span class="p">(</span><span class="nv">add-to-list</span> <span class="ss">&#39;package-archives</span> <span class="o">&#39;</span><span class="p">(</span><span class="s">"melpa"</span> <span class="o">.</span> <span class="s">"https://melpa.org/packages/"</span><span class="p">))</span>
+<span class="c1">;; load packages now</span>
+<span class="p">(</span><span class="nv">package-initialize</span><span class="p">)</span>
+
+<span class="c1">;; Emacs adds `custom&#39; settings in the init file by default. Run this file</span>
+<span class="c1">;; without this segment to see what that means.</span>
+<span class="c1">;; Put those away in "custom.el".</span>
+<span class="p">(</span><span class="k">setq</span> <span class="nv">custom-file</span> <span class="p">(</span><span class="nf">concat</span> <span class="nv">user-emacs-directory</span> <span class="s">"custom.el"</span><span class="p">))</span>
+<span class="p">(</span><span class="nf">load</span> <span class="nv">custom-file</span> <span class="nb">:noerror</span><span class="p">)</span>
+
+<span class="c1">;; update local database then install use-package if it&#39;s not installed</span>
+<span class="p">(</span><span class="nb">unless</span> <span class="p">(</span><span class="nv">package-installed-p</span> <span class="ss">&#39;use-package</span><span class="p">)</span>
+  <span class="p">(</span><span class="nv">package-refresh-contents</span><span class="p">)</span>
+  <span class="p">(</span><span class="nv">package-install</span> <span class="ss">&#39;use-package</span><span class="p">))</span>
+
+<span class="p">(</span><span class="nb">require</span> <span class="ss">&#39;use-package</span><span class="p">)</span>
+<span class="c1">;; tell use-package to install a package if it&#39;s not already installed</span>
+<span class="p">(</span><span class="k">setq</span> <span class="nv">use-package-always-ensure</span> <span class="no">t</span><span class="p">)</span>
+</pre></div></td></tr></tbody></table></div><p>Then install Magit and set a keyboard shortcut to invoke it:</p><div class="highlight"><table class="sourcetable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="source"><pre><span></span><span class="p">(</span><span class="nb">use-package</span> <span class="nv">magit</span>
+  <span class="nb">:bind</span> <span class="p">((</span><span class="s">"C-x g"</span> <span class="o">.</span> <span class="nv">magit</span><span class="p">)))</span>
+</pre></div></td></tr></tbody></table></div><p>Read more about Magit in its manual. <a href="https://magit.vc/manual/magit/">https://magit.vc/manual/magit/</a></p><h1 id="g2403">Emacs basics</h1><p>The mouse can be used for selection or moving the cursor around, like other editors. Typing something with an active selected region by default does not replace the text; to enable the expected behavior, add <code>(delete-selection-mode 1)</code> to your init file. A selected region is just called a "region" in Emacs.</p><p>Arrow keys work as expected, and you can explore other more efficient movement keys in the Emacs tutorial; start it with <kbd>C-h t</kbd>, or run <kbd>M-x</kbd> <code>help-with-tutorial</code>.</p></root>
+        </div>
+
+      <footer>
+        <div id="footer-sep">・・・</div>
+        <div class="page-navigation "><a href="/blog/2018-10-08-random-string-picolisp.html">&lt; <span>Three versions of <code>random-string</code></span></a><a href="/blog/2018-07-27-utau-tip-labels.html">&gt; UTAU tip: labels</a></div>
+        <p>I don't necessarily know what I'm talking about.</p>
+        <ul><li><a href="/feeds.html">Atom / RSS</a> (<a href="/feeds/all.atom.xml">direct link</a>)</li>
+<li><a href="https://twitter.com/flyin1501" class="">Twitter</a></li>
+<li><a href="https://github.com/kisaragi-hiu" class="">Github</a></li>
+<li><a href="https://gitlab.com/kisaragi-hiu" class="">Gitlab.com</a></li>
+<li><a href="https://git.sr.ht/~kisaragi_hiu/">Sourcehut</a></li>
+<li><a href="https://youtube.com/channel/UCl_hsqcvdX0XdgBimRQ6R3A" class="">Youtube</a></li>
+<li><a href="https://www.nicovideo.jp/user/38995186" class="">niconico</a></li></ul>
+        <p>
+          <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
+           <img alt="Creative Commons License"
+                style="border-width:0"
+                src="/static/cc-by-sa-88x31.png" />
+          </a>
+        </p>
+        <p>Posts are licensed under a <a href="http://creativecommons.org/licenses/by-sa/4.0/">CC-BY-SA 4.0 International</a> license.</p>
+<p><a href="https://github.com/kisaragi-hiu/kisaragi-hiu.com">Source code</a> is licensed under MIT. See <a href="https://github.com/kisaragi-hiu/kisaragi-hiu.com/blob/source/LICENSE.md" rel="license">LICENSE.md</a> for details.</p>
+<p>© Kisaragi Hiu 2017~2019. GPG fingerprint: /KisaragiHiu.gpgBCC74B1041D4B7D7CC8BF40240ECBEAEA8775FC2</p>
+      </footer>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>QR Codes from Emacs | Kisaragi Hiu</title>
+    <meta name="description" content="description">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="Kisaragi Hiu">
+    <meta name="keywords" content="Coding, Programming, Language, LGBT, Blog">
+    <link rel="icon" href="/favicon.ico">
+    <link rel="canonical" href="https://kisaragi-hiu.com/blog/2019-09-24-qr-codes-from-emacs.html">
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+    <script>
+      WebFont.load({
+          google: {
+              families: ['Overpass Mono', 'Overpass:200,400,600']
+          }
+      });
+    </script>
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="alternate" type="application/atom+xml" href="/feed.xml" title="Atom Feed">
+  </head>
+  <body>
+    <a id="top"></a>
+    <div class="container">
+      <!--[if lte IE 9]>
+        <h1>For the love of god, please stop using IE9. Thanks.</h1>
+      <![endif]-->
+      <header id="siteheader">
+        <div id="logo">
+          <a href="/">
+            <img src="/static/avatar.png" alt="Kisaragi Hiu"/>
+          </a>
+          <h1>Kisaragi&nbsp;Hiu</h1>
+        </div>
+        <nav>
+          <a href="/">Blog</a>
+          <a href="/projects.html">Projects</a>
+          <a href="/about.html">About</a>
+        </nav>
+      </header>
+
+      <div id="content" class="">
+
+        <header class=""><h2 class="title mb-0"><a href="/blog/2019-09-24-qr-codes-from-emacs.html" class="text-primary">QR Codes from Emacs</a></h2><p class="date">2019/09/24</p><p class="category">C: <a href="/category/emacs.html">Emacs</a></p></header>
+
+        <root><p>This article was inspired by <a href="https://blog.jpalardy.com/posts/qr-codes-on-the-command-line/">QR Codes on the Command-Line</a>.</p><p>QR codes are nice: if you want to send e.g. a URL or a short string to your phone, just turn it into a QR code and scan it on the phone, no internet required.</p><p>Install <a href="https://fukuchi.org/works/qrencode/index.html.en"><code>qrencode</code></a> on your system:</p><div class="highlight"><table class="sourcetable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="source"><pre><span></span>pacman -S qrencode
+</pre></div></td></tr></tbody></table></div><p>Now a QR code can be generated in Emacs by directly calling the shell command, then dumping it to an ASCII art in the <code>*Messages*</code> buffer:</p><div class="highlight"><table class="sourcetable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="source"><pre><span></span><span class="p">(</span><span class="nv">shell-command-to-string</span> <span class="s">"qrencode &#39;hello world&#39; -t UTF8 -o -"</span><span class="p">)</span>
+</pre></div></td></tr></tbody></table></div><div class="image"><p><img src="/static/emacs-qrencode-as-ascii.png" style="max-width:100%;max-height:25rem;" class=""/></p><p class="image-caption">qrencode output in *Messages*</p></div><p>Of course, we should utilize Emacs's ability to display images. Here's a Emacs command that prompts for the string, encodes it with <code>qrencode</code>, and displays it in a nice PNG buffer.</p><h2 id="k-q-gui-only"><code>kisaragi/qr-encode</code></h2><div class="highlight"><table class="sourcetable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22</pre></div></td><td class="code"><div class="source"><pre><span></span><span class="p">(</span><span class="nb">defun</span> <span class="nv">kisaragi/qr-encode</span> <span class="p">(</span><span class="nv">str</span> <span class="kp">&amp;optional</span> <span class="nv">buf</span><span class="p">)</span>
+  <span class="s">"Encode STR as a QR code.</span>
+
+<span class="s">Return a new buffer or BUF with the code in it."</span>
+  <span class="p">(</span><span class="k">interactive</span> <span class="s">"MString to encode: "</span><span class="p">)</span>                    <span class="c1">; Open a prompt; pass input as str</span>
+  <span class="p">(</span><span class="k">let</span> <span class="p">((</span><span class="nv">buffer</span> <span class="p">(</span><span class="nf">get-buffer-create</span> <span class="p">(</span><span class="k">or</span> <span class="nv">buf</span> <span class="s">"*QR Code*"</span><span class="p">)))</span>
+        <span class="p">(</span><span class="nv">inhibit-read-only</span> <span class="no">t</span><span class="p">))</span>                           <span class="c1">; make sure we can write the output</span>
+    <span class="p">(</span><span class="nb">with-current-buffer</span> <span class="nv">buffer</span>
+      <span class="p">(</span><span class="nf">delete-region</span> <span class="p">(</span><span class="nf">point-min</span><span class="p">)</span> <span class="p">(</span><span class="nf">point-max</span><span class="p">)))</span>           <span class="c1">; Clear the buffer</span>
+    <span class="p">(</span><span class="nv">make-process</span>                                        <span class="c1">; Start a process</span>
+     <span class="nb">:name</span> <span class="s">"qrencode"</span> <span class="nb">:buffer</span> <span class="nv">buffer</span>                     <span class="c1">; that writes stdout to `buffer&#39;</span>
+     <span class="nb">:command</span> <span class="o">`</span><span class="p">(</span><span class="s">"qrencode"</span> <span class="o">,</span><span class="nv">str</span> <span class="s">"-t"</span> <span class="s">"PNG"</span> <span class="s">"-o"</span> <span class="s">"-"</span><span class="p">)</span>     <span class="c1">; "-o -" sends output to stdout</span>
+     <span class="nb">:coding</span> <span class="ss">&#39;no-conversion</span>                              <span class="c1">; Don&#39;t encode stdout as string</span>
+     <span class="nb">:sentinel</span> <span class="p">(</span><span class="nb">lambda</span> <span class="p">(</span><span class="nv">process</span> <span class="nv">change</span><span class="p">)</span>
+                 <span class="p">(</span><span class="nb">when</span> <span class="p">(</span><span class="nv">string=</span> <span class="nv">change</span> <span class="s">"finished\n"</span><span class="p">)</span>     <span class="c1">; If the process successfully exits,</span>
+                   <span class="p">(</span><span class="nb">with-current-buffer</span>
+                       <span class="p">(</span><span class="nf">process-buffer</span> <span class="nv">process</span><span class="p">)</span>          <span class="c1">; then go to the buffer,</span>
+                     <span class="p">(</span><span class="nv">image-mode</span><span class="p">)</span>                        <span class="c1">; display its contents as PNG,</span>
+                     <span class="p">(</span><span class="nv">image-transform-fit-to-height</span><span class="p">)))))</span> <span class="c1">; and resize it so it&#39;s not tiny</span>
+    <span class="p">(</span><span class="nb">when</span> <span class="p">(</span><span class="nv">called-interactively-p</span> <span class="ss">&#39;interactive</span><span class="p">)</span>
+      <span class="p">(</span><span class="nv">display-buffer</span> <span class="nv">buffer</span><span class="p">))</span>
+    <span class="nv">buffer</span><span class="p">))</span>
+</pre></div></td></tr></tbody></table></div><video autoplay="autoplay" style="max-width:100%;max-height:40rem;" muted="muted" loop="loop" src="/static/emacs-kisaragi-qr-encode.mp4"></video><h1 id="g528">In the Terminal</h1><p>For <a href="https://blog.aaronbieber.com/2016/12/29/don-t-use-terminal-emacs.html">as nice as GUI Emacs is</a>, sometimes I just have to use Emacs in a terminal — specifically, on Android, under <a href="https://termux.com/">Termux</a>. This version is what I have in <a href="https://gitlab.com/kisaragi-hiu/.emacs.d" class="">my Emacs configuration</a> right now (2019-09-24), which uses ASCII art output if it is run in a terminal.</p><h2 id="k-q-with-non-gui"><code>kisaragi/qr-encode</code> with non-GUI support</h2><div class="highlight"><table class="sourcetable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32</pre></div></td><td class="code"><div class="source"><pre><span></span><span class="p">(</span><span class="nb">defun</span> <span class="nv">kisaragi/qr-encode</span> <span class="p">(</span><span class="nv">str</span> <span class="kp">&amp;optional</span> <span class="nv">buf</span><span class="p">)</span>
+  <span class="s">"Encode STR as a QR code.</span>
+
+<span class="s">Return a new buffer or BUF with the code in it."</span>
+  <span class="p">(</span><span class="k">interactive</span> <span class="s">"MString to encode: "</span><span class="p">)</span>
+  <span class="p">(</span><span class="k">let</span> <span class="p">((</span><span class="nv">buffer</span> <span class="p">(</span><span class="nf">get-buffer-create</span> <span class="p">(</span><span class="k">or</span> <span class="nv">buf</span> <span class="s">"*QR Code*"</span><span class="p">)))</span>
+        <span class="p">(</span><span class="nf">format</span> <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nv">display-graphic-p</span><span class="p">)</span> <span class="s">"PNG"</span> <span class="s">"UTF8"</span><span class="p">))</span>        <span class="c1">; use PNG in a graphical frame</span>
+        <span class="p">(</span><span class="nv">inhibit-read-only</span> <span class="no">t</span><span class="p">))</span>
+    <span class="p">(</span><span class="nb">with-current-buffer</span> <span class="nv">buffer</span>
+      <span class="p">(</span><span class="nf">delete-region</span> <span class="p">(</span><span class="nf">point-min</span><span class="p">)</span> <span class="p">(</span><span class="nf">point-max</span><span class="p">)))</span>
+    <span class="p">(</span><span class="nv">make-process</span>
+     <span class="nb">:name</span> <span class="s">"qrencode"</span> <span class="nb">:buffer</span> <span class="nv">buffer</span>
+     <span class="nb">:command</span> <span class="o">`</span><span class="p">(</span><span class="s">"qrencode"</span> <span class="o">,</span><span class="nv">str</span> <span class="s">"-t"</span> <span class="o">,</span><span class="nf">format</span> <span class="s">"-o"</span> <span class="s">"-"</span><span class="p">)</span>
+     <span class="nb">:coding</span> <span class="ss">&#39;no-conversion</span>
+     <span class="c1">;; seems only the filter function is able to move point to top</span>
+     <span class="nb">:filter</span> <span class="p">(</span><span class="nb">lambda</span> <span class="p">(</span><span class="nv">process</span> <span class="nf">string</span><span class="p">)</span>
+               <span class="p">(</span><span class="nb">with-current-buffer</span> <span class="p">(</span><span class="nf">process-buffer</span> <span class="nv">process</span><span class="p">)</span>  <span class="c1">; Make sure we&#39;re looking at the</span>
+                 <span class="p">(</span><span class="nf">insert</span> <span class="nf">string</span><span class="p">)</span>                              <span class="c1">; top of the output buffer</span>
+                 <span class="p">(</span><span class="nf">goto-char</span> <span class="p">(</span><span class="nf">point-min</span><span class="p">))</span>
+                 <span class="p">(</span><span class="nf">set-marker</span> <span class="p">(</span><span class="nf">process-mark</span> <span class="nv">process</span><span class="p">)</span> <span class="p">(</span><span class="nf">point</span><span class="p">))))</span>
+     <span class="nb">:sentinel</span> <span class="p">(</span><span class="nb">lambda</span> <span class="p">(</span><span class="nv">process</span> <span class="nv">change</span><span class="p">)</span>
+                 <span class="p">(</span><span class="nb">when</span> <span class="p">(</span><span class="nv">string=</span> <span class="nv">change</span> <span class="s">"finished\n"</span><span class="p">)</span>
+                   <span class="p">(</span><span class="nb">with-current-buffer</span> <span class="p">(</span><span class="nf">process-buffer</span> <span class="nv">process</span><span class="p">)</span>
+                     <span class="p">(</span><span class="k">cond</span> <span class="p">((</span><span class="nv">string=</span> <span class="nf">format</span> <span class="s">"PNG"</span><span class="p">)</span>
+                            <span class="p">(</span><span class="nv">image-mode</span><span class="p">)</span>
+                            <span class="p">(</span><span class="nv">image-transform-fit-to-height</span><span class="p">))</span>
+                           <span class="p">(</span><span class="no">t</span>                                 <span class="c1">; decode the output as we</span>
+                            <span class="p">(</span><span class="nv">text-mode</span><span class="p">)</span>                       <span class="c1">; suppressed it at line 14</span>
+                            <span class="p">(</span><span class="nf">decode-coding-region</span> <span class="p">(</span><span class="nf">point-min</span><span class="p">)</span> <span class="p">(</span><span class="nf">point-max</span><span class="p">)</span> <span class="ss">&#39;utf-8</span><span class="p">)))))))</span>
+    <span class="p">(</span><span class="nb">when</span> <span class="p">(</span><span class="nv">called-interactively-p</span> <span class="ss">&#39;interactive</span><span class="p">)</span>
+      <span class="p">(</span><span class="nv">display-buffer</span> <span class="nv">buffer</span><span class="p">))</span>
+    <span class="nv">buffer</span><span class="p">))</span>
+</pre></div></td></tr></tbody></table></div></root>
+        </div>
+
+      <footer>
+        <div id="footer-sep">・・・</div>
+        <div class="page-navigation "><span class="disabled">&lt; No newer article</span><a href="/blog/2019-05-16-emacs-profiler-width.html">&gt; Setting the width of Emacs profiler reports</a></div>
+        <p>I don't necessarily know what I'm talking about.</p>
+        <ul><li><a href="/feeds.html">Atom / RSS</a> (<a href="/feeds/all.atom.xml">direct link</a>)</li>
+<li><a href="https://twitter.com/flyin1501" class="">Twitter</a></li>
+<li><a href="https://github.com/kisaragi-hiu" class="">Github</a></li>
+<li><a href="https://gitlab.com/kisaragi-hiu" class="">Gitlab.com</a></li>
+<li><a href="https://git.sr.ht/~kisaragi_hiu/">Sourcehut</a></li>
+<li><a href="https://youtube.com/channel/UCl_hsqcvdX0XdgBimRQ6R3A" class="">Youtube</a></li>
+<li><a href="https://www.nicovideo.jp/user/38995186" class="">niconico</a></li></ul>
+        <p>
+          <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
+           <img alt="Creative Commons License"
+                style="border-width:0"
+                src="/static/cc-by-sa-88x31.png" />
+          </a>
+        </p>
+        <p>Posts are licensed under a <a href="http://creativecommons.org/licenses/by-sa/4.0/">CC-BY-SA 4.0 International</a> license.</p>
+<p><a href="https://github.com/kisaragi-hiu/kisaragi-hiu.com">Source code</a> is licensed under MIT. See <a href="https://github.com/kisaragi-hiu/kisaragi-hiu.com/blob/source/LICENSE.md" rel="license">LICENSE.md</a> for details.</p>
+<p>© Kisaragi Hiu 2017~2019. GPG fingerprint: /KisaragiHiu.gpgBCC74B1041D4B7D7CC8BF40240ECBEAEA8775FC2</p>
+      </footer>
+    </div>
+  </body>
+</html>

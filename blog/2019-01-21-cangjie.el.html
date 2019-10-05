@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Lookup Cangjie encoding in Emacs with cangjie.el | Kisaragi Hiu</title>
+    <meta name="description" content="description">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="Kisaragi Hiu">
+    <meta name="keywords" content="Coding, Programming, Language, LGBT, Blog">
+    <link rel="icon" href="/favicon.ico">
+    <link rel="canonical" href="https://kisaragi-hiu.com/blog/2019-01-21-cangjie.el.html">
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+    <script>
+      WebFont.load({
+          google: {
+              families: ['Overpass Mono', 'Overpass:200,400,600']
+          }
+      });
+    </script>
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="alternate" type="application/atom+xml" href="/feed.xml" title="Atom Feed">
+  </head>
+  <body>
+    <a id="top"></a>
+    <div class="container">
+      <!--[if lte IE 9]>
+        <h1>For the love of god, please stop using IE9. Thanks.</h1>
+      <![endif]-->
+      <header id="siteheader">
+        <div id="logo">
+          <a href="/">
+            <img src="/static/avatar.png" alt="Kisaragi Hiu"/>
+          </a>
+          <h1>Kisaragi&nbsp;Hiu</h1>
+        </div>
+        <nav>
+          <a href="/">Blog</a>
+          <a href="/projects.html">Projects</a>
+          <a href="/about.html">About</a>
+        </nav>
+      </header>
+
+      <div id="content" class="">
+
+        <header class=""><h2 class="title mb-0"><a href="/blog/2019-01-21-cangjie.el.html" class="text-primary"><span>Lookup Cangjie encoding in Emacs with <code>cangjie.el</code></span></a></h2><p class="date">2019/01/21</p></header>
+        <h1 id="toc-title">Table of Contents</h1><div class="toc"><a href="#g1564" class="toc-h1"><code>curl Wiktionary | grep "仓颉"</code></a><a href="#g1565" class="toc-h1">Using RIME’s Cangjie dictionary</a><a href="#g1566" class="toc-h1">Submitting to MELPA</a></div>
+        <root><p>In August 2018, I wanted to start learning <a href="https://en.wikipedia.org/wiki/Cangjie_input_method">Cangjie input method</a>, but I didn't know of an easy way to look up the encoding for particular characters. Up to this point I had been using Chinese Wiktionary, which contains the encoding in the pages about individual characters.</p><h1 id="g1564"><code>curl Wiktionary | grep "仓颉"</code></h1><p>Getting that data from Wiktionary is simple: <code>curl "https://zh.wiktionary.org/wiki/&lt;character&gt;" | grep "仓颉"</code>. I initially had this saved as a shell script, but as I use Emacs a lot, I wanted to have the function available in Emacs. The <code>cangjie</code> function receives the character and passes it to the pipeline, written in Emacs Lisp with <a href="https://github.com/magnars/dash.el"><code>dash.el</code></a>’s threading macro.</p><p>This approach has a problem. Even though most Wiktionary pages do contain the information I need, that’s not guaranteed in any way. Plus, reaching for a server everytime I want to look up a character means it’s going to be slow. So I wanted to look for a Cangjie dictionary, and the best option that came to mind was to use the dictionary from <a href="https://rime.im/">RIME</a>.</p><h1 id="g1565">Using RIME’s Cangjie dictionary</h1><p>RIME is an <a href="https://en.wikipedia.org/wiki/Input_method">IME</a> for Chinese languages. It has built-in support for Cangjie (all Han characters), Pinyin, Zhuyin (Mandarin), Jyutping (Cantonese), among other input methods. For my use case, it has a Cangjie dictionary <a href="https://github.com/rime/rime-cangjie" class="">available on GitHub</a> that uses a much more stable format than Wiktionary entries.</p><p>The first version I committed to the <a href="https://github.com/kisaragi-hiu/cangjie.el" class="">cangjie.el repository</a> already had both of these approaches; in this version, which approach to use is controlled by whether a valid RIME dictionary exists or not.</p><p>RIME dictionaries (<a href="https://github.com/rime/home/wiki/RimeWithSchemata#%E7%A2%BC%E8%A1%A8%E8%88%87%E8%A9%9E%E5%85%B8">official documentation</a>) are <code>\t</code>-seperated values with a YAML header in front, using # as the comment character. To get the Cangjie encoding for a character from the dictionary, we grab the lines matching the character, remove any matches starting with a #, then select the second element delimited by <code>\t</code>. This encoding is written in the alphabetical representation of the Cangjie code (like <code>jnd</code>), so we convert that to the Han character representation (like <code>十弓木</code>), implemented with <code>cangjie--abc-to-han</code>.</p><div class="highlight"><table class="sourcetable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24</pre></div></td><td class="code"><div class="source"><pre><span></span><span class="p">(</span><span class="nb">defun</span> <span class="nv">cangjie</span> <span class="p">(</span><span class="nv">han</span><span class="p">)</span>
+  <span class="s">"Retrieve Cangjie code for the HAN character."</span>
+  <span class="p">(</span><span class="k">cond</span> <span class="p">((</span><span class="nv">cangjie--valid-rime-dict?</span> <span class="nv">cangjie-source</span><span class="p">)</span>
+         <span class="c1">;; take cangjie encoding from RIME dictionary</span>
+         <span class="p">(</span><span class="nv">-&gt;&gt;</span> <span class="p">(</span><span class="nv">cangjie--grep-line</span> <span class="nv">cangjie-source</span> <span class="nv">han</span><span class="p">)</span>
+              <span class="p">(</span><span class="nv">--filter</span> <span class="p">(</span><span class="nv">not</span> <span class="p">(</span><span class="nv">s-prefix?</span> <span class="s">"#"</span> <span class="nv">it</span><span class="p">)))</span>
+              <span class="p">(</span><span class="nv">s-join</span> <span class="s">""</span><span class="p">)</span>
+              <span class="p">(</span><span class="nv">s-split</span> <span class="s">"\t"</span><span class="p">)</span>
+              <span class="nv">second</span>
+              <span class="nv">cangjie--abc-to-han</span><span class="p">))</span>
+        <span class="p">((</span><span class="nf">eq</span> <span class="nv">cangjie-source</span> <span class="ss">&#39;wiktionary</span><span class="p">)</span>
+         <span class="c1">;; Try to extract encoding from grep&#39;d wiktionary text</span>
+         <span class="p">(</span><span class="nv">-&gt;&gt;</span> <span class="p">(</span><span class="nv">shell-command-to-string</span>
+               <span class="p">(</span><span class="nf">concat</span> <span class="s">"curl --silent https://zh.wiktionary.org/wiki/"</span> <span class="nv">han</span>
+                       <span class="s">" | grep 仓颉"</span><span class="p">))</span>
+              <span class="p">(</span><span class="nv">s-replace-regexp</span> <span class="s">"^.*："</span> <span class="s">""</span><span class="p">)</span>
+              <span class="nv">s-trim</span>
+              <span class="p">(</span><span class="nv">s-replace-regexp</span> <span class="s">"&lt;.*&gt;$"</span> <span class="s">""</span><span class="p">)</span>
+              <span class="nv">cangjie--abc-to-han</span><span class="p">))</span>
+        <span class="p">(</span><span class="no">t</span>
+         <span class="c1">;; Fallback</span>
+         <span class="p">(</span><span class="nv">shell-command-to-string</span>
+          <span class="p">(</span><span class="nf">concat</span> <span class="s">"curl --silent https://zh.wiktionary.org/wiki/"</span> <span class="nv">han</span>
+                  <span class="s">" | grep 仓颉"</span><span class="p">)))))</span>
+</pre></div></td></tr></tbody></table></div><p>After this, I added code to automatically download the RIME dictionary, a customize option to control whether to use Wiktionary or RIME, and rewrote some code for taste. This is when I considered the package essentially complete.</p><h1 id="g1566">Submitting to MELPA</h1><p>In October, I came across <a href="https://spin.atomicobject.com/2016/05/27/write-emacs-package/">Take Your Emacs to the Next Level by Writing Custom Packages</a>, where the author writes about their experience writing their first package. In particular, there’s a section about how they submitted their package onto MELPA, and it made me consider submitting to MELPA as well.</p><p>I’ve set up Flycheck a long time ago, and have generally always agreed with the warnings it gave me about docstrings and code style. After going through <a href="https://github.com/melpa/melpa/blob/2c70b4f5d62fcd1df998af325342aa082c7e939d/CONTRIBUTING.org">MELPA’s official guide</a> on submission, I opened a pull request and got accepted. It was a pleasant experience.</p></root>
+        </div>
+
+      <footer>
+        <div id="footer-sep">・・・</div>
+        <div class="page-navigation "><a href="/blog/2019-04-13-systemd-timer-tracker-store.html">&lt; systemd units to kill a daemon on loop</a><a href="/blog/2019-01-03-pollen-pdf-template.html">&gt; A Pollen PDF template based on HTML, instead of LaTeX</a></div>
+        <p>I don't necessarily know what I'm talking about.</p>
+        <ul><li><a href="/feeds.html">Atom / RSS</a> (<a href="/feeds/all.atom.xml">direct link</a>)</li>
+<li><a href="https://twitter.com/flyin1501" class="">Twitter</a></li>
+<li><a href="https://github.com/kisaragi-hiu" class="">Github</a></li>
+<li><a href="https://gitlab.com/kisaragi-hiu" class="">Gitlab.com</a></li>
+<li><a href="https://git.sr.ht/~kisaragi_hiu/">Sourcehut</a></li>
+<li><a href="https://youtube.com/channel/UCl_hsqcvdX0XdgBimRQ6R3A" class="">Youtube</a></li>
+<li><a href="https://www.nicovideo.jp/user/38995186" class="">niconico</a></li></ul>
+        <p>
+          <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
+           <img alt="Creative Commons License"
+                style="border-width:0"
+                src="/static/cc-by-sa-88x31.png" />
+          </a>
+        </p>
+        <p>Posts are licensed under a <a href="http://creativecommons.org/licenses/by-sa/4.0/">CC-BY-SA 4.0 International</a> license.</p>
+<p><a href="https://github.com/kisaragi-hiu/kisaragi-hiu.com">Source code</a> is licensed under MIT. See <a href="https://github.com/kisaragi-hiu/kisaragi-hiu.com/blob/source/LICENSE.md" rel="license">LICENSE.md</a> for details.</p>
+<p>© Kisaragi Hiu 2017~2019. GPG fingerprint: /KisaragiHiu.gpgBCC74B1041D4B7D7CC8BF40240ECBEAEA8775FC2</p>
+      </footer>
+    </div>
+  </body>
+</html>

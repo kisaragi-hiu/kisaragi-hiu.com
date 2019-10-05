@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Setting up this site with Pollen and Frog | Kisaragi Hiu</title>
+    <meta name="description" content="description">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="Kisaragi Hiu">
+    <meta name="keywords" content="Coding, Programming, Language, LGBT, Blog">
+    <link rel="icon" href="/favicon.ico">
+    <link rel="canonical" href="https://kisaragi-hiu.com/blog/2017-11-14-this-blog-with-pollen-and-frog.html">
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+    <script>
+      WebFont.load({
+          google: {
+              families: ['Overpass Mono', 'Overpass:200,400,600']
+          }
+      });
+    </script>
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="alternate" type="application/atom+xml" href="/feed.xml" title="Atom Feed">
+  </head>
+  <body>
+    <a id="top"></a>
+    <div class="container">
+      <!--[if lte IE 9]>
+        <h1>For the love of god, please stop using IE9. Thanks.</h1>
+      <![endif]-->
+      <header id="siteheader">
+        <div id="logo">
+          <a href="/">
+            <img src="/static/avatar.png" alt="Kisaragi Hiu"/>
+          </a>
+          <h1>Kisaragi&nbsp;Hiu</h1>
+        </div>
+        <nav>
+          <a href="/">Blog</a>
+          <a href="/projects.html">Projects</a>
+          <a href="/about.html">About</a>
+        </nav>
+      </header>
+
+      <div id="content" class="">
+
+        <header class=""><h2 class="title mb-0"><a href="/blog/2017-11-14-this-blog-with-pollen-and-frog.html" class="text-primary">Setting up this site with Pollen and Frog</a></h2><p class="date">2017/11/14</p><p class="category">C: <a href="/category/meta.html">Meta</a></p></header>
+
+        <root><p>I have wanted to keep a personal site since 2015. I started on Jimdo, then moved to WordPress.com, then Blogger, then just let the site rot. I wasn't writing much, and the only posts I had were copies of my UTAU cover announcements.</p><h1 id="g5626">Github Pages</h1><p>In March this year, I discovered Github Pages, and wanted to revive my personal site. I started with the official tutorial, not understanding static site generators or Jekyll, even. I only wrote one post during this time, basically <a href="https://kisaragi-hiu.com/blog/2017-03-19-new-website" class="">the hello world post</a>.</p><p>I then moved to Hugo in June, with the next two posts being yet again, cover announcements. I didn't (and still don't) understand Hugo, and so I was in the dark when trying to get the site to look the way I want it to. After July, the site was left to rot again.</p><h1 id="g5627">First encounter with Frog, and my Pollen site based on mstill.io</h1><p>In September, after trying out Pollen for my self introduction in August (when my teacher told us to do one), and looking at Frog for a bit, I tried to move the site onto Frog. Knowing next to nothing of Bootstrap and the Racket html templating system (which Frog utilizes), I was again in the dark in stylizing and designing the site. As I had just played with Pollen, I decided to see if anyone has built a blog using Pollen. I found <a href="https://mstill.io">Malcolm Still's website</a> on Github, and forked it to use as a template, as it is released under the BSD 3-clause license.</p><h1 id="g5628">Back to Frog, preprocessed with Pollen</h1><p>When trying to customize and extend mstill.io's system, I had no option but to learn how Malcolm Still has implemented it. This actually taught me a lot about how static site generators (generally) work: they take in source files, turn them into HTML, then combine them into templates. Previously I thought of templates as a black box, but now I see they're just combined together like a tree.</p><p>Eventually, after a few attempts at adding features to posts, I started facing an increasing maintenance overhead. There were four distinct templates, the site index, the tag index, the tags index (a list of all tags), and the general page template, which had to serve for posts and non-posts. Then there are also some features I have no idea how to do with just Pollen, like pagination. I decided, after two weeks, to move to a proper static site generator.</p><h2 id="g5629">Choosing the static site generator</h2><p>I thought about a few different static site generators. Hugo and Hexo both seemed pretty good, but after seeing Hugo shortcodes and realizing how easy is it to do with Pollen, I decided to stay in the Racket ecosystem and use Frog mainly, maybe with Pollen as the preprocessor. To move back to Frog, I had to rewrite the posts in Markdown, figure out how to deal with Markdown newlines, and figure out a design.</p><h2 id="g5630">Port over the posts, preprocess them with Pollen</h2><p>As it turned out, preprocessing the posts with Pollen actually means I can keep the tag functions I was using, and simply tell them to return an HTML or Markdown string. This way I basically have an extensible equivalent to Hugo's shortcodes: for instance, `◊github["kisaragi-hiu"]{this link}` gets turned into <a href="https://github.com/kisaragi-hiu" class="">this link</a>.</p><h2 id="g5631">Dealing with Markdown newlines</h2><p>In Markdown, a single newline doesn't get turned into an actual newline in the output. This generally works fine, except when I want paragraphs with fixed length lines. Splitting each line into its own paragraph is no good, as I still want paragraphs to be clear. I solved this by having a newline-decode function, which turns two or more newlines into one, and adds \&lt;br\&gt; to each line.</p><h2 id="g5632">Figuring out the design</h2><p>This is the trickest part for me. My web development experience only consisted of going through freeCodeCamp's first few turorials and modifying an already styled tenplate from mstill.io.</p><p>I started with trying to make a decent looking top bar in Bootstrap, then gave up because I'm overwhelmed by Bootstrap's complexity. I then looked around and tried to base my style on Skeleton CSS, this time succeeding.</p><p>In the end I spent two weeks from putting up an issue on the Github page to move away from Pollen, to having an overall better site (compared to the mess I added onto mstill.io's basis) built on Frog, in two weeks time.</p><h1 id="g5633">Extra: setting up Travis CI</h1><p>I followed Alexis King's <a href="https://lexi-lambda.github.io/blog/2015/07/18/automatically-deploying-a-frog-powered-blog-to-github-pages/">blog post</a> when setting up Travis when I still hadn't moved onto Frog. Instead of using just one deploy.sh though, I have a build.sh with a build and a publish function, and a deploy.sh which does the deployment.</p><p>I develop this site on <a href="https://github.com/kisaragi-hiu/kisaragi-hiu.github.io" class="">Github</a>, with posts released under CC-BY-SA and code under BSD 3-clause.</p></root>
+        </div>
+
+      <footer>
+        <div id="footer-sep">・・・</div>
+        <div class="page-navigation "><a href="/blog/2017-11-26-east-asian-names-reverse-or-not.html">&lt; East Asian names, to reorder or not to reorder?</a><a href="/blog/2017-10-10-iterations.html">&gt; Iterations of Learning</a></div>
+        <p>I don't necessarily know what I'm talking about.</p>
+        <ul><li><a href="/feeds.html">Atom / RSS</a> (<a href="/feeds/all.atom.xml">direct link</a>)</li>
+<li><a href="https://twitter.com/flyin1501" class="">Twitter</a></li>
+<li><a href="https://github.com/kisaragi-hiu" class="">Github</a></li>
+<li><a href="https://gitlab.com/kisaragi-hiu" class="">Gitlab.com</a></li>
+<li><a href="https://git.sr.ht/~kisaragi_hiu/">Sourcehut</a></li>
+<li><a href="https://youtube.com/channel/UCl_hsqcvdX0XdgBimRQ6R3A" class="">Youtube</a></li>
+<li><a href="https://www.nicovideo.jp/user/38995186" class="">niconico</a></li></ul>
+        <p>
+          <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
+           <img alt="Creative Commons License"
+                style="border-width:0"
+                src="/static/cc-by-sa-88x31.png" />
+          </a>
+        </p>
+        <p>Posts are licensed under a <a href="http://creativecommons.org/licenses/by-sa/4.0/">CC-BY-SA 4.0 International</a> license.</p>
+<p><a href="https://github.com/kisaragi-hiu/kisaragi-hiu.com">Source code</a> is licensed under MIT. See <a href="https://github.com/kisaragi-hiu/kisaragi-hiu.com/blob/source/LICENSE.md" rel="license">LICENSE.md</a> for details.</p>
+<p>© Kisaragi Hiu 2017~2019. GPG fingerprint: /KisaragiHiu.gpgBCC74B1041D4B7D7CC8BF40240ECBEAEA8775FC2</p>
+      </footer>
+    </div>
+  </body>
+</html>

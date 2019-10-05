@@ -1,0 +1,30 @@
+language: python
+python: 3.6
+branches:
+  only:
+  - source
+env:
+  global:
+  - RACKET_DIR: "~/racket"
+  - RACKET_VERSION: 7.2
+  - GH_REF: 'github.com/kisaragi-hiu/kisaragi-hiu.com.git'
+cache:
+  directories:
+    - $HOME/.racket/$RACKET_VERSION/
+before_install:
+- pushd ~/
+- git clone https://github.com/greghendershott/travis-racket.git ~/travis-racket
+- cat ~/travis-racket/install-racket.sh | bash
+- export PATH="${RACKET_DIR}/bin:${PATH}"
+- popd
+install:
+- raco pkg install --skip-installed --deps search-auto pollen txexpr threading css-expr
+- pip install pygments
+script:
+- bash ./build.sh publish
+deploy:
+  provider: script
+  script: bash ./deploy.sh
+  skip_cleanup: true
+  on:
+    branch: source

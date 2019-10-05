@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Setting the width of Emacs profiler reports | Kisaragi Hiu</title>
+    <meta name="description" content="description">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="Kisaragi Hiu">
+    <meta name="keywords" content="Coding, Programming, Language, LGBT, Blog">
+    <link rel="icon" href="/favicon.ico">
+    <link rel="canonical" href="https://kisaragi-hiu.com/blog/2019-05-16-emacs-profiler-width.html">
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+    <script>
+      WebFont.load({
+          google: {
+              families: ['Overpass Mono', 'Overpass:200,400,600']
+          }
+      });
+    </script>
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="alternate" type="application/atom+xml" href="/feed.xml" title="Atom Feed">
+  </head>
+  <body>
+    <a id="top"></a>
+    <div class="container">
+      <!--[if lte IE 9]>
+        <h1>For the love of god, please stop using IE9. Thanks.</h1>
+      <![endif]-->
+      <header id="siteheader">
+        <div id="logo">
+          <a href="/">
+            <img src="/static/avatar.png" alt="Kisaragi Hiu"/>
+          </a>
+          <h1>Kisaragi&nbsp;Hiu</h1>
+        </div>
+        <nav>
+          <a href="/">Blog</a>
+          <a href="/projects.html">Projects</a>
+          <a href="/about.html">About</a>
+        </nav>
+      </header>
+
+      <div id="content" class="">
+
+        <header class=""><h2 class="title mb-0"><a href="/blog/2019-05-16-emacs-profiler-width.html" class="text-primary">Setting the width of Emacs profiler reports</a></h2><p class="date">2019/05/16</p><p class="category">C: <a href="/category/tutorials.html">Tutorials</a></p></header>
+
+        <root><div><p><span><strong>TL;DR: </strong><a href="https://www.gnu.org/software/emacs/manual/html_node/elisp/Setting-Generalized-Variables.html"><code>setf</code></a> the caar of <code>profiler-report-cpu-line-format</code> and <code>profiler-report-memory-line-format</code> to a larger width (default 50 and 55).</span></p><hr/></div><p>Emacs's profiler reports have a fixed width, which makes debugging deeply nested function calls <a href="https://emacs.stackexchange.com/questions/7344/make-profiler-report-columns-wider">difficult</a>.</p><div class="image"><p><img src="/static/emacs-26.2-profiler.png" style="max-width:100%;" class=""/></p><p class="image-caption">truncated at column 29</p></div><p>Ideally the columns would be resized along with the window, or perhaps <a href="https://git.savannah.gnu.org/cgit/emacs.git/tree/lisp/profiler.el?h=emacs-26" class="emacs-source"><code>profiler.el</code></a> should define its formatting variables with <code>defcustom</code>. Either way, it is still relatively easy to change the format.</p><p>The formatting is stored in two variables, <code>profiler-report-cpu-line-format</code> and <code>profiler-report-memory-line-format</code>. They're not documented, but through a bit of guesswork it happens that their <code>caar</code> is the width value.</p><p>In <a href="https://git.savannah.gnu.org/cgit/emacs.git/tree/lisp/profiler.el?h=emacs-26#n446" class="emacs-source"><code>profiler.el</code></a> (comments added):</p><div class="highlight"><table class="sourcetable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11</pre></div></td><td class="code"><div class="source"><pre><span></span><span class="p">(</span><span class="k">defvar</span> <span class="nv">profiler-report-cpu-line-format</span>
+  <span class="c1">;; ↓ this</span>
+  <span class="o">&#39;</span><span class="p">((</span><span class="mi">50</span> <span class="nv">left</span><span class="p">)</span>
+    <span class="p">(</span><span class="mi">24</span> <span class="nv">right</span> <span class="p">((</span><span class="mi">19</span> <span class="nv">right</span><span class="p">)</span>
+               <span class="p">(</span><span class="mi">5</span> <span class="nv">right</span><span class="p">)))))</span>
+
+<span class="p">(</span><span class="k">defvar</span> <span class="nv">profiler-report-memory-line-format</span>
+  <span class="c1">;; ↓ this</span>
+  <span class="o">&#39;</span><span class="p">((</span><span class="mi">55</span> <span class="nv">left</span><span class="p">)</span>
+    <span class="p">(</span><span class="mi">19</span> <span class="nv">right</span> <span class="p">((</span><span class="mi">14</span> <span class="nv">right</span> <span class="nv">profiler-format-number</span><span class="p">)</span>
+               <span class="p">(</span><span class="mi">5</span> <span class="nv">right</span><span class="p">)))))</span>
+</pre></div></td></tr></tbody></table></div><p>To change the width of lines in the profiler report, simply set these to what you want.</p><div class="highlight"><table class="sourcetable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="source"><pre><span></span><span class="p">(</span><span class="nb">setf</span> <span class="p">(</span><span class="nv">caar</span> <span class="nv">profiler-report-cpu-line-format</span><span class="p">)</span> <span class="mi">80</span>
+      <span class="p">(</span><span class="nv">caar</span> <span class="nv">profiler-report-memory-line-format</span><span class="p">)</span> <span class="mi">80</span><span class="p">)</span>
+</pre></div></td></tr></tbody></table></div><p>And here is a minor mode to do it:</p><div class="highlight"><table class="sourcetable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9</pre></div></td><td class="code"><div class="source"><pre><span></span><span class="p">(</span><span class="nb">require</span> <span class="ss">&#39;profiler</span><span class="p">)</span>
+<span class="p">(</span><span class="nb">define-minor-mode</span> <span class="nv">kisaragi/profiler-wide-mode</span>
+  <span class="s">"Minor mode to widen profiler reports."</span>
+  <span class="nb">:global</span> <span class="no">t</span>
+  <span class="p">(</span><span class="k">if</span> <span class="nv">kisaragi/profiler-wide-mode</span>
+      <span class="p">(</span><span class="nb">setf</span> <span class="p">(</span><span class="nv">caar</span> <span class="nv">profiler-report-cpu-line-format</span><span class="p">)</span> <span class="mi">80</span>
+            <span class="p">(</span><span class="nv">caar</span> <span class="nv">profiler-report-memory-line-format</span><span class="p">)</span> <span class="mi">80</span><span class="p">)</span>
+    <span class="p">(</span><span class="nb">setf</span> <span class="p">(</span><span class="nv">caar</span> <span class="nv">profiler-report-cpu-line-format</span><span class="p">)</span> <span class="mi">50</span>
+          <span class="p">(</span><span class="nv">caar</span> <span class="nv">profiler-report-memory-line-format</span><span class="p">)</span> <span class="mi">55</span><span class="p">)))</span>
+</pre></div></td></tr></tbody></table></div><div class="image"><p><img src="/static/emacs-26.2-profiler-width-80.png" style="max-width:100%;" class=""/></p><p class="image-caption">not truncated even at column 37</p></div><p>I'm sure there are ways to make the width update when Emacs is resized, but IMO that should be implemented inside <code>profiler.el</code> itself, not as an extension. For now, this is a good enough workaround for me.</p><p>This is a solution to <a href="https://emacs.stackexchange.com/questions/7344/make-profiler-report-columns-wider">this StackExchange question</a>. Specifically, a comment there pointed out that <code>profiler-report</code> mentions "width", which led me to find the relevant variables.</p></root>
+        </div>
+
+      <footer>
+        <div id="footer-sep">・・・</div>
+        <div class="page-navigation "><a href="/blog/2019-09-24-qr-codes-from-emacs.html">&lt; QR Codes from Emacs</a><a href="/blog/2019-05-15-closure.html">&gt; My attempt at explaining closures</a></div>
+        <p>I don't necessarily know what I'm talking about.</p>
+        <ul><li><a href="/feeds.html">Atom / RSS</a> (<a href="/feeds/all.atom.xml">direct link</a>)</li>
+<li><a href="https://twitter.com/flyin1501" class="">Twitter</a></li>
+<li><a href="https://github.com/kisaragi-hiu" class="">Github</a></li>
+<li><a href="https://gitlab.com/kisaragi-hiu" class="">Gitlab.com</a></li>
+<li><a href="https://git.sr.ht/~kisaragi_hiu/">Sourcehut</a></li>
+<li><a href="https://youtube.com/channel/UCl_hsqcvdX0XdgBimRQ6R3A" class="">Youtube</a></li>
+<li><a href="https://www.nicovideo.jp/user/38995186" class="">niconico</a></li></ul>
+        <p>
+          <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
+           <img alt="Creative Commons License"
+                style="border-width:0"
+                src="/static/cc-by-sa-88x31.png" />
+          </a>
+        </p>
+        <p>Posts are licensed under a <a href="http://creativecommons.org/licenses/by-sa/4.0/">CC-BY-SA 4.0 International</a> license.</p>
+<p><a href="https://github.com/kisaragi-hiu/kisaragi-hiu.com">Source code</a> is licensed under MIT. See <a href="https://github.com/kisaragi-hiu/kisaragi-hiu.com/blob/source/LICENSE.md" rel="license">LICENSE.md</a> for details.</p>
+<p>© Kisaragi Hiu 2017~2019. GPG fingerprint: /KisaragiHiu.gpgBCC74B1041D4B7D7CC8BF40240ECBEAEA8775FC2</p>
+      </footer>
+    </div>
+  </body>
+</html>

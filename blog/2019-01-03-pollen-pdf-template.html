@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>A Pollen PDF template based on HTML, instead of LaTeX | Kisaragi Hiu</title>
+    <meta name="description" content="description">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="Kisaragi Hiu">
+    <meta name="keywords" content="Coding, Programming, Language, LGBT, Blog">
+    <link rel="icon" href="/favicon.ico">
+    <link rel="canonical" href="https://kisaragi-hiu.com/blog/2019-01-03-pollen-pdf-template.html">
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+    <script>
+      WebFont.load({
+          google: {
+              families: ['Overpass Mono', 'Overpass:200,400,600']
+          }
+      });
+    </script>
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="alternate" type="application/atom+xml" href="/feed.xml" title="Atom Feed">
+  </head>
+  <body>
+    <a id="top"></a>
+    <div class="container">
+      <!--[if lte IE 9]>
+        <h1>For the love of god, please stop using IE9. Thanks.</h1>
+      <![endif]-->
+      <header id="siteheader">
+        <div id="logo">
+          <a href="/">
+            <img src="/static/avatar.png" alt="Kisaragi Hiu"/>
+          </a>
+          <h1>Kisaragi&nbsp;Hiu</h1>
+        </div>
+        <nav>
+          <a href="/">Blog</a>
+          <a href="/projects.html">Projects</a>
+          <a href="/about.html">About</a>
+        </nav>
+      </header>
+
+      <div id="content" class="">
+
+        <header class=""><h2 class="title mb-0"><a href="/blog/2019-01-03-pollen-pdf-template.html" class="text-primary">A Pollen PDF template based on HTML, instead of LaTeX</a></h2><p class="date">2019/01/03</p><p class="category">C: <a href="/category/tutorials.html">Tutorials</a></p></header>
+        <h1 id="toc-title">Table of Contents</h1><div class="toc"><a href="#g1774" class="toc-h1">First version with <code class="command">wkhtmltopdf</code></a><a href="#g1775" class="toc-h2"><code class="command">wkhtmltopdf</code> troubles</a><a href="#g1776" class="toc-h1">Second version with Chrome</a></div>
+        <root><blockquote>Edit 2019-03-24: I forgot to mention that Chrom/ium adds a header and footer when printing to PDF from the command line. To work around this, set the top/bottom margin to 0, eg.:
+
+<div class="highlight"><table class="sourcetable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="source"><pre><span></span><span class="p">@</span><span class="k">media</span> <span class="nt">print</span> <span class="p">{</span>
+    <span class="nt">body</span> <span class="p">{</span>
+        <span class="k">margin</span><span class="p">:</span> <span class="mi">0</span> <span class="mi">2</span><span class="kt">rem</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></tbody></table>
+</div></blockquote><p>Pollen's manual has a <a href="http://docs.racket-lang.org/pollen/fourth-tutorial.html#(part._.Adding_support_for_.P.D.F_output)">tutorial</a> on how to make <a href="http://docs.racket-lang.org/pollen/second-tutorial.html#%28part._tutorial-2._.Templates%29">templates</a> for PDF. It first builds a LaTeX source file, then renders that with <code class="command">pdflatex</code>, then returns the bytes from the PDF, deleting the temporary files. The problem with this in my use case is that I don't use LaTeX, and would like a way to turn the HTML version of my pages into PDF. So far I had always manually rendered my pages in Firefox (my primary browser) or Chrome (offers a print preview), which I'd like to automate.</p><p>First was finding a programmable interface to render an HTML to PDF. I knew Chrom/ium has a <code>--print-to-pdf</code> option, but initially I thought it's going to have unavoidable headers and footers. So I started working with <a href="https://wkhtmltopdf.org/"><code class="command">wkhtmltopdf</code></a>.</p><h1 id="g1774">First version with <code class="command">wkhtmltopdf</code></h1><p>First we check for <code class="command">wkhtmltopdf</code>'s existance.</p><div class="highlight"><table class="sourcetable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="source"><pre><span></span><span class="n">◊</span><span class="p">(</span><span class="k">unless</span> <span class="p">(</span><span class="nb">find-executable-path</span> <span class="s2">"wkhtmltopdf"</span><span class="p">)</span>
+   <span class="p">(</span><span class="nb">error</span> <span class="o">&#39;</span><span class="ss">pdf-render</span> <span class="s2">"wkhtmltopdf missing"</span><span class="p">))</span>
+</pre></div></td></tr></tbody></table></div><p>Then we assemble the pagenode to render, then send it to <code>render-pagenodes</code> to render. Using <code>render-pagenodes</code> allows me to specify that I want to get HTML output.</p><div class="highlight"><table class="sourcetable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="source"><pre><span></span><span class="n">◊</span><span class="p">(</span><span class="k">define</span> <span class="n">html-pagenode</span>
+   <span class="p">(</span><span class="nb">string-&gt;symbol</span>
+    <span class="p">(</span><span class="nb">string-replace</span> <span class="p">(</span><span class="nb">symbol-&gt;string</span> <span class="n">here</span><span class="p">)</span>
+                    <span class="sr">#rx"\\.pdf$"</span> <span class="s2">".html"</span><span class="p">)))</span>
+<span class="n">◊</span><span class="p">(</span><span class="n">render-pagenodes</span> <span class="o">`</span><span class="p">(</span><span class="ss">root</span> <span class="o">,</span><span class="n">html-pagenode</span><span class="p">))</span>
+</pre></div></td></tr></tbody></table></div><p>Lastly, we send the HTML to <code class="command">wkhtmltopdf</code>, telling it to output to stdout, and capture it with <code>with-output-to-bytes</code>. (<code>(thunk ...)</code> is shorthand for <code>(lambda () ...)</code>.)</p><div class="highlight"><table class="sourcetable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="source"><pre><span></span><span class="n">◊</span><span class="p">(</span><span class="nb">with-output-to-bytes</span> <span class="p">(</span><span class="k">thunk</span> <span class="p">(</span><span class="nb">system</span> <span class="p">(</span><span class="nb">format</span> <span class="s2">"wkhtmltopdf ~a -"</span> <span class="n">html-pagenode</span><span class="p">))))</span>
+</pre></div></td></tr></tbody></table></div><p>The entire thing: <a href="https://gist.github.com/kisaragi-hiu/47578b77677bf659982819125cc34df4" class="">gist:kisaragi-hiu/47578b77677bf659982819125cc34df4</a></p><h2 id="g1775"><code class="command">wkhtmltopdf</code> troubles</h2><p>After getting the rendered PDF and printing them out, I found that the output from <code class="command">wkhtmltopdf</code> differed too much from what I get from either Firefox or Chrome. Some of the CSS I have didn't seem to work as well. I then realized Chrome's <code>--print-to-pdf</code> option doesn't give me the headers and footers with the CSS I have, so I decided using Chrome was less trouble.</p><p>One problem with this is that Chrome has to output to a file, so I couldn't write to stdout to avoid using a temporary file, like I did with <code class="command">wkhtmltopdf</code>.</p><h1 id="g1776">Second version with Chrome</h1><p>First we try to find the command for Chrome. The <code>error</code> only runs when all above fails.</p><div class="highlight"><table class="sourcetable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="source"><pre><span></span><span class="n">◊</span><span class="p">(</span><span class="k">define</span> <span class="n">chrome-executable</span>
+   <span class="p">(</span><span class="k">or</span> <span class="p">(</span><span class="nb">find-executable-path</span> <span class="s2">"chromium"</span><span class="p">)</span>
+       <span class="p">(</span><span class="nb">find-executable-path</span> <span class="s2">"google-chrome-stable"</span><span class="p">)</span>
+       <span class="p">(</span><span class="nb">find-executable-path</span> <span class="s2">"google-chrome-unstable"</span><span class="p">)</span>
+       <span class="p">(</span><span class="nb">find-executable-path</span> <span class="s2">"google-chrome"</span><span class="p">)</span>
+       <span class="p">(</span><span class="nb">find-executable-path</span> <span class="s2">"chrome"</span><span class="p">)</span>
+       <span class="p">(</span><span class="nb">error</span> <span class="o">&#39;</span><span class="ss">pdf-render</span> <span class="s2">"chrome missing"</span><span class="p">)))</span>
+</pre></div></td></tr></tbody></table></div><p>Let Racket handle making the temporary file for us. (Pardon my naming sense…)</p><div class="highlight"><table class="sourcetable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="source"><pre><span></span><span class="n">◊</span><span class="p">(</span><span class="k">define</span> <span class="n">temp-output</span> <span class="p">(</span><span class="nb">make-temporary-file</span><span class="p">))</span>
+</pre></div></td></tr></tbody></table></div><p>This is the same as before, except this time we call <code>system</code> here and let it do its thing, suppressing its output with <code>void</code>.</p><div class="highlight"><table class="sourcetable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10</pre></div></td><td class="code"><div class="source"><pre><span></span><span class="n">◊</span><span class="p">(</span><span class="k">define</span> <span class="n">html-pagenode</span>
+   <span class="p">(</span><span class="nb">string-&gt;symbol</span>
+    <span class="p">(</span><span class="nb">string-replace</span> <span class="p">(</span><span class="nb">symbol-&gt;string</span> <span class="n">here</span><span class="p">)</span>
+                    <span class="sr">#rx"\\.pdf$"</span> <span class="s2">".html"</span><span class="p">)))</span>
+<span class="n">◊</span><span class="p">(</span><span class="nb">void</span>
+  <span class="p">(</span><span class="n">render-pagenodes</span> <span class="o">`</span><span class="p">(</span><span class="ss">root</span> <span class="o">,</span><span class="n">html-pagenode</span><span class="p">))</span>
+  <span class="p">(</span><span class="nb">system</span> <span class="p">(</span><span class="nb">format</span> <span class="s2">"~a --headless --disable-gpu --print-to-pdf=~a ~a"</span>
+                  <span class="n">chrome-executable</span>
+                  <span class="n">temp-output</span>
+                  <span class="n">html-pagenode</span><span class="p">)))</span>
+</pre></div></td></tr></tbody></table></div><p>Returning the bytes has to be done last for some reason, so we capture the bytes in <code>output</code>, delete the temporary file, then return <code>output</code>.</p><div class="highlight"><table class="sourcetable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3</pre></div></td><td class="code"><div class="source"><pre><span></span><span class="n">◊</span><span class="p">(</span><span class="k">define</span> <span class="n">output</span> <span class="p">(</span><span class="nb">file-&gt;bytes</span> <span class="n">temp-output</span><span class="p">))</span>
+<span class="n">◊</span><span class="p">(</span><span class="nb">delete-file</span> <span class="n">temp-output</span><span class="p">)</span>
+<span class="n">◊output</span>
+</pre></div></td></tr></tbody></table></div><p>Full version: <a href="https://gist.github.com/kisaragi-hiu/6062b66694a612fd6981f0afc4515b1e" class="">gist:kisaragi-hiu/6062b66694a612fd6981f0afc4515b1e</a></p></root>
+        </div>
+
+      <footer>
+        <div id="footer-sep">・・・</div>
+        <div class="page-navigation "><a href="/blog/2019-01-21-cangjie.el.html">&lt; <span>Lookup Cangjie encoding in Emacs with <code>cangjie.el</code></span></a><a href="/blog/2018-11-04-synthv-hope.html">&gt; SynthesizerV hopes before trying it out</a></div>
+        <p>I don't necessarily know what I'm talking about.</p>
+        <ul><li><a href="/feeds.html">Atom / RSS</a> (<a href="/feeds/all.atom.xml">direct link</a>)</li>
+<li><a href="https://twitter.com/flyin1501" class="">Twitter</a></li>
+<li><a href="https://github.com/kisaragi-hiu" class="">Github</a></li>
+<li><a href="https://gitlab.com/kisaragi-hiu" class="">Gitlab.com</a></li>
+<li><a href="https://git.sr.ht/~kisaragi_hiu/">Sourcehut</a></li>
+<li><a href="https://youtube.com/channel/UCl_hsqcvdX0XdgBimRQ6R3A" class="">Youtube</a></li>
+<li><a href="https://www.nicovideo.jp/user/38995186" class="">niconico</a></li></ul>
+        <p>
+          <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
+           <img alt="Creative Commons License"
+                style="border-width:0"
+                src="/static/cc-by-sa-88x31.png" />
+          </a>
+        </p>
+        <p>Posts are licensed under a <a href="http://creativecommons.org/licenses/by-sa/4.0/">CC-BY-SA 4.0 International</a> license.</p>
+<p><a href="https://github.com/kisaragi-hiu/kisaragi-hiu.com">Source code</a> is licensed under MIT. See <a href="https://github.com/kisaragi-hiu/kisaragi-hiu.com/blob/source/LICENSE.md" rel="license">LICENSE.md</a> for details.</p>
+<p>© Kisaragi Hiu 2017~2019. GPG fingerprint: /KisaragiHiu.gpgBCC74B1041D4B7D7CC8BF40240ECBEAEA8775FC2</p>
+      </footer>
+    </div>
+  </body>
+</html>

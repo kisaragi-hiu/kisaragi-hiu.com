@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>A Makefile for UTAU Projects | Kisaragi Hiu</title>
+    <meta name="description" content="description">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="Kisaragi Hiu">
+    <meta name="keywords" content="Coding, Programming, Language, LGBT, Blog">
+    <link rel="icon" href="/favicon.ico">
+    <link rel="canonical" href="https://kisaragi-hiu.com/blog/2019-04-17-utau-make-file.html">
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+    <script>
+      WebFont.load({
+          google: {
+              families: ['Overpass Mono', 'Overpass:200,400,600']
+          }
+      });
+    </script>
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="alternate" type="application/atom+xml" href="/feed.xml" title="Atom Feed">
+  </head>
+  <body>
+    <a id="top"></a>
+    <div class="container">
+      <!--[if lte IE 9]>
+        <h1>For the love of god, please stop using IE9. Thanks.</h1>
+      <![endif]-->
+      <header id="siteheader">
+        <div id="logo">
+          <a href="/">
+            <img src="/static/avatar.png" alt="Kisaragi Hiu"/>
+          </a>
+          <h1>Kisaragi&nbsp;Hiu</h1>
+        </div>
+        <nav>
+          <a href="/">Blog</a>
+          <a href="/projects.html">Projects</a>
+          <a href="/about.html">About</a>
+        </nav>
+      </header>
+
+      <div id="content" class="">
+
+        <header class=""><h2 class="title mb-0"><a href="/blog/2019-04-17-utau-make-file.html" class="text-primary">A Makefile for UTAU Projects</a></h2><p class="date">2019/04/17</p><p class="category">C: <a href="/category/tutorials.html">Tutorials</a></p></header>
+
+        <root><blockquote>Edit 2019-05-24: Updated Makefile to generate file list automatically (line 2).</blockquote><p>I'm currently making a new cover using UTAU, after having broken the last streak of covers. This time, I thought I'd try using <code class="command">make</code> to help with rendering.</p><p>My biggest obstacle is automating the rendering itself: I don't know if UTAU has a command line interface, and using <code class="command">xdotool</code> proved to be too unreliable when I tried. (It was frustrating.)</p><div class="tweet"><blockquote class="twitter-tweet" data-lang="ja"><p lang="en" dir="ltr">How do I render a UST from the command line…</p>—如月飛羽🌈 (@flyin1501)<a href="https://twitter.com/flyin1501/status/1116410591747305472">2019年4月11日</a></blockquote><script async="async" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></div><p>As it turned out, automating the rest of the rendering process is still really helpful. Here is the Makefile for UTAU projects<a id="ref-1" href="#ref-desc-1"><sup>[1]</sup></a>:</p><div class="highlight"><table class="sourcetable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8</pre></div></td><td class="code"><div class="source"><pre><span></span><span class="nv">UTAU</span> <span class="o">=</span> env <span class="nv">WINEPREFIX</span><span class="o">=</span>/home/kisaragi-hiu/.wineprefix/UTAU wine <span class="s2">"C:\\Program Files (x86)\\UTAU\\utau.exe"</span>
+<span class="nv">WAV</span> <span class="o">=</span> <span class="k">$(</span>patsubst %.ust,%.wav,<span class="k">$(</span>wildcard *.ust<span class="k">))</span>
+
+<span class="nf">render</span><span class="o">:</span> <span class="k">$(</span><span class="nv">WAV</span><span class="k">)</span>
+<span class="nf">.PHONY</span><span class="o">:</span> <span class="n">render</span>
+
+<span class="nf">$(WAV)</span><span class="o">:</span> %.<span class="n">wav</span>: %.<span class="n">ust</span>
+        <span class="k">$(</span>UTAU<span class="k">)</span> <span class="s2">"</span><span class="k">$(</span>realpath $&lt;<span class="k">)</span><span class="s2">"</span>
+</pre></div></td></tr></tbody></table></div><p>Which simply runs <code>$(UTAU) &lt;ust full path&gt;</code> for each UST that's newer than its corresponding output file. The caveat here is that the UST needs to share its name with its output, which has to be set manually.</p><p>Now when I run <code>make render</code>, UTAU windows will pop up one by one for me to manually do the render<a id="ref-2" href="#ref-desc-2"><sup>[2]</sup></a>. This may not be quite automatic, but it's at least better than manually opening every UST in the project and rendering them.</p><div id="references"><p class="ref-desc" id="ref-desc-1">[<a class="ref-desc-id" href="#ref-1">1</a>] References used: <a href="https://learnxinyminutes.com/docs/make/">Learn X in Y minutes</a>, <a href="https://medium.freecodecamp.org/eec453adf7fe">Use `make`! by freeCodeCamp</a>, and <a href="https://www.gnu.org/software/make/manual/html_node/File-Name-Functions.html">File Name Functions in the manual</a>.</p><p class="ref-desc" id="ref-desc-2">[<a class="ref-desc-id" href="#ref-2">2</a>] <kbd>Alt-p g RET</kbd> if the output file name has been set.</p></div></root>
+        </div>
+
+      <footer>
+        <div id="footer-sep">・・・</div>
+        <div class="page-navigation "><a href="/blog/2019-05-15-closure.html">&lt; My attempt at explaining closures</a><a href="/blog/2019-04-13-systemd-timer-tracker-store.html">&gt; systemd units to kill a daemon on loop</a></div>
+        <p>I don't necessarily know what I'm talking about.</p>
+        <ul><li><a href="/feeds.html">Atom / RSS</a> (<a href="/feeds/all.atom.xml">direct link</a>)</li>
+<li><a href="https://twitter.com/flyin1501" class="">Twitter</a></li>
+<li><a href="https://github.com/kisaragi-hiu" class="">Github</a></li>
+<li><a href="https://gitlab.com/kisaragi-hiu" class="">Gitlab.com</a></li>
+<li><a href="https://git.sr.ht/~kisaragi_hiu/">Sourcehut</a></li>
+<li><a href="https://youtube.com/channel/UCl_hsqcvdX0XdgBimRQ6R3A" class="">Youtube</a></li>
+<li><a href="https://www.nicovideo.jp/user/38995186" class="">niconico</a></li></ul>
+        <p>
+          <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
+           <img alt="Creative Commons License"
+                style="border-width:0"
+                src="/static/cc-by-sa-88x31.png" />
+          </a>
+        </p>
+        <p>Posts are licensed under a <a href="http://creativecommons.org/licenses/by-sa/4.0/">CC-BY-SA 4.0 International</a> license.</p>
+<p><a href="https://github.com/kisaragi-hiu/kisaragi-hiu.com">Source code</a> is licensed under MIT. See <a href="https://github.com/kisaragi-hiu/kisaragi-hiu.com/blob/source/LICENSE.md" rel="license">LICENSE.md</a> for details.</p>
+<p>© Kisaragi Hiu 2017~2019. GPG fingerprint: /KisaragiHiu.gpgBCC74B1041D4B7D7CC8BF40240ECBEAEA8775FC2</p>
+      </footer>
+    </div>
+  </body>
+</html>

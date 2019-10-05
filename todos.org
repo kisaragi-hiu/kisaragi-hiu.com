@@ -1,0 +1,5 @@
+* learn from zachholman.com                                            :site:
+* learn Javascript (framework + how sites are laid out, maybe)         :site:
+  20180727: Read http://xahlee.info/js/js_basics_index.html, http://xahlee.info/js/js.html, http://xahlee.info/js/js_ECMAScript_2015_features.html
+* Migrate to Haunt https://dthompson.us/projects/haunt.html
+  More flexible than Frog, more blog-centric than Pollen.

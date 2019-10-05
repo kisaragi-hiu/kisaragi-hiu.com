@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>A newbie's attempt to explain lambdas | Kisaragi Hiu</title>
+    <meta name="description" content="description">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="Kisaragi Hiu">
+    <meta name="keywords" content="Coding, Programming, Language, LGBT, Blog">
+    <link rel="icon" href="/favicon.ico">
+    <link rel="canonical" href="https://kisaragi-hiu.com/blog/2017-12-22-attempt-to-explain-lambda.html">
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+    <script>
+      WebFont.load({
+          google: {
+              families: ['Overpass Mono', 'Overpass:200,400,600']
+          }
+      });
+    </script>
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="alternate" type="application/atom+xml" href="/feed.xml" title="Atom Feed">
+  </head>
+  <body>
+    <a id="top"></a>
+    <div class="container">
+      <!--[if lte IE 9]>
+        <h1>For the love of god, please stop using IE9. Thanks.</h1>
+      <![endif]-->
+      <header id="siteheader">
+        <div id="logo">
+          <a href="/">
+            <img src="/static/avatar.png" alt="Kisaragi Hiu"/>
+          </a>
+          <h1>Kisaragi&nbsp;Hiu</h1>
+        </div>
+        <nav>
+          <a href="/">Blog</a>
+          <a href="/projects.html">Projects</a>
+          <a href="/about.html">About</a>
+        </nav>
+      </header>
+
+      <div id="content" class="">
+
+        <header class=""><h2 class="title mb-0"><a href="/blog/2017-12-22-attempt-to-explain-lambda.html" class="text-primary">A newbie's attempt to explain lambdas</a></h2><p class="date">2017/12/22</p><p class="category">C: <a href="/category/trying-to-explain.html">Trying To Explain</a></p></header>
+
+        <root><p>A lambda is a function.</p><p>A function is an ordinary value, just like numbers, lists, and characters.</p><p>Just like how a list can be created with <code>(list 'item 'item 'item)</code>, a function can be created with <code>(lambda (input) body-expr)</code>.</p><p><code>(lambda (x y) (+ x y))</code> produces a function that takes two arguments and sends them to the + function. In a typical environment:</p><pre class="brush: racket"><code>((lambda (x y) (+ x y)) 2 3)
+; =&gt; 5</code></pre><h2 id="arguments">Arguments</h2><p>The way the argument list is given depends on the language. In Scheme-based languages, the first argument to lambda is:</p><ul><li>a list, each element in the list is bound to a local variable: <code>(lambda (x y) (+ x y))</code></li><li>an &ldquo;improper list&rdquo; (like <code>(a b . c)</code>) behaves like the above, but the last element is the rest argument, bound to a list containing arguments not bound by the positional arguments:<code>(lambda (a b . c) (string-append a b (string-join c)))</code></li><li>a symbol; it becomes the rest argument: <code>(lambda input (string-join input))</code></li></ul><h2 id="binding-to-an-identifier">Binding to an identifier</h2><p><code>define</code> is used to assign an identifier to a value: <code>(define x 9)</code> binds <code>x</code> to 9. In the same way, <code>(define my-add (lambda (x y z) (+ x y z)))</code> binds <code>my-add</code> to the value <code>(lambda (x y z) (+ x y z))</code>. Now <code>my-add</code> can be used like the lambda itself.</p><pre class="brush: racket"><code>((lambda (x y z) (+ x y z)) 1 2 3)
+; =&gt; 6
+
+(define my-add
+  (lambda (x y z) (+ x y z)))
+(my-add 1 2 3)
+; =&gt; 6</code></pre><h2 id="shorthand-for-defining-functions">Shorthand for defining functions</h2><p><code>define</code> has a shorthand for creating functions: <code>racket
+(define my-add (lambda (x y) (+ x y)))</code> can be written as: <code>racket
+(define (my-add x y) (+ x y))</code></p></root>
+        </div>
+
+      <footer>
+        <div id="footer-sep">・・・</div>
+        <div class="page-navigation "><a href="/blog/2017-12-31-notable-anime-in-2017.html">&lt; My list of notable anime series in 2017</a><a href="/blog/2017-12-08-hanezeve-day-3-4.html">&gt; Colwelelo Kalalila (Day 3, 4)</a></div>
+        <p>I don't necessarily know what I'm talking about.</p>
+        <ul><li><a href="/feeds.html">Atom / RSS</a> (<a href="/feeds/all.atom.xml">direct link</a>)</li>
+<li><a href="https://twitter.com/flyin1501" class="">Twitter</a></li>
+<li><a href="https://github.com/kisaragi-hiu" class="">Github</a></li>
+<li><a href="https://gitlab.com/kisaragi-hiu" class="">Gitlab.com</a></li>
+<li><a href="https://git.sr.ht/~kisaragi_hiu/">Sourcehut</a></li>
+<li><a href="https://youtube.com/channel/UCl_hsqcvdX0XdgBimRQ6R3A" class="">Youtube</a></li>
+<li><a href="https://www.nicovideo.jp/user/38995186" class="">niconico</a></li></ul>
+        <p>
+          <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
+           <img alt="Creative Commons License"
+                style="border-width:0"
+                src="/static/cc-by-sa-88x31.png" />
+          </a>
+        </p>
+        <p>Posts are licensed under a <a href="http://creativecommons.org/licenses/by-sa/4.0/">CC-BY-SA 4.0 International</a> license.</p>
+<p><a href="https://github.com/kisaragi-hiu/kisaragi-hiu.com">Source code</a> is licensed under MIT. See <a href="https://github.com/kisaragi-hiu/kisaragi-hiu.com/blob/source/LICENSE.md" rel="license">LICENSE.md</a> for details.</p>
+<p>© Kisaragi Hiu 2017~2019. GPG fingerprint: /KisaragiHiu.gpgBCC74B1041D4B7D7CC8BF40240ECBEAEA8775FC2</p>
+      </footer>
+    </div>
+  </body>
+</html>

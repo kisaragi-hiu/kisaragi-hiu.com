@@ -1,0 +1,19 @@
+root = true
+
+[*]
+end_of_line = lf
+insert_final_newline = true
+charset = utf-8
+
+[*.{pp,pm}]
+file_type_emacs = pollen
+
+[*.pmd]
+file_type_emacs = markdown
+
+# JSON-like formatting works better
+[index.ptree]
+file_type_emacs = pollen
+
+[*.css.pp]
+file_type_emacs = css

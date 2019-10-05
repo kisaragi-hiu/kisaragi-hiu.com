@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Three versions of random-string | Kisaragi Hiu</title>
+    <meta name="description" content="description">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="Kisaragi Hiu">
+    <meta name="keywords" content="Coding, Programming, Language, LGBT, Blog">
+    <link rel="icon" href="/favicon.ico">
+    <link rel="canonical" href="https://kisaragi-hiu.com/blog/2018-10-08-random-string-picolisp.html">
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+    <script>
+      WebFont.load({
+          google: {
+              families: ['Overpass Mono', 'Overpass:200,400,600']
+          }
+      });
+    </script>
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="alternate" type="application/atom+xml" href="/feed.xml" title="Atom Feed">
+  </head>
+  <body>
+    <a id="top"></a>
+    <div class="container">
+      <!--[if lte IE 9]>
+        <h1>For the love of god, please stop using IE9. Thanks.</h1>
+      <![endif]-->
+      <header id="siteheader">
+        <div id="logo">
+          <a href="/">
+            <img src="/static/avatar.png" alt="Kisaragi Hiu"/>
+          </a>
+          <h1>Kisaragi&nbsp;Hiu</h1>
+        </div>
+        <nav>
+          <a href="/">Blog</a>
+          <a href="/projects.html">Projects</a>
+          <a href="/about.html">About</a>
+        </nav>
+      </header>
+
+      <div id="content" class="">
+
+        <header class=""><h2 class="title mb-0"><a href="/blog/2018-10-08-random-string-picolisp.html" class="text-primary"><span>Three versions of <code>random-string</code></span></a></h2><p class="date">2018/10/08</p></header>
+        <h1 id="toc-title">Table of Contents</h1><div class="toc"><a href="#g2191" class="toc-h1">the Racket version</a><a href="#g2192" class="toc-h1">Common Lisp rewrite</a><a href="#g2193" class="toc-h1">Writing the Picolisp version</a></div>
+        <root><p>After I started using a password manager to generate my passwords, sometimes I want to do the same in the shell — not necessarily for passwords, but just a random alphanumeric string of a specified length can be useful sometimes.</p><p>The command would take just one argument as the length for the output string.</p><p>I wrote the <a href="https://gitlab.com/kisaragi-hiu/dotfiles/commit/c5946b85625d0f10d93b0350f9a34a355293ea6d" class="">first version</a> in Racket, then rewrote it in Common Lisp because Racket's startup speed makes it quite unsuitable for shell commands. I eventually rewrote it in Picolisp because it's available in Termux; it's quite a fascinating language.</p><h1 id="g2191">the Racket version</h1><p><a href="https://gitlab.com/kisaragi-hiu/dotfiles/blob/ed9483a72adcc32ac8935a59f85b61b7e574240f/random-string.rkt" class=""><code>random-string.rkt</code></a></p><p>Define all the characters that could be used — it's just hardcoded alphanumeric characters because this is my only use case. Here if the environment variable <code>CHARSET</code> is set it would use that instead.</p><div class="highlight"><table class="sourcetable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="source"><pre><span></span><span class="p">(</span><span class="k">define</span> <span class="n">charset</span> <span class="p">(</span><span class="k">or</span> <span class="p">(</span><span class="nb">getenv</span> <span class="s2">"CHARSET"</span><span class="p">)</span>
+                    <span class="s2">"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"</span><span class="p">))</span>
+</pre></div></td></tr></tbody></table></div><p>The main logic is just making a list of specified length, then choosing a random item (with <code>select-random-item</code>  from the charset for each list item, converting the list into a string in the end.</p><div class="highlight"><table class="sourcetable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="source"><pre><span></span><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">select-random-item</span> <span class="n">seq</span><span class="p">)</span>
+  <span class="p">(</span><span class="nb">sequence-ref</span> <span class="n">seq</span> <span class="p">(</span><span class="nb">random</span> <span class="p">(</span><span class="nb">sequence-length</span> <span class="n">seq</span><span class="p">))))</span>
+
+<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">random-string</span> <span class="p">[</span><span class="n">len</span> <span class="mi">16</span><span class="p">])</span>
+  <span class="p">(</span><span class="nb">list-&gt;string</span>
+    <span class="p">(</span><span class="nb">map</span> <span class="p">(</span><span class="k">λ</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="p">(</span><span class="n">select-random-item</span> <span class="n">charset</span><span class="p">))</span>
+         <span class="p">(</span><span class="nb">make-list</span> <span class="n">len</span> <span class="no">#f</span><span class="p">))))</span>
+</pre></div></td></tr></tbody></table></div><p>The last section is the entry point; when there are arguments passed into the script, take the 0th argument and pass it to <code>random-string</code></p><div class="highlight"><table class="sourcetable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3</pre></div></td><td class="code"><div class="source"><pre><span></span><span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">empty?</span> <span class="p">(</span><span class="nb">vector-&gt;list</span> <span class="p">(</span><span class="nb">current-command-line-arguments</span><span class="p">)))</span>
+  <span class="p">(</span><span class="nb">displayln</span> <span class="p">(</span><span class="n">random-string</span><span class="p">))</span>
+  <span class="p">(</span><span class="nb">displayln</span> <span class="p">(</span><span class="n">random-string</span> <span class="p">(</span><span class="nb">string-&gt;number</span> <span class="p">(</span><span class="nb">vector-ref</span> <span class="p">(</span><span class="nb">current-command-line-arguments</span><span class="p">)</span> <span class="mi">0</span><span class="p">)))))</span>
+</pre></div></td></tr></tbody></table></div><h1 id="g2192">Common Lisp rewrite</h1><p><a href="https://gitlab.com/kisaragi-hiu/dotfiles/blob/ed9483a72adcc32ac8935a59f85b61b7e574240f/random-string.cl" class=""><code>random-string.cl</code></a></p><p>The logic is almost exactly the same as the Racket version, though here I didn't bother with looking for the <code>CHARSET</code> environment variable.</p><div class="highlight"><table class="sourcetable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="source"><pre><span></span><span class="p">(</span><span class="nb">defvar</span> <span class="vg">*charset*</span> <span class="s">"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"</span><span class="p">)</span>
+</pre></div></td></tr></tbody></table></div><p>One thing that surprised me initially is the existence of "random states". Learning about little things like this is exactly why I like writing simple scripts like this.</p><div class="highlight"><table class="sourcetable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4</pre></div></td><td class="code"><div class="source"><pre><span></span><span class="p">(</span><span class="nb">defun</span> <span class="nv">select-random-item</span> <span class="p">(</span><span class="nv">seq</span><span class="p">)</span>
+  <span class="p">(</span><span class="nb">elt</span> <span class="nv">seq</span> <span class="p">(</span><span class="nb">random</span> <span class="p">(</span><span class="nb">length</span> <span class="nv">seq</span><span class="p">)</span>
+                   <span class="c1">;; create a newly randomly seeded random state</span>
+                   <span class="p">(</span><span class="nb">make-random-state</span> <span class="no">t</span><span class="p">))))</span>
+</pre></div></td></tr></tbody></table></div><p>Looking at this now, I probably should've written the Racket version with <code>sequence-map</code> operating directly on a string.</p><div class="highlight"><table class="sourcetable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4</pre></div></td><td class="code"><div class="source"><pre><span></span><span class="p">(</span><span class="nb">defun</span> <span class="nv">random-string</span> <span class="p">(</span><span class="k">&amp;optional</span> <span class="p">(</span><span class="nv">len</span> <span class="mi">16</span><span class="p">))</span>
+  <span class="p">(</span><span class="nb">map</span> <span class="ss">&#39;string</span>
+       <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="nv">x</span><span class="p">)</span> <span class="p">(</span><span class="nv">select-random-item</span> <span class="vg">*charset*</span><span class="p">))</span>
+       <span class="p">(</span><span class="nb">make-string</span> <span class="nv">len</span><span class="p">)))</span>
+</pre></div></td></tr></tbody></table></div><p>Here I depend on CLISP by using <code>*args*</code></p><div class="highlight"><table class="sourcetable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3</pre></div></td><td class="code"><div class="source"><pre><span></span><span class="p">(</span><span class="nb">format</span> <span class="no">t</span> <span class="p">(</span><span class="k">if</span> <span class="vg">*args*</span>
+            <span class="p">(</span><span class="nv">random-string</span> <span class="p">(</span><span class="nb">parse-integer</span> <span class="p">(</span><span class="nb">first</span> <span class="vg">*args*</span><span class="p">)))</span>
+            <span class="p">(</span><span class="nv">random-string</span><span class="p">)))</span>
+</pre></div></td></tr></tbody></table></div><h1 id="g2193">Writing the Picolisp version</h1><p><a href="https://gitlab.com/kisaragi-hiu/dotfiles/blob/5e39e6c94b2c4fd3c595e10280ce8a38284bd149/random-string" class=""><code>random-string</code></a></p><p>I first saw Picolisp because it is currently (as of 2018-10) the only Lisp family language packaged in Termux.</p><p>In Picolisp, command line arguments can't be accessed directly in the program. The interpreter itself processes arguments as files to load or functions to invoke. This becomes a problem when the whole point of the script is to be a shell command.</p><p>There are two ways around this: one is to simply wrap the whole thing into a shell script, and handle arguments there. That seemed unstatisfying to me (I don't know why now that I've realized how hacky this next solution is), so I went with a hack to bind the first command line argument to a variable in the script.</p><p><code>pil</code> reads command line arguments starting with a "-" as a function to run; or, more specifically, as a form to evaluate after wrapping it in parentheses. For example, <code>-bye</code> runs <code>(bye)</code> immediately, exiting the program; <code>-argv dummy len</code> runs <code>(argv dummy len)</code>  which binds the first command line argument to <code>dummy</code> and second to <code>len</code>  but those arguments are still going to be loaded as files.</p><p>If <code>pil</code> sees an argument that's just a "-", it'll stop loading subsequent arguments as files. This would've been the solution: <code>pil -"argv dummy dummy len" random-string - 60</code> would bind <code>dummy</code> to "random-string", then to "-", then <code>len</code> to "60", after which it'll load my script where <code>len</code> is available. There's just one problem: I have to write this command in the shebang.</p><p>The shebang tells the kernel to pass this file to the specified program, like <code>#!/bin/bash</code>  It can also pass an argument to the program, for instance, <code>#!/usr/bin/pulseaudio -nF</code> in some PulseAudio config files. The problem is, it can only pass one argument: everything after the space in the shebang is passed to the program as $1 in shell notation. This means I can't pass another "-" argument to <code>pil</code></p><p>In the end, my shebang looks like <code>#!/usr/bin/pil -argv dummy len</code>  bind the first argument (path to script) to <code>dummy</code>  second argument to <code>len</code>  <code>len</code> isn't actually going to be loaded because <code>(bye)</code> has been called before its loading starts.</p><div class="highlight"><table class="sourcetable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3</pre></div></td><td class="code"><div class="source"><pre><span></span><span class="err">#</span><span class="nv">!/usr/bin/pil</span> <span class="nv">-argv</span> <span class="nv">dummy</span> <span class="nv">len</span>
+<span class="err">#</span> <span class="nv">a</span> <span class="nb">bit</span> <span class="nv">of</span> <span class="nv">a</span> <span class="nv">hack</span> <span class="nv">around</span> <span class="nv">Picolisp</span><span class="ss">&#39;s</span> <span class="nv">loading</span> <span class="nv">mechanism</span>
+<span class="err">#</span> <span class="nv">random-string</span> <span class="nv">[length]</span>
+</pre></div></td></tr></tbody></table></div><p>Here I have to seed the PRNG with current time before running <code>select-random-item</code>  because I couldn't find a way to get time more accurate than seconds. If I seed it inside <code>select-random-item</code>  it'd receive the same (fresh) seed and thus return the same character throughout the second.</p><div class="highlight"><table class="sourcetable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="source"><pre><span></span><span class="p">(</span><span class="nv">seed</span> <span class="p">(</span><span class="nb">+</span> <span class="p">(</span><span class="nv">date</span><span class="p">)</span> <span class="p">(</span><span class="nb">time</span><span class="p">)))</span>
+<span class="p">(</span><span class="k">setq</span> <span class="vg">*charset*</span> <span class="p">(</span><span class="nv">chop</span> <span class="s">"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"</span><span class="p">))</span>
+
+<span class="p">(</span><span class="nv">de</span> <span class="nv">select-random-item</span> <span class="p">(</span><span class="nv">seq</span><span class="p">)</span>
+  <span class="p">(</span><span class="nb">car</span> <span class="p">(</span><span class="nb">nth</span> <span class="nv">seq</span>
+            <span class="p">(</span><span class="nv">rand</span> <span class="mi">1</span> <span class="p">(</span><span class="nb">length</span> <span class="nv">seq</span><span class="p">)))))</span>
+</pre></div></td></tr></tbody></table></div><p>Picolisp doesn't have defaults for optional arguments, so I have to set it myself when the input is nil.</p><p>Another interesting thing about Picolisp is that it actually uses a list of form <code>((arg1 arg2 ...) body)</code> as functions. Personally I think this is quite elegant, and would like to see more non-functions that are applicable like this in other Lisps as well. Allowing lists to be applicable like functions shouldn't break anything… I think.</p><div class="highlight"><table class="sourcetable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8</pre></div></td><td class="code"><div class="source"><pre><span></span><span class="p">(</span><span class="nv">de</span> <span class="nv">random-string</span> <span class="p">(</span><span class="nv">len</span><span class="p">)</span>
+  <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">not</span> <span class="nv">len</span><span class="p">)</span> <span class="p">(</span><span class="k">setq</span> <span class="nv">len</span> <span class="mi">16</span><span class="p">))</span>
+  <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nv">str?</span> <span class="nv">len</span><span class="p">)</span> <span class="p">(</span><span class="k">setq</span> <span class="nv">len</span> <span class="p">(</span><span class="nb">format</span> <span class="nv">len</span><span class="p">)))</span>
+  <span class="p">(</span><span class="nb">mapcar</span> <span class="o">&#39;</span><span class="p">(()</span> <span class="p">(</span><span class="nv">select-random-item</span> <span class="vg">*charset*</span><span class="p">))</span>
+          <span class="p">(</span><span class="nv">range</span> <span class="mi">1</span> <span class="nv">len</span><span class="p">)))</span>
+
+<span class="p">(</span><span class="nv">prinl</span> <span class="p">(</span><span class="nv">random-string</span> <span class="nv">len</span><span class="p">))</span>
+<span class="p">(</span><span class="nv">bye</span><span class="p">)</span>
+</pre></div></td></tr></tbody></table></div></root>
+        </div>
+
+      <footer>
+        <div id="footer-sep">・・・</div>
+        <div class="page-navigation "><a href="/blog/2018-11-04-synthv-hope.html">&lt; SynthesizerV hopes before trying it out</a><a href="/blog/2018-09-20-magit-introduction.html">&gt; Getting started with Magit (Or what I hope I could've read when I first tried out Magit)</a></div>
+        <p>I don't necessarily know what I'm talking about.</p>
+        <ul><li><a href="/feeds.html">Atom / RSS</a> (<a href="/feeds/all.atom.xml">direct link</a>)</li>
+<li><a href="https://twitter.com/flyin1501" class="">Twitter</a></li>
+<li><a href="https://github.com/kisaragi-hiu" class="">Github</a></li>
+<li><a href="https://gitlab.com/kisaragi-hiu" class="">Gitlab.com</a></li>
+<li><a href="https://git.sr.ht/~kisaragi_hiu/">Sourcehut</a></li>
+<li><a href="https://youtube.com/channel/UCl_hsqcvdX0XdgBimRQ6R3A" class="">Youtube</a></li>
+<li><a href="https://www.nicovideo.jp/user/38995186" class="">niconico</a></li></ul>
+        <p>
+          <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
+           <img alt="Creative Commons License"
+                style="border-width:0"
+                src="/static/cc-by-sa-88x31.png" />
+          </a>
+        </p>
+        <p>Posts are licensed under a <a href="http://creativecommons.org/licenses/by-sa/4.0/">CC-BY-SA 4.0 International</a> license.</p>
+<p><a href="https://github.com/kisaragi-hiu/kisaragi-hiu.com">Source code</a> is licensed under MIT. See <a href="https://github.com/kisaragi-hiu/kisaragi-hiu.com/blob/source/LICENSE.md" rel="license">LICENSE.md</a> for details.</p>
+<p>© Kisaragi Hiu 2017~2019. GPG fingerprint: /KisaragiHiu.gpgBCC74B1041D4B7D7CC8BF40240ECBEAEA8775FC2</p>
+      </footer>
+    </div>
+  </body>
+</html>

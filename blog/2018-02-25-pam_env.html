@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Switching to .pam_environment for environment variables | Kisaragi Hiu</title>
+    <meta name="description" content="description">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="Kisaragi Hiu">
+    <meta name="keywords" content="Coding, Programming, Language, LGBT, Blog">
+    <link rel="icon" href="/favicon.ico">
+    <link rel="canonical" href="https://kisaragi-hiu.com/blog/2018-02-25-pam_env.html">
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+    <script>
+      WebFont.load({
+          google: {
+              families: ['Overpass Mono', 'Overpass:200,400,600']
+          }
+      });
+    </script>
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="alternate" type="application/atom+xml" href="/feed.xml" title="Atom Feed">
+  </head>
+  <body>
+    <a id="top"></a>
+    <div class="container">
+      <!--[if lte IE 9]>
+        <h1>For the love of god, please stop using IE9. Thanks.</h1>
+      <![endif]-->
+      <header id="siteheader">
+        <div id="logo">
+          <a href="/">
+            <img src="/static/avatar.png" alt="Kisaragi Hiu"/>
+          </a>
+          <h1>Kisaragi&nbsp;Hiu</h1>
+        </div>
+        <nav>
+          <a href="/">Blog</a>
+          <a href="/projects.html">Projects</a>
+          <a href="/about.html">About</a>
+        </nav>
+      </header>
+
+      <div id="content" class="">
+
+        <header class=""><h2 class="title mb-0"><a href="/blog/2018-02-25-pam_env.html" class="text-primary">Switching to .pam_environment for environment variables</a></h2><p class="date">2018/02/25</p><p class="category">C: <a href="/category/linux.html">Linux</a></p></header>
+
+        <root><p>The past month my system environment was in quite a mess.</p><p>I used to put my environment variables in &rsquo;(filepath "~/.profile"). However, one day, the file simply stopped being sourced. I tried to switch my display manager from sddm, to gdm, then to lightdm, to no avail. I know sourcing a file on login is somewhat insecure, and &rsquo;(filepath "~/.pam_environment") is probably the right way going forward, so I started moving variables into it.</p><h2 id="preprocessing-pamenvironment">Preprocessing .pam_environment</h2><p>I had a piece of code in my &rsquo;(filepath "~/.profile") that checks Racket and Ruby&rsquo;s versions and sets the PATH to point to <code>raco</code> and <code>gem</code>&lsquo;s bin directory. Now, &rsquo;(filepath "~/.pam_environment") can&rsquo;t do that, so I wrote a Pollen version of the file and rendered / compiled it into the final &rsquo;(filepath "~/.pam_environment").</p><p>&rsquo;(div ((class &ldquo;highlight&rdquo;)) (table ((class &ldquo;sourcetable&rdquo;)) (tbody (tr (td ((class &ldquo;linenos&rdquo;)) (div ((class &ldquo;linenodiv&rdquo;)) (pre " 1\n 2\n 3\n 4\n 5\n 6\n 7\n 8\n 9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n24\n25\n26\n27\n28\n29\n30\n31\n32\n33\n34\n35\n36"))) (td ((class &ldquo;code&rdquo;)) (div ((class &ldquo;source&rdquo;)) (pre (span) (span ((class &ldquo;n&rdquo;)) "◊") (span ((class &ldquo;p&rdquo;)) "(") (span ((class &ldquo;k&rdquo;)) &ldquo;define&rdquo;) " " (span ((class &ldquo;p&rdquo;)) "(") (span ((class &ldquo;n&rdquo;)) &ldquo;defpam_env&rdquo;) " " (span ((class &ldquo;n&rdquo;)) &ldquo;name&rdquo;) " " (span ((class &ldquo;o&rdquo;)) ".") " " (span ((class &ldquo;n&rdquo;)) &ldquo;contents&rdquo;) (span ((class &ldquo;p&rdquo;)) ")") "\n " (span ((class &ldquo;p&rdquo;)) "(") (span ((class &ldquo;k&rdquo;)) &ldquo;define&rdquo;) " " (span ((class &ldquo;n&rdquo;)) &ldquo;content&rdquo;) " " (span ((class &ldquo;p&rdquo;)) "(") (span ((class &ldquo;nb&rdquo;)) &ldquo;string-join&rdquo;) " " (span ((class &ldquo;n&rdquo;)) &ldquo;contents&rdquo;) " " (span ((class &ldquo;s2&rdquo;)) """ """) (span ((class &ldquo;p&rdquo;)) "))") "\n " (span ((class &ldquo;n&rdquo;)) "◊string-append") (span ((class &ldquo;p&rdquo;)) "{") (span ((class &ldquo;n&rdquo;)) "◊|name|") " " (span ((class &ldquo;n&rdquo;)) &ldquo;DEFAULT=◊|content|&rdquo;) (span ((class &ldquo;p&rdquo;)) "})") "\n\n" (span ((class &ldquo;n&rdquo;)) "◊") (span ((class &ldquo;p&rdquo;)) "(") (span ((class &ldquo;k&rdquo;)) &ldquo;define&rdquo;) " " (span ((class &ldquo;p&rdquo;)) "(") (span ((class &ldquo;n&rdquo;)) &ldquo;pathlist-string&rdquo;) " " (span ((class &ldquo;o&rdquo;)) ".") " " (span ((class &ldquo;n&rdquo;)) &ldquo;args&rdquo;) (span ((class &ldquo;p&rdquo;)) ")") "\n " (span ((class &ldquo;p&rdquo;)) "(") (span ((class &ldquo;nb&rdquo;)) &ldquo;string-join&rdquo;) " " (span ((class &ldquo;p&rdquo;)) "(") (span ((class &ldquo;nb&rdquo;)) &ldquo;string-split&rdquo;) " " (span ((class &ldquo;p&rdquo;)) "(") (span ((class &ldquo;nb&rdquo;)) &ldquo;string-join&rdquo;) " " (span ((class &ldquo;n&rdquo;)) &ldquo;args&rdquo;) " " (span ((class &ldquo;s2&rdquo;)) """ """) (span ((class &ldquo;p&rdquo;)) ")") " " (span ((class &ldquo;s2&rdquo;)) """) (span ((class &ldquo;se&rdquo;)) "\n") (span ((class &ldquo;s2&rdquo;)) """) (span ((class &ldquo;p&rdquo;)) ")") " " (span ((class &ldquo;s2&rdquo;)) """ ":" """) (span ((class &ldquo;p&rdquo;)) "))") "\n\n" (span ((class &ldquo;n&rdquo;)) "◊") (span ((class &ldquo;p&rdquo;)) "(") (span ((class &ldquo;k&rdquo;)) &ldquo;define&rdquo;) " " (span ((class &ldquo;n&rdquo;)) &ldquo;racket-version&rdquo;) " " (span ((class &ldquo;p&rdquo;)) "(") (span ((class &ldquo;nb&rdquo;)) &ldquo;version&rdquo;) (span ((class &ldquo;p&rdquo;)) "))") "\n" (span ((class &ldquo;n&rdquo;)) "◊") (span ((class &ldquo;p&rdquo;)) "(") (span ((class &ldquo;k&rdquo;)) &ldquo;define&rdquo;) " " (span ((class &ldquo;n&rdquo;)) &ldquo;ruby-version&rdquo;) "\n " (span ((class &ldquo;c1&rdquo;)) "; this, or sed | cut? I don" 39 &ldquo;t know which I prefer really.&rdquo;) "\n " (span ((class &ldquo;p&rdquo;)) "((") (span ((class &ldquo;nb&rdquo;)) &ldquo;compose1&rdquo;) " " (span ((class &ldquo;nb&rdquo;)) &ldquo;first&rdquo;) "\n " (span ((class &ldquo;p&rdquo;)) "(") (span ((class &ldquo;k&rdquo;)) &ldquo;λ&rdquo;) " " (span ((class &ldquo;p&rdquo;)) "(") (span ((class &ldquo;n&rdquo;)) "$1") (span ((class &ldquo;p&rdquo;)) ")") " " (span ((class &ldquo;p&rdquo;)) "(") (span ((class &ldquo;nb&rdquo;)) &ldquo;string-split&rdquo;) " " (span ((class &ldquo;n&rdquo;)) "$1") " " (span ((class &ldquo;s2&rdquo;)) """ &ldquo;p&rdquo; """) (span ((class &ldquo;p&rdquo;)) "))") "\n " (span ((class &ldquo;nb&rdquo;)) &ldquo;second&rdquo;) "\n " (span ((class &ldquo;p&rdquo;)) "(") (span ((class &ldquo;k&rdquo;)) &ldquo;λ&rdquo;) " " (span ((class &ldquo;p&rdquo;)) "(") (span ((class &ldquo;n&rdquo;)) "$1") (span ((class &ldquo;p&rdquo;)) ")") " " (span ((class &ldquo;p&rdquo;)) "(") (span ((class &ldquo;nb&rdquo;)) &ldquo;string-split&rdquo;) " " (span ((class &ldquo;n&rdquo;)) "$1") " " (span ((class &ldquo;s2&rdquo;)) """ " " """) (span ((class &ldquo;p&rdquo;)) ")))") "\n " (span ((class &ldquo;p&rdquo;)) "(") (span ((class &ldquo;nb&rdquo;)) &ldquo;with-output-to-string&rdquo;) " " (span ((class &ldquo;p&rdquo;)) "(") (span ((class &ldquo;k&rdquo;)) &ldquo;λ&rdquo;) " " (span ((class &ldquo;p&rdquo;)) "()") " " (span ((class &ldquo;p&rdquo;)) "(") (span ((class &ldquo;nb&rdquo;)) &ldquo;system&rdquo;) " " (span ((class &ldquo;s2&rdquo;)) """ &ldquo;ruby &mdash;version&rdquo; """) (span ((class &ldquo;p&rdquo;)) ")))))") "\n\n" (span ((class &ldquo;n&rdquo;)) "◊") (span ((class &ldquo;c1&rdquo;)) "; == directory shortcuts ==") "\n" (span ((class &ldquo;n&rdquo;)) "◊defpam_env") (span ((class &ldquo;p&rdquo;)) "[") (span ((class &ldquo;s2&rdquo;)) """ &ldquo;XDG_DESKTOP_DIR&rdquo; """) (span ((class &ldquo;p&rdquo;)) "]{") (span ((class &ldquo;n&rdquo;)) "◊|HOME|/デスクトップ") (span ((class &ldquo;p&rdquo;)) "}") "\n" (span ((class &ldquo;n&rdquo;)) "◊defpam_env") (span ((class &ldquo;p&rdquo;)) "[") (span ((class &ldquo;s2&rdquo;)) """ &ldquo;XDG_DOWNLOAD_DIR&rdquo; """) (span ((class &ldquo;p&rdquo;)) "]{") (span ((class &ldquo;n&rdquo;)) "◊|HOME|/ダウンロード") (span ((class &ldquo;p&rdquo;)) "}") "\n" (span ((class &ldquo;n&rdquo;)) "◊") (span ((class &ldquo;c1&rdquo;)) "; &hellip;") "\n\n" (span ((class &ldquo;n&rdquo;)) "◊defpam_env") (span ((class &ldquo;p&rdquo;)) "[") (span ((class &ldquo;s2&rdquo;)) """ &ldquo;PATH&rdquo; """) (span ((class &ldquo;p&rdquo;)) "]{") (span ((class &ldquo;n&rdquo;)) "◊pathlist-string") (span ((class &ldquo;p&rdquo;)) "{") "\n" (span ((class &ldquo;n&rdquo;)) "◊|HOME|/git/scripts") "\n" (span ((class &ldquo;n&rdquo;)) "◊|HOME|/git/Sudocabulary") "\n" (span ((class &ldquo;n&rdquo;)) "◊|HOME|/bin") "\n" (span ((class &ldquo;n&rdquo;)) "◊|HOME|/.racket/◊|racket-version|/bin") "\n" (span ((class &ldquo;n&rdquo;)) "◊|HOME|/.local/share/npm-global/bin") "\n" (span ((class &ldquo;n&rdquo;)) "◊|HOME|/.gem/ruby/◊|ruby-version|/bin") "\n" (span ((class &ldquo;n&rdquo;)) "$◊") (span ((class &ldquo;s2&rdquo;)) """ "{" """) (span ((class &ldquo;n&rdquo;)) &ldquo;PATH◊&rdquo;) (span ((class &ldquo;s2&rdquo;)) """ "}" """) "\n" (span ((class &ldquo;n&rdquo;)) "/usr/bin") " " (span ((class &ldquo;n&rdquo;)) "◊") (span ((class &ldquo;c1&rdquo;)) "; safety fallback") "\n" (span ((class &ldquo;p&rdquo;)) "}}") "\n\n" (span ((class &ldquo;n&rdquo;)) "◊") (span ((class &ldquo;c1&rdquo;)) "; &hellip;") "\n\n" (span ((class &ldquo;n&rdquo;)) "◊defpam_env") (span ((class &ldquo;p&rdquo;)) "[") (span ((class &ldquo;s2&rdquo;)) """ &ldquo;VISUAL&rdquo; """) (span ((class &ldquo;p&rdquo;)) "]{") (span ((class &ldquo;n&rdquo;)) &ldquo;nvim&rdquo;) (span ((class &ldquo;p&rdquo;)) "}") "\n" (span ((class &ldquo;n&rdquo;)) "◊defpam_env") (span ((class &ldquo;p&rdquo;)) "[") (span ((class &ldquo;s2&rdquo;)) """ &ldquo;EDITOR&rdquo; """) (span ((class &ldquo;p&rdquo;)) "]{") (span ((class &ldquo;n&rdquo;)) &ldquo;nvim&rdquo;) (span ((class &ldquo;p&rdquo;)) "}") "\n")) "\n")))) "\n")</p><p>It&rsquo;s really ugly, but it only has one job, which it does fine.</p><h2 id="default-override-pamenv-what">DEFAULT? OVERRIDE? pam_env, what?</h2><p>All seemed well, until a few days later my PATH config isn&rsquo;t taking effect anymore. For some reason, every other variable is properly set, just not PATH. Trying to see just exactly which file those variables came from, I noticed a variable that is only present in my &rsquo;(filepath "~/.pam_environment"), telling me that it is indeed being read. I looked up info on PATH not being set with &rsquo;(filepath ".pam_environment"), and found <a href="https://superuser.com/questions/130135/why-doesnt-my-environment-variable-get-set">this StackExchange post</a> hinting at something to do with the <code>var DEFAULT=value</code> syntax.</p><p>Reading into pam_env&rsquo;s documentation on the config format, it seems that <code>DEFAULT</code> is intended to be used for, well, defaults that could be overridden. Changing it into OVERRIDE seems to tell pam_env to just use the value and don&rsquo;t fiddle around.</p><p>&rsquo;(div ((class &ldquo;highlight&rdquo;)) (table ((class &ldquo;sourcetable&rdquo;)) (tbody (tr (td ((class &ldquo;linenos&rdquo;)) (div ((class &ldquo;linenodiv&rdquo;)) (pre &ldquo;1\n2\n3\n4&rdquo;))) (td ((class &ldquo;code&rdquo;)) (div ((class &ldquo;source&rdquo;)) (pre (span) (span ((class &ldquo;n&rdquo;)) "◊") (span ((class &ldquo;p&rdquo;)) "(") (span ((class &ldquo;k&rdquo;)) &ldquo;define&rdquo;) " " (span ((class &ldquo;p&rdquo;)) "(") (span ((class &ldquo;n&rdquo;)) &ldquo;defpam_env&rdquo;) " " (span ((class &ldquo;n&rdquo;)) &ldquo;name&rdquo;) " " (span ((class &ldquo;o&rdquo;)) ".") " " (span ((class &ldquo;n&rdquo;)) &ldquo;contents&rdquo;) (span ((class &ldquo;p&rdquo;)) ")") "\n " (span ((class &ldquo;p&rdquo;)) "(") (span ((class &ldquo;k&rdquo;)) &ldquo;define&rdquo;) " " (span ((class &ldquo;n&rdquo;)) &ldquo;content&rdquo;) " " (span ((class &ldquo;p&rdquo;)) "(") (span ((class &ldquo;nb&rdquo;)) &ldquo;string-join&rdquo;) " " (span ((class &ldquo;n&rdquo;)) &ldquo;contents&rdquo;) " " (span ((class &ldquo;s2&rdquo;)) """ """) (span ((class &ldquo;p&rdquo;)) "))") "\n " (span ((class &ldquo;c1&rdquo;)) "; DEFAULT -" "&gt;" " OVERRIDE.") "\n " (span ((class &ldquo;n&rdquo;)) "◊string-append") (span ((class &ldquo;p&rdquo;)) "{") (span ((class &ldquo;n&rdquo;)) "◊|name|") " " (span ((class &ldquo;n&rdquo;)) &ldquo;OVERRIDE=◊|content|&rdquo;) (span ((class &ldquo;p&rdquo;)) "})") "\n")) "\n")))) "\n")</p><p>The full configuration file can be found <a href="https://github.com/kisaragi-hiu/dotfiles/blob/master/@linux/.pam_environment.pp">in my dotfiles repo</a>.</p></root>
+        </div>
+
+      <footer>
+        <div id="footer-sep">・・・</div>
+        <div class="page-navigation "><a href="/blog/2018-03-11-hanezeve-final.html">&lt; Making up a language from Hanezeve Caradhina, "Day 5"</a><a href="/blog/2018-01-15-sg-input-workaround.html">&gt; Working around Steins;Gate's input problem on Linux</a></div>
+        <p>I don't necessarily know what I'm talking about.</p>
+        <ul><li><a href="/feeds.html">Atom / RSS</a> (<a href="/feeds/all.atom.xml">direct link</a>)</li>
+<li><a href="https://twitter.com/flyin1501" class="">Twitter</a></li>
+<li><a href="https://github.com/kisaragi-hiu" class="">Github</a></li>
+<li><a href="https://gitlab.com/kisaragi-hiu" class="">Gitlab.com</a></li>
+<li><a href="https://git.sr.ht/~kisaragi_hiu/">Sourcehut</a></li>
+<li><a href="https://youtube.com/channel/UCl_hsqcvdX0XdgBimRQ6R3A" class="">Youtube</a></li>
+<li><a href="https://www.nicovideo.jp/user/38995186" class="">niconico</a></li></ul>
+        <p>
+          <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
+           <img alt="Creative Commons License"
+                style="border-width:0"
+                src="/static/cc-by-sa-88x31.png" />
+          </a>
+        </p>
+        <p>Posts are licensed under a <a href="http://creativecommons.org/licenses/by-sa/4.0/">CC-BY-SA 4.0 International</a> license.</p>
+<p><a href="https://github.com/kisaragi-hiu/kisaragi-hiu.com">Source code</a> is licensed under MIT. See <a href="https://github.com/kisaragi-hiu/kisaragi-hiu.com/blob/source/LICENSE.md" rel="license">LICENSE.md</a> for details.</p>
+<p>© Kisaragi Hiu 2017~2019. GPG fingerprint: /KisaragiHiu.gpgBCC74B1041D4B7D7CC8BF40240ECBEAEA8775FC2</p>
+      </footer>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,16 @@
+/youtube https://www.youtube.com/channel/UCl_hsqcvdX0XdgBimRQ6R3A
+/niconico https://www.nicovideo.jp/user/38995186
+/pixiv https://www.pixiv.net/member.php?id=14235181
+
+# / is /blog
+/blog /
+/posts /
+
+# old frog/pollen hybrid site URLs
+/tags/category-* /category/:splat
+/tags/* /tags/:splat
+
+/projects/cangjie.el https://github.com/kisaragi-hiu/cangjie.el
+/projects/timetrack https://gitlab.com/canrylog
+/projects/canrylog https://gitlab.com/canrylog
+/projects/yasearch https://gitlab.com/kisaragi-hiu/yasearch
