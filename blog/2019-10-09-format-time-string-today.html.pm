@@ -1,8 +1,9 @@
 #lang pollen
-◊define-meta[title]{format-time-string-today}
+◊define-meta[title]{Locales, Org timestamps, and format-time-string}
 ◊define-meta[date]{2019-10-09T22:39:21}
 ◊define-meta[category]{emacs}
 ◊define-meta[language]{en}
+◊define-meta[toc #t]
 
 ◊heading{The problem}
 
