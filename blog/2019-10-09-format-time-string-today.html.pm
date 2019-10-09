@@ -100,6 +100,6 @@ Then add the advice:
 (advice-add 'format-time-string :around #'kisaragi/advice-format-time-string)
 }
 
-Now ◊code{(format-time-string "%a")} always returns the abbreviated English day-of-week, regardless of system locale.
+Now ◊code{(format-time-string "%a")} always returns the abbreviated English day-of-week, regardless of system locale, and I don’t have to occasionally run ◊code{org-todo} twice anymore. Hopefully.
 
 ◊link["https://gitlab.com/kisaragi-hiu/.emacs.d/blob/971d47f0133b452aaf4c5d08e463430a9c0ffc47/.emacs.d/kisaragi/format-time-string-patch.el"]{File in my .emacs.d}.
