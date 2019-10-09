@@ -59,7 +59,7 @@ WantedBy=default.target
 
 This also does not work. Something with the English locale, or the way I set it, makes it so that ◊link["https://en.wikipedia.org/wiki/Fcitx"]{Fcitx} doesn't work in Emacs anymore. I have to do something else.
 
-◊heading{The patch to ◊code{format-time-string}}
+◊heading{Advising ◊code{format-time-string}}
 
 Eventually, I decided the best way to do this is probably to advise ◊code{format-time-string}. While the advice will not affect calls to it from C code, since Org is all Emacs Lisp, this should make sure Org timestamps are all in English.
 
