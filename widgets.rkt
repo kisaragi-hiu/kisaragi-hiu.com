@@ -267,6 +267,12 @@
    #:class "emacs-source"
    `(code ,@content)))
 
+(define (envvar . exprs)
+  `(span "$" ,@exprs))
+
+(define (path . exprs)
+  `(code ,@exprs))
+
 (define (tldr . exprs)
   `(div
     (span (strong "TL;DR: ") ,@exprs)
