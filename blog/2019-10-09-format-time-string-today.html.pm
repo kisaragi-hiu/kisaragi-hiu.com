@@ -9,7 +9,7 @@
 
 Org mode's timestamps include a day-of-week part (like this: ◊code{<2019-10-09 Wed>}). That day-of-week is localized.
 
-When ◊code{org-todo} is rescheduling a repeating task and encounters a timestamp with a day-of-week in a different locale (eg. ◊code{<2019-10-09 水 ◊link["https://orgmode.org/manual/Repeated-tasks.html"]{.+1d}>}), it updates the format but does not update the time described by the timestamp. When this happens, I have to run ◊code{org-todo} again, potentially creating a duplicate entry in the heading's logbook. This is normally not an issue, unless you edit the same Org file from two machines in different locales --- exactly why I'm bitten by this quirk.
+When ◊code{org-todo} is rescheduling a repeating task and encounters a timestamp with a day-of-week in a different locale (eg. ◊code{<2019-10-09 水 ◊link["https://orgmode.org/manual/Repeated-tasks.html"]{.+1d}>}), it updates the format but does not update the time described by the timestamp. When this happens, I have to run ◊code{org-todo} again, potentially creating a duplicate entry in the heading's logbook. This is normally not an issue, unless you edit the same Org file from two machines in different locales — exactly why I'm bitten by this quirk.
 
 I use Emacs in ◊link["https://termux.com/"]{Termux} on my phone, which does not offer locales other than English (not sure if it's an English locale or POSIX). I use Emacs in server mode on my PC (set to the Japanese locale because I'm used to it), which for some reason does not honor ◊code{◊link["https://www.gnu.org/software/emacs/manual/html_node/elisp/Locales.html"]{system-time-locale}} and only uses the system-wide locale. Now I have two machines accessing the same Org file, stuck in two different locales.
 
