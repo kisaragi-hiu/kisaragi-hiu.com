@@ -84,9 +84,10 @@
         </p>
         ◊; @ tag acts as one tag but Pollen slices it into the document
         ◊to-html{◊@{
+        ◊p{© Kisaragi Hiu 2017~2019.}
         ◊p{Posts are licensed under a ◊a[#:href "http://creativecommons.org/licenses/by-sa/4.0/"]{CC-BY-SA 4.0 International} license.}
         ◊p{◊a[#:href "https://github.com/kisaragi-hiu/kisaragi-hiu.com"]{Source code} is licensed under MIT. See ◊a[#:rel "license" #:href "https://github.com/kisaragi-hiu/kisaragi-hiu.com/blob/source/LICENSE.md"]{LICENSE.md} for details.}
-        ◊p{© Kisaragi Hiu 2017~2019. GPG fingerprint: ◊link[◊(abs-local "KisaragiHiu.gpg")]{BCC74B1041D4B7D7CC8BF40240ECBEAEA8775FC2}}
+        ◊p{PGP fingerprint: ◊link[◊(abs-local "KisaragiHiu.gpg")]{BCC7 4B10 41D4 B7D7 CC8B F402 40EC BEAE A877 5FC2}}
         }}
       </footer>
     </div>
