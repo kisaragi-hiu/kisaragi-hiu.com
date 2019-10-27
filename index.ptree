@@ -53,6 +53,7 @@ about.html
 projects.html
 ◊projects{
     projects/org-msr.html
+    projects/ust-mode.html
 }
 ◊fiction{
     fiction/2018-06-17-夢.html
