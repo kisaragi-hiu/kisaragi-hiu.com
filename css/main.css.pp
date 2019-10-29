@@ -26,7 +26,7 @@
                   ◊|cjk-fallback|,
                   'monospace'})
 ◊(define title "h1,h2,h3,h4,h5,h6,h7,.title")
-◊(define text-secondary "#666")
+◊(define text-secondary "#555")
 ◊(define content "#content,#siteheader,#sitefooter-content")
 
 /*
@@ -142,7 +142,7 @@ blockquote {
   (css-expr
    [|div#references|
     #:margin-top 3rem
-    #:color |#666|
+    #:color |#555|
     [p #:margin-top 0 #:margin-bottom 0]]))
 
 .ref-desc-id {
