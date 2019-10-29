@@ -137,7 +137,8 @@ footer {
     color: ◊|text-secondary|;
 }
 footer p {
-    line-height: 0.8;
+    line-height: 1.4;
+    margin: 0.5rem auto 0.5rem;
 }
 #footer-sep {
     margin-top: 2.5rem;
