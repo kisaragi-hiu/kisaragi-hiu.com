@@ -129,6 +129,10 @@
 * Misc.
 */
 
+.badge {
+    margin: auto 0.5rem;
+}
+
 .image p {
     margin-top: 0;
     margin-bottom: 0;

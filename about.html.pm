@@ -4,6 +4,8 @@
 
 I'm a college student interested in Free Software, programming, VOCALOID / UTAU culture, and language learning.
 
+◊link["https://gitlab.com/kisaragi-hiu/dotfiles"]{My dotfiles.}
+
 ◊subheading[#:id "links"]{Links}
 
 ◊ul{

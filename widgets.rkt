@@ -43,12 +43,19 @@
 (define subheading h2)
 (define subsubheading h3)
 
-(define (project url title . description)
+(define (melpa-badge pkg)
+  `(a ([href ,(format "https://melpa.org/#/~a" pkg)]
+       [class "badge"])
+    (img ([alt "MELPA"]
+          [src ,(format "https://melpa.org/packages/~a-badge.svg" pkg)]))))
+
+(define (project url title #:title2 [title2 #f] . description)
   `(div ([class "project"])
     (h2
      (a ([class "project-title"]
          [href ,url])
-      ,title))
+      ,title)
+     ,@(if title2 `(,title2) '()))
     ,@description))
 
 (define (strike . text)
