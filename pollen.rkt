@@ -12,6 +12,7 @@
          pollen/unstable/pygments
          racket/function
          racket/list
+         racket/string
          "widgets.rkt"
          "reference.rkt"
          "date.rkt"
@@ -29,6 +30,7 @@
           pollen/template
           racket/function
           racket/list
+          racket/string
           txexpr))
 
 ;; (module+ setup
