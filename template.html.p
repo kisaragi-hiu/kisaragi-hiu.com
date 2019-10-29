@@ -24,72 +24,70 @@
   </head>
   <body>
     <a id="top"></a>
-    <div class="container">
-      <!--[if lte IE 9]>
-        ◊; … too aggressive?
-        <h1>For the love of god, please stop using IE9. Thanks.</h1>
-      <![endif]-->
-      ◊; Header
-      <header id="siteheader">
-        <div id="logo">
-          <a href="/">
-            <img src="/static/avatar.png" alt="Kisaragi Hiu"/>
-          </a>
-          <h1>Kisaragi&nbsp;Hiu</h1>
-        </div>
-        <nav>
-          <a href="/">Blog</a>
-          <a href="/projects.html">Projects</a>
-          <a href="/about.html">About</a>
-        </nav>
-      </header>
+    <!--[if lte IE 9]>
+      ◊; … too aggressive?
+      <h1>For the love of god, please stop using IE9. Thanks.</h1>
+    <![endif]-->
+    ◊; Header
+    <header id="siteheader">
+      <div id="logo">
+        <a href="/">
+          <img src="/static/avatar.png" alt="Kisaragi Hiu"/>
+        </a>
+        <h1>Kisaragi&nbsp;Hiu</h1>
+      </div>
+      <nav>
+        <a href="/">Blog</a>
+        <a href="/projects.html">Projects</a>
+        <a href="/about.html">About</a>
+      </nav>
+    </header>
 
-      ◊; Contents
-      <div id="content" class="">
-        ◊(when/splice (string=? (document-type metas) "root-index")
-          ◊list{
+    ◊; Contents
+    <div id="content">
+      ◊(when/splice (string=? (document-type metas) "root-index")
+        ◊list{
 <p>I'm a college student interested in Free Software, programming, VOCALOID / UTAU culture, and language learning.</p>
 })
-        ◊(when/splice (string=? (document-type metas) "post")
-           (to-html (index-item here)))
-        ◊(when/splice (select-from-metas 'toc metas)
-           (to-html (toc here)))
-        ◊(to-html doc)
-        ◊; (when/splice (string=? (document-type metas) "post")
-        ◊;   (to-html (previous-and-next-same-category here)))
-      </div>
-
-      ◊; Footer
-      <footer>
-        <div id="footer-sep">・・・</div>
-        ◊(when/splice (string=? (document-type metas) "post")
-           (to-html (previous-and-next here)))
-        <p>I don't necessarily know what I'm talking about.</p>
-        ◊to-html{
-        ◊ul{
-          ◊li{◊link[◊(abs-local "feeds.html")]{Atom / RSS} (◊link[◊(abs-local "feeds/all.atom.xml")]{direct link})}
-          ◊li{◊twitter["flyin1501"]{Twitter}}
-          ◊li{◊github["kisaragi-hiu"]{Github}}
-          ◊li{◊gitlab["kisaragi-hiu"]{Gitlab.com}}
-          ◊li{◊link["https://git.sr.ht/~kisaragi_hiu/"]{Sourcehut}}
-          ◊li{◊youtube["channel/UCl_hsqcvdX0XdgBimRQ6R3A"]{Youtube}}
-          ◊li{◊niconico["user/38995186"]{niconico}}
-        }}
-        <p>
-          <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
-           <img alt="Creative Commons License"
-                style="border-width:0"
-                src="/static/cc-by-sa-88x31.png" />
-          </a>
-        </p>
-        ◊; @ tag acts as one tag but Pollen slices it into the document
-        ◊to-html{◊@{
-        ◊p{© Kisaragi Hiu 2017~2019.}
-        ◊p{Posts are licensed under a ◊a[#:href "http://creativecommons.org/licenses/by-sa/4.0/"]{CC-BY-SA 4.0 International} license.}
-        ◊p{◊a[#:href "https://github.com/kisaragi-hiu/kisaragi-hiu.com"]{Source code} is licensed under MIT. See ◊a[#:rel "license" #:href "https://github.com/kisaragi-hiu/kisaragi-hiu.com/blob/source/LICENSE.md"]{LICENSE.md} for details.}
-        ◊p{PGP fingerprint: ◊link[◊(abs-local "KisaragiHiu.gpg")]{BCC7 4B10 41D4 B7D7 CC8B F402 40EC BEAE A877 5FC2}}
-        }}
-      </footer>
+      ◊(when/splice (string=? (document-type metas) "post")
+         (to-html (index-item here)))
+      ◊(when/splice (select-from-metas 'toc metas)
+         (to-html (toc here)))
+      ◊(to-html doc)
+      ◊; (when/splice (string=? (document-type metas) "post")
+      ◊;   (to-html (previous-and-next-same-category here)))
     </div>
+
+    ◊; Footer
+    <footer id="#sitefooter">
+      <div id="footer-sep">・・・</div>
+      ◊(when/splice (string=? (document-type metas) "post")
+         (to-html (previous-and-next here)))
+      <p>I don't necessarily know what I'm talking about.</p>
+      ◊to-html{
+      ◊ul{
+        ◊li{◊link[◊(abs-local "feeds.html")]{Atom / RSS} (◊link[◊(abs-local "feeds/all.atom.xml")]{direct link})}
+        ◊li{◊twitter["flyin1501"]{Twitter}}
+        ◊li{◊github["kisaragi-hiu"]{Github}}
+        ◊li{◊gitlab["kisaragi-hiu"]{Gitlab.com}}
+        ◊li{◊link["https://git.sr.ht/~kisaragi_hiu/"]{Sourcehut}}
+        ◊li{◊youtube["channel/UCl_hsqcvdX0XdgBimRQ6R3A"]{Youtube}}
+        ◊li{◊niconico["user/38995186"]{niconico}}
+      }}
+      <p>
+        <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
+         <img alt="Creative Commons License"
+              style="border-width:0"
+              src="/static/cc-by-sa-88x31.png" />
+        </a>
+      </p>
+      ◊; @ tag acts as one tag but Pollen slices it into the document
+      ◊to-html{◊@{
+      ◊p{© Kisaragi Hiu 2017~2019.}
+      ◊p{Posts are licensed under a ◊a[#:href "http://creativecommons.org/licenses/by-sa/4.0/"]{CC-BY-SA 4.0 International} license.}
+      ◊p{◊a[#:href "https://github.com/kisaragi-hiu/kisaragi-hiu.com"]{Source code} is licensed under MIT. See ◊a[#:rel "license" #:href "https://github.com/kisaragi-hiu/kisaragi-hiu.com/blob/source/LICENSE.md"]{LICENSE.md} for details.}
+      ◊p{PGP fingerprint: ◊link[◊(abs-local "KisaragiHiu.gpg")]{BCC7 4B10 41D4 B7D7 CC8B F402 40EC BEAE A877 5FC2}}
+      }}
+    </footer>
   </body>
 </html>

@@ -27,6 +27,15 @@
                   'monospace'})
 ◊(define title "h1,h2,h3,h4,h5,h6,h7,.title")
 ◊(define text-secondary "#666")
+◊(define content "#content,#siteheader,#sitefooter")
+
+/*
+* Page margins
+*/
+
+◊|content| {
+    margin: 2rem 20% 3rem 20%;
+}
 
 /*
 * Site Header
@@ -119,9 +128,6 @@ blockquote {
     font-family: ◊|monospace|;
 }
 
-.container {
-    margin: 2rem 20% 3rem 20%;
-}
 a {
     text-decoration: none;
 }
@@ -145,10 +151,10 @@ body {
     color: ◊|text-secondary|;
 }
 
-footer {
+#sitefooter {
     color: ◊|text-secondary|;
 }
-footer p {
+#sitefooter p {
     line-height: 1.4;
     margin: 0.5rem auto 0.5rem;
 }
@@ -311,7 +317,7 @@ h2 { font-weight: 400; }
 }
 
 @media (max-width: 1200px) {
-    .container {
+    ◊|content| {
         margin: 2rem 5% 3rem 5%;
     }
 
