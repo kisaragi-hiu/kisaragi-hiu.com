@@ -55,6 +55,18 @@ nav a {
 }
 
 /*
+* Project
+*/
+
+.project p {
+  margin-top: 0;
+}
+
+.project-title {
+  font-weight: 600;
+}
+
+/*
 * TOC
 */
 #toc-title {
@@ -233,16 +245,6 @@ h2 { font-weight: 400; }
     color: #222;
 }
 
-.project-title {
-    color: #444;
-    font-weight: 600;
-    margin-bottom: 0;
-}
-
-a.project-link {
-    color: #555;
-}
-
 .pager {
     display: flex;
     justify-content: space-between;
@@ -257,19 +259,6 @@ a.project-link {
 
 .linenodiv pre {
     color: #aaa;
-}
-
-ul.project-list {
-    column-count: 2;
-    list-style: none;
-    padding-left: 0;
-}
-
-div.project-list {
-    display: flex;
-    padding-left: 0;
-    padding-bottom: 2em;
-    justify-content: space-around;
 }
 
 .image-link {
@@ -324,10 +313,6 @@ div.project-list {
 @media (max-width: 1200px) {
     .container {
         margin: 2rem 5% 3rem 5%;
-    }
-
-    .project-list {
-        column-count: 1;
     }
 
     .collapse-level-2 {

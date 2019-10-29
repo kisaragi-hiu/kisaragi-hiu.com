@@ -43,15 +43,13 @@
 (define subheading h2)
 (define subsubheading h3)
 
-(define (project url title description)
-  `(li ([class "project"])
-    (a ([class "project-link"]
-        [href ,url])
-     (p ([class "project-title"])
-      ,title
-      nbsp)
-     (p ([class "project-description"])
-      ,description))))
+(define (project url title . description)
+  `(div ([class "project"])
+    (h2
+     (a ([class "project-title"]
+         [href ,url])
+      ,title))
+    ,@description))
 
 (define (strike . text)
   `(s ,@text))
