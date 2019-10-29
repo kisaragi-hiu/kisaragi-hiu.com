@@ -53,11 +53,11 @@
 #logo h1 {
     margin-top: 0.25rem;
 }
-nav {
+#siteheader nav {
     display: flex;
     justify-content: flex-end;
 }
-nav a {
+#siteheader nav a {
     color: #6c757d;
     margin: 0.5rem 0.8rem 0.5rem 0;
     font-size: 1.2rem;
@@ -83,6 +83,15 @@ nav a {
     font-weight: 700;
 }
 
+#sitefooter nav {
+    display: flex;
+    justify-content: flex-start;
+}
+#sitefooter nav a {
+    color: #6c757d;
+    margin: 0.5rem 1rem 0.5rem 0;
+    font-size: 1.2rem;
+}
 
 /*
 * Project

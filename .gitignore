@@ -16,7 +16,7 @@ main.css
 *.html
 css/main.css
 category/*.pm
-static/ext/
+static/external/
 static/
 !/static/
 category/

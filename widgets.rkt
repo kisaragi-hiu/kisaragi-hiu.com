@@ -200,14 +200,27 @@
                          ":" suburl))
                  #:class class)))]))
 
-(define (font-awesome fa-icon #:aria [hidden #t] #:color [color #f] #:size [size #f])
-  (define options (if (or color size) "?" ""))
-  (when color (set! options (string-append options "color=" color)))
-  (when size (set! options (string-append options "size=" size)))
-  (download (~a "https://icongr.am/fontawesome/" fa-icon ".svg" options)
-            (build-path (current-project-root) "static/ext/fa/" fa-icon ".svg"))
-  `(img ([src ,(abs-local "static/ext/fa/" fa-icon ".svg")]
-         [alt ,fa-icon])))
+;; downloads icons from icongr.am at "compile" time
+;; (icon name [#:arg value] ...)
+(define icon
+  (make-keyword-procedure
+   (lambda (kws kw-args . args)
+     (let* ([arguments ""]
+            [name (first args)]
+            [local-path (format "static/external/icons/~a.svg" name)])
+       ;; set up url arguments
+       (map (lambda (kw arg)
+              (set! arguments (~a arguments (format "~a=~a" kw arg))))
+            kws kw-args)
+       ;; arguments not touched if kws and kw-args are empty
+       (unless (string=? arguments "")
+         (set! arguments (~a "?" arguments)))
+       ;; download the icon
+       (download (format "https://icongr.am/feather/~a.svg~a" name arguments)
+                 (build-path (current-project-root) local-path))
+       ;; return the image pointing at the icon
+       `(img ([src ,(abs-local local-path)]
+              [alt ,name]))))))
 
 (define (tweet url
                #:summary summary

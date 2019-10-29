@@ -63,34 +63,27 @@
     </div>
 
     ◊; Footer
-    <footer id="#sitefooter">
+    <footer id="sitefooter">
       <div id="footer-sep">・・・</div>
       <div id="sitefooter-content">
       ◊(when/splice (string=? (document-type metas) "post")
          (to-html (previous-and-next here)))
       <p>I don't necessarily know what I'm talking about.</p>
-      ◊to-html{
-      ◊ul{
-        ◊li{◊link[◊(abs-local "feeds.html")]{Atom / RSS} (◊link[◊(abs-local "feeds/all.atom.xml")]{direct link})}
-        ◊li{◊twitter["flyin1501"]{Twitter}}
-        ◊li{◊github["kisaragi-hiu"]{Github}}
-        ◊li{◊gitlab["kisaragi-hiu"]{Gitlab.com}}
-        ◊li{◊link["https://git.sr.ht/~kisaragi_hiu/"]{Sourcehut}}
-        ◊li{◊youtube["channel/UCl_hsqcvdX0XdgBimRQ6R3A"]{Youtube}}
-        ◊li{◊niconico["user/38995186"]{niconico}}
-      }}
-      <p>
-        <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
-         <img alt="Creative Commons License"
-              style="border-width:0"
-              src="/static/cc-by-sa-88x31.png" />
-        </a>
-      </p>
+      <nav>
+        ◊to-html{◊@{
+        ◊link[◊(abs-local "feeds.html")]{◊icon{rss}}
+        ◊twitter["flyin1501"]{◊icon{twitter}}
+        ◊github["kisaragi-hiu"]{◊icon{github}}
+        ◊gitlab["kisaragi-hiu"]{◊icon{gitlab}}
+        ◊youtube["channel/UCl_hsqcvdX0XdgBimRQ6R3A"]{◊icon{youtube}}
+        ◊link["/about.html#links"]{◊icon{more-horizontal}}
+        }}
+      </nav>
       ◊to-html{◊@{
+      ◊p{PGP fingerprint: ◊link[◊(abs-local "KisaragiHiu.gpg")]{BCC7 4B10 41D4 B7D7 CC8B F402 40EC BEAE A877 5FC2}}
       ◊p{© Kisaragi Hiu 2017~2019.}
       ◊p{Posts are licensed under a ◊a[#:href "http://creativecommons.org/licenses/by-sa/4.0/"]{CC-BY-SA 4.0 International} license.}
       ◊p{◊a[#:href "https://github.com/kisaragi-hiu/kisaragi-hiu.com"]{Source code} is licensed under MIT. See ◊a[#:rel "license" #:href "https://github.com/kisaragi-hiu/kisaragi-hiu.com/blob/source/LICENSE.md"]{LICENSE.md} for details.}
-      ◊p{PGP fingerprint: ◊link[◊(abs-local "KisaragiHiu.gpg")]{BCC7 4B10 41D4 B7D7 CC8B F402 40EC BEAE A877 5FC2}}
       }}
       </div>
     </footer>
