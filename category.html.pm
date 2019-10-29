@@ -4,7 +4,9 @@
 
 ◊(current-pagetree "index.ptree")
 
-◊heading{Categories}
-
-◊(for/splice ([category (children 'category "index.ptree")])
-   (index-item category))
+◊ul{
+◊(for/splice ([pagenode (children 'category "index.ptree")])
+   (let ([uri (abs-local (~a pagenode))]
+         [title (select-from-metas 'title pagenode)])
+      `(li ,(link uri title))))
+}

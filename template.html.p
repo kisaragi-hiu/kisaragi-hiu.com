@@ -38,6 +38,7 @@
       </div>
       <nav>
         <a href="/">Blog</a>
+        <a href="/category.html">Categories</a>
         <a href="/projects.html">Projects</a>
         <a href="/about.html">About</a>
       </nav>
@@ -51,6 +52,9 @@
 })
       ◊(when/splice (string=? (document-type metas) "post")
          (to-html (index-item here)))
+      ◊(when/splice (and (select-from-metas 'title metas)
+                         (not (string=? (document-type metas) "category-index")))
+         (to-html `(h1 ,(select-from-metas 'title metas))))
       ◊(when/splice (select-from-metas 'toc metas)
          (to-html (toc here)))
       ◊(to-html doc)

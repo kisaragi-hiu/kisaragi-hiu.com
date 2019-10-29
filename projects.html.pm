@@ -2,7 +2,6 @@
 ◊define-meta[type]{page}
 ◊define-meta[title]{Projects}
 ◊define-meta[toc #t]
-◊heading{Projects}
 
 I publish coding projects to both ◊link["https://github.com/kisaragi-hiu"]{Github} and ◊gitlab["https://gitlab.com/kisaragi-hiu"]{Gitlab}. Here are a few that aren't just one-off experiments.
 

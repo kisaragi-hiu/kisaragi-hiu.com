@@ -1,8 +1,6 @@
 #lang pollen
-◊define-meta[title]{Home}
+◊define-meta[title]{Poems}
 ◊define-meta[type]{index}
-
-◊heading{Poems}
 
 ◊(current-pagetree "index.ptree")
 
