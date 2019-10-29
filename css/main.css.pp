@@ -27,7 +27,7 @@
                   'monospace'})
 ◊(define title "h1,h2,h3,h4,h5,h6,h7,.title")
 ◊(define text-secondary "#666")
-◊(define content "#content,#siteheader,#sitefooter")
+◊(define content "#content,#siteheader,#sitefooter-content")
 
 /*
 * Page margins
@@ -62,6 +62,27 @@ nav a {
     margin: 0.5rem 0.8rem 0.5rem 0;
     font-size: 1.2rem;
 }
+
+/*
+* Site footer
+*/
+
+#sitefooter {
+    color: ◊|text-secondary|;
+}
+
+#sitefooter p {
+    line-height: 1.4;
+    margin: 0.5rem auto 0.5rem;
+}
+
+#footer-sep {
+    margin-top: 2.5rem;
+    margin-bottom: 2.5rem;
+    text-align: center;
+    font-weight: 700;
+}
+
 
 /*
 * Project
@@ -149,20 +170,6 @@ body {
 
 .disabled {
     color: ◊|text-secondary|;
-}
-
-#sitefooter {
-    color: ◊|text-secondary|;
-}
-#sitefooter p {
-    line-height: 1.4;
-    margin: 0.5rem auto 0.5rem;
-}
-#footer-sep {
-    margin-top: 2.5rem;
-    margin-bottom: 2.5rem;
-    text-align: center;
-    font-weight: 700;
 }
 
 p {
