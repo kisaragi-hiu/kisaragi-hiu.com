@@ -251,7 +251,7 @@ header .tags {
     color: black;
 }
 
-h1, h2, h3, h4, h5, h6, .index-stream-title {
+h1, h2, h3, h4, h5, h6 {
     font-size: 1.5rem;
     line-height: 1.2;
     margin-top: 1.5rem;
@@ -260,16 +260,12 @@ h1, h2, h3, h4, h5, h6, .index-stream-title {
     letter-spacing: normal;
 }
 
-h1, .index-stream-title {
+h1 {
     font-weight: 600;
     color: #444;
 }
 
 h2 { font-weight: 400; }
-
-.index-stream-title:hover {
-    color: #222;
-}
 
 .pager {
     display: flex;
@@ -293,39 +289,6 @@ h2 { font-weight: 400; }
     box-shadow:         0px 0px 10px 0px rgba(50, 50, 50, 0.68);
 }
 
-.collapse-level-2 {
-    font-size: 1.5rem;
-    margin-top: 1.5rem;
-    margin-bottom: .5rem;
-    font-weight: 500;
-    /* bit of a magic number… */
-    margin-left: -1.29rem;
-}
-
-.index-stream-title {
-    /* magic number again… */
-    margin-left: -1.5rem;
-}
-
-.collapse-level-2::before, .index-stream-title::before {
-    font-family: "Overpass Mono";
-    font-size: 1.5rem;
-    margin-right: -0.5rem;
-    color: #aaa;
-}
-
-.collapse-level-2::before {
-    content: "+ ";
-}
-
-.index-stream-title::before {
-    content: "* ";
-}
-
-.collapsed::after {
-    content: "...";
-}
-
 .ytembed-default {
     padding-bottom: 50%;
     position: relative;
@@ -339,13 +302,5 @@ h2 { font-weight: 400; }
 @media (max-width: 1200px) {
     ◊|content| {
         margin: 2rem 5% 3rem 5%;
-    }
-
-    .collapse-level-2 {
-        margin-left: 0;
-    }
-
-    .index-stream-title {
-        margin-left: 0;
     }
 }
