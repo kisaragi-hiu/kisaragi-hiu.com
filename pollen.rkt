@@ -243,15 +243,12 @@
 ;; return "h1+h3,h1+h4,h2+h3,h2+h4".
 ;; This is used to match headings next to headings.
 ;; list1 and list2 can be strings separated by "," or lists.
-(define (css-op-all operation list1 list2)
+(define (css-op-all operation . lists)
   (define (coerce-to-list x)
     (cond
       ((string? x) (map string-trim (string-split x ",")))
       (else x)))
-  (let ([list1 (coerce-to-list list1)]
-        [list2 (coerce-to-list list2)])
-    (~> (for/list ((x list1))
-          (for/list ((y list2))
-            (~a x operation y)))
-        flatten
-        (string-join ","))))
+  (~> (map coerce-to-list lists)
+      (apply cartesian-product _)
+      (map (lambda (x) (string-join x operation)) _)
+      (string-join ",")))
