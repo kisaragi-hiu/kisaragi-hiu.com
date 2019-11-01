@@ -34,7 +34,7 @@
 */
 
 ◊|content| {
-    margin: 2rem 20% 3rem 20%;
+    margin: 0 20%;
 }
 
 /*
@@ -167,6 +167,7 @@ a {
 }
 
 body {
+    margin: 2rem 0 3rem;
     line-height: 1.6;
     font-family: ◊|sans-serif|;
     font-weight: 400;
@@ -301,6 +302,6 @@ h2 { font-weight: 400; }
 
 @media (max-width: 1200px) {
     ◊|content| {
-        margin: 2rem 5% 3rem 5%;
+        margin: 0 5%;
     }
 }
