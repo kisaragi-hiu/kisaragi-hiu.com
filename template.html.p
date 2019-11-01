@@ -46,10 +46,6 @@
 
     ◊; Contents
     <div id="content">
-      ◊(when/splice (string=? (document-type metas) "root-index")
-        ◊list{
-<p>I'm a college student interested in Free Software, programming, VOCALOID / UTAU culture, and language learning.</p>
-})
       ◊(when/splice (string=? (document-type metas) "post")
          (to-html (index-item here)))
 
