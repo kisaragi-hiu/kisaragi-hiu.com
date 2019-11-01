@@ -25,7 +25,7 @@
                   'Noto Sans Mono CJK',
                   ◊|cjk-fallback|,
                   'monospace'})
-◊(define title "h1,h2,h3,h4,h5,h6,h7,.title")
+◊(define heading "h1,h2,h3,h4,h5,h6,h7")
 ◊(define text-secondary "#555")
 ◊(define content "#content,#siteheader,#sitefooter-content")
 
@@ -252,11 +252,16 @@ header .tags {
     color: black;
 }
 
-h1, h2, h3, h4, h5, h6 {
+◊; "+" h1,h2 h2,h3 => h1+h2,h2+h2,h1+h3,h2+h3
+◊(css-op-all "+" heading heading) {
+    margin-top: 1rem;
+}
+
+◊|heading| {
     font-size: 1.5rem;
     line-height: 1.2;
-    margin-top: 1.5rem;
-    margin-bottom: .5rem;
+    margin-top: 2rem;
+    margin-bottom: 0.5rem;
     font-weight: 300;
     letter-spacing: normal;
 }

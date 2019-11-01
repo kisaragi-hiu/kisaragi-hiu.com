@@ -238,3 +238,20 @@
             [(h6)
              (toc-item elem 'h6)]
             [else #f]))))))
+
+;; Given + (adjacent sibling operator), "h1,h2", and "h3,h4",
+;; return "h1+h3,h1+h4,h2+h3,h2+h4".
+;; This is used to match headings next to headings.
+;; list1 and list2 can be strings separated by "," or lists.
+(define (css-op-all operation list1 list2)
+  (define (coerce-to-list x)
+    (cond
+      ((string? x) (map string-trim (string-split x ",")))
+      (else x)))
+  (let ([list1 (coerce-to-list list1)]
+        [list2 (coerce-to-list list2)])
+    (~> (for/list ((x list1))
+          (for/list ((y list2))
+            (~a x operation y)))
+        flatten
+        (string-join ","))))
