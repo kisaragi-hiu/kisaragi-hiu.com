@@ -6,7 +6,7 @@
 /blog /
 /posts /
 
-/feed.xml /feeds/all.atom.xml
+/feed.xml /feeds/all.atom.xml 200
 
 # old frog/pollen hybrid site URLs
 /tags/category-* /category/:splat
