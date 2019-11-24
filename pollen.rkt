@@ -15,6 +15,7 @@
          racket/string
          "widgets.rkt"
          "reference.rkt"
+         "translation.rkt"
          "date.rkt"
          "path.rkt"
          (for-syntax racket/string
@@ -23,6 +24,7 @@
 (provide (all-defined-out)
          highlight
          (all-from-out
+          "translation.rkt"
           "widgets.rkt"
           "path.rkt"
           "reference.rkt"

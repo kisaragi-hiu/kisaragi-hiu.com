@@ -38,6 +38,8 @@
         <h1>Kisaragi&nbsp;Hiu</h1>
       </div>
       <nav>
+        <button onClick="translation.setLang('zh');">Mandarin</button>
+        <button onClick="translation.setLang('en');">English</button>
         <a href="/">Blog</a>
         <a href="/category.html">Categories</a>
         <a href="/projects.html">Projects</a>

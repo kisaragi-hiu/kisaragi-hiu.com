@@ -1,5 +1,6 @@
 #lang pollen
 ◊file->string["emacs.css"]
+◊file->string["translation.css"]
 
 ◊(require
   racket/string

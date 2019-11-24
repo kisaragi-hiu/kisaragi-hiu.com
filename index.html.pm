@@ -8,7 +8,7 @@
 ◊(define blog-entry-years
    (remove-duplicates (map post-year blog-entries)))
 
-I'm a college student interested in Free Software, programming, VOCALOID / UTAU culture, and language learning.
+◊$en{I'm a college student interested in Free Software, programming, VOCALOID / UTAU culture, and language learning.}
 
 ◊(for/splice ([year blog-entry-years])
    `(div ([class "index-year"])
