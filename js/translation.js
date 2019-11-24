@@ -1,13 +1,13 @@
 "use strict";
 
-const htmlTag = () => document.getElementsByTagName("html")[0];
+const bodyTag = () => document.getElementsByTagName("body")[0];
 
 let translation = {
   setLang: lang => {
     localStorage.setItem("language", lang);
-    htmlTag().attributes["lang"] = localStorage.getItem("language");
+    bodyTag().className = `${localStorage.getItem("language")}`;
   },
-  getLang: () => htmlTag().attributes["lang"],
+  getLang: () => bodyTag().className,
   // initialize the local storage and set up the lang attribute
   onLoad: () => {
     // initialize the local storage
