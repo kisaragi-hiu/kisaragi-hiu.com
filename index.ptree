@@ -1,6 +1,7 @@
 #lang pollen
 index.html
 ◊blog{
+    blog/2019-12-16-barren-moon.html
     blog/2019-10-09-format-time-string-today.html
     blog/2019-09-24-qr-codes-from-emacs.html
     blog/2019-05-16-emacs-profiler-width.html
