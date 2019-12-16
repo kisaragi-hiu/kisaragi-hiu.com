@@ -43,10 +43,14 @@ Search the word under point or region on the web.
 My personal spaced repetition system, implemented with Org-mode repeaters.
 }
 
-◊subheading{Web}
+◊subheading{Web / Design}
 
 ◊project["https://github.com/kisaragi-hiu/kisaragi-hiu.com" "kisaragi-hiu.com"]{
 This site. Built on Pollen and Racket, using a minimal style, and spamming purple everywhere.
+}
+
+◊project["https://gitlab.com/kisaragi-hiu/barren-moon" "如同月球般的荒涼(Barren Moon)"]{
+A web-based book. Collection of poems I wrote in junior and senior high school.
 }
 
 ◊subheading{Commands}
