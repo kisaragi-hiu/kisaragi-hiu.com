@@ -49,9 +49,9 @@
       ◊(when/splice (string=? (document-type metas) "post")
          (to-html (index-item here)))
 
-      ◊(when/splice (and (select-from-metas 'title metas)
-                         (not (string-suffix? (document-type metas) "index")))
-         (to-html `(h1 ,(select-from-metas 'title metas))))
+      ◊; ◊(when/splice (and (select-from-metas 'title metas)
+      ◊;                    (not (string-suffix? (document-type metas) "index")))
+      ◊;    (to-html `(h1 ,(select-from-metas 'title metas))))
       ◊(when/splice (select-from-metas 'toc metas)
          (to-html (toc here)))
       ◊(to-html doc)
