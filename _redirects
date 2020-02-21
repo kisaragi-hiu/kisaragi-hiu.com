@@ -21,3 +21,5 @@
 
 /dotfiles https://gitlab.com/kisaragi-hiu/dotfiles
 /.emacs.d https://gitlab.com/kisaragi-hiu/.emacs.d
+
+/KisaragiHiu.gpg /KisaragiHiu.asc
