@@ -221,20 +221,27 @@ a.text-primary:hover, a.text-primary:focus {
     color: #d0a3ff !important;
 }
 
+.index-year > h1 {
+    margin: 3rem 0 1rem;
+}
+
 .index-item {
     margin-top: 0.5rem;
-    margin-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.index-item .title {
+    margin: 0;
 }
 
 .index-item .date,
 .index-item .category,
 .index-item .tags {
     font-family: ◊|monospace|;
-    display: block;
+    display: inline-block;
     color: ◊|text-secondary|;
-    margin-bottom: 0;
-    margin-top: 0;
-    font-size: 1rem;
+    margin: 0 0.5em 0 0;
+    font-size: 16pt;
 }
 
 .highlight {

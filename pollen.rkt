@@ -146,33 +146,21 @@
   (unless title
     (error pagenode "title is mandatory"))
   `(div ([class "index-item"])
-    (h2 ([class "title"])
-     (a ([href ,uri]
-         [class "text-primary"])
-      ,title))
     (p ([class "date"])
      ,(if date
           (string-replace (substring date 0 10) "-" "/")
           ""))
     ,(if category
          `(p ([class "category"])
-           "C: "
-           (a ([href ,(abs-local "category/"
-                                 (string-replace
-                                  (string-downcase category)
-                                  " "
-                                  "-")
-                                 ".html")])
-            ,(string-titlecase category)))
+           (a ([href ,(abs-local (~> (string-downcase category)
+                                     (string-replace _ " " "-")
+                                     (format "category/~a.html" _)))])
+            ,(format "#~a" category)))
          "")
-    ,(if (list? tags)
-         `(p ([class "tags"])
-           "T: "
-           ,(~> (for/list ((tag tags))
-                  `(a ([href ,(abs-local "tags/" tag)])
-                    ,tag))
-                (string-join _ ", ")))
-         "")))
+    (h2 ([class "title"])
+     (a ([href ,uri]
+         [class "text-primary"])
+      ,title))))
 
 ;; get type of current document
 (define (document-type metas)
