@@ -214,18 +214,6 @@ a:hover {
     text-decoration: none;
 }
 
-.index-item {
-    margin-top: 0.5rem;
-    margin-bottom: 0.5rem;
-}
-
-.index-header .title,
-.post-header .title {
-    font-size: 1.5rem;
-    line-height: 1.6;
-    margin-top: 0;
-}
-
 .text-primary {
     color: #333 !important;
 }
@@ -234,9 +222,14 @@ a.text-primary:hover, a.text-primary:focus {
     color: #d0a3ff !important;
 }
 
-header .date,
-header .category,
-header .tags {
+.index-item {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.index-item .date,
+.index-item .category,
+.index-item .tags {
     font-family: ◊|monospace|;
     display: block;
     color: ◊|text-secondary|;

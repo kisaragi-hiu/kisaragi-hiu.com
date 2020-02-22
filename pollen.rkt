@@ -145,8 +145,8 @@
   (define tags     (select-from-metas 'tags pagenode))
   (unless title
     (error pagenode "title is mandatory"))
-  `(header ([class ,class])
-    (h2 ([class "title mb-0"])
+  `(div ([class "index-item"])
+    (h2 ([class "title"])
      (a ([href ,uri]
          [class "text-primary"])
       ,title))
