@@ -18,11 +18,15 @@
               families: ['Overpass Mono', 'Overpass:200,400,600']
           }
       });
+      // Prevent transitions from happening during load
+      window.onload = () => {
+        document.getElementsByTagName("body")[0].className = "";
+      };
     </script>
     <link rel="stylesheet" href="/css/main.css">
     <link rel="alternate" type="application/atom+xml" href="/feed.xml" title="Atom Feed">
   </head>
-  <body>
+  <body class="js-loading">
     <a id="top"></a>
     <!--[if lte IE 9]>
       ◊; … too aggressive?

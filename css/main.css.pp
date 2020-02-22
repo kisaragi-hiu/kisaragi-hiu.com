@@ -37,6 +37,16 @@
     margin: 0 20%;
 }
 
+/* Prevent transitions from happening during load */
+
+.js-loading {
+    -webkit-transition: none !important;
+    -moz-transition: none !important;
+    -o-transition: none !important;
+    -ms-transition: none !important;
+    transition: none !important;
+}
+
 /*
 * Site Header
 */
