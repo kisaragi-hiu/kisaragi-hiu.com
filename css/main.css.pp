@@ -60,7 +60,7 @@
 #siteheader nav a {
     color: #6c757d;
     margin: 0.5rem 0.8rem 0.5rem 0;
-    font-size: 1.2rem;
+    font-size: 16pt;
 }
 
 /*
@@ -109,7 +109,7 @@
 * TOC
 */
 #toc-title {
-    font-size: 1rem;
+    font-size: 16pt;
 }
 .toc {
     display: flex;
@@ -117,7 +117,7 @@
 }
 .toc-h1, .toc-h2 {
     font-weight: 400;
-    font-size: 1rem;
+    font-size: 16pt;
 }
 .toc-h2 { text-indent: 1rem; }
 .toc-h3 { text-indent: 2rem; }
@@ -179,7 +179,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    font-size: 1.2rem
+    font-size: 16pt;
 }
 
 .disabled {
@@ -187,7 +187,7 @@ body {
 }
 
 p {
-    font-size: 1.2rem;
+    font-size: 16pt;
 }
 
 html, body {
@@ -197,7 +197,6 @@ html, body {
 #logo img {
     max-height: 2rem;
     margin-right: 0.4rem;
-    font-size: 1rem;
 }
 
 a {
@@ -239,7 +238,7 @@ a.text-primary:hover, a.text-primary:focus {
 }
 
 .highlight {
-    font-size: 1rem;
+    font-size: 16pt;
     overflow-x: auto;
     font-family: ◊|monospace|;
     color: black;
@@ -251,7 +250,7 @@ a.text-primary:hover, a.text-primary:focus {
 }
 
 ◊|heading| {
-    font-size: 1.5rem;
+    font-size: 20pt;
     line-height: 1.2;
     margin-top: 2rem;
     margin-bottom: 0.5rem;
