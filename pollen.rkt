@@ -85,11 +85,6 @@
   (and (not (empty? this-tags))
        (member tag this-tags)))
 
-(define/contract (pagetree-to-index pagetree [index-item-function index-item])
-  (-> pagetree? txexpr?)
-  (txexpr 'div '([class "index"])
-          (map index-item-function (pagetree->list pagetree))))
-
 (define/contract (post-year pagenode)
   (-> (or/c pagenode? pagenodeish?)
       number?)
@@ -139,7 +134,7 @@
 (define (children-to-atom-entries p [pagetree (current-pagetree)])
   (map atom-entry (children p pagetree)))
 
-(define (index-item pagenode #:class [class ""])
+(define (index-item pagenode #:class [class ""] #:year? [include-year? #t])
   (define uri (abs-local (~a pagenode)))
   (define date     (select-from-metas 'date pagenode))
   (define title    (select-from-metas 'title pagenode))
@@ -148,10 +143,12 @@
   (unless title
     (error pagenode "title is mandatory"))
   `(div ([class "index-item"])
-    (p ([class "date"])
-     ,(if date
-          (string-replace (substring date 0 10) "-" "/")
-          ""))
+    ,@(if date
+          `((p ([class "date"])
+             ,(~> (or (and include-year? (substring date 0 10))
+                      (substring date 5 10))
+                  (string-replace "-" "/"))))
+          empty)
     ,(if category
          `(p ([class "category"])
            (a ([href ,(abs-local (~> (string-downcase category)
