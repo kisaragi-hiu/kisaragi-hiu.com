@@ -1,15 +1,16 @@
 #lang racket
 (require threading
          txexpr
-         pollen/core
          pollen/cache
-         pollen/template
+         pollen/core
          pollen/decode
          pollen/pagetree
          pollen/render
          pollen/setup
          pollen/tag
+         pollen/template
          pollen/unstable/pygments
+         racket/format
          racket/function
          racket/list
          racket/string
@@ -28,6 +29,7 @@
           "reference.rkt"
           pollen/pagetree
           pollen/template
+          racket/format
           racket/function
           racket/list
           racket/string
