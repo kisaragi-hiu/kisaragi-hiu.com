@@ -10,7 +10,15 @@
 
 Just a random person on the internet.
 
-Stuff I've made: ◊link["https://gitlab.com/canrylog/canrylog.el"]{Canrylog (WIP time tracking app)}, ◊link["https://barren-moon.kisaragi-hiu.com"]{A Barren Land of Dust (Poem collection from my high school years)}, UTAU Covers (◊youtube["channel/UCl_hsqcvdX0XdgBimRQ6R3A"]{on Youtube}, ◊link["https://www.nicovideo.jp/user/38995186"]{on niconico}), etc. ◊link["/projects.html"]{Other projects...}
+Stuff I've made:
+
+◊ul{
+◊li{◊link["https://gitlab.com/canrylog/canrylog.el"]{Canrylog (WIP time tracking app)}}
+◊li{◊link["https://barren-moon.kisaragi-hiu.com"]{A Barren Land of Dust (Poem collection from my high school years)}}
+◊li{UTAU Covers (◊youtube["channel/UCl_hsqcvdX0XdgBimRQ6R3A"]{on Youtube}, ◊link["https://www.nicovideo.jp/user/38995186"]{on niconico})}
+}
+
+◊link["/projects.html"]{Other projects...}
 
 ◊for/splice[((year blog-entry-years))]{
   ◊div[#:class "index-year"]{
