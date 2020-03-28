@@ -23,10 +23,10 @@
 ;; '("a" "b" c) -> "'a', 'b', c"
 ;; turn a font list in lisp format into css format
 ;; use single quotes so we don't have to escape them
-(define (to-css-list fonts)
+(define (to-css-fonts fonts)
   (string-join
    (for/list ((elem (in-list fonts)))
      (if (string? elem) (format "'~a'" elem) (format "~a" elem)))
    ", "))
 
-(define & to-css-list)
+(define & to-css-fonts)

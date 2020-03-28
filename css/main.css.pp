@@ -16,14 +16,12 @@
     "Malgun Gothic"))
 ◊(define sans-serif
   `("Overpass" ,@cjk-fallback sans-serif))
-◊(define title sans-serif)
-◊(define body sans-serif)
+◊(define title-sans-serif sans-serif)
 ◊(define monospace
   `("Overpass Mono" "Noto Sans Mono CJK" ,@cjk-fallback monospace))
 
 ◊(define heading "h1,h2,h3,h4,h5,h6,h7")
 ◊(define text-secondary "#555")
-◊(define text-primary "#333")
 ◊(define content "#content,#siteheader,#sitefooter-content")
 
 /*
@@ -32,12 +30,22 @@
 body {
     margin: 2rem 0 3rem;
     line-height: 1.6;
-    font-family: ◊&[body];
+    font-family: ◊&[sans-serif];
     font-weight: 400;
+    color: #444;
+    text-rendering: optimizeLegibility;
+}
+
+p {
     font-size: 16pt;
-    color: ◊|text-primary|;
-    /* Not even Practical Typography does this, it doesn't matter */
-    /* text-rendering: optimizeLegibility; */
+}
+
+html, body {
+    background-color: #fbfbfb;
+}
+
+◊|content| {
+    margin: 0 20%;
 }
 
 /*
@@ -290,7 +298,7 @@ a:hover {
 /*
 * Smaller screen size */
 @media (max-width: 1200px) {
-    body {
+    ◊|content| {
         margin: 0 5%;
     }
 }
