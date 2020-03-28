@@ -21,7 +21,7 @@ waitfor () {
 
 build () {
     [ "$1" == rebuild ] && export POLLEN=$RANDOM
-    racket generate-pages.rkt || return 1
+    racket before-pollen.rkt || return 1
     raco pollen render css/main.css.pp || return 1
     if [ "$USER" == travis ]; then
         raco pollen render index.ptree || return 1
