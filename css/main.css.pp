@@ -22,23 +22,18 @@
 
 ◊(define heading "h1,h2,h3,h4,h5,h6,h7")
 ◊(define text-secondary "#555")
-◊(define content "#content,#siteheader,#sitefooter-content")
 
 /*
 * Base */
 
 body {
-    margin: 2rem 0 3rem;
+    margin: 2em 20%;
     line-height: 1.6;
     font-family: ◊&[sans-serif];
     font-size: 16pt;
     font-weight: 400;
     color: #444;
     text-rendering: optimizeLegibility;
-}
-
-◊|content| {
-    margin: 0 20%;
 }
 
 /*
@@ -291,7 +286,7 @@ a:hover {
 /*
 * Smaller screen size */
 @media (max-width: 1200px) {
-    ◊|content| {
+    body {
         margin: 0 5%;
     }
 }
