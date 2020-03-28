@@ -3,11 +3,11 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>◊(extract-xexpr-strings (select-from-metas 'title metas)) | Kisaragi Hiu</title>
-    <meta name="description" content="◊|description|">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="author" content="◊|author|">
-    <meta name="keywords" content="Coding, Programming, Language, LGBT, Blog">
+    <title>◊(extract-xexpr-strings (select-from-metas 'title metas)) | Kisaragi Hiu</title>
+    <meta name="description" content="◊conf['desc]">
+    <meta name="author" content="◊conf['author]">
+    <meta name="keywords" content="◊conf['keywords]">
     <link rel="icon" href="◊abs-local{favicon.ico}">
     <link rel="canonical" href="◊(abs-global here)">
     ◊; Font

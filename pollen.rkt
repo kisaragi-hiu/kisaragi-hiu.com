@@ -1,32 +1,33 @@
-#lang racket
-(require threading
-         txexpr
-         pollen/cache
-         pollen/core
-         pollen/decode
+#lang racket/base
+(require pollen/decode
          pollen/pagetree
-         pollen/render
-         pollen/setup
-         pollen/tag
          pollen/template
          pollen/unstable/pygments
          racket/format
          racket/function
          racket/list
          racket/string
-         "widgets.rkt"
-         "reference.rkt"
-         "date.rkt"
-         "path.rkt"
-         (for-syntax racket/string
-                     threading))
+         txexpr
+         "rkt/config.rkt"
+         "rkt/css.rkt"
+         "rkt/misc.rkt"
+         "rkt/path.rkt"
+         "rkt/post.rkt"
+         "rkt/reference.rkt"
+         "rkt/widgets.rkt")
+
 
 (provide (all-defined-out)
          highlight
+         conf
          (all-from-out
-          "widgets.rkt"
-          "path.rkt"
-          "reference.rkt"
+          "rkt/config.rkt"
+          "rkt/css.rkt"
+          "rkt/misc.rkt"
+          "rkt/path.rkt"
+          "rkt/post.rkt"
+          "rkt/reference.rkt"
+          "rkt/widgets.rkt"
           pollen/pagetree
           pollen/template
           racket/format
@@ -34,18 +35,6 @@
           racket/list
           racket/string
           txexpr))
-
-;; (module+ setup
-;;   (provide (all-defined-out))
-;;   (define compile-cache-active #f))
-
-(define author "Kisaragi Hiu")
-(define site-title "Kisaragi Hiu")
-
-(define (extract-xexpr-strings xexpr)
-  (if (list? xexpr)
-      (string-join (filter string? (flatten xexpr)) "")
-      xexpr))
 
 (define (root . elements)
   (if (txexpr-elements? elements)
@@ -56,186 +45,4 @@
                          #:exclude-attrs '((class "tweet"))))
       elements))
 
-(define-syntax (->2to-define stx)
-  (syntax-case stx ()
-    [(_ name)
-     (with-syntax
-       ([new-name
-         (datum->syntax
-          #'name
-          (~> (syntax->datum #'name)
-              symbol->string
-              (string-replace _ "->" "-to-")
-              (string-replace _ #rx"^-" "")
-              string->symbol))])
-       #'(define new-name name))]))
-
-(->2to-define ->html)
-
-(define (in-category? pagenode category)
-  (define cat (select-from-metas 'category pagenode))
-  (and (string? cat)
-       (string-ci=? cat category)))
-
-(define (has-tag? pagenode tag)
-  ;; select-from-metas is #f or txexpr only.
-  ;; tags need to be some sort of list. use (select)?
-  ;; or should tags be a comma-seperated string?
-  (define this-tags (select-from-metas 'tags pagenode))
-  (and (not (empty? this-tags))
-       (member tag this-tags)))
-
-(define/contract (post-year pagenode)
-  (-> (or/c pagenode? pagenodeish?)
-      number?)
-  (string->number
-   (substring (select-from-metas 'date pagenode)
-              0 4)))
-
-(define/contract (post-year=? pagenode year)
-  (-> (or/c pagenode? pagenodeish?) number?
-      boolean?)
-  (= year (post-year pagenode)))
-
-(define (ensure-timezone str)
-  ;; default to +8 timezone
-  (if (regexp-match? #rx"\\+|Z" str)
-      str
-      (~a str "+08:00")))
-
-(define (atom-entry pagenode [pagetree (current-pagetree)])
-  (define full-uri (abs-global (~a pagenode)))
-  (define date        (select-from-metas 'date pagenode))
-  (define title       (select-from-metas 'title pagenode))
-  (define category    (select-from-metas 'category pagenode))
-  (define tags        (select-from-metas 'tags pagenode))
-  (define this-author (select-from-metas 'author pagenode))
-  (define source
-    (~>
-     (map path->string (directory-list #:build? #t (path-only (~a "../" pagenode))))
-     (filter (λ (p) (and
-                      (string-contains? p (~a pagenode))
-                      (not (string-suffix? p (~a pagenode)))))
-             _)
-     first
-     path->complete-path
-     normalize-path))
-  `(entry
-    (title ([type "text"]) ,(extract-xexpr-strings title))
-    (id ,(urn (~a pagenode)))
-    (published ,(ensure-timezone date))
-    (updated ,(ensure-timezone date))
-    (link ([rel "alternate"] [href ,(~a full-uri "?utm_source=all&utm_medium=Atom")]))
-    (author (name ,(or this-author author)))
-    (content ([type "html"])
-     ,(~> (cached-doc source)
-          (->html #:splice #t)))))
-
-(define (children-to-atom-entries p [pagetree (current-pagetree)])
-  (map atom-entry (children p pagetree)))
-
-(define (index-item pagenode #:class [class ""] #:year? [include-year? #t])
-  (define uri (abs-local (~a pagenode)))
-  (define date     (select-from-metas 'date pagenode))
-  (define title    (select-from-metas 'title pagenode))
-  (define category (select-from-metas 'category pagenode))
-  (define tags     (select-from-metas 'tags pagenode))
-  (unless title
-    (error pagenode "title is mandatory"))
-  `(div ([class "index-item"])
-    ,@(if date
-          `((p ([class "date"])
-             ,(~> (or (and include-year? (substring date 0 10))
-                      (substring date 5 10))
-                  (string-replace "-" "/"))))
-          empty)
-    ,(if category
-         `(p ([class "category"])
-           (a ([href ,(abs-local (~> (string-downcase category)
-                                     (string-replace _ " " "-")
-                                     (format "category/~a.html" _)))])
-            ,(format "#~a" category)))
-         "")
-    (h2 ([class "title"])
-     (a ([href ,uri]
-         [class "text-primary"])
-      ,title))))
-
-;; get type of current document
-(define (document-type metas)
-  (or (select-from-metas 'type metas)
-      "post"))
-
-;; before and after are labels, so they must be strings
-(define (navbutton pagenode [before ""] [after ""])
-  `(a ([href ,(abs-local (~a pagenode))])
-    ,before
-    ,(select-from-metas 'title pagenode)
-    ,after))
-
-(define (page-navigation prev next #:extra-classes [extra-classes ""])
-  `(div ([class ,(~a "page-navigation " extra-classes)])
-    ,(if prev
-         (navbutton prev "< ")
-         `(span ([class "disabled"]) "< No newer article"))
-    ,(if next
-         (navbutton next "> " "")
-         `(span ([class "disabled"]) "> No older article"))))
-
-(define (previous-and-next pagenode)
-  (parameterize ([current-pagetree `(root ,@(siblings pagenode))])
-    (page-navigation (previous pagenode)
-                     (next pagenode))))
-
-(define (previous-and-next-same-category pagenode)
-  (parameterize ([current-pagetree `(root ,@(siblings pagenode))])
-    (define previous-page (and~> (previous* pagenode) last))
-    (define next-page (and~> (next* pagenode) first))
-
-    (page-navigation #:extra-classes "prev-next-category"
-                     previous-page
-                     next-page)))
-
-(define (toc pagenode)
-  ;; as this depends on tagging headings with ids, this won't work with pmd files.
-  (define doc (get-doc pagenode))
-  (define (toc-item tx level)
-    (txexpr 'a `([href ,(~a "#" (attr-ref tx 'id))]
-                 [class ,(~a "toc-" level)])
-            (get-elements tx)))
-  `(@
-    (h1 ([id "toc-title"])
-     "Table of Contents")
-    (div ([class "toc"])
-     ,@(filter
-        txexpr?
-        (for/list ([elem doc])
-          (case (and (txexpr? elem)
-                     (car elem))
-            [(h1)
-             (toc-item elem 'h1)]
-            [(h2)
-             (toc-item elem 'h2)]
-            [(h3)
-             (toc-item elem 'h3)]
-            [(h4)
-             (toc-item elem 'h4)]
-            [(h5)
-             (toc-item elem 'h5)]
-            [(h6)
-             (toc-item elem 'h6)]
-            [else #f]))))))
-
-;; Given + (adjacent sibling operator), "h1,h2", and "h3,h4",
-;; return "h1+h3,h1+h4,h2+h3,h2+h4".
-;; This is used to match headings next to headings.
-;; list1 and list2 can be strings separated by "," or lists.
-(define (css-op-all operation . lists)
-  (define (coerce-to-list x)
-    (cond
-      ((string? x) (map string-trim (string-split x ",")))
-      (else x)))
-  (~> (map coerce-to-list lists)
-      (apply cartesian-product _)
-      (map (lambda (x) (string-join x operation)) _)
-      (string-join ",")))
+(define to-html ->html)

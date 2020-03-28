@@ -3,6 +3,8 @@
          pollen/tag
          pollen/setup
          pollen/template/html
+         pollen/core
+         pollen/pagetree
          txexpr
          "download.rkt"
          "path.rkt"
@@ -11,6 +13,33 @@
 (provide (all-defined-out))
 
 ;;; widgets
+
+(define (index-item pagenode #:class [class ""] #:year? [include-year? #t])
+  (define uri (abs-local (~a pagenode)))
+  (define date     (select-from-metas 'date pagenode))
+  (define title    (select-from-metas 'title pagenode))
+  (define category (select-from-metas 'category pagenode))
+  (define tags     (select-from-metas 'tags pagenode))
+  (unless title
+    (error pagenode "title is mandatory"))
+  `(div ([class "index-item"])
+    ,@(if date
+          `((p ([class "date"])
+             ,(~> (or (and include-year? (substring date 0 10))
+                      (substring date 5 10))
+                  (string-replace "-" "/"))))
+          empty)
+    ,(if category
+         `(p ([class "category"])
+           (a ([href ,(abs-local (~> (string-downcase category)
+                                     (string-replace _ " " "-")
+                                     (format "category/~a.html" _)))])
+            ,(format "#~a" category)))
+         "")
+    (h2 ([class "title"])
+     (a ([href ,uri]
+         [class "text-primary"])
+      ,title))))
 
 (define (link url
               #:class [class #f]
@@ -295,3 +324,63 @@
   `(div
     (span (strong "TL;DR: ") ,@exprs)
     (hr)))
+
+;; before and after are labels, so they must be strings
+(define (navbutton pagenode [before ""] [after ""])
+  `(a ([href ,(abs-local (~a pagenode))])
+    ,before
+    ,(select-from-metas 'title pagenode)
+    ,after))
+
+(define (page-navigation prev next #:extra-classes [extra-classes ""])
+  `(div ([class ,(~a "page-navigation " extra-classes)])
+    ,(if prev
+         (navbutton prev "< ")
+         `(span ([class "disabled"]) "< No newer article"))
+    ,(if next
+         (navbutton next "> " "")
+         `(span ([class "disabled"]) "> No older article"))))
+
+(define (previous-and-next pagenode)
+  (parameterize ([current-pagetree `(root ,@(siblings pagenode))])
+    (page-navigation (previous pagenode)
+                     (next pagenode))))
+
+(define (previous-and-next-same-category pagenode)
+  (parameterize ([current-pagetree `(root ,@(siblings pagenode))])
+    (define previous-page (and~> (previous* pagenode) last))
+    (define next-page (and~> (next* pagenode) first))
+
+    (page-navigation #:extra-classes "prev-next-category"
+                     previous-page
+                     next-page)))
+
+(define (toc pagenode)
+  ;; as this depends on tagging headings with ids, this won't work with pmd files.
+  (define doc (get-doc pagenode))
+  (define (toc-item tx level)
+    (txexpr 'a `([href ,(~a "#" (attr-ref tx 'id))]
+                 [class ,(~a "toc-" level)])
+            (get-elements tx)))
+  `(@
+    (h1 ([id "toc-title"])
+     "Table of Contents")
+    (div ([class "toc"])
+     ,@(filter
+        txexpr?
+        (for/list ([elem doc])
+          (case (and (txexpr? elem)
+                     (car elem))
+            [(h1)
+             (toc-item elem 'h1)]
+            [(h2)
+             (toc-item elem 'h2)]
+            [(h3)
+             (toc-item elem 'h3)]
+            [(h4)
+             (toc-item elem 'h4)]
+            [(h5)
+             (toc-item elem 'h5)]
+            [(h6)
+             (toc-item elem 'h6)]
+            [else #f]))))))

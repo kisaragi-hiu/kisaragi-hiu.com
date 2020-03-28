@@ -4,7 +4,8 @@
 ◊(require
   racket/string
   racket/file
-  css-expr)
+  css-expr
+  "../rkt/css.rkt")
 ◊(provide (all-defined-out))
 ◊(define cjk-fallback
    ◊string-append{'Noto Sans CJK TC',
