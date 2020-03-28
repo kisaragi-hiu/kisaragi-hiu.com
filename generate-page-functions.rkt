@@ -1,19 +1,23 @@
 #lang at-exp racket
 ;; See page-generation.md for more information.
 
+(require "rkt/category.rkt")
+
 (provide generate-category-page
          generate-tag-page)
 
+;; in-category? etc. aren't being run in this module, so no need to
+;; require them
 (define (generate-category-page category)
   @~a{
       #lang pollen
       ◊(require threading)
       ◊(current-pagetree "../index.ptree")
 
-      ◊define-meta[title]{@(string-titlecase category)}
+      ◊define-meta[title]{@(category-display category)}
       ◊define-meta[type]{category-index}
 
-      ◊h1{Category: @(string-titlecase category)}
+      ◊h1{Category: @(category-display category)}
 
       ◊(~> (children 'blog (current-pagetree))
         (filter

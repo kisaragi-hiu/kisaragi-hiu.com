@@ -2,18 +2,17 @@
 
 (require pollen/pagetree
          threading
+         "rkt/post.rkt"
+         "rkt/category.rkt"
          "generate-page-functions.rkt")
 
 (current-pagetree "index.ptree")
 
 (make-directory* "category")
-(for ((cat (children 'category)))
-  (define category-path (symbol->string cat))
-  (define category (~> category-path
-                       (string-replace _ #rx"^.*/" "")
-                       (string-replace _ #rx"\\.html$" "")
-                       (string-replace _ "-" " ")))
-  (define category-pollen-source (~a category-path ".pm"))
+(for ((cat (get-categories (children 'blog))))
+  (define path (category-path cat))
+  (define category (category-display cat))
+  (define category-pollen-source (~a path ".pm"))
   (with-output-to-file category-pollen-source
     #:exists 'truncate
     #λ(displayln (generate-category-page category))))

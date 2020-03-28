@@ -6,7 +6,8 @@
 (provide in-category?
          post-year
          post-year=?
-         post-type)
+         post-type
+         post-category)
 
 ;; get type of current post
 (define (post-type metas)
@@ -25,7 +26,10 @@
       boolean?)
   (= year (post-year pagenode)))
 
+(define (post-category pagenode)
+  (select-from-metas 'category pagenode))
+
 (define (in-category? pagenode category)
-  (define cat (select-from-metas 'category pagenode))
+  (define cat (post-category pagenode))
   (and (string? cat)
        (string-ci=? cat category)))
