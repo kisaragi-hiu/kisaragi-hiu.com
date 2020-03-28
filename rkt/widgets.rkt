@@ -41,6 +41,9 @@
          [class "text-primary"])
       ,title))))
 
+;; Title in page. Currently same as index item.
+(define post-heading index-item)
+
 (define (link url
               #:class [class #f]
               #:target [target #f]

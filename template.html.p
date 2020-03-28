@@ -28,10 +28,6 @@
   </head>
   <body class="js-loading">
     <a id="top"></a>
-    <!--[if lte IE 9]>
-      ◊; … too aggressive?
-      <h1>For the love of god, please stop using IE9. Thanks.</h1>
-    <![endif]-->
     ◊; Header
     <header id="siteheader">
       <div id="logo">
@@ -50,25 +46,22 @@
 
     ◊; Contents
     <div id="content">
+      ◊; show heading for posts
       ◊(when/splice (string=? (document-type metas) "post")
-         (to-html (index-item here)))
-
-      ◊; ◊(when/splice (and (select-from-metas 'title metas)
-      ◊;                    (not (string-suffix? (document-type metas) "index")))
-      ◊;    (to-html `(h1 ,(select-from-metas 'title metas))))
+         (to-html (post-heading here)))
+      ◊; show toc if it exists
       ◊(when/splice (select-from-metas 'toc metas)
          (to-html (toc here)))
+      ◊; actual content
       ◊(to-html doc)
-      ◊; (when/splice (string=? (document-type metas) "post")
-      ◊;   (to-html (previous-and-next-same-category here)))
+      ◊(when/splice (string=? (document-type metas) "post")
+         (to-html (previous-and-next here)))
     </div>
 
     ◊; Footer
     <footer id="sitefooter">
       <div id="footer-sep">・・・</div>
       <div id="sitefooter-content">
-      ◊(when/splice (string=? (document-type metas) "post")
-         (to-html (previous-and-next here)))
       <p>I don't necessarily know what I'm talking about.</p>
       <nav>
         ◊to-html{◊@{
