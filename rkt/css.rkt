@@ -19,3 +19,14 @@
       (apply cartesian-product _)
       (map (lambda (x) (string-join x operation)) _)
       (string-join ",")))
+
+;; '("a" "b" c) -> "'a', 'b', c"
+;; turn a font list in lisp format into css format
+;; use single quotes so we don't have to escape them
+(define (to-css-fonts fonts)
+  (string-join
+   (for/list ((elem (in-list fonts)))
+     (if (string? elem) (format "'~a'" elem) (format "~a" elem)))
+   ", "))
+
+(define & to-css-fonts)

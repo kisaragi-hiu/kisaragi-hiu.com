@@ -5,27 +5,21 @@
   racket/string
   racket/file
   css-expr
-  "../rkt/css.rkt")
-◊(provide (all-defined-out))
+  "../rkt/css.rkt"
+  "../rkt/config.rkt")
+
 ◊(define cjk-fallback
-   ◊string-append{'Noto Sans CJK TC',
-                  'Microsoft Jhenghei',
-                  'Microsoft Yahei',
-                  'Meiryo',
-                  'Malgun Gothic'})
+  `("Noto Sans CJK TC"
+    "Microsoft Jhenghei"
+    "Microsoft Yahei"
+    "Meiryo"
+    "Malgun Gothic"))
 ◊(define sans-serif
-   ◊string-append{'Overpass',
-                  ◊|cjk-fallback|,
-                  'sans-serif'})
-◊(define title-sans-serif
-   ◊string-append{'Overpass',
-                  ◊|cjk-fallback|,
-                  'sans-serif'})
+  `("Overpass" ,@cjk-fallback sans-serif))
+◊(define title-sans-serif sans-serif)
 ◊(define monospace
-   ◊string-append{'Overpass Mono',
-                  'Noto Sans Mono CJK',
-                  ◊|cjk-fallback|,
-                  'monospace'})
+  `("Overpass Mono" "Noto Sans Mono CJK" ,@cjk-fallback monospace))
+
 ◊(define heading "h1,h2,h3,h4,h5,h6,h7")
 ◊(define text-secondary "#555")
 ◊(define content "#content,#siteheader,#sitefooter-content")
@@ -150,7 +144,7 @@
 }
 .image-caption {
     text-align: center;
-    font-family: monospace;
+    font-family: ◊&[monospace];
     font-style: italic;
 }
 
@@ -170,7 +164,7 @@ blockquote {
     [p #:margin-top 0 #:margin-bottom 0]]))
 
 .ref-desc-id {
-    font-family: ◊|monospace|;
+    font-family: ◊&[monospace];
 }
 
 a {
@@ -180,7 +174,7 @@ a {
 body {
     margin: 2rem 0 3rem;
     line-height: 1.6;
-    font-family: ◊|sans-serif|;
+    font-family: ◊&[sans-serif];
     font-weight: 400;
     color: #444;
     text-rendering: optimizeLegibility;
@@ -248,7 +242,7 @@ a.text-primary:hover, a.text-primary:focus {
 .index-item .date,
 .index-item .category,
 .index-item .tags {
-    font-family: ◊|monospace|;
+    font-family: ◊&[monospace];
     display: inline-block;
     color: ◊|text-secondary|;
     margin: 0 0.5em 0 0;
@@ -258,7 +252,7 @@ a.text-primary:hover, a.text-primary:focus {
 .highlight {
     font-size: 16pt;
     overflow-x: auto;
-    font-family: ◊|monospace|;
+    font-family: ◊&[monospace];
     color: black;
 }
 
