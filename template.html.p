@@ -47,14 +47,14 @@
     ◊; Contents
     <div id="content">
       ◊; show heading for posts
-      ◊(when/splice (string=? (document-type metas) "post")
+      ◊(when/splice (string=? (post-type metas) "post")
          (to-html (post-heading here)))
       ◊; show toc if it exists
       ◊(when/splice (select-from-metas 'toc metas)
          (to-html (toc here)))
       ◊; actual content
       ◊(to-html doc)
-      ◊(when/splice (string=? (document-type metas) "post")
+      ◊(when/splice (string=? (post-type metas) "post")
          (to-html (previous-and-next here)))
     </div>
 

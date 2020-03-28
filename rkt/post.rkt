@@ -6,10 +6,10 @@
 (provide in-category?
          post-year
          post-year=?
-         document-type)
+         post-type)
 
-;; get type of current document
-(define (document-type metas)
+;; get type of current post
+(define (post-type metas)
   (or (select-from-metas 'type metas)
       "post"))
 
