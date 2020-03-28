@@ -56,6 +56,8 @@
       ◊(to-html doc)
       ◊(when/splice (string=? (post-type metas) "post")
          (to-html (previous-and-next here)))
+      ◊(when/splice (string=? (post-type metas) "root-index")
+         (to-html (index (children 'blog))))
     </div>
 
     ◊; Footer

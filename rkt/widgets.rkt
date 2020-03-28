@@ -8,6 +8,7 @@
          txexpr
          "download.rkt"
          "path.rkt"
+         "post.rkt"
          (for-syntax threading))
 
 (provide (all-defined-out))
@@ -40,6 +41,14 @@
      (a ([href ,uri]
          [class "text-primary"])
       ,title))))
+
+(define (index entries)
+  (for/list ((year (remove-duplicates (map post-year entries))))
+    `(div ((class "index-year"))
+      ,(heading (number->string year))
+      (div ((class "index"))
+       ,@(~>> (filter (curryr post-year=? year) entries)
+              (map (lambda (entry) (index-item entry #:year? #f))))))))
 
 ;; Title in page. Currently same as index item.
 (define post-heading index-item)
