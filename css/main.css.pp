@@ -31,17 +31,10 @@ body {
     margin: 2rem 0 3rem;
     line-height: 1.6;
     font-family: ◊&[sans-serif];
+    font-size: 16pt;
     font-weight: 400;
     color: #444;
     text-rendering: optimizeLegibility;
-}
-
-p {
-    font-size: 16pt;
-}
-
-html, body {
-    background-color: #fbfbfb;
 }
 
 ◊|content| {
