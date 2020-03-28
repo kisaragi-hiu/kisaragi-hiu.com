@@ -48,11 +48,6 @@ loop () {
 }
 
 publish () {
-    if test -n "$1"; then
-        dir="$1"
-    else
-        dir="$HOME"
-    fi
     build || exit 1
     raco pollen publish . "$HOME"/public
     mv ~/public .
