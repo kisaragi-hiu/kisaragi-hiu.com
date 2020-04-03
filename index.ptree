@@ -1,4 +1,5 @@
 #lang pollen
+◊(require "rkt/misc.rkt")
 index.html
 ◊blog{
     blog/2020-02-16-slack-export-to-org.html
@@ -45,10 +46,7 @@ feeds.html
 }
 about.html
 projects.html
-◊projects{
-    projects/org-msr.html
-    projects/ust-mode.html
-}
+◊(leaf-from-dir 'projects "projects")
 ◊fiction{
     fiction/2018-06-17-夢.html
 }
