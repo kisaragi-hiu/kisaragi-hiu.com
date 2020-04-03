@@ -22,6 +22,10 @@ Ask for the right file to open.
 Emacs port of the ◊github["EinfachToll/DidYouMean"]{DidYouMean} Vim plugin.
 }
 
+◊project["https://gitlab.com/kisaragi-hiu/dired-show-readme" "dired-show-readme"]{
+Dired extension to show README of current directory.
+}
+
 ◊project["https://github.com/kisaragi-hiu/cangjie.el" "Cangjie.el"
          #:title2 ◊(melpa-badge "cangjie")]{
 Retrieve Cangjie code for Han character in Emacs.
