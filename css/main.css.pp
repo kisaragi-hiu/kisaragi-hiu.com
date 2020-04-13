@@ -305,7 +305,7 @@ a:hover {
 * Smaller screen size */
 @media (max-width: 1200px) {
   body {
-    margin: 0 5%;
+    margin: 5% 5%;
   }
 }
 
