@@ -3,6 +3,7 @@
          pollen/pagetree
          pollen/template
          pollen/unstable/pygments
+         pollen/unstable/typography
          racket/format
          racket/function
          racket/list
@@ -40,6 +41,7 @@
   (if (txexpr-elements? elements)
       (txexpr 'root '() (decode-elements
                          elements
+                         #:string-proc smart-dashes
                          #:txexpr-elements-proc decode-paragraphs
                          #:exclude-tags '(pre blockquote)
                          #:exclude-attrs '((class "tweet"))))
