@@ -42,14 +42,19 @@
          [class "text-primary"])
       ,title))))
 
+;; create a widget that is a listing of entries
+;; entries are all ptree nodes, ie. output paths as symbols
 (define (index entries)
-  `(div ((class "index"))
-    ,@(for/list ((year (remove-duplicates (map post-year entries))))
-        `(div ((class "index-year"))
-          ,(heading (number->string year))
-          (div ((class "index"))
-           ,@(~>> (filter (curryr post-year=? year) entries)
-                  (map (lambda (entry) (index-item entry #:year? #f)))))))))
+  (let ((entries (sort entries (lambda (a b)
+                                 (apply string>? (map symbol->string (list a b)))))))
+    `(div ((class "index"))
+      ,@(for/list ((year (remove-duplicates (map post-year entries))))
+          `(div ((class "index-year"))
+            ,(heading (number->string year))
+            (div ((class "index"))
+             ,@(~>> entries
+                    (filter (curryr post-year=? year))
+                    (map (lambda (entry) (index-item entry #:year? #f))))))))))
 
 ;; Title in page. Currently same as index item.
 (define post-heading index-item)
