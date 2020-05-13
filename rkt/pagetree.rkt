@@ -13,10 +13,21 @@
 ;;
 ;; Use eg. (leaf-from-dir 'node "dir" #:suffix ".xml.pm") to list
 ;; non-html files.
-(define (leaf-from-dir node directory #:suffix [suffix ".html.pm"])
+;;
+;; pass a compare function to #:sort to sort the entries before
+;; inserting them into the pagetree. The function is passed straight
+;; to `sort`: it gets two arguments A and B, and returns non-nil if A
+;; sorts before B. By default it applies string>?, taking care to
+;; convert symbols to strings.
+(define (leaf-from-dir node directory
+                       #:suffix [suffix ".html.pm"]
+                       #:sort [sort-func
+                               (lambda args
+                                 (apply string>? (map symbol->string args)))])
   (~>> (directory-list directory #:build? #t)
        (map path->string)
        (filter (curryr string-suffix? suffix))
        (map (curryr string-replace ".pm" ""))
        (map string->symbol)
+       (sort _ sort-func)
        (cons node)))
