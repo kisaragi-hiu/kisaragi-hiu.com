@@ -23,6 +23,8 @@ build () {
     [ "$1" == rebuild ] && export POLLEN=$RANDOM
     racket before-pollen.rkt || return 1
     raco pollen render css/main.css.pp || return 1
+    raco pollen render main-template.html.pp || return 1
+    mv main-template.html template.html || return 1
     if [ "$USER" == travis ]; then
         raco pollen render index.ptree || return 1
     else

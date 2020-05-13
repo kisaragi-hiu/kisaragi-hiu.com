@@ -1,17 +1,20 @@
+#lang pollen
+◊(require "rkt/template.rkt")
+◊; possible pollen bug: template.html.pp is used as if it is template.html, causing errors
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>◊(extract-xexpr-strings (select-from-metas 'title metas)) | Kisaragi Hiu</title>
+    <title>◊"◊"(extract-xexpr-strings (select-from-metas 'title metas)) | Kisaragi Hiu</title>
     <meta name="description" content="◊conf['desc]">
     <meta name="author" content="◊conf['author]">
     <meta name="keywords" content="◊conf['keywords]">
     <link rel="icon" href="◊abs-local{favicon.ico}">
-    <link rel="canonical" href="◊(abs-global here)">
-    ◊(script-load-font "Overpass Mono" "Overpass:200,400,600")
-    ◊(script-analytics "FYSHR")
+    <link rel="canonical" href="◊"◊"(abs-global here)">
+    ◊to-html[(script-load-font "Overpass Mono" "Overpass:200,400,600")]
+    ◊to-html[(script-analytics "FYSHR")]
     <link rel="stylesheet" href="/css/main.css">
     <link rel="alternate" type="application/atom+xml" href="/feed.xml" title="Atom Feed">
   </head>
@@ -36,15 +39,15 @@
     ◊; Contents
     <div id="content">
       ◊; show heading for posts
-      ◊(when/splice (string=? (post-type metas) "post")
-         (to-html (post-heading here)))
+      ◊"◊"(when/splice (string=? (post-type metas) "post")
+            (to-html (post-heading here)))
       ◊; show toc if it exists
-      ◊(when/splice (select-from-metas 'toc metas)
-         (to-html (toc here)))
+      ◊"◊"(when/splice (select-from-metas 'toc metas)
+            (to-html (toc here)))
       ◊; actual content
-      ◊(to-html doc)
-      ◊(when/splice (string=? (post-type metas) "post")
-         (to-html (previous-and-next here)))
+      ◊"◊"(to-html doc)
+      ◊"◊"(when/splice (string=? (post-type metas) "post")
+            (to-html (previous-and-next here)))
     </div>
 
     ◊; Footer
