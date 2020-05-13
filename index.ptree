@@ -8,7 +8,7 @@ index.html
 category.html
 
 feeds.html
-◊(leaf-from-dir 'feeds "feeds")
+◊(leaf-from-dir 'feeds "feeds" #:suffix ".xml.pm")
 
 about.html
 

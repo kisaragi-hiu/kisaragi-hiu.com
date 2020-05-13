@@ -16,7 +16,7 @@
 (define (leaf-from-dir node directory #:suffix [suffix ".html.pm"])
   (~>> (directory-list directory #:build? #t)
        (map path->string)
-       (filter (curryr string-suffix? ".html.pm"))
+       (filter (curryr string-suffix? suffix))
        (map (curryr string-replace ".pm" ""))
        (map string->symbol)
        (cons node)))
