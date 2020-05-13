@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-◊; use page type as a substitute for recursive templates
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -11,41 +10,8 @@
     <meta name="keywords" content="◊conf['keywords]">
     <link rel="icon" href="◊abs-local{favicon.ico}">
     <link rel="canonical" href="◊(abs-global here)">
-    ◊; Font
-    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
-    <script>
-      WebFont.load({
-          google: {
-              families: ['Overpass Mono', 'Overpass:200,400,600']
-          }
-      });
-      // Prevent transitions from happening during load
-      window.onload = () => {
-        document.getElementsByTagName("body")[0].className = "";
-      };
-    </script>
-    <!-- Fathom - simple website analytics - https://github.com/usefathom/fathom -->
-    <script>
-      let dnt = navigator.doNotTrack || navigator.msDoNotTrack || null;
-      if (dnt !== "yes" && dnt !== "1") {
-        (function (f, a, t, h, o, m) {
-          a[h] =
-            a[h] ||
-            function () {
-              (a[h].q = a[h].q || []).push(arguments);
-            };
-          (o = f.createElement("script")),
-            (m = f.getElementsByTagName("script")[0]);
-          o.async = 1;
-          o.src = t;
-          o.id = "fathom-script";
-          m.parentNode.insertBefore(o, m);
-        })(document, window, "//fathom.kisaragi-hiu.com/tracker.js", "fathom");
-        fathom("set", "siteId", "FYSHR");
-        fathom("trackPageview");
-      }
-    </script>
-    <!-- / Fathom -->
+    ◊(script-load-font "Overpass Mono" "Overpass:200,400,600")
+    ◊(script-analytics "FYSHR")
     <link rel="stylesheet" href="/css/main.css">
     <link rel="alternate" type="application/atom+xml" href="/feed.xml" title="Atom Feed">
   </head>
@@ -79,8 +45,6 @@
       ◊(to-html doc)
       ◊(when/splice (string=? (post-type metas) "post")
          (to-html (previous-and-next here)))
-      ◊(when/splice (string=? (post-type metas) "root-index")
-         (to-html (index (children 'blog))))
     </div>
 
     ◊; Footer

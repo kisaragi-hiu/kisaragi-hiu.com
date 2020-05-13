@@ -1,6 +1,6 @@
 #lang pollen
 ◊define-meta[title]{Home}
-◊define-meta[type]{root-index}
+◊define-meta[type]{index}
 
 Just a random person on the internet.
 
@@ -13,3 +13,5 @@ Stuff I've made:
 }
 
 ◊link["/projects.html"]{Other projects...}
+
+◊(index (children 'blog))

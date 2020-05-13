@@ -15,7 +15,8 @@
          "rkt/path.rkt"
          "rkt/post.rkt"
          "rkt/reference.rkt"
-         "rkt/widgets.rkt")
+         "rkt/widgets.rkt"
+         "rkt/template.rkt")
 
 
 (provide (all-defined-out)
@@ -26,6 +27,7 @@
           "rkt/css.rkt"
           "rkt/misc.rkt"
           "rkt/path.rkt"
+          "rkt/template.rkt"
           "rkt/post.rkt"
           "rkt/reference.rkt"
           "rkt/widgets.rkt"
