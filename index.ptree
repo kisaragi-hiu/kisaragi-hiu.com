@@ -12,6 +12,8 @@ feeds.html
 
 about.html
 
+covers.html
+
 projects.html
 ◊(leaf-from-dir 'projects "projects")
 
