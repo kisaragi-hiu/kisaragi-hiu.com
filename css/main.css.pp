@@ -249,6 +249,14 @@ a:hover {
   color: ◊|color-primary|;
 }
 
+.post-heading {
+  margin: 1rem 0;
+}
+
+.post-heading .title {
+  margin: 0;
+}
+
 /*
 * Other widgets */
 .badge {

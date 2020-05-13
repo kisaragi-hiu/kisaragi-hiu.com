@@ -55,8 +55,18 @@
                     (filter (curryr post-year=? year))
                     (map (lambda (entry) (index-item entry #:year? #f))))))))))
 
-;; Title in page. Currently same as index item.
-(define post-heading index-item)
+;; Title in page.
+(define (post-heading pagenode)
+  (let ((title (select-from-metas 'title pagenode))
+        (category (post-category pagenode))
+        (date (post-date pagenode)))
+    `(div ([class "post-heading"])
+      ,(if date
+           `(span ([class "date"])
+             ,(~> (substring date 0 10)
+                  (string-replace "-" "/")))
+           "")
+      (h2 ([class "title"]) ,title))))
 
 (define (link url
               #:class [class #f]
