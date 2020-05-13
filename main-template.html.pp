@@ -30,7 +30,6 @@
       </div>
       <nav>
         <a href="/">Blog</a>
-        <a href="/category.html">Categories</a>
         <a href="/projects.html">Projects</a>
         <a href="/about.html">About</a>
       </nav>
