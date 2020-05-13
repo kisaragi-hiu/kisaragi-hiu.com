@@ -2,6 +2,9 @@
 
 (require json)
 
+(provide script-load-font
+         script-analytics)
+
 ;; emit javascript tags to load web fonts
 (define (script-load-font . fonts)
   `(@

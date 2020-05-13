@@ -2,6 +2,8 @@
 ◊define-meta[title]{Home}
 ◊define-meta[type]{index}
 
+◊(current-pagetree "index.ptree")
+
 Just a random person on the internet.
 
 Stuff I've made:
