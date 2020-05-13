@@ -45,8 +45,7 @@
 ;; create a widget that is a listing of entries
 ;; entries are all ptree nodes, ie. output paths as symbols
 (define (index entries)
-  (let ((entries (sort entries (lambda (a b)
-                                 (apply string>? (map symbol->string (list a b)))))))
+  (let ((entries (sort entries post-date>?)))
     `(div ((class "index"))
       ,@(for/list ((year (remove-duplicates (map post-year entries))))
           `(div ((class "index-year"))

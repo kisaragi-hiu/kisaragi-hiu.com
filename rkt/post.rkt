@@ -1,9 +1,13 @@
 #lang racket
 
 (require pollen/core
-         pollen/pagetree)
+         pollen/pagetree
+         threading)
 
 (provide in-category?
+         post-date
+         post-date<?
+         post-date>?
          post-year
          post-year=?
          post-type
@@ -14,16 +18,30 @@
   (or (select-from-metas 'type metas)
       "post"))
 
-(define/contract (post-year pagenode)
-  (-> (or/c pagenode? pagenodeish?)
-      number?)
-  (string->number
-   (substring (select-from-metas 'date pagenode)
-              0 4)))
+;; get timestamp of pagenode as specified in its source file
+(define (post-date pagenode)
+  (select-from-metas 'date pagenode))
 
-(define/contract (post-year=? pagenode year)
-  (-> (or/c pagenode? pagenodeish?) number?
-      boolean?)
+;; is pagenode-a posted earlier than pagenode-b?
+;;
+;; not caring about timezones for now, because I haven't added them
+;; plus we don't care about the time that much
+(define (post-date<? pagenode-a pagenode-b)
+  (string<? (post-date pagenode-a)
+            (post-date pagenode-b)))
+
+;; opposite of above
+(define (post-date>? pagenode-a pagenode-b)
+  (string>? (post-date pagenode-a)
+            (post-date pagenode-b)))
+
+;; get year of
+(define (post-year pagenode)
+  (~> (post-date pagenode)
+      (substring 0 4)
+      string->number))
+
+(define (post-year=? pagenode year)
   (= year (post-year pagenode)))
 
 (define (post-category pagenode)
