@@ -19,7 +19,6 @@
     <link rel="alternate" type="application/atom+xml" href="/feed.xml" title="Atom Feed">
   </head>
   <body class="js-loading">
-    <a id="top"></a>
     ◊; Header
     <header id="siteheader">
       <div id="logo">
