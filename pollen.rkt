@@ -2,6 +2,7 @@
 (require pollen/decode
          pollen/pagetree
          pollen/template
+         pollen/setup
          pollen/unstable/pygments
          pollen/unstable/typography
          racket/format
@@ -38,6 +39,14 @@
           racket/list
           racket/string
           txexpr))
+
+(module+ setup
+  (require racket/path)
+  (provide (all-defined-out))
+  (define cache-watchlist
+    (filter
+     (curryr path-has-extension? ".rkt")
+     (directory-list (build-path (current-project-root) "rkt") #:build? #t))))
 
 (define (root . elements)
   (if (txexpr-elements? elements)
