@@ -1,0 +1,4 @@
+#+title: Short stories
+
+* Backlinks
+- [[site:2018-06-17-夢.org::6][夢]]

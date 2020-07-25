@@ -1,0 +1,91 @@
+#+title: Projects
+
+A list of my projects.
+
+Incomplete: UTAU covers, illustrations on Pixiv, other things that I've forgot, etc. still need to be added..
+
+* Coding
+** Emacs
+*** UST Mode
+◊project["/projects/ust-mode.html" "UST mode"]{
+Major mode for UTAU project (UST) files.
+}
+
+*** DidYouMean.el
+◊project["https://gitlab.com/kisaragi-hiu/didyoumean.el" "DidYouMean.el"
+         #:title2 ◊(melpa-badge "didyoumean")]{
+Ask for the right file to open.
+
+Emacs port of the ◊github["EinfachToll/DidYouMean"]{DidYouMean} Vim plugin.
+}
+
+*** dired-show-readme
+◊project["https://gitlab.com/kisaragi-hiu/dired-show-readme" "dired-show-readme"]{
+Dired extension to show README of current directory.
+}
+
+*** Cangjie.el
+◊project["https://github.com/kisaragi-hiu/cangjie.el" "Cangjie.el"
+         #:title2 ◊(melpa-badge "cangjie")]{
+Retrieve Cangjie code for Han character in Emacs.
+
+This is my first Emacs package.
+}
+
+*** Canrylog
+◊project["https://gitlab.com/canrylog" "Canrylog"]{
+An experimental time tracking application.
+}
+
+*** Yasearch
+◊project["https://gitlab.com/kisaragi-hiu/yasearch" "yasearch"]{
+Yet Another web Search plugin for Emacs.
+
+Search the word under point or region on the web.
+}
+
+*** Org-msr
+◊project["/projects/org-msr.html" "org-msr"]{
+My personal spaced repetition system, implemented with Org-mode repeaters.
+}
+
+** Web / Design
+*** kisaragi-hiu.com
+◊project["https://github.com/kisaragi-hiu/kisaragi-hiu.com" "kisaragi-hiu.com"]{
+This site. Built on Pollen and Racket, using a minimal style, and spamming purple everywhere.
+}
+*** 如同月球般的荒涼(Barren Moon)
+◊project["https://gitlab.com/kisaragi-hiu/barren-moon" "如同月球般的荒涼(Barren Moon)"]{
+A web-based book. Collection of poems I wrote in junior and senior high school.
+}
+
+** Commands
+
+*** bk
+◊project["https://github.com/kisaragi-hiu/bk" "bk"]{
+Key-value pair storage based on JSON, intended for command line bookmarks.
+}
+
+*** randomwallpaper
+◊project["https://github.com/kisaragi-hiu/randomwallpaper" "randomwallpaper"]{
+A script to set a random wallpaper from a directory every so often.
+}
+
+** Other
+
+*** Language Startup Benchmark
+◊project["https://gitlab.com/kisaragi-hiu/language-startup-benchmark" "Language Startup Benchmark"]{
+Time hello world in various languages to benchmark their startup times.
+}
+
+* osu! Skins & related
+
+** Retome
+◊project["https://github.com/kisaragi-hiu/osuskin-retome" "Retome"]{
+My personal osu! skin, focused on glow and shadow effects.
+}
+
+** Rozerofo
+◊project["https://github.com/kisaragi-hiu/font-rozerofo" "Rozerofo"]{
+A font for the ◊em{Romoji} script from ◊link["https://en.wikipedia.org/wiki/Re:Zero_−_Starting_Life_in_Another_World"]{Re:Zero}.
+}

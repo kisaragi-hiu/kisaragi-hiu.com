@@ -1,0 +1,41 @@
+#+title: About
+* About
+
+I’m a college student in Taiwan, studying, um, Applied English.
+
+I write Emacs Lisp, make covers with UTAU, and occasionally play with Blender.
+
+[[https://gitlab.com/kisaragi-hiu/dotfiles][My dotfiles.]]
+
+* Links
+
+** Social
+
+- [[twitter:flyin1501][Twitter]]
+- [[https://www.reddit.com/user/flyin1501][Reddit]]
+- [[https://home.gamer.com.tw/c12345678999][gamer.com.tw]]
+
+** Code
+
+- [[github:kisaragi-hiu][Github]]
+- [[gitlab:kisaragi-hiu][Gitlab.com]]
+- [[https://git.sr.ht/~kisaragi_hiu/][Sourcehut]]
+
+** Art
+
+- [[youtube:channel/UCl_hsqcvdX0XdgBimRQ6R3A][Youtube]]
+- [[niconico:user/38995186][niconico]]
+- [[https://pixiv.me/kisaragi-hiu][Pixiv]]
+- [[https://episode.cc/about/flyin1501][Episode.cc]]
+
+** Gaming
+
+- [[https://osu.ppy.sh/users/3996811][osu!]]
+
+* About this website
+
+# This site is made with ◊link["https://pollenpub.com/"]{Pollen}, a publishing system based on ◊link["https://racket-lang.org/"]{Racket}.
+
+This site is generated from a bunch of Org files.
+
+# The icons at the footer are from ◊link["https://feathericons.com/"]{Feather}.
