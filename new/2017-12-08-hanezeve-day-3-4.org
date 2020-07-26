@@ -1,14 +1,11 @@
 #+title: Colwelelo Kalalila (Day 3, 4)
 #+date: 2017-12-08T19:03:56
 
-[[site:hanezeve-caradhina-language-construction.org][Hanezeve Caradhina Language Construction]]
-[[site:language-english.org][English]]
-
 The last two days I listened to the song a few more times to check the lyrics, and then made up another line in section B.
 
-Listen to Hanezeve Caradhina [on Spotify](https://open.spotify.com/track/0KzOeB44GAj2rHmoXML0eb).
+Listen to Hanezeve Caradhina [[https://open.spotify.com/track/0KzOeB44GAj2rHmoXML0eb][on Spotify]].
 
-## Lyrics changes
+* Lyrics changes
 
 I found two parts that should be changed:
 
@@ -38,39 +35,41 @@ helelele lelele
 </pre>
 <hr>
 
-## The lyrics, again
+* The lyrics, again
 
-> A.
-> Halalaha zela halalelu
-> Sivivile shi-dhina
-> houwelela, walelila
-> Hanezeve cara-dhina
->
-> B.
-> holo loholo forðe holo
-> helelele lelele
-> colwelela kalalila
-> Hanezeve yulumai ni
->
-> A.
-> Halalaha zela halalelu
-> Sivivile shi-dhina
-> houwelela, walelila
-> Hanezeve cara-dhina
->
-> 'B.
-> holo loholo forðe holo
-> helelele lelele
-> colwelelo kalalila
-> Hanezeve yulumai ni
->
-> A.
-> Halalaha zela halalelu
-> Sivivile shi-dhina
-> houwelela, walelila
-> Hanezeve cara-dhina
+#+begin_quote
+A.
+Halalaha zela halalelu
+Sivivile shi-dhina
+houwelela, walelila
+Hanezeve cara-dhina
 
-## Let's continue our journey
+B.
+holo loholo forðe holo
+helelele lelele
+colwelela kalalila
+Hanezeve yulumai ni
+
+A.
+Halalaha zela halalelu
+Sivivile shi-dhina
+houwelela, walelila
+Hanezeve cara-dhina
+
+'B.
+holo loholo forðe holo
+helelele lelele
+colwelelo kalalila
+Hanezeve yulumai ni
+
+A.
+Halalaha zela halalelu
+Sivivile shi-dhina
+houwelela, walelila
+Hanezeve cara-dhina
+#+end_quote
+
+* Let's continue our journey
 
 The A section is already done, now there's the rest of B.
 
@@ -92,50 +91,59 @@ The word order here with "start journey" / "continue journey" is different than 
 - "colwelelo": "continue"
 - "colwelela kalalila": "start (seeking-unknown = journey)"
 
-## Walelila Halalelu
+* Walelila Halalelu
 
 With this, we can transliterate most of the lyrics already:
 
-> A.
-> (thought-fiction = dream) I (thought-make = imagine)
-> explore even-deep
-> treasures, (idea-unknown = wonder)
-> Abyss in-deep
->
-> B.
-> ???? ????
-> ???? ????
-> start (seeking-unknown = journey)
-> Abyss at-bottom to
+#+begin_quote
+A.
+(thought-fiction = dream) I (thought-make = imagine)
+explore even-deep
+treasures, (idea-unknown = wonder)
+Abyss in-deep
+
+B.
+???? ????
+???? ????
+start (seeking-unknown = journey)
+Abyss at-bottom to
+#+end_quote
 
 And the translated lyrics is now:
 
-> A.
-> I am dreaming a dream
-> to explore even deeper
-> the treasures, the wonder
-> Deep in the Abyss
->
-> B.
-> Holo loholo forðe holo
-> Helelele lelele
-> Let the journey begin
-> to the bottom of the Abyss
->
-> A.
-> I am dreaming a dream
-> to explore even deeper
-> the treasures, the wonder
-> Deep in the Abyss
->
-> 'B.
-> Holo loholo forðe holo
-> Helelele lelele
-> Let the journey continue
-> to the bottom of the Abyss
->
-> A.
-> I am dreaming a dream
-> to explore even deeper
-> the treasures, the wonder
-> Deep in the Abyss
+#+begin_quote
+A.
+I am dreaming a dream
+to explore even deeper
+the treasures, the wonder
+Deep in the Abyss
+
+B.
+Holo loholo forðe holo
+Helelele lelele
+Let the journey begin
+to the bottom of the Abyss
+
+A.
+I am dreaming a dream
+to explore even deeper
+the treasures, the wonder
+Deep in the Abyss
+
+'B.
+Holo loholo forðe holo
+Helelele lelele
+Let the journey continue
+to the bottom of the Abyss
+
+A.
+I am dreaming a dream
+to explore even deeper
+the treasures, the wonder
+Deep in the Abyss
+#+end_quote
+
+* Series
+[[site:hanezeve-caradhina-language-construction.org][Hanezeve Caradhina Language Construction]]
+* Language
+[[site:language-english.org][English]]

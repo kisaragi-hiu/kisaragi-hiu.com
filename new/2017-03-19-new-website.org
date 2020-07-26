@@ -1,9 +1,6 @@
 #+title: 新網站
 #+date: 2017-03-19
 
-[[site:kisaragi-hiu-com.org]]
-[[site:language-mandarin.org]]
-
 想要有個簡單的檔案記錄所有連結
 →放在Github Pages好了
 →試試看Jekyll好了
@@ -12,3 +9,10 @@
 
 結果就這樣的，Blogger那裡正式的被取代掉了呢。
 總之，新網站。
+
+* Tags
+[[site:kisaragi-hiu-com.org][This site]]
+[[site:blog.org][Blog]]
+
+* Language
+[[site:language-mandarin.org][中文]]

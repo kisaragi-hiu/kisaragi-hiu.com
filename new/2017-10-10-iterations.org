@@ -1,10 +1,6 @@
 #+title: Iterations of Learning
 #+date: 2017-10-10T00:00:00
 
-[[site:opinions.org][Opinions]]
-[[site:learning.org][Learning]]
-[[site:language-english.org][English]]
-
 Learning is based on iterations. Do something, then repeat, then repeat until you're familiar with it, is essentially the process; people call this "practice".
 
 Different subjects have different sorts of steps to repeat, for instance:
@@ -24,3 +20,10 @@ Piano:
 5. Repeat.
 
 Learning is essentially finding the steps of an iteration, and then doing it again and again.
+
+* Tags
+[[site:opinions.org][Opinions]]
+[[site:learning.org][Learning]]
+
+* Language
+[[site:language-english.org][English]]

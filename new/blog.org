@@ -1,0 +1,9 @@
+#+title: Blog
+
+Blog posts.
+
+* Backlinks
+- [[site:2016-06-30-han-characters.org::6][Han Characters]]
+- [[site:2017-03-19-new-website.org::6][新網站]]
+- [[site:2017-06-28-redire.org::6][レディーレ Cover]]
+- [[site:2017-07-10-itsukauminomierubashode.org::6][いつか海の見える街で Cover + PV]]

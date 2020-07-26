@@ -1,10 +1,7 @@
+#+title: UTAU tip: labels
+#+date: 2018-07-27T00:23:19
 
-◊define-meta[title]{UTAU tip: labels}
-◊define-meta[date]{2018-07-27T00:23:19}
-◊define-meta[language]{en}
-◊define-meta[category]{Tutorials}
-
-In UTAU, labels are a simple way to mark sections of the UST to easily jump around. I've been using them to make notes in the UST since [my メリュー cover](https://www.youtube.com/watch?v=PNLT7WUuXHM), and for marking sections since [my 濫觴生命 cover](https://www.youtube.com/watch?v=3hnI8DqMVfc).
+In [[site:utau.org][UTAU]], labels are a simple way to mark sections of the UST to easily jump around. I've been using them to make notes in the UST since [[https://www.youtube.com/watch?v=PNLT7WUuXHM][my メリュー cover]], and for marking sections since [[https://www.youtube.com/watch?v=3hnI8DqMVfc][my 濫觴生命 cover]].
 
 ◊->html{◊image["/static/utau/screenshot-labels.png" "Labels marking sections."]}
 
@@ -12,7 +9,7 @@ For some reason, I've never seen a UST with section marks, even though I think t
 
 Label is a note property, this makes it useful for marking specific notes as well.
 
-## Using labels
+* Using labels
 
 Right click on the top line where the bar numbers are, then select `Set Label Here`.
 
@@ -24,8 +21,13 @@ To jump to a label, right click on the top line, select `Move`, then choose the 
 
 ◊->html{◊image["/static/utau/screenshot-labels-change.png" "Move, Change label, and Remove label."]}
 
-## Example
+* Example
 
 ◊->html{◊image["/static/utau/screenshot-labels-usage.png" "My labels usage in the 濫觴生命 cover."]}
 
 In this UST I've named various sections with labels (Intro, Verse, etc.) so I can easily jump to them. I also have a few labels marking specific notes, for instance `here` is what I use to mark my progress through the file, and `???` probably marks some notes sounding weird.
+
+* Tags
+[[site:tutorials.org][Tutorials]]
+* Language
+[[site:language-english.org][English]]

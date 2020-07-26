@@ -1,10 +1,6 @@
 #+title: 夢
 #+date: 2018-06-17T19:45:44
 
-[[site:language-mandarin.org][中文]]
-
-[[site:short-stories.org]]
-
 高架橋下，有著三條路的交叉口，跟著橋下的是雙向的電車軌道。
 
 我跟著他一起，走向數秒前剛有電車通過的軌道上，沿著高架橋與一旁大樓的陰影。
@@ -38,3 +34,9 @@
 「這樣子，我們就有自己的空間了呢。」
 
 微笑著，我坐在充滿回憶的場所，睡著了。
+
+* Tags
+[[site:short-stories.org]]
+
+* Language
+[[site:language-mandarin.org][中文]]

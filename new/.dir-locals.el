@@ -3,6 +3,7 @@
 
 ((org-mode
   (eval kisaragi/org-backlink-mode)
+  (kisaragi/org-backlink-target . file)
   (org-link-abbrev-alist
    ("youtube" . "https://youtube.com/")
    ("niconico" . "https://nicovideo.jp/")

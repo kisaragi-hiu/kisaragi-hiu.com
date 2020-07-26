@@ -1,14 +1,11 @@
 #+title: Grammar Zela Halalelu (Day 2)
 #+date: 2017-12-06T23:23:00
 
-[[site:hanezeve-caradhina-language-construction.org][Hanezeve Caradhina Language Construction]]
-[[site:language-english.org][English]]
-
 Today I watched the episodes where Hanezeve Caradhina was played (1, 8, 9), and further confirmed myself that it indeed feels like describing Riko's journey.
 
 With that, I got a rough idea for the first line that's along the lines with `I'm dreaming a dream`.
 
-## Dreaming the grammar
+* Dreaming the grammar
 
 I started with how "halalaha" and "halalelu" both have the common prefix "hala-". Since I was already thinking about using "dream" as the idea of the line, I defined "hala-" to be a prefix related to thoughts, and "-laha" to be "fiction", "illusion".
 
@@ -18,18 +15,20 @@ I started with how "halalaha" and "halalelu" both have the common prefix "hala-"
 
 Matching up with my rough idea for the first line, I defined "halalelu" to be the verb "dream", and zela to be "I". This creates a syntax for a sentence: "Hala-laha zela hala-lelu" ⇒ "Imagination I Dream", making it a "Object Subject Verb" sentence structure.
 
-## Today's progress
+* Today's progress
 
 The first paragraph is now:
 
-> I am dreaming a dream<br>
-> to explore even deeper<br>
-> the treasure, the wonder<br>
-> deep in the Abyss<br>
+#+begin_quote
+I am dreaming a dream
+to explore even deeper
+the treasure, the wonder
+deep in the Abyss
+#+end_quote
 
 And I now have a rough grammar:
 
-```
+#+begin_src
 Sentence := Object Subject Action
 Object := noun-phrase
 Subject := noun-phrase
@@ -47,4 +46,9 @@ preposition-phrase := (preposition [decorator-phrase])
 
 decorator-phrase := ([decorator] decorator)
 "shi-dhina"
-```
+#+end_src
+
+* Series
+[[site:hanezeve-caradhina-language-construction.org][Hanezeve Caradhina Language Construction]]
+* Language
+[[site:language-english.org][English]]
