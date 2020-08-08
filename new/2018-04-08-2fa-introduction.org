@@ -22,6 +22,6 @@ And when logging in:
 - Website confirms you have both the token and password, and gives you access.
 
 * Tags
-[[site:tutorials.org]]
+[[file:tutorials.org]]
 * Language
-[[site:language-english.org][English]]
+[[file:language-english.org][English]]

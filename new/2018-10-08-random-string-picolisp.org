@@ -6,7 +6,7 @@ After I started using a password manager to generate my passwords, sometimes I w
 
 The command would take just one argument as the length for the output string.
 
-I wrote the ◊gitlab["kisaragi-hiu/dotfiles/commit/c5946b85625d0f10d93b0350f9a34a355293ea6d"]{first version} in Racket, then rewrote it in Common Lisp because Racket's startup speed makes it quite unsuitable for shell commands. I eventually rewrote it in [[site:picolisp.org][Picolisp]] because it's available in [[site:termux.org][Termux]]; it's quite a fascinating language.
+I wrote the ◊gitlab["kisaragi-hiu/dotfiles/commit/c5946b85625d0f10d93b0350f9a34a355293ea6d"]{first version} in Racket, then rewrote it in Common Lisp because Racket's startup speed makes it quite unsuitable for shell commands. I eventually rewrote it in [[file:picolisp.org][Picolisp]] because it's available in [[file:termux.org][Termux]]; it's quite a fascinating language.
 
 * the Racket version
 
@@ -126,4 +126,4 @@ Another interesting thing about Picolisp is that it actually uses a list of form
 #+end_src
 
 * Language
-[[site:language-english.org][English]]
+[[file:language-english.org][English]]

@@ -51,7 +51,7 @@ From there I started with the ◊link["http://docs.racket-lang.org/quick/index.h
 About the osu! skin, it's now released as ◊link["https://osu.ppy.sh/forum/t/630525/start=0"]{Retome (currently 0.4)} on the osu! forum.
 
 * Tags
-[[site:kisaragi-hiu-com.org][This site]]
-[[site:racket.org][Racket]]
+[[file:kisaragi-hiu-com.org][This site]]
+[[file:racket.org][Racket]]
 * Language
-[[site:language-english.org][English]]
+[[file:language-english.org][English]]

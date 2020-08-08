@@ -1,6 +1,3 @@
 #+title: UTAU Covers
 
-Covers made with [[site:utau.org][UTAU]].
-
-* Backlinks
-- [[site:2018-05-11-utau-tuning-experiment.org][UTAU Covering Experiment]]
+Covers made with [[file:utau.org][UTAU]].

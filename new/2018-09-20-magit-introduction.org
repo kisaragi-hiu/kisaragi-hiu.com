@@ -77,6 +77,6 @@ The mouse can be used for selection or moving the cursor around, like other edit
 Arrow keys work as expected, and you can explore other more efficient movement keys in the Emacs tutorial; start it with ◊kbd["C-h t"], or run ◊kbd["M-x"] =help-with-tutorial=.
 
 * Tags
-[[site:tutorials.org][Tutorials]]
+[[file:tutorials.org][Tutorials]]
 * Language
-[[site:language-english.org][English]]
+[[file:language-english.org][English]]

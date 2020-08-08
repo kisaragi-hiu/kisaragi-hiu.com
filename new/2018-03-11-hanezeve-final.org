@@ -135,6 +135,6 @@ Deep in the Abyss
 Listen to Hanezeve Caradhina (and the rest of the Made in Abyss OST) [[https://open.spotify.com/album/5oEzjkSYSfC0ITRiqK6m8l][on Spotify]].
 
 * Series
-[[site:hanezeve-caradhina-language-construction.org][Hanezeve Caradhina Language Construction]]
+[[file:hanezeve-caradhina-language-construction.org][Hanezeve Caradhina Language Construction]]
 * Language
-[[site:language-english.org][English]]
+[[file:language-english.org][English]]

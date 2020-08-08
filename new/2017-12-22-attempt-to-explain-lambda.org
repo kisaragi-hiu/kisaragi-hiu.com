@@ -49,8 +49,8 @@ can be written as:
 #+end_src
 
 * Tags
-[[site:trying-to-explain.org]]
-[[site:programming.org]]
+[[file:trying-to-explain.org]]
+[[file:programming.org]]
 
 * Language
-[[site:language-english.org][English]]
+[[file:language-english.org][English]]

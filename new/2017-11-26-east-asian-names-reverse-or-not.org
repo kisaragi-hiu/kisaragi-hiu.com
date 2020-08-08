@@ -19,6 +19,6 @@ Here is a table of some Japanese and Chinese names, how they would be translated
 | 春埼美空        | Misora Haruki  | Haruki Misora  |
 
 * Tags
-[[site:opinions.org][Opinions]]
+[[file:opinions.org][Opinions]]
 * Language
-[[site:language-english.org][English]]
+[[file:language-english.org][English]]

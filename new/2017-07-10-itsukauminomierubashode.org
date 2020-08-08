@@ -12,7 +12,7 @@
 開頭的淡入應該等聲音出現再開始的...
 
 * Tags
-[[site:covers.org][Covers]]
-[[site:blog.org][Blog]]
+[[file:covers.org][Covers]]
+[[file:blog.org][Blog]]
 * Language
-[[site:language-mandarin.org][中文]]
+[[file:language-mandarin.org][中文]]

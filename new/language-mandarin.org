@@ -1,6 +1,1 @@
 #+title: 中文
-
-* Backlinks
-- [[site:2017-03-19-new-website.org::5][新網站]]
-- [[site:2017-06-28-redire.org::5][レディーレ Cover]]
-- [[site:2017-07-10-itsukauminomierubashode.org::6][いつか海の見える街で Cover + PV]]

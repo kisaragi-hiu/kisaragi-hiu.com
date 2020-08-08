@@ -1,5 +1,1 @@
 #+title: Linux
-
-* Backlinks
-- [[site:2018-01-15-sg-input-workaround.org][Working around Steins;Gate's input problem on Linux]]
-- [[site:2018-02-25-pam_env.org][Switching to .pam_environment for environment variables]]

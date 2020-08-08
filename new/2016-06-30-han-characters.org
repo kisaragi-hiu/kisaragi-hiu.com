@@ -9,9 +9,9 @@ After a while, when you have a basic set of vocabulary, start learning the Han c
 This is how I think Han characters work: they represent ideas, and are assigned to words for better clarification.
 
 * Tags
-[[site:opinions.org][Opinions]]
-[[site:blog.org][Blog]]
+[[file:opinions.org][Opinions]]
+[[file:blog.org][Blog]]
 
 * Language
 
-[[site:language-english.org][English]]
+[[file:language-english.org][English]]

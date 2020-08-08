@@ -151,7 +151,7 @@ There are still many regularities with the rest of the lyrics.
 And I'm sure trying to make up something would be a nice pass-time for me for the next few weeks or something. So hopefully I can keep this up and eventually finish this small language.
 
 * Series
-[[site:hanezeve-caradhina-language-construction.org][Hanezeve Caradhina Language Construction]]
+[[file:hanezeve-caradhina-language-construction.org][Hanezeve Caradhina Language Construction]]
 
 * Language
-[[site:language-english.org][English]]
+[[file:language-english.org][English]]

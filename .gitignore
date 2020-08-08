@@ -20,3 +20,4 @@ static/external/
 static/
 !/static/
 category/
+org-roam.db

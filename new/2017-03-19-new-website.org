@@ -11,8 +11,8 @@
 總之，新網站。
 
 * Tags
-[[site:kisaragi-hiu-com.org][This site]]
-[[site:blog.org][Blog]]
+[[file:kisaragi-hiu-com.org][This site]]
+[[file:blog.org][Blog]]
 
 * Language
-[[site:language-mandarin.org][中文]]
+[[file:language-mandarin.org][中文]]

@@ -36,7 +36,7 @@
 微笑著，我坐在充滿回憶的場所，睡著了。
 
 * Tags
-[[site:short-stories.org]]
+[[file:short-stories.org]]
 
 * Language
-[[site:language-mandarin.org][中文]]
+[[file:language-mandarin.org][中文]]

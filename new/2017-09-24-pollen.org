@@ -15,9 +15,9 @@ Overall I like this setup a bit more.
 ◊image["/static/newsite-directory.jpg"]{New site directory structure}
 
 * Tags
-[[site:kisaragi-hiu-com.org][This site]]
-[[site:pollen.org][Pollen]]
-[[site:blog.org][Blog]]
+[[file:kisaragi-hiu-com.org][This site]]
+[[file:pollen.org][Pollen]]
+[[file:blog.org][Blog]]
 
 * Language
-[[site:language-english.org][English]]
+[[file:language-english.org][English]]

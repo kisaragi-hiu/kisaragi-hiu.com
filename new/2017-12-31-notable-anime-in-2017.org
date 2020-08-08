@@ -65,6 +65,6 @@ I haven't seen any Buddhism-influenced stories in the past, so this one is quite
 Last year I didn't have the chance to follow anime every season, so this is a new one for me. I'm (mostly) looking forward to 2018. ◊rant{Except turning 18 soon...}
 
 * Tags
-[[site:anime.org]]
+[[file:anime.org]]
 * Language
-[[site:language-english.org][English]]
+[[file:language-english.org][English]]

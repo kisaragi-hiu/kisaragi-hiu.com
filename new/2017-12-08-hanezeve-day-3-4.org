@@ -144,6 +144,6 @@ Deep in the Abyss
 #+end_quote
 
 * Series
-[[site:hanezeve-caradhina-language-construction.org][Hanezeve Caradhina Language Construction]]
+[[file:hanezeve-caradhina-language-construction.org][Hanezeve Caradhina Language Construction]]
 * Language
-[[site:language-english.org][English]]
+[[file:language-english.org][English]]

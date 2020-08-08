@@ -6,8 +6,8 @@ Linux Deploy是個很不錯的Android app。這個網站前幾天改成了用Fro
 能在Termux直接有Racket的話會更好就是。現在啟動這個Container(?)的時候電池總是燒很快。
 
 * Tags
-[[site:termux.org][Termux]]
-[[site:linux-deploy-android.org][Linux Deploy]]
-[[site:racket-frog.org][Frog]]
+[[file:termux.org][Termux]]
+[[file:linux-deploy-android.org][Linux Deploy]]
+[[file:racket-frog.org][Frog]]
 * Language
-[[site:language-mandarin.org][中文]]
+[[file:language-mandarin.org][中文]]

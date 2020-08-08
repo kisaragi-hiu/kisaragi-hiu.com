@@ -22,8 +22,8 @@ Piano:
 Learning is essentially finding the steps of an iteration, and then doing it again and again.
 
 * Tags
-[[site:opinions.org][Opinions]]
-[[site:learning.org][Learning]]
+[[file:opinions.org][Opinions]]
+[[file:learning.org][Learning]]
 
 * Language
-[[site:language-english.org][English]]
+[[file:language-english.org][English]]

@@ -7,7 +7,7 @@ I used to put my environment variables in =~/.profile=. However, one day, the fi
 
 * Preprocessing =.pam_environment=
 
-I had a piece of code in my =~/.profile= that checks Racket and Ruby's versions and sets the PATH to point to ~raco~ and ~gem~'s bin directory. Now, =~/.pam_environment= can't do that, so I wrote a [[site:pollen.org][Pollen]] version of the file and rendered / compiled it into the final =~/.pam_environment.=
+I had a piece of code in my =~/.profile= that checks Racket and Ruby's versions and sets the PATH to point to ~raco~ and ~gem~'s bin directory. Now, =~/.pam_environment= can't do that, so I wrote a [[file:pollen.org][Pollen]] version of the file and rendered / compiled it into the final =~/.pam_environment.=
 
 #+begin_src racket
 ◊(define (defpam_env name . contents)
@@ -66,7 +66,7 @@ Reading into =pam_env='s documentation on the config format, it seems that ~DEFA
 The full configuration file can be found [[https://github.com/kisaragi-hiu/dotfiles/blob/master/@linux/.pam_environment.pp][in my dotfiles repo]].
 * Tags
 
-[[site:linux.org]]
+[[file:linux.org]]
 
 * Language
-[[site:language-english.org][English]]
+[[file:language-english.org][English]]

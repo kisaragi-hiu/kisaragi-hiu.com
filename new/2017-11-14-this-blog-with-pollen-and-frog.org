@@ -46,7 +46,7 @@ I followed Alexis King's ◊link["https://lexi-lambda.github.io/blog/2015/07/18/
 I develop this site on ◊github["kisaragi-hiu/kisaragi-hiu.github.io"]{Github}, with posts released under CC-BY-SA and code under BSD 3-clause.
 
 * Tags
-[[site:kisaragi-hiu-com.org][This site]]
+[[file:kisaragi-hiu-com.org][This site]]
 
 * Language
-[[site:language-english.org][English]]
+[[file:language-english.org][English]]
