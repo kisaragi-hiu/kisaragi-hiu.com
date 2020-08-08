@@ -1,1 +1,5 @@
 #+title: Pollen
+
+A book publishing system written in [[file:racket.org][Racket]].
+
+Also works as a [[file:static-site-generator.org][static site generator]].

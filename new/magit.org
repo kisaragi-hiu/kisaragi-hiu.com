@@ -1,0 +1,5 @@
+#+title: Magit
+
+https://magit.vc
+
+A Git interface in [[file:emacs.org][Emacs]].

@@ -9,5 +9,6 @@ Linux Deploy是個很不錯的Android app。這個網站前幾天改成了用Fro
 [[file:termux.org][Termux]]
 [[file:linux-deploy-android.org][Linux Deploy]]
 [[file:racket-frog.org][Frog]]
+[[file:blog.org][Blog]]
 * Language
 [[file:language-mandarin.org][中文]]

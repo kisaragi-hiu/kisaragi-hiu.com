@@ -1,3 +1,5 @@
 #+title: Hanezeve Caradhina Language Construction
 
+[[file:made-in-abyss.org][Made in Abyss]]
+
 Where I try to create a language for Hanezeve Caradhina.

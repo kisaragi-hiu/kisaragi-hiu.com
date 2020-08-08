@@ -1,7 +1,7 @@
 #+title: Working around Steins;Gate's input problem on Linux
 #+date: 2018-01-15T13:51:00
 
-Steins;Gate was released on Steam on September 9, 2016, for Windows only. A few months later, as far as I can remember, [[file:wine.org][Wine]] started being able to run it.
+[[file:steins-gate.org][Steins;Gate]] was released on Steam on September 9, 2016, for Windows only. A few months later, as far as I can remember, [[file:wine.org][Wine]] started being able to run it.
 
 However, for the entirety of 2017, I haven't been able to play it: mouse selection doesn't work at all, menu entries are selected then deselected immediately without my input, the menu is completely unusable. It's almost as if some input is being spammed…?
 
@@ -12,6 +12,7 @@ I found the culprit just last week. There's something wrong with Wacom tablet ha
 Now, time to actually finish reading it when I have the time…
 
 * Tags
-[[file:linux.org]]
+[[file:linux.org][Linux]]
+[[file:blog.org][Blog]]
 * Language
 [[file:language-english.org][English]]

@@ -29,5 +29,6 @@ In this UST I've named various sections with labels (Intro, Verse, etc.) so I ca
 
 * Tags
 [[file:tutorials.org][Tutorials]]
+[[file:blog.org][Blog]]
 * Language
 [[file:language-english.org][English]]

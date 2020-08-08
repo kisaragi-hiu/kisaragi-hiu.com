@@ -47,6 +47,7 @@ I develop this site on ◊github["kisaragi-hiu/kisaragi-hiu.github.io"]{Github},
 
 * Tags
 [[file:kisaragi-hiu-com.org][This site]]
+[[file:blog.org][Blog]]
 
 * Language
 [[file:language-english.org][English]]

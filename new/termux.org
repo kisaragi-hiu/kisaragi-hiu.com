@@ -1,0 +1,3 @@
+#+title: Termux
+
+A GNU/Linux environment made available as an [[file:android.org][Android]] app.

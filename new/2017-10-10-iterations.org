@@ -24,6 +24,7 @@ Learning is essentially finding the steps of an iteration, and then doing it aga
 * Tags
 [[file:opinions.org][Opinions]]
 [[file:learning.org][Learning]]
+[[file:blog.org][Blog]]
 
 * Language
 [[file:language-english.org][English]]

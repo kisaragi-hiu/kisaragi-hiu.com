@@ -1,0 +1,4 @@
+#+title: Steins;Gate
+
+[[file:games.org][games]]
+[[file:visual-novels.org][visual novels]]

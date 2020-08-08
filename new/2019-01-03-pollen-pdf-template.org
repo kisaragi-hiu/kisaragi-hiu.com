@@ -1,9 +1,10 @@
-
-◊define-meta[title]{A Pollen PDF template based on HTML, instead of LaTeX}
-◊define-meta[date]{2019-01-03T03:50:00}
+#+title: A Pollen PDF template based on HTML, instead of LaTeX
+#+date: 2019-01-03T03:50:00+0900
 ◊define-meta[category]{Tutorials}
 ◊define-meta[language]{en}
 ◊define-meta[toc #t]
+
+Table of contents
 
 ◊update-block["2019-03-24"]{
 I forgot to mention that Chrom/ium adds a header and footer when printing to PDF from the command line. To work around this, set the top/bottom margin to 0, eg.:
@@ -75,25 +76,28 @@ Let Racket handle making the temporary file for us. (Pardon my naming sense…)
 
 This is the same as before, except this time we call ◊code{system} here and let it do its thing, suppressing its output with ◊code{void}.
 
-◊highlight['racket]{
-◊"◊"(define html-pagenode
+#+begin_src racket
+◊(define html-pagenode
    (string->symbol
     (string-replace (symbol->string here)
                     #rx"\\.pdf$" ".html")))
-◊"◊"(void
+◊(void
   (render-pagenodes `(root ,html-pagenode))
   (system (format "~a --headless --disable-gpu --print-to-pdf=~a ~a"
                   chrome-executable
                   temp-output
                   html-pagenode)))
-}
+#+end_src
 
 Returning the bytes has to be done last for some reason, so we capture the bytes in ◊code{output}, delete the temporary file, then return ◊code{output}.
 
-◊highlight['racket]{
-◊"◊"(define output (file->bytes temp-output))
-◊"◊"(delete-file temp-output)
-◊"◊"output
-}
+#+begin_src racket
+◊(define output (file->bytes temp-output))
+◊(delete-file temp-output)
+◊output
+#+end_src
 
-Full version: ◊gist{kisaragi-hiu/6062b66694a612fd6981f0afc4515b1e}
+Full version: [[gist:kisaragi-hiu/6062b66694a612fd6981f0afc4515b1e][gist:kisaragi-hiu/6062b66694a612fd6981f0afc4515b1e]]
+
+* Series
+[[file:blog.org][Blog]]

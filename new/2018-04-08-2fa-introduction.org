@@ -1,7 +1,7 @@
 #+title: Introduction to Two Factor Authorization
 #+date: 2018-04-08T19:38:06+09:00
 
-Two factor authorization (2FA) in online accounts is a strong way to limit account access. It involves a website (a point of access control) and a client (like Google Authenticator, FreeOTP, and others).
+[[file:two-factor-authorization.org][Two factor authorization]] (2FA) in online accounts is a strong way to limit account access. It involves a website (a point of access control) and a client (like Google Authenticator, FreeOTP, and others).
 
 When setting up 2FA, you store a randomly generated text (I'll call it the token) in the 2FA client.
 
@@ -11,7 +11,7 @@ When logging in, the website will ask for the password, as before, and the deriv
 
 In practice, this means:
 
-- Telling the website you want to setup 2FA. It should give you the token or a QR code.
+- Telling the website you want to setup 2FA. It should give you the token or a [[file:qr-code.org][QR code]].
 - Scan the QR code or enter the token into a 2FA client, like Google Authenticator.
 - The 2FA client generates the 6-digit code, which you enter into the website to confirm you now have the token.
 
@@ -22,6 +22,7 @@ And when logging in:
 - Website confirms you have both the token and password, and gives you access.
 
 * Tags
-[[file:tutorials.org]]
+[[file:trying-to-explain.org][Trying to explain]]
+[[file:blog.org][Blog]]
 * Language
 [[file:language-english.org][English]]

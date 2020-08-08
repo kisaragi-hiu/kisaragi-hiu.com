@@ -48,9 +48,11 @@ can be written as:
 (define (my-add x y) (+ x y))
 #+end_src
 
+* Series
+[[file:trying-to-explain.org][Trying to explain]]
+[[file:blog.org][Blog]]
 * Tags
-[[file:trying-to-explain.org]]
-[[file:programming.org]]
+[[file:programming.org][Programming]]
 
 * Language
 [[file:language-english.org][English]]

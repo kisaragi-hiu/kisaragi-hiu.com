@@ -152,6 +152,7 @@ And I'm sure trying to make up something would be a nice pass-time for me for th
 
 * Series
 [[file:hanezeve-caradhina-language-construction.org][Hanezeve Caradhina Language Construction]]
+[[file:blog.org][Blog]]
 
 * Language
 [[file:language-english.org][English]]

@@ -50,5 +50,6 @@ decorator-phrase := ([decorator] decorator)
 
 * Series
 [[file:hanezeve-caradhina-language-construction.org][Hanezeve Caradhina Language Construction]]
+[[file:blog.org][Blog]]
 * Language
 [[file:language-english.org][English]]

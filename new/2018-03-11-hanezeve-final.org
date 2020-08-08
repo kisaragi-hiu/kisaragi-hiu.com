@@ -5,10 +5,12 @@ After putting this aside for three months, I finally spent another few minutes t
 
 The B section:
 
-> Holo-ohlo holo forðe holo  <?>
-> Helelele lelele            <?>
-> colwelela kalalila         let the journey begin
-> Hanezeve yulumai-ni        to the bottom of the Abyss
+#+begin_quote
+Holo-ohlo holo forðe holo  <?>
+Helelele lelele            <?>
+colwelela kalalila         let the journey begin
+Hanezeve yulumai-ni        to the bottom of the Abyss
+#+end_quote
 
 * Come, come
 
@@ -16,7 +18,7 @@ Starting off from the part that's harder to break apart, I'm seeing "Helelele le
 
 - Helelele…: *Come…*
 
-  #+CAPTION: The first sentence in section A.
+#+CAPTION: The first sentence in section A.
 #+begin_src
 Halalaha zela halalelu
 => (thought-fiction = dream) I (thought-make = imagine)
@@ -58,6 +60,7 @@ to the bottom of the Abyss
 
 ** Hanezeve Caradhina / Deep in the Abyss
 
+#+begin_html
 <div style="display:flex">
 <span>
 <blockquote>
@@ -131,6 +134,7 @@ Deep in the Abyss
 </blockquote>
 </span>
 </div>
+#+end_html
 
 Listen to Hanezeve Caradhina (and the rest of the Made in Abyss OST) [[https://open.spotify.com/album/5oEzjkSYSfC0ITRiqK6m8l][on Spotify]].
 

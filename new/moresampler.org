@@ -1,0 +1,3 @@
+#+title: Moresampler
+
+An [[file:utau.org][UTAU]] resampler made by Kanru Hua, who later developed [[file:synthesizer-v.org][Synthesizer V]].

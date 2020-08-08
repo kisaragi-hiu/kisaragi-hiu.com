@@ -3,11 +3,11 @@
 
 [Table of contents]
 
-This is a quick guide for using [[https://magit.vc/][Magit]], a wonderful Git interface based in Emacs. Its base features are fairly simple, but it can be confusing if you're not already using Emacs, as I was a few months ago.
+This is a quick guide for using [[file:magit.org][Magit]], a wonderful Git interface based in [[file:emacs.org][Emacs]]. Its base features are fairly simple, but it can be confusing if you're not already using Emacs, as I was a few months ago.
 
 ◊video/gif-esque["/static/emacs-magit-typical-workflow.mp4" #:controls? #t]{Workflow as I edit Cangjie.el}
 
-* The ◊code{magit command}
+* The =magit= command
 
 I'll explain Emacs basics in the last paragraph.
 
@@ -78,5 +78,6 @@ Arrow keys work as expected, and you can explore other more efficient movement k
 
 * Tags
 [[file:tutorials.org][Tutorials]]
+[[file:blog.org][Blog]]
 * Language
 [[file:language-english.org][English]]
