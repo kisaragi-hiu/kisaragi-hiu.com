@@ -2,6 +2,7 @@
 ;;; For more information see (info "(emacs) Directory Variables")
 
 ((org-mode
+  (kisaragi/org-insert-note-default-prefix . "file:")
   (eval setq org-roam-directory
         (f-join
          (projectile-project-root)
@@ -12,5 +13,6 @@
    ("twitter" . "https://twitter.com/")
    ("github" . "https://github.com/")
    ("gitlab" . "https://gitlab.com/"))))
+
 
 
