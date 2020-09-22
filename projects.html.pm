@@ -11,6 +11,10 @@ Incomplete: UTAU covers, illustrations on Pixiv, other things that I've forgot, 
 
 ◊subheading{Emacs}
 
+◊project["https://gitlab.com/kisaragi-hiu/kisaragi-hydration" "kisaragi-hydration"]{
+My own hydration tracker.
+}
+
 ◊project["/projects/ust-mode.html" "UST mode"]{
 Major mode for UTAU project (UST) files.
 }
