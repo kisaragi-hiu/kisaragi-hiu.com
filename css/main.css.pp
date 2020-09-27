@@ -21,10 +21,24 @@
   `("Overpass Mono" "Noto Sans Mono CJK" ,@cjk-fallback monospace))
 
 ◊(define heading "h1,h2,h3,h4,h5,h6,h7")
-◊(define color-secondary "#555")
-◊(define color-primary "#444")
-◊(define color-accent "#934def")
-◊(define color-accent-strong "#ef4da9")
+◊(define color-secondary "#333")
+◊(define color-primary "#0d0d0d")
+◊(define color-accent "#4d2b82")
+◊(define color-accent-strong "#cdadff")
+
+/* Old */
+/* #444 */
+/* #934def */
+/* #ef4da9 */
+/* #555 */
+
+/* New */
+/* #fcfcfc */
+/* #0d0d0d */
+/* #ade0ff */
+/* #cdadff */
+/* #ffade0 */
+/* #4d2b82 */
 
 /*
 * Base */
