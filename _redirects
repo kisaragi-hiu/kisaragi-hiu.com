@@ -24,3 +24,6 @@
 /poems https://barren-moon.kisaragi-hiu.com
 
 /KisaragiHiu.gpg /KisaragiHiu.asc
+
+# We have to do this explicitly because paths are processed from foo.html to foo/index.html
+/* /404 404
