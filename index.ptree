@@ -6,7 +6,6 @@ index.html
 ◊(leaf-from-dir 'blog "blog")
 
 category.html
-◊(leaf-from-dir 'category "category")
 
 feeds.html
 ◊(leaf-from-dir 'feeds "feeds" #:suffix ".xml.pm")

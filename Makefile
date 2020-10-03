@@ -13,7 +13,10 @@ template.html:
 	raco pollen render main-template.html.pp
 	mv main-template.html template.html
 
-html: templates before-pollen css
+category: before-pollen
+	raco pollen render category/*.pm
+
+html: templates category css
 	raco pollen render index.ptree
 
 css:
