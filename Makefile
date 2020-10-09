@@ -23,6 +23,7 @@ css:
 	raco pollen render css/main.css.pp
 
 public: build
+	@rm public -r || true
 	raco pollen publish . $(HOME)/public
 	mv ~/public .
 
@@ -32,6 +33,4 @@ clean:
 publish: public
 
 zip: public
-	pushd public/
-	7z a ../public.zip .
-	popd
+	cd public/ && 7z a ../public.zip .
