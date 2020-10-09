@@ -1,0 +1,23 @@
+image: archlinux
+packages:
+  - racket
+  - python
+  - python-pygments
+  - p7zip
+sources:
+  - https://github.com/kisaragi-hiu/kisaragi-hiu.com
+secrets:
+  - b23fb26d-697a-43d0-85c4-a13183fe5b6a
+tasks:
+  - install-racket-packages: |
+      raco pkg install --skip-installed --deps search-auto pollen txexpr threading css-expr
+  - build: |
+      cd kisaragi-hiu.com
+      make zip
+  - deploy: |
+      cd kisaragi-hiu.com
+      netlify_access_token="$(cat ~/.netlify-access-token)"
+      curl -H "Content-Type: application/zip" \
+           -H "Authorization: Bearer $netlify_access_token" \
+           --data-binary "@public.zip" \
+           https://api.netlify.com/api/v1/sites/a9979c17-2cfe-4bc9-9dd9-ee9e6bf1b161/deploys
