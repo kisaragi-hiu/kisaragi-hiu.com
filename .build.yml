@@ -7,7 +7,7 @@ packages:
 sources:
   - https://github.com/kisaragi-hiu/kisaragi-hiu.com
 secrets:
-  - b23fb26d-697a-43d0-85c4-a13183fe5b6a
+  - 5c8f8983-4435-4e42-8388-2fa7987794aa
 tasks:
   - install-racket-packages: |
       raco pkg install --skip-installed --deps search-auto pollen txexpr threading css-expr
@@ -16,6 +16,7 @@ tasks:
       make zip
   - deploy: |
       cd kisaragi-hiu.com
+      set +x
       netlify_access_token="$(cat ~/.netlify-access-token)"
       curl -H "Content-Type: application/zip" \
            -H "Authorization: Bearer $netlify_access_token" \
