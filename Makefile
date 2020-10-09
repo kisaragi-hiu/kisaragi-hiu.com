@@ -22,11 +22,16 @@ html: templates category css
 css:
 	raco pollen render css/main.css.pp
 
-publish: build
+public: build
 	raco pollen publish . $(HOME)/public
 	mv ~/public .
 
 clean:
 	git clean -Xdf
 
-public: publish
+publish: public
+
+zip: public
+	pushd public/
+	7z a ../public.zip .
+	popd
