@@ -1,7 +1,8 @@
-#lang at-exp racket
+#lang at-exp racket/base
 ;; See page-generation.md for more information.
 
-(require "rkt/category.rkt")
+(require racket/format
+         "category.rkt")
 
 (provide generate-category-page
          generate-tag-page)

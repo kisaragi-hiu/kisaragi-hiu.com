@@ -1,7 +1,6 @@
 #lang racket
 
 (require pollen/core
-         pollen/pagetree
          threading)
 
 (provide in-category?
@@ -11,7 +10,8 @@
          post-year
          post-year=?
          post-type
-         post-category)
+         post-category
+         post-tags)
 
 ;; get type of current post
 (define (post-type metas)
@@ -46,6 +46,9 @@
 
 (define (post-category pagenode)
   (select-from-metas 'category pagenode))
+
+(define (post-tags pagenode)
+  (select-from-metas 'tags pagenode))
 
 (define (in-category? pagenode category)
   (define cat (post-category pagenode))

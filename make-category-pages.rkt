@@ -1,10 +1,10 @@
-#lang rackjure
+#lang racket/base
 
 (require pollen/pagetree
-         threading
-         "rkt/post.rkt"
-         "rkt/category.rkt"
-         "generate-page-functions.rkt")
+         racket/file
+         racket/format
+         "rkt/generate-page-functions.rkt"
+         "rkt/category.rkt")
 
 (current-pagetree "index.ptree")
 
@@ -15,4 +15,4 @@
   (define category-pollen-source (~a path ".pm"))
   (with-output-to-file category-pollen-source
     #:exists 'truncate
-    #λ(displayln (generate-category-page category))))
+    (lambda () (displayln (generate-category-page category)))))

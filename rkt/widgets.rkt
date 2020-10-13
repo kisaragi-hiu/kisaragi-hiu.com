@@ -9,6 +9,8 @@
          "download.rkt"
          "path.rkt"
          "post.rkt"
+         "category.rkt"
+         "tags.rkt"
          (for-syntax threading))
 
 (provide (all-defined-out))
@@ -32,10 +34,13 @@
           empty)
     ,(if category
          `(p ([class "category"])
-           (a ([href ,(abs-local (~> (string-downcase category)
-                                     (string-replace _ " " "-")
-                                     (format "category/~a.html" _)))])
+           (a ([href ,(abs-local (category-path category))])
             ,(format "#~a" category)))
+         "")
+    ,(if tags
+         `(p ([class "tags"])
+           ,@(for/list ((tag tags))
+               `(a ([href ,(abs-local (tag-path tag))]))))
          "")
     (h2 ([class "title"])
      (a ([href ,uri]
