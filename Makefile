@@ -12,14 +12,23 @@ public: build
 
 build: html css
 
-html: templates tags category css
+html: templates tags category css # org
 	raco pollen render index.ptree
 
-css:
+css: css/main.css.pp
 	raco pollen render css/main.css.pp
 
 clean:
 	git clean -Xdf
+
+# * Turning Org files into Pollen Markup files
+# We cannot use .pmd because Tag functions don't work there.
+# We cannot use .pp.md because then the tag functions have to return Markdown.
+# Ultimately we need a Org -> Pollen Markup converter.
+# ORG = $(patsubst %.org,%.html.pm,$(wildcard *.org))
+# org: $(ORG)
+# $(ORG): %.html.pmd: %.org
+# 	pandoc --from org --to markdown "$<" -o "$@"
 
 # * Tags and Categories
 tag-source:
