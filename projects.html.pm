@@ -11,6 +11,10 @@ Incomplete: UTAU covers, illustrations on Pixiv, other things that I've forgot, 
 
 ◊subheading{Emacs}
 
+◊project["/projects/ox-pollen.html" "ox-pollen"]{
+Org to Pollen exporter.
+}
+
 ◊project["https://gitlab.com/kisaragi-hiu/kisaragi-hydration" "kisaragi-hydration"]{
 My own hydration tracker.
 }
