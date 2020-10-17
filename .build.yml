@@ -7,7 +7,7 @@ packages:
 sources:
   - https://github.com/kisaragi-hiu/kisaragi-hiu.com
 secrets:
-  - 5c8f8983-4435-4e42-8388-2fa7987794aa
+  - 9971994c-ebe1-4f42-bb58-11e57b65c689
 tasks:
   - install-racket-packages: |
       raco pkg install --skip-installed --deps search-auto pollen txexpr threading css-expr
