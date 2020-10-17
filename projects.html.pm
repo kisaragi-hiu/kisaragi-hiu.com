@@ -12,11 +12,15 @@ Incomplete: UTAU covers, illustrations on Pixiv, other things that I've forgot, 
 ◊subheading{Emacs}
 
 ◊project["/projects/ox-pollen.html" "ox-pollen"]{
-Org to Pollen exporter.
+Org to Pollen exporter. Far from done yet.
+}
+
+◊project["https://gitlab.com/kisaragi-hiu/kisaragi-log" "kisaragi-log"]{
+Tracking amounts of stuff in Emacs. Supercedes ◊link["#kisaragi-hydration"]{kisaragi-hydration} because I wanted to track more than just water intake.
 }
 
 ◊project["https://gitlab.com/kisaragi-hiu/kisaragi-hydration" "kisaragi-hydration"]{
-My own hydration tracker.
+My own hydration tracker. Superceded by ◊link["#kisaragi-log"]{kisaragi-log}.
 }
 
 ◊project["/projects/ust-mode.html" "UST mode"]{

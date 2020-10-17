@@ -111,7 +111,7 @@
           [src ,(format "https://melpa.org/packages/~a-badge.svg" pkg)]))))
 
 (define (project url title #:title2 [title2 #f] . description)
-  `(div ([class "project"])
+  `(div ([class "project"] [id ,title])
     (h2
      (a ([class "project-title"]
          [href ,url])
