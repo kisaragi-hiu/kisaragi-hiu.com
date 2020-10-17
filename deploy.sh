@@ -1,17 +1,8 @@
 #!/bin/bash
+set +x
 
-if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then
-    echo "This is a pull request. Not deploying."
-    exit 0
-fi
-
-cd ~/public || exit 1
-git init
-
-git config user.name "Built on Travis CI"
-git config user.email "mail@kisaragi-hiu.com"
-
-git add .
-git commit -m "Deploy"
-
-git push --force "https://${GH_TOKEN}@${GH_REF}" master
+netlify_access_token="$(cat ~/.netlify-access-token)"
+curl -H "Content-Type: application/zip" \
+	-H "Authorization: Bearer $netlify_access_token" \
+	--data-binary "@public.zip" \
+	https://api.netlify.com/api/v1/sites/a9979c17-2cfe-4bc9-9dd9-ee9e6bf1b161/deploys
