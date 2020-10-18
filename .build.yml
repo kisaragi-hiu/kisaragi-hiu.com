@@ -1,6 +1,6 @@
 image: archlinux
 packages:
-  - racket-minimal
+  - racket
   - python
   - python-pygments
   - p7zip
