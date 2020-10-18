@@ -61,7 +61,6 @@
         ◊to-html{◊youtube["channel/UCl_hsqcvdX0XdgBimRQ6R3A"]{◊icon{youtube}}}
         ◊to-html{◊link["/about.html#links"]{◊icon{more-horizontal}}}
       </nav>
-      <p>PGP fingerprint: ◊to-html{◊link[◊(abs-local "KisaragiHiu.asc")]{BCC7 4B10 41D4 B7D7 CC8B F402 40EC BEAE A877 5FC2}}</p>
       <p>© Kisaragi Hiu 2017~2019.</p>
       <p>Posts are licensed under a ◊to-html{◊a[#:href "http://creativecommons.org/licenses/by-sa/4.0/"]{CC-BY-SA 4.0 International}} license.</p>
       <p>◊to-html{◊a[#:href "https://github.com/kisaragi-hiu/kisaragi-hiu.com"]{Source code}} is licensed under MIT. See ◊to-html{◊a[#:rel "license" #:href "https://github.com/kisaragi-hiu/kisaragi-hiu.com/blob/source/LICENSE.md"]{LICENSE.md}} for details.</p>

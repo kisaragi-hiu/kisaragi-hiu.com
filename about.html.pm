@@ -6,7 +6,7 @@ I'm a college student in Taiwan, studying, um, Applied English.
 
 I write Emacs Lisp, make covers with UTAU, and occasionally play with Blender.
 
-◊link["https://gitlab.com/kisaragi-hiu/dotfiles"]{My dotfiles.}
+PGP fingerprint: ◊link[◊(abs-local "KisaragiHiu.asc")]{BCC7 4B10 41D4 B7D7 CC8B F402 40EC BEAE A877 5FC2}
 
 ◊heading[#:id "links"]{Links}
 
@@ -21,6 +21,7 @@ I write Emacs Lisp, make covers with UTAU, and occasionally play with Blender.
 ◊subheading{Code}
 
 ◊ul{
+◊li{◊gitlab["kisaragi-hiu/dotfiles"]{My dotfiles}}
 ◊li{◊github["kisaragi-hiu"]{Github}}
 ◊li{◊gitlab["kisaragi-hiu"]{Gitlab.com}}
 ◊li{◊link["https://git.sr.ht/~kisaragi_hiu/"]{Sourcehut}}
