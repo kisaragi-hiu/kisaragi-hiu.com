@@ -13,7 +13,7 @@ public: build
 build: html css
 
 html: templates tags category css # org
-	raco pollen render index.ptree
+	raco pollen render -p index.ptree
 
 css: css/main.css.pp
 	raco pollen render css/main.css.pp
