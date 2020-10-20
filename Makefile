@@ -1,6 +1,6 @@
 .DEFAULT_GOAL := help
 
-.PHONY: zip build html css clean org-based tags category tag-source category-source templates
+.PHONY: zip build html css clean tags category tag-source category-source templates org org-files
 
 zip: public
 	cd public/ && 7z a ../public.zip .
@@ -35,7 +35,13 @@ EXPORTED-FROM-ORG := about.html.pm index.html.pm projects.html.pm
 $(EXPORTED-FROM-ORG): %.html.pm: %.org
 	cask emacs "$<" --batch -l ox-pollen -f ox-pollen-export-to-pollen --kill
 
-org: $(EXPORTED-FROM-ORG)
+.cask:
+	cask install
+
+org: .cask
+	make org-files
+
+org-files: $(EXPORTED-FROM-ORG)
 
 # * Tags and Categories
 tag-source:

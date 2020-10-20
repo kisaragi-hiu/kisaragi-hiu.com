@@ -14,9 +14,11 @@ tags/*
 index.html
 about.html.pm
 index.html.pm
+projects.html.pm
 sitemap.txt
 main.css
 *.html
+*.zip
 css/main.css
 category/*.pm
 static/external/

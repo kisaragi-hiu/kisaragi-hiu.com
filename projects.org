@@ -1,16 +1,16 @@
-#lang pollen
-◊define-meta[type]{page}
-◊define-meta[title]{Projects}
-◊define-meta[toc #t]
+#+title: Projects
+#+type: page
+#+toc: #t
 
 A list of my projects.
 
 Incomplete: UTAU covers, illustrations on Pixiv, other things that I've forgot, etc. still need to be added..
 
-◊heading{Coding}
+* Coding
 
-◊subheading{Emacs}
+** Emacs
 
+#+begin_export pollen
 ◊project["/projects/ox-pollen.html" "ox-pollen"]{
 Org to Pollen exporter. Far from done yet.
 }
@@ -58,9 +58,11 @@ Search the word under point or region on the web.
 ◊project["/projects/org-msr.html" "org-msr"]{
 My personal spaced repetition system, implemented with Org-mode repeaters.
 }
+#+end_export
 
-◊subheading{Web / Design}
+** Web / Design
 
+#+begin_export pollen
 ◊project["https://github.com/kisaragi-hiu/kisaragi-hiu.com" "kisaragi-hiu.com"]{
 This site. Built on Pollen and Racket, using a minimal style, and spamming purple everywhere.
 }
@@ -68,9 +70,11 @@ This site. Built on Pollen and Racket, using a minimal style, and spamming purpl
 ◊project["https://gitlab.com/kisaragi-hiu/barren-moon" "如同月球般的荒涼(Barren Moon)"]{
 A web-based book. Collection of poems I wrote in junior and senior high school.
 }
+#+end_export
 
-◊subheading{Commands}
+** Commands
 
+#+begin_export pollen
 ◊project["https://github.com/kisaragi-hiu/bk" "bk"]{
 Key-value pair storage based on JSON, intended for command line bookmarks.
 }
@@ -78,15 +82,19 @@ Key-value pair storage based on JSON, intended for command line bookmarks.
 ◊project["https://github.com/kisaragi-hiu/randomwallpaper" "randomwallpaper"]{
 A script to set a random wallpaper from a directory every so often.
 }
+#+end_export
 
-◊subheading{Other}
+** Other
 
+#+begin_export pollen
 ◊project["https://gitlab.com/kisaragi-hiu/language-startup-benchmark" "Language Startup Benchmark"]{
 Time hello world in various languages to benchmark their startup times.
 }
+#+end_export
 
-◊heading{osu! Skins & related}
+* osu! Skins & related
 
+#+begin_export pollen
 ◊project["https://github.com/kisaragi-hiu/osuskin-retome" "Retome"]{
 My personal osu! skin, focused on glow and shadow effects.
 }
@@ -94,3 +102,4 @@ My personal osu! skin, focused on glow and shadow effects.
 ◊project["https://github.com/kisaragi-hiu/font-rozerofo" "Rozerofo"]{
 A font for the ◊em{Romoji} script from ◊link["https://en.wikipedia.org/wiki/Re:Zero_−_Starting_Life_in_Another_World"]{Re:Zero}.
 }
+#+end_export
