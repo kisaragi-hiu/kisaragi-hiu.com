@@ -1,6 +1,6 @@
 .DEFAULT_GOAL := help
 
-.PHONY: build before-pollen html css publish
+.PHONY: zip build html css clean org-based tags category tag-source category-source templates
 
 zip: public
 	cd public/ && 7z a ../public.zip .
@@ -12,7 +12,7 @@ public: build
 
 build: html css
 
-html: templates tags category css # org
+html: templates tags category css org
 	raco pollen render -p index.ptree
 
 css: css/main.css.pp
@@ -27,8 +27,21 @@ clean:
 # Ultimately we need a Org -> Pollen Markup converter.
 # ORG = $(patsubst %.org,%.html.pm,$(wildcard *.org))
 # org: $(ORG)
-# $(ORG): %.html.pmd: %.org
-# 	pandoc --from org --to markdown "$<" -o "$@"
+# $(ORG): %.html.pm: %.org
+# 	emacs "$<" --batch -f ox-pollen-export-to-pollen --kill
+
+cask:
+	cask install --verbose
+
+org: cask
+	make org-based
+
+EXPORTED-FROM-ORG := about.html.pm index.html.pm
+
+$(EXPORTED-FROM-ORG): %.html.pm: %.org
+	cask emacs "$<" --batch -l ox-pollen -f ox-pollen-export-to-pollen --kill
+
+org-based: $(EXPORTED-FROM-ORG)
 
 # * Tags and Categories
 tag-source:

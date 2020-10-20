@@ -4,6 +4,8 @@ packages:
   - python
   - python-pygments
   - p7zip
+  - cask
+  - emacs
 sources:
   - https://github.com/kisaragi-hiu/kisaragi-hiu.com
 secrets:

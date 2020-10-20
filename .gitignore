@@ -1,6 +1,7 @@
 public
 *~
 *.swp
+.cask/
 compiled
 /pollen-cache
 pollen.cache
@@ -11,6 +12,8 @@ pollen.cache
 /*.html
 tags/*
 index.html
+about.html.pm
+index.html.pm
 sitemap.txt
 main.css
 *.html
