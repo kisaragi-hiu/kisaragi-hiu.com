@@ -11,8 +11,8 @@
 /atom.xml /feeds/all.atom.xml 200
 
 # old frog/pollen hybrid site URLs
-/tags/category-* /category/:splat
-/tags/* /tags/:splat
+/tags/category-*.html /category/:splat
+/tags/*.html /tags/:splat
 
 /projects/cangjie.el https://github.com/kisaragi-hiu/cangjie.el
 /projects/timetrack https://gitlab.com/canrylog
