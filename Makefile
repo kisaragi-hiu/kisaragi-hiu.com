@@ -1,6 +1,6 @@
 .DEFAULT_GOAL := help
 
-.PHONY: zip build html css clean tags category tag-source category-source templates org org-files
+.PHONY: build category category-source clean css html org org-files serve tag-source tags templates zip
 
 zip: public
 	cd public/ && 7z a ../public.zip .
@@ -17,6 +17,9 @@ html: templates tags category css org
 
 css: css/main.css.pp
 	raco pollen render css/main.css.pp
+
+serve: build
+	raco pollen start
 
 clean:
 	git clean -Xdf
