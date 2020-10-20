@@ -14,6 +14,8 @@ about.html
 
 covers.html
 
+404.html
+
 projects.html
 ◊(leaf-from-dir 'projects "projects")
 
