@@ -13,7 +13,7 @@ tasks:
       raco pkg install --no-docs --binary-lib --catalog https://pkg-build.racket-lang.org/server/built/catalog/ --skip-installed --deps search-auto pollen txexpr threading css-expr
   - build: |
       cd kisaragi-hiu.com
-      make -j 2 zip
+      make zip
   - deploy: |
       cd kisaragi-hiu.com
       bash deploy.sh > /dev/null
