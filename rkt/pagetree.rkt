@@ -1,6 +1,7 @@
 #lang racket
 
-(require threading)
+(require threading
+         pollen/file)
 
 (provide (all-defined-out))
 
@@ -20,14 +21,18 @@
 ;; sorts before B. By default it applies string>?, taking care to
 ;; convert symbols to strings.
 (define (leaf-from-dir node directory
-                       #:suffix [suffix ".html.pm"]
+                       #:suffix [suffix #f]
                        #:sort [sort-func
                                (lambda args
                                  (apply string>? (map symbol->string args)))])
   (~>> (directory-list directory #:build? #t)
        (map path->string)
-       (filter (curryr string-suffix? suffix))
-       (map (curryr string-replace ".pm" ""))
+       (filter
+        (if suffix
+            (curryr string-suffix? suffix)
+            identity))
+       (map ->output-path)
+       (map path->string)
        (map string->symbol)
        (sort _ sort-func)
        (cons node)))
