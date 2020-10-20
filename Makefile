@@ -30,18 +30,12 @@ clean:
 # $(ORG): %.html.pm: %.org
 # 	emacs "$<" --batch -f ox-pollen-export-to-pollen --kill
 
-cask:
-	cask install --verbose
-
-org: cask
-	make org-based
-
-EXPORTED-FROM-ORG := about.html.pm index.html.pm
+EXPORTED-FROM-ORG := about.html.pm index.html.pm projects.html.pm
 
 $(EXPORTED-FROM-ORG): %.html.pm: %.org
 	cask emacs "$<" --batch -l ox-pollen -f ox-pollen-export-to-pollen --kill
 
-org-based: $(EXPORTED-FROM-ORG)
+org: $(EXPORTED-FROM-ORG)
 
 # * Tags and Categories
 tag-source:
