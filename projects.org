@@ -12,7 +12,7 @@ Incomplete: UTAU covers, illustrations on Pixiv, other things that I've forgot, 
 
 #+begin_export pollen
 ◊project["/projects/ox-pollen.html" "ox-pollen"]{
-Org to Pollen exporter. Far from done yet.
+Org to Pollen exporter. Usable — this very page is exported from Org.
 }
 
 ◊project["https://gitlab.com/kisaragi-hiu/kisaragi-log" "kisaragi-log"]{
