@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="/css/main.css">
     <link rel="alternate" type="application/atom+xml" href="/feed.xml" title="Atom Feed">
   </head>
-  <body class="js-loading">
+  <body>
     ◊; Header
     <header id="siteheader">
       <div id="logo">

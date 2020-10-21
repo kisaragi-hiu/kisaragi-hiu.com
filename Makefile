@@ -18,6 +18,9 @@ html: templates tags category css org
 css: css/main.css.pp
 	raco pollen render css/main.css.pp
 
+# css: css/main.scss
+# 	sassc css/main.scss css/main.css
+
 serve: build
 	raco pollen start
 

@@ -1,0 +1,14 @@
+@import "emacs.css";
+
+$cjk-fallback: "Noto Sans CJK TC", "Microsoft Jhenghei", "Microsoft Yahei",
+  "Meiryo", "Malgun Gothic";
+
+$sans-serif: "Overpass", $cjk-fallback, sans-serif;
+
+$monospace: "Overpass Mono", "Noto Sans Mono CJK", $cjk-fallback, monospace;
+
+$color-background: #fefefe;
+$color-primary: #0d0d0d;
+$color-secondary: #333;
+$color-accent: #4d2b82;
+$color-accent-strong: #cdadff;

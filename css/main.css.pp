@@ -56,17 +56,6 @@ body {
 /*
 * Utilities */
 
-/*
-** Prevent transitions from happening during load */
-
-.js-loading {
-  -webkit-transition: none !important;
-  -moz-transition: none !important;
-  -o-transition: none !important;
-  -ms-transition: none !important;
-  transition: none !important;
-}
-
 .disabled {
   color: ◊|color-secondary|;
 }
@@ -206,11 +195,11 @@ blockquote {
 
 a {
   color: ◊|color-accent|;
-  -webkit-transition: all 0.4s ease;
-  -moz-transition: all 0.4s ease;
-  -o-transition: all 0.4s ease;
-  -ms-transition: all 0.4s ease;
-  transition: all 0.4s ease;
+  /* -webkit-transition: all 0.4s ease; */
+  /* -moz-transition: all 0.4s ease; */
+  /* -o-transition: all 0.4s ease; */
+  /* -ms-transition: all 0.4s ease; */
+  /* transition: all 0.4s ease; */
   text-decoration: none;
 }
 
