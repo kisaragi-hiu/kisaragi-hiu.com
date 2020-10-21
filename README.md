@@ -4,13 +4,15 @@
 
 My personal website, built with [Pollen](https://github.com/mbutterick/pollen).
 
-## Build requirements
+## Requirements
 
-- Racket
-- threading-lib `raco pkg install threading`
-- Pollen `raco pkg install pollen`
+See .build.yml.
 
-- Bash. The site is duct taped together in `build.sh`.
+## Build
+
+```sh
+make build
+```
 
 # Random documentation bits (most likely specific to this site)
 
