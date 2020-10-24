@@ -15,7 +15,7 @@
     "Meiryo"
     "Malgun Gothic"))
 ◊(define sans-serif
-  `("Overpass" ,@cjk-fallback sans-serif))
+  `("Inter" ,@cjk-fallback sans-serif))
 ◊(define title-sans-serif sans-serif)
 ◊(define monospace
   `("Overpass Mono" "Noto Sans Mono CJK" ,@cjk-fallback monospace))
@@ -177,7 +177,7 @@ body {
 }
 
 h1 {
-  font-weight: 600;
+  font-weight: 700;
   color: ◊|color-primary|;
 }
 

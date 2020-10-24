@@ -64,6 +64,6 @@ category: category-source
 # * Templates
 templates: template.html
 
-template.html:
+template.html: main-template.html.pp
 	raco pollen render main-template.html.pp
 	mv main-template.html template.html

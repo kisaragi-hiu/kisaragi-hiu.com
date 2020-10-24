@@ -13,7 +13,7 @@
     <meta name="keywords" content="◊conf['keywords]">
     <link rel="icon" href="◊abs-local{favicon.ico}">
     <link rel="canonical" href="◊"◊"(abs-global here)">
-    ◊to-html[(script-load-font "Overpass Mono" "Overpass:200,400,600")]
+    ◊to-html[(script-load-font "Overpass Mono" "Inter")]
     ◊to-html[(script-analytics "FYSHR")]
     <link rel="stylesheet" href="/css/main.css">
     <link rel="alternate" type="application/atom+xml" href="/feed.xml" title="Atom Feed">
