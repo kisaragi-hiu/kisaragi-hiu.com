@@ -4,8 +4,11 @@
          pollen/setup
          pollen/template/html
          pollen/core
+         threading
          pollen/pagetree
          txexpr
+         (except-in markdown
+                    xexpr->string)
          "download.rkt"
          "path.rkt"
          "post.rkt"
@@ -26,26 +29,29 @@
   (unless title
     (error pagenode "title is mandatory"))
   `(div ([class "index-item"])
-    ,@(if date
-          `((p ([class "date"])
-             ,(~> (or (and include-year? (substring date 0 10))
-                      (substring date 5 10))
-                  (string-replace "-" "/"))))
-          empty)
-    ,(if category
-         `(p ([class "category"])
-           (a ([href ,(abs-local (category-path category))])
-            ,(format "#~a" category)))
-         "")
-    ,(if tags
-         `(p ([class "tags"])
-           ,@(for/list ((tag tags))
-               `(a ([href ,(abs-local (tag-path tag))]))))
-         "")
-    (h2 ([class "title"])
+    (div ([class "flex flex-item-margin"])
+     ,@(if date
+           `((time ([class "color-secondary mono"]
+                    [title ,date]
+                    [datetime ,date])
+              ,(~> (or (and include-year? (substring date 0 10))
+                       (substring date 5 10))
+                   (string-replace "-" "/"))))
+           empty)
+     ,@(if category
+           `((span ([class "color-secondary mono"])
+              (a ([href ,(abs-local (category-path category))])
+               ,(format "~a" category))))
+           empty))
+    (h2 ([class "margin-none"])
      (a ([href ,uri]
-         [class "text-primary"])
-      ,title))))
+         [class "color-primary"])
+      ,title))
+    ,@(if tags
+          `((p ([class "tags"])
+             ,@(for/list ((tag tags))
+                 `(a ([href ,(abs-local (tag-path tag))])))))
+          empty)))
 
 ;; create a widget that is a listing of entries
 ;; entries are all ptree nodes, ie. output paths as symbols
@@ -66,12 +72,20 @@
         (category (post-category pagenode))
         (date (post-date pagenode)))
     `(div ([class "post-heading"])
-      ,(if date
-           `(span ([class "date"])
-             ,(~> (substring date 0 10)
-                  (string-replace "-" "/")))
-           "")
-      (h2 ([class "title"]) ,title))))
+      (div ([class "flex baseline flex-item-margin"])
+       ,@(if date
+             `((time ([class "date mono"]
+                      [title ,date]
+                      [datetime ,date])
+                ,(~> (substring date 0 10)
+                     (string-replace "-" "/"))))
+             '())
+       ,@(if category
+             `((p ([class "category"])
+                (a ([href ,(abs-local (category-path category))])
+                 ,(format "#~a" category))))
+             '()))
+      (h1 ([class "margin-none"]) ,title))))
 
 (define (link url
               #:class [class #f]
@@ -390,29 +404,32 @@
 (define (toc pagenode)
   ;; as this depends on tagging headings with ids, this won't work with pmd files.
   (define doc (get-doc pagenode))
-  (define (toc-item tx level)
-    (txexpr 'a `([href ,(~a "#" (attr-ref tx 'id))]
-                 [class ,(~a "toc-" level)])
-            (get-elements tx)))
-  `(@
-    (h1 ([id "toc-title"])
+  (define (toc-item-markdown tx level)
+    (let ((raw-item
+           (format "1. <a href=\"#~a\">~a</a>"
+                   (attr-ref tx 'id)
+                   (car (get-elements tx)))))
+      (~a
+       (make-string (* 4 (sub1 level)) #\space)
+       raw-item)))
+  `(div ([id "toc"])
+    (h1 ([class "size-normal"])
      "Table of Contents")
-    (div ([class "toc"])
-     ,@(filter
-        txexpr?
-        (for/list ([elem doc])
-          (case (and (txexpr? elem)
-                     (car elem))
-            [(h1)
-             (toc-item elem 'h1)]
-            [(h2)
-             (toc-item elem 'h2)]
-            [(h3)
-             (toc-item elem 'h3)]
-            [(h4)
-             (toc-item elem 'h4)]
-            [(h5)
-             (toc-item elem 'h5)]
-            [(h6)
-             (toc-item elem 'h6)]
-            [else #f]))))))
+    ,(~>
+      (for/fold
+          ([acc '()]
+           #:result acc)
+          ([elem doc])
+        (case (and (txexpr? elem)
+                   (car elem))
+          [(h1 h2 h3 h4 h5 h6)
+           (cons (toc-item-markdown elem (~> (car elem)
+                                             symbol->string
+                                             (substring 1 2)
+                                             string->number))
+                 acc)]
+          [else acc]))
+      reverse
+      (string-join _ "\n")
+      parse-markdown
+      car)))

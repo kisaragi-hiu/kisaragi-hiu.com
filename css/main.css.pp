@@ -129,34 +129,12 @@ body {
   font-weight: 600;
 }
 
-/*
-* TOC */
-#toc-title {
+.size-normal {
   font-size: 16pt;
 }
-.toc {
-  display: flex;
-  flex-direction: column;
-}
-.toc-h1,
-.toc-h2 {
-  font-weight: 400;
+
+.toc * {
   font-size: 16pt;
-}
-.toc-h2 {
-  text-indent: 1rem;
-}
-.toc-h3 {
-  text-indent: 2rem;
-}
-.toc-h4 {
-  text-indent: 3rem;
-}
-.toc-h5 {
-  text-indent: 4rem;
-}
-.toc-h6 {
-  text-indent: 5rem;
 }
 
 /*
@@ -234,12 +212,50 @@ a:hover {
   margin-bottom: 1.5rem;
 }
 
-.index-item .title {
+.margin-none {
   margin: 0;
 }
 
+.color-secondary {
+  color: ◊|color-secondary|;
+}
+
+.mono {
+  font-family: ◊&[monospace];
+}
+
+.margin-bottom-none {
+  margin-bottom: 0;
+}
+
+.margin-top-none {
+  margin-top: 0;
+}
+
+.margin-vertical-none {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.inline {
+  display: inline;
+}
+
+.flex {
+  display: flex;
+}
+
+.baseline {
+  align-items: baseline;
+}
+
+.flex-item-margin * {
+  margin-right: 0.5rem;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
 .index-item .date,
-.index-item .category,
 .index-item .tags {
   font-family: ◊&[monospace];
   display: inline-block;
@@ -248,7 +264,7 @@ a:hover {
   font-size: 16pt;
 }
 
-.index-item .title a {
+.color-primary {
   color: ◊|color-primary|;
 }
 
