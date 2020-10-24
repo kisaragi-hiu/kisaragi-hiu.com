@@ -53,13 +53,13 @@ tag-source:
 	racket make-tag-pages.rkt
 
 tags: tag-source
-	raco pollen render tags/*.pm
+	raco pollen render -p tags/*.pm
 
 category-source:
 	racket make-category-pages.rkt
 
 category: category-source
-	raco pollen render category/*.pm
+	raco pollen render -p category/*.pm
 
 # * Templates
 templates: template.html
