@@ -18,7 +18,7 @@ public: build
 
 build: html css
 
-html: templates tags category org
+html: templates tags category
 	raco pollen render -p index.ptree
 
 css: css/main.css.pp
@@ -49,13 +49,13 @@ $(org-files): %.html.pm: %.org
 org: $(org-files)
 
 # * Tags and Categories
-tag-source:
+tag-source: org
 	racket make-tag-pages.rkt
 
 tags: tag-source
 	raco pollen render -p tags/*.pm
 
-category-source:
+category-source: org
 	racket make-category-pages.rkt
 
 category: category-source
