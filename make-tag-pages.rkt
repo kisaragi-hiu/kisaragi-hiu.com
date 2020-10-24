@@ -8,7 +8,7 @@
 
 (current-pagetree "index.ptree")
 
-(make-directory* "tag")
+(make-directory* "tags")
 (for ((tag (get-tags (children 'blog))))
   (define path (tag-path tag))
   (define tag-pollen-source (~a path ".pm"))
