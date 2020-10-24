@@ -60,7 +60,7 @@
     `(div ((class "index"))
       ,@(for/list ((year (remove-duplicates (map post-year entries))))
           `(div ((class "index-year"))
-            ,(heading (number->string year))
+            ,(h1 (number->string year))
             (div ((class "index"))
              ,@(~>> entries
                     (filter (curryr post-year=? year))
@@ -83,7 +83,7 @@
        ,@(if category
              `((p ([class "category"])
                 (a ([href ,(abs-local (category-path category))])
-                 ,(format "#~a" category))))
+                 ,(format "~a" category))))
              '()))
       (h1 ([class "margin-none"]) ,title))))
 
