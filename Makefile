@@ -1,6 +1,12 @@
-.DEFAULT_GOAL := help
+.DEFAULT_GOAL := build
 
 .PHONY: build category category-source clean css html org org-files serve tag-source tags templates zip
+
+serve: build
+	raco pollen start
+
+clean:
+	git clean -Xdf
 
 zip: public
 	cd public/ && 7z a ../public.zip .
@@ -12,7 +18,7 @@ public: build
 
 build: html css
 
-html: templates tags category css org
+html: templates tags category org
 	raco pollen render -p index.ptree
 
 css: css/main.css.pp
@@ -20,12 +26,6 @@ css: css/main.css.pp
 
 # css: css/main.scss
 # 	sassc css/main.scss css/main.css
-
-serve: build
-	raco pollen start
-
-clean:
-	git clean -Xdf
 
 # * Turning Org files into Pollen Markup files
 # We cannot use .pmd because Tag functions don't work there.
@@ -36,18 +36,17 @@ clean:
 # $(ORG): %.html.pm: %.org
 # 	emacs "$<" --batch -f ox-pollen-export-to-pollen --kill
 
-EXPORTED-FROM-ORG := about.html.pm index.html.pm projects.html.pm
+org-files := $(patsubst %.org,%.html.pm,$(wildcard *.org)) $(patsubst %.org,%.html.pm,$(wildcard blog/*.org))
 
-$(EXPORTED-FROM-ORG): %.html.pm: %.org
+$(org-files): .cask
+
+$(org-files): %.html.pm: %.org
 	cask emacs "$<" --batch -l ox-pollen -f ox-pollen-export-to-pollen --kill
 
 .cask:
 	cask install
 
-org: .cask
-	make org-files
-
-org-files: $(EXPORTED-FROM-ORG)
+org: $(org-files)
 
 # * Tags and Categories
 tag-source:
