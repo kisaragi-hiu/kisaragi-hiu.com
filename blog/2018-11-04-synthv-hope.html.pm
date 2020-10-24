@@ -1,6 +1,6 @@
 #lang pollen
 ◊define-meta[title]{SynthesizerV hopes before trying it out}
-◊define-meta[date]{2018-11-04T00:37:50}
+◊define-meta[date]{2018-11-04T00:37:50+0900}
 ◊define-meta[language]{en}
 ◊define-meta[category]{Opinions}
 

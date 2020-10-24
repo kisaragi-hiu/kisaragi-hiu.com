@@ -1,6 +1,6 @@
 #lang pollen
 ◊define-meta[title]{Getting started with Magit (Or what I hope I could've read when I first tried out Magit)}
-◊define-meta[date]{2018-09-20T23:57:41}
+◊define-meta[date]{2018-09-20T23:57:41+0900}
 ◊define-meta[language]{en}
 ◊define-meta[category]{Tutorials}
 ◊define-meta[toc #t]

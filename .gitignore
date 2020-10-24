@@ -5,6 +5,7 @@
 *.swp
 *.xml
 *.zip
+*.rktd
 *~
 .#*
 .cask/

@@ -1,6 +1,6 @@
 #lang pollen
 ◊define-meta[title]{A Makefile for UTAU Projects}
-◊define-meta[date]{2019-04-17T19:50:52}
+◊define-meta[date]{2019-04-17T19:50:52+0800}
 ◊define-meta[category]{Tutorials}
 ◊define-meta[language]{en}
 

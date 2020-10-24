@@ -1,6 +1,6 @@
 #lang pollen
 ◊define-meta[title]{◊span{Three versions of ◊code{random-string}}}
-◊define-meta[date]{2018-10-08T20:52:35}
+◊define-meta[date]{2018-10-08T20:52:35+0900}
 ◊define-meta[language]{en}
 ◊define-meta[toc #t]
 

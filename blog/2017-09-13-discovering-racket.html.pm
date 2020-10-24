@@ -1,7 +1,7 @@
 #lang pollen
 
 ◊define-meta[title]{Discovering Racket through making a osu! skin}
-◊define-meta[date]{2017-09-13T17:58:00}
+◊define-meta[date]{2017-09-13T17:58:00+0800}
 ◊define-meta[category]{Meta}
 
 In around March this year, I started trying to make my own osu! skin, or at least mix a skin for my own use.

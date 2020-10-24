@@ -1,6 +1,6 @@
 #lang pollen
 ◊define-meta[title]{新網站}
-◊define-meta[date]{2017-03-19T05:00:00}
+◊define-meta[date]{2017-03-19T05:00:00+0800}
 ◊define-meta[category]{Meta}
 ◊define-meta[language]{zh-TW}
 
