@@ -38,15 +38,14 @@ css: css/main.css.pp
 
 org-files := $(patsubst %.org,%.html.pm,$(wildcard *.org)) $(patsubst %.org,%.html.pm,$(wildcard blog/*.org))
 
-$(org-files): .cask
-
 $(org-files): %.html.pm: %.org
 	cask emacs "$<" --batch -l ox-pollen -f ox-pollen-export-to-pollen --kill
 
 .cask:
 	cask install
 
-org: $(org-files)
+org: .cask
+	make -j$(shell nproc) $(org-files)
 
 # * Tags and Categories
 tag-source: org
