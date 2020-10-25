@@ -48,7 +48,7 @@
          [class "color-primary"])
       ,title))
     ,@(if tags
-          `((p ([class "flex flex-item-margin"])
+          `((div ([class "margin-none flex flex-item-margin"])
              ,@(for/list ((tag tags))
                  `(a ([href ,(abs-local (tag-path tag))])
                    ,(format "#~a" tag)))))
