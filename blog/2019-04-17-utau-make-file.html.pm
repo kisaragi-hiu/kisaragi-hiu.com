@@ -2,6 +2,7 @@
 ◊define-meta[title]{A Makefile for UTAU Projects}
 ◊define-meta[date]{2019-04-17T19:50:52+0800}
 ◊define-meta[category]{Tutorials}
+◊define-meta[tags ("Make" "UTAU")]
 ◊define-meta[language]{en}
 
 ◊update-block["2019-05-24"]{Updated Makefile to generate file list automatically (line 2).}

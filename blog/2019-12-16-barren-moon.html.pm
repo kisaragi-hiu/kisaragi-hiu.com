@@ -1,6 +1,7 @@
 #lang pollen
 ◊define-meta[title]{Publishing my poems as a web-based book}
 ◊define-meta[date]{2019-12-16T19:48:23}
+◊define-meta[tags ("Poems" "Pollen")]
 ◊define-meta[language]{en}
 
 I started writing poems (mostly in Mandarin) intermittently in 2013. Initially I put them on Blogger; I then moved them into this site in 2017. However, since they were quite different from everything else on this site (not to mention in a different language), and since I don't really have a category / tag system that works well, I effectively removed all mentions to them on this site. They were still hosted here, but there were no links in any of the main pages.
