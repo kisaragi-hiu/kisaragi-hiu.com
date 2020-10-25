@@ -23,4 +23,5 @@ tags/*
 about.html.pm
 index.html.pm
 projects.html.pm
-/blog/2020-10-25-ox-pollen.html.pm
+/blog/2020-10-25*
+/blog/2019-04-13*
