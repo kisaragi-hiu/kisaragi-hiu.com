@@ -2,6 +2,7 @@
 ◊define-meta[title]{◊span{Three versions of ◊code{random-string}}}
 ◊define-meta[date]{2018-10-08T20:52:35+0900}
 ◊define-meta[language]{en}
+◊define-meta[category]{Experiment}
 ◊define-meta[toc #t]
 
 After I started using a password manager to generate my passwords, sometimes I want to do the same in the shell — not necessarily for passwords, but just a random alphanumeric string of a specified length can be useful sometimes.

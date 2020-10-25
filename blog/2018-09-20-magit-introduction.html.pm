@@ -3,6 +3,7 @@
 ◊define-meta[date]{2018-09-20T23:57:41+0900}
 ◊define-meta[language]{en}
 ◊define-meta[category]{Tutorials}
+◊define-meta[tags ("Magit" "Emacs")]
 ◊define-meta[toc #t]
 
 This is a quick guide for using ◊link["https://magit.vc/"]{Magit}, a wonderful Git interface based in Emacs. Its base features are fairly simple, but it can be confusing if you're not already using Emacs, as I was a few months ago.

@@ -2,6 +2,7 @@
 ◊define-meta[title]{UTAU tip: labels}
 ◊define-meta[date]{2018-07-27T00:23:19}
 ◊define-meta[language]{en}
+◊define-meta[tags ("UTAU")]
 ◊define-meta[category]{Tutorials}
 
 In UTAU, labels are a simple way to mark sections of the UST to easily jump around. I've been using them to make notes in the UST since [my メリュー cover](https://www.youtube.com/watch?v=PNLT7WUuXHM), and for marking sections since [my 濫觴生命 cover](https://www.youtube.com/watch?v=3hnI8DqMVfc).

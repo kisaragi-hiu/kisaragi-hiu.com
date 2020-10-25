@@ -1,6 +1,8 @@
 #lang pollen
 ◊define-meta[title]{UTAU Covering Experiment}
 ◊define-meta[date]{2018-05-11T22:00:10+0900}
+◊define-meta[category]{Experiment}
+◊define-meta[tags ("UTAU")]
 ◊define-meta[language]{en}
 
 Back in March, I started getting back into doing UTAU covers, and have tried to finish one cover within two weeks. I'm so far happy with the results, although it is taking up too much of my attention.

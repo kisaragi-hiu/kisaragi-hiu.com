@@ -2,7 +2,7 @@
 ◊define-meta[title]{Switching to .pam_environment for environment variables}
 ◊define-meta[date]{2018-02-25T21:34:45}
 ◊define-meta[language]{en}
-◊define-meta[category]{Linux}
+◊define-meta[tags ("Linux" "Config")]
 
 The past month my system environment was in quite a mess.
 
