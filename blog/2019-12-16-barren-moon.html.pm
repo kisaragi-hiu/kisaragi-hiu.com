@@ -1,6 +1,6 @@
 #lang pollen
 ◊define-meta[title]{Publishing my poems as a web-based book}
-◊define-meta[date]{2019-12-16T19:48:23}
+◊define-meta[date]{2019-12-16T19:48:23+0900}
 ◊define-meta[tags ("Poems" "Pollen")]
 ◊define-meta[language]{en}
 

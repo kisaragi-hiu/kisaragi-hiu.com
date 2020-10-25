@@ -1,7 +1,7 @@
 #lang pollen
 ◊define-meta[title]{Exporting my Slack data to an Org mode file}
 ◊define-meta[toc #t]
-◊define-meta[date]{2020-02-16T03:19:38}
+◊define-meta[date]{2020-02-16T03:19:38+0900}
 ◊define-meta[tags ("Emacs" "Org")]
 ◊define-meta[language]{en}
 

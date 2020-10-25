@@ -1,6 +1,6 @@
 #lang pollen
 ◊define-meta[title]{Setting the width of Emacs profiler reports}
-◊define-meta[date]{2019-05-16T21:39:41}
+◊define-meta[date]{2019-05-16T21:39:41+0900}
 ◊define-meta[category]{Tutorials}
 ◊define-meta[tags ("Emacs" "Config")]
 ◊define-meta[language]{en}
