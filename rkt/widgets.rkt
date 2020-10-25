@@ -48,9 +48,10 @@
          [class "color-primary"])
       ,title))
     ,@(if tags
-          `((p ([class "tags"])
+          `((p ([class "flex flex-item-margin"])
              ,@(for/list ((tag tags))
-                 `(a ([href ,(abs-local (tag-path tag))])))))
+                 `(a ([href ,(abs-local (tag-path tag))])
+                   ,(format "#~a" tag)))))
           empty)))
 
 ;; create a widget that is a listing of entries

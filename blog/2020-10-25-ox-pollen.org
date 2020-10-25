@@ -53,3 +53,7 @@ Details about how the parsed element, “contents”, and the “communication c
 For example, you could translate Org [[https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dl][description lists]] to a Pollen tag function =description-list=, relying on the user to then define that tag function; or you could just emit =<dl>=, =<dt>=, and =<dd>= tags (in their equivalents in Pollen Markup) which will allow it to work out of the box.
 
 As it stands, ox-pollen will probably emit what’s most convenient for me right now.
+
+* Getting it
+
+ox-pollen is [[https://github.com/kisaragi-hiu/ox-pollen][hosted on GitHub]]; there’s also a project page ◊site-crossref["projects/ox-pollen"]{on this site}.
