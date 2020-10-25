@@ -28,9 +28,10 @@ For example, this is the definition of source blocks:
 
 #+begin_src emacs-lisp
 (defun ox-pollen-src-block (obj &rest _)
-  (format "◊highlight['%s]{%s}"
+  (format "◊highlight['%s]{\n%s}"
           (org-element-property :language obj)
-          (org-element-property :value obj)))
+          (ox-pollen--escape-lozenge
+           (org-element-property :value obj))))
 #+end_src
 
 And if everything’s working alright, that block should be formatted as Emacs Lisp because this post itself is written in Org and converted with =ox-pollen=.
