@@ -1,7 +1,7 @@
 #lang pollen
 ◊define-meta[title]{Locales, Org timestamps, and format-time-string}
-◊define-meta[date]{2019-10-09T22:39:21}
-◊define-meta[category]{Emacs}
+◊define-meta[date]{2019-10-09T22:39:21+0900}
+◊define-meta[tags ("Emacs" "Troubleshooting")]
 ◊define-meta[language]{en}
 ◊define-meta[toc #t]
 

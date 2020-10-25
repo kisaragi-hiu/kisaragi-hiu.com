@@ -1,7 +1,7 @@
 #lang pollen
 ◊define-meta[title]{QR Codes from Emacs}
 ◊define-meta[date]{2019-09-24T22:45:48+0900}
-◊define-meta[category]{Emacs}
+◊define-meta[tags ("Emacs" "QR Code")]
 ◊define-meta[language]{en}
 ◊;define-meta[toc #t]
 

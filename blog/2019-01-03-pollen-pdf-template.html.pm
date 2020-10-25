@@ -1,7 +1,7 @@
 #lang pollen
 ◊define-meta[title]{A Pollen PDF template based on HTML, instead of LaTeX}
 ◊define-meta[date]{2019-01-03T03:50:00+0900}
-◊define-meta[category]{Tutorials}
+◊define-meta[tags ("PDF" "Pollen")]
 ◊define-meta[language]{en}
 ◊define-meta[toc #t]
 
