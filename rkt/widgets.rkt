@@ -70,6 +70,7 @@
 ;; Title in page.
 (define (post-heading pagenode)
   (let ((title (select-from-metas 'title pagenode))
+        (tags (select-from-metas 'tags pagenode))
         (category (post-category pagenode))
         (date (post-date pagenode)))
     `(div ([class "post-heading"])
@@ -86,7 +87,13 @@
                 (a ([href ,(abs-local (category-path category))])
                  ,(format "~a" category))))
              '()))
-      (h1 ([class "margin-none"]) ,title))))
+      (h1 ([class "margin-none"]) ,title)
+      ,@(if tags
+            `((div ([class "margin-none flex flex-item-margin"])
+               ,@(for/list ((tag tags))
+                   `(a ([href ,(abs-local (tag-path tag))])
+                     ,(format "#~a" tag)))))
+            empty))))
 
 (define (link url
               #:class [class #f]
