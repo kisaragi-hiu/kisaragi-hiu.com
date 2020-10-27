@@ -44,13 +44,13 @@
             (to-html (toc here)))
       ◊; actual content
       ◊"◊"(to-html doc)
-      ◊"◊"(when/splice (string=? (post-type metas) "post")
-            (to-html (previous-and-next here)))
     </div>
 
     ◊; Footer
     <footer id="sitefooter">
       <div id="footer-sep">・・・</div>
+      ◊"◊"(when/splice (string=? (post-type metas) "post")
+            (to-html (previous-and-next here)))
       <div id="sitefooter-content">
       <p>I don't necessarily know what I'm talking about.</p>
       <nav>
