@@ -108,13 +108,13 @@
   result)
 
 (define (lang-showcase-without-tab . language-examples)
-  (for/fold ([acc null]
-             #:result `(@ ,@acc))
-            ([example language-examples])
-    (append
-     acc
-     `((h3 ,(first example))
-       ,(second example)))))
+  `(@ (h2 "Examples")
+    ,@(for/fold ([acc null])
+                ([example language-examples])
+        (append
+         acc
+         `((h3 ,(first example))
+           ,(second example))))))
 
 ;; This should be used like this:
 ;;    ◊(tabbed (list "Language" [x-exp]) (list "Language" [x-exp]))

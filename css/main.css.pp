@@ -1,6 +1,6 @@
 #lang pollen
 ◊file->string["emacs.css"]
-/* ◊file->string["tabbed.css"] */
+/* ◊;file->string["tabbed.css"] */
 
 ◊(require
   racket/string
@@ -161,7 +161,11 @@ h1 {
 }
 
 h2 {
-  font-weight: 400;
+  font-weight: 600;
+}
+
+h3 {
+  margin-bottom: 0;
 }
 
 blockquote {
