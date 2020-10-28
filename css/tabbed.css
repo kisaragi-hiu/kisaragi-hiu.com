@@ -1,0 +1,23 @@
+div.tabbed {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  /* emitted from Racket */
+  /* grid-template-columns: repeat(~a, 1fr) */
+}
+
+div.tabbed > div {
+  grid-column: 1/-1;
+  grid-row-start: 2;
+}
+
+div.tabbed > div:not(.selected) {
+  visibility: hidden;
+}
+
+div.tabbed > div.selected {
+  visibility: visible;
+}
+
+div.tabbed > .language {
+  grid-row-start: 1;
+}

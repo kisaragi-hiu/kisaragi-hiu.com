@@ -107,13 +107,63 @@
   (when target (set! result (attr-set result 'target target)))
   result)
 
-;; TODO: actually implement tabbed stuff
+(define (lang-showcase-without-tab . language-examples)
+  (for/fold ([acc null]
+             #:result `(@ ,@acc))
+            ([example language-examples])
+    (append
+     acc
+     `((h3 ,(first example))
+       ,(second example)))))
+
+;; This should be used like this:
+;;    ◊(tabbed (list "Language" [x-exp]) (list "Language" [x-exp]))
+;; where x-exp can be returned from eg. ◊highlight, or in the case of
+;; the Org exporter, an Org SRC block.
+;;
+;; https://www.w3.org/Style/Examples/007/target.en.html
 (define (tabbed . language-examples)
-  `(div ([class "tabbed"])
-        ,@(for/list ([example language-examples])
-            `(div
-              (span ,(first example) ":")
-              ,(second example)))))
+  `(div ([class "tabbed"]
+         [style
+          ,(format "grid-template-columns: repeat(~a, 1fr)"
+                   (length language-examples))])
+    ,@(for/fold ([acc null]
+                 [index 0]
+                 #:result acc)
+                ([language-example language-examples])
+        (let* ((language (first language-example))
+               (example (second language-example))
+               (id (~> language
+                       string-downcase
+                       (string-replace " " ""))))
+          (values
+           (append
+            acc
+            (list
+             `(h3
+               (button
+                ([class "language"]
+                 [onclick
+                  ;; Um. I get why you'd want to build static sites
+                  ;; with JS now.
+                  ,(~> (format
+                        "
+document.querySelectorAll(\".tabbed .highlight\")
+.forEach(function(item){item.classList.remove(\"selected\")});
+
+document.querySelectorAll(\".tabbed #~a\")[0]
+.classList
+.add(\"selected\")"
+                        id)
+                       string-trim
+                       (string-replace "\n" ""))])
+                ,language))
+             (if (= index 0)
+                 (attr-set* example
+                            'id id
+                            'class "highlight selected")
+                 (attr-set example 'id id))))
+           (add1 index))))))
 
 (define (make-heading-widget type)
   (lambda (#:id [id #f] . elements)

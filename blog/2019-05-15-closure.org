@@ -10,7 +10,8 @@ This lets functions keep a persistent state without using global variables.
 To define a function that has persistent local variables in a language that supports this, create it in a local environment where you’d define these local variables. In Lisp family languages, this means a =lambda= wrapped inside a =let=: the local binding of that let will become part of the lambda’s environment.
 
 # The code blocks will first be turned into ◊highlight blocks, which will be picked up by Pollen from there.
-◊(tabbed
+# ◊(tabbed
+◊(lang-showcase-without-tab
   (list "Scheme"
 #+BEGIN_SRC scheme
 (define a-closure
