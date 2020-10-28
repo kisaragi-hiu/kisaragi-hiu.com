@@ -7,6 +7,7 @@
 
 (define (get-tags pagenodes)
   (~>> (map post-tags pagenodes)
+       flatten
        remove-duplicates
        (filter string?)))
 
