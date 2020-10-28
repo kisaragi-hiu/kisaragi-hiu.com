@@ -1,6 +1,6 @@
 #+title: ox-pollen: a way to integrate Org files into a Pollen project
 #+date: 2020-10-25T02:30:33+0900
-#+category: Projects
+#+category: Project announcements
 #+roam_tags: Emacs Pollen Org
 #+language: en
 #+toc: #t

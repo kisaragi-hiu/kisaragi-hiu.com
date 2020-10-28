@@ -2,7 +2,7 @@
 ◊define-meta[title]{◊span{Lookup Cangjie encoding in Emacs with ◊code{cangjie.el}}}
 ◊define-meta[date]{2019-01-21T19:43:47+09:00}
 ◊define-meta[tags ("Emacs" "Cangjie")]
-◊define-meta[category]{Projects}
+◊define-meta[category]{Project announcements}
 ◊define-meta[language]{en}
 ◊define-meta[toc #t]
 

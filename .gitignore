@@ -23,5 +23,8 @@ tags/*
 about.html.pm
 index.html.pm
 projects.html.pm
+
+# Posts that have been converted into Org
 /blog/2020-10-25*
 /blog/2019-04-13*
+/blog/2017-12-22*
