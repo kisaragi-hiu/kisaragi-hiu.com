@@ -1,27 +1,6 @@
 #lang racket
 
-(require json)
-
-(provide script-load-font
-         script-analytics)
-
-;; emit javascript tags to load web fonts
-(define (script-load-font . fonts)
-  `(@
-    (script ((src "https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js")))
-    (script
-     ,(format
-       "
-WebFont.load({
-    google: {
-        families: ~a
-    }
-});
-// Prevent transitions from happening during load
-window.onload = () => {
-  document.getElementsByTagName(\"body\")[0].className = \"\";
-};"
-       (jsexpr->string fonts)))))
+(provide script-analytics)
 
 ;; emit javascript for analytics on my own fathom instance
 ;; https://github.com/usefathom/fathom
