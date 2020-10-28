@@ -111,8 +111,9 @@ body {
 
 #sitefooter nav {
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
 }
+
 #sitefooter nav a {
   color: ◊|color-secondary|;
   margin: 0.5rem 1rem 0.5rem 0;
