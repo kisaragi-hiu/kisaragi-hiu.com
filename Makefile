@@ -48,16 +48,12 @@ org: .cask
 	make -j$(shell nproc) $(org-files)
 
 # * Tags and Categories
-tag-source: org
+tags: org blog
 	racket make-tag-pages.rkt
-
-tags: tag-source
 	raco pollen render -p tags/*.pm
 
-category-source: org
+category: org blog
 	racket make-category-pages.rkt
-
-category: category-source
 	raco pollen render -p category/*.pm
 
 # * Templates
