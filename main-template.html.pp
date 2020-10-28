@@ -13,9 +13,9 @@
     <meta name="keywords" content="◊conf['keywords]">
     <link rel="icon" href="◊abs-local{favicon.ico}">
     <link rel="canonical" href="◊"◊"(abs-global here)">
+    <link rel="stylesheet" href="/css/main.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Overpass+Mono&display=swap" rel="stylesheet">
     ◊to-html[(script-analytics "FYSHR")]
-    <link rel="stylesheet" href="/css/main.css">
     <link rel="alternate" type="application/atom+xml" href="/feed.xml" title="Atom Feed">
   </head>
   <body>
