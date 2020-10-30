@@ -5,6 +5,8 @@
 #+ROAM_TAGS: Frog Pollen Markdown
 #+toc: #t
 
+/Update 2020-10-31T03:06:28+0900: this is now outdated. See ◊site-crossref["blog/2020-10-31-current-infrastructure"]{2020-10-31 Current infrastructure} for further changes, including the move away from Frog and the introduction of ox-pollen./
+
 I have wanted to keep a personal site since 2015. I started on Jimdo, then moved to WordPress.com, then Blogger, then just let the site rot. I wasn't writing much, and the only posts I had were copies of my UTAU cover announcements.
 
 * Github Pages
