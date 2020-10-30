@@ -3,7 +3,8 @@
 (require pollen/core
          threading)
 
-(provide in-category?
+(provide post-in-category?
+         post-has-tag?
          post-date
          post-date<?
          post-date>?
@@ -50,7 +51,11 @@
 (define (post-tags pagenode)
   (select-from-metas 'tags pagenode))
 
-(define (in-category? pagenode category)
+(define (post-in-category? pagenode category)
   (define cat (post-category pagenode))
   (and (string? cat)
        (string-ci=? cat category)))
+
+(define/contract (post-has-tag? pagenode tag)
+  (-> symbol? string? any/c)
+  (member tag (post-tags pagenode) string-ci=?))

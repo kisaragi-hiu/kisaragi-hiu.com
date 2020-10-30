@@ -23,7 +23,7 @@
 
       ◊(~> (children 'blog (current-pagetree))
         (filter
-         (curryr in-category? "@|category|")
+         (curryr post-in-category? "@|category|")
          _)
         (map index-item _)
         (txexpr 'div '([class "index"]) _))})
@@ -41,7 +41,7 @@
 
       ◊(~> (children 'blog (current-pagetree))
         (filter
-         (curryr has-tag? "@|tag|")
+         (curryr post-has-tag? "@|tag|")
          _)
         (map index-item _)
         (txexpr 'div '([class "index"]) _))})
