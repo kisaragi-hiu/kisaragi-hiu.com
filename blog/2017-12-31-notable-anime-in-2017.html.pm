@@ -3,6 +3,7 @@
 ◊define-meta[date]{2017-12-31T23:59:57}
 ◊define-meta[language]{en}
 ◊define-meta[tags ("Anime")]
+◊define-meta[category]{Opinions}
 
 2017 is the second year since I started following seasonal anime. (I started with Re:0 last summer.)
 
