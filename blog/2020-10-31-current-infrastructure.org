@@ -33,9 +33,9 @@ The result is ox-pollen, which ◊site-crossref["blog/2020-10-25-ox-pollen"]{hop
 
 * Current infrastructure of this site
 
-[[https://github.com/kisaragi-hiu/kisaragi-hiu.com][The source code]] is hosted on Github. Continuous integration is set up on builds.sr.ht. Whenever I push to the repository, a job will be started to build the site and deploy it to Netlify.
+[[https://github.com/kisaragi-hiu/kisaragi-hiu.com][The source code is hosted on Github]]. Continuous integration is set up on builds.sr.ht. Whenever I push to the repository, a job will be started to build the site and deploy it to Netlify.
 
-The build process is driven by Make. Ideally I want all dependencies to be expressed in Make instead of in Pollen’s index.ptree, but it’s still fine without it.
+The build process is [[https://github.com/kisaragi-hiu/kisaragi-hiu.com/blob/source/Makefile][driven by Make]]. Ideally I want all dependencies to be expressed in Make instead of in Pollen’s index.ptree, but it’s still fine without it.
 
 1. All Org files are converted into Pollen Markup.
 2. The main (and only) template is preprocessed.
