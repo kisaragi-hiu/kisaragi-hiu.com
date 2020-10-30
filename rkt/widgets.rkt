@@ -438,11 +438,11 @@ document.querySelectorAll(\".tabbed #~a\")[0]
 (define (page-navigation prev next #:extra-classes [extra-classes ""])
   `(div ([class ,(~a "page-navigation " extra-classes)])
     ,(if prev
-         (navbutton prev "< ")
-         `(span ([class "disabled"]) "< No newer article"))
+         (navbutton prev "< Next: ")
+         `(span ([class "disabled"]) "< Next"))
     ,(if next
-         (navbutton next "> " "")
-         `(span ([class "disabled"]) "> No older article"))))
+         (navbutton next "> Previous: " "")
+         `(span ([class "disabled"]) "> Previous"))))
 
 (define (previous-and-next pagenode)
   (parameterize ([current-pagetree `(root ,@(siblings pagenode))])
