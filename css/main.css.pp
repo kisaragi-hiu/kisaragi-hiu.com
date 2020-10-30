@@ -5,7 +5,6 @@
 ◊(require
   racket/string
   racket/file
-  css-expr
   "../rkt/css.rkt"
   "../rkt/config.rkt")
 
@@ -194,12 +193,17 @@ a:hover {
 
 /*
 * Reference */
-◊(css-expr->css
-  (css-expr
-   [|div#references|
-    #:margin-top 3rem
-    [p #:margin-top 0 #:margin-bottom 0]]))
-  .div#references {
+
+div#references {
+  margin-top: 3rem;
+}
+
+div#references p {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.div#references {
   color: #555;
 }
 
