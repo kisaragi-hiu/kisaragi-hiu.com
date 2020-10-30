@@ -14,4 +14,4 @@
   (define tag-pollen-source (~a path ".pm"))
   (with-output-to-file tag-pollen-source
     #:exists 'truncate
-    (lambda () (displayln (generate-category-page tag)))))
+    (lambda () (displayln (generate-tag-page tag)))))

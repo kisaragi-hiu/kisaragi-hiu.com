@@ -209,6 +209,11 @@ a:hover {
 
 /*
 * Index items */
+
+.index {
+  margin-top: 2rem;
+}
+
 .index-year > h1 {
   margin: 3rem 0 1rem;
 }

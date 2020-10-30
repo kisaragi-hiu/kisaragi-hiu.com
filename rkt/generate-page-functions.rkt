@@ -2,7 +2,8 @@
 ;; See page-generation.md for more information.
 
 (require racket/format
-         "category.rkt")
+         "category.rkt"
+         "tags.rkt")
 
 (provide generate-category-page
          generate-tag-page)
@@ -16,7 +17,7 @@
       ◊(current-pagetree "../index.ptree")
 
       ◊define-meta[title]{@(category-display category)}
-      ◊define-meta[type]{category-index}
+      ◊define-meta[type]{index}
 
       ◊h1{Category: @(category-display category)}
 
@@ -25,8 +26,7 @@
          (curryr in-category? "@|category|")
          _)
         (map index-item _)
-        (txexpr 'div '([class "index"]) _))
-      })
+        (txexpr 'div '([class "index"]) _))})
 
 (define (generate-tag-page tag)
   @~a{
@@ -35,12 +35,14 @@
       ◊(current-pagetree "../index.ptree")
 
       ◊define-meta[title]{@|tag|}
-      ◊define-meta[type]{tag-index}
+      ◊define-meta[type]{index}
+
+      ◊h1{Tag: @|tag|}
 
       ◊(~> (children 'blog (current-pagetree))
         (filter
          (curryr has-tag? "@|tag|")
          _)
         (map index-item _)
-        (txexpr 'div '([class "index"]) _))
-      })
+        (txexpr 'div '([class "index"]) _))})
+

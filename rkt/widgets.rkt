@@ -62,10 +62,9 @@
       ,@(for/list ((year (remove-duplicates (map post-year entries))))
           `(div ((class "index-year"))
             ,(h1 (number->string year))
-            (div ((class "index"))
-             ,@(~>> entries
-                    (filter (curryr post-year=? year))
-                    (map (lambda (entry) (index-item entry #:year? #f))))))))))
+            ,@(~>> entries
+                   (filter (curryr post-year=? year))
+                   (map (lambda (entry) (index-item entry #:year? #f)))))))))
 
 ;; Title in page.
 (define (post-heading pagenode)
