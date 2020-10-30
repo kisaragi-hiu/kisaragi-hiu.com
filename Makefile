@@ -36,7 +36,7 @@ css: css/main.css.pp
 # $(ORG): %.html.pm: %.org
 # 	emacs "$<" --batch -f ox-pollen-export-to-pollen --kill
 
-org-files := $(patsubst %.org,%.html.pm,$(wildcard *.org)) $(patsubst %.org,%.html.pm,$(wildcard blog/*.org))
+org-files := $(patsubst %.org,%.html.pm,$(wildcard *.org)) $(patsubst %.org,%.html.pm,$(wildcard blog/*.org)) $(patsubst %.org,%.html.pm,$(wildcard projects/*.org))
 
 $(org-files): %.html.pm: %.org
 	cask emacs "$<" --batch -l ox-pollen -f ox-pollen-export-to-pollen --kill
