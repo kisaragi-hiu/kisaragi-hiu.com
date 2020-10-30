@@ -58,4 +58,7 @@
 
 (define/contract (post-has-tag? pagenode tag)
   (-> symbol? string? any/c)
-  (member tag (post-tags pagenode) string-ci=?))
+  (member tag
+          (or (post-tags pagenode)
+              null)
+          string-ci=?))
