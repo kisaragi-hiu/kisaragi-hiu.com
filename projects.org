@@ -11,6 +11,10 @@ Incomplete: UTAU covers, illustrations on Pixiv, other things that I've forgot, 
 ** Emacs
 
 #+begin_export pollen
+◊project["https://github.com/kisaragi-hiu/background-job.el" "background-job.el"]{
+An Emacs Lisp library to start jobs in the background that try not to block the user too much.
+}
+
 ◊project["/projects/ox-pollen.html" "ox-pollen"]{
 Org to Pollen exporter. Usable — this very page is exported from Org.
 }
