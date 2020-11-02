@@ -23,7 +23,7 @@ html: templates tags category
 
 css: css/main.css.pp
 	raco pollen render css/main.css.pp
-	sed -i '/^ *$/d' css/main.css
+	sed -i '/^ *$$/d' css/main.css
 
 # css: css/main.scss
 # 	sassc css/main.scss css/main.css
