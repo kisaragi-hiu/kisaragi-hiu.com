@@ -10,4 +10,4 @@ It supports converting Org mode keywords (◊code{#+title:} and the like) to ◊
 
 Combined with Make, it makes for a pretty nice workflow for writing pages in Org in a Pollen project.
 
-Repository: [[https://github.com/kisaragi-hiu/ox-pollen]]
+Repository: [[https://github.com/kisaragi-hiu/ox-pollen][https://github.com/kisaragi-hiu/ox-pollen]]
