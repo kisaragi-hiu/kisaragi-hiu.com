@@ -72,14 +72,13 @@ body {
 #siteheader {
   display: flex;
   justify-content: space-between;
-  flex-wrap: wrap;
-}
-#logo {
-  display: flex;
   align-items: center;
 }
 #logo h1 {
-  margin-top: 0.25rem;
+  margin-top: 0;
+  align-items: center;
+  display: flex;
+  margin-bottom: 0;
 }
 #logo img {
   max-height: 2rem;

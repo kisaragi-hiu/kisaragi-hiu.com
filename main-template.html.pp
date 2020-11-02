@@ -21,12 +21,9 @@
   <body>
     ◊; Header
     <header id="siteheader">
-      <div id="logo">
-        <a href="/">
-          <img src="/static/avatar.png" alt="Kisaragi Hiu"/>
-        </a>
-        <h1>Kisaragi&nbsp;Hiu</h1>
-      </div>
+      <a href="/" id="logo">
+        <h1><img src="/static/avatar.png" alt="Kisaragi Hiu"/>Kisaragi&nbsp;Hiu</h1>
+      </a>
       <nav>
         <a href="/">Blog</a>
         <a href="/projects.html">Projects</a>
