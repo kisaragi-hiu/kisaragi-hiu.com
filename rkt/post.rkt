@@ -1,6 +1,7 @@
 #lang racket
 
 (require pollen/core
+         pollen/pagetree
          threading)
 
 (provide post-in-category?
@@ -15,9 +16,11 @@
          post-tags)
 
 ;; get type of current post
-(define (post-type metas)
-  (or (select-from-metas 'type metas)
-      "post"))
+(define (post-type pagenode)
+  (or (select-from-metas 'type pagenode)
+      (if (member pagenode (children 'blog))
+          "post"
+          "page")))
 
 ;; get timestamp of pagenode as specified in its source file
 (define (post-date pagenode)

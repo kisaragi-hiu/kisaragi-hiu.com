@@ -1,6 +1,5 @@
 #lang pollen
 
-◊define-meta[type]{page}
 ◊define-meta[title]{ust-mode}
 ◊heading{ust-mode}
 

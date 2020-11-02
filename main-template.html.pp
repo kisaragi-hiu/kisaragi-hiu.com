@@ -37,7 +37,7 @@
     ◊; Contents
     <div id="content">
       ◊; show heading for posts
-      ◊"◊"(when/splice (string=? (post-type metas) "post")
+      ◊"◊"(when/splice (string=? (post-type here) "post")
             (to-html (post-heading here)))
       ◊; show toc if it exists
       ◊"◊"(when/splice (select-from-metas 'toc metas)
@@ -49,7 +49,7 @@
     ◊; Footer
     <footer id="sitefooter">
       <div id="footer-sep">・・・</div>
-      ◊"◊"(when/splice (string=? (post-type metas) "post")
+      ◊"◊"(when/splice (string=? (post-type here) "post")
             (to-html (previous-and-next here)))
       <div id="sitefooter-content">
       <p>I don't necessarily know what I'm talking about.</p>

@@ -1,5 +1,4 @@
 #lang pollen
-◊define-meta[type]{page}
 ◊define-meta[title]{Categories}
 
 ◊(current-pagetree "index.ptree")

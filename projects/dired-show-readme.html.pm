@@ -1,6 +1,5 @@
 #lang pollen
 
-◊define-meta[type]{page}
 ◊define-meta[title]{dired-show-readme}
 ◊heading{dired-show-readme}
 

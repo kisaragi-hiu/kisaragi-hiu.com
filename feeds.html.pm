@@ -1,5 +1,4 @@
 #lang pollen
-◊define-meta[type]{page}
 ◊define-meta[title]{Subscribing to the RSS / ATOM feed}
 
 ATOM is a standard for subscribing to web content. (RSS is its predecessor.)

@@ -1,5 +1,4 @@
 #+title: ox-pollen
-#+type: page
 
 * ox-pollen
 

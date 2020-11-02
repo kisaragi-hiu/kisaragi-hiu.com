@@ -1,5 +1,4 @@
 #+title: About
-#+type: page
 
 I'm a college student in Taiwan, studying, um, Applied English.
 
