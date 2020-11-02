@@ -4,7 +4,7 @@
 
 A list of my projects.
 
-Also see [[file:utau-covers.org][the list of UTAU covers that I’ve done]].
+Also see [[file:covers.org][the list of UTAU covers that I’ve done]].
 
 Incomplete: illustrations on Pixiv, other things that I've forgot, etc. still need to be added..
 

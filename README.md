@@ -23,3 +23,9 @@ make build
 `◊define-meta[name]{content ◊tag{content}}` gets expanded to `(define-meta name "content" (tag "content"))`, which is invalid syntax.
 
 `◊define-meta[name]{◊span{content ◊tag{content}}}` becomes `(define-meta name (span "content" (tag "content")))`.
+
+## Adding a new page that isn’t a blog post
+
+Add a new Org file at project root and set the `type` meta to `page`.
+
+Do remember to add it into `index.ptree` so that it’s actually in the published output.
