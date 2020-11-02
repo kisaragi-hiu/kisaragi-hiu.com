@@ -22,7 +22,10 @@ tags/*
 
 about.html.pm
 index.html.pm
+covers.html.pm
 projects.html.pm
+
+projects/ox-pollen.html.pm
 
 # Posts that have been converted into Org
 /blog/2017-11-14*.html.pm
@@ -33,3 +36,5 @@ projects.html.pm
 /blog/2019-05-15*.html.pm
 /blog/2020-10-25*.html.pm
 /blog/2018-01-07*.html.pm
+/blog/2019-12-16*.html.pm
+/blog/2020-10-31*.html.pm
