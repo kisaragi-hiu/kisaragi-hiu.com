@@ -1,4 +1,4 @@
-#+title: Kisaragi Hiu’s Homepage
+#+title: Home
 #+type: index
 
 ◊(current-pagetree "index.ptree")
