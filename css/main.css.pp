@@ -26,6 +26,9 @@
 ◊(define color-accent "#4d2b82")
 ◊(define color-accent-strong "#cdadff")
 
+◊(define font-size-main "14pt")
+◊(define font-size-big "16pt")
+
 /* Old */
 /* #444 */
 /* #934def */
@@ -43,11 +46,14 @@
 /*
 * Base */
 
+body, #siteheader nav a, .size-normal, .toc *, .index-item .date, .index-item .tags, .page-navigation, .highlight {
+  font-size: ◊|font-size-main|;
+}
+
 body {
   margin: 2em 20%;
   line-height: 1.6;
   font-family: ◊&[sans-serif];
-  font-size: 16pt;
   font-weight: 400;
   color: ◊|color-primary|;
   text-rendering: optimizeLegibility;
@@ -86,7 +92,6 @@ body {
 #siteheader nav a {
   color: ◊|color-secondary|;
   margin: 0.5rem 0.8rem 0.5rem 0;
-  font-size: 16pt;
 }
 
 /*
@@ -116,7 +121,6 @@ body {
 #sitefooter nav a {
   color: ◊|color-secondary|;
   margin: 0.5rem 1rem 0.5rem 0;
-  font-size: 1.2rem;
 }
 
 /*
@@ -130,14 +134,6 @@ body {
   font-weight: 600;
 }
 
-.size-normal {
-  font-size: 16pt;
-}
-
-.toc * {
-  font-size: 16pt;
-}
-
 /*
 * Builtin tags */
 
@@ -147,7 +143,7 @@ body {
 }
 
 ◊|heading| {
-  font-size: 20pt;
+  font-size: ◊|font-size-big|;
   line-height: 1.2;
   margin-top: 2rem;
   margin-bottom: 0.5rem;
@@ -276,7 +272,6 @@ div#references p {
   display: inline-block;
   color: ◊|color-secondary|;
   margin: 0 0.5em 0 0;
-  font-size: 16pt;
 }
 
 .color-primary {
@@ -301,7 +296,6 @@ div#references p {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  font-size: 16pt;
 }
 
 .image p {
@@ -329,7 +323,6 @@ div#references p {
 /*
 * Code blocks */
 .highlight {
-  font-size: 16pt;
   overflow-x: auto;
   font-family: ◊&[monospace];
   color: ◊|color-primary|;
