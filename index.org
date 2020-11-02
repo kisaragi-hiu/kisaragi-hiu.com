@@ -3,7 +3,9 @@
 
 ◊(current-pagetree "index.ptree")
 
-Just a random person on the internet.
+I'm a college student in Taiwan studying Applied English.
+
+[[file:about.org][More about me…]]
 
 Stuff I’ve made:
 
