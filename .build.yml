@@ -5,14 +5,15 @@ packages:
   - python-pygments
   - p7zip
   - cask
-  - emacs
+  - emacs-nox
 sources:
   - https://github.com/kisaragi-hiu/kisaragi-hiu.com
 secrets:
   - 9971994c-ebe1-4f42-bb58-11e57b65c689
 tasks:
   - install-racket-packages: |
-      raco pkg install --no-docs --catalog https://pkg-build.racket-lang.org/server/built/catalog/ --skip-installed --deps search-auto https://github.com/mbutterick/pollen.git#13c6f5bd4aa6c3a3b66a0000278675a5790cd212 txexpr threading
+      raco pkg config --set catalogs https://pkg-build.racket-lang.org/server/built/catalog/
+      raco pkg install --binary-lib --skip-installed --deps search-auto pollen txexpr threading
   - install-emacs-packages: |
       cd kisaragi-hiu.com
       cask install --verbose
