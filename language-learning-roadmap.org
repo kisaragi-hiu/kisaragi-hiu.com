@@ -1,0 +1,26 @@
+#+title: Language Learning Roadmap
+
+An attempt at making a universal roadmap for learning another language.
+
+This is not published yet: that only happens when we add this file to =index.ptree=.
+
+Learning a language = memorize enough of the vocabulary + be familiar enough with grammatical rules (+ understanding pronunciation, though I consider this to be part of vocabulary)
+
+Motivation: is there anything you want to read in the target language? If not, Wikipedia is a good starting point.
+
+Learn the native script of the target language. This is actually kind of part of vocabulary; doubly true for a language that uses Han characters.
+
+Vocabulary: use spaced repetition. Do daily reviews, add words manually so that you’re not overwhelmed by words that haven’t been learned.
+
+Grammar: read introductions, starting from Wikipedia.
+
+Try to read something in the target language. Figure out the function words.
+
+Applying this to Japanese:
+
+First learn to read:
+
+1. Learn Kana; skip Kanji for now
+2. Find a thing you want to read
+3. Decipher it, learn basic grammatical words so you can parse the structure
+4. Find words you don’t understand and remember them (with spaced repetition)
