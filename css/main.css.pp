@@ -50,6 +50,11 @@ body, #siteheader nav a, .size-normal, .toc *, .index-item .date, .index-item .t
   font-size: ◊|font-size-main|;
 }
 
+#siteheader,
+.list {
+  flex-wrap: wrap;
+}
+
 body {
   margin: 2em 20%;
   line-height: 1.6;
@@ -251,7 +256,8 @@ div#references p {
   display: inline;
 }
 
-.flex {
+.flex,
+.list {
   display: flex;
 }
 
@@ -259,7 +265,8 @@ div#references p {
   align-items: baseline;
 }
 
-.flex-item-margin * {
+.flex-item-margin *,
+.list * {
   margin-right: 0.5rem;
   margin-top: 0;
   margin-bottom: 0;

@@ -29,7 +29,7 @@
   (unless title
     (error pagenode "title is mandatory"))
   `(div ([class "index-item"])
-    (div ([class "flex flex-item-margin"])
+    (div ([class "list"])
      ,@(if date
            `((time ([class "color-secondary mono"]
                     [title ,date]
@@ -48,7 +48,7 @@
          [class "color-primary"])
       ,title))
     ,@(if tags
-          `((div ([class "margin-none flex flex-item-margin"])
+          `((div ([class "margin-none list"])
              ,@(for/list ((tag tags))
                  `(a ([href ,(abs-local (tag-path tag))])
                    ,(format "#~a" tag)))))
@@ -73,7 +73,7 @@
         (category (post-category pagenode))
         (date (post-date pagenode)))
     `(div ([class "post-heading"])
-      (div ([class "flex baseline flex-item-margin"])
+      (div ([class "baseline list"])
        ,@(if date
              `((time ([class "date mono"]
                       [title ,date]
@@ -88,7 +88,7 @@
              '()))
       (h1 ([class "margin-none"]) ,title)
       ,@(if tags
-            `((div ([class "margin-none flex flex-item-margin"])
+            `((div ([class "margin-none list"])
                ,@(for/list ((tag tags))
                    `(a ([href ,(abs-local (tag-path tag))])
                      ,(format "#~a" tag)))))
