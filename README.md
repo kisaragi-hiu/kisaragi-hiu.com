@@ -26,6 +26,10 @@ make build
 
 ## Adding a new page that isn’t a blog post
 
-Add a new Org file at project root and set the `type` meta to `page`.
+Add a new Org file at project root and remember to add it into `index.ptree` so that Pollen knows to render it.
 
-Do remember to add it into `index.ptree` so that it’s actually in the published output.
+## Pages vs. Blog posts
+
+A blog post has a date and is kind of like a public diary.
+
+An individual page should be a standalone document (ie. [a concept note](https://www.orgroam.com/manual/A-Brief-Introduction-to-the-Zettelkasten-Method.html)); it should be also be a document that will [obviously not fit on Wikipedia](https://www.gwern.net/Wikipedia-and-Other-Wikis).
