@@ -24,3 +24,12 @@ First learn to read:
 2. Find a thing you want to read
 3. Decipher it, learn basic grammatical words so you can parse the structure
 4. Find words you don’t understand and remember them (with spaced repetition)
+
+Applying this to German, which we’re learning right now in a university course:
+
+1. Learn the German alphabet
+2. Simultaneously:
+   - Memorize some words
+   - Find things that I want to read
+   - Read the textbook
+   - Learn basic grammatical words and word order
