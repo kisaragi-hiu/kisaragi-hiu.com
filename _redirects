@@ -27,5 +27,8 @@
 
 /KisaragiHiu.gpg /KisaragiHiu.asc
 
+# old urls
+/category/experiment /category/experiments
+
 # We have to do this explicitly because paths are processed from foo.html to foo/index.html
 /* /404 404

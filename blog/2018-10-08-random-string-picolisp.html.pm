@@ -2,7 +2,7 @@
 ◊define-meta[title]{◊span{Three versions of ◊code{random-string}}}
 ◊define-meta[date]{2018-10-08T20:52:35+0900}
 ◊define-meta[language]{en}
-◊define-meta[category]{Experiment}
+◊define-meta[category]{Experiments}
 ◊define-meta[toc #t]
 
 After I started using a password manager to generate my passwords, sometimes I want to do the same in the shell — not necessarily for passwords, but just a random alphanumeric string of a specified length can be useful sometimes.
@@ -34,7 +34,7 @@ The main logic is just making a list of specified length, then choosing a random
          (make-list len #f))))
 }
 
-The last section is the entry point; when there are arguments passed into the script, take the 0th argument and pass it to ◊code{random-string} 
+The last section is the entry point; when there are arguments passed into the script, take the 0th argument and pass it to ◊code{random-string}
 
 ◊highlight['racket]{
 (if (empty? (vector->list (current-command-line-arguments)))
@@ -70,7 +70,7 @@ Looking at this now, I probably should've written the Racket version with ◊cod
        (make-string len)))
 }
 
-Here I depend on CLISP by using ◊code{*args*} 
+Here I depend on CLISP by using ◊code{*args*}
 
 ◊highlight['lisp]{
 (format t (if *args*
@@ -92,7 +92,7 @@ There are two ways around this: one is to simply wrap the whole thing into a she
 
 If ◊code{pil} sees an argument that's just a "-", it'll stop loading subsequent arguments as files. This would've been the solution: ◊code{pil -"argv dummy dummy len" random-string - 60} would bind ◊code{dummy} to "random-string", then to "-", then ◊code{len} to "60", after which it'll load my script where ◊code{len} is available. There's just one problem: I have to write this command in the shebang.
 
-The shebang tells the kernel to pass this file to the specified program, like ◊code{#!/bin/bash}  It can also pass an argument to the program, for instance, ◊code{#!/usr/bin/pulseaudio -nF} in some PulseAudio config files. The problem is, it can only pass one argument: everything after the space in the shebang is passed to the program as $1 in shell notation. This means I can't pass another "-" argument to ◊code{pil} 
+The shebang tells the kernel to pass this file to the specified program, like ◊code{#!/bin/bash}  It can also pass an argument to the program, for instance, ◊code{#!/usr/bin/pulseaudio -nF} in some PulseAudio config files. The problem is, it can only pass one argument: everything after the space in the shebang is passed to the program as $1 in shell notation. This means I can't pass another "-" argument to ◊code{pil}
 
 In the end, my shebang looks like ◊code{#!/usr/bin/pil -argv dummy len}  bind the first argument (path to script) to ◊code{dummy}  second argument to ◊code{len}  ◊code{len} isn't actually going to be loaded because ◊code{(bye)} has been called before its loading starts.
 
