@@ -58,7 +58,7 @@
         ◊to-html{◊youtube["channel/UCl_hsqcvdX0XdgBimRQ6R3A"]{◊icon{youtube}}}
         ◊to-html{◊link["/about.html#links"]{◊icon{more-horizontal}}}
       </nav>
-      <p>© Kisaragi Hiu 2017~2019.</p>
+      <p>© Kisaragi Hiu 2017~2020.</p>
       <p>Posts are licensed under a <a href="http://creativecommons.org/licenses/by-sa/4.0/">CC-BY-SA 4.0 International</a> license.</p>
       <p><a href="https://github.com/kisaragi-hiu/kisaragi-hiu.com">Source code</a> is licensed under MIT. See <a rel="license" href="https://github.com/kisaragi-hiu/kisaragi-hiu.com/blob/source/LICENSE.md">LICENSE.md</a> for details.</p>
       </div>
