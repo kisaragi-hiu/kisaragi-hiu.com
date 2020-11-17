@@ -334,8 +334,10 @@ div#references p {
   color: ◊|color-primary|;
 }
 
-.highlight .linenos {
-  padding-right: 0.3rem;
+.highlight .linenos .linenodiv {
+  padding-right: 0.25rem;
+  border-right: 0.1rem solid;
+  margin-right: 1rem;
 }
 
 .linenodiv pre {
