@@ -1,0 +1,68 @@
+#+title: Canrylog
+
+* Canrylog
+
+https://gitlab.com/canrylog/canrylog.el/
+
+My own time tracker written in Emacs Lisp.
+
+Built on the core idea of a list of task-switching events. The core tracking file looks like this:
+
+#+begin_src canrylog-file
+2019-01-15T03:14:04+0800  Sleep
+2019-01-15T10:24:08+0800  Downtime
+2019-01-15T12:24:02+0800  Development:Canrylog:Design
+2019-01-15T13:46:13+0800  Skill:Development:UI
+2019-01-15T15:15:02+0900  Development:Canrylog:Design
+2019-01-15T18:10:30+0900  Skill:Piano
+2019-01-15T18:20:32+0800  Downtime
+2019-01-15T19:48:07+0900  Development:Canrylog:Emacs
+2019-01-15T20:45:43+0900  Dining:Dinner
+2019-01-15T21:48:16+0900  Development:Canrylog:cli
+2019-01-15T22:12:30+0900  Development:Canrylog:Emacs
+2019-01-15T22:38:12+0900  Downtime
+2019-01-15T22:40:18+0900  Entertainment:Gaming:osu!
+2019-01-15T23:04:56+0900  Development:Canrylog:Emacs
+2019-01-15T23:13:41+0800  Notes:Scheduling
+2019-01-15T23:28:19+0800  SocialMedia:Youtube
+2019-01-16T00:24:53+0800  Sleep
+#+end_src
+
+Each line represents a “task switching event”. Each line starts with a timestamp, a separator (two spaces), and a task name.
+
+The task name can be broken down into a hierarchy, using a colon (=:=) to separate paths.
+
+The last event represents the currently active task.
+
+I believe that this is the most readable format for this specific purpose.
+
+** Emacs version
+My usual workflow is:
+
+- Use =canrylog-switch-task= to switch to something I’m doing or working on
+- Switch to the task “Downtime” to signify that I’ve clocked out
+- Use =canrylog-describe-task= to see a summary on a task
+- Use =canrylog-view-main= (aliased to =canrylog=) to see my current task and how much time it’s been active for.
+
+I’ve also built a task list view, although that’s something that isn’t really fleshed out just yet.
+
+Task view example:
+
+[[../static/canrylog-20201118-task-view.png]]
+
+Main view example:
+
+[[../static/canrylog-20201118-dashboard.png]]
+
+** Command line version
+
+I have also started building a command line version.
+
+https://gitlab.com/canrylog/canrylog-cli
+
+Currently the tracking file location is hard coded, as I’ve only been working on the current version for less than 3 hours.
+
+Commands implemented:
+
+- =canrylog switch-to <task>=
+- =canrylog current=

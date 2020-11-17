@@ -50,7 +50,7 @@ Retrieve Cangjie code for Han character in Emacs.
 This is my first Emacs package.
 }
 
-◊project["https://gitlab.com/canrylog" "Canrylog"]{
+◊project["/projects/canrylog.html" "Canrylog"]{
 An experimental time tracking application.
 }
 
