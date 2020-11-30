@@ -1,21 +1,20 @@
-#lang pollen
-◊define-meta[title]{Exporting my Slack data to an Org mode file}
-◊define-meta[toc #t]
-◊define-meta[date]{2020-02-16T03:19:38+0900}
-◊define-meta[tags ("Emacs" "Org")]
-◊define-meta[language]{en}
+#+title: Exporting my Slack data to an Org mode file
+#+date: 2020-02-16T03:19:38+0900
+#+toc: #t
+#+roam_tags: "Emacs" "Org"
+#+language: en
 
-◊heading{Story}
+* Story
 
 In 2017, I tried to use Slack as some sort of todo list, with channels serving as categories, messages being stuff to process, and myself being the only member. It did not work out, partly because I didn't have internet on my phone; I abandoned the personal Slack workspace shortly after.
 
-My personal notes system has evolved a lot, and is now a central Git repository with a bunch of Org files in it. However, I never actually exported the data on the Slack workspace --- some notes were still only available there.
+My personal notes system has evolved a lot, and is now a central Git repository with a bunch of Org files in it. However, I never actually exported the data on the Slack workspace — some notes were still only available there.
 
-That's why I'd like to move them to my notes repository --- this only has to be done once.
+That's why I'd like to move them to my notes repository — this only has to be done once.
 
-First I tried to do it manually, checking the timestamp of each message, writing the text into a new Org file, categorized per channel. This is somewhat doable, as I only about 3 months worth of intermittent messages (in 20 channels) to move. Still, "checking the timestamp" involves hovering my cursor on the message and hoping it shows me the full timestamp --- I want to keep the seconds, as throwing away archival data feels wrong. Doing this quickly became tedious, so I started trying to work on the exported data direcly instead.
+First I tried to do it manually, checking the timestamp of each message, writing the text into a new Org file, categorized per channel. This is somewhat doable, as I only about 3 months worth of intermittent messages (in 20 channels) to move. Still, "checking the timestamp" involves hovering my cursor on the message and hoping it shows me the full timestamp — I want to keep the seconds, as throwing away archival data feels wrong. Doing this quickly became tedious, so I started trying to work on the exported data direcly instead.
 
-◊heading{Exporting the data from Slack}
+* Exporting the data from Slack
 
 ◊image["/static/slack-to-workspace.png" "Workspace → Administration → Workspace settings"]
 ◊image["/static/slack-workspace-settings.png" "Import / Export Data"]
@@ -23,7 +22,7 @@ First I tried to do it manually, checking the timestamp of each message, writing
 
 The data is in a zip file, structured like this:
 
-◊highlight['tree]{
+#+begin_src text
 slack-export
 ├── a_channel
 │   ├── 2017-02-14.json
@@ -36,15 +35,15 @@ slack-export
 ├── channels.json
 ├── integration_logs.json
 └── users.json
-}
+#+end_src
 
-Messages from each channel is in its own folder. ◊path{channels.json} contains metadata for all channels, ◊path{users.json} contains all users in the workspace; I don't care about ◊path{integration_logs.json}, but it seems to be the installed Slack Apps.
+Messages from each channel is in its own folder. ~channels.json~ contains metadata for all channels, ~users.json~ contains all users in the workspace; I don't care about ~integration_logs.json~, but it seems to be the installed Slack Apps.
 
-◊heading{Starting to write it}
+* Starting to write it
 
 The code I wrote grew organically. Starting from:
 
-◊highlight['elisp]{
+#+begin_src elisp
 (defun my/file->json (file)
   "Return contents of FILE read through `json-read'."
   (save-match-data
@@ -61,15 +60,15 @@ The code I wrote grew organically. Starting from:
       ;; Insert channel information
       (let-alist channel
         (insert "* =" .name "=\n")))))
-}
+#+end_src
 
-I can then run ◊code{eval-buffer} to update ◊path{slack.org} for me to explore.
+I can then run =eval-buffer= to update ~slack.org~ for me to explore.
 
-◊heading{The final logic}
+* The final logic
 
-◊subheading{The main script}
+** main script
 
-◊highlight['elisp]{
+#+begin_src elisp
 (with-temp-file "slack.org"
   (insert "#+COLUMNS: %ITEM %CREATED %TOPIC %PURPOSE\n\n")
   (let ((channels (append (my/file->json "channels.json") nil)))
@@ -85,19 +84,17 @@ I can then run ◊code{eval-buffer} to update ◊path{slack.org} for me to explo
       ;; Insert events / messages
       (seq-doseq (event (my/get-channel-events channel))
         (my/insert-event event)))))
-}
+#+end_src
 
 The logic is roughly:
 
-◊ul{
-◊li{For each channel, insert its metadata and its messages.}
-◊li{For each message, insert its metadata and its text, except if it's a list of files, in which case insert all the filenames.}
-◊li{While inserting the text, replace user and channel mentions (that are exported as IDs) with their names, and format links as Org mode.}
-}
+- For each channel, insert its metadata and its messages.
+- For each message, insert its metadata and its text, except if it's a list of files, in which case insert all the filenames.
+- While inserting the text, replace user and channel mentions (that are exported as IDs) with their names, and format links as Org mode.
 
-◊subheading{Other comments}
+** Other comments
 
-◊highlight['elisp]{
+#+begin_src elisp
 (defun my/insert-properties (alist)
   "Insert ALIST as an Org property drawer."
   (insert ":PROPERTIES:\n")
@@ -106,11 +103,11 @@ The logic is roughly:
      (insert ":" (upcase (format "%s" k)) ":  " v "\n"))
    alist)
   (insert ":END:\n\n"))
-}
+#+end_src
 
 Omitting items from an alist conditionally is easier than doing the same with a string, hence this little helper.
 
-◊highlight['elisp]{
+#+begin_src elisp
 (defun my/insert-text (text)
   "Insert TEXT with necessary newlines added amongst other processing."
   (save-match-data
@@ -135,13 +132,13 @@ Omitting items from an alist conditionally is easier than doing the same with a 
                                                      (substring matched 1 10))))
                    t t)))))
        (buffer-string)))))
-}
+#+end_src
 
-Slack exports user and channel mentions as ◊code{<@◊i{user ID}>} and ◊code{<#◊i{channel ID}>}, so to make it more readable I extracted the names from their respective JSON files. Links are exported as ◊code{<http://example.com>}, which doesn't work well in Org, so I also replace that with the Org syntax.
+Slack exports user and channel mentions as ◊code{<@◊i{user ID}>} and ◊code{<#◊i{channel ID}>}, so to make it more readable I extracted the names from their respective JSON files. Links are exported as =<http://example.com>=, which doesn't work well in Org, so I also replace that with the Org syntax.
 
 It is easier to work with buffers in Emacs than with strings, which is why I did the processing in another temporary buffer.
 
-◊highlight['elisp]{
+#+begin_src elisp
 (defun my/file->json (file)
   "Return contents of FILE read through `json-read'."
   (save-match-data
@@ -160,13 +157,13 @@ It is easier to work with buffers in Emacs than with strings, which is why I did
                  (< (string-to-number (alist-get 'ts elem-a))
                     (string-to-number (alist-get 'ts elem-b))))))
    (mapcar #'my/file->json files)))
-}
+#+end_src
 
-◊code{json-read} changes match data, so it needs to be wrapped in a ◊code{save-match-data}. This caused me a few minutes of pain as I tried to figure out why my ◊code{(while (re-search-forward ...) (replace-match ...))} didn't work.
+=json-read= changes match data, so it needs to be wrapped in a =save-match-data=. This caused me a few minutes of pain as I tried to figure out why my =(while (re-search-forward ...) (replace-match ...))= didn't work.
 
-◊code{my/file->json} is pretty straight forward, it just runs ◊code{json-read} on a file. ◊code{my/array-files->json} is less so. It is used to merge two JSON arrays together: as messages of the same channel are stored as multiple arrays in multiple files, getting all messages of a channel requires merging them. We use ◊code{cl-merge} to do the actual merging (the inner lambda is the comparasion function that ◊code{cl-merge} requires for its magic), and ◊code{cl-reduce} to make the two-input ◊code{cl-merge} work on the whole list of arrays.
+=my/file->json= is pretty straight forward, it just runs =json-read= on a file. =my/array-files->json= is less so. It is used to merge two JSON arrays together: as messages of the same channel are stored as multiple arrays in multiple files, getting all messages of a channel requires merging them. We use =cl-merge= to do the actual merging (the inner lambda is the comparasion function that =cl-merge= requires for its magic), and =cl-reduce= to make the two-input =cl-merge= work on the whole list of arrays.
 
-◊highlight['elisp]{
+#+begin_src elisp
 (defun my/get-channel-events (channel)
   "Get events for CHANNEL.
 
@@ -179,13 +176,13 @@ which case the `name' property is used."
                     (t (error "CHANNEL must be a string or a `json-alist-p'")))))
     (apply #'my/array-files->json
            (directory-files name t "json$"))))
-}
+#+end_src
 
-The use of ◊code{my/array-files->json}. I called them "events" here, but I later realized that all of them have the type "message".
+The use of =my/array-files->json=. I called them "events" here, but I later realized that all of them have the type "message".
 
-◊heading{Full code}
+* Full code
 
-◊highlight['elisp]{
+#+begin_src emacs-lisp
 ;; -*- lexical-binding: t; -*-
 
 (require 'json)
@@ -340,8 +337,4 @@ which case the `name' property is used."
       ;; Insert events / messages
       (seq-doseq (event (my/get-channel-events channel))
         (my/insert-event event)))))
-
-;; Local Variables:
-;; mode: lisp-interaction
-;; End:
-}
+#+end_src
