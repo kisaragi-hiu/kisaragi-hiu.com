@@ -218,16 +218,21 @@ document.querySelectorAll(\".tabbed #~a\")[0]
 
 (define (image src [caption #f]
                #:width [width #f] #:max-height [max-height #f]
-               #:class [class ""])
+               #:class [class #f] #:alt [alt #f])
   (define image-style "max-width:100%;")
   (when width
     (set! image-style (~a image-style "width:" width ";")))
   (when max-height
     (set! image-style (~a image-style "max-height:" max-height ";")))
-  `(div ([class "image"])
-    (img ([src ,src] [style ,image-style] [class ,class]))
+  (define img `(img ([src ,src])))
+  (when class
+    (set! img (attr-set img 'class class)))
+  (when alt
+    (set! img (attr-set img 'class alt)))
+  `(figure ([class "image"])
+    ,img
     ,(if caption
-         `(p ([class "image-caption"]) ,caption)
+         `(figcaption ([class "image-caption"]) ,caption)
          "")))
 
 (define (R text ruby) `(ruby ,text (rt ,ruby)))

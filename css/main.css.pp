@@ -304,11 +304,9 @@ div#references p {
   justify-content: space-between;
 }
 
-.image p {
+figcaption {
   margin-top: 0;
   margin-bottom: 0;
-}
-.image-caption {
   text-align: center;
   font-family: ◊&[monospace];
   font-style: italic;
