@@ -67,9 +67,7 @@ tags: $(all-files)
 	racket make-tag-pages.rkt
 	raco pollen render -p tags/*.html.pm
 
-category: $(all-files) category.html
+category: $(all-files) $(templates)
 	racket make-category-pages.rkt
 	raco pollen render -p category/*.html.pm
-
-category.html: $(templates)
 	raco pollen render category.html
