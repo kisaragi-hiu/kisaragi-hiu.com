@@ -41,12 +41,13 @@
           txexpr))
 
 (module+ setup
-  (require racket/path)
+  (require racket/path racket/runtime-path)
   (provide (all-defined-out))
+  (define-runtime-path rkt "rkt")
   (define cache-watchlist
     (filter
      (curryr path-has-extension? ".rkt")
-     (directory-list (build-path (current-project-root) "rkt") #:build? #t))))
+     (directory-list rkt #:build? #t))))
 
 (define (root . elements)
   (if (txexpr-elements? elements)
