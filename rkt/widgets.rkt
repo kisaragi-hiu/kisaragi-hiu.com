@@ -20,6 +20,11 @@
 
 ;;; widgets
 
+(define (tag name)
+  `(a ([class "tag"] [href ,(abs-local (tag-path name))])
+    ,(string-downcase
+      (format "~a" name))))
+
 (define (index-item pagenode #:class [class ""] #:year? [include-year? #t])
   (define uri (abs-local (~a pagenode)))
   (define date     (select-from-metas 'date pagenode))
@@ -29,7 +34,7 @@
   (unless title
     (error pagenode "title is mandatory"))
   `(div ([class "index-item"])
-    (div ([class "list"])
+    (div ([class "baseline list"])
      ,@(if date
            `((time ([class "color-secondary mono"]
                     [title ,date]
@@ -39,19 +44,16 @@
                    (string-replace "-" "/"))))
            empty)
      ,@(if category
-           `((span ([class "color-secondary mono"])
-              (a ([href ,(abs-local (category-path category))])
-               ,(format "~a" category))))
+           `((a ([href ,(abs-local (category-path category))])
+              ,(format "~a" category)))
            empty))
-    (h2 ([class "margin-none"])
+    (h2 ([class "margin-top-none"])
      (a ([href ,uri]
          [class "color-primary"])
       ,title))
     ,@(if tags
           `((div ([class "margin-none list"])
-             ,@(for/list ((tag tags))
-                 `(a ([href ,(abs-local (tag-path tag))])
-                   ,(format "#~a" tag)))))
+             ,@(map tag tags)))
           empty)))
 
 ;; create a widget that is a listing of entries
@@ -89,11 +91,7 @@
       (h1 ([class "xl margin-top-none"]) ,title)
       ,@(if tags
             `((div ([class "list"])
-               ,@(for/list ((tag tags))
-                   `(a ([class "tag"]
-                        [href ,(abs-local (tag-path tag))])
-                     ,(string-downcase
-                       (format "~a" tag))))))
+               ,@(map tag tags)))
             empty))))
 
 (define (link url
