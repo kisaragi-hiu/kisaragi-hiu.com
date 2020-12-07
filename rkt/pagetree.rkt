@@ -23,6 +23,8 @@
                        #:suffix [suffix #f]
                        #:sort [sort-func
                                string>?])
+  (unless (directory-exists? directory)
+    (make-directory directory))
   (~>> (directory-list directory #:build? #t)
        (map path->string)
        (filter
