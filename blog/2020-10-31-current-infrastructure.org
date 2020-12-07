@@ -32,9 +32,9 @@ Parts of my private notes started to resemble a blog, and after reading [[https:
 The result is ox-pollen, which ◊site-crossref["blog/2020-10-25-ox-pollen"]{hopefully will allow me to publish my notes a lot more easily}.
 
 * Current infrastructure of this site
-
+** Hosting
 [[https://github.com/kisaragi-hiu/kisaragi-hiu.com][The source code is hosted on Github]]. Continuous integration is set up on builds.sr.ht. Whenever I push to the repository, a job will be started to build the site and deploy it to Netlify.
-
+** Building
 The build process is [[https://github.com/kisaragi-hiu/kisaragi-hiu.com/blob/source/Makefile][driven by Make]]. Ideally I want all dependencies to be expressed in Make instead of in Pollen’s index.ptree, but it’s still fine without it.
 
 1. All Org files are converted into Pollen Markup.
@@ -47,6 +47,7 @@ The build process is [[https://github.com/kisaragi-hiu/kisaragi-hiu.com/blob/sou
 
 The final result is a =public.zip= file, which is then submitted to Netlify through its API.
 
+** Using builds.sr.ht
 This all happens on builds.sr.ht. I replaced Travis CI with it because the Travis website is just too heavy. Often it just wouldn’t load even though I just wanted to see the build log.
 
 There are also two features in builds.sr.ht that made using it less painful than Travis:
