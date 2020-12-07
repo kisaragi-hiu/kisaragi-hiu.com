@@ -80,17 +80,21 @@ With that, "Hanezeve yulumaini" probably shouldn't just be a noun phrase. Plus, 
 
 Using this grammar, I can read =Hanezeve cara-dhina= as =Abyss in-deep=, and =Hanezeve yulu-mai ni= as =Abyss at-bottom to=. Progress!
 
-## The wonder
+* The wonder
 
 Another sentence I've managed to make up a structure, then somewhat make sense of, is:
 
-> Sivivile shi-dhina
-> houwelela, lalelila
+#+begin_quote
+Sivivile shi-dhina
+houwelela, lalelila
+#+end_quote
 
 I started by just listening to the vocal, thinking about the main idea of the song ("Riko's Journey"), and imagining what English lyrics would be fitting. After a bit, I came up with:
 
-> Explore even deeper
-> ...
+#+begin_quote
+Explore even deeper
+...
+#+end_quote
 
 which fits both Riko's desire to go deeper, and the grammar structure I established with -dhina in the previous section. So:
 
