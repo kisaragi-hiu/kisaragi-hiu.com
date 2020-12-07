@@ -21,30 +21,19 @@
   `("Overpass Mono" "Noto Sans Mono CJK" ,@cjk-fallback monospace))
 
 ◊(define heading "h1,h2,h3,h4,h5,h6,h7")
-◊(define color-secondary "#333")
 ◊(define color-primary "#0d0d0d")
-◊(define color-accent "#4d2b82")
-◊(define color-accent-strong "#cdadff")
+◊(define color-secondary "#333")
+◊(define color-accent "#4d2b82") /* Light purple */
+◊(define color-accent-strong "#cdadff") /* Dark purple */
+◊(define color-special "#cdecff") /* Light blue */
+◊(define color-special-strong "#246084") /* Dark blue */
+/* If you decide you want a pink, use #ffade0. */
 
 ◊(define font-size-main "14pt")
+◊(define font-size-xl "24pt")
 ◊(define font-size-big "16pt")
 
-/* Old */
-/* #444 */
-/* #934def */
-/* #ef4da9 */
-/* #555 */
-
-/* New */
-/* #fcfcfc */
-/* #0d0d0d */
-/* #ade0ff */
-/* #cdadff */
-/* #ffade0 */
-/* #4d2b82 */
-
-/*
-* Base */
+/* Base */
 
 body, #siteheader nav a, .size-normal, .toc *, .index-item .date, .index-item .tags, .page-navigation, .highlight {
   font-size: ◊|font-size-main|;
@@ -53,6 +42,17 @@ body, #siteheader nav a, .size-normal, .toc *, .index-item .date, .index-item .t
 #siteheader,
 .list {
   flex-wrap: wrap;
+}
+
+.tag {
+  background-color: ◊|color-special|;
+  color: ◊|color-special-strong|;
+  padding: 0 0.25em;
+  border-radius: 0.25em;
+}
+
+.tag::before {
+  content: "#";
 }
 
 body {
@@ -80,10 +80,8 @@ body {
   align-items: center;
 }
 #logo h1 {
-  margin-top: 0;
   align-items: center;
   display: flex;
-  margin-bottom: 0;
 }
 #logo img {
   max-height: 2rem;
@@ -146,6 +144,10 @@ body {
   margin-top: 1rem;
 }
 
+.xl {
+  font-size: ◊|font-size-xl|;
+}
+
 ◊|heading| {
   font-size: ◊|font-size-big|;
   line-height: 1.2;
@@ -178,16 +180,13 @@ blockquote {
 
 a {
   color: ◊|color-accent|;
-  /* -webkit-transition: all 0.4s ease; */
-  /* -moz-transition: all 0.4s ease; */
-  /* -o-transition: all 0.4s ease; */
-  /* -ms-transition: all 0.4s ease; */
-  /* transition: all 0.4s ease; */
+  opacity: 0.9;
+  transition: opacity 100ms ease;
   text-decoration: none;
 }
 
 a:hover {
-  color: ◊|color-accent-strong|;
+  opacity: 1;
   text-decoration: none;
 }
 
@@ -247,7 +246,9 @@ div#references p {
   margin-top: 0;
 }
 
-.margin-vertical-none {
+.margin-vertical-none,
+#logo h1,
+figcaption {
   margin-top: 0;
   margin-bottom: 0;
 }
@@ -272,6 +273,14 @@ div#references p {
   margin-bottom: 0;
 }
 
+.gap-above {
+  margin-top: 1rem;
+}
+
+.gap-below {
+  margin-bottom: 1rem;
+}
+
 .index-item .date,
 .index-item .tags {
   font-family: ◊&[monospace];
@@ -288,10 +297,6 @@ div#references p {
   margin: 1rem 0;
 }
 
-.post-heading .title {
-  margin: 0;
-}
-
 /*
 * Other widgets */
 .badge {
@@ -305,8 +310,6 @@ div#references p {
 }
 
 figcaption {
-  margin-top: 0;
-  margin-bottom: 0;
   text-align: center;
   font-family: ◊&[monospace];
   font-style: italic;
