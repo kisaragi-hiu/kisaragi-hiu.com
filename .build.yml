@@ -14,12 +14,9 @@ tasks:
   - install-racket-packages: |
       raco pkg config --set catalogs https://pkg-build.racket-lang.org/server/built/catalog/
       raco pkg install --binary-lib --skip-installed --deps search-auto pollen txexpr threading
-  - install-emacs-packages: |
-      cd kisaragi-hiu.com
-      cask install --verbose
   - build: |
       cd kisaragi-hiu.com
-      make zip
+      make -j2 zip
   - deploy: |
       cd kisaragi-hiu.com
       bash deploy.sh > /dev/null
