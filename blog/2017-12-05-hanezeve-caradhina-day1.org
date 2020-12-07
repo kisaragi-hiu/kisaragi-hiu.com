@@ -1,46 +1,47 @@
-#lang pollen
-◊define-meta[title]{Making up a language from Hanezeve Caradhina, Day 1}
-◊define-meta[date]{2017-12-05T23:32:00}
-◊define-meta[category]{Hanezeve Caradhina Language Construction}
-◊define-meta[language]{en}
+#+title: Making up a language from Hanezeve Caradhina, Day 1
+#+date: 2017-12-05T23:32:00+0900
+#+category: Hanezeve Caradhina Language Construction
+#+language: en
 
 After listening to Hanezeve Caradhina for a few days, I decided it would be interesting to try to create a language based on the lyrics.
 
-Listen to Hanezeve Caradhina (and the rest of the Made in Abyss OST) [on Spotify.](https://open.spotify.com/album/5oEzjkSYSfC0ITRiqK6m8l)
+Listen to Hanezeve Caradhina (and the rest of the Made in Abyss OST) [[https://open.spotify.com/album/5oEzjkSYSfC0ITRiqK6m8l][on Spotify.]]
 
 The song doesn't actually have too much lyrics, as I will show in the next few paragraphs, which means this language isn't really going to be "deciphered"; I'm simply going to create a new (very incomplete) language that might slightly makes sense. This is my progress in the first day.
 
 First, the lyrics.
 
-> A.
-> Halalaha zela halalelu
-> Sivivile shi-dhina
-> houwelela, lalelila
-> Hanezeve cara-dhina
->
-> B.
-> Halalaha la forðe hala
-> helelele lelele
-> colwelela kalalila
-> Hanezeve yulumai ni
->
-> A.
-> Halalaha zela halalelu
-> Sivivile shi-dhina
-> houwelela, lalelila
-> Hanezeve cara-dhina
->
-> 'B.
-> Kodo wodo hondo hondo-oh
-> helelele lelele
-> colwelelo kalalila
-> Hanezeve yulumai ni
->
-> A.
-> Halalaha zela halalelu
-> Sivivile shi-dhina
-> houwelela, lalelila
-> Hanezeve cara-dhina
+#+begin_quote
+A.
+Halalaha zela halalelu
+Sivivile shi-dhina
+houwelela, lalelila
+Hanezeve cara-dhina
+
+B.
+Halalaha la forðe hala
+helelele lelele
+colwelela kalalila
+Hanezeve yulumai ni
+
+A.
+Halalaha zela halalelu
+Sivivile shi-dhina
+houwelela, lalelila
+Hanezeve cara-dhina
+
+'B.
+Kodo wodo hondo hondo-oh
+helelele lelele
+colwelelo kalalila
+Hanezeve yulumai ni
+
+A.
+Halalaha zela halalelu
+Sivivile shi-dhina
+houwelela, lalelila
+Hanezeve cara-dhina
+#+end_quote
 
 As you can see, it's all just two paragraphs with some slight variations in B. I'll explain why I grouped syllables like this in a little bit.
 
@@ -54,7 +55,7 @@ There are a few patterns in the lyrics:
 
 But I still have to make up much of the grammar.
 
-## Deep in the Abyss
+* Deep in the Abyss
 
 Let's imagine that "Hanezeve cara-dhina" means "Deep in the Abyss". Then I can make up a grammar:
 
@@ -77,7 +78,7 @@ With that, "Hanezeve yulumaini" probably shouldn't just be a noun phrase. Plus, 
 - -mai: post-fix adjective for "bottom"
 - -ni: analogous to Japanese "に", meaning "to"
 
-Using this grammar, I can read `Hanezeve cara-dhina` as `Abyss in-deep`, and `Hanezeve yulu-mai ni` as `Abyss at-bottom to`. Progress!
+Using this grammar, I can read =Hanezeve cara-dhina= as =Abyss in-deep=, and =Hanezeve yulu-mai ni= as =Abyss at-bottom to=. Progress!
 
 ## The wonder
 
@@ -97,44 +98,46 @@ which fits both Riko's desire to go deeper, and the grammar structure I establis
 - shi-: adverb/adjective modifier, "even" as in "even more"
 - -dhina: post-fix adverb/adjective, "deep"
 
-As of the other two words, I just thought up "treasure" and "wonder" as two nouns suitable for "explore the Abyss even deeper". Lalelila sounds more like wonder in my mind for how it repeats `l-vowel` four times with the vowel going around (a-e-i-a), so I made it "wonder", and houwelela "treasure".
+As of the other two words, I just thought up "treasure" and "wonder" as two nouns suitable for "explore the Abyss even deeper". Lalelila sounds more like wonder in my mind for how it repeats =l-vowel= four times with the vowel going around (a-e-i-a), so I made it "wonder", and houwelela "treasure".
 
 - houwelela: noun, treasure
 - lalelila: noun, wonder
 
-## What I have now
+* What I have now
 
-> A.
-> Halalaha zela halalelu
-> Explore even deeper
-> the treasure, the wonder
-> Deep in the Abyss
->
-> B.
-> Halalaha la forðe hala
-> helelele lelele
-> colwelela kalalila
-> To the bottom of the Abyss
->
-> A.
-> Halalaha zela halalelu
-> Explore even deeper
-> the treasure, the wonder
-> Deep in the Abyss
->
-> 'B.
-> Kodo wodo hondo hondo-oh
-> helelele lelele
-> colwelelo kalalila
-> To the bottom of the Abyss
->
-> A.
-> Halalaha zela halalelu
-> Explore even deeper
-> the treasure, the wonder
-> Deep in the Abyss
+#+begin_quote
+A.
+Halalaha zela halalelu
+Explore even deeper
+the treasure, the wonder
+Deep in the Abyss
 
-## More to come (hopefully)
+B.
+Halalaha la forðe hala
+helelele lelele
+colwelela kalalila
+To the bottom of the Abyss
+
+A.
+Halalaha zela halalelu
+Explore even deeper
+the treasure, the wonder
+Deep in the Abyss
+
+'B.
+Kodo wodo hondo hondo-oh
+helelele lelele
+colwelelo kalalila
+To the bottom of the Abyss
+
+A.
+Halalaha zela halalelu
+Explore even deeper
+the treasure, the wonder
+Deep in the Abyss
+#+end_quote
+
+* More to come (hopefully)
 
 There are still many regularities with the rest of the lyrics.
 

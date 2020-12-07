@@ -106,6 +106,15 @@
   (when target (set! result (attr-set result 'target target)))
   result)
 
+(define-tag-function (flex attrs elems)
+  `(div
+    ,(dict-update attrs 'class
+                  (lambda (val)
+                    (string-trim
+                     (~a val " flex")))
+                  "")
+    ,@elems))
+
 (define (lang-showcase-without-tab . language-examples)
   `(@ (h2 "Examples")
     ,@(for/fold ([acc null])

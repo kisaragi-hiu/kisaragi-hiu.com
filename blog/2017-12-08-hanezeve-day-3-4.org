@@ -1,23 +1,22 @@
-#lang pollen
-◊define-meta[title]{Colwelelo Kalalila (Day 3, 4)}
-◊define-meta[date]{2017-12-08T19:03:56}
-◊define-meta[category]{Hanezeve Caradhina Language Construction}
-◊define-meta[language]{en}
+#+title: Colwelelo Kalalila (Day 3, 4)
+#+date: 2017-12-08T19:03:56+0900
+#+category: Hanezeve Caradhina Language Construction
+#+language: en
 
 The last two days I listened to the song a few more times to check the lyrics, and then made up another line in section B.
 
-Listen to Hanezeve Caradhina [on Spotify](https://open.spotify.com/track/0KzOeB44GAj2rHmoXML0eb).
+Listen to Hanezeve Caradhina [[https://open.spotify.com/track/0KzOeB44GAj2rHmoXML0eb][on Spotify]].
 
-## Lyrics changes
+* Lyrics changes
 
 I found two parts that should be changed:
 
 1. The word for "journey", "lalelila", sounds more like "walelila".
 2. The first sentence of B and 'B should be the same.
 
-<hr>
+◊hr[]
 
-<pre>
+#+begin_src text
 A.
 Halalaha zela halalelu
 Sivivile shi-dhina
@@ -35,46 +34,49 @@ helelele lelele
 ◊span[#:style "color:red;"]{Kodo wodo hondo hondo-oh}
 ◊span[#:style "color:green;"]{Holo loholo forðe holo}
 ...
-</pre>
-<hr>
+#+end_src
 
-## The lyrics, again
+◊hr[]
 
-> A.
-> Halalaha zela halalelu
-> Sivivile shi-dhina
-> houwelela, walelila
-> Hanezeve cara-dhina
->
-> B.
-> holo loholo forðe holo
-> helelele lelele
-> colwelela kalalila
-> Hanezeve yulumai ni
->
-> A.
-> Halalaha zela halalelu
-> Sivivile shi-dhina
-> houwelela, walelila
-> Hanezeve cara-dhina
->
-> 'B.
-> holo loholo forðe holo
-> helelele lelele
-> colwelelo kalalila
-> Hanezeve yulumai ni
->
-> A.
-> Halalaha zela halalelu
-> Sivivile shi-dhina
-> houwelela, walelila
-> Hanezeve cara-dhina
+* The lyrics, again
 
-## Let's continue our journey
+#+begin_quote
+A.
+Halalaha zela halalelu
+Sivivile shi-dhina
+houwelela, walelila
+Hanezeve cara-dhina
+
+B.
+holo loholo forðe holo
+helelele lelele
+colwelela kalalila
+Hanezeve yulumai ni
+
+A.
+Halalaha zela halalelu
+Sivivile shi-dhina
+houwelela, walelila
+Hanezeve cara-dhina
+
+'B.
+holo loholo forðe holo
+helelele lelele
+colwelelo kalalila
+Hanezeve yulumai ni
+
+A.
+Halalaha zela halalelu
+Sivivile shi-dhina
+houwelela, walelila
+Hanezeve cara-dhina
+#+end_quote
+
+* Let's continue our journey
 
 The A section is already done, now there's the rest of B.
 
-Let me start with the line `colwelelo kalalila`. The word "kalalila" shares the "-lila" suffix with "walelila" (wonder), and it would make sense if it meant something like "journey", so I'll make it so. Now I can make up the meaning of "-lila" to be "unknown"; piecing these words together, I'll get:
+Let me start with the line =colwelelo kalalila=. The word "kalalila" shares the "-lila" suffix with "walelila" (wonder), and it would make sense if it meant something like "journey", so I'll make it so. Now I can make up the meaning of "-lila" to be "unknown"; piecing these words together, I'll get:
 
 - "-lila": "unknown"
 - "wale-": "idea"
@@ -92,50 +94,54 @@ The word order here with "start journey" / "continue journey" is different than 
 - "colwelelo": "continue"
 - "colwelela kalalila": "start (seeking-unknown = journey)"
 
-## Walelila Halalelu
+* Walelila Halalelu
 
 With this, we can transliterate most of the lyrics already:
 
-> A.
-> (thought-fiction = dream) I (thought-make = imagine)
-> explore even-deep
-> treasures, (idea-unknown = wonder)
-> Abyss in-deep
->
-> B.
-> ???? ????
-> ???? ????
-> start (seeking-unknown = journey)
-> Abyss at-bottom to
+#+begin_quote
+A.
+(thought-fiction = dream) I (thought-make = imagine)
+explore even-deep
+treasures, (idea-unknown = wonder)
+Abyss in-deep
+
+B.
+???? ????
+???? ????
+start (seeking-unknown = journey)
+Abyss at-bottom to
+#+end_quote
 
 And the translated lyrics is now:
 
-> A.
-> I am dreaming a dream
-> to explore even deeper
-> the treasures, the wonder
-> Deep in the Abyss
->
-> B.
-> Holo loholo forðe holo
-> Helelele lelele
-> Let the journey begin
-> to the bottom of the Abyss
->
-> A.
-> I am dreaming a dream
-> to explore even deeper
-> the treasures, the wonder
-> Deep in the Abyss
->
-> 'B.
-> Holo loholo forðe holo
-> Helelele lelele
-> Let the journey continue
-> to the bottom of the Abyss
->
-> A.
-> I am dreaming a dream
-> to explore even deeper
-> the treasures, the wonder
-> Deep in the Abyss
+#+begin_quote
+A.
+I am dreaming a dream
+to explore even deeper
+the treasures, the wonder
+Deep in the Abyss
+
+B.
+Holo loholo forðe holo
+Helelele lelele
+Let the journey begin
+to the bottom of the Abyss
+
+A.
+I am dreaming a dream
+to explore even deeper
+the treasures, the wonder
+Deep in the Abyss
+
+'B.
+Holo loholo forðe holo
+Helelele lelele
+Let the journey continue
+to the bottom of the Abyss
+
+A.
+I am dreaming a dream
+to explore even deeper
+the treasures, the wonder
+Deep in the Abyss
+#+end_quote
