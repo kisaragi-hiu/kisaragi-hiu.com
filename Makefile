@@ -9,10 +9,14 @@ clean:
 	git clean -Xdf
 
 zip: public
+	@rm public/.* -rf || true
+	@rm public/*/*.org || true
+	@rm public/*.{org,sh} || true
 	cd public/ && 7z a ../public.zip .
 
 public: build
 	@rm public -r || true
+	@rm public.zip || true
 	raco pollen publish . $(HOME)/public
 	mv ~/public .
 
@@ -28,13 +32,13 @@ public: build
 # $(ORG): %.html.pm: %.org
 # 	emacs "$<" --batch -f ox-pollen-export-to-pollen --kill
 
-org-files := $(patsubst %.org,%.html.pm,$(shell find . -name "*.org"))
 all-files := $(patsubst %.html.pm,%.html, \
                         $(shell find . -name "*.html.pm" \
                                        -not -name "category.html.pm" \
                                        -not -path "*/tags/*" \
-                                       -not -path "*/category/*") \
-                        $(org-files))
+                                       -not -path "*/category/*")) \
+             $(patsubst %.org,%.html,$(shell find . -name "*.org"))
+
 templates := template.html
 
 template.html: main-template.html.pp
@@ -49,9 +53,9 @@ template.html: main-template.html.pp
 
 build: $(all-files) tags category css
 
-css: css/main.css.pp
+css: css/main.css
 
-css/main.css.pp:
+css/main.css: css/main.css.pp
 	raco pollen render css/main.css.pp
 	sed -i '/^ *$$/d' css/main.css
 
@@ -63,11 +67,9 @@ tags: $(all-files)
 	racket make-tag-pages.rkt
 	raco pollen render -p tags/*.html.pm
 
-category: category.html category-pages
-
-category.html: $(templates) category-pages
-	raco pollen render category.html
-
-category-pages: $(all-files)
+category: $(all-files) category.html
 	racket make-category-pages.rkt
 	raco pollen render -p category/*.html.pm
+
+category.html: $(templates)
+	raco pollen render category.html
