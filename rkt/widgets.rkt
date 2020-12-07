@@ -110,9 +110,10 @@
   `(div
     ,(dict-update attrs 'class
                   (lambda (val)
-                    (string-trim
-                     (~a val " flex")))
-                  "")
+                    (list
+                     (string-trim
+                      (~a (car val) " flex"))))
+                  '(""))
     ,@elems))
 
 (define (lang-showcase-without-tab . language-examples)
