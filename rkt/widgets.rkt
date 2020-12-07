@@ -72,7 +72,7 @@
         (tags (select-from-metas 'tags pagenode))
         (category (post-category pagenode))
         (date (post-date pagenode)))
-    `(div ([class "post-heading"])
+    `(header ([class "gap-above"])
       (div ([class "baseline list"])
        ,@(if date
              `((time ([class "date mono"]
@@ -86,12 +86,14 @@
                 (a ([href ,(abs-local (category-path category))])
                  ,(format "~a" category))))
              '()))
-      (h1 ([class "margin-none"]) ,title)
+      (h1 ([class "xl margin-top-none"]) ,title)
       ,@(if tags
-            `((div ([class "margin-none list"])
+            `((div ([class "list"])
                ,@(for/list ((tag tags))
-                   `(a ([href ,(abs-local (tag-path tag))])
-                     ,(format "#~a" tag)))))
+                   `(a ([class "tag"]
+                        [href ,(abs-local (tag-path tag))])
+                     ,(string-downcase
+                       (format "~a" tag))))))
             empty))))
 
 (define (link url
