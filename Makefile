@@ -9,6 +9,13 @@ clean:
 	git clean -Xdf
 
 zip: public
+	@rm public.zip -r || true
+	@rm public/.* -r || true
+	@rm public/*.{sh,md,org} || true
+	@rm public/*/*.org || true
+	@rm public/rkt -rf || true
+	@rm public/*/compiled/ -rf || true
+	@rm public/template.html || true
 	cd public/ && 7z a ../public.zip .
 
 public: build
@@ -21,7 +28,9 @@ build: html css
 html: templates tags category
 	raco pollen render -p index.ptree
 
-css: css/main.css.pp
+css: css/main.css
+
+css/main.css: css/main.css.pp
 	raco pollen render css/main.css.pp
 	sed -i '/^ *$$/d' css/main.css
 
@@ -37,7 +46,7 @@ css: css/main.css.pp
 # $(ORG): %.html.pm: %.org
 # 	emacs "$<" --batch -f ox-pollen-export-to-pollen --kill
 
-org-files := $(patsubst %.org,%.html.pm,$(wildcard *.org)) $(patsubst %.org,%.html.pm,$(wildcard blog/*.org)) $(patsubst %.org,%.html.pm,$(wildcard projects/*.org))
+org-files := $(patsubst %.org,%.html.pm,$(shell find . -name "*.org"))
 
 $(org-files): %.html.pm: %.org
 	cask emacs "$<" --batch -l ox-pollen -f ox-pollen-export-to-pollen --kill
@@ -49,11 +58,11 @@ org: .cask
 	make -j$(shell nproc) $(org-files)
 
 # * Tags and Categories
-tags: org blog
+tags: org
 	racket make-tag-pages.rkt
 	raco pollen render -p tags/*.pm
 
-category: org blog
+category: org
 	racket make-category-pages.rkt
 	raco pollen render -p category/*.pm
 
