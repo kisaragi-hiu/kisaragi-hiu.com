@@ -478,15 +478,14 @@ document.querySelectorAll(\".tabbed #~a\")[0]
   (define doc (get-doc pagenode))
   (define (toc-item-markdown tx level)
     (let ((raw-item
-           (format "1. <a href=\"#~a\">~a</a>"
+           (format "- <a href=\"#~a\">~a</a>"
                    (attr-ref tx 'id)
                    (car (get-elements tx)))))
       (~a
        (make-string (* 4 (sub1 level)) #\space)
        raw-item)))
   `(div ([id "toc"])
-    (h1 ([class "size-normal"])
-     "Table of Contents")
+    (h1 "Table of Contents")
     ,(~>
       (for/fold
           ([acc '()]
