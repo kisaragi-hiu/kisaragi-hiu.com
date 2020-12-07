@@ -46,7 +46,9 @@
   (define-runtime-path rkt "rkt")
   (define cache-watchlist
     (filter
-     (curryr path-has-extension? ".rkt")
+     (lambda (f)
+       (and (path-has-extension? f ".rkt")
+            (not (string-contains? (path->string f) "flycheck"))))
      (directory-list rkt #:build? #t))))
 
 (define (root . elements)
