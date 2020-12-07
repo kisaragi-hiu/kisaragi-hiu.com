@@ -37,7 +37,9 @@ all-files := $(patsubst %.html.pm,%.html, \
                                        -not -name "category.html.pm" \
                                        -not -path "*/tags/*" \
                                        -not -path "*/category/*")) \
-             $(patsubst %.org,%.html,$(shell find . -name "*.org"))
+             $(patsubst %.html.pmd,%.html,$(shell find . -name "*.html.pmd")) \
+             $(patsubst %.org,%.html,$(shell find . -name "*.org" \
+                                                    -not -name "index.org"))
 
 templates := template.html
 
@@ -51,7 +53,12 @@ template.html: main-template.html.pp
 %.html: %.html.pm $(templates)
 	raco pollen render "$<"
 
-build: $(all-files) tags category css
+%.html: %.html.pmd $(templates)
+	raco pollen render "$<"
+
+build: index.html $(all-files) tags category css
+
+index.html: $(all-files)
 
 css: css/main.css
 
