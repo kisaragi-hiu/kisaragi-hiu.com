@@ -48,7 +48,7 @@
     (filter
      (lambda (f)
        (and (path-has-extension? f ".rkt")
-            (not (string-contains? (path->string f) "flycheck"))))
+            (not (string-contains? (~a f) "flycheck"))))
      (directory-list rkt #:build? #t))))
 
 (define (root . elements)
