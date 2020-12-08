@@ -46,10 +46,15 @@
     ◊; Footer
     <footer id="sitefooter">
       <div id="footer-sep">・・・</div>
-      ◊"◊"(when/splice (string=? (post-type here) "post")
-            (to-html (previous-and-next here)))
+      ◊"◊"(when/splice (and (string=? (post-type here) "post") (post-category metas))
+(to-html
+ (txexpr 'div '()
+  (cons
+   '(h1 "Posts in the same category")
+   (map index-item
+        (filter (lambda (node) (equal? (post-category metas) (post-category node)))
+                (children 'blog)))))))
       <div id="sitefooter-content">
-      <p>I don't necessarily know what I'm talking about.</p>
       <nav>
         ◊to-html{◊link[◊(abs-local "feeds.html")]{◊icon{rss}}}
         ◊to-html{◊twitter["flyin1501"]{◊icon{twitter}}}
