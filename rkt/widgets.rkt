@@ -20,10 +20,16 @@
 
 ;;; widgets
 
-(define (tag name)
+(define/contract (tag name)
+  (-> string? txexpr?)
   `(a ([class "tag"] [href ,(abs-local (tag-path name))])
     ,(string-downcase
       (format "~a" name))))
+
+(define/contract (tag-list tags)
+  (-> (listof string?) txexpr?)
+  `(div ([class "margin-none list"])
+    ,@(map tag tags)))
 
 (define (index-item pagenode #:class [class ""] #:year? [include-year? #t])
   (define uri (abs-local (~a pagenode)))
@@ -52,8 +58,7 @@
          [class "color-primary"])
       ,title))
     ,@(if tags
-          `((div ([class "margin-none list"])
-             ,@(map tag tags)))
+          (list (tag-list tags))
           empty)))
 
 ;; create a widget that is a listing of entries
@@ -90,8 +95,7 @@
              '()))
       (h1 ([class "xl margin-top-none"]) ,title)
       ,@(if tags
-            `((div ([class "list"])
-               ,@(map tag tags)))
+            (list (tag-list tags))
             empty))))
 
 (define (link url

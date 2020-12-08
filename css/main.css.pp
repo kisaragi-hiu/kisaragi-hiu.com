@@ -47,8 +47,8 @@ body, #siteheader nav a, .size-normal, .toc *, .index-item .date, .index-item .t
 .tag {
   background-color: ◊|color-special|;
   color: ◊|color-special-strong|;
-  padding: 0 0.25em;
-  border-radius: 0.25em;
+  padding: 0 0.25rem;
+  border-radius: 0.25rem;
 }
 
 .tag::before {
@@ -270,7 +270,7 @@ figcaption {
 .list > * {
   margin-right: 0.5rem;
   margin-top: 0;
-  margin-bottom: 0;
+  margin-bottom: 0.25rem;
 }
 
 .gap-above {
