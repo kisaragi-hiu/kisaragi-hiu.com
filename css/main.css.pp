@@ -266,8 +266,8 @@ figcaption {
   align-items: baseline;
 }
 
-.flex-item-margin *,
-.list * {
+.flex-item-margin > *,
+.list > * {
   margin-right: 0.5rem;
   margin-top: 0;
   margin-bottom: 0;
