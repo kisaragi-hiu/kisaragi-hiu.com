@@ -1,0 +1,21 @@
+#+title: Skills
+
+Maybe this is better suited in [[file:about.org][About]]. For now, I’m listing these here.
+
+- Using Git since late 2014
+- “Maintaining” a Linux system since 2014, self hosting stuff on Linode since 2019
+- English, Mandarin, Japanese
+- Some familiarity with Racket and Pollen
+- Made this site in 2017 (see [[file:blog/2020-10-31-current-infrastructure.org][2020-10-31 Current infrastructure of this site]] for how it’s set up)
+- Good enough understanding of Emacs Lisp to develop packages helping myself
+- UTAU covers
+
+* Skills still being learned
+
+My Japanese is still a work in progress. I can read pretty well, but my written and especially spoken Japanese are pretty broken.
+
+My English writing is still kind of off.
+
+I’m currently trying (and struggling) to learn to play the trumpet.
+
+I’m also trying to learn to draw, though I haven’t been putting enough time into it.
