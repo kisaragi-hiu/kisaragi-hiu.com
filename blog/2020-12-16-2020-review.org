@@ -2,6 +2,7 @@
 #+date: 2020-12-17T03:32:42+0900
 #+ROAM_TAGS: Org UTAU Emacs
 #+category: Yearly reviews
+#+toc: #t
 
 Last year I saw [[https://www.taniarascia.com/2019-into-2020/][Tania Rascia’s 2019 into 2020]] article and thought I should do the same, but I procrastinated so much that now I’m writing a review for 2020 instead of 2019.
 
