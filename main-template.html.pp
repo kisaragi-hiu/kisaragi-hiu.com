@@ -46,14 +46,17 @@
     ◊; Footer
     <footer id="sitefooter">
       <div id="footer-sep">・・・</div>
-      ◊"◊"(when/splice (and (string=? (post-type here) "post") (post-category metas))
-(to-html
- (txexpr 'div '()
-  (cons
-   '(h1 "Posts in the same category")
-   (map index-item
-        (filter (lambda (node) (equal? (post-category metas) (post-category node)))
-                (children 'blog)))))))
+◊"◊"(let
+((same-category-posts
+  (filter (lambda (node) (equal? (post-category metas)
+                                 (post-category node)))
+          (children 'blog))))
+(when/splice (and (> (length same-category-posts) 1)
+                  (string=? (post-type here) "post")
+                  (post-category metas))
+ (to-html
+  (txexpr 'div '() (cons '(h1 "Posts in the same category")
+          (map index-item same-category-posts))))))
       <div id="sitefooter-content">
       <nav>
         ◊to-html{◊link[◊(abs-local "feeds.html")]{◊icon{rss}}}
