@@ -1,33 +1,31 @@
-#lang pollen
-◊define-meta[title]{QR Codes from Emacs}
-◊define-meta[date]{2019-09-24T22:45:48+0900}
-◊define-meta[tags ("Emacs" "QR Code")]
-◊define-meta[language]{en}
-◊;define-meta[toc #t]
+#+title: QR Codes from Emacs
+#+date: 2019-09-24T22:45:48+0900
+#+tags: "Emacs" "QR Code"
+#+language: en
 
-This article was inspired by ◊link["https://blog.jpalardy.com/posts/qr-codes-on-the-command-line/"]{QR Codes on the Command-Line}.
+This article was inspired by [[https://blog.jpalardy.com/posts/qr-codes-on-the-command-line/][QR Codes on the Command-Line]].
 
 QR codes are nice: if you want to send e.g. a URL or a short string to your phone, just turn it into a QR code and scan it on the phone, no internet required.
 
-Install ◊link["https://fukuchi.org/works/qrencode/index.html.en"]{◊code{qrencode}} on your system:
+Install [[https://fukuchi.org/works/qrencode/index.html.en][=qrencode=]] on your system:
 
-◊highlight['bash]{
+#+begin_src bash
 pacman -S qrencode
-}
+#+end_src
 
-Now a QR code can be generated in Emacs by directly calling the shell command, then dumping it to an ASCII art in the ◊code{*Messages*} buffer:
+Now a QR code can be generated in Emacs by directly calling the shell command, then dumping it to an ASCII art in the =*Messages*= buffer:
 
-◊highlight['elisp]{
+#+begin_src elisp
 (shell-command-to-string "qrencode 'hello world' -t UTF8 -o -")
-}
+#+end_src
 
-◊image["/static/emacs-qrencode-as-ascii.png" #:max-height "25rem"]{qrencode output in *Messages*}
+◊image["/static/emacs-qrencode-as-ascii.png" #:max-height "25rem"]{qrencode output in =*Messages*=}
 
-Of course, we should utilize Emacs's ability to display images. Here's a Emacs command that prompts for the string, encodes it with ◊code{qrencode}, and displays it in a nice PNG buffer.
+Of course, we should utilize Emacs's ability to display images. Here's a Emacs command that prompts for the string, encodes it with =qrencode=, and displays it in a nice PNG buffer.
 
-◊subheading[#:id "k-q-gui-only"]{◊code{kisaragi/qr-encode}}
+* =kisaragi/qr-encode=
 
-◊highlight['elisp]{
+#+begin_src elisp
 (defun kisaragi/qr-encode (str &optional buf)
   "Encode STR as a QR code.
 
@@ -50,17 +48,17 @@ Return a new buffer or BUF with the code in it."
     (when (called-interactively-p 'interactive)
       (display-buffer buffer))
     buffer))
-}
+#+end_src
 
 ◊video/gif-esque["/static/emacs-kisaragi-qr-encode.mp4" #:max-height "40rem"]{kisaragi/qr-encode accepting input, displaying qr buffer}
 
-◊heading{In the Terminal}
+* In the Terminal
 
-For ◊link["https://blog.aaronbieber.com/2016/12/29/don-t-use-terminal-emacs.html"]{as nice as GUI Emacs is}, sometimes I just have to use Emacs in a terminal — specifically, on Android, under ◊link["https://termux.com/"]{Termux}. This version is what I have in ◊gitlab["kisaragi-hiu/.emacs.d"]{my Emacs configuration} right now (2019-09-24), which uses ASCII art output if it is run in a terminal.
+For [[https://blog.aaronbieber.com/2016/12/29/don-t-use-terminal-emacs.html][as nice as GUI Emacs is]], sometimes I just have to use Emacs in a terminal — specifically, on Android, under [[https://termux.com/][Termux]]. This version is what I have in [[https://gitlab.com/kisaragi-hiu/.emacs.d][my Emacs configuration]] right now (2019-09-24), which uses ASCII art output if it is run in a terminal.
 
-◊subheading[#:id "k-q-with-non-gui"]{◊code{kisaragi/qr-encode} with non-GUI support}
+** =kisaragi/qr-encode= with non-GUI support
 
-◊highlight['elisp]{
+#+begin_src elisp
 (defun kisaragi/qr-encode (str &optional buf)
   "Encode STR as a QR code.
 
@@ -93,4 +91,4 @@ Return a new buffer or BUF with the code in it."
     (when (called-interactively-p 'interactive)
       (display-buffer buffer))
     buffer))
-}
+#+end_src

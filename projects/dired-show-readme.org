@@ -1,9 +1,7 @@
-#lang pollen
+#+title: dired-show-readme
+* dired-show-readme
 
-◊define-meta[title]{dired-show-readme}
-◊heading{dired-show-readme}
-
-◊gitlab{kisaragi-hiu/dired-show-readme}
+[[https://gitlab.com/kisaragi-hiu/dired-show-readme]]
 
 ◊image["/static/dired-show-readme-0.2.1.png" "dired-show-readme in my dotfiles"]
 
