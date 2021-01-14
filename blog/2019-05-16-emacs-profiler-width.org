@@ -19,7 +19,7 @@ Emacs's profiler reports have a fixed width, which makes debugging deeply nested
 
 Ideally the columns would be resized along with the window, or perhaps ◊emacs-source[#:branch "emacs-26" #:file "lisp/profiler.el"]{profiler.el} should define its formatting variables with =defcustom=. Either way, it is still relatively easy to change the format.
 
-The formatting is stored in two variables, =profiler-report-cpu-line-format= and =profiler-report-memory-line-format=. They're not documented, but through a bit of guesswork it happens that their =caar= is the width value.
+The formatting is stored in two variables, =profiler-report-cpu-line-format= and =profiler-report-memory-line-format=. They're not explicitly documented, but turns out their =caar= fields specify their widths.
 
 In ◊emacs-source[#:branch "emacs-26" #:file "lisp/profiler.el" #:line "446"]{profiler.el} (comments added):
 
@@ -59,7 +59,5 @@ And here is a minor mode to do it:
 #+end_src
 
 ◊image["/static/emacs-26.2-profiler-width-80.png"]
-
-I'm sure there are ways to make the width update when Emacs is resized, but IMO that should be implemented inside =profiler.el= itself, not as an extension. For now, this is a good enough workaround for me.
 
 This is a solution to [[https://emacs.stackexchange.com/questions/7344/make-profiler-report-columns-wider][this StackExchange question]]. Specifically, a comment there pointed out that =profiler-report= mentions "width", which led me to find the relevant variables.
