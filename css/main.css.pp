@@ -287,12 +287,9 @@ figcaption {
   margin-bottom: 0.25rem;
 }
 
-.gap-above {
+.post-heading {
   margin-top: 1rem;
-}
-
-.gap-below {
-  margin-bottom: 1rem;
+  margin-bottom: 4rem;
 }
 
 .index-item .date,

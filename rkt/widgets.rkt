@@ -135,7 +135,7 @@
         (tags (select-from-metas 'tags pagenode))
         (category (post-category pagenode))
         (date (post-date pagenode)))
-    `(header ([class "gap-above"])
+    `(header ([class "post-heading"])
       (div ([class "baseline list"])
        ,@(if date
              `((time ([class "date mono"]
