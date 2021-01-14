@@ -58,7 +58,7 @@
                          elements
                          #:string-proc smart-dashes
                          #:txexpr-elements-proc decode-paragraphs
-                         #:exclude-tags '(pre blockquote time)
+                         #:exclude-tags '(pre blockquote time figure)
                          #:exclude-attrs '((class "tweet"))))
       elements))
 

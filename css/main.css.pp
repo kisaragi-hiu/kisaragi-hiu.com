@@ -65,7 +65,8 @@ body {
 }
 
 video,
-figure {
+figure,
+img {
   max-width: 100%;
 }
 
@@ -323,9 +324,7 @@ figcaption {
 }
 
 figcaption {
-  text-align: center;
   font-family: ◊&[monospace];
-  font-style: italic;
 }
 
 .image-link {
