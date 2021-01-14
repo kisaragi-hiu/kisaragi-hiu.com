@@ -304,10 +304,6 @@ figcaption {
   color: ◊|color-primary|;
 }
 
-.post-heading {
-  margin: 1rem 0;
-}
-
 /*
 * Other widgets */
 .badge {
