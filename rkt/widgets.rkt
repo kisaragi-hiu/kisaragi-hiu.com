@@ -231,32 +231,24 @@ document.querySelectorAll(\".tabbed #~a\")[0]
   `(span ([style "color: #777;"]) "(" ,@text ")"))
 
 (define/contract (image src
-                        #:width [width #f] #:max-height [max-height #f]
                         #:class [class #f] #:alt [alt #f]
                         . caption)
   ((string?)
-   (#:width string?
-    #:max-height string?
-    #:class string?
+   (#:class string?
     #:alt string?)
    #:rest txexpr-elements?
    . ->* .
    txexpr?)
-  (define image-style "max-width:100%;")
-  (when width
-    (set! image-style (~a image-style "width:" width ";")))
-  (when max-height
-    (set! image-style (~a image-style "max-height:" max-height ";")))
-  (define img `(img ([src ,src])))
-  (when class
-    (set! img (attr-set img 'class class)))
-  (when alt
-    (set! img (attr-set img 'class alt)))
-  `(figure ([class "image"])
-    ,img
-    ,(if caption
-         `(figcaption ([class "image-caption"]) ,@caption)
-         "")))
+  (let ((img `(img ([src ,src]))))
+    (when class
+      (set! img (attr-set img 'class class)))
+    (when alt
+      (set! img (attr-set img 'class alt)))
+    `(figure ([class "image"])
+      ,img
+      ,(if caption
+           `(figcaption ([class "image-caption"]) ,@caption)
+           ""))))
 
 (define (R text ruby) `(ruby ,text (rt ,ruby)))
 
@@ -281,23 +273,16 @@ document.querySelectorAll(\".tabbed #~a\")[0]
 
 (define (video/gif-esque path
                          #:controls? [controls? #f]
-                         #:width [width #f]
-                         #:max-height [max-height #f]
+                         #:class [class #f]
                          . caption)
   ;; ignore caption for now
-  (define style "max-width:100%;")
-  (when width
-    (set! style (~a style "width:" width ";")))
-  (when max-height
-    (set! style (~a style "max-height:" max-height ";")))
   (let ([result `(video ([autoplay "autoplay"]
-                         [style ,style]
                          [muted "muted"]
                          [loop "loop"]
                          [src ,path]))])
-    (if controls?
-        (attr-set result 'controls "")
-        result)))
+    (when class     (set! result (attr-set result 'class class)))
+    (when controls? (set! result (attr-set result 'controls "")))
+    result))
 
 (define (kbd . elements)
   `(kbd ,@elements))

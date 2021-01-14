@@ -64,8 +64,21 @@ body {
   text-rendering: optimizeLegibility;
 }
 
+video,
+figure {
+  max-width: 100%;
+}
+
 /*
 * Utilities */
+
+.maxh-40rem {
+  max-height: 40rem;
+}
+
+.maxh-25rem {
+  max-height: 25rem;
+}
 
 .disabled {
   color: ◊|color-secondary|;
