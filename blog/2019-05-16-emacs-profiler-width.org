@@ -4,7 +4,14 @@
 #+tags: "Emacs" "Config"
 #+language: en
 
-TLDR: [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Setting-Generalized-Variables.html][=setf=]] the caar of =profiler-report-cpu-line-format= and =profiler-report-memory-line-format= to a larger width (default 50 and 55).
+◊tldr{
+[[https://www.gnu.org/software/emacs/manual/html_node/elisp/Setting-Generalized-Variables.html][=setf=]] the caar of =profiler-report-cpu-line-format= and =profiler-report-memory-line-format= to a larger width (default 50 and 55).
+
+#+begin_src elisp
+(setf (caar profiler-report-cpu-line-format) 80
+      (caar profiler-report-memory-line-format) 80)
+#+end_src
+}
 
 Emacs's profiler reports have a fixed width, which makes debugging deeply nested function calls [[https://emacs.stackexchange.com/questions/7344/make-profiler-report-columns-wider][difficult]].
 
