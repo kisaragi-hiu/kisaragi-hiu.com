@@ -323,10 +323,6 @@ figcaption {
   justify-content: space-between;
 }
 
-figcaption {
-  font-family: ◊&[monospace];
-}
-
 .image-link {
   -webkit-box-shadow: 0px 0px 10px 0px rgba(50, 50, 50, 0.68);
   -moz-box-shadow: 0px 0px 10px 0px rgba(50, 50, 50, 0.68);
