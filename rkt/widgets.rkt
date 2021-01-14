@@ -1,8 +1,6 @@
 #lang rackjure
-(require xml
-         pollen/tag
+(require pollen/tag
          pollen/setup
-         pollen/template/html
          pollen/core
          threading
          pollen/pagetree
@@ -16,7 +14,65 @@
          "tags.rkt"
          (for-syntax threading))
 
-(provide (all-defined-out))
+(provide
+ R
+ command
+ edit
+ edit-block
+ emacs-source
+ envvar
+ flex
+ gist
+ github
+ gitlab
+ h1
+ h2
+ h3
+ heading
+ icon
+ image
+ image/link
+ index
+ index-item
+ kbd
+ lang-showcase-without-tab
+ link
+ link/date
+ make-heading-widget
+ melpa-badge
+ navbutton
+ newline-decode
+ niconico
+ noichigo
+ osuwiki
+ page-navigation
+ path
+ pixiv
+ post-heading
+ previous-and-next
+ previous-and-next-same-category
+ project
+ rant
+ site-crossref
+ strike
+ stylized-item
+ subheading
+ subsubheading
+ tabbed
+ table
+ tag
+ tag-list
+ tldr
+ toc
+ transifex
+ tweet
+ twitter
+ update
+ update-block
+ video/gif-esque
+ youtube
+ youtube/embed
+ youtube/image-link)
 
 ;;; widgets
 
