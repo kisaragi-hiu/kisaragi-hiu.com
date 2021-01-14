@@ -230,9 +230,18 @@ document.querySelectorAll(\".tabbed #~a\")[0]
 (define (rant . text)
   `(span ([style "color: #777;"]) "(" ,@text ")"))
 
-(define (image src [caption #f]
-               #:width [width #f] #:max-height [max-height #f]
-               #:class [class #f] #:alt [alt #f])
+(define/contract (image src
+                        #:width [width #f] #:max-height [max-height #f]
+                        #:class [class #f] #:alt [alt #f]
+                        . caption)
+  ((string?)
+   (#:width string?
+    #:max-height string?
+    #:class string?
+    #:alt string?)
+   #:rest txexpr-elements?
+   . ->* .
+   txexpr?)
   (define image-style "max-width:100%;")
   (when width
     (set! image-style (~a image-style "width:" width ";")))
@@ -246,7 +255,7 @@ document.querySelectorAll(\".tabbed #~a\")[0]
   `(figure ([class "image"])
     ,img
     ,(if caption
-         `(figcaption ([class "image-caption"]) ,caption)
+         `(figcaption ([class "image-caption"]) ,@caption)
          "")))
 
 (define (R text ruby) `(ruby ,text (rt ,ruby)))
