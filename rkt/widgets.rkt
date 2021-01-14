@@ -296,14 +296,12 @@ document.querySelectorAll(\".tabbed #~a\")[0]
    . ->* .
    txexpr?)
   (let ((img `(img ([src ,src]))))
-    (when class
-      (set! img (attr-set img 'class class)))
-    (when alt
-      (set! img (attr-set img 'class alt)))
-    `(figure ([class "image"])
+    (when class (set! img (attr-set img 'class class)))
+    (when alt   (set! img (attr-set img 'class alt)))
+    `(figure
       ,img
       ,(if caption
-           `(figcaption ([class "image-caption"]) ,@caption)
+           `(figcaption ,@caption)
            ""))))
 
 (define (R text ruby) `(ruby ,text (rt ,ruby)))
@@ -327,18 +325,28 @@ document.querySelectorAll(\".tabbed #~a\")[0]
         elements)
    ""))
 
-(define (video/gif-esque path
-                         #:controls? [controls? #f]
-                         #:class [class #f]
-                         . caption)
+(define/contract (video/gif-esque path
+                                  #:controls? [controls? #f]
+                                  #:class [class #f]
+                                  . caption)
+  ((string?)
+   (#:class string?
+    #:controls? boolean?)
+   #:rest txexpr-elements?
+   . ->* .
+   txexpr?)
   ;; ignore caption for now
-  (let ([result `(video ([autoplay "autoplay"]
-                         [muted "muted"]
-                         [loop "loop"]
-                         [src ,path]))])
-    (when class     (set! result (attr-set result 'class class)))
-    (when controls? (set! result (attr-set result 'controls "")))
-    result))
+  (let ([vid `(video ([autoplay "autoplay"]
+                      [muted "muted"]
+                      [loop "loop"]
+                      [src ,path]))])
+    (when class     (set! vid (attr-set vid 'class class)))
+    (when controls? (set! vid (attr-set vid 'controls "")))
+    `(figure
+      ,vid
+      ,(if caption
+           `(figcaption ,@caption)
+           ""))))
 
 (define (kbd . elements)
   `(kbd ,@elements))
