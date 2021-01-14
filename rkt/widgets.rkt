@@ -15,7 +15,7 @@
          (for-syntax threading))
 
 (provide
- R
+ ruby
  command
  edit
  edit-block
@@ -304,7 +304,9 @@ document.querySelectorAll(\".tabbed #~a\")[0]
            `(figcaption ,@caption)
            ""))))
 
-(define (R text ruby) `(ruby ,text (rt ,ruby)))
+(define/contract (ruby text ruby)
+  (string? string? . -> . txexpr?)
+  `(ruby ,text (rt ,ruby)))
 
 (define (table . elements)
   `(table ,@elements))
