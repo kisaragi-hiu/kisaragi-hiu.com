@@ -12,6 +12,14 @@ Incomplete: illustrations on Pixiv, other things that I've forgot, etc. still ne
 ** Emacs
 
 #+begin_export pollen
+◊project["https://kisaragi-hiu.com/" "yaml.el"]{
+Work in progress: eventually might become a YAML library in pure Emacs Lisp.
+}
+
+◊project["https://gitlab.com/kisaragi-hiu/tst.el" "tst.el"]{
+An Emacs Lisp library implementing a syntax for specifying tags inspired by TagSpaces.
+}
+
 ◊project["https://github.com/kisaragi-hiu/background-job.el" "background-job.el"]{
 An Emacs Lisp library to start jobs in the background that try not to block the user too much.
 }
