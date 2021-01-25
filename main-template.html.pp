@@ -46,29 +46,12 @@
     ◊; Footer
     <footer id="sitefooter">
       <div id="footer-sep">・・・</div>
-◊"◊"(let
-((same-category-posts
-  (filter (lambda (node) (equal? (post-category metas)
-                                 (post-category node)))
-          (children 'blog))))
-(when/splice (and (> (length same-category-posts) 1)
-                  (string=? (post-type here) "post")
-                  (post-category metas))
- (to-html
-  (txexpr 'div '() (cons '(h1 "Posts in the same category")
-          (map index-item same-category-posts))))))
       <div id="sitefooter-content">
-      <nav>
-        ◊to-html{◊link[◊(abs-local "feeds.html")]{◊icon{rss}}}
-        ◊to-html{◊twitter["flyin1501"]{◊icon{twitter}}}
-        ◊to-html{◊github["kisaragi-hiu"]{◊icon{github}}}
-        ◊to-html{◊gitlab["kisaragi-hiu"]{◊icon{gitlab}}}
-        ◊to-html{◊youtube["channel/UCl_hsqcvdX0XdgBimRQ6R3A"]{◊icon{youtube}}}
-        ◊to-html{◊link["/about.html#links"]{◊icon{more-horizontal}}}
-      </nav>
-      <p>© Kisaragi Hiu 2017~2020.</p>
-      <p>Posts are licensed under a <a href="http://creativecommons.org/licenses/by-sa/4.0/">CC-BY-SA 4.0 International</a> license.</p>
-      <p><a href="https://github.com/kisaragi-hiu/kisaragi-hiu.com">Source code</a> is licensed under MIT. See <a rel="license" href="https://github.com/kisaragi-hiu/kisaragi-hiu.com/blob/source/LICENSE.md">LICENSE.md</a> for details.</p>
+        <p>© Kisaragi Hiu 2017~2021.</p>
+        <p>
+          Content in CC-BY-SA 4.0 International; code in MIT. See <a rel="license" href="https://github.com/kisaragi-hiu/kisaragi-hiu.com/blob/source/LICENSE.md">LICENSE</a> for details.<br>
+          Source code is hosted <a href="https://github.com/kisaragi-hiu/kisaragi-hiu.com">on GitHub</a>.
+        </p>
       </div>
     </footer>
   </body>
