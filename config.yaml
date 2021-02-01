@@ -5,5 +5,10 @@ markup:
   goldmark:
     renderer:
       unsafe: true
+  highlight:
+    lineNos: true
+
+# We need this to use CSS to style syntax highlighting
+pygmentsUseClasses: true
 
 baseURL: kisaragi-hiu.com
