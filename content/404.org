@@ -1,6 +1,6 @@
-#lang pollen
-◊define-meta[title]{404}
+#+title: 404
 
 This page does not exist.
 
+[[/][Back to home.]]
 ◊link["/"]{Back to home.}

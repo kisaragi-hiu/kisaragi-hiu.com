@@ -13,7 +13,7 @@ pollen-cache
 category/
 category/*.pm
 compiled
-css/main.css
+/static/css/main.css
 public
 sitemap.txt
 static/external/

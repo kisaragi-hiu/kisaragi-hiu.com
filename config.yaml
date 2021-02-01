@@ -1,0 +1,9 @@
+staticDir:
+  - static
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+
+baseURL: kisaragi-hiu.com

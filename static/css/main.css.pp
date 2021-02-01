@@ -5,8 +5,7 @@
 ◊(require
   racket/string
   racket/file
-  "../rkt/css.rkt"
-  "../rkt/config.rkt")
+  "../../rkt/css.rkt")
 
 ◊(define cjk-fallback
   `("Noto Sans CJK TC"
