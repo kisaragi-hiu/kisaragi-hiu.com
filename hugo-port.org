@@ -1,6 +1,6 @@
 #+title: 2021-02-02T01:06:55+0900 Porting kisaragi-hiu.com to Hugo
 
-* [9/104] Content
+* [17%] Content
 :PROPERTIES:
 :COOKIE_DATA: recursive
 :END:
@@ -16,7 +16,7 @@
 *** DONE 2017-09-13
 *** DONE 2017-09-24
 *** DONE 2017-10-10
-*** TODO 2017-11-14
+*** DONE 2017-11-14
 *** TODO 2017-11-26
 *** TODO 2017-12-05
 *** TODO 2017-12-06
@@ -60,9 +60,14 @@
 *** TODO emacs-source
 *** TODO envvar
 *** TODO flex
-*** TODO gist
-*** TODO github
-*** TODO gitlab
+*** DONE gist
+
+https://gohugo.io/content-management/shortcodes/#gist
+
+Hugo shortcode: gist (user gist-id [file])
+
+*** DONE github
+*** DONE gitlab
 *** TODO h1
 *** TODO h2
 *** TODO h3
@@ -80,12 +85,16 @@
 *** TODO melpa-badge
 *** TODO navbutton
 *** TODO newline-decode
-*** TODO niconico
-*** TODO noichigo
+*** DONE niconico
+*** CANCELLED noichigo
+:LOGBOOK:
+- State "CANCELLED"  from "TODO"       [2021-02-02 Tue 02:29] \\
+  Just a remnant from the 2017 CV assignment.
+:END:
 *** TODO osuwiki
 *** TODO page-navigation
 *** TODO path
-*** TODO pixiv
+*** DONE pixiv
 *** TODO post-heading
 *** TODO previous-and-next
 *** TODO previous-and-next-same-category
@@ -108,7 +117,16 @@
 *** TODO update
 *** TODO update-block
 *** TODO video/gif-esque
-*** TODO youtube
-*** TODO youtube/embed
+*** CANCELLED youtube
+:LOGBOOK:
+- State "CANCELLED"  from "TODO"       [2021-02-02 Tue 02:32] \\
+  Just link to it normally. It’s not worth it when it conflicts with the default embed shortcode.
+:END:
+*** DONE youtube/embed
+
+#+begin_src hugo
+{{< youtube id="" >}}
+#+end_src
+
 *** TODO youtube/image-link
 ** TODO RSS

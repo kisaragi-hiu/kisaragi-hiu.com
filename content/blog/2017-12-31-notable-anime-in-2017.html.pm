@@ -56,7 +56,7 @@ I wouldn't go so far as to say I *love* this series, but it's certainly really c
 
 These two stories *kind of* work the same way, although Shuumatsu is focused much more on the interactions between the two protagonists. They both just kind of wander around into adventures, and don't really have a real goal (at least initially).
 
-I particularly really like how the city Chito and Yuuri travels in is portrayed. By the way, an episode of ◊youtube["channel/UCZFipeZtQM5CKUjx6grh54g"]{“Science and Futurism with Isaac Arthur”} actually talked about a concept *probably physically possible* similar to this story's, that involves building ◊youtube["watch?v=ioKidcpkZN0"]{“Mega Earths”} with layers and layers of living space.
+I particularly really like how the city Chito and Yuuri travels in is portrayed. By the way, an episode of ◊link["https://youtube.com/channel/UCZFipeZtQM5CKUjx6grh54g"]{“Science and Futurism with Isaac Arthur”} actually talked about a concept *probably physically possible* similar to this story's, that involves building ◊link["https://youtube.com/watch?v=ioKidcpkZN0"]{“Mega Earths”} with layers and layers of living space.
 
 ◊stylized-item{Houseki no Kuni} I originally started watching this series to see how a CG anime would look like, but as I watch it, I started to simply appreciate it regardless if it's CG or not.
 

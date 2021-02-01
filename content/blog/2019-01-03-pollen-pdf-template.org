@@ -45,7 +45,7 @@ Lastly, we send the HTML to =wkhtmltopdf=, telling it to output to stdout, and c
 ◊(with-output-to-bytes (thunk (system (format "wkhtmltopdf ~a -" html-pagenode))))
 #+end_src
 
-The entire thing: ◊gist{kisaragi-hiu/47578b77677bf659982819125cc34df4}
+The entire thing: {{< gist kisaragi-hiu 47578b77677bf659982819125cc34df4 >}}
 
 ** =wkhtmltopdf= troubles
 
@@ -96,4 +96,4 @@ Returning the bytes has to be done last for some reason, so we capture the bytes
 ◊output
 #+end_src
 
-Full version: ◊gist{kisaragi-hiu/6062b66694a612fd6981f0afc4515b1e}
+Full version: {{< gist kisaragi-hiu 6062b66694a612fd6981f0afc4515b1e >}}
