@@ -1,0 +1,114 @@
+#+title: 2021-02-02T01:06:55+0900 Porting kisaragi-hiu.com to Hugo
+
+* [4/104] Content
+:PROPERTIES:
+:COOKIE_DATA: recursive
+:END:
+** TODO Port page content
+*** TODO category.html.pm
+*** TODO feeds.html.pm
+*** TODO 2018-06-17
+*** DONE 2016-06-30
+*** DONE 2017-03-19
+*** DONE 2017-06-28
+*** TODO 2017-07-10
+*** TODO 2017-09-12
+*** TODO 2017-09-13
+*** TODO 2017-09-24
+*** TODO 2017-10-10
+*** TODO 2017-11-14
+*** TODO 2017-11-26
+*** TODO 2017-12-05
+*** TODO 2017-12-06
+*** TODO 2017-12-08
+*** TODO 2017-12-22
+*** TODO 2017-12-31
+*** TODO 2018-01-07
+*** TODO 2018-01-15
+*** TODO 2018-02-25
+*** TODO 2018-03-11
+*** TODO 2018-04-08
+*** TODO 2018-05-11
+*** TODO 2018-07-27
+*** TODO 2018-09-20
+*** TODO 2018-10-08
+*** TODO 2018-11-04
+*** TODO 2019-01-03
+*** TODO 2019-01-21
+*** TODO 2019-04-13
+*** TODO 2019-04-17
+*** TODO 2019-05-15
+*** TODO 2019-05-16
+*** TODO 2019-09-24
+*** TODO 2019-10-09
+*** TODO 2019-12-16
+*** TODO 2020-02-16
+*** TODO 2020-10-25
+*** TODO 2020-10-31
+*** TODO 2020-12-16
+** TODO Templates
+** DONE Build process
+- Build CSS with Pollen
+- Run Hugo
+- Tied together with Make
+
+** TODO Port Pollen widgets to shortcodes
+*** TODO ruby
+*** TODO command
+*** TODO edit
+*** TODO edit-block
+*** TODO emacs-source
+*** TODO envvar
+*** TODO flex
+*** TODO gist
+*** TODO github
+*** TODO gitlab
+*** TODO h1
+*** TODO h2
+*** TODO h3
+*** TODO heading
+*** TODO icon
+*** TODO image
+*** TODO image/link
+*** TODO index
+*** TODO index-item
+*** TODO kbd
+*** TODO lang-showcase-without-tab
+*** TODO link
+*** TODO link/date
+*** TODO make-heading-widget
+*** TODO melpa-badge
+*** TODO navbutton
+*** TODO newline-decode
+*** TODO niconico
+*** TODO noichigo
+*** TODO osuwiki
+*** TODO page-navigation
+*** TODO path
+*** TODO pixiv
+*** TODO post-heading
+*** TODO previous-and-next
+*** TODO previous-and-next-same-category
+*** TODO project
+*** TODO rant
+*** TODO site-crossref
+*** TODO strike
+*** TODO stylized-item
+*** TODO subheading
+*** TODO subsubheading
+*** TODO tabbed
+*** TODO table
+*** TODO tag
+*** TODO tag-list
+*** TODO tldr
+*** TODO toc
+*** TODO transifex
+*** TODO tweet
+*** TODO twitter
+*** TODO update
+*** TODO update-block
+*** TODO video/gif-esque
+*** TODO youtube
+*** TODO youtube/embed
+*** TODO youtube/image-link
+** TODO RSS
