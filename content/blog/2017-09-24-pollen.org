@@ -18,3 +18,21 @@ Overall I like this setup a bit more.
 ◊em{Update: The not updating date was just me hard-coding the date during testing, then forgetting it there.}
 
 ◊image["/static/newsite-directory.jpg"]{New site directory structure}
+#+title: Moving the blog, again
+#+date: 2017-09-24T18:20:00+0800
+#+category: Meta
+#+language: en
+
+So, I restructured this blog again, this time using [[https://mstill.io][mstill.io]] as a template, because I don't know how to use bootstrap. And I want to use Pollen markup.
+
+The process is actually suprisingly smooth, except:
+
+- Post date isn't updating. I have to fix it.
+- There's no Atom / RSS feed ready to use, I'll have to maybe do it myself.
+
+Overall I like this setup a bit more.
+
+/Update: The not updating date was just me hard-coding the date during testing, then forgetting it there./
+
+#+caption: New site directory structure
+[[file:/newsite-directory.jpg]]
