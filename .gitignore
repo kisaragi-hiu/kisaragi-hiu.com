@@ -1,7 +1,6 @@
 !/static/
 *#
 *.cache
-*.html
 *.swp
 *.xml
 *.zip

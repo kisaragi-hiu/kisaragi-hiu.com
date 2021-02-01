@@ -1,0 +1,28 @@
+{{ define "main" }}
+<root>
+  <div class="index">
+    {{ range .Pages }}
+    <div class="index-item">
+      <div class="baseline list">
+        {{ if (isset . "date") }}
+        <time
+          class="color-secondary mono"
+          title="{{ .Date }}"
+          datetime="{{ .Date }}"
+        >
+          {{ .Date.Format "2006/01/02" }}
+        </time>
+        {{ end }}
+        {{ if (isset .Params "category") }}
+        <a href="{{.Params.category}}">{{.Params.category}}</a>
+        {{ end }}
+        <h2 class="margin-top-none">
+          <a href="{{.Permalink}}" class="color-primary">{{.Title}}</a>
+        </h2>
+        <!-- TODO: Tags -->
+      </div>
+    </div>
+  </div>
+  {{ end }}
+</root>
+{{ end }}
