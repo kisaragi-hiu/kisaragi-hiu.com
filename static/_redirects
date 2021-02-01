@@ -1,3 +1,6 @@
+# /static is now available under /
+/static/* /:splat 200
+
 /youtube https://www.youtube.com/channel/UCl_hsqcvdX0XdgBimRQ6R3A
 /niconico https://www.nicovideo.jp/user/38995186
 /pixiv https://www.pixiv.net/member.php?id=14235181
@@ -31,5 +34,5 @@
 # old urls
 /category/experiment /category/experiments
 
-# We have to do this explicitly because paths are processed from foo.html to foo/index.html
+# We have to do this explicitly
 /* /404 404
