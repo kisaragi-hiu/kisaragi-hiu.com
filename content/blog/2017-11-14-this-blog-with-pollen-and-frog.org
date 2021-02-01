@@ -5,13 +5,13 @@
 #+ROAM_TAGS: Frog Pollen Markdown
 #+toc: #t
 
-/Update 2020-10-31T03:06:28+0900: this is now outdated. See ◊site-crossref["blog/2020-10-31-current-infrastructure"]{2020-10-31 Current infrastructure} for further changes, including the move away from Frog and the introduction of ox-pollen./
+/Update 2020-10-31T03:06:28+0900: this is now outdated. See [[file:2020-10-31-current-infrastructure.org][2020-10-31 Current infrastructure]] for further changes, including the move away from Frog and the introduction of ox-pollen./
 
 I have wanted to keep a personal site since 2015. I started on Jimdo, then moved to WordPress.com, then Blogger, then just let the site rot. I wasn't writing much, and the only posts I had were copies of my UTAU cover announcements.
 
 * Github Pages
 
-In March this year, I discovered Github Pages, and wanted to revive my personal site. I started with the official tutorial, not understanding static site generators or Jekyll, even. I only wrote one post during this time, basically ◊site-crossref["blog/2017-03-19-new-website"]{the hello world post}.
+In March this year, I discovered Github Pages, and wanted to revive my personal site. I started with the official tutorial, not understanding static site generators or Jekyll, even. I only wrote one post during this time, basically [[file:2017-03-19-new-website.org][the hello world post]].
 
 I then moved to Hugo in June, with the next two posts being yet again, cover announcements. I didn't (and still don't) understand Hugo, and so I was in the dark when trying to get the site to look the way I want it to. After July, the site was left to rot again.
 
@@ -31,7 +31,7 @@ I thought about a few different static site generators. Hugo and Hexo both seeme
 
 ** Port over the posts, preprocess them with Pollen
 
-As it turned out, preprocessing the posts with Pollen actually means I can keep the tag functions I was using, and simply tell them to return an HTML or Markdown string. This way I basically have an extensible equivalent to Hugo's shortcodes: for instance, =◊github["kisaragi-hiu"]{this link}= gets turned into ◊github["kisaragi-hiu"]{this link}.
+As it turned out, preprocessing the posts with Pollen actually means I can keep the tag functions I was using, and simply tell them to return an HTML or Markdown string. This way I basically have an extensible equivalent to Hugo's shortcodes: for instance, =◊github["kisaragi-hiu"]{this link}= gets turned into [[https://github.com/kisaragi-hiu][this link]].
 
 ** Dealing with Markdown newlines
 
@@ -48,5 +48,3 @@ In the end I spent two weeks from putting up an issue on the Github page to move
 * Extra: setting up Travis CI
 
 I followed [[https://lexi-lambda.github.io/blog/2015/07/18/automatically-deploying-a-frog-powered-blog-to-github-pages/][Alexis King's blog post]] when setting up Travis when I still hadn't moved onto Frog. Instead of using just one deploy.sh though, I have a build.sh with a build and a publish function, and a deploy.sh which does the deployment.
-
-I develop this site on ◊github["kisaragi-hiu/kisaragi-hiu.github.io"]{Github}, with posts released under CC-BY-SA and code under BSD 3-clause.

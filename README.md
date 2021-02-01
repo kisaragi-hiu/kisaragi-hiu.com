@@ -13,6 +13,8 @@ My personal website.
 
 See .build.yml.
 
+Requires the `path.org` → `path/` rewriting [released in go-org 1.4](https://github.com/niklasfasching/go-org/commit/84d56e95624f3ae1099edb9b527d4eb4a5df4e1d); it’s [not yet available](https://github.com/gohugoio/hugo/commit/212e5e554284bc9368e52a512ed09be5a0224d3e) in a released version of Hugo. As such, we have to use latest Hugo for now (as of 2021-02-01).
+
 ## Build
 
 ```sh
