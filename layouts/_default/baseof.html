@@ -50,9 +50,6 @@ if (dnt !== "yes" && dnt !== "1") {
 
     <!-- Contents -->
     <div id="content">
-        {{ if (eq .Type "blog") }}
-        {{ partial "post-heading" . }}
-        {{ end }}
         {{ block "main" . }}
         {{ end }}
         <!-- ◊; show heading for posts
@@ -68,6 +65,8 @@ if (dnt !== "yes" && dnt !== "1") {
     <!-- Footer -->
     <footer id="sitefooter">
       <div id="footer-sep">・・・</div>
+      {{ block "footer" . }}
+      {{ end }}
       <div id="sitefooter-content">
         <p>© Kisaragi Hiu 2017~2021.</p>
         <p>

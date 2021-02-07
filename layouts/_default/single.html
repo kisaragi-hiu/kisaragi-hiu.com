@@ -1,3 +1,19 @@
 {{ define "main" }}
-<root> {{ .Content }} </root>
+{{ if (eq .Type "blog") }}
+{{ partial "post-heading" . }}
+{{ end }}
+<root>
+    {{ .Content }}
+</root>
+{{ end }}
+
+{{ define "footer" }}
+<ul class="page-navigation">
+    {{ with .Next }}
+    <li>Newer: <a href="{{.Permalink}}">{{.Title}}</a></li>
+    {{ end }}
+    {{ with .Prev }}
+    <li>Older: <a href="{{.Permalink}}">{{.Title}}</a></li>
+    {{ end }}
+</ul>
 {{ end }}
