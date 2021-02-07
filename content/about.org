@@ -11,21 +11,21 @@ PGP fingerprint: [[file:KisaragiHiu.asc][BCC7 4B10 41D4 B7D7 CC8B F402 40EC BEAE
 * Links
 ** Social
 
-- ◊twitter["flyin1501"]{Twitter}
+- [[https://twitter.com/flyin1501][Twitter]]
 - [[https://www.reddit.com/user/flyin1501][Reddit]]
 - [[https://home.gamer.com.tw/c12345678999][gamer.com.tw]]
 
 ** Code
 
-- ◊gitlab["kisaragi-hiu/dotfiles"]{My dotfiles}
-- ◊github["kisaragi-hiu"]{Github}
-- ◊gitlab["kisaragi-hiu"]{Gitlab.com}
+- [[https://gitlab.com/kisaragi-hiu/dotfiles][My dotfiles]]
+- [[https://github.com/kisaragi-hiu][Github]]
+- [[https://gitlab.com/kisaragi-hiu][Gitlab.com]]
 - [[https://git.sr.ht/~kisaragi_hiu/][Sourcehut]]
 
 ** Art
 
 - [[https://youtube.com/channel/UCl_hsqcvdX0XdgBimRQ6R3A][Youtube]]
-- ◊niconico["user/38995186"]{niconico}
+- [[https://nicovideo.jp/user/38995186][niconico]]
 - [[https://pixiv.me/kisaragi-hiu][pixiv]]
 - [[https://episode.cc/about/flyin1501][Episode.cc]]
 
