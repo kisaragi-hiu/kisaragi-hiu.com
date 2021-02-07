@@ -22,6 +22,7 @@ public: css
 	hugo
 
 css: static/css/main.css
+	rm static/css/compiled -rf
 
 static/css/main.css: static/css/main.css.pp
 	raco pollen render static/css/main.css.pp
