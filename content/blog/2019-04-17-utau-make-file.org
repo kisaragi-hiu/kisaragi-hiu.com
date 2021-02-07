@@ -38,3 +38,36 @@ Now when I run ◊code{make render}, UTAU windows will pop up one by one for me 
 ◊reftxt{References used: ◊link["https://learnxinyminutes.com/docs/make/"]{Learn X in Y minutes}, ◊link["https://medium.freecodecamp.org/eec453adf7fe"]{Use `make`! by freeCodeCamp}, and ◊link["https://www.gnu.org/software/make/manual/html_node/File-Name-Functions.html"]{File Name Functions in the manual}.}
 ◊reftxt{◊kbd{Alt-p g RET} if the output file name has been set.}
 }
+#+title: A Makefile for UTAU Projects
+#+date: 2019-04-17T19:50:52+0800
+#+category: Tutorials
+#+tags[]: Make UTAU
+#+language: en
+
+/Update 2019-05-24: Updated Makefile to generate file list automatically (line 2)./
+
+I'm currently making a new cover using UTAU, after having broken the last streak of covers. This time, I thought I'd try using =make= to help with rendering.
+
+My biggest obstacle is automating the rendering itself: I don't know if UTAU has a command line interface, and using =xdotool= proved to be too unreliable when I tried. (It was frustrating.)
+
+{{< tweet 1116410591747305472 >}}
+
+As it turned out, automating the rest of the rendering process is still really helpful. Here is the Makefile for UTAU projects [fn:1]:
+
+#+begin_src makefile
+UTAU = env WINEPREFIX=/home/kisaragi-hiu/.wineprefix/UTAU wine "C:\\Program Files (x86)\\UTAU\\utau.exe"
+WAV = $(patsubst %.ust,%.wav,$(wildcard *.ust))
+
+render: $(WAV)
+.PHONY: render
+
+$(WAV): %.wav: %.ust
+	$(UTAU) "$(realpath $<)"
+#+end_src
+
+Which simply runs =$(UTAU) <ust full path>= for each UST that's newer than its corresponding output file. The caveat here is that the UST needs to share its name with its output, which has to be set manually.
+
+Now when I run =make render=, UTAU windows will pop up one by one for me to manually do the render[fn:2]. This may not be quite automatic, but it's at least better than manually opening every UST in the project and rendering them.
+
+[fn:1] References used: [[https://learnxinyminutes.com/docs/make/][Learn X in Y minutes]], [[https://medium.freecodecamp.org/eec453adf7fe][Use make! by freeCodeCamp]], and [[https://www.gnu.org/software/make/manual/html_node/File-Name-Functions.html][File Name Functions in the manual]].
+[fn:2] ◊kbd{Alt-p g RET} if the output file name has been set.
