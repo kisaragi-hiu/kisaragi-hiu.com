@@ -3,6 +3,7 @@
     {{ .Content }}
     <div class="index">
         {{ range .Pages }}
+        {{ .Scratch.Set "noyear" false }}
         {{ partial "index-item" . }}
         {{ end }}
     </div>
