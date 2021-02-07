@@ -1,6 +1,6 @@
 #+title: Current infrastructure of this site
 #+date: 2020-10-31T04:19:31+0900
-#+tags[]: Pollen Org Emacs Frog Sourcehut
+#+tags[]: Pollen Org-mode Emacs Frog Sourcehut
 #+category: Meta
 #+toc: #t
 

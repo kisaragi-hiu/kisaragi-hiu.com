@@ -1,6 +1,6 @@
 #+title: 2020 review
 #+date: 2020-12-17T03:32:42+0900
-#+tags[]: Org UTAU Emacs Trumpet
+#+tags[]: Org-mode UTAU Emacs Trumpet
 #+category: Yearly reviews
 #+toc: #t
 
