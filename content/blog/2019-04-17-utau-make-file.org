@@ -30,4 +30,4 @@ Which simply runs =$(UTAU) <ust full path>= for each UST that's newer than its c
 Now when I run =make render=, UTAU windows will pop up one by one for me to manually do the render[fn:2]. This may not be quite automatic, but it's at least better than manually opening every UST in the project and rendering them.
 
 [fn:1] References used: [[https://learnxinyminutes.com/docs/make/][Learn X in Y minutes]], [[https://medium.freecodecamp.org/eec453adf7fe][Use make! by freeCodeCamp]], and [[https://www.gnu.org/software/make/manual/html_node/File-Name-Functions.html][File Name Functions in the manual]].
-[fn:2] ◊kbd{Alt-p g RET} if the output file name has been set.
+[fn:2] {{< kbd "Alt-p g RET" >}} if the output file name has been set.
