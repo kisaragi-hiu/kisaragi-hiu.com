@@ -35,6 +35,6 @@ PGP fingerprint: [[file:KisaragiHiu.asc][BCC7 4B10 41D4 B7D7 CC8B F402 40EC BEAE
 
 * About this website
 
-This site is made with [[https://pollenpub.com/][Pollen]], a publishing system based on [[https://racket-lang.org/][Racket]].
+This site is built with Hugo; the CSS is preprocessed with [[https://pollenpub.com/][Pollen]].
 
-The icons at the footer are from [[https://feathericons.com/][Feather]].
+# Hugo’s template language needs better reference documentation.

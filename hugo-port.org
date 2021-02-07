@@ -1,6 +1,6 @@
 #+title: 2021-02-02T01:06:55+0900 Porting kisaragi-hiu.com to Hugo
 
-* [19%] Content
+* [22%] Content
 :PROPERTIES:
 :COOKIE_DATA: recursive
 :END:
@@ -56,6 +56,14 @@
 - Run Hugo
 - Tied together with Make
 
+** TODO widgets to partial templates
+*** DONE index-item
+*** CANCELLED index
+:LOGBOOK:
+- State "CANCELLED"  from "TODO"       [2021-02-08 Mon 03:17] \\
+  Inlined, essentially.
+:END:
+*** DONE post-heading
 ** TODO Port Pollen widgets to shortcodes
 *** TODO ruby
 *** TODO command
@@ -79,8 +87,6 @@ Hugo shortcode: gist (user gist-id [file])
 *** TODO icon
 *** TODO image
 *** TODO image/link
-*** TODO index
-*** TODO index-item
 *** TODO kbd
 *** TODO lang-showcase-without-tab
 *** TODO link
@@ -99,7 +105,6 @@ Hugo shortcode: gist (user gist-id [file])
 *** TODO page-navigation
 *** TODO path
 *** DONE pixiv
-*** TODO post-heading
 *** TODO previous-and-next
 *** TODO previous-and-next-same-category
 *** TODO project
