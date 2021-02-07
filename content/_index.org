@@ -1,8 +1,6 @@
 #+title: Home
 #+type: index
 
-◊(current-pagetree "index.ptree")
-
 I'm a college student in Taiwan studying Applied English.
 
 [[file:about.org][More about me…]]
@@ -14,5 +12,3 @@ Stuff I’ve made:
 - UTAU Covers ([[https://youtube.com/channel/UCl_hsqcvdX0XdgBimRQ6R3A][on Youtube]], [[https://www.nicovideo.jp/user/38995186][on niconico]])
 
 [[file:projects.org][Other projects…]]
-
-◊(index (children 'blog))
