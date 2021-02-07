@@ -1,6 +1,6 @@
 #+title: 2021-02-02T01:06:55+0900 Porting kisaragi-hiu.com to Hugo
 
-* [22%] Content
+* [25%] Content
 :PROPERTIES:
 :COOKIE_DATA: recursive
 :END:
@@ -29,8 +29,8 @@
 *** TODO 2018-03-11
 *** TODO 2018-04-08
 *** TODO 2018-05-11
-*** TODO 2018-07-27
-*** TODO 2018-09-20
+*** DONE 2018-07-27
+*** DONE 2018-09-20
 *** TODO 2018-10-08
 *** TODO 2018-11-04
 *** TODO 2019-01-03
@@ -87,7 +87,7 @@ Hugo shortcode: gist (user gist-id [file])
 *** TODO icon
 *** TODO image
 *** TODO image/link
-*** TODO kbd
+*** DONE kbd
 *** TODO lang-showcase-without-tab
 *** TODO link
 *** TODO link/date
@@ -125,7 +125,7 @@ Hugo shortcode: gist (user gist-id [file])
 *** TODO twitter
 *** TODO update
 *** TODO update-block
-*** TODO video/gif-esque
+*** DONE video/gif-esque
 *** CANCELLED youtube
 :LOGBOOK:
 - State "CANCELLED"  from "TODO"       [2021-02-02 Tue 02:32] \\
