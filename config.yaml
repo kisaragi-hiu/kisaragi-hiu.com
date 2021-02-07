@@ -12,3 +12,13 @@ markup:
 pygmentsUseClasses: true
 
 baseURL: kisaragi-hiu.com
+
+frontmatter:
+  date: ["date", "publishDate", "lastmod"]
+  lastmod: [":git", "lastmod", "date", "publishDate"]
+  publishDate: ["publishDate", "date"]
+  expiryDate: ["expiryDate"]
+
+taxonomies:
+  category: category
+  tag: tags
