@@ -1,7 +1,7 @@
 #+title: UTAU Covering Experiment
 #+date: 2018-05-11T22:00:10+0900
 #+category: Experiments
-#+tags: UTAU
+#+tags[]: UTAU
 #+language: en
 
 Back in March, I started getting back into doing UTAU covers, and have tried to finish one cover within two weeks. I'm so far happy with the results, although it is taking up too much of my attention.

@@ -1,6 +1,6 @@
 #+title: A Pollen PDF template based on HTML, instead of LaTeX
 #+date: 2019-01-03T03:50:00+0900
-#+tags: "PDF" "Pollen"
+#+tags[]: PDF Pollen
 #+language: en
 #+toc: #t
 

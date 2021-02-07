@@ -1,5 +1,4 @@
 #+title: UTAU Covers
-#+type: page
 
 A list of [[https://en.wikipedia.org/wiki/UTAU][UTAU]] covers that I’ve done.
 

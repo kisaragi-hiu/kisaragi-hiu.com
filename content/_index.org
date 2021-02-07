@@ -1,5 +1,4 @@
 #+title: Home
-#+type: index
 
 I'm a college student in Taiwan studying Applied English.
 

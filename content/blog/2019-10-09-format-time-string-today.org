@@ -1,6 +1,6 @@
 #+title: Locales, Org timestamps, and format-time-string
 #+date: 2019-10-09T22:39:21+0900
-#+tags: "Emacs" "Troubleshooting"
+#+tags[]: Emacs Troubleshooting
 #+language: en
 #+toc: #t
 
