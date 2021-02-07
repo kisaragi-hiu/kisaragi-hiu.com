@@ -7,6 +7,7 @@
         <div class="index-year">
             <h1>{{ .Key }}</h1>
             {{ range .Pages }}
+            {{ .Scratch.Set "noyear" "true" }}
             {{ partial "index-item" . }}
             {{ end }}
         </div>
