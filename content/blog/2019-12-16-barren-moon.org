@@ -1,6 +1,6 @@
 #+title: Publishing my poems as a web-based book
 #+date: 2019-12-16T19:48:23+0900
-#+roam_tags: Writing Pollen
+#+tags[]: Writing Pollen
 #+language: en
 #+category: Project announcements
 
