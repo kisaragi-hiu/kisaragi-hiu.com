@@ -1,6 +1,6 @@
 #+title: 2021-02-02T01:06:55+0900 Porting kisaragi-hiu.com to Hugo
 
-* [20%] Content
+* [19%] Content
 :PROPERTIES:
 :COOKIE_DATA: recursive
 :END:
@@ -46,10 +46,11 @@
 *** TODO 2020-10-25
 *** TODO 2020-10-31
 *** TODO 2020-12-16
-** DONE Templates
+** TODO Templates
 *** DONE List
 *** DONE Single
 *** DONE Home
+*** TODO Table of Contents
 ** DONE Build process
 - Build CSS with Pollen
 - Run Hugo

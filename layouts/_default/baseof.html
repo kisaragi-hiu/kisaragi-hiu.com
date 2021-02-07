@@ -50,6 +50,9 @@ if (dnt !== "yes" && dnt !== "1") {
 
     <!-- Contents -->
     <div id="content">
+        {{ if (eq .Type "blog") }}
+        {{ partial "post-heading" . }}
+        {{ end }}
         {{ block "main" . }}
         {{ end }}
         <!-- ◊; show heading for posts
