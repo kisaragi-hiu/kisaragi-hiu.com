@@ -34,6 +34,10 @@
 
 /* Base */
 
+li p {
+    margin: 0 auto;
+}
+
 body, #siteheader nav a, .size-normal, .toc *, .index-item .date, .index-item .tags, .page-navigation, .highlight {
   font-size: ◊|font-size-main|;
 }
