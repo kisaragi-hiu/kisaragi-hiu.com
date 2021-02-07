@@ -1,0 +1,16 @@
+{{ define "main" }}
+<root>
+    {{ .Content }}
+    <div class="index">
+        <!-- We use "where" exclude non-blog pages -->
+        {{ range (where .Site.RegularPages "Section" "blog").GroupByDate "2006" }}
+        <div class="index-year">
+            <h1>{{ .Key }}</h1>
+            {{ range .Pages }}
+            {{ partial "index-item" . }}
+            {{ end }}
+        </div>
+        {{ end }}
+    </div>
+</root>
+{{ end }}
