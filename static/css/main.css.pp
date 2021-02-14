@@ -339,14 +339,10 @@ figcaption {
   color: ◊|color-primary|;
 }
 
-.highlight .linenos .linenodiv {
-  padding-right: 0.25rem;
-  border-right: 0.1rem solid;
-  margin-right: 1rem;
-}
-
-.linenodiv pre {
+.lnt {
   color: ◊|color-secondary|;
+  /* I don't know how else could I target the line numbers */
+  margin-right: 1rem;
 }
 
 /*
