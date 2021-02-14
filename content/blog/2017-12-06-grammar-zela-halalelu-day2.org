@@ -21,31 +21,31 @@ Matching up with my rough idea for the first line, I defined "halalelu" to be th
 
 The first paragraph is now:
 
-#+begin_quote
+#+begin_src text
 I am dreaming a dream
 to explore even deeper
 the treasure, the wonder
 deep in the Abyss
-#+end_quote
+#+end_src
 
 And I now have a rough grammar:
 
-#+begin_src text
+#+begin_src abnf
 Sentence := Object Subject Action
 Object := noun-phrase
 Subject := noun-phrase
 Action := verb-phrase
-"Halalaha zela halalelu"
+; "Halalaha zela halalelu"
 
 noun-phrase := (noun [preposition-phrase])
-"Hanezeve cara-dhina" "Hanezeve" "houwelela" "lalelila"
+; "Hanezeve cara-dhina" "Hanezeve" "houwelela" "lalelila"
 
 verb-phrase := (verb [decorator-phrase])
-"Sivivile shi-dhina"
+; "Sivivile shi-dhina"
 
 preposition-phrase := (preposition [decorator-phrase])
-"cara-dhina"
+; "cara-dhina"
 
 decorator-phrase := ([decorator] decorator)
-"shi-dhina"
+; "shi-dhina"
 #+end_src

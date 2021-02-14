@@ -11,7 +11,7 @@ The song doesn't actually have too much lyrics, as I will show in the next few p
 
 First, the lyrics.
 
-#+begin_quote
+#+begin_src
 A.
 Halalaha zela halalelu
 Sivivile shi-dhina
@@ -41,7 +41,7 @@ Halalaha zela halalelu
 Sivivile shi-dhina
 houwelela, lalelila
 Hanezeve cara-dhina
-#+end_quote
+#+end_src
 
 As you can see, it's all just two paragraphs with some slight variations in B. I'll explain why I grouped syllables like this in a little bit.
 
@@ -109,7 +109,7 @@ As of the other two words, I just thought up "treasure" and "wonder" as two noun
 
 * What I have now
 
-#+begin_quote
+#+begin_src
 A.
 Halalaha zela halalelu
 Explore even deeper
@@ -139,7 +139,7 @@ Halalaha zela halalelu
 Explore even deeper
 the treasure, the wonder
 Deep in the Abyss
-#+end_quote
+#+end_src
 
 * More to come (hopefully)
 
