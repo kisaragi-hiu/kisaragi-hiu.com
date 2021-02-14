@@ -1,0 +1,159 @@
+#+title: Setting up Gitlab CI and coverage for Emacs Lisp
+#+date: 2021-02-14T17:34:14+0900
+#+category: Tutorials
+#+tags[]: Emacs Gitlab
+#+language: en
+#+toc: #t
+
+As many projects use [[https://docs.github.com/en/actions][GitHub Actions]] for CI, there seems to be more resources for setting GitHub Actions up for Emacs Lisp, including [[https://github.com/purcell/setup-emacs][purcell/setup-emacs]] and [[https://github.com/leotaku/elisp-check][leotaku/elisp-check]]. There are also many examples to copy from.
+
+On the other hand, I was only able to find one Emacs Lisp project using Gitlab CI: [[https://gitlab.com/joewreschnig/gitlab-ci-mode/][joewreschnig/gitlab-ci-mode]].
+
+To learn how to do this, I added automatic testing to [[https://gitlab.com/kisaragi-hiu/tst.el][tst.el]], a tiny library hosted on Gitlab. This is the result.
+
+* =.gitlab-ci.yml=
+
+#+begin_src yaml
+default:
+  before_script:
+    - cask install
+
+test-26.3:
+  image: silex/emacs:26.3-ci-cask
+  script:
+    - cask exec ert-runner
+
+test-27.1:
+  image: silex/emacs:27.1-ci-cask
+  script:
+    - cask exec ert-runner
+#+end_src
+
+This tells Gitlab CI to automatically run tests (with [[ert-runner]]) under Emacs 26.3 and Emacs 27.1.
+
+- =test-26.3= and =test-27.1= are job names for Gitlab CI.
+- =default= is applied to every job. [[https://docs.gitlab.com/ee/ci/yaml/README.html#global-defaults][Only some properties can be specified here. =script= isn’t one of them.]]
+- Alternative: you can also specify a =.test= rule, then use =extends: .test= to reduce duplication. This is what [[https://gitlab.com/joewreschnig/gitlab-ci-mode/-/blob/master/.gitlab-ci.yml][joewreschnig/gitlab-ci-mode]] does.
+- [[https://hub.docker.com/r/silex/emacs][=silex/emacs=]] is a comprehensive set of Emacs Docker images. Some of them are great for interactive use, others are designed for use in CI.
+
+  There’s also the images from Flycheck (=flycheck/emacs-cask=); those include Cask but not have Git, [[Setting up undercover][which undercover needs for reporting coverage]].
+
+* =Cask=
+
+The [[https://cask.readthedocs.io/en/latest/][Cask]] file:
+
+#+begin_src lisp
+(source gnu)
+(source melpa)
+
+(package-file "tst.el")
+
+(development
+ (depends-on "ert-runner")
+ (depends-on "undercover"))
+#+end_src
+
+Cask lets you write down your project’s dependencies in a declarative way and install them in one command, instead of having to write a bunch of boilerplate in an ad-hoc init file.
+
+The entire Cask file language is [[https://cask.readthedocs.io/en/latest/guide/dsl.html][documented in this 700-word page]].
+
+- =cask install= installs all dependencies, including development dependencies, in a local folder (=my-app/.cask/=).
+- =cask emacs= can then be used to run Emacs with those local dependencies made available.
+
+* =my-app/test/my-app-test.el=: Unit tests
+** ERT
+
+[[https://www.gnu.org/software/emacs/manual/html_node/ert/][ERT]] is a unit testing library that has been included since Emacs 24.1. (There’s also another option, [[https://github.com/jorgenschaefer/emacs-buttercup/][Buttercup]], that offers more features.)
+
+Tests are written like this:
+
+#+begin_src emacs-lisp
+(require 'ert)
+(require 'tst)
+
+(ert-deftest tst-get-test ()
+  ;; Empty
+  (should (null (tst-get "abc[]")))
+  (should (null (tst-get "abc")))
+  ;; Not at end of string
+  (should (null (tst-get "abc[a b]def"))))
+#+end_src
+
+1. =ert-deftest= defines a test. =tst-get-test= is the name of the test.
+2. =should= makes the test fail if its body is nil.
+
+You can evaluate this then run =M-x ert= to run the test.
+
+Some articles that introduce ERT better:
+
+- abrochard - [[https://blog.abrochard.com/ert-tests.html][ERT: Emacs Lisp Regression Testing]]
+- Sean Miller - [[https://thewanderingcoder.com/2015/02/refactoring-beginning-emacs-lisp-i-adding-tests/][Refactoring “Beginning Emacs Lisp”: I: Adding Tests]]
+- EmacsWiki - [[https://www.emacswiki.org/emacs/ErtTestLibrary][Ert Test Library]]
+
+** ert-runner
+
+Running tests with ERT involves a long command [[https://www.gnu.org/software/emacs/manual/html_node/ert/Running-Tests-in-Batch-Mode.html][buried in its manual]].
+
+#+begin_src sh
+cask install
+cask emacs -batch -l ert -l my-tests.el -f ert-run-tests-batch-and-exit
+#+end_src
+
+(Using =cask emacs= so that dependencies are available.)
+
+[[https://github.com/rejeep/ert-runner.el][ert-runner]] is designed to simplify this, and make running ERT tests less painful.
+
+#+begin_src sh
+cask install
+cask exec ert-runner
+#+end_src
+
+* Coverage
+
+Coverage means how much of your code is covered by unit tests.
+
+Typically (as far as I know) one uses a coverage library for their language to compute it, then upload the results to a coverage tracking service.
+
+The coverage library for Emacs Lisp is [[https://github.com/undercover-el/undercover.el][undercover]].
+
+Coverage services include [[https://coveralls.io/][Coveralls]] and [[https://codecov.io/][Codecov]] (as mentioned in undercover’s README). I rolled a dice and landed on Coveralls, so that’s what I’m using.
+
+** Setting up undercover
+
+Install it with Cask:
+
+#+begin_src lisp
+(development
+  (depends-on "undercover"))
+#+end_src
+
+Then =require= the library and specify a wildcard that matches your source files before you load your package:
+
+#+begin_src emacs-lisp
+(when (require 'undercover nil t)
+  (undercover "*.el"))
+
+(require 'ert)
+(require 'tst)
+
+(ert-deftest tst-get ()
+  ;; Empty
+  (should (null (tst-get "abc[]"))))
+#+end_src
+
+Undercover will then automatically upload the results to Coveralls if a token has been given (through the =COVERALLS_REPO_TOKEN= environment variable).
+
+** Setting up Coveralls
+
+- Log in with Github, Gitlab, or Bitbucket
+- Maybe connect with the other two services, so that you don’t accidentally create another account if you forget which service you logged in with.
+- Authorize its access
+- Connect your repository
+- Copy the repository token
+- Add a secret environment variable for your repository on Gitlab:
+  - Go to your project → settings → CI / CD → Variables → Expand → Add Variable
+  - Set Key to =COVERALLS_REPO_TOKEN=, Value to the repository token you just copied
+  - Make sure both Protect Variable and Mask Variable are checked.
+- Maybe add the badge to your README.
+
+[[/static/tst-el-readme-20210116.png]]
