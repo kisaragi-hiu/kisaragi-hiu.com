@@ -1,7 +1,7 @@
 #+title: Setting up Gitlab CI and coverage for Emacs Lisp
 #+date: 2021-02-14T17:34:14+0900
 #+category: Tutorials
-#+tags[]: Emacs Gitlab
+#+tags: Emacs Gitlab
 #+language: en
 #+toc: #t
 
