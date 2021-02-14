@@ -11,7 +11,7 @@ On the other hand, I was only able to find one Emacs Lisp project using Gitlab C
 
 To learn how to do this, I added automatic testing to [[https://gitlab.com/kisaragi-hiu/tst.el][tst.el]], a tiny library hosted on Gitlab. This is the result.
 
-* =.gitlab-ci.yml=
+* .gitlab-ci.yml
 
 #+begin_src yaml
 default:
@@ -38,7 +38,7 @@ This tells Gitlab CI to automatically run tests (with [[ert-runner]]) under Emac
 
   There’s also the images from Flycheck (=flycheck/emacs-cask=); those include Cask but not have Git, [[Setting up undercover][which undercover needs for reporting coverage]].
 
-* =Cask=
+* Cask
 
 The [[https://cask.readthedocs.io/en/latest/][Cask]] file:
 
@@ -60,7 +60,7 @@ The entire Cask file language is [[https://cask.readthedocs.io/en/latest/guide/d
 - =cask install= installs all dependencies, including development dependencies, in a local folder (=my-app/.cask/=).
 - =cask emacs= can then be used to run Emacs with those local dependencies made available.
 
-* =my-app/test/my-app-test.el=: Unit tests
+* my-app/test/my-app-test.el: Unit tests
 ** ERT
 
 [[https://www.gnu.org/software/emacs/manual/html_node/ert/][ERT]] is a unit testing library that has been included since Emacs 24.1. (There’s also another option, [[https://github.com/jorgenschaefer/emacs-buttercup/][Buttercup]], that offers more features.)
