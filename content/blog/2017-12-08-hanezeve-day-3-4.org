@@ -14,33 +14,30 @@ I found two parts that should be changed:
 1. The word for "journey", "lalelila", sounds more like "walelila".
 2. The first sentence of B and 'B should be the same.
 
-◊hr[]
+#+html: <hr/>
 
-#+begin_src text
+{{< highlight text "hl_lines=4 8 13" >}}
 A.
 Halalaha zela halalelu
 Sivivile shi-dhina
-◊span[#:style "color:red;"]{houwelela, lalelila}
-◊span[#:style "color:green;"]{houwelela, walelila}
+houwelela, walelila
 Hanezeve cara-dhina
 
 B.
-◊span[#:style "color:red;"]{Halalaha la forðe hala}
-◊span[#:style "color:green;"]{Holo loholo forðe holo}
+Holo loholo forðe holo
 helelele lelele
 ...
 
 'B.
-◊span[#:style "color:red;"]{Kodo wodo hondo hondo-oh}
-◊span[#:style "color:green;"]{Holo loholo forðe holo}
+Holo loholo forðe holo
 ...
-#+end_src
+{{< / highlight >}}
 
-◊hr[]
+#+html: <hr/>
 
 * The lyrics, again
 
-#+begin_quote
+#+begin_src text
 A.
 Halalaha zela halalelu
 Sivivile shi-dhina
@@ -70,7 +67,7 @@ Halalaha zela halalelu
 Sivivile shi-dhina
 houwelela, walelila
 Hanezeve cara-dhina
-#+end_quote
+#+end_src
 
 * Let's continue our journey
 
@@ -98,7 +95,7 @@ The word order here with "start journey" / "continue journey" is different than 
 
 With this, we can transliterate most of the lyrics already:
 
-#+begin_quote
+#+begin_src
 A.
 (thought-fiction = dream) I (thought-make = imagine)
 explore even-deep
@@ -110,11 +107,11 @@ B.
 ???? ????
 start (seeking-unknown = journey)
 Abyss at-bottom to
-#+end_quote
+#+end_src
 
 And the translated lyrics is now:
 
-#+begin_quote
+#+begin_src
 A.
 I am dreaming a dream
 to explore even deeper
@@ -144,4 +141,4 @@ I am dreaming a dream
 to explore even deeper
 the treasures, the wonder
 Deep in the Abyss
-#+end_quote
+#+end_src

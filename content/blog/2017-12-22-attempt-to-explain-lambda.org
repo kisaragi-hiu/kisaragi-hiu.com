@@ -21,7 +21,7 @@ Just like how a list can be created with =(list 'item 'item 'item)=, a function 
 The way the argument list is given depends on the language. In Scheme-based languages, the first argument to lambda is:
 
 - a list, each element in the list is bound to a local variable: =(lambda (x y) (+ x y))=
-- an “improper list” (like =(a b . c)=) behaves like the above, but the last element is the rest argument, bound to a list containing arguments not bound by the positional arguments:=(lambda (a b . c) (string-append a b (string-join c)))=
+- an “improper list” (like =(a b . c)=) behaves like the above, but the last element is the rest argument, bound to a list containing arguments not bound by the positional arguments: =(lambda (a b . c) (string-append a b (string-join c)))=
 - a symbol; it becomes the rest argument: =(lambda input (string-join input))=
 
 * Binding to an identifier

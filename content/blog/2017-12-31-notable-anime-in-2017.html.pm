@@ -1,6 +1,6 @@
 #lang pollen
 ◊define-meta[title]{My list of notable anime series in 2017}
-◊define-meta[date]{2017-12-31T23:59:57}
+◊define-meta[date]{2017-12-31T23:59:57+0900}
 ◊define-meta[language]{en}
 ◊define-meta[tags ("Anime")]
 ◊define-meta[category]{Opinions}

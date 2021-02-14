@@ -339,7 +339,12 @@ figcaption {
   color: ◊|color-primary|;
 }
 
-.lnt {
+/* FIXME: this is, um, ugly? */
+.highlight .hl {
+    text-decoration: underline;
+}
+
+.highlight .lnt {
   color: ◊|color-secondary|;
   /* I don't know how else could I target the line numbers */
   margin-right: 1rem;
