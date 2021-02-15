@@ -1,4 +1,4 @@
-#+title: Setting up Gitlab CI and coverage for Emacs Lisp
+#+title: Setting up testing and coverage for Emacs Lisp on Gitlab CI
 #+date: 2021-02-14T17:34:14+0900
 #+category: Tutorials
 #+tags: Emacs Gitlab
@@ -60,7 +60,7 @@ The entire Cask file language is [[https://cask.readthedocs.io/en/latest/guide/d
 - =cask install= installs all dependencies, including development dependencies, in a local folder (=my-app/.cask/=).
 - =cask emacs= can then be used to run Emacs with those local dependencies made available.
 
-* my-app/test/my-app-test.el: Unit tests
+* Unit tests
 ** ERT
 
 [[https://www.gnu.org/software/emacs/manual/html_node/ert/][ERT]] is a unit testing library that has been included since Emacs 24.1. (There’s also another option, [[https://github.com/jorgenschaefer/emacs-buttercup/][Buttercup]], that offers more features.)
