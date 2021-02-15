@@ -29,14 +29,14 @@ test-27.1:
     - cask exec ert-runner
 #+end_src
 
-This tells Gitlab CI to automatically run tests (with [[ert-runner]]) under Emacs 26.3 and Emacs 27.1.
+This tells Gitlab CI to automatically run tests (with [[id:0d0f1acf-ff0b-4d30-8415-0d5e5f1e0075][ert-runner]]) under Emacs 26.3 and Emacs 27.1.
 
 - =test-26.3= and =test-27.1= are job names for Gitlab CI.
 - =default= is applied to every job. [[https://docs.gitlab.com/ee/ci/yaml/README.html#global-defaults][Only some properties can be specified here. =script= isn’t one of them.]]
 - Alternative: you can also specify a =.test= rule, then use =extends: .test= to reduce duplication. This is what [[https://gitlab.com/joewreschnig/gitlab-ci-mode/-/blob/master/.gitlab-ci.yml][joewreschnig/gitlab-ci-mode]] does.
 - [[https://hub.docker.com/r/silex/emacs][=silex/emacs=]] is a comprehensive set of Emacs Docker images. Some of them are great for interactive use, others are designed for use in CI.
 
-  There’s also the images from Flycheck (=flycheck/emacs-cask=); those include Cask but not have Git, [[Setting up undercover][which undercover needs for reporting coverage]].
+  There’s also the images from Flycheck (=flycheck/emacs-cask=); those include Cask but not have Git, [[id:a1a03044-f97c-41bf-a7a8-2a0eda0c5774][which undercover needs for reporting coverage]].
 
 * Cask
 
@@ -91,6 +91,9 @@ Some articles that introduce ERT better:
 - EmacsWiki - [[https://www.emacswiki.org/emacs/ErtTestLibrary][Ert Test Library]]
 
 ** ert-runner
+:PROPERTIES:
+:ID:       0d0f1acf-ff0b-4d30-8415-0d5e5f1e0075
+:END:
 
 Running tests with ERT involves a long command [[https://www.gnu.org/software/emacs/manual/html_node/ert/Running-Tests-in-Batch-Mode.html][buried in its manual]].
 
@@ -119,6 +122,9 @@ The coverage library for Emacs Lisp is [[https://github.com/undercover-el/underc
 Coverage services include [[https://coveralls.io/][Coveralls]] and [[https://codecov.io/][Codecov]] (as mentioned in undercover’s README). I rolled a dice and landed on Coveralls, so that’s what I’m using.
 
 ** Setting up undercover
+:PROPERTIES:
+:ID:       a1a03044-f97c-41bf-a7a8-2a0eda0c5774
+:END:
 
 Install it with Cask:
 
