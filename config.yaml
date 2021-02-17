@@ -1,5 +1,5 @@
-staticDir:
-  - static
+staticDir: static
+layoutDir: templates
 
 markup:
   goldmark:
