@@ -12,8 +12,7 @@ secrets:
   - 9971994c-ebe1-4f42-bb58-11e57b65c689
 tasks:
   - install-racket-packages: |
-      raco pkg config --set catalogs https://pkg-build.racket-lang.org/server/built/catalog/
-      raco pkg install --binary-lib --skip-installed --deps search-auto pollen txexpr threading
+      raco pkg install --skip-installed --deps search-auto pollen txexpr threading
   - build: |
       cd kisaragi-hiu.com
       make zip
