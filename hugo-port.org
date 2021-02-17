@@ -1,6 +1,6 @@
 #+title: 2021-02-02T01:06:55+0900 Porting kisaragi-hiu.com to Hugo
 
-* [32%] Content
+* [33%] Content
 :PROPERTIES:
 :COOKIE_DATA: recursive
 :END:
@@ -50,7 +50,7 @@
 *** DONE List
 *** DONE Single
 *** DONE Home
-*** TODO Table of Contents
+*** DONE Table of Contents
 ** DONE Build process
 - Build CSS with Pollen
 - Run Hugo
@@ -119,7 +119,7 @@ Hugo shortcode: gist (user gist-id [file])
 *** TODO tag
 *** TODO tag-list
 *** TODO tldr
-*** TODO toc
+*** DONE toc
 *** TODO transifex
 *** TODO tweet
 *** TODO twitter

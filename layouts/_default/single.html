@@ -2,6 +2,11 @@
 {{ if (eq .Type "blog") }}
 {{ partial "post-heading" . }}
 {{ end }}
+
+{{ if .Params.toc }}
+{{ .TableOfContents }}
+{{ end }}
+
 <root>
     {{ .Content }}
 </root>
