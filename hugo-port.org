@@ -1,6 +1,6 @@
 #+title: 2021-02-02T01:06:55+0900 Porting kisaragi-hiu.com to Hugo
 
-* [39%] Content
+* [40%] Content
 :PROPERTIES:
 :COOKIE_DATA: recursive
 :END:
@@ -142,4 +142,4 @@ Hugo shortcode: gist (user gist-id [file])
 #+end_src
 
 *** TODO youtube/image-link
-** TODO RSS
+** DONE RSS

@@ -1,6 +1,11 @@
 # /static is now available under /
 /static/* /:splat 200
 
+/feed.xml /index.xml 200
+/rss.xml /index.xml 200
+/atom.xml /index.xml 200
+/feeds/all.atom.xml /index.xml 200
+
 /youtube https://www.youtube.com/channel/UCl_hsqcvdX0XdgBimRQ6R3A
 /niconico https://www.nicovideo.jp/user/38995186
 /pixiv https://www.pixiv.net/member.php?id=14235181
@@ -8,10 +13,6 @@
 # / is /blog
 /blog /
 /posts /
-
-/feed.xml /feeds/all.atom.xml 200
-/rss.xml /feeds/all.atom.xml 200
-/atom.xml /feeds/all.atom.xml 200
 
 # old frog/pollen hybrid site URLs
 /tags/category-* /category/:splat

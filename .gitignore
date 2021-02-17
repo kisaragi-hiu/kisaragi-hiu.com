@@ -2,7 +2,6 @@
 *#
 *.cache
 *.swp
-*.xml
 *.zip
 *.rktd
 *~
