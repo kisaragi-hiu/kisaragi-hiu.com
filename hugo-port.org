@@ -1,6 +1,6 @@
 #+title: 2021-02-02T01:06:55+0900 Porting kisaragi-hiu.com to Hugo
 
-* [33%] Content
+* [39%] Content
 :PROPERTIES:
 :COOKIE_DATA: recursive
 :END:
@@ -80,9 +80,9 @@ Hugo shortcode: gist (user gist-id [file])
 
 *** DONE github
 *** DONE gitlab
-*** TODO h1
-*** TODO h2
-*** TODO h3
+*** CANCELLED h1
+*** CANCELLED h2
+*** CANCELLED h3
 *** TODO heading
 *** TODO icon
 *** TODO image
@@ -120,20 +120,24 @@ Hugo shortcode: gist (user gist-id [file])
 *** TODO tag-list
 *** TODO tldr
 *** DONE toc
-*** TODO transifex
-*** TODO tweet
-*** TODO twitter
+*** DONE tweet
+#+begin_src hugo
+{{< tweet 1116410591747305472 >}}
+#+end_src
 *** TODO update
 *** TODO update-block
 *** DONE video/gif-esque
-*** CANCELLED youtube
+*** link shortcodes
+**** CANCELLED twitter
+**** CANCELLED transifex
+**** CANCELLED youtube
 :LOGBOOK:
 - State "CANCELLED"  from "TODO"       [2021-02-02 Tue 02:32] \\
   Just link to it normally. It’s not worth it when it conflicts with the default embed shortcode.
 :END:
 *** DONE youtube/embed
 
-#+begin_src hugo
+#+begin_src hugo-template
 {{< youtube id="" >}}
 #+end_src
 
