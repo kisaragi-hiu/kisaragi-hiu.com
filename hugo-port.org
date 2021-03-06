@@ -1,6 +1,6 @@
 #+title: 2021-02-02T01:06:55+0900 Porting kisaragi-hiu.com to Hugo
 
-* [53%] Content
+* [55%] Content
 :PROPERTIES:
 :COOKIE_DATA: recursive
 :END:
@@ -78,8 +78,12 @@
 *** TODO edit
 *** TODO edit-block
 *** TODO emacs-source
-*** TODO envvar
-*** TODO flex
+*** CANCELLED envvar
+:LOGBOOK:
+- State "CANCELLED"  from "TODO"       [2021-03-07 Sun 02:40] \\
+  just use inline code
+:END:
+*** DONE flex → side-by-side
 *** DONE gist
 
 https://gohugo.io/content-management/shortcodes/#gist
