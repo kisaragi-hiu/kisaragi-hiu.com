@@ -1,6 +1,6 @@
 #+title: 2021-02-02T01:06:55+0900 Porting kisaragi-hiu.com to Hugo
 
-* [50%] Content
+* [53%] Content
 :PROPERTIES:
 :COOKIE_DATA: recursive
 :END:
@@ -31,12 +31,16 @@
 *** DONE 2018-01-15
 *** DONE 2018-02-25
 *** DONE 2018-03-11
-*** TODO 2018-04-08
-*** TODO 2018-05-11
+*** DONE 2018-04-08
+*** DONE 2018-05-11
 *** DONE 2018-07-27
 *** DONE 2018-09-20
 *** DONE 2018-10-08
-*** TODO 2018-11-04
+*** CANCELLED 2018-11-04
+:LOGBOOK:
+- State "CANCELLED"  from "TODO"       [2021-03-07 Sun 02:37] \\
+  Unpublished.
+:END:
 *** TODO 2019-01-03
 *** DONE 2019-01-21
 *** TODO 2019-04-13
