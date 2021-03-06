@@ -35,10 +35,17 @@
 /* Base */
 
 li p {
-    margin: 0 auto;
+  margin: 0 auto;
 }
 
-body, #siteheader nav a, .size-normal, .toc *, .index-item .date, .index-item .tags, .page-navigation, .highlight {
+body,
+#siteheader nav a,
+.size-normal,
+.toc *,
+.index-item .date,
+.index-item .tags,
+.page-navigation,
+.highlight {
   font-size: ◊|font-size-main|;
 }
 
@@ -347,7 +354,7 @@ figcaption {
 
 /* FIXME: this is, um, ugly? */
 .highlight .hl {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 .highlight .lnt {
