@@ -1,5 +1,5 @@
 #+title: Introduction to Two Factor Authorization
-#+date: 2018-04-08T19:38:06+09:00
+#+date: 2018-04-08T19:38:06+0900
 #+language: en
 #+category: Tutorials
 
