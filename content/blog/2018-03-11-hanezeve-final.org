@@ -20,13 +20,12 @@ Starting off from the part that's harder to break apart, I'm seeing "Helelele le
 
 - Helelele…: /Come…/
 
+#+caption: The first sentence in section A.
 #+begin_src text
 Halalaha zela halalelu
 => (thought-fiction = dream) I (thought-make = imagine)
 => I am dreaming a dream
 #+end_src
-
-/The first sentence in section A./
 
 Now the first sentence in B. Carrying the structure I established in section A, the second "holo" in "Holo-ohlo holo forðe-holo" should be a pronoun. With the next sentence being an invitational gesture, this one should be about something inviting someone.
 
@@ -45,7 +44,7 @@ Now each of "holo-ohlo" and "forðe-holo" has to mean either "invite" or "toward
 
 So the rough translation is now:
 
-#+begin_quote
+#+begin_src
 A.
 I am dreaming a dream
 to explore even deeper
@@ -57,14 +56,14 @@ B.
 "Come, come"
 Let the journey begin
 to the bottom of the Abyss
-#+end_quote
+#+end_src
 
 * Full "translation" with made-up language and grammar
 
 ** Hanezeve Caradhina / Deep in the Abyss
 
-◊flex[◊span[
-#+begin_quote
+{{% side-by-side %}}
+#+begin_src
 A.
 Halalaha zela halalelu
 Sivivile shi-dhina
@@ -94,10 +93,9 @@ Halalaha zela halalelu
 Sivivile shi-dhina
 houwelela, walelila
 Hanezeve cara-dhina
-#+end_quote
-]
-◊span[
-#+begin_quote
+#+end_src
+
+#+begin_src
 A.
 I am dreaming a dream
 to explore even deeper
@@ -127,7 +125,7 @@ I am dreaming a dream
 to explore even deeper
 the treasures, the wonder
 Deep in the Abyss
-#+end_quote
-]]
+#+end_src
+{{% /side-by-side %}}
 
 Listen to Hanezeve Caradhina (and the rest of the Made in Abyss OST) [[https://open.spotify.com/album/5oEzjkSYSfC0ITRiqK6m8l][on Spotify.]]

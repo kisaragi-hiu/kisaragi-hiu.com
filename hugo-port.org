@@ -1,6 +1,6 @@
 #+title: 2021-02-02T01:06:55+0900 Porting kisaragi-hiu.com to Hugo
 
-* [49%] Content
+* [50%] Content
 :PROPERTIES:
 :COOKIE_DATA: recursive
 :END:
@@ -30,7 +30,7 @@
 *** DONE 2018-01-07
 *** DONE 2018-01-15
 *** DONE 2018-02-25
-*** TODO 2018-03-11
+*** DONE 2018-03-11
 *** TODO 2018-04-08
 *** TODO 2018-05-11
 *** DONE 2018-07-27

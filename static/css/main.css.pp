@@ -279,6 +279,12 @@ figcaption {
   display: flex;
 }
 
+.side-by-side {
+  display: grid;
+  grid-template-columns: 4fr 5fr;
+  overflow-y: auto;
+}
+
 .baseline {
   align-items: baseline;
 }
