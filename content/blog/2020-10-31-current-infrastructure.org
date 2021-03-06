@@ -7,11 +7,11 @@
 * History
 This blog went through many iterations.
 
-- It ◊site-crossref["blog/2017-03-19-new-website"]{started as a Jekyll site hosted on Github Pages} (replacing an old blog hosted on Blogger, which was just a list UTAU cover announcements),
-- then I ◊site-crossref["blog/2017-11-14-this-blog-with-pollen-and-frog"]{moved it to Frog, then to just Pollen, then back to Frog but using Pollen as a preprocessor},
+- It [[2017-03-19-new-website.org][started as a Jekyll site hosted on Github Pages]] (replacing an old blog hosted on Blogger, which was just a list of UTAU cover announcements),
+- then I [[2017-11-14-this-blog-with-pollen-and-frog.org][moved it to Frog, then to just Pollen, then back to Frog but using Pollen as a preprocessor]],
 - then completely back to Pollen in 2018.
 
-Now I’ve added another layer: content is now written in Org mode and converted to Pollen Markup with ◊site-crossref["projects/ox-pollen"]{ox-pollen}.
+Now I’ve added another layer: content is now written in Org mode and converted to Pollen Markup with [[projects/ox-pollen][ox-pollen]].
 
 ** This blog stagnated
 
@@ -29,7 +29,7 @@ I discovered [[https://www.orgroam.com/][Org-roam]], and developed my own reimpl
 
 Parts of my private notes started to resemble a blog, and after reading [[https://www.swyx.io/learn-in-public/][swyx - Learn in public]] I started thinking that I want a way to publish them.
 
-The result is ox-pollen, which ◊site-crossref["blog/2020-10-25-ox-pollen"]{hopefully will allow me to publish my notes a lot more easily}.
+The result is ox-pollen, which [[2020-10-25-ox-pollen.org][hopefully will allow me to publish my notes a lot more easily]].
 
 * Current infrastructure of this site
 ** Hosting

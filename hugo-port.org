@@ -52,7 +52,7 @@
 *** TODO 2019-12-16
 *** TODO 2020-02-16
 *** TODO 2020-10-25
-*** TODO 2020-10-31
+*** DONE 2020-10-31
 *** TODO 2020-12-16
 ** DONE Templates
 *** DONE List
