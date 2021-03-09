@@ -8,6 +8,4 @@ I started writing poems (mostly in Mandarin) intermittently in 2013. Initially I
 
 Last week I finally got around to doing something about it. I've [[https://barren-moon.kisaragi-hiu.com][packaged them into a poem collection]], although it's still in Mandarin only.
 
-The book is built with Pollen, presented with CSS Grid, with the link style inspired by [[https://practicaltypography.com][Practical Typography]]. It should look fine on most screen sizes, +and I plan to make a PDF version to sell on [[https://booth.pm][Booth]].+
-
-/2020-10-31T04:23:05+0900: I now think I should move on from it. The PDF version is probably not happening./
+The book is built with Pollen, presented with CSS Grid, with the link style inspired by [[https://practicaltypography.com][Practical Typography]]. It should look fine on any screen size.
