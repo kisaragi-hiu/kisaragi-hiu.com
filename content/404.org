@@ -3,4 +3,3 @@
 This page does not exist.
 
 [[/][Back to home.]]
-◊link["/"]{Back to home.}
