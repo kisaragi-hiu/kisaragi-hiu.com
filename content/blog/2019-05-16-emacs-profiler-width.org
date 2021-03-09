@@ -4,24 +4,23 @@
 #+tags[]: Emacs Config
 #+language: en
 
-◊tldr{
-[[https://www.gnu.org/software/emacs/manual/html_node/elisp/Setting-Generalized-Variables.html][=setf=]] the caar of =profiler-report-cpu-line-format= and =profiler-report-memory-line-format= to a larger width (default 50 and 55).
+*TL;DR*: [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Setting-Generalized-Variables.html][=setf=]] the caar of =profiler-report-cpu-line-format= and =profiler-report-memory-line-format= to a larger width (default 50 and 55).
 
 #+begin_src elisp
 (setf (caar profiler-report-cpu-line-format) 80
       (caar profiler-report-memory-line-format) 80)
 #+end_src
-}
 
 Emacs's profiler reports have a fixed width, which makes debugging deeply nested function calls [[https://emacs.stackexchange.com/questions/7344/make-profiler-report-columns-wider][difficult]].
 
-◊image["/static/emacs-26.2-profiler.png"]
+[[/emacs-26.2-profiler.png]]
 
-Ideally the columns would be resized along with the window, or perhaps ◊emacs-source[#:branch "emacs-26" #:file "lisp/profiler.el"]{profiler.el} should define its formatting variables with =defcustom=. Either way, it is still relatively easy to change the format.
+Ideally the columns would be resized along with the window, or perhaps [[https://git.savannah.gnu.org/cgit/emacs.git/tree/lisp/profiler.el?h=emacs-26][profiler.el]] should define its formatting variables with =defcustom=. Either way, it is still relatively easy to change the format.
 
 The formatting is stored in two variables, =profiler-report-cpu-line-format= and =profiler-report-memory-line-format=. They're not explicitly documented, but turns out their =caar= fields specify their widths.
 
-In ◊emacs-source[#:branch "emacs-26" #:file "lisp/profiler.el" #:line "446"]{profiler.el} (comments added):
+
+In [[https://git.savannah.gnu.org/cgit/emacs.git/tree/lisp/profiler.el?h=emacs-26#n446][profiler.el]] (comments added):
 
 #+begin_src elisp
 (defvar profiler-report-cpu-line-format
@@ -58,6 +57,6 @@ And here is a minor mode to do it:
           (caar profiler-report-memory-line-format) 55)))
 #+end_src
 
-◊image["/static/emacs-26.2-profiler-width-80.png"]
+[[/emacs-26.2-profiler-width-80.png]]
 
 This is a solution to [[https://emacs.stackexchange.com/questions/7344/make-profiler-report-columns-wider][this StackExchange question]]. Specifically, a comment there pointed out that =profiler-report= mentions "width", which led me to find the relevant variables.

@@ -9,10 +9,8 @@ This lets functions keep a persistent state without using global variables.
 
 To define a function that has persistent local variables in a language that supports this, create it in a local environment where you’d define these local variables. In Lisp family languages, this means a =lambda= wrapped inside a =let=: the local binding of that let will become part of the lambda’s environment.
 
-# The code blocks will first be turned into ◊highlight blocks, which will be picked up by Pollen from there.
-# ◊(tabbed
-◊(lang-showcase-without-tab
-  (list "Scheme"
+*Scheme*
+
 #+BEGIN_SRC scheme
 (define a-closure
   (let ((x 10))
@@ -21,9 +19,9 @@ To define a function that has persistent local variables in a language that supp
       (set! x (+ x y))
       x)))
 #+END_SRC
-)
 
-  (list "Emacs Lisp"
+*Emacs Lisp*
+
 #+BEGIN_SRC elisp
 ;;; -*- lexical-binding: t; -*-
 (defalias 'a-closure
@@ -33,9 +31,9 @@ To define a function that has persistent local variables in a language that supp
       (setq x (+ x y))
       x)))
 #+END_SRC
-)
 
-  (list "JavaScript"
+*Javascript*
+
 #+BEGIN_SRC javascript
 {
   let x = 10;
@@ -46,6 +44,5 @@ To define a function that has persistent local variables in a language that supp
   }
 }
 #+END_SRC
-))
 
 As far as =a_closure= is concerned, =x= might as well be a global variable. It is a persistent variable outside of the function that happens to only be accessible to the function.

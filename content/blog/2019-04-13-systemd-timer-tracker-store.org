@@ -16,7 +16,7 @@ If I had to do this with Firefox or Chrome, this would be a bit too extreme, but
 
 So, also wanting to learn systemd timers, I wrote a timer that does what the above script does.
 
-The service file (◊path{~/.config/systemd/user/kill-tracker.service}) that the timer will fire:
+The service file (=~/.config/systemd/user/kill-tracker.service=) that the timer will fire:
 
 #+begin_src systemd
 [Unit]
@@ -30,7 +30,7 @@ SuccessExitStatus=0 1
 
 Exit status 1 from pkill means the process couldn't be found.
 
-The timer (◊path{~/.config/systemd/user/kill-tracker.timer}):
+The timer (=~/.config/systemd/user/kill-tracker.timer=):
 
 #+begin_src systemd
 [Unit]

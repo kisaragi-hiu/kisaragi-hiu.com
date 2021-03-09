@@ -4,8 +4,7 @@
 #+language: en
 #+toc: #t
 
-◊update-block["2019-03-24"]{
-I forgot to mention that Chrom/ium adds a header and footer when printing to PDF from the command line. To work around this, set the top/bottom margin to 0, eg.:
+*Update 2019-03-24*: I forgot to mention that Chrom/ium adds a header and footer when printing to PDF from the command line. To work around this, set the top/bottom margin to 0, eg.:
 
 #+begin_src css
 @media print {
@@ -14,7 +13,8 @@ I forgot to mention that Chrom/ium adds a header and footer when printing to PDF
     }
 }
 #+end_src
-}
+
+#+html: <hr>
 
 Pollen's manual has a [[http://docs.racket-lang.org/pollen/fourth-tutorial.html#(part._.Adding_support_for_.P.D.F_output)][tutorial]] on how to make [[http://docs.racket-lang.org/pollen/second-tutorial.html#%28part._tutorial-2._.Templates%29][templates]] for PDF. It first builds a LaTeX source file, then renders that with =pdflatex=, then returns the bytes from the PDF, deleting the temporary files. The problem with this in my use case is that I don't use LaTeX, and would like a way to turn the HTML version of my pages into PDF. So far I had always manually rendered my pages in Firefox (my primary browser) or Chrome (offers a print preview), which I'd like to automate.
 

@@ -19,7 +19,8 @@ Now a QR code can be generated in Emacs by directly calling the shell command, t
 (shell-command-to-string "qrencode 'hello world' -t UTF8 -o -")
 #+end_src
 
-◊image["/static/emacs-qrencode-as-ascii.png" #:class "maxh-25rem"]{qrencode output in =*Messages*=}
+#+caption: qrencode output in =*Messages*=
+[[/emacs-qrencode-as-ascii.png]]
 
 Of course, we should utilize Emacs's ability to display images. Here's a Emacs command that prompts for the string, encodes it with =qrencode=, and displays it in a nice PNG buffer.
 
@@ -27,7 +28,7 @@ Of course, we should utilize Emacs's ability to display images. Here's a Emacs c
 
 #+begin_src elisp
 (defun kisaragi/qr-encode (str &optional buf)
-  "Encode STR as a QR code.
+  Encode STR as a QR code.
 
 Return a new buffer or BUF with the code in it."
   (interactive "MString to encode: ")                    ; Open a prompt; pass input as str
@@ -50,7 +51,8 @@ Return a new buffer or BUF with the code in it."
     buffer))
 #+end_src
 
-◊video/gif-esque["/static/emacs-kisaragi-qr-encode.mp4" #:class "maxh-40rem"]{kisaragi/qr-encode accepting input, displaying qr buffer}
+#+caption: kisaragi/qr-encode accepting input, displaying qr buffer
+{{< video "/emacs-kisaragi-qr-encode.mp4" >}}
 
 * In the Terminal
 
