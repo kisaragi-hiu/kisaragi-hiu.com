@@ -54,4 +54,4 @@ As it stands, ox-pollen will probably emit what’s most convenient for me right
 
 * Getting it
 
-ox-pollen is [[https://github.com/kisaragi-hiu/ox-pollen][hosted on GitHub]]; there’s also a project page ◊site-crossref["projects/ox-pollen"]{on this site}.
+ox-pollen is [[https://github.com/kisaragi-hiu/ox-pollen][hosted on GitHub]]; there’s also a project page [[../projects/ox-pollen.org][on this site]].

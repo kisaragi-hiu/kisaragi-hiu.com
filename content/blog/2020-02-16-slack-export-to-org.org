@@ -16,9 +16,20 @@ First I tried to do it manually, checking the timestamp of each message, writing
 
 * Exporting the data from Slack
 
-◊image["/static/slack-to-workspace.png" "Workspace → Administration → Workspace settings"]
-◊image["/static/slack-workspace-settings.png" "Import / Export Data"]
-◊image["/static/slack-export.png" "Export → Choose \"Entire workspace history\""]
+First go into Workspace settings:
+
+#+caption: Workspace → Administration → Workspace settings
+[[/slack-to-workspace.png]]
+
+Then go into the import / export data page:
+
+#+caption: Import / Export Data
+[[/slack-workspace-settings.png]]
+
+Then export it:
+
+#+caption: Export → Choose "Entire workspace history"
+[[/slack-export.png]]
 
 The data is in a zip file, structured like this:
 
