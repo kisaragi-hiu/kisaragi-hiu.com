@@ -47,10 +47,10 @@ My usual workflow is:
 I’ve also built a task list view, although that’s something that isn’t really fleshed out just yet.
 
 #+caption: Task view
-[[file:../static/canrylog-20201118-task-view.png]]
+[[/canrylog-20201118-task-view.png]]
 
 #+caption: Main view
-[[file:../static/canrylog-20201118-dashboard.png]]
+[[/canrylog-20201118-dashboard.png]]
 
 ** Command line version
 

@@ -1,16 +1,17 @@
 #+title: 2021-02-02T01:06:55+0900 Porting kisaragi-hiu.com to Hugo
 
-* [66%] Content
+* [73%] Content
 :PROPERTIES:
 :COOKIE_DATA: recursive
 :END:
-** DONE Port page content
+** TODO Port page content
 *** CANCELLED category.html.pm
 :LOGBOOK:
 - State "CANCELLED"  from "TODO"       [2021-02-18 Thu 01:48] \\
   Replaced with Hugo’s own category listing.
 :END:
 *** DONE feeds.html.pm
+*** TODO projects
 *** CANCELLED 2018-06-17
 *** DONE 2016-06-30
 *** DONE 2017-03-19
@@ -73,10 +74,18 @@
 :END:
 *** DONE post-heading
 ** TODO Port Pollen widgets to shortcodes
-*** TODO ruby
-*** TODO command
-*** TODO edit
-*** TODO edit-block
+*** DONE ruby
+*** CANCELLED command
+:LOGBOOK:
+- State "CANCELLED"  from "TODO"       [2021-03-09 Tue 16:39] \\
+  Just use inline code.
+:END:
+*** CANCELLED edit
+:LOGBOOK:
+- State "CANCELLED"  from "TODO"       [2021-03-09 Tue 16:39] \\
+  Just use a =*Edit*= text.
+:END:
+*** CANCELLED edit-block
 *** CANCELLED emacs-source
 :LOGBOOK:
 - State "CANCELLED"  from "TODO"       [2021-03-09 Tue 16:24] \\
@@ -99,13 +108,33 @@ Hugo shortcode: gist (user gist-id [file])
 *** CANCELLED h1
 *** CANCELLED h2
 *** CANCELLED h3
-*** TODO heading
-*** TODO icon
-*** TODO image
+*** CANCELLED heading
+:LOGBOOK:
+- State "CANCELLED"  from "TODO"       [2021-03-09 Tue 16:39] \\
+  Org headings
+:END:
+*** CANCELLED icon
+:LOGBOOK:
+- State "CANCELLED"  from "TODO"       [2021-03-09 Tue 16:40] \\
+  No need.
+:END:
+*** CANCELLED image
+:LOGBOOK:
+- State "CANCELLED"  from "TODO"       [2021-03-09 Tue 16:40] \\
+  Org links.
+:END:
 *** TODO image/link
 *** DONE kbd
-*** TODO lang-showcase-without-tab
-*** TODO link
+*** CANCELLED lang-showcase-without-tab
+:LOGBOOK:
+- State "CANCELLED"  from "TODO"       [2021-03-09 Tue 16:40] \\
+  Just use bold text.
+:END:
+*** CANCELLED link
+:LOGBOOK:
+- State "CANCELLED"  from "TODO"       [2021-03-09 Tue 16:41] \\
+  Org links.
+:END:
 *** TODO link/date
 *** TODO make-heading-widget
 *** TODO melpa-badge
