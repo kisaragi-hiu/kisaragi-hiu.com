@@ -6,6 +6,8 @@
 
 *TL;DR*: [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Setting-Generalized-Variables.html][=setf=]] the caar of =profiler-report-cpu-line-format= and =profiler-report-memory-line-format= to a larger width (default 50 and 55).
 
+*Update 2021-03-10*: As of [[http://git.savannah.gnu.org/cgit/emacs.git/commit/?id=9920929e7b538f8bf8fb1dd7a9ae7cd1fe5d2b31][this commit on 2020-12-22]] the profiler layout has been changed for Emacs 28, putting function names at the rightmost column, preventing them from being truncated. So this article only applies to Emacs up to 27.
+
 #+begin_src elisp
 (setf (caar profiler-report-cpu-line-format) 80
       (caar profiler-report-memory-line-format) 80)
