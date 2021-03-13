@@ -11,41 +11,44 @@ Incomplete: illustrations on Pixiv, other things that I've forgot, etc. still ne
 
 ** Emacs
 
-#+begin_export pollen
-◊project["https://kisaragi-hiu.com/" "yaml.el"]{
+{{% project "https://kisaragi-hiu.com/" "yaml.el" %}}
 Work in progress: eventually might become a YAML library in pure Emacs Lisp.
-}
+{{% /project %}}
 
-◊project["https://gitlab.com/kisaragi-hiu/tst.el" "tst.el"]{
+{{% project "https://gitlab.com/kisaragi-hiu/tst.el" "tst.el" %}}
 An Emacs Lisp library implementing a syntax for specifying tags inspired by TagSpaces.
-}
+{{% /project %}}
 
-◊project["https://github.com/kisaragi-hiu/background-job.el" "background-job.el"]{
+{{% project "https://github.com/kisaragi-hiu/background-job.el" "background-job.el" %}}
 An Emacs Lisp library to start jobs in the background that try not to block the user too much.
-}
+{{% /project %}}
 
-◊project["/projects/ox-pollen.html" "ox-pollen"]{
-Org to Pollen exporter. Usable — this very page is exported from Org.
-}
+{{% project "/projects/ox-pollen.html" "ox-pollen" %}}
+Org to Pollen exporter.
+{{% /project %}}
 
-◊project["https://gitlab.com/kisaragi-hiu/kisaragi-log" "kisaragi-log"]{
-Tracking amounts of stuff in Emacs. Supercedes ◊link["#kisaragi-hydration"]{kisaragi-hydration} because I wanted to track more than just water intake.
-}
+{{% project "https://gitlab.com/kisaragi-hiu/kisaragi-log" "kisaragi-log" %}}
+Tracking amounts of stuff in Emacs. Supercedes kisaragi-hydration because I wanted to track more than just water intake.
+{{% /project %}}
 
-◊project["https://gitlab.com/kisaragi-hiu/kisaragi-hydration" "kisaragi-hydration"]{
-My own hydration tracker. Superceded by ◊link["#kisaragi-log"]{kisaragi-log}.
-}
+{{% project "https://gitlab.com/kisaragi-hiu/kisaragi-hydration" "kisaragi-hydration" %}}
+My own hydration tracker. Superceded by kisaragi-log.
+{{% /project %}}
 
-◊project["/projects/ust-mode.html" "UST mode"]{
+{{% project "/projects/ust-mode.html" "UST mode" %}}
 Major mode for UTAU project (UST) files.
-}
+{{% /project %}}
 
-◊project["https://gitlab.com/kisaragi-hiu/didyoumean.el" "DidYouMean.el"
-         #:title2 ◊(melpa-badge "didyoumean")]{
+{{% project "https://gitlab.com/kisaragi-hiu/didyoumean.el" "DidYouMean.el" %}}
+
+{{< melpa-badge "didyoumean" >}}
+
 Ask for the right file to open.
 
-Emacs port of the ◊github["EinfachToll/DidYouMean"]{DidYouMean} Vim plugin.
-}
+Emacs port of the [[https://github.com/EinfachToll/DidYouMean][DidYouMean]] Vim plugin.
+{{% /project %}}
+
+#+begin_export pollen
 
 ◊project["https://gitlab.com/kisaragi-hiu/dired-show-readme" "dired-show-readme"]{
 Dired extension to show README of current directory.
@@ -113,6 +116,6 @@ My personal osu! skin, focused on glow and shadow effects.
 }
 
 ◊project["https://github.com/kisaragi-hiu/font-rozerofo" "Rozerofo"]{
-A font for the ◊em{Romoji} script from ◊link["https://en.wikipedia.org/wiki/Re:Zero_−_Starting_Life_in_Another_World"]{Re:Zero}.
+A font for the ◊em{Romoji} script from [[https://en.wikipedia.org/wiki/Re:Zero_−_Starting_Life_in_Another_World][Re:Zero]].
 }
 #+end_export

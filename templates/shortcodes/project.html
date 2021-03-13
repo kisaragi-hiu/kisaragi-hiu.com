@@ -1,0 +1,5 @@
+<!-- project <url> <title>; outputs org -->
+#+html: <div class="project" id="{{.Get 1}}">
+#+html:  <h2><a class="project-title" href="{{.Get 0}}">{{.Get 1}}</a></h2>
+  {{ .Inner }}
+#+html: </div>
