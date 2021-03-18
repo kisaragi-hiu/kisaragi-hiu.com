@@ -1,0 +1,34 @@
+<div class="index-item">
+    <div class="baseline list">
+        {{ with .Date }}
+        <time class="color-secondary mono"
+              title="{{ .Format "2006-01-02T15:04:05-07:00" }}"
+              datetime="{{ .Format "2006-01-02T15:04:05-07:00" }}">
+            <!-- Thank you https://mertbakir.gitlab.io/hugo/pass-arguments-in-partials-hugo/ -->
+            {{ if $.Scratch.Get "noyear" }}
+            {{ .Format "01/02" }}
+            {{ else }}
+            {{ .Format "2006/01/02" }}
+            {{ end }}
+        </time>
+        {{ end }}
+        <!-- Even though I don't intend to assign multiple categories to one post,
+             it's still going to be extracted as a list.
+             So we have to use `range`. -->
+        {{ range .GetTerms "category" }}
+        <a href="{{ .Permalink }}">{{ .LinkTitle }}</a>
+        {{ end }}
+    </div>
+    <h2 class="margin-top-none">
+        <a href="{{ .Permalink }}" class="color-primary">
+            {{ .LinkTitle }}
+        </a>
+    </h2>
+    {{ with .GetTerms "tags" }}
+    <div class="margin-none list">
+        {{ range $index, $value := . }}
+        <a class="tag" href="{{ .Permalink }}">{{ .LinkTitle | lower }}</a>
+        {{ end }}
+    </div>
+    {{ end }}
+</div>

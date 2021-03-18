@@ -1,0 +1,28 @@
+staticDir: static
+layoutDir: templates
+
+hasCJKLanguage: true
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+  highlight:
+    lineNos: true
+
+# We need this to use CSS to style syntax highlighting
+pygmentsUseClasses: true
+
+baseURL: kisaragi-hiu.com
+
+frontmatter:
+  date: ["date", "publishDate", "lastmod"]
+  lastmod: [":git", "lastmod", "date", "publishDate"]
+  publishDate: ["publishDate", "date"]
+  expiryDate: ["expiryDate"]
+
+taxonomies:
+  category: category
+  tag: tags
+
+title: Kisaragi Hiu

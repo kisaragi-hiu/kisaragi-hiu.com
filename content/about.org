@@ -1,0 +1,40 @@
+#+title: About
+
+I'm a college student in Taiwan, studying, um, Applied English.
+
+I write Emacs Lisp, make covers with UTAU, and occasionally play with Blender.
+
+PGP fingerprint: [[file:KisaragiHiu.asc][BCC7 4B10 41D4 B7D7 CC8B F402 40EC BEAE A877 5FC2]]
+
+[[https://orcid.org/][ORCID]]: https://orcid.org/0000-0002-0293-7943
+
+* Links
+** Social
+
+- [[https://twitter.com/flyin1501][Twitter]]
+- [[https://www.reddit.com/user/flyin1501][Reddit]]
+- [[https://home.gamer.com.tw/c12345678999][gamer.com.tw]]
+
+** Code
+
+- [[https://gitlab.com/kisaragi-hiu/dotfiles][My dotfiles]]
+- [[https://github.com/kisaragi-hiu][Github]]
+- [[https://gitlab.com/kisaragi-hiu][Gitlab.com]]
+- [[https://git.sr.ht/~kisaragi_hiu/][Sourcehut]]
+
+** Art
+
+- [[https://youtube.com/channel/UCl_hsqcvdX0XdgBimRQ6R3A][Youtube]]
+- [[https://nicovideo.jp/user/38995186][niconico]]
+- [[https://pixiv.me/kisaragi-hiu][pixiv]]
+- [[https://episode.cc/about/flyin1501][Episode.cc]]
+
+** Gaming
+
+- [[https://osu.ppy.sh/users/3996811][osu!]]
+
+* About this website
+
+This site is built with Hugo; the CSS is preprocessed with [[https://pollenpub.com/][Pollen]].
+
+# Hugo’s template language needs better reference documentation.

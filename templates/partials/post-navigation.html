@@ -1,0 +1,8 @@
+<ul class="page-navigation">
+    {{ with .Next }}
+    <li>Newer: <a href="{{.Permalink}}">{{.Title}}</a></li>
+    {{ end }}
+    {{ with .Prev }}
+    <li>Older: <a href="{{.Permalink}}">{{.Title}}</a></li>
+    {{ end }}
+</ul>

@@ -1,0 +1,39 @@
+# /static is now available under /
+/static/* /:splat 200
+
+/feed.xml /index.xml 200
+/rss.xml /index.xml 200
+/atom.xml /index.xml 200
+/feeds/all.atom.xml /index.xml 200
+
+/youtube https://www.youtube.com/channel/UCl_hsqcvdX0XdgBimRQ6R3A
+/niconico https://www.nicovideo.jp/user/38995186
+/pixiv https://www.pixiv.net/member.php?id=14235181
+
+# / is /blog
+/blog /
+/posts /
+
+# old frog/pollen hybrid site URLs
+/tags/category-* /category/:splat
+/tags/* /tags/:splat
+
+/projects/cangjie.el https://github.com/kisaragi-hiu/cangjie.el
+/projects/timetrack https://gitlab.com/canrylog
+/projects/yasearch https://gitlab.com/kisaragi-hiu/yasearch
+/projects/org-inline-video-thumbnails https://github.com/kisaragi-hiu/org-inline-video-thumbnails
+/projects/background-job.el https://github.com/kisaragi-hiu/background-job.el
+
+/dotfiles https://gitlab.com/kisaragi-hiu/dotfiles
+/.emacs.d https://gitlab.com/kisaragi-hiu/.emacs.d
+/poems https://barren-moon.kisaragi-hiu.com
+
+/KisaragiHiu.gpg /KisaragiHiu.asc
+
+/categories /category
+
+# old urls
+/category/experiment /category/experiments
+
+# We have to do this explicitly
+/* /404 404

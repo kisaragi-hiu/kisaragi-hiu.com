@@ -1,0 +1,99 @@
+#+title: A Pollen PDF template based on HTML, instead of LaTeX
+#+date: 2019-01-03T03:50:00+0900
+#+tags[]: PDF Pollen
+#+language: en
+#+toc: #t
+
+*Update 2019-03-24*: I forgot to mention that Chrom/ium adds a header and footer when printing to PDF from the command line. To work around this, set the top/bottom margin to 0, eg.:
+
+#+begin_src css
+@media print {
+    body {
+        margin: 0 2rem 0;
+    }
+}
+#+end_src
+
+#+html: <hr>
+
+Pollen's manual has a [[http://docs.racket-lang.org/pollen/fourth-tutorial.html#(part._.Adding_support_for_.P.D.F_output)][tutorial]] on how to make [[http://docs.racket-lang.org/pollen/second-tutorial.html#%28part._tutorial-2._.Templates%29][templates]] for PDF. It first builds a LaTeX source file, then renders that with =pdflatex=, then returns the bytes from the PDF, deleting the temporary files. The problem with this in my use case is that I don't use LaTeX, and would like a way to turn the HTML version of my pages into PDF. So far I had always manually rendered my pages in Firefox (my primary browser) or Chrome (offers a print preview), which I'd like to automate.
+
+First was finding a programmable interface to render an HTML to PDF. I knew Chrom/ium has a ~--print-to-pdf~ option, but initially I thought it's going to have unavoidable headers and footers. So I started working with [[https://wkhtmltopdf.org/][=wkhtmltopdf=]].
+
+* First version with =wkhtmltopdf=
+
+First we check for =wkhtmltopdf='s existance.
+
+#+begin_src racket
+◊(unless (find-executable-path "wkhtmltopdf")
+   (error 'pdf-render "wkhtmltopdf missing"))
+#+end_src
+
+Then we assemble the pagenode to render, then send it to ~render-pagenodes~ to render. Using ~render-pagenodes~ allows me to specify that I want to get HTML output.
+
+#+begin_src racket
+◊(define html-pagenode
+   (string->symbol
+    (string-replace (symbol->string here)
+                    #rx"\\.pdf$" ".html")))
+◊(render-pagenodes `(root ,html-pagenode))
+#+end_src
+
+Lastly, we send the HTML to =wkhtmltopdf=, telling it to output to stdout, and capture it with ~with-output-to-bytes~. (~(thunk ...)~ is shorthand for ~(lambda () ...)~.)
+
+#+begin_src racket
+◊(with-output-to-bytes (thunk (system (format "wkhtmltopdf ~a -" html-pagenode))))
+#+end_src
+
+The entire thing: {{< gist kisaragi-hiu 47578b77677bf659982819125cc34df4 >}}
+
+** =wkhtmltopdf= troubles
+
+After getting the rendered PDF and printing them out, I found that the output from =wkhtmltopdf= differed too much from what I get from either Firefox or Chrome. Some of the CSS I have didn't seem to work as well. I then realized Chrome's ~--print-to-pdf~ option doesn't give me the headers and footers with the CSS I have, so I decided using Chrome was less trouble.
+
+One problem with this is that Chrome has to output to a file, so I couldn't write to stdout to avoid using a temporary file, like I did with =wkhtmltopdf=.
+
+* Second version with Chrome
+
+First we try to find the command for Chrome. The ~error~ only runs when all above fails.
+
+#+begin_src racket
+◊(define chrome-executable
+   (or (find-executable-path "chromium")
+       (find-executable-path "google-chrome-stable")
+       (find-executable-path "google-chrome-unstable")
+       (find-executable-path "google-chrome")
+       (find-executable-path "chrome")
+       (error 'pdf-render "chrome missing")))
+#+end_src
+
+Let Racket handle making the temporary file for us. (Pardon my naming sense…)
+
+#+begin_src racket
+◊(define temp-output (make-temporary-file))
+#+end_src
+
+This is the same as before, except this time we call ~system~ here and let it do its thing, suppressing its output with ~void~.
+
+#+begin_src racket
+◊(define html-pagenode
+   (string->symbol
+    (string-replace (symbol->string here)
+                    #rx"\\.pdf$" ".html")))
+◊(void
+  (render-pagenodes `(root ,html-pagenode))
+  (system (format "~a --headless --disable-gpu --print-to-pdf=~a ~a"
+                  chrome-executable
+                  temp-output
+                  html-pagenode)))
+#+end_src
+
+Returning the bytes has to be done last for some reason, so we capture the bytes in ~output~, delete the temporary file, then return ~output~.
+
+#+begin_src racket
+◊(define output (file->bytes temp-output))
+◊(delete-file temp-output)
+◊output
+#+end_src
+
+Full version: {{< gist kisaragi-hiu 6062b66694a612fd6981f0afc4515b1e >}}
