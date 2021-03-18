@@ -156,4 +156,4 @@ Undercover will then automatically upload the results to Coveralls if a token ha
   - Make sure both Protect Variable and Mask Variable are checked.
 - Maybe add the badge to your README.
 
-[[/static/tst-el-readme-20210116.png]]
+[[/tst-el-readme-20210116.png]]
