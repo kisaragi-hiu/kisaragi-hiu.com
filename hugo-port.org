@@ -1,6 +1,6 @@
 #+title: 2021-02-02T01:06:55+0900 Porting kisaragi-hiu.com to Hugo
 
-* [75%] Content
+* [100%] Content
 :PROPERTIES:
 :COOKIE_DATA: recursive
 :END:
@@ -73,7 +73,7 @@
   Inlined, essentially.
 :END:
 *** DONE post-heading
-** TODO Port Pollen widgets to shortcodes
+** DONE Port Pollen widgets to shortcodes
 *** DONE ruby
 *** CANCELLED command
 :LOGBOOK:
@@ -123,7 +123,11 @@ Hugo shortcode: gist (user gist-id [file])
 - State "CANCELLED"  from "TODO"       [2021-03-09 Tue 16:40] \\
   Org links.
 :END:
-*** TODO image/link
+*** CANCELLED image/link
+:LOGBOOK:
+- State "CANCELLED"  from "TODO"       [2021-03-18 Thu 22:36] \\
+  Not used. If I need something similar I can build it then.
+:END:
 *** DONE kbd
 *** CANCELLED lang-showcase-without-tab
 :LOGBOOK:
@@ -135,42 +139,119 @@ Hugo shortcode: gist (user gist-id [file])
 - State "CANCELLED"  from "TODO"       [2021-03-09 Tue 16:41] \\
   Org links.
 :END:
-*** TODO link/date
-*** TODO make-heading-widget
-*** TODO melpa-badge
-*** TODO navbutton
-*** TODO newline-decode
+*** CANCELLED link/date
+:LOGBOOK:
+- State "CANCELLED"  from "TODO"       [2021-03-18 Thu 22:36] \\
+  Not used.
+:END:
+*** CANCELLED make-heading-widget
+:LOGBOOK:
+- State "CANCELLED"  from "TODO"       [2021-03-18 Thu 22:36] \\
+  Internal function.
+:END:
+*** DONE melpa-badge
+*** CANCELLED newline-decode
 *** DONE niconico
 *** CANCELLED noichigo
 :LOGBOOK:
 - State "CANCELLED"  from "TODO"       [2021-02-02 Tue 02:29] \\
   Just a remnant from the 2017 CV assignment.
 :END:
-*** TODO osuwiki
-*** TODO page-navigation
-*** TODO path
+*** CANCELLED osuwiki
+:LOGBOOK:
+- State "CANCELLED"  from "TODO"       [2021-03-18 Thu 22:37] \\
+  Unnecessary link shortcut.
+:END:
+*** page navigation
+**** CANCELLED navbutton
+:LOGBOOK:
+- State "CANCELLED"  from "TODO"       [2021-03-18 Thu 22:37] \\
+  Not used for now.
+:END:
+**** CANCELLED page-navigation
+:LOGBOOK:
+- State "CANCELLED"  from "TODO"       [2021-03-18 Thu 22:38] \\
+  Not implemented for now.
+:END:
+**** CANCELLED previous-and-next
+:LOGBOOK:
+- State "CANCELLED"  from "TODO"       [2021-03-18 Thu 22:38] \\
+  I’ll figure out navigation later.
+:END:
+**** CANCELLED previous-and-next-same-category
+:LOGBOOK:
+- State "CANCELLED"  from "TODO"       [2021-03-18 Thu 22:38] \\
+  I’ll figure out navigation later.
+:END:
+*** CANCELLED path
+:LOGBOOK:
+- State "CANCELLED"  from "TODO"       [2021-03-18 Thu 22:38] \\
+  Just use inline code.
+:END:
 *** DONE pixiv
-*** TODO previous-and-next
-*** TODO previous-and-next-same-category
-*** TODO project
-*** TODO rant
-*** TODO site-crossref
-*** TODO strike
-*** TODO stylized-item
-*** TODO subheading
-*** TODO subsubheading
-*** TODO tabbed
-*** TODO table
-*** TODO tag
-*** TODO tag-list
-*** TODO tldr
+*** DONE project
+*** CANCELLED rant
+:LOGBOOK:
+- State "CANCELLED"  from "TODO"       [2021-03-18 Thu 22:39] \\
+  Just cross it out.
+:END:
+*** CANCELLED site-crossref
+:LOGBOOK:
+- State "CANCELLED"  from "TODO"       [2021-03-18 Thu 22:39] \\
+  Unnecessary. Just link to articles with relative links, Hugo will figure out the rest.
+:END:
+*** CANCELLED strike
+:LOGBOOK:
+- State "CANCELLED"  from "TODO"       [2021-03-18 Thu 22:39] \\
+  Org has syntax for this.
+:END:
+*** CANCELLED stylized-item
+:LOGBOOK:
+- State "CANCELLED"  from "TODO"       [2021-03-18 Thu 22:39] \\
+  Just use bold text, or use a description list.
+:END:
+*** CANCELLED subheading
+:LOGBOOK:
+- State "CANCELLED"  from "TODO"       [2021-03-18 Thu 22:39] \\
+  Provided by Org.
+:END:
+*** CANCELLED subsubheading
+:LOGBOOK:
+- State "CANCELLED"  from "TODO"       [2021-03-18 Thu 22:40] \\
+  Provided by Org.
+:END:
+*** CANCELLED tabbed
+:LOGBOOK:
+- State "CANCELLED"  from "TODO"       [2021-03-18 Thu 22:40] \\
+  I … don’t want to bother for now.
+:END:
+*** CANCELLED table
+:LOGBOOK:
+- State "CANCELLED"  from "TODO"       [2021-03-18 Thu 22:40] \\
+  Org has syntax for this.
+:END:
+*** DONE tag
+*** DONE tag-list
+*** CANCELLED tldr
+:LOGBOOK:
+- State "CANCELLED"  from "TODO"       [2021-03-18 Thu 22:40] \\
+  Just write “*TL;DR*:” yourself.
+:END:
 *** DONE toc
 *** DONE tweet
 #+begin_src hugo
 {{< tweet 1116410591747305472 >}}
 #+end_src
-*** TODO update
-*** TODO update-block
+*** CANCELLED update
+:LOGBOOK:
+- State "CANCELLED"  from "TODO"       [2021-03-18 Thu 22:41] \\
+  Just write “Update:” yourself.
+:END:
+*** CANCELLED update-block
+:LOGBOOK:
+- State "CANCELLED"  from "TODO"       [2021-03-18 Thu 22:41] \\
+  Just write “Update:” yourself.
+:END:
 *** DONE video/gif-esque
 *** link shortcodes
 **** CANCELLED twitter
@@ -186,5 +267,9 @@ Hugo shortcode: gist (user gist-id [file])
 {{< youtube id="" >}}
 #+end_src
 
-*** TODO youtube/image-link
+*** CANCELLED youtube/image-link
+:LOGBOOK:
+- State "CANCELLED"  from "TODO"       [2021-03-18 Thu 22:42] \\
+  Maybe just embed Youtube? You can build it again if the performance hit worries you.
+:END:
 ** DONE RSS
