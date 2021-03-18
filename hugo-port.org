@@ -1,17 +1,17 @@
 #+title: 2021-02-02T01:06:55+0900 Porting kisaragi-hiu.com to Hugo
 
-* [73%] Content
+* [75%] Content
 :PROPERTIES:
 :COOKIE_DATA: recursive
 :END:
-** TODO Port page content
+** DONE Port page content
 *** CANCELLED category.html.pm
 :LOGBOOK:
 - State "CANCELLED"  from "TODO"       [2021-02-18 Thu 01:48] \\
   Replaced with Hugo’s own category listing.
 :END:
 *** DONE feeds.html.pm
-*** TODO projects
+*** DONE projects
 *** CANCELLED 2018-06-17
 *** DONE 2016-06-30
 *** DONE 2017-03-19

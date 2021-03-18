@@ -1,0 +1,73 @@
+#+title: Documentation for writing stuff on this blog
+
+* Shortcodes
+** link shortcut shortcodes
+- github path [description]
+- gitlab path [description]
+- niconico path [description]
+- pixiv path [desciption]
+
+Example: ={{< github "kisaragi-hiu" >}}= → a link to https://github.com/kisaragi-hiu
+
+Vice versa for other sites.
+** HTML wrappers
+- kbd keys
+- ruby text furigana
+
+These exist because it’s painful to write inline HTML in Org.
+
+Example:
+- ={{< kbd "Tab" >}}= → ~<kbd>Tab</kbd>~
+- ={{< ruby "漢字" "ㄏㄢˋㄗˋ" >}}= → ~<ruby>漢字<rt>ㄏㄢˋㄗˋ</rt></ruby>~
+
+** side-by-side
+side-by-side . content
+
+Display elements in =content= in a flex div.
+
+If you only give it two elements (such as two src blocks), they will be displayed side-by-side. This is the primary use.
+
+** video
+- video url
+
+Display a GIF-like autoplay video.
+
+Use Org’s =#+caption= to add a figcaption.
+
+** project
+- project url title &key melpa-badge . description
+
+Used for projects in the project list.
+
+Remember that Hugo does not allow mixing positional and named arguments, so if you want to pass in the melpa-badge argument you’ll have to name =url= and =title= as well.
+
+#+begin_example
+{{% project url="https://github.com/kisaragi-hiu/cangjie.el" title="Cangjie.el" melpa-badge="cangjie" %}}
+Retrieve Cangjie code for Han character in Emacs.
+{{% /project %}}
+#+end_example
+
+- You have to use ={{% … %}}=. This is so that Org syntax can be used in the wrapped description.
+- melpa-badge shows a melpa badge of the specified package next to the title.
+- This might be renovated into just Org syntax later on.
+
+** melpa-badge
+- melpa-badge package
+
+Display a melpa badge as an image link.
+
+* Partials
+Partials are like shortcodes, but for use in other templates.
+
+** melpa-badge
+
+like the melpa-badge shortcode, but as a partial.
+
+Example: ={{ partial "melpa-badge" "magit" }}=
+
+Used in the =project= shortcode definition.
+
+* page properties
+
+- =toc=: If not empty, a table of content will be displayed on the page.
+- =hugo_nolist=: only applies to list pages. Only display the page’s own content and not its children, effectively turning the list into a single page. This is first used in [[file:content/projects/_index.org]].

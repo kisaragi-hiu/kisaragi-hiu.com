@@ -1,4 +1,7 @@
 {{ define "main" }}
+{{ if .Params.hugo_nolist }}
+{{ .Content }}
+{{ else }}
 <root>
     {{ .Content }}
     <div class="index">
@@ -8,4 +11,5 @@
         {{ end }}
     </div>
 </root>
+{{ end }}
 {{ end }}

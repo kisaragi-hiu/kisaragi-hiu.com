@@ -1,5 +1,6 @@
 #+title: Projects
-#+toc: #t
+#+hugo_nolist: true
+#+toc: true
 
 A list of my projects.
 
@@ -39,83 +40,69 @@ My own hydration tracker. Superceded by kisaragi-log.
 Major mode for UTAU project (UST) files.
 {{% /project %}}
 
-{{% project "https://gitlab.com/kisaragi-hiu/didyoumean.el" "DidYouMean.el" %}}
-
-{{< melpa-badge "didyoumean" >}}
+{{% project url="https://gitlab.com/kisaragi-hiu/didyoumean.el" title="DidYouMean.el" melpa-badge="didyoumean" %}}
 
 Ask for the right file to open.
 
 Emacs port of the [[https://github.com/EinfachToll/DidYouMean][DidYouMean]] Vim plugin.
 {{% /project %}}
 
-#+begin_export pollen
-
-◊project["https://gitlab.com/kisaragi-hiu/dired-show-readme" "dired-show-readme"]{
+{{% project "https://gitlab.com/kisaragi-hiu/dired-show-readme" "dired-show-readme" %}}
 Dired extension to show README of current directory.
-}
+{{% /project %}}
 
-◊project["https://github.com/kisaragi-hiu/cangjie.el" "Cangjie.el"
-         #:title2 ◊(melpa-badge "cangjie")]{
+{{% project url="https://github.com/kisaragi-hiu/cangjie.el" title="Cangjie.el" melpa-badge="cangjie" %}}
 Retrieve Cangjie code for Han character in Emacs.
 
 This is my first Emacs package.
-}
+{{% /project %}}
 
-◊project["/projects/canrylog.html" "Canrylog"]{
+{{% project "/projects/canrylog.html" "Canrylog" %}}
 An experimental time tracking application.
-}
+{{% /project %}}
 
-◊project["https://gitlab.com/kisaragi-hiu/yasearch" "yasearch"]{
+{{% project "https://gitlab.com/kisaragi-hiu/yasearch" "yasearch" %}}
 Yet Another web Search plugin for Emacs.
 
 Search the word under point or region on the web.
-}
+{{% /project %}}
 
-◊project["/projects/org-msr.html" "org-msr"]{
+{{% project "/projects/org-msr.html" "org-msr" %}}
 My personal spaced repetition system, implemented with Org-mode repeaters.
-}
-#+end_export
+{{% /project %}}
 
 ** Web / Design
 
-#+begin_export pollen
-◊project["https://github.com/kisaragi-hiu/kisaragi-hiu.com" "kisaragi-hiu.com"]{
+{{% project "https://github.com/kisaragi-hiu/kisaragi-hiu.com" "kisaragi-hiu.com" %}}
 This site. Built on Pollen and Racket, using a minimal style, and spamming purple everywhere.
-}
+{{% /project %}}
 
-◊project["https://gitlab.com/kisaragi-hiu/barren-moon" "如同月球般的荒涼(Barren Moon)"]{
+{{% project "https://gitlab.com/kisaragi-hiu/barren-moon" "如同月球般的荒涼(Barren Moon)" %}}
 A web-based book. Collection of poems I wrote in junior and senior high school.
-}
-#+end_export
+{{% /project %}}
 
 ** Commands
 
-#+begin_export pollen
-◊project["https://github.com/kisaragi-hiu/bk" "bk"]{
+{{% project "https://github.com/kisaragi-hiu/bk" "bk" %}}
 Key-value pair storage based on JSON, intended for command line bookmarks.
-}
+{{% /project %}}
 
-◊project["https://github.com/kisaragi-hiu/randomwallpaper" "randomwallpaper"]{
+{{% project "https://github.com/kisaragi-hiu/randomwallpaper" "randomwallpaper" %}}
 A script to set a random wallpaper from a directory every so often.
-}
-#+end_export
+{{% /project %}}
 
 ** Other
 
-#+begin_export pollen
-◊project["https://gitlab.com/kisaragi-hiu/language-startup-benchmark" "Language Startup Benchmark"]{
+{{% project "https://gitlab.com/kisaragi-hiu/language-startup-benchmark" "Language Startup Benchmark" %}}
 Time hello world in various languages to benchmark their startup times.
-}
-#+end_export
+{{% /project %}}
 
 * osu! Skins & related
 
-#+begin_export pollen
-◊project["https://github.com/kisaragi-hiu/osuskin-retome" "Retome"]{
+{{% project "https://github.com/kisaragi-hiu/osuskin-retome" "Retome" %}}
 My personal osu! skin, focused on glow and shadow effects.
-}
+{{% /project %}}
 
-◊project["https://github.com/kisaragi-hiu/font-rozerofo" "Rozerofo"]{
-A font for the ◊em{Romoji} script from [[https://en.wikipedia.org/wiki/Re:Zero_−_Starting_Life_in_Another_World][Re:Zero]].
-}
-#+end_export
+{{% project "https://github.com/kisaragi-hiu/font-rozerofo" "Rozerofo" %}}
+A font for the /Romoji/ script from [[https://en.wikipedia.org/wiki/Re:Zero_−_Starting_Life_in_Another_World][Re:Zero]].
+{{% /project %}}
