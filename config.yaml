@@ -15,7 +15,7 @@ pygmentsUseClasses: true
 
 uglyurls: true
 
-baseURL: kisaragi-hiu.com
+# baseURL: kisaragi-hiu.com
 
 frontmatter:
   date: ["date", "publishDate", "lastmod"]
