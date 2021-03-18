@@ -13,6 +13,8 @@ markup:
 # We need this to use CSS to style syntax highlighting
 pygmentsUseClasses: true
 
+uglyurls: true
+
 baseURL: kisaragi-hiu.com
 
 frontmatter:

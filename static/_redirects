@@ -1,8 +1,6 @@
 # /static is now available under /
 /static/* /:splat 200
 
-/*.html /:splat
-
 /feed.xml /index.xml 200
 /rss.xml /index.xml 200
 /atom.xml /index.xml 200
