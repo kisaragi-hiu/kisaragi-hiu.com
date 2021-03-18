@@ -1,6 +1,8 @@
 staticDir: static
 layoutDir: templates
 
+hasCJKLanguage: true
+
 markup:
   goldmark:
     renderer:
