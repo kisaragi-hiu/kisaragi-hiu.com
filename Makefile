@@ -1,6 +1,6 @@
 .DEFAULT_GOAL := build
 
-.PHONY: build category category-source clean css html org org-files serve tag-source tags templates zip
+.PHONY: serve clean zip css
 
 serve: public
 	hugo server
@@ -8,23 +8,19 @@ serve: public
 clean:
 	git clean -Xdf
 
-zip: public
-	@rm public.zip -r || true
-	@rm public/.* -r || true
-	@rm public/*.{sh,md,org} || true
-	@rm public/*/*.org || true
-	@rm public/rkt -rf || true
-	@rm public/*/compiled/ -rf || true
-	@rm public/template.html || true
+zip: public.zip
+
+public.zip: public
 	cd public/ && 7z a ../public.zip .
 
-public: css
+# the modified timestamp gets messed up on my system; fix that with
+# the `touch`.
+public: static/css/main.css
 	hugo
-
-css: static/css/main.css
-	rm static/css/compiled -rf
+	@touch public
 
 static/css/main.css: static/css/main.css.pp
 	raco pollen render static/css/main.css.pp
 	sed -i '/^ *$$/d' static/css/main.css
+	rm static/css/compiled -rf
 
