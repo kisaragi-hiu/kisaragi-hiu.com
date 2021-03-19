@@ -1,0 +1,33 @@
+#+title: Switching to Hugo
+#+date: 2021-03-20T00:53:55+0900
+#+tags[]: Hugo Pollen
+#+language: en
+#+category: Meta
+
+So I finally switched to [[https://gohugo.io/][Hugo]] because trying to iterate design elements in Pollen is just too slow. Pollen is good for defining flexible markup, but that’s not what I want for a blog.
+
+This is long overdue. I’ve been trying to revamp the site on and off since 2018, most recently starting to move all articles to Org mode (utilizing [[../projects/ox-pollen.org][ox-pollen]]) so that I can index them in org-roam, but switching fully to a fast static site generator is still pretty nice.
+
+Things I had to port:
+
+- Templates
+- Blog posts and other content, revamping their content to work with Hugo’s native Org renderer
+- Tag functions, to shortcodes and partials
+
+Writing Hugo templates is more painful than Pollen in my opinion as Hugo’s documentation doesn’t really have a clean reference section. The configuration reference is in the Getting Started section, for example. But once I got most of what I want working, it became less painful to change small things.
+
+I had to go through every post I have, but this is relatively easy. Reading my old posts is a bit painful, though. I’d like to revamp them sometime.
+
+Most things should have been ported. The RSS feed is different because I’m basically using Hugo’s default instead of my own generator; hopefully that doesn’t break anything.
+
+* Pretty URLs
+
+There was one thing that hasn’t been solved: I want to let Hugo prettify URLs for me, instead of having Netlify do it.
+
+I could’t use pretty URLs in Pollen without manually putting every page in =blog/page-name/index.html.pm=, so I relied on Netlify to do it.
+
+I don’t want to rely on Netlify because in theory this makes me more resilient and allows me to move my site to whatever provider I want when something happens.
+
+But I can’t let Hugo prettify URLs without old URLs breaking: =kisaragi-hiu.com/page.html= would return 404 instead of redirecting to =kisaragi-hiu.com/page/=, and it doesn’t seem to be possible to do this with Netlify’s redirect rules.
+
+Maybe I could use client side redirect instead (run some JS in the 404 page to redirect =page.html= to =/page/=), but for now I’ve simply opted for turning off Hugo’s URL prettifying and letting Netlify do it.
