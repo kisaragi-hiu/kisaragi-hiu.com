@@ -2,7 +2,7 @@
 
 An attempt at making a universal roadmap for learning another language.
 
-This is not published yet: that only happens when we add this file to =index.ptree=.
++This is not published yet: that only happens when we add this file to =index.ptree=.+ /2021-03-29T01:40:19+0900: Oops? This is actually already published. Best revise this later, I guess./
 
 Learning a language = memorize enough of the vocabulary + be familiar enough with grammatical rules (+ understanding pronunciation, though I consider this to be part of vocabulary)
 
