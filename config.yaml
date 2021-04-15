@@ -5,6 +5,7 @@ hasCJKLanguage: true
 
 ignoreFiles:
   - ^README\.md$
+  - ^readme\.md$
 
 markup:
   goldmark:
