@@ -4,6 +4,8 @@ I treat project types as being distinct. Nobody wants to see an UTAU cover and h
 
 I don’t think I’m overdoing it. eg. 2dcg and 3dcg are not split.
 
+*2021-04-17T16:58:01+0900: But “covers” and “animation / visualization” are. …Just add different entrie, then, I guess.*
+
 Frontmatter:
 
 - title
