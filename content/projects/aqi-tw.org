@@ -1,0 +1,5 @@
+#+title: aqi.tw
+
+A simple visualization of Taiwan’s AQI data.
+
+I’ve wanted to write this as a sort of practice since 2017, so I’m actually surprised that the domain hasn’t been taken.
