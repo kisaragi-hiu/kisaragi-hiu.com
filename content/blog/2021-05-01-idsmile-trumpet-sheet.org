@@ -1,0 +1,25 @@
+#+title: So I made a trumpet score for ID Smile
+#+date: 2021-05-01T23:19:58+0700
+#+tags[]: Trumpet prsk Sheets MuseScore
+#+language: en
+
+I’ve been obsessed over [[https://pjsekai.sega.jp/][Project Sekai]] in the last few months. [[https://www.youtube.com/watch?v=X_6EPkvIAGg][ID Smile]] is a song that was recently added to the game, and it’s my favorite song in the last month.
+
+I wanted to try to play it when practicing the trumpet, so I tried making a sheet for it. When I started a few hours before writing this post the full version wasn’t uploaded yet, so I focused on transcribing the [[https://www.youtube.com/watch?v=QdYji4SVH3A][short version]] onto the sheet.
+
+[[/ID Smile copy.pdf][The finished PDF file is here.]] (It’s only 70 kilobytes, barely bigger than the favicon of this site.)
+
+* Making it
+I first wrote the notes in LMMS, then exported that to midi.
+
+Then I downloaded MuseScore and started trying to turn it into a semi-decent looking sheet.
+
+First I had to open the midi file, then copy the notes to a score created with MuseScore’s file creation widget. After that it’s a matter of figuring out how to place down notes, figuring out the key, and establishing some consistency in the notation.
+
+Then I can just export it to PDF.
+
+This whole process took a few hours. Having watched [[https://www.youtube.com/watch?v=4hZxo96x48A][Tantacrul’s MuseScore video]] several times certainly helped.
+* Some notes on the transcription
+
+- The main rhythm in the second half of Bridge is a /bit/ too repetitive and too fast. I’m not good enough at the trumpet to be able to play the original, so I just… picked an easier rhythm. I can’t leave it empty either, as it goes on for 8 bars.
+- Not only is the version I transcribed the short version, it’s also the vocal version seen in the game (and the [[https://www.youtube.com/watch?v=QdYji4SVH3A][short version link]]), which is on a different key from the VOCALOID version. The latter is a few semitones higher, and thus outside of my current range.
