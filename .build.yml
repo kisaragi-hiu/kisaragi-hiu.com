@@ -2,7 +2,7 @@ image: archlinux
 packages:
   - p7zip
   - hugo
-  - ruby-sass
+  - sassc
 sources:
   - https://github.com/kisaragi-hiu/kisaragi-hiu.com
 secrets:

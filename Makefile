@@ -21,4 +21,4 @@ public: static/css/main.css
 	@touch public
 
 static/css/main.css: static/css/main.scss
-	sass --sourcemap=none "$<" "$@"
+	sassc "$<" "$@"
