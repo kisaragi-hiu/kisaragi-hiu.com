@@ -35,6 +35,4 @@ PGP fingerprint: [[file:KisaragiHiu.asc][BCC7 4B10 41D4 B7D7 CC8B F402 40EC BEAE
 
 * About this website
 
-This site is built with Hugo; the CSS is preprocessed with [[https://pollenpub.com/][Pollen]].
-
-# Hugo’s template language needs better reference documentation.
+This site is built with Hugo; the CSS is preprocessed with Sass.

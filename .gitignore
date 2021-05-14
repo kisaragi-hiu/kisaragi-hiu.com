@@ -1,6 +1,6 @@
 !/static/
 *#
-*.cache
+*cache
 *.swp
 *.zip
 *.rktd

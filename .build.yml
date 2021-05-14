@@ -1,15 +1,13 @@
 image: archlinux
 packages:
-  - racket
   - p7zip
   - hugo
+  - ruby-sass
 sources:
   - https://github.com/kisaragi-hiu/kisaragi-hiu.com
 secrets:
   - 9971994c-ebe1-4f42-bb58-11e57b65c689
 tasks:
-  - install-racket-packages: |
-      raco pkg install --skip-installed --deps search-auto pollen threading
   - build: |
       cd kisaragi-hiu.com
       make zip

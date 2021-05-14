@@ -2,7 +2,8 @@
 
 .PHONY: serve clean zip css
 
-serve: public
+serve: public static/css/main.css
+	sass "static/css/main.scss:static/css/main.css" --watch &
 	hugo server
 
 clean:
@@ -19,8 +20,5 @@ public: static/css/main.css
 	hugo
 	@touch public
 
-static/css/main.css: static/css/main.css.pp
-	raco pollen render static/css/main.css.pp
-	sed -i '/^ *$$/d' static/css/main.css
-	rm static/css/compiled -rf
-
+static/css/main.css: static/css/main.scss
+	sass --sourcemap=none "$<" "$@"
