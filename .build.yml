@@ -10,6 +10,7 @@ secrets:
   - 9971994c-ebe1-4f42-bb58-11e57b65c689
 tasks:
   - npm: |
+      cd kisaragi-hiu.com
       npm install --production
   - build: |
       cd kisaragi-hiu.com
