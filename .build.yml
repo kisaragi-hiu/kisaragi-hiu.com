@@ -3,6 +3,7 @@ packages:
   - p7zip
   - hugo
   - nodejs
+  - npm
 sources:
   - https://github.com/kisaragi-hiu/kisaragi-hiu.com
 secrets:
