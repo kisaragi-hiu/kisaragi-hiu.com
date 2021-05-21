@@ -1,17 +1,17 @@
 <header class="cover-heading">
     <div class="baseline list">
-        {{ with .Date }}
-        <time class="date mono"
-              title="{{ .Format "2006-01-02T15:04:05-07:00" }}"
-              datetime="{{ .Format "2006-01-02T15:04:05-07:00" }}">
-            {{ .Format "2006/01/02" }}
-        </time>
-        {{ end }}
         <p class="category">
-            <a href="../{{.Type}}.html">{{.Type | humanize }}</a>
+            <a href="../{{.Type}}.html">{{.Type | humanize }}</a> /
         </p>
     </div>
     <h1 class="xl margin-top-none">{{ .Title }} ft. {{ .Params.voice }}</h1>
+    {{ with .Date }}
+    <time class="date mono"
+          title="{{ .Format "2006-01-02T15:04:05-07:00" }}"
+          datetime="{{ .Format "2006-01-02T15:04:05-07:00" }}">
+        {{ .Format "2006/01/02" }}
+    </time>
+    {{ end }}
     {{ with .GetTerms "tags" }}
     <div class="margin-none list">
         {{ range $index, $value := . }}
