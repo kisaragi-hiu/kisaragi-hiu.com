@@ -2,12 +2,14 @@ image: archlinux
 packages:
   - p7zip
   - hugo
-  - sassc
+  - nodejs
 sources:
   - https://github.com/kisaragi-hiu/kisaragi-hiu.com
 secrets:
   - 9971994c-ebe1-4f42-bb58-11e57b65c689
 tasks:
+  - npm: |
+      npm install --production
   - build: |
       cd kisaragi-hiu.com
       make zip

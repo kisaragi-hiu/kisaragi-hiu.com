@@ -17,3 +17,4 @@ sitemap.txt
 static/external/
 tags/*
 node_modules
+*.map

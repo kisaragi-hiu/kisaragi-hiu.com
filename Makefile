@@ -5,7 +5,7 @@ bin := node_modules/.bin/
 .PHONY: serve clean zip css
 
 watch-css:
-	sass "static/css/main.scss:static/css/main.css" --watch
+	$(bin)sass "static/css/main.scss:static/css/main.css" --watch
 
 watch-hugo:
 	hugo server
@@ -28,4 +28,4 @@ public: static/css/main.css
 	@touch public
 
 static/css/main.css: static/css/main.scss
-	sassc "$<" "$@"
+	$(bin)sass --no-source-map "$<" "$@"
