@@ -1,0 +1,38 @@
+{{ define "main" }}
+<h1 class="xl">{{ .Title }}</h1>
+{{ if .Params.toc }}
+    {{ .TableOfContents }}
+{{ end }}
+{{ if .Params.hugo_nolist }}
+    {{ .Content }}
+{{ else }}
+    <root>
+    {{ .Content }}
+    <ul class="index">
+        <div class="cover-index-title">
+            <span>Date</span>
+            <span>Song / Voice</span>
+            <span>Original</span>
+            <span>Links</span>
+        </div>
+        {{ range .Pages }}
+        <div class="cover-item">
+            <time class="color-secondary mono"
+                  title="{{ .Date.Format "2006-01-02T15:04:05-07:00" }}"
+                  datetime="{{ .Date.Format "2006-01-02T15:04:05-07:00" }}">
+                {{ .Date.Format "2006/01/02" }}
+            </time>
+            <a href="{{ .Permalink }}" class="color-primary">{{ .LinkTitle }} ft. {{ .Params.voice }}</a>
+            <span>{{ .Params.origauthor }}</span>
+            {{ with .Params.youtube }}
+            <a href="https://youtu.be/{{.}}">YouTube</a>
+            {{ end }}
+            {{ with .Params.niconico }}
+            <a href="https://nico.ms/{{.}}">niconico</a>
+            {{ end }}
+        </div>
+        {{ end }}
+    </ul>
+    </root>
+{{ end }}
+{{ end }}

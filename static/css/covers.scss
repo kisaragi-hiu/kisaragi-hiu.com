@@ -9,3 +9,23 @@
   margin-top: 1rem;
   margin-bottom: 4rem;
 }
+
+.cover-index-title {
+  font-weight: 700;
+}
+
+.cover-item,
+.cover-index-title {
+  * {
+    display: inline-block;
+  }
+  :nth-child(1) {
+    width: 8rem;
+  }
+  :nth-child(2) {
+    width: 22rem;
+  }
+  :nth-child(3) {
+    width: 11rem;
+  }
+}

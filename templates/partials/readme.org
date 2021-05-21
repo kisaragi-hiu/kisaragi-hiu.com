@@ -1,0 +1,34 @@
+* Partials
+
+Templates that can be used in other templates.
+
+** Passing the environment to the partial
+
+#+begin_src web
+{{ partial "partial-name" . }}
+#+end_src
+
+The object referenced by =.= becomes the root object inside the partial.
+
+** Passing more than one argument
+
+You can use the scratch feature.
+
+When calling (where =mypartial= is the name of the partial below):
+
+#+begin_src web
+{{ .Scratch.Set "noyear" false }}
+{{ partial "mypartial" . }}
+#+end_src
+
+In the partial:
+
+#+begin_src web
+{{ if $.Scratch.Get "noyear" }}
+    {{ .Format "01/02" }}
+{{ else }}
+    {{ .Format "2006/01/02" }}
+{{ end }}
+#+end_src
+
+Note the =$=. That basically means to get the parent / global?? scratch object. Otherwise =.Scratch= alone would reference the scratch from the partial's current environment.
