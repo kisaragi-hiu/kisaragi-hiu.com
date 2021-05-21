@@ -1,10 +1,17 @@
+bin := node_modules/.bin/
+
 .DEFAULT_GOAL := build
 
 .PHONY: serve clean zip css
 
-serve: public static/css/main.css
-	sass "static/css/main.scss:static/css/main.css" --watch &
+watch-css:
+	sass "static/css/main.scss:static/css/main.css" --watch
+
+watch-hugo:
 	hugo server
+
+serve: public static/css/main.css
+	$(bin)concurrently --kill-others "make watch-css" "make watch-hugo"
 
 clean:
 	git clean -Xdf
