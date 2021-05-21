@@ -1,6 +1,6 @@
 #+title: 十六夜シーイング
 #+date: 2014-12-23
 #+origauthor: Last Note
-#+voice: <FILL>
-#+youtube: <FILL>
-#+niconico: <FILL>
+#+voice: 夏語遙
+#+youtube: suQ4tWFyzvs
+#+niconico: sm25189696

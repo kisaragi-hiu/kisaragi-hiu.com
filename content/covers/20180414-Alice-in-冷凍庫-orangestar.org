@@ -1,6 +1,6 @@
 #+title: Alice in 冷凍庫
 #+date: 2018-04-14
 #+origauthor: orangestar
-#+voice: <FILL>
+#+voice: 雨月
 #+youtube: mr_3vDJRb10
 #+niconico: sm33048044

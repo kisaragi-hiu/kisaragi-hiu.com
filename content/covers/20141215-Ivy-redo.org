@@ -1,6 +1,6 @@
 #+title: Ivy
 #+date: 2014-12-15
 #+origauthor: redo
-#+voice: <FILL>
-#+youtube: <FILL>
-#+niconico: <FILL>
+#+voice: 夏語遙
+#+youtube: d1g3_nWRwpM
+#+niconico: sm25132527

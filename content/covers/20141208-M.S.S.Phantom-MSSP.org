@@ -1,6 +1,8 @@
 #+title: M.S.S.Phantom
 #+date: 2014-12-08
 #+origauthor: MSSP
-#+voice: <FILL>
-#+youtube: <FILL>
-#+niconico: <FILL>
+#+voice: 夏語遙
+#+youtube: zGwRJkyxmg4
+#+niconico: sm25085393
+
+My first cover, prompted by the release of 夏語遙.
