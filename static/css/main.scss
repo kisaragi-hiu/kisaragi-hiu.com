@@ -18,6 +18,7 @@ $color-special-strong: #246084; // Dark blue
 
 body {
   font-family: $sans-serif;
+  background: #fff;
 }
 
 $monospace: "Overpass Mono", "Noto Sans Mono CJK", $cjk-fallback, monospace;
@@ -202,7 +203,7 @@ a {
 
 a:hover {
   opacity: 1;
-  text-decoration: none;
+  text-decoration: underline;
 }
 
 // Reference
