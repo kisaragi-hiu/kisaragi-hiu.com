@@ -1,0 +1,19 @@
+{{ define "main" }}
+{{ partial "cover-heading" . }}
+{{ if .Params.toc }}
+{{ .TableOfContents }}
+{{ end }}
+
+<p>Original: {{ .Params.origauthor }}<p>
+
+<div class="cover-embed-list">
+    {{ with .Params.youtube }}
+    {{ partial "youtube" . }}
+    {{ end }}
+    {{ with .Params.niconico }}
+    {{ partial "niconico" . }}
+    {{ end }}
+</div>
+
+{{ .Content }}
+{{ end }}

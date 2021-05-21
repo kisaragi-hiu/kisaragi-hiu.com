@@ -1,0 +1,1 @@
+=_default= applies to pages without a dedicated section template.
