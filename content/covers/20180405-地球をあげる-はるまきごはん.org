@@ -2,5 +2,5 @@
 #+date: 2018-04-05
 #+origauthor: はるまきごはん
 #+voice: <FILL>
-#+youtube: https://youtu.be/DpOt7wi-P7E
-#+niconico: https://nico.ms/sm33006343
+#+youtube: DpOt7wi-P7E
+#+niconico: sm33006343

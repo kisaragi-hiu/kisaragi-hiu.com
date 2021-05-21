@@ -2,5 +2,5 @@
 #+date: 2017-03-11
 #+origauthor: ATOLS
 #+voice: 雨月
-#+youtube: https://youtu.be/4mtoBVKQ4Ns
-#+niconico: https://nico.ms/sm30812780
+#+youtube: 4mtoBVKQ4Ns
+#+niconico: sm30812780

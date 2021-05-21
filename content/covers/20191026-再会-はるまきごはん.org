@@ -2,5 +2,5 @@
 #+date: 2019-10-26
 #+origauthor: はるまきごはん
 #+voice: 雨月
-#+youtube: https://youtu.be/B8we7anlPWU
-#+niconico: https://nico.ms/sm35866901
+#+youtube: B8we7anlPWU
+#+niconico: sm35866901

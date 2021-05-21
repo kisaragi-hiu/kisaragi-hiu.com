@@ -2,5 +2,5 @@
 #+date: 2021-03-11
 #+origauthor: シャノン
 #+voice: 闇音レンリ
-#+youtube: https://youtu.be/kQIPrB9dhgQ
-#+niconico: https://nico.ms/sm38405476
+#+youtube: kQIPrB9dhgQ
+#+niconico: sm38405476

@@ -2,5 +2,5 @@
 #+date: 2016-06-19
 #+origauthor: はるまきごはん
 #+voice: 闇音レンリ
-#+youtube: https://youtu.be/zYwkKgG07a0
-#+niconico: https://nico.ms/sm29088536
+#+youtube: zYwkKgG07a0
+#+niconico: sm29088536

@@ -2,5 +2,5 @@
 #+date: 2018-10-26
 #+origauthor: バルーン
 #+voice: 波音リツ
-#+youtube: https://youtu.be/rAA2IVMlfrc
-#+niconico: https://nico.ms/sm34076143
+#+youtube: rAA2IVMlfrc
+#+niconico: sm34076143

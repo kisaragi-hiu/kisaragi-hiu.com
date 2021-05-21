@@ -2,5 +2,5 @@
 #+date: 2018-07-03
 #+origauthor: 春野
 #+voice: 闇音レンリ
-#+youtube: https://youtu.be/nlp_aPZDnY0
-#+niconico: https://nico.ms/sm33463196
+#+youtube: nlp_aPZDnY0
+#+niconico: sm33463196

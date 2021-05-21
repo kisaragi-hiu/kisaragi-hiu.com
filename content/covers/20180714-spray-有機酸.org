@@ -2,5 +2,5 @@
 #+date: 2018-07-14
 #+origauthor: 有機酸
 #+voice: 闇音レンリ
-#+youtube: https://youtu.be/yCx7bgGxvs8
-#+niconico: https://nico.ms/sm33523918
+#+youtube: yCx7bgGxvs8
+#+niconico: sm33523918

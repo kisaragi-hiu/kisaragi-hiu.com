@@ -2,5 +2,5 @@
 #+date: 2017-02-10
 #+origauthor: neru
 #+voice: 闇音レンリ
-#+youtube: https://youtu.be/xds-iwT1-l8
-#+niconico: https://nico.ms/sm30605517
+#+youtube: xds-iwT1-l8
+#+niconico: sm30605517

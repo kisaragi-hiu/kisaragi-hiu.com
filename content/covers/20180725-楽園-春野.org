@@ -2,5 +2,5 @@
 #+date: 2018-07-25
 #+origauthor: 春野
 #+voice: 雨月
-#+youtube: https://youtu.be/b5WpZ2BhKl4
-#+niconico: https://nico.ms/sm33584472
+#+youtube: b5WpZ2BhKl4
+#+niconico: sm33584472

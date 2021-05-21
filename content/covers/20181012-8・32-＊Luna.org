@@ -2,5 +2,5 @@
 #+date: 2018-10-12
 #+origauthor: ＊Luna
 #+voice: 闇音レンリ
-#+youtube: https://youtu.be/jfVDBhyUJhA
-#+niconico: https://nico.ms/sm34008355
+#+youtube: jfVDBhyUJhA
+#+niconico: sm34008355

@@ -2,5 +2,5 @@
 #+date: 2018-11-01
 #+origauthor: 164
 #+voice: 闇音レンリ
-#+youtube: https://youtu.be/eZiGzxxpCWw
-#+niconico: https://nico.ms/sm34106379
+#+youtube: eZiGzxxpCWw
+#+niconico: sm34106379

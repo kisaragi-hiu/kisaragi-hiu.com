@@ -2,5 +2,5 @@
 #+date: 2018-06-07
 #+origauthor: MI8k
 #+voice: <FILL>
-#+youtube: https://youtu.be/DWSBNbyRgc8
-#+niconico: https://nico.ms/sm33331444
+#+youtube: DWSBNbyRgc8
+#+niconico: sm33331444

@@ -2,5 +2,5 @@
 #+date: 2019-04-20
 #+origauthor: 春野
 #+voice: 雨月
-#+youtube: https://youtu.be/Rq7yS4R2vNU
-#+niconico: https://nico.ms/sm34999063
+#+youtube: Rq7yS4R2vNU
+#+niconico: sm34999063

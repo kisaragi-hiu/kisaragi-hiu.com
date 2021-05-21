@@ -2,5 +2,5 @@
 #+date: 2018-03-20
 #+origauthor: 鼻そうめんP
 #+voice: <FILL>
-#+youtube: https://youtu.be/npl4XY7CwK4
-#+niconico: https://nico.ms/sm32917922
+#+youtube: npl4XY7CwK4
+#+niconico: sm32917922

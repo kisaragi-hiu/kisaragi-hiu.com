@@ -2,5 +2,5 @@
 #+date: 2018-07-19
 #+origauthor: 銀銀
 #+voice: 雨月
-#+youtube: https://youtu.be/UzyZvYGpJSU
-#+niconico: https://nico.ms/sm33551024
+#+youtube: UzyZvYGpJSU
+#+niconico: sm33551024

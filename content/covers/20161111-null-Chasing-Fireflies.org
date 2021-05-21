@@ -2,8 +2,8 @@
 #+date: 2016-11-11
 #+origauthor: Chasing Fireflies
 #+voice: 夏語遙 雨月
-#+youtube: https://youtu.be/QImWjaR9LFY
-#+niconico: https://nico.ms/sm30026279
+#+youtube: QImWjaR9LFY
+#+niconico: sm30026279
 
 I also wrote the Mandarin lyrics for this.
 
