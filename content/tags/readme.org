@@ -1,0 +1,23 @@
+* Tags
+
+A tag or a category is what's called a /Taxonomy/.
+
+The hierarchy goes like this:
+
+- /Taxonomies/
+  - Categories
+  - Tags
+    - UTAU
+    - Emacs
+      - page
+      - another page
+
+More accurately, tags and categories are /taxonomy lists/, while individual items (eg. the =emacs= tag) are /taxonomy terms/. Both of them are lists as they contain other pages.
+
+As taxonomy terms are lists, their corresponding source files are located in =<taxonomy>/<term>/_index.<ext>=, instead of at =<type>/<term>.<ext>=.
+
+This doesn't actually work yet. I haven't figured it out.
+
+* Casing
+
+As I specify tags in title case in posts, the tags are in title case.
