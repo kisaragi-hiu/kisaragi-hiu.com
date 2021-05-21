@@ -1,0 +1,35 @@
+* Cover project listing
+
+UTAU covers and maybe my own cover experiment.
+
+Filename: date-name-origauthor, with spaces replaced with dashes
+
+Frontmatter:
+
+#+begin_src org
+,#+title:
+,#+origauthor:
+,#+date:
+,#+youtube:
+,#+niconico:
+,#+voice:
+,#+tags[]:
+#+end_src
+
+- =voice= instead of =voicebank= (what I use internally) because this way it can also accomadate covers with my own voice.
+
+** Listing
+We can list them in individual fields, then display them like:
+
+| title         | orig | vb     |
+|---------------+------+--------|
+| M.S.S.Phantom | MSSP | 夏語遙 |
+
+in the listing, and like
+
+#+begin_src text
+M.S.S.Phantom / 夏語遙
+original: MSSP
+#+end_src
+
+in the heading.
