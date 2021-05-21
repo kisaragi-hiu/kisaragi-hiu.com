@@ -1,3 +1,5 @@
+export LANG=en_US.UTF-8
+
 bin := node_modules/.bin/
 
 .DEFAULT_GOAL := build
