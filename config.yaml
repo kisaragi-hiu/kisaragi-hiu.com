@@ -4,8 +4,10 @@ layoutDir: templates
 hasCJKLanguage: true
 
 ignoreFiles:
-  - ^README\.md$
-  - ^readme\.md$
+  - README\.md$
+  - readme\.md$
+  - README\.org$
+  - readme\.org$
 
 markup:
   goldmark:
