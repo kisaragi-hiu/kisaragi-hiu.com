@@ -8,29 +8,31 @@
 {{ else }}
     <root>
     {{ .Content }}
-    <ul class="index">
-        <div class="cover-index-title">
+    <ul class="cover index">
+        <li class="row title">
             <span>Date</span>
             <span>Song / Voice</span>
             <span>Original</span>
             <span>Links</span>
-        </div>
+        </li>
         {{ range .Pages }}
-        <div class="cover-item">
+        <li class="row">
             <time class="color-secondary mono"
                   title="{{ .Date.Format "2006-01-02T15:04:05-07:00" }}"
                   datetime="{{ .Date.Format "2006-01-02T15:04:05-07:00" }}">
                 {{ .Date.Format "2006/01/02" }}
             </time>
-            <a href="{{ .Permalink }}" class="color-primary">{{ .LinkTitle }} ft. {{ .Params.voice }}</a>
+            <a href="{{ .Permalink }}">{{ .LinkTitle }} ft. {{ .Params.voice }}</a>
             <span>{{ .Params.origauthor }}</span>
+            <span>
             {{ with .Params.youtube }}
             <a href="https://youtu.be/{{.}}">YouTube</a>
             {{ end }}
             {{ with .Params.niconico }}
             <a href="https://nico.ms/{{.}}">niconico</a>
             {{ end }}
-        </div>
+            </span>
+        </li>
         {{ end }}
     </ul>
     </root>
