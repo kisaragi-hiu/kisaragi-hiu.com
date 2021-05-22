@@ -1,6 +1,6 @@
 #+title: 地球をあげる
 #+date: 2018-04-05
 #+origauthor: はるまきごはん
-#+voice: <FILL>
+#+voice: 闇音レンリ
 #+youtube: DpOt7wi-P7E
 #+niconico: sm33006343

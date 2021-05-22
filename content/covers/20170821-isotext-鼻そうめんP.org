@@ -1,6 +1,6 @@
 #+title: isotext
 #+date: 2017-08-21
 #+origauthor: 鼻そうめんP
-#+voice: <FILL>
-#+youtube: <FILL>
-#+niconico: <FILL>
+#+voice: 夏語遙
+#+youtube: c4hJBUAr1qI
+#+niconico: sm31787981

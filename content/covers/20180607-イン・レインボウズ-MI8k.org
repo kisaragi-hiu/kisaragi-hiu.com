@@ -1,6 +1,6 @@
 #+title: イン・レインボウズ
 #+date: 2018-06-07
 #+origauthor: MI8k
-#+voice: <FILL>
+#+voice: 闇音レンリ
 #+youtube: DWSBNbyRgc8
 #+niconico: sm33331444

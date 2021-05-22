@@ -1,6 +1,6 @@
 #+title: Scapecoat
 #+date: 2018-06-20
 #+origauthor: 鼻そうめんP
-#+voice: <FILL>
+#+voice: 夏語遙
 #+youtube: FlJehiT07Cs
 #+niconico: sm33394089
