@@ -1,8 +1,17 @@
+<!-- Yes, this is how you do AND in a where query. Generate two lists and use intersect.
+     https://gohugo.io/functions/intersect/ -->
+
+<!-- (--filter (equal (section it) (section this-page)) (all-pages)) -->
+{{ $same_section := where .Site.Pages "Section" .Section }}
+<!-- (--filter (equal (kind it) "page") (all-pages)) -->
+{{ $singles := where .Site.Pages "Kind" "page" }}
+{{ $pages := (intersect $singles $same_section) }}
+
 <ul class="page-navigation">
-    {{ with .Next }}
-    <li>Newer: <a href="{{.Permalink}}">{{.Title}}</a></li>
-    {{ end }}
-    {{ with .Prev }}
-    <li>Older: <a href="{{.Permalink}}">{{.Title}}</a></li>
-    {{ end }}
+  {{ with $pages.Next . }}
+  <li>Newer: <a href="{{.Permalink}}">{{.Title}}</a></li>
+  {{ end }}
+  {{ with $pages.Prev . }}
+  <li>Older: <a href="{{.Permalink}}">{{.Title}}</a></li>
+  {{ end }}
 </ul>
