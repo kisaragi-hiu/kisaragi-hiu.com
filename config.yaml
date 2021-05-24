@@ -3,6 +3,15 @@ layoutDir: templates
 
 hasCJKLanguage: true
 
+# Let's say it's 2021-05-25T00:30:00+0900 right now, and I have a new
+# page dated 2021-05-25. Hugo will consider that moment as being in
+# the future; it seems to assume the date to be UTC
+# (2021-05-25T00:00:00Z, or 2021-05-25T09:00:00+0900) as the it
+# contains no timezone offset.
+#
+# If I don't want something to show, I'll mark it as Draft myself.
+buildFuture: true
+
 ignoreFiles:
   - README\.md$
   - readme\.md$
