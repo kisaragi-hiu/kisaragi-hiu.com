@@ -1,6 +1,7 @@
 #+title: spray
 #+date: 2018-07-14
 #+origauthor: 有機酸
+#+original: https://nico.ms/sm32898831
 #+voice: 闇音レンリ
 #+youtube: yCx7bgGxvs8
 #+niconico: sm33523918

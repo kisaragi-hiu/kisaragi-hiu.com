@@ -4,5 +4,6 @@
 #+voice: 雨月
 #+youtube: 0nEjiqtTaRc
 #+niconico: sm26435147
+#+original: <FILL>
 
 This was my first time using a VCV voicebank.

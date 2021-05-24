@@ -1,6 +1,7 @@
 #+title: 8・32
 #+date: 2018-10-12
 #+origauthor: ＊Luna
+#+original: https://nico.ms/sm33485782
 #+voice: 闇音レンリ
 #+youtube: jfVDBhyUJhA
 #+niconico: sm34008355

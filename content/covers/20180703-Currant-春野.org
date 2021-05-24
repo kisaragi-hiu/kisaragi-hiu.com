@@ -1,6 +1,7 @@
 #+title: Currant
 #+date: 2018-07-03
 #+origauthor: 春野
+#+original: https://nico.ms/sm33314626
 #+voice: 闇音レンリ
 #+youtube: nlp_aPZDnY0
 #+niconico: sm33463196

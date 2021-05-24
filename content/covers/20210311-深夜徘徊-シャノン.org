@@ -1,6 +1,7 @@
 #+title: 深夜徘徊
 #+date: 2021-03-11
 #+origauthor: シャノン
+#+original: https://nico.ms/sm38262521
 #+voice: 闇音レンリ
 #+youtube: kQIPrB9dhgQ
 #+niconico: sm38405476

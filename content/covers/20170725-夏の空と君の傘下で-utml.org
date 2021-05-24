@@ -4,3 +4,4 @@
 #+voice: 雨月
 #+youtube: CK1C1NrghG8
 #+niconico: sm31632838
+#+original: <FILL>

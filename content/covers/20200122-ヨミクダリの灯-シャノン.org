@@ -1,6 +1,7 @@
 #+title: ヨミクダリの灯
 #+date: 2020-01-22
 #+origauthor: シャノン
+#+original: https://nico.ms/sm36143274
 #+voice: 闇音レンリ
 #+youtube: VZAbZQkCT3M
 #+niconico: sm36261157

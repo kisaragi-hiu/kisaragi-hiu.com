@@ -1,6 +1,7 @@
 #+title: 鳳仙花
 #+date: 2019-04-20
 #+origauthor: 春野
+#+original: https://nico.ms/sm34172016
 #+voice: 雨月
 #+youtube: Rq7yS4R2vNU
 #+niconico: sm34999063

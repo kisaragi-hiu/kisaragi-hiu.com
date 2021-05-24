@@ -1,6 +1,7 @@
 #+title: 心象カスケード
 #+date: 2019-12-07
 #+origauthor: 電ポールP
+#+original: https://nico.ms/sm36010222
 #+voice: 闇音レンリ
 #+youtube: 6MFWP4jq5to
 #+niconico: sm36056604

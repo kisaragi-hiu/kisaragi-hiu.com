@@ -1,6 +1,7 @@
 #+title: 約束
 #+date: 2019-11-11
 #+origauthor: はるまきごはん
+#+original: https://nico.ms/sm35680547
 #+voice: 夏語遙
 #+youtube: Gqunm4l6riM
 #+niconico: sm35939529

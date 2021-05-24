@@ -1,6 +1,7 @@
 #+title: 雨とペトラ
 #+date: 2018-10-26
 #+origauthor: バルーン
+#+original: https://nico.ms/sm30789907
 #+voice: 波音リツ
 #+youtube: rAA2IVMlfrc
 #+niconico: sm34076143

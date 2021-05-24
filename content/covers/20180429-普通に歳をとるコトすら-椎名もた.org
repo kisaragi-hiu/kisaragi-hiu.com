@@ -4,3 +4,4 @@
 #+voice: 闇音レンリ
 #+youtube: E6BrZNuxmPw
 #+niconico: sm33124185
+#+original: <FILL>

@@ -4,6 +4,7 @@
 #+voice: 夏語遙 雨月
 #+youtube: QImWjaR9LFY
 #+niconico: sm30026279
+#+original: <FILL>
 
 I also wrote the Mandarin lyrics for this.
 

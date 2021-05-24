@@ -1,6 +1,7 @@
 #+title: mnemonic
 #+date: 2018-09-26
 #+origauthor: やなぎなぎ
+#+original: https://www.amazon.co.jp/dp/B00EPE1K5Q/
 #+voice: 闇音レンリ
 #+youtube: 6rcSTAgQAkM
 #+niconico: sm33921544
