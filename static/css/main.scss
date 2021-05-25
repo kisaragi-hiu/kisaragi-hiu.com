@@ -344,9 +344,8 @@ figcaption {
   color: $color-primary;
 }
 
-// FIXME: this is, um, ugly?
 .highlight .hl {
-  text-decoration: underline;
+  font-weight: 700;
 }
 
 .highlight .lnt {
