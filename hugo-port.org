@@ -273,6 +273,6 @@ Hugo shortcode: gist (user gist-id [file])
   Maybe just embed Youtube? You can build it again if the performance hit worries you.
 :END:
 ** DONE RSS
-* TODO Extra stuff
-** Switch to sass for CSS preprocessing
+* DONE Extra stuff
+** DONE Switch to sass for CSS preprocessing
 Installing Pollen is slow.
