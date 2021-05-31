@@ -1,6 +1,6 @@
 #+title: QR Codes from Emacs
 #+date: 2019-09-24T22:45:48+0900
-#+tags[]: Emacs QR-Code
+#+tags[]: emacs qr-code
 #+language: en
 
 This article was inspired by [[https://blog.jpalardy.com/posts/qr-codes-on-the-command-line/][QR Codes on the Command-Line]].

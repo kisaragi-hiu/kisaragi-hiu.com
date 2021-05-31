@@ -1,6 +1,6 @@
 #+title: aqi.tw
 #+status: WIP
-#+tags[]: Javascript app
+#+tags[]: javascript app
 
 https://aqi.tw
 

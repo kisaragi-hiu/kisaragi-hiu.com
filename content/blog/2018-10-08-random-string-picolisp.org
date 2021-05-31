@@ -2,7 +2,7 @@
 #+date: 2018-10-08T20:52:35+0900
 #+language: en
 #+category: Experiments
-#+tags[]: Picolisp Racket Common-Lisp
+#+tags[]: picolisp racket common-lisp
 #+toc: #t
 
 After I started using a password manager to generate my passwords, sometimes I want to do the same in the shell — not necessarily for passwords, but just a random alphanumeric string of a specified length can be useful sometimes.

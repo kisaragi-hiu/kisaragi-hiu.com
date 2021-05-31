@@ -1,7 +1,7 @@
 #+title: A Makefile for UTAU Projects
 #+date: 2019-04-17T19:50:52+0800
 #+category: Tutorials
-#+tags[]: Make UTAU
+#+tags[]: make utau
 #+language: en
 
 /Update 2019-05-24: Updated Makefile to generate file list automatically (line 2)./

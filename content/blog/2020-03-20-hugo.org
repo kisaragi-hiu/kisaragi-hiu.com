@@ -1,6 +1,6 @@
 #+title: Switching to Hugo
 #+date: 2021-03-20T00:53:55+0900
-#+tags[]: Hugo Pollen
+#+tags[]: hugo pollen
 #+language: en
 #+category: Meta
 

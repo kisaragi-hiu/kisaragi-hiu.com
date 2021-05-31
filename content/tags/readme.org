@@ -16,8 +16,8 @@ More accurately, tags and categories are /taxonomy lists/, while individual item
 
 As taxonomy terms are lists, their corresponding source files are located in =<taxonomy>/<term>/_index.<ext>=, instead of at =<type>/<term>.<ext>=.
 
-This doesn't actually work yet. I haven't figured it out.
++This doesn't actually work yet. I haven't figured it out.+ This works, but if you only see the content of the =_index.<ext>= file and not the list, you might have to rebuild the site.
 
 * Casing
 
-As I specify tags in title case in posts, the tags are in title case.
++As I specify tags in title case in posts, the tags are in title case.+ I now specify tags in lowercase (with some exceptions like PDF).

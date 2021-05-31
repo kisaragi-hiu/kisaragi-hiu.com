@@ -1,6 +1,6 @@
 #+title: So I made a trumpet score for ID Smile
 #+date: 2021-05-01T23:19:58+0700
-#+tags[]: Trumpet prsk Sheets MuseScore
+#+tags[]: trumpet prsk sheets musescore
 #+language: en
 
 I’ve been obsessed over [[https://pjsekai.sega.jp/][Project Sekai]] in the last few months. [[https://www.youtube.com/watch?v=X_6EPkvIAGg][ID Smile]] is a song that was recently added to the game, and it’s my favorite song in the last month.

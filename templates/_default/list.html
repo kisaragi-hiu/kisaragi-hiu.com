@@ -1,19 +1,12 @@
 {{ define "main" }}
-<h1 class="xl">{{ .Title }}</h1>
-{{ if .Params.toc }}
-{{ .TableOfContents }}
-{{ end }}
-{{ if .Params.hugo_nolist }}
-{{ .Content }}
-{{ else }}
+<h1 class="xl">{{ (title .Title) }}</h1>
+{{ if .Params.toc }} {{ .TableOfContents }} {{ end }} {{ if .Params.hugo_nolist
+}} {{ .Content }} {{ else }}
 <root>
-    {{ .Content }}
-    <div class="index">
-        {{ range .Pages }}
-        {{ .Scratch.Set "noyear" false }}
-        {{ partial "index-item" . }}
-        {{ end }}
-    </div>
+  {{ .Content }}
+  <div class="index">
+    {{ range .Pages }} {{ .Scratch.Set "noyear" false }} {{ partial "index-item"
+    . }} {{ end }}
+  </div>
 </root>
-{{ end }}
-{{ end }}
+{{ end }} {{ end }}

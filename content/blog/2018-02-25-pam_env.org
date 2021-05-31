@@ -1,7 +1,7 @@
 #+title: Switching to .pam_environment for environment variables
 #+date: 2018-02-25T21:34:45+0900
 #+language: en
-#+tags[]: Linux Config Pollen
+#+tags[]: linux config pollen
 
 My system environment has been quite a mess this past month.
 
