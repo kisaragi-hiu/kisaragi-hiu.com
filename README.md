@@ -6,7 +6,13 @@ My personal website.
 
 ## Build process
 
-- Preprocess CSS with Pollen
+- Install packages needed for build:
+  - hugo
+  - p7zip, for creating the zip file to upload to Netlify
+  - nodejs, for npm
+  - npm
+  - sass (Dart Sass compiled to JavaScript and installed from npm)
+- Preprocess CSS with Sass
 - Build site with Hugo
 
 ## Requirements
@@ -20,11 +26,3 @@ Requires the `path.org` → `path/` rewriting [released in go-org 1.4](https://g
 ```sh
 make public
 ```
-
-# Random documentation bits
-
-## Pages vs. Blog posts
-
-A blog post has a date and is kind of like a public diary.
-
-An individual page should be a standalone document (ie. [a concept note](https://www.orgroam.com/manual/A-Brief-Introduction-to-the-Zettelkasten-Method.html)); it should be also be a document that will [obviously not fit on Wikipedia](https://www.gwern.net/Wikipedia-and-Other-Wikis).

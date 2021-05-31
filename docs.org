@@ -71,3 +71,9 @@ Used in the =project= shortcode definition.
 
 - =toc=: If not empty, a table of content will be displayed on the page.
 - =hugo_nolist=: only applies to list pages. Only display the page’s own content and not its children, effectively turning the list into a single page. This is first used in [[file:content/projects/_index.org]].
+
+* Pages vs. Blog posts
+
+A blog post has a date and is kind of like a public diary.
+
+An individual page should be a standalone document (ie. [[https://www.orgroam.com/manual/A-Brief-Introduction-to-the-Zettelkasten-Method.html][a concept note]]); it should be also be a document that will [[https://www.gwern.net/Wikipedia-and-Other-Wikis][obviously not fit on Wikipedia]].
