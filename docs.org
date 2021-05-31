@@ -85,3 +85,25 @@ For example, I want the =prsk= tag to display as “Project Sekai” in its list
 If I simply set its title to “Project Sekai”, that will also be used in a tag list.
 
 Instead, set the name to be used in tag lists as its =linktitle=, and the desired display name in =title=. Ordinarily =linktitle= takes precedance over =title=, but as [[file:templates/_default/list.html][my list page template references the =title= property directly]], that property is used in the displayed page.
+* Grouping posts by date in a template
+
+Example:
+
+#+begin_src web
+{{ range (where .Site.RegularPages "Section" "blog").GroupByDate "2006" }}
+<div class="index-year">
+    <h1>{{ .Key }}</h1>
+    {{ range .Pages }}
+    {{ .Scratch.Set "noyear" true }}
+    {{ partial "index-item" . }}
+    {{ end }}
+</div>
+{{ end }}
+#+end_src
+
+- Get a list, call its =GroupByDate= method with a Go-style timestamp specifier
+- Use =range= to iterate through the result
+- The result contains
+  - =Key=, the matched thing that makes the group, which is the year in the example
+  - and =Pages=, the pages that share the same key
+- You can further iterate on the inner =.Pages=

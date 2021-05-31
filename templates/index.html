@@ -3,11 +3,11 @@
     {{ .Content }}
     <div class="index">
         <!-- We use "where" exclude non-blog pages -->
-        {{ range (where .Site.RegularPages "Section" "blog").GroupByDate "2006" }}
-        <div class="index-year">
-            <h1>{{ .Key }}</h1>
+        {{ range (where .Site.RegularPages "Section" "blog").GroupByParam "language" }}
+        <div class="index-language">
+            <h1>{{ partial "func-language-code-to-name" .Key }}</h1>
             {{ range .Pages }}
-            {{ .Scratch.Set "noyear" true }}
+            {{ .Scratch.Set "noyear" false }}
             {{ partial "index-item" . }}
             {{ end }}
         </div>

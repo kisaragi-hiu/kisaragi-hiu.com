@@ -1,0 +1,9 @@
+{{ $code := . }}
+{{ $name := "" }}
+{{ if (eq $code "en") }}
+    {{ $name = "English" }}
+{{ else if (eq $code "zh_TW") }}
+    {{ $name = "中文" }}
+{{ end }}
+
+{{ return $name }}
