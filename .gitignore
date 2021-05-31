@@ -8,8 +8,6 @@
 .#*
 .cask/
 pollen-cache
-category/
-category/*.pm
 compiled
 /static/css/main.css
 public
