@@ -41,5 +41,6 @@ frontmatter:
 taxonomies:
   category: category
   tag: tags
+  language: language
 
 title: Kisaragi Hiu
