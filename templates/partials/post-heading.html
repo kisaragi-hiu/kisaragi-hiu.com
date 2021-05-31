@@ -17,7 +17,7 @@
     {{ with .GetTerms "tags" }}
     <div class="margin-none list">
         {{ range $index, $value := . }}
-        <a class="tag" href="{{ .Permalink }}">{{ .LinkTitle | lower }}</a>
+        <a class="card tag" href="{{ .Permalink }}">{{ .LinkTitle | lower }}</a>
         {{ end }}
     </div>
     {{ end }}

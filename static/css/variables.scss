@@ -1,0 +1,14 @@
+$cjk-fallback: "Noto Sans CJK TC", "Microsoft Jhenghei", "Microsoft Yahei",
+  "Meiryo", "Malgun Gothic";
+
+$sans-serif: "Inter", $cjk-fallback, sans-serif;
+
+$title-sans-serif: $sans-serif;
+$monospace: "Overpass Mono", "Noto Sans Mono CJK", $cjk-fallback, monospace;
+
+$color-primary: #0d0d0d;
+$color-secondary: #333;
+$color-accent: #4d2b82; // Light purple
+$color-accent-strong: #cdadff; // Dark purple
+$color-special: #cdecff; // Light blue
+$color-special-strong: #246084; // Dark blue

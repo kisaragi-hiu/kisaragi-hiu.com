@@ -1,0 +1,8 @@
+#+title: Project Sekai
+#+linktitle: prsk
+#+wikipedia: https://ja.wikipedia.org/wiki/プロジェクトセカイ
+#+home: https://pjsekai.sega.jp
+
+An idol-themed gacha game / rhythm game with VOCALOID characters, with a story that actually turns out to be interesting.
+
+/Disambiguation: not [[notes:public/node_modules/normalize-path/README.md][Sekai Project, the visual novel publisher]]./

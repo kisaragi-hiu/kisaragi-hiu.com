@@ -1,10 +1,17 @@
 {{ define "main" }}
 <h1 class="xl">{{ (title .Title) }}</h1>
+{{ with .Params.home }}
+    <a class="card out" href="{{.}}">Homepage</a>
+{{end}}
+{{ with .Params.wikipedia }}
+    <a class="card out" href="{{.}}">Wikipedia</a>
+{{end}}
 {{ if .Params.toc }} {{ .TableOfContents }} {{ end }} {{ if .Params.hugo_nolist
 }} {{ .Content }} {{ else }}
 <root>
   {{ .Content }}
   <div class="index">
+      <h2>Posts</h2>
     {{ range .Pages }} {{ .Scratch.Set "noyear" false }} {{ partial "index-item"
     . }} {{ end }}
   </div>
