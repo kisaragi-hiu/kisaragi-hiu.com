@@ -7,7 +7,7 @@ A list of my projects.
 Incomplete: illustrations on Pixiv, other things that I've forgot, etc. still need to be added..
 
 * → [[file:../covers.html][UTAU Covers]]
-* → Illustrations (TODO)
+* → [[file:../illust.html][Illustrations (TODO)]]
 
 * Coding
 ** Emacs
