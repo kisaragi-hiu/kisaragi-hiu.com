@@ -1,0 +1,9 @@
+#+title: Blocking rooted devices is an antipattern
+#+date: 2021-06-01T15:57:04+0900
+#+category: Opinions
+#+draft: true
+#+language: en
+
+If online banks can operate just fine on the desktop, there should be no reason why you have to trust mobile devices to not have been “tampered with”.
+
+You shouldn't trust the client side in the first place.

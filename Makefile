@@ -13,6 +13,7 @@ watch-hugo:
 	hugo server
 
 serve: public static/css/main.css
+	(sleep 1 && xdg-open "http://localhost:1313") &
 	$(bin)concurrently --kill-others "make watch-css" "make watch-hugo"
 
 clean:
