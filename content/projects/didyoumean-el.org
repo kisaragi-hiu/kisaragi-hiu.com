@@ -1,0 +1,9 @@
+#+title: didyoumean.el
+#+tags[]: emacs
+#+gitlab: https://gitlab.com/kisaragi-hiu/didyoumean.el
+
+Ask for the right file to open.
+
+If there's a =foo.txt= and a =foo.md= in the same directory and you request to visit =foo=, this will ask if you meant to open one of those files.
+
+Emacs port of the [[https://github.com/EinfachToll/DidYouMean][DidYouMean]] Vim plugin.

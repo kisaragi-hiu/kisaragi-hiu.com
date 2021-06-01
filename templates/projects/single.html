@@ -1,0 +1,7 @@
+{{ define "main" }}
+{{ partial "heading-with-links" . }}
+{{ if .Params.toc }}
+    {{ .TableOfContents }}
+{{ end }}
+{{ .Content }}
+{{ end }}

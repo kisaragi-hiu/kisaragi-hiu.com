@@ -1,5 +1,4 @@
 #+title: dired-show-readme
-* dired-show-readme
 
 [[https://gitlab.com/kisaragi-hiu/dired-show-readme]]
 

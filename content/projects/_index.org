@@ -4,12 +4,12 @@
 
 A list of my projects.
 
-Also see [[file:../covers.org][the list of UTAU covers that I’ve done]].
-
 Incomplete: illustrations on Pixiv, other things that I've forgot, etc. still need to be added..
 
-* Coding
+* → [[file:../covers.html][UTAU Covers]]
+* → Illustrations (TODO)
 
+* Coding
 ** Emacs
 
 {{% project "https://kisaragi-hiu.com/" "yaml.el" %}}
@@ -61,7 +61,7 @@ This is my first Emacs package.
 An experimental time tracking application.
 {{% /project %}}
 
-{{% project "https://gitlab.com/kisaragi-hiu/yasearch" "yasearch" %}}
+{{% project "https://git.sr.ht/~kisaragi_hiu/yasearch" "yasearch" %}}
 Yet Another web Search plugin for Emacs.
 
 Search the word under point or region on the web.

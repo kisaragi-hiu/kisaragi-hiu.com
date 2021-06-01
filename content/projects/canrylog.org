@@ -1,7 +1,5 @@
 #+title: Canrylog
 
-* Canrylog
-
 https://gitlab.com/canrylog/canrylog.el/
 
 My own time tracker written in Emacs Lisp.
@@ -36,7 +34,7 @@ The last event represents the currently active task.
 
 I believe that this is the most readable format for this specific purpose.
 
-** Emacs version
+* Emacs version
 My usual workflow is:
 
 - Use =canrylog-switch-task= to switch to something I’m doing or working on
@@ -52,7 +50,7 @@ I’ve also built a task list view, although that’s something that isn’t rea
 #+caption: Main view
 [[/canrylog-20201118-dashboard.png]]
 
-** Command line version
+* Command line version
 
 I have also started building a command line version.
 

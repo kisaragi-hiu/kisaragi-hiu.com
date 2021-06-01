@@ -1,0 +1,5 @@
+#+title: bk
+#+tags[]: cli
+#+github: https://github.com/kisaragi-hiu/bk
+
+Key-value pair storage based on JSON, intended for command line bookmarks.

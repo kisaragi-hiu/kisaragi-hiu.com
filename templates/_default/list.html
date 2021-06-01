@@ -1,11 +1,6 @@
 {{ define "main" }}
-<h1 class="xl">{{ (title .Title) }}</h1>
-{{ with .Params.home }}
-    <a class="card out" href="{{.}}">Homepage</a>
-{{end}}
-{{ with .Params.wikipedia }}
-    <a class="card out" href="{{.}}">Wikipedia</a>
-{{end}}
+{{ .Scratch.Set "titlecase" true }}
+{{ partial "heading-with-links" . }}
 {{ if .Params.toc }} {{ .TableOfContents }} {{ end }} {{ if .Params.hugo_nolist
 }} {{ .Content }} {{ else }}
 <root>

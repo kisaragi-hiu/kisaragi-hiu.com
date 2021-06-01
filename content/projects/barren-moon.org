@@ -1,0 +1,6 @@
+#+title: barren-moon
+#+tags[]: pollen
+#+homepage: https://barren-moon.kisaragi-hiu.com
+#+gitlab: https://gitlab.com/kisaragi-hiu/barren-moon
+
+A web-based collection of poems I wrote in junior and senior high school.

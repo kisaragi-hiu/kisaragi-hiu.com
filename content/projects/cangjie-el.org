@@ -1,0 +1,9 @@
+#+title: Cangjie.el
+#+github: https://github.com/kisaragi-hiu/cangjie.el
+#+tags[]: emacs
+
+My first Emacs package.
+
+Retrieve Cangjie code for a Han character in Emacs.
+
+https://github.com/kisaragi-hiu/cangjie.el

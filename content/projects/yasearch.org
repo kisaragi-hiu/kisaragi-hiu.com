@@ -1,0 +1,7 @@
+#+title: yasearch
+#+sourcehut: https://git.sr.ht/~kisaragi_hiu/yasearch
+#+tags[]: emacs
+
+Search the word under point or region on the web.
+
+/〜Because everybody needs their own web-search Emacs function〜/
