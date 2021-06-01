@@ -9,7 +9,6 @@
 <root>
   {{ .Content }}
   <div class="index">
-      <h2>Projects</h2>
       {{ range .Pages }}
       {{ .Scratch.Set "noyear" false }}
       {{ partial "index-item" . }}

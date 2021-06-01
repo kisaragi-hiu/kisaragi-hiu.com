@@ -1,0 +1,18 @@
+{{ with .Params.homepage }}
+    <a class="card out" href="{{.}}">Homepage</a>
+{{end}}
+{{ with .Params.pixiv }}
+    <a class="card out" href="{{.}}">Pixiv</a>
+{{end}}
+{{ with .Params.wikipedia }}
+    <a class="card out" href="{{.}}">Wikipedia</a>
+{{end}}
+{{ with .Params.gitlab }}
+    <a class="card out" href="{{.}}">GitLab</a>
+{{end}}
+{{ with .Params.github }}
+    <a class="card out" href="{{.}}">GitHub</a>
+{{end}}
+{{ with .Params.sourcehut }}
+    <a class="card out" href="{{.}}">sourcehut</a>
+{{end}}

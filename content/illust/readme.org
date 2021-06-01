@@ -1,0 +1,31 @@
+* Illustration entries
+
+Each page here represents an illustration work, ie those that I post to Pixiv.
+
+Filename is the published date in =yyyy-mm-dd=.
+
+Frontmatter:
+
+- title
+- date (just the date)
+- pixiv
+- (maybe) tags
+- (maybe) =roam_tags= for easier retrieval as part of my notes
+
+Each page should also at least show the image itself.
+
++I haven’t figured out where to host them. I have a central place for them (kind of) in my private datastore, but for a public place I’m not sure.+
+
+This file is excluded from being rendered by Hugo.
+
+Files are hosted in =/static/illust/yyyy-mm-dd.jpg=. In effect, in the rendered output, the page and the file would be adjacent to each other. This is fine.
+
+=/static/illust= will be a separate submodule.
+
+** Todos
+
+- List all illustrations
+- Create a small (max 128x128) thumbnail for each illustrations, maybe preserving dimensions
+- Show those thumbnails in the illust listing
+  - Maybe with .File.BaseFileName
+- Split by year

@@ -3,6 +3,24 @@
 @import "covers";
 @import "card";
 
+figure.illust {
+  margin: 1rem 0;
+  display: grid;
+  grid-template-columns: 1fr 80%;
+  grid-gap: 1rem;
+  img {
+    grid-column: 2/2;
+    box-shadow: 0 0 2rem #00000070;
+  }
+  figcaption {
+    grid-column: 1/1;
+    grid-row: 1/1;
+  }
+  h1 {
+    margin-top: 0;
+  }
+}
+
 body {
   font-family: $sans-serif;
   background: #fff;
@@ -284,9 +302,9 @@ figcaption {
   margin-bottom: 0.25rem;
 }
 
-.post-heading {
+.heading {
   margin-top: 1rem;
-  margin-bottom: 4rem;
+  // margin-bottom: 4rem;
 }
 
 .index-item .date,

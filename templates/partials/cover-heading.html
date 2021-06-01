@@ -1,9 +1,5 @@
-<header class="cover-heading">
-    <div class="baseline list">
-        <p class="category">
-            <a href="../{{.Type}}.html">{{.Type | humanize }}</a> /
-        </p>
-    </div>
+<header class="heading">
+    {{ partial "type-path" . }}
     <h1 class="xl margin-top-none">{{ .Title }} ft. {{ .Params.voice }}</h1>
     {{ with .Date }}
     <time class="date mono"

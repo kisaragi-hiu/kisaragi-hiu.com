@@ -1,0 +1,26 @@
+{{ define "main" }}
+
+<!-- We assume that the filenaame is the publish date. -->
+
+<header class="heading">
+    {{partial "type-path" .}}
+</header>
+<figure class="illust">
+  <img
+    src="/illust/{{ .File.BaseFileName }}.jpg"
+    {{ with .Params.alt }} alt="{{.}}" {{end}}
+    title="{{ .Title }}"
+  />
+  <figcaption>
+      <h1 class="xl">{{ .Title }}</h1>
+      {{ partial "param-links" . }}
+      {{ .Content }}
+      <p>Published: {{ .Params.date.Format "2006-01-02" }}</p>
+  </figcaption>
+</figure>
+
+{{ if .Params.toc }}
+{{ .TableOfContents }}
+{{ end }}
+
+{{ end }}

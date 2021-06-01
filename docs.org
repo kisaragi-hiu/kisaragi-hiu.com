@@ -67,6 +67,16 @@ Example: ={{ partial "melpa-badge" "magit" }}=
 
 Used in the =project= shortcode definition.
 
+** type-path
+
+Create a path-ish link for the item's “type”.
+
+For example, for cover entries it will render to something like this:
+
+#+begin_src text
+    Covers /
+#+end_src
+
 * page properties
 
 - =toc=: If not empty, a table of content will be displayed on the page.
