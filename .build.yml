@@ -8,10 +8,14 @@ sources:
   - https://github.com/kisaragi-hiu/kisaragi-hiu.com
 secrets:
   - 9971994c-ebe1-4f42-bb58-11e57b65c689
+  - d00ee754-d764-4ca4-8ff5-498ed5d4ae7b
 tasks:
   - npm: |
       cd kisaragi-hiu.com
       npm install --production
+  - assets: |
+      cd kisaragi-hiu.com
+      git submodule update --init
   - build: |
       cd kisaragi-hiu.com
       make zip

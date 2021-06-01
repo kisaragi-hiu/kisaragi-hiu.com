@@ -12,6 +12,9 @@ My personal website.
   - nodejs, for npm
   - npm
   - sass (Dart Sass compiled to JavaScript and installed from npm)
+- Fetch assets
+  - /static/illust from my personal git forge
+  - Maybe also external icons in the future
 - Preprocess CSS with Sass
 - Build site with Hugo
 
