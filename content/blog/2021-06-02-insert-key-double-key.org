@@ -3,6 +3,8 @@
 #+toc: true
 #+date: 2021-06-02T23:00:06+0900
 
+{{< video "/emacs-org-double-square-insert.mp4" >}}
+
 Many personal wiki systems use “[[” to insert internal links. Often times when a user types “[[”, an autocomplete prompt will be shown.
 
 Org-roam also implements this with a completion-at-point backend, but personally I prefer autocompletion with Ivy over Company. I find Ivy easier to navigate when there is a large number of candidates.
@@ -100,5 +102,3 @@ And I can bind it to a key like this:
 #+end_src
 
 Now if I type “[[” in Org mode in insert state, I'll be prompted with a list of notes to insert.
-
-{{< video "/emacs-org-double-square-insert.mp4" >}}
