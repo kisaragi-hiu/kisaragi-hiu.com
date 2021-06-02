@@ -1,0 +1,104 @@
+#+title: Inserting a link after typing “[[” in Org
+#+tags[]: emacs org-mode
+#+toc: true
+#+date: 2021-06-02T23:00:06+0900
+
+Many personal wiki systems use “[[” to insert internal links. Often times when a user types “[[”, an autocomplete prompt will be shown.
+
+Org-roam also implements this with a completion-at-point backend, but personally I prefer autocompletion with Ivy over Company. I find Ivy easier to navigate when there is a large number of candidates.
+
+I have a custom =k/insert-link= command, which functionally serves the same purpose as =org-roam-insert=. I will use that command to insert links, but the latter can also be used.
+
+* My requirements
+
+- I still want to be able to type “[” on its own without having to use =quoted-insert=.
+- I also don't want to use a timeout to detect if we're typing “[” or “[[”.
+  This rules out [[https://github.com/emacsorphanage/key-chord][key-chord]].
+- It'd be nice if this can be generalized to other keys.
+
+* Details
+** How do we detect which key is pressed?
+
+There is a =last-command-event= variable which turns out to contain what we want.
+
+We can try to probe what its value usually is by defining a command like this:
+
+#+begin_src emacs-lisp
+(defun k/test-last-command-event ()
+  (interactive)
+  (message "%s" last-command-event))
+
+(general-def
+  :keymaps 'text-mode-map
+  :states 'insert
+  "a" #'k/test-last-command-event
+  "b" #'k/test-last-command-event)
+#+end_src
+
+Then test it out:
+
+- Type “a”
+
+  → Notice 97 (the character code for “a”) in the echo area
+
+- Type “b”
+
+  → Notice 98 (the character code for “b”) in the echo area
+
+- Type “a” then “b”
+
+  → Notice the second time still wrote 98 to the echo area, confirming that we don't see events from the previous command.
+
+After testing this can be done to undo the binding:
+
+#+begin_src emacs-lisp
+(general-unbind
+  :keymaps 'text-mode-map
+  :states 'insert
+  "a" "b")
+#+end_src
+** How do we detect if we're truly typing “[[” at once?
+
+We can check =last-command= and see if it's our command. If it isn't, we simply fall back to inserting the character.
+
+#+begin_src emacs-lisp
+(cond
+ ((and (eq last-command #'k/insert-link/double-key) ; this line
+       (eq (char-before) last-command-event))
+  (delete-char -1)
+  (call-interactively #'k/insert-link))
+ (t (insert (string last-command-event))))
+
+#+end_src
+
+* The full command
+
+#+begin_src emacs-lisp
+(defun k/insert-link/double-key ()
+  "Insert a link after calling this command twice with the same key.
+
+For example, to insert a link after typing \"[[\":
+
+  (general-def :keymaps 'org-mode-map :states 'insert
+    \"[\" #'k/insert-link/double-key)"
+  (interactive)
+  (cond
+   ((and (eq last-command #'k/insert-link/double-key)
+         (eq (char-before) last-command-event))
+    (delete-char -1)
+    (call-interactively #'k/insert-link))
+   (t (insert (string last-command-event)))))
+#+end_src
+
+And I can bind it to a key like this:
+
+#+begin_src emacs-lisp
+(general-def
+  :keymaps 'org-mode-map
+  :states 'insert
+  "[" #'k/insert-link/double-key)
+#+end_src
+
+Now if I type “[[” in Org mode in insert state, I'll be prompted with a list of notes to insert.
+
+{{< video "/emacs-org-double-square-insert.mp4" >}}
