@@ -1,0 +1,44 @@
+#+title: ISO 8601
+#+date: 2021-06-07T20:15:39+0900
+
+A standard for timestamps.
+
+It is roughly =yyyy-mm-ddTHH:MM:SSZ=, where
+
+- yyyy is the 4-digit year
+- mm is the 2-digit month
+- dd is the 2-digit day
+- HH is the hour
+- MM is the minute
+- SS is the second
+- and Z is the offset from UTC.
+
+The offset from UTC is roughly written in this format:
+
+- =Z= stands for UTC. It's also referred to as Zulu time.
+- Otherwise, it's either =+HH:MM= or =-HH:MM=.
+
+* Omitting the colon in the UTC offset
+
+I tend to omit the colon in the UTC offset, but I'm not sure if this actually conforms to the standard.
+
+Emacs does this by default:
+
+#+begin_quote
+For example, to produce full ISO 8601 format, use "%FT%T%z".
+
+— Emacs docstring for =format-time-string=
+#+end_quote
+
+#+begin_src emacs-lisp
+(format-time-string "%FT%T%z")
+#+end_src
+
+#+RESULTS:
+: 2021-06-07T20:21:18+0900
+
+* Shortened version
+
+As far as I remember, there is also a shortened version defined in the standard, which removes all dashes and colons.
+
+20210607T000000+0900

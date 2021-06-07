@@ -1,0 +1,56 @@
+#+title: Why I shouldn't have put the publish date in my URLs
+#+date: 2021-06-07T19:41:30+0900
+
+Two philosophies:
+
+- Date in URL: each page is like a snapshot in time, pages are more like public diary entries / blog posts
+- Just the title or an ID: each page is like an encyclopedia entry. The site is more like a personal wiki.
+
+The former is good for logs, but not that good for concept notes. What if you want to update your understanding of the concept?
+
+Concept entries should use the latter.
+
+I shouldn't have put the date in all of my URLs because this site is more like a personal wiki and not a public diary.
+
+There are some entries that are more akin to diary entries, and those are the ones that should remain dated.
+
+Another alternative is to write new versions and link previous versions to them. But this requires too much manual linking, which makes modifying existing ideas more cumbersome.
+
+* URLs without dates: what about the history?
+
+The reader loses the ability to see the history of the page.
+
+** Solution
+
+1. Relying on the Wayback Machine and other caches
+   - The reader is expected to know about those services
+   - This should only be a backup in case my site goes down
+2. Git log
+   - Relies on user knowing enough about Git to browse through the history (or whatever forge one might be using, in my case GitHub)
+   - Finicky if I rename files, hard to migrate to from my current setup
+3. Dated versions of pages
+   - eg. on Wikipedia (MediaWiki), each page has a history for every change
+   - Ideally:
+     - =example.com/<page>/= = latest
+     - =example.com/<page>/20210604=: version at 2021-06-04
+     - =example.com/<page>/20200309T123456+0900=: version at 2020-03-09T12:34:56+0900
+       - Using shortened [[file:iso8601.org][ISO 8601]] as colons are not well supported in file systems
+     - How do I do this in Hugo? (Technical limitation)
+   - What I'll probably end up doing:
+     - =example.com/<page>= is the latest version
+     - =example.com/archive/<page>/20200309T123456+0900= is the version at 2020-03-09T12:34:56+0900
+     - =example.com/archive/<page>/= contains a list of previous versions as well as a link back to =example.com/<page>=
+     - Each page links to =example.com/archive/page= for old versions
+     - Every page under blog/ redirected to their latest versions at the new location
+     - =archive= can be a [[file:taxonomy.org][Taxonomy]] while each page exists as a Term under it
+
+* Dated URLs still have their place
+
+They are good for logs. A public diary, relevant to the day
+* Citing articles that change?
+
+As far as I know, citation generally requires a date.
+
+Personally I've been using the publication date in my private notes. But articles can change a lot.
+
+Hopefully if I maintain a history of my pages, citing my pages will be like citing Wikipedia: you can just point to a permalink and use the update time of that version.

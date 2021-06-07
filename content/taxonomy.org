@@ -1,0 +1,18 @@
+#+title: Taxonomy
+#+date: 2021-06-07T20:04:59+0900
+
+Taxonomy, Taxonomy Terms
+
+- tag → red → apple
+- type → fruits → apple
+- [[https://www.gwern.net/About#confidence-tags][confidence]] → likely → [a page]
+
+The /tag/, /type/, and /confidence/ here are called Taxonomies.
+
+Taxonomies contain Terms.
+
+Terms in turn are added onto objects.
+
+They in effect allow tagging objects not with just a list of tags, but with a map of keys and values.
+
+[[https://gohugo.io/content-management/taxonomies/][Hugo supports this well.]]
