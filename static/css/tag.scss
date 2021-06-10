@@ -1,0 +1,12 @@
+@import "variables";
+
+.tag {
+  background-color: $color-special;
+  color: $color-special-strong;
+  padding: 0 0.25rem;
+  border-radius: 0.25rem;
+}
+
+.tag::before {
+  content: "#";
+}

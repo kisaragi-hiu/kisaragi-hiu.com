@@ -1,36 +1,41 @@
 @import "variables";
 
-.index-item .date,
-.index-item .tags {
-  font-size: $font-size-main;
+.index-item:hover {
+  text-decoration: none;
 }
-
 .index-item {
-  margin-top: 0.5rem;
-  margin-bottom: 1.5rem;
-}
-
-.index {
-  margin-top: 2rem;
-}
-
-.index > div > h1 {
-  margin: 3rem 0 1rem;
-}
-
-.index-item h2 {
-  margin-top: 0;
-  margin-bottom: 0.5rem;
-}
-
-.index-item .date,
-.index-item .tags {
-  font-family: $monospace;
-  display: inline-block;
-  color: $color-secondary;
-  margin: 0 0.5em 0 0;
+  color: $color-primary;
+  > div:hover {
+    background-color: $color-special-light;
+  }
+  > div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    transition: all 100ms ease-in-out;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+  }
+  .date {
+    font-family: $monospace;
+  }
+  .date,
+  .tags {
+    font-size: $font-size-main;
+    display: inline-block;
+    color: $color-secondary;
+    margin: 0 0.5em 0 0;
+  }
+  h2 {
+    margin: 0;
+    font-weight: 400;
+  }
 }
 
 ul.index {
   padding: 0;
+  li {
+    padding: 0;
+    list-style: none;
+  }
 }

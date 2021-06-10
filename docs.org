@@ -77,6 +77,10 @@ For example, for cover entries it will render to something like this:
     Covers /
 #+end_src
 
+** index-item
+
+Generic index item with some metadata.
+
 * page properties
 
 - =toc=: If not empty, a table of content will be displayed on the page.

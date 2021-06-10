@@ -1,4 +1,5 @@
 #+title: didyoumean.el
+#+date: 2019-08-20
 #+tags[]: emacs
 #+gitlab: https://gitlab.com/kisaragi-hiu/didyoumean.el
 

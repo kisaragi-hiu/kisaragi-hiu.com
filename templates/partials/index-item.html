@@ -4,28 +4,9 @@
    - Category(?)
    - Tags
    - Title (link)-->
-<div class="index-item">
-    <div class="baseline list">
-        {{ with .Date }}
-        {{ partial "date" . }}
-        {{ end }}
-        <!-- Even though I don't intend to assign multiple categories to one post,
-             it's still going to be extracted as a list.
-             So we have to use `range`. -->
-        {{ range .GetTerms "category" }}
-        <a href="{{ .Permalink }}">{{ .LinkTitle }}</a>
-        {{ end }}
-    </div>
-    <h2>
-        <a href="{{ .Permalink }}" class="color-primary">
-            {{ .LinkTitle }}
-        </a>
-    </h2>
-    {{ with .GetTerms "tags" }}
-    <div class="margin-none list">
-        {{ range $index, $value := . }}
-        <a class="card tag" href="{{ .Permalink }}">{{ .LinkTitle | lower }}</a>
-        {{ end }}
-    </div>
-    {{ end }}
-</div>
+<a class="index-item" href="{{ .Permalink }}">
+  <div>
+    <div class="meta">{{ with .Date }} {{ partial "date" . }} {{ end }}</div>
+    <h2>{{ .LinkTitle }}</h2>
+  </div>
+</a>

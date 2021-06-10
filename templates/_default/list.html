@@ -5,12 +5,11 @@
 }} {{ .Content }} {{ else }}
 <root>
   {{ .Content }}
-  <div class="index">
-      <h2>Posts</h2>
+  <h2>Posts</h2>
+  <ul class="index">
       {{ range .Pages }}
-      {{ .Scratch.Set "noyear" false }}
       {{ partial "index-item" . }}
       {{ end }}
-  </div>
+  </ul>
 </root>
 {{ end }} {{ end }}

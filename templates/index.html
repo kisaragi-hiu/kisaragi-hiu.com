@@ -1,21 +1,21 @@
 {{ define "main" }}
 <root>
   {{ .Content }}
-  <div class="index">
-    <!-- We use "where" exclude non-blog pages -->
-    <!-- {{ range (where .Site.RegularPages "Section" "blog").GroupByParam "language" }}
+  <!-- We use "where" exclude non-blog pages -->
+  <!-- {{ range (where .Site.RegularPages "Section" "blog").GroupByParam "language" }}
              <div class="index-language">
              <h1>{{ partial "func-language-code-to-name" .Key }}</h1>
              {{ range (first 5 .Pages) }}
-             {{ .Scratch.Set "noyear" false }}
              {{ partial "index-item" . }}
              {{ end }}
              <a href="/language/{{.Key}}.html">{{.Key}}</a>
              </div> -->
-    <!-- {{ end }} -->
-    <h1>Recent blog posts</h1>
-    {{ range (where .Site.RegularPages "Section" "blog") }} {{ .Scratch.Set
-    "noyear" false }} {{ partial "index-item" . }} {{ end }}
-  </div>
+  <!-- {{ end }} -->
+  <h1>Recent blog posts</h1>
+  <ul class="index">
+    {{ range (where .Site.RegularPages "Section" "blog") }}
+    <li>{{ partial "index-item" . }}</li>
+    {{ end }}
+  </ul>
 </root>
 {{ end }}
