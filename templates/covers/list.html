@@ -1,40 +1,30 @@
 {{ define "main" }}
 <h1 class="xl">{{ .Title }}</h1>
-{{ if .Params.toc }}
-    {{ .TableOfContents }}
-{{ end }}
-{{ if .Params.hugo_nolist }}
-    {{ .Content }}
-{{ else }}
-    <root>
-    {{ .Content }}
-    <ul class="cover index">
-        <li class="row title">
-            <span>Date</span>
-            <span>Song / Voice</span>
-            <span>Original</span>
-            <span>Links</span>
-        </li>
-        {{ range .Pages }}
-        <li class="row">
-            <time class="color-secondary mono"
-                  title="{{ .Date.Format "2006-01-02T15:04:05-07:00" }}"
-                  datetime="{{ .Date.Format "2006-01-02T15:04:05-07:00" }}">
-                {{ .Date.Format "2006/01/02" }}
-            </time>
-            <a href="{{ .Permalink }}">{{ .LinkTitle }} ft. {{ .Params.voice }}</a>
-            <span>{{ .Params.origauthor }}</span>
-            <span>
-            {{ with .Params.youtube }}
-            <a href="https://youtu.be/{{.}}">YouTube</a>
-            {{ end }}
-            {{ with .Params.niconico }}
-            <a href="https://nico.ms/{{.}}">niconico</a>
-            {{ end }}
-            </span>
-        </li>
+{{ if .Params.toc }} {{ .TableOfContents }} {{ end }} {{ if .Params.hugo_nolist
+}} {{ .Content }} {{ else }}
+<root>
+  {{ .Content }}
+  <ul class="cover index">
+    <li class="row title">
+      <span>Date</span>
+      <span>Song / Voice</span>
+      <span>Original</span>
+      <span>Links</span>
+    </li>
+    {{ range .Pages }}
+    <li class="row">
+      <span class="mono">{{ partial "date" .Date }}</span>
+      <a href="{{ .Permalink }}">{{ .LinkTitle }} ft. {{ .Params.voice }}</a>
+      <span>{{ .Params.origauthor }}</span>
+      <span>
+        {{ with .Params.youtube }}
+        <a href="https://youtu.be/{{.}}">YouTube</a>
+        {{ end }} {{ with .Params.niconico }}
+        <a href="https://nico.ms/{{.}}">niconico</a>
         {{ end }}
-    </ul>
-    </root>
-{{ end }}
-{{ end }}
+      </span>
+    </li>
+    {{ end }}
+  </ul>
+</root>
+{{ end }} {{ end }}

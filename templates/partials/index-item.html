@@ -1,16 +1,7 @@
 <div class="index-item">
     <div class="baseline list">
         {{ with .Date }}
-        <time class="color-secondary mono"
-              title="{{ .Format "2006-01-02T15:04:05-07:00" }}"
-              datetime="{{ .Format "2006-01-02T15:04:05-07:00" }}">
-            <!-- Thank you https://mertbakir.gitlab.io/hugo/pass-arguments-in-partials-hugo/ -->
-            {{ if $.Scratch.Get "noyear" }}
-            {{ .Format "01/02" }}
-            {{ else }}
-            {{ .Format "2006/01/02" }}
-            {{ end }}
-        </time>
+        {{ partial "date" . }}
         {{ end }}
         <!-- Even though I don't intend to assign multiple categories to one post,
              it's still going to be extracted as a list.
