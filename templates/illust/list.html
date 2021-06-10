@@ -4,8 +4,10 @@
 .Params.hugo_nolist}} {{ .Content }} {{ else }}
 <root>
   {{ .Content }}
-  <div class="index">
-    {{ range .Pages }} {{ partial "index-item" . }} {{ end }}
-  </div>
+  <ul class="index">
+    {{ range .Pages }}
+    <li>{{ partial "index-item" . }}</li>
+    {{ end }}
+  </ul>
 </root>
 {{ end }} {{ end }}
