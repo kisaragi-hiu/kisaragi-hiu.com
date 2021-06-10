@@ -8,8 +8,13 @@
 
 {{ partial "heading-with-links" . }}
 
-{{ if .Params.toc }} {{ partial "toc" . }} {{ end }} {{ if .Params.hugo_nolist
-}} {{ .Content }} {{ else }}
+{{ if .Params.toc }}
+{{ partial "toc" . }}
+{{ end }}
+
+{{ if .Params.hugo_nolist}}
+{{ .Content }}
+{{ else }}
 <root>
   {{ .Content }}
   <h2>Posts</h2>

@@ -1,4 +1,5 @@
 #+title: About
+#+special: true
 
 I'm a college student in Taiwan, studying, um, Applied English.
 

@@ -1,4 +1,5 @@
 #+title: Skills
+#+special: true
 
 Maybe this is better suited in [[file:about.org][About]]. For now, I’m listing these here.
 

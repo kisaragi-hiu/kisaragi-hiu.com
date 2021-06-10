@@ -11,9 +11,19 @@
              <a href="/language/{{.Key}}.html">{{.Key}}</a>
              </div> -->
   <!-- {{ end }} -->
+  {{ $blogposts := (where .Site.RegularPages "Section" "blog")}}
+  <h1>Recent pages</h1>
+  <ul class="index">
+    {{ range (where .Site.RegularPages "Section" "") }}
+    {{ if .Param "special" }}
+    {{ else }}
+    <li>{{ partial "index-item" . }}</li>
+    {{ end }}
+    {{ end }}
+  </ul>
   <h1>Recent blog posts</h1>
   <ul class="index">
-    {{ range (where .Site.RegularPages "Section" "blog") }}
+    {{ range $blogposts }}
     <li>{{ partial "index-item" . }}</li>
     {{ end }}
   </ul>
