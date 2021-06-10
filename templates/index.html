@@ -1,6 +1,7 @@
 {{ define "main" }}
 <div id="home">
 <main>
+  <h1 class="xxl">Kisaragi Hiu</h1>
   {{ .Content }}
   <!-- We use "where" exclude non-blog pages -->
   <!-- {{ range (where .Site.RegularPages "Section" "blog").GroupByParam "language" }}
@@ -12,6 +13,7 @@
              <a href="/language/{{.Key}}.html">{{.Key}}</a>
              </div> -->
   <!-- {{ end }} -->
+  <hr>
   <h1>Recent pages</h1>
   <ul class="index">
     {{ range (where .Site.RegularPages "Section" "") }}
