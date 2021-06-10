@@ -1,6 +1,13 @@
 {{ define "main" }}
-{{ .Scratch.Set "titlecase" true }}
+
+{{ if .Params.hugo_notitlecase }}
+  {{ .Scratch.Set "titlecase" false }}
+{{ else }}
+  {{ .Scratch.Set "titlecase" true }}
+{{ end }}
+
 {{ partial "heading-with-links" . }}
+
 {{ if .Params.toc }} {{ .TableOfContents }} {{ end }} {{ if .Params.hugo_nolist
 }} {{ .Content }} {{ else }}
 <root>
