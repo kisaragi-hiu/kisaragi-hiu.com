@@ -4,6 +4,6 @@
 #+voice: 夏語遙
 #+youtube: zGwRJkyxmg4
 #+niconico: sm25085393
-#+original: <FILL>
+#+original: https://nico.ms/sm23171530
 
 My first cover, prompted by the release of 夏語遙.

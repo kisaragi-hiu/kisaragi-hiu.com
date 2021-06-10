@@ -17,6 +17,7 @@ Frontmatter:
 #+end_src
 
 - =voice= instead of =voicebank= (what I use internally) because this way it can also accomadate covers with my own voice.
+- =original=: link to the original. Prefer niconico.
 
 ** Listing
 We can list them in individual fields, then display them like:

@@ -4,4 +4,4 @@
 #+voice: 雨月
 #+youtube: bArhfHt6RiM
 #+niconico: sm29611075
-#+original: <FILL>
+#+original: https://nico.ms/sm21868513

@@ -4,4 +4,4 @@
 #+voice: 雨月
 #+youtube: mr_3vDJRb10
 #+niconico: sm33048044
-#+original: <FILL>
+#+original: https://nico.ms/sm28242091
