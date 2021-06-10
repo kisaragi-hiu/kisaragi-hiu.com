@@ -15,7 +15,11 @@
     <li class="row">
       <span class="mono">{{ partial "date" .Date }}</span>
       <a href="{{ .Permalink }}">{{ .LinkTitle }} ft. {{ .Params.voice }}</a>
+      {{ if .Params.original }}
+      <a href="{{.Params.original}}">{{ .Params.origauthor }}</a>
+      {{ else }}
       <span>{{ .Params.origauthor }}</span>
+      {{ end }}
       <span>
         {{ with .Params.youtube }}
         <a href="https://youtu.be/{{.}}">YouTube</a>
