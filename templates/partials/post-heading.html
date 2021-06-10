@@ -9,9 +9,12 @@
         </p>
         {{ end }}
     </div>
-    <h1 class="xl margin-top-none">{{ .Title }}</h1>
+    <h1 class="xl">{{ .Title }}</h1>
+    {{ with .Param "subtitle" }}
+    <h2>{{.}}</h2>
+    {{ end }}
     {{ with .GetTerms "tags" }}
-    <div class="margin-none list">
+    <div class="tags list">
         {{ range $index, $value := . }}
         <a class="card tag" href="{{ .Permalink }}">{{ .LinkTitle | lower }}</a>
         {{ end }}

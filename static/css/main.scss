@@ -3,24 +3,10 @@
 @import "covers";
 @import "card";
 @import "index";
-
-figure.illust {
-  margin: 1rem 0;
-  display: grid;
-  grid-template-columns: 1fr 80%;
-  grid-gap: 1rem;
-  img {
-    grid-column: 2/2;
-    box-shadow: 0 0 2rem #00000070;
-  }
-  figcaption {
-    grid-column: 1/1;
-    grid-row: 1/1;
-  }
-  h1 {
-    margin-top: 0;
-  }
-}
+@import "post-heading";
+@import "illust";
+@import "siteheader";
+@import "sitefooter";
 
 body {
   font-family: $sans-serif;
@@ -32,7 +18,6 @@ li p {
 }
 
 body,
-#siteheader nav a,
 .size-normal,
 .toc *,
 .page-navigation,
@@ -40,7 +25,6 @@ body,
   font-size: $font-size-main;
 }
 
-#siteheader,
 .list {
   flex-wrap: wrap;
 }
@@ -66,10 +50,9 @@ body {
 }
 
 video,
-figure,
 img {
   max-width: 100%;
-  max-height: 50vh;
+  max-height: 30rem;
 }
 
 // Utilities
@@ -83,58 +66,6 @@ img {
 
 .disabled {
   color: $color-secondary;
-}
-
-// Site Header
-
-#siteheader {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-#logo h1 {
-  align-items: center;
-  display: flex;
-}
-#logo img {
-  max-height: 2rem;
-  margin-right: 0.4rem;
-}
-#siteheader nav {
-  display: flex;
-  justify-content: flex-end;
-}
-#siteheader nav a {
-  color: $color-secondary;
-  margin: 0.5rem 0.8rem 0.5rem 0;
-}
-
-// Site footer
-
-#sitefooter {
-  color: $color-secondary;
-}
-
-#sitefooter p {
-  line-height: 1.4;
-  margin: 0.5rem auto 0.5rem;
-}
-
-#footer-sep {
-  margin-top: 2.5rem;
-  margin-bottom: 2.5rem;
-  text-align: center;
-  font-weight: 700;
-}
-
-#sitefooter nav {
-  display: flex;
-  justify-content: center;
-}
-
-#sitefooter nav a {
-  color: $color-secondary;
-  margin: 0.5rem 1rem 0.5rem 0;
 }
 
 // Project
@@ -167,7 +98,7 @@ h6 {
   font-size: $font-size-big;
   line-height: 1.2;
   margin-top: 2rem;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
   font-weight: 300;
   letter-spacing: normal;
 }
@@ -245,8 +176,7 @@ div#references p {
 }
 
 .margin-vertical-none,
-#logo h1,
-figcaption {
+#logo h1 {
   margin-top: 0;
   margin-bottom: 0;
 }

@@ -1,0 +1,30 @@
+@import "variables";
+
+#siteheader nav a {
+  font-size: $font-size-main;
+}
+
+// Site Header
+
+#siteheader {
+  flex-wrap: wrap;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+#logo h1 {
+  align-items: center;
+  display: flex;
+}
+#logo img {
+  max-height: 2rem;
+  margin-right: 0.4rem;
+}
+#siteheader nav {
+  display: flex;
+  justify-content: flex-end;
+}
+#siteheader nav a {
+  color: $color-secondary;
+  margin: 0.5rem 0.8rem 0.5rem 0;
+}
