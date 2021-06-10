@@ -4,10 +4,13 @@
 .Params.hugo_nolist}} {{ .Content }} {{ else }}
 <root>
   {{ .Content }}
-  <ul class="index">
+  {{ range .Pages.GroupByDate "2006" }}
+  <h2>{{ .Key }}</h2>
+  <ul class="illust-index">
     {{ range .Pages }}
-    <li>{{ partial "index-item" . }}</li>
+    <li>{{ partial "illust-item" . }}</li>
     {{ end }}
   </ul>
+  {{ end }}
 </root>
 {{ end }} {{ end }}

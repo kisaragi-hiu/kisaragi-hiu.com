@@ -1,11 +1,14 @@
+@import "variables";
+
+// Figure in single page
 figure.illust {
-  margin: 1rem 0;
+  margin: 0;
   display: grid;
-  grid-template-columns: 1fr 80%;
+  grid-template-columns: 1fr 1fr;
   grid-gap: 1rem;
   img {
     grid-column: 2/2;
-    box-shadow: 0 0 2rem #00000070;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.5);
   }
   figcaption {
     grid-column: 1/1;
@@ -13,5 +16,28 @@ figure.illust {
   }
   h1 {
     margin-top: 0;
+  }
+}
+
+// "Index", or the grid display
+ul.illust-index {
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  li {
+    padding: 0;
+    list-style: none;
+  }
+  .item {
+    margin-right: 1rem;
+    transition: all 100ms ease-in-out;
+    img:hover {
+      box-shadow: 0 0 1rem rgba(0, 0, 0, 0.5);
+    }
+    img {
+      box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.5);
+      max-height: 6rem;
+      max-width: 6rem;
+    }
   }
 }

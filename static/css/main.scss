@@ -130,8 +130,17 @@ blockquote {
   background: #f3f3f3;
 }
 
+dl {
+  dt {
+    font-weight: 600;
+  }
+  dd {
+    margin-left: 1rem;
+  }
+}
+
 a {
-  color: $color-accent;
+  color: $color-accent-strong;
   opacity: 0.9;
   transition: opacity 100ms ease;
   text-decoration: none;

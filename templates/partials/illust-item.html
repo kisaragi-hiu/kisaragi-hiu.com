@@ -5,8 +5,7 @@
    - Tags
    - Title (link)-->
 <a class="item" href="{{ .Permalink }}">
-  <div>
-    <div class="meta">{{ with .Date }} {{ partial "date" . }} {{ end }}</div>
-    <h2>{{ .LinkTitle }}</h2>
-  </div>
+    <img title="{{.LinkTitle}}"
+         alt="{{.LinkTitle}}"
+         src="/illust/{{ .Date.Format "2006-01-02" }}.jpg"/>
 </a>
