@@ -2,6 +2,7 @@
 @import "emacs";
 @import "covers";
 @import "card";
+@import "index";
 
 figure.illust {
   margin: 1rem 0;
@@ -26,12 +27,6 @@ body {
   background: #fff;
 }
 
-$monospace: "Overpass Mono", "Noto Sans Mono CJK", $cjk-fallback, monospace;
-
-$font-size-main: 14pt;
-$font-size-xl: 24pt;
-$font-size-big: 16pt;
-
 li p {
   margin: 0 auto;
 }
@@ -40,8 +35,6 @@ body,
 #siteheader nav a,
 .size-normal,
 .toc *,
-.index-item .date,
-.index-item .tags,
 .page-navigation,
 .highlight {
   font-size: $font-size-main;
@@ -161,10 +154,6 @@ img {
 //   margin-top: 1rem;
 // }
 
-ul.index {
-  padding: 0;
-}
-
 .xl {
   font-size: $font-size-xl;
 }
@@ -235,21 +224,6 @@ div#references p {
   font-family: $monospace;
 }
 
-// Index items
-
-.index {
-  margin-top: 2rem;
-}
-
-.index > div > h1 {
-  margin: 3rem 0 1rem;
-}
-
-.index-item {
-  margin-top: 0.5rem;
-  margin-bottom: 1.5rem;
-}
-
 .margin-none {
   margin: 0;
 }
@@ -306,14 +280,6 @@ figcaption {
 .heading {
   margin-top: 1rem;
   // margin-bottom: 4rem;
-}
-
-.index-item .date,
-.index-item .tags {
-  font-family: $monospace;
-  display: inline-block;
-  color: $color-secondary;
-  margin: 0 0.5em 0 0;
 }
 
 .color-primary {
