@@ -1,19 +1,6 @@
-{{ define "main" }}
-{{ if (eq .Type "blog") }}
-{{ partial "post-heading" . }}
-{{ else }}
+{{ define "main" }} {{ if (eq .Type "blog") }} {{ partial "post-heading" . }} {{
+else }}
 <h1 class="xl">{{ .Title }}</h1>
-{{ end }}
-
-{{ if .Params.toc }}
-{{ .TableOfContents }}
-{{ end }}
-
-{{ .Content }}
-{{ end }}
-
-{{ define "footer" }}
-{{ if (eq .Type "blog") }}
-{{ partial "post-navigation" . }}
-{{ end }}
-{{ end }}
+{{ end }} {{ if .Params.toc }} {{ partial "toc" . }} {{ end }} {{ .Content }} {{
+end }} {{ define "footer" }} {{ if (eq .Type "blog") }} {{ partial
+"post-navigation" . }} {{ end }} {{ end }}

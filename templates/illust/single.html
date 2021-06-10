@@ -24,4 +24,4 @@
   </figcaption>
 </figure>
 
-{{ if .Params.toc }} {{ .TableOfContents }} {{ end }} {{ end }}
+{{ if .Params.toc }} {{ partial "toc" . }} {{ end }} {{ end }}

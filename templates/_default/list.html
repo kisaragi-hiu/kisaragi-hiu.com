@@ -8,7 +8,7 @@
 
 {{ partial "heading-with-links" . }}
 
-{{ if .Params.toc }} {{ .TableOfContents }} {{ end }} {{ if .Params.hugo_nolist
+{{ if .Params.toc }} {{ partial "toc" . }} {{ end }} {{ if .Params.hugo_nolist
 }} {{ .Content }} {{ else }}
 <root>
   {{ .Content }}

@@ -1,7 +1,7 @@
 {{ define "main" }}
 {{ partial "heading-with-links" . }}
 {{ if .Params.toc }}
-    {{ .TableOfContents }}
+    {{ partial "toc" . }}
 {{ end }}
 {{ .Content }}
 {{ end }}

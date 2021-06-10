@@ -1,7 +1,7 @@
 {{ define "main" }}
 {{ partial "cover-heading" . }}
 {{ if .Params.toc }}
-{{ .TableOfContents }}
+{{ partial "toc" . }}
 {{ end }}
 
 <p>Original: {{ .Params.origauthor }}<p>

@@ -1,6 +1,6 @@
 {{ define "main" }}
 <h1 class="xl">{{ .Title }}</h1>
-{{ if .Params.toc }} {{ .TableOfContents }} {{ end }} {{ if
+{{ if .Params.toc }} {{ partial "toc" . }} {{ end }} {{ if
 .Params.hugo_nolist}} {{ .Content }} {{ else }}
 <root>
   {{ .Content }}
