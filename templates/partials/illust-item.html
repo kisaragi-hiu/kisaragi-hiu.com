@@ -7,5 +7,6 @@
 <a class="item" href="{{ .Permalink }}">
     <img title="{{.LinkTitle}}"
          alt="{{.LinkTitle}}"
-         src="/illust/{{ .Date.Format "2006-01-02" }}.jpg"/>
+         lazy
+         src="/illust/thumb/{{ .Date.Format "2006-01-02" }}.jpg"/>
 </a>
