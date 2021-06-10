@@ -1,5 +1,6 @@
 {{ define "main" }}
-<root>
+<div id="home">
+<main>
   {{ .Content }}
   <!-- We use "where" exclude non-blog pages -->
   <!-- {{ range (where .Site.RegularPages "Section" "blog").GroupByParam "language" }}
@@ -11,7 +12,6 @@
              <a href="/language/{{.Key}}.html">{{.Key}}</a>
              </div> -->
   <!-- {{ end }} -->
-  {{ $blogposts := (where .Site.RegularPages "Section" "blog")}}
   <h1>Recent pages</h1>
   <ul class="index">
     {{ range (where .Site.RegularPages "Section" "") }}
@@ -23,9 +23,18 @@
   </ul>
   <h1>Recent blog posts</h1>
   <ul class="index">
-    {{ range $blogposts }}
+    {{ range (where .Site.RegularPages "Section" "blog") }}
     <li>{{ partial "index-item" . }}</li>
     {{ end }}
   </ul>
-</root>
+</main>
+<aside>
+    <h1>Tags</h1>
+    <ul>
+        {{ range .Site.Taxonomies.tags }}
+        <li><a href="{{.Page.Permalink}}">{{.Page.Title}}</a></li>
+        {{ end }}
+    </ul>
+</aside>
+</div>
 {{ end }}

@@ -63,9 +63,9 @@
     </header>
 
     <!-- Contents -->
-    <div id="content">
-      {{ block "main" . }} {{ end }}
-      <!-- ◊; show heading for posts
+    {{ block "main" . }}
+    {{ end }}
+    <!-- ◊; show heading for posts
              ◊"◊"(when/splice (string=? (post-type here) "post")
              (to-html (post-heading here)))
              ◊; show toc if it exists
@@ -73,7 +73,6 @@
              (to-html (toc here)))
              ◊; actual content
              ◊"◊"(to-html doc) -->
-    </div>
 
     <!-- Footer -->
     <footer id="sitefooter">

@@ -31,6 +31,13 @@ body,
   flex-wrap: wrap;
 }
 
+div#home {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  aside ul {
+  }
+}
+
 body {
   margin: 2em 15%;
   line-height: 1.6;

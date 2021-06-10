@@ -8,6 +8,7 @@ Stuff I’ve made:
 
 - [[https://gitlab.com/canrylog/canrylog.el][Canrylog]] (WIP time tracking app)
 - [[https://barren-moon.kisaragi-hiu.com][A Barren Land of Dust]] (Poem collection from my high school years)
-- UTAU Covers ([[https://youtube.com/channel/UCl_hsqcvdX0XdgBimRQ6R3A][on Youtube]], [[https://www.nicovideo.jp/user/38995186][on niconico]])
+- [[covers.html][UTAU Covers]] ([[https://youtube.com/channel/UCl_hsqcvdX0XdgBimRQ6R3A][on Youtube]], [[https://www.nicovideo.jp/user/38995186][on niconico]])
+- [[illust.html][Illustrations]]
 
 [[file:projects.org][Other projects…]]
