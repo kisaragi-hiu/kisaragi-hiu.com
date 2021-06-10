@@ -1,18 +1,18 @@
 <header class="heading">
-    <div class="baseline list">
-        {{ with .Date }}
-        {{ partial "date" . }}
-        {{ end }}
-        {{ range .GetTerms "category" }}
-        <p class="category">
-            <a href="{{ .Permalink }}">{{ .LinkTitle }}</a>
-        </p>
-        {{ end }}
-    </div>
     <h1 class="xl">{{ .Title }}</h1>
     {{ with .Param "subtitle" }}
     <h2>{{.}}</h2>
     {{ end }}
+    <hr>
+    <dl class="meta">
+        {{ with .Date }}
+        <dt>Published</dt><dd>{{ partial "date" . }}</dd>
+        {{ end }}
+        {{ range .GetTerms "category" }}
+        <dt class="category">Category</dt>
+        <dd><a href="{{ .Permalink }}">{{ .LinkTitle }}</a></dd>
+        {{ end }}
+    </dl>
     {{ with .GetTerms "tags" }}
     <div class="tags list">
         {{ range $index, $value := . }}

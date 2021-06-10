@@ -16,7 +16,7 @@
         <a href="{{ .Permalink }}">{{ .LinkTitle }}</a>
         {{ end }}
     </div>
-    <h2 class="margin-top-none">
+    <h2>
         <a href="{{ .Permalink }}" class="color-primary">
             {{ .LinkTitle }}
         </a>
@@ -24,7 +24,7 @@
     {{ with .GetTerms "tags" }}
     <div class="margin-none list">
         {{ range $index, $value := . }}
-        <a class="tag" href="{{ .Permalink }}">{{ .LinkTitle | lower }}</a>
+        <a class="card tag" href="{{ .Permalink }}">{{ .LinkTitle | lower }}</a>
         {{ end }}
     </div>
     {{ end }}

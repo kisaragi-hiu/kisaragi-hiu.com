@@ -6,9 +6,19 @@
     margin-bottom: 0.5rem;
   }
   h2 {
-    margin: 0;
+    margin-top: 0;
+    margin-bottom: 2rem;
   }
   .tags {
     margin-top: 0.5rem;
+  }
+  .meta {
+    font-size: $font-size-s;
+    dt {
+      font-weight: 600;
+    }
+    dd {
+      margin-left: 1rem;
+    }
   }
 }

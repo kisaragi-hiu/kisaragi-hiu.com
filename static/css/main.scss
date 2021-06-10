@@ -57,6 +57,21 @@ img {
 
 // Utilities
 
+// From
+// https://www.accessibility-developer-guide.com/examples/hiding-elements/visually/
+//
+// "It may be surprising, but the only way to hide an element visually
+// while retaining its perceptibility for screen readers is moving
+// them out of the viewport using absolute positioning:"
+.hide-visual {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
 .maxh-40rem {
   max-height: 40rem;
 }
@@ -95,7 +110,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-size: $font-size-big;
+  font-size: $font-size-l;
   line-height: 1.2;
   margin-top: 2rem;
   margin-bottom: 1rem;
@@ -198,13 +213,6 @@ div#references p {
 
 .baseline {
   align-items: baseline;
-}
-
-.flex-item-margin > *,
-.list > * {
-  margin-right: 0.5rem;
-  margin-top: 0;
-  margin-bottom: 0.25rem;
 }
 
 .heading {
