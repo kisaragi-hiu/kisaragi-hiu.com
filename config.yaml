@@ -33,10 +33,16 @@ uglyurls: true
 # baseURL: kisaragi-hiu.com
 
 frontmatter:
-  date: ["date", "publishDate", "lastmod"]
-  lastmod: [":git", "lastmod", "date", "publishDate"]
-  publishDate: ["publishDate", "date"]
+  # publishDate is used to determine if a page is from the future.
+  # date is used for default sorting.
+  # https://stackoverflow.com/a/59760977/6927814
+  #
+  # As I have turned on buildFuture (see above), publishDate is not relevant.
+  date: ["created", "date", "published"]
+  lastmod: [":git", "updated", "created", "date", "published"]
   expiryDate: ["expiryDate"]
+
+enableGitInfo: true
 
 taxonomies:
   category: category

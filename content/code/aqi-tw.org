@@ -1,9 +1,0 @@
-#+title: aqi.tw
-#+status: WIP
-#+tags[]: javascript app
-
-https://aqi.tw
-
-A small frontend for Taiwan’s government AQI reporting.
-
-[Source code](https://github.com/kisaragi-hiu/com.kisaragi-hiu.aqi).
