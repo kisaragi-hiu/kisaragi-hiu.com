@@ -12,9 +12,16 @@ watch-css:
 watch-hugo:
 	hugo server
 
+# Visit the page after a second
+# Unless Firefox is already open and has a tab visiting the page
+# (I've only bothered to support Firefox here)
+open-browser:
+	-(sleep 1 && \
+	 !(pgrep firefox && python firefox-page-opened.py "localhost:1313") && \
+	 xdg-open "http://localhost:1313")
+
 serve: public static/css/main.css
-	(sleep 1 && xdg-open "http://localhost:1313") &
-	$(bin)concurrently --kill-others "make watch-css" "make watch-hugo"
+	$(bin)concurrently "make open-browser" "make watch-css" "make watch-hugo"
 
 clean:
 	git clean -Xdf
