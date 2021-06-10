@@ -13,9 +13,6 @@ tasks:
   - npm: |
       cd kisaragi-hiu.com
       npm install --production
-  - assets: |
-      cd kisaragi-hiu.com
-      git submodule update --init
   - build: |
       cd kisaragi-hiu.com
       make zip
