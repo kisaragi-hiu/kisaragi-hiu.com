@@ -1,0 +1,33 @@
+#+title: Finally finished reading Steins;Gate
+#+date: 2021-06-12T00:48:28+0900
+#+language: en
+#+tags[]: steins;gate
+
+After putting it off for so long, I finally finished reading Steins;Gate (for a second time).
+
+Before its Steam release I did play through it once, reaching the Mayuri end as I didn't have a guide. That was the first time I attempted to read something in Japanese only.
+
+After the Steam release on 2016-09-09, I set about playing through it with a guide this time. But for various reasons the 43 hours in total that I spent on this play through has spanned over 4 years, from 2016-09-11 all the way to 2021-05-31.
+
+#+caption: The playthrough started in 2016!
+[[/sg-first-save20210531032347-480.jpg]]
+
+Now onto finishing Steins;Gate 0. I couldn't find a guide as detailed as the one that I used for S;G (but I did still find [[https://h1g.jp/steinsgate0/?簡易攻略チャート][a pretty good guide]]), so I might even make my own map after I finish reading it.
+
+* Some stuff I just realized
+
+(Spoilers.)
+
+In chapter 10 (on the Kurisu route), I didn't realize that after Okabe remembered Kurisu would be dead back in the β-worldline, he *actually tried* to continue to time leap to save Mayuri, and only gave up after perhaps a hundred attempts.
+
+This part is sort of brushed over in the monologue. He mentions:
+
+- Hiring body guards to protect Mayuri
+- Borrowing a ton of money and “escaping to South America” (in a day??)
+- Forcing his university's hospital to admit Mayuri despite her being completely healthy so that she can get help immediately if her heart fails
+
+as well as other attempts. He didn't just say “oh well I guess I have no choice, bye bye Kurisu”, he did try and then fail.
+
+This might also explain why he'd be so hesitant to go with Suzuha a second time and time travel to save Kurisu once he's back in the β-worldline, as in his perspective he had just failed not once, but perhaps a hundred times trying to fight destiny.
+
+Another detail I cared about but ultimately probably isn't that important is that he actually did tell Mayuri everything before he jumps to β.
