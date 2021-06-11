@@ -39,7 +39,7 @@ frontmatter:
   #
   # As I have turned on buildFuture (see above), publishDate is not relevant.
   date: ["created", "date", "published"]
-  lastmod: [":git", "updated", "created", "date", "published"]
+  lastmod: ["updated"]
   expiryDate: ["expiryDate"]
 
 enableGitInfo: true

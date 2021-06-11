@@ -8,6 +8,9 @@
         {{ with .Date }}
         <dt>Published</dt><dd>{{ partial "date" . }}</dd>
         {{ end }}
+        {{ with .Lastmod }}
+        <dt>Updated</dt><dd>{{ partial "date" . }}</dd>
+        {{ end }}
         {{ range .GetTerms "category" }}
         <dt class="category">Category</dt>
         <dd><a href="{{ .Permalink }}">{{ .LinkTitle }}</a></dd>
