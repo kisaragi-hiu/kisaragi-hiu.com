@@ -11,6 +11,8 @@
 /pixiv https://www.pixiv.net/member.php?id=14235181
 /aqi https://aqi.tw
 
+/blog/2017-10-10-iterations /iterations
+
 # / is /blog
 /blog /
 /posts /
@@ -39,4 +41,3 @@
 # We have to do this explicitly
 /* /404 404
 
-/blog/2017-10-10-iterations /iterations
