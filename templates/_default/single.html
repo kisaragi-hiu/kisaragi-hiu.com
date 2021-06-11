@@ -1,39 +1,5 @@
 {{ define "main" }}
 
-<!-- I don't know how to extract parts of the content, so this will have to live here. -->
-{{ if (and (eq .Type "page") (eq .Title "About")) }}
-<div class="side-layout">
-<main>
-{{ partial "post-heading" . }}
-{{ partial "content" . }}
-</main>
-<aside>
-    <header class="heading">
-    <h1 class="xl">Links</h1>
-    </header>
-    <hr>
-    <dl>
-        <dt>Twitter</dt>
-        <dd><a href="https://twitter.com/flyin1501">@flyin1501</a></dd>
-        <dt>GitHub</dt>
-        <dd><a href="https://github.com/kisaragi-hiu">kisaragi-hiu</a></dd>
-        <dt>Reddit</dt>
-        <dd><a href="https://www.reddit.com/user/flyin1501">u/flyin1501</a></dd>
-        <dt>YouTube</dt>
-        <dd><a href="https://youtube.com/channel/UCl_hsqcvdX0XdgBimRQ6R3A">UCl_hsqcvdX0XdgBimRQ6R3A</a></dd>
-        <dt>niconico</dt>
-        <dd><a href="https://nicovideo.jp/user/38995186">user/38995186</a></dd>
-        <dt>Pixiv</dt>
-        <dd><a href="https://pixiv.me/kisaragi-hiu">kisaragi-hiu</a></dd>
-        <dt>GitLab</dt>
-        <dd><a href="https://gitlab.com/kisaragi-hiu">kisaragi-hiu</a></dd>
-        <dt>Sourcehut</dt>
-        <dd><a href="https://gitlab.com/kisaragi-hiu">~kisaragi_hiu</a></dd>
-    </dl>
-</aside>
-</div>
-{{ else }}
-
 {{ partial "post-heading" . }}
 
 {{ if .Params.toc }}
@@ -42,7 +8,6 @@
 
 {{ partial "content" . }}
 
-{{ end }}
 {{ end }}
 
 {{ define "footer" }}

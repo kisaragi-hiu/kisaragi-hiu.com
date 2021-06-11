@@ -1,0 +1,54 @@
+{{ define "main" }}
+<!-- A page will use this template by specifying #+layout: about.
+
+     An alternate way is to do this in single.html:
+     {{ if (and (eq .Type "page") (eq .Title "About")) }}
+     ...
+     {{ else }}
+     ...
+     {{ end }}
+-->
+<div class="side-layout">
+  <main>{{ partial "post-heading" . }} {{ partial "content" . }}</main>
+  <aside>
+    <header class="heading">
+      <h1 class="xl">Metadata</h1>
+      <hr />
+    </header>
+    <dl>
+      <dt>Twitter</dt>
+      <dd><a href="https://twitter.com/flyin1501">@flyin1501</a></dd>
+      <dt>GitHub</dt>
+      <dd><a href="https://github.com/kisaragi-hiu">kisaragi-hiu</a></dd>
+      <dt>Reddit</dt>
+      <dd><a href="https://www.reddit.com/user/flyin1501">u/flyin1501</a></dd>
+      <dt>YouTube</dt>
+      <dd>
+        <a href="https://youtube.com/channel/UCl_hsqcvdX0XdgBimRQ6R3A"
+          >UCl_hsqcvdX0XdgBimRQ6R3A</a
+        >
+      </dd>
+      <dt>niconico</dt>
+      <dd><a href="https://nicovideo.jp/user/38995186">user/38995186</a></dd>
+      <dt>Pixiv</dt>
+      <dd><a href="https://pixiv.me/kisaragi-hiu">kisaragi-hiu</a></dd>
+      <dt>GitLab</dt>
+      <dd><a href="https://gitlab.com/kisaragi-hiu">kisaragi-hiu</a></dd>
+      <dt>Sourcehut</dt>
+      <dd><a href="https://gitlab.com/kisaragi-hiu">~kisaragi_hiu</a></dd>
+      <dt>PGP fingerprint</dt>
+      <dd>
+        <a href="/KisaragiHiu.asc"
+          >BCC7 4B10 41D4 B7D7 CC8B<br />F402 40EC BEAE A877 5FC2</a
+        >
+      </dd>
+      <dt><a href="https://orcid.org/">ORCID</a></dt>
+      <dd>
+        <a href="https://orcid.org/0000-0002-0293-7943"
+          >https://orcid.org/0000-0002-0293-7943</a
+        >
+      </dd>
+    </dl>
+  </aside>
+</div>
+{{ end }}

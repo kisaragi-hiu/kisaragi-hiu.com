@@ -1,13 +1,12 @@
 #+title: About
+#+created: 2017-09-24
+#+updated: 2021-06-12T07:23:24+0900
 #+special: true
+#+layout: about
 
-I'm a college student in Taiwan, studying, um, Applied English.
+I'm a college student in Taiwan studying Applied English.
 
 I write Emacs Lisp, make covers with UTAU, and occasionally play with Blender.
-
-PGP fingerprint: [[file:KisaragiHiu.asc][BCC7 4B10 41D4 B7D7 CC8B F402 40EC BEAE A877 5FC2]]
-
-[[https://orcid.org/][ORCID]]: https://orcid.org/0000-0002-0293-7943
 
 * This website
 

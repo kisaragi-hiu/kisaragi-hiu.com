@@ -1,0 +1,13 @@
+#+title: Fallback templates
+
+This is the fallback templates folder.
+
+Single pages use =single.html=, list pages use =list.html=.
+
+Everything goes back to =baseof.html=.
+
+If a page has a =layout= set, it'll use the template for that layout instead. For instance, [[../../content/about.org][about.org]] uses the =about.html= template here because it has set its =#+layout= to =about=.
+
+Section rules still apply. covers/abc.org with a layout of =test= will check templates/covers/test.html first.
+
+See [[https://gohugo.io/templates/lookup-order][here]] for many examples for the lookup order.
