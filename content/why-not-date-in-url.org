@@ -1,5 +1,6 @@
 #+title: Why I shouldn't have put the publish date in my URLs
 #+date: 2021-06-07T19:41:30+0900
+#+updated: 2021-06-12T07:52:01+0900
 
 Two philosophies:
 
@@ -15,6 +16,23 @@ I shouldn't have put the date in all of my URLs because this site is more like a
 There are some entries that are more akin to diary entries, and those are the ones that should remain dated.
 
 Another alternative is to write new versions and link previous versions to them. But this requires too much manual linking, which makes modifying existing ideas more cumbersome.
+
+* Archiving old versions
+
+- Move the old version to =content/archive/<URL>/<timestamp-or-date>.org=
+- Add =#+archive: <URL>= to the old version
+
+Now archive/<URL>.html should show a list of old versions.
+
+Still to do:
+
+- “Updated: <date>” should link to archive/<URL>.html
+- archive/<URL>.html should explain that you're looking at a list of old versions
+- An old version should explain that it's an old version and offer a link to
+  - archive/<URL>.html (the list of old versions), and
+  - the current version
+
+But implementing this as a taxonomy seems sound.
 
 * URLs without dates: what about the history?
 
