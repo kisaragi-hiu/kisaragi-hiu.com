@@ -9,3 +9,11 @@
 .tag::before {
   content: "#";
 }
+
+ul.tags {
+  list-style: none;
+  padding-left: 0;
+  display: flex;
+  flex-wrap: wrap;
+  line-height: 2;
+}

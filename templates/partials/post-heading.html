@@ -14,10 +14,10 @@
         {{ end }}
     </dl>
     {{ with .GetTerms "tags" }}
-    <div class="flex">
-        {{ range $index, $value := . }}
-        <a class="card tag" href="{{ .Permalink }}">{{ .LinkTitle | lower }}</a>
+    <ul class="tags">
+        {{ range . }}
+        <li>{{ partial "tag" . }}</li>
         {{ end }}
-    </div>
+    </ul>
     {{ end }}
 </header>

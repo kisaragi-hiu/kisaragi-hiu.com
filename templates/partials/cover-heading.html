@@ -5,10 +5,10 @@
     {{ partial "date" . }}
     {{ end }}
     {{ with .GetTerms "tags" }}
-    <div class="margin-none flex">
-        {{ range $index, $value := . }}
-        <a class="tag" href="{{ .Permalink }}">{{ .LinkTitle | lower }}</a>
+    <ul class="tags">
+        {{ range . }}
+        <li>{{ partial "tag" . }}</li>
         {{ end }}
-    </div>
+    </ul>
     {{ end }}
 </header>

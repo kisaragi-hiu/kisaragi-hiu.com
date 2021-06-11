@@ -32,11 +32,12 @@
 </main>
 <aside>
     <h1>Tags</h1>
-    <ul class="flex">
+    <ul class="tags">
+        <!-- .Site.Taxonomies.tags -> [weightedPage, weightedPage, ...]
+             weightedPage.Page.Permalink (O)
+             So we have to pass .Page into the partial. -->
       {{ range .Site.Taxonomies.tags }}
-      <li>
-        <a class="card tag" href="{{.Page.Permalink}}">{{.Page.LinkTitle | lower}}</a>
-      </li>
+        <li>{{ partial "tag" .Page }}</li>
       {{ end }}
     </ul>
 </aside>
