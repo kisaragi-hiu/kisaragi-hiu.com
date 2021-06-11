@@ -27,11 +27,14 @@ body,
   font-size: $font-size-main;
 }
 
-div#home {
+div.side-layout {
   display: grid;
   grid-template-columns: 5fr 3fr;
   aside {
     margin-left: 1rem;
+    @media (max-width: 1200px) {
+      margin-left: 0;
+    }
   }
   @media (max-width: 1200px) {
     display: block;

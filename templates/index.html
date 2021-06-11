@@ -1,5 +1,5 @@
 {{ define "main" }}
-<div id="home">
+<div class="side-layout">
 <main>
   <h1 class="xxl">Kisaragi Hiu</h1>
   {{ partial "content" . }}
@@ -14,7 +14,7 @@
              </div> -->
   <!-- {{ end }} -->
   <hr>
-  <h1>Recent pages</h1>
+  <h1>Ideas</h1>
   <ul class="index">
     {{ range (where .Site.RegularPages "Section" "") }}
     {{ if .Param "special" }}
@@ -23,7 +23,7 @@
     {{ end }}
     {{ end }}
   </ul>
-  <h1>Recent blog posts</h1>
+  <h1>Public diary</h1>
   <ul class="index">
     {{ range (where .Site.RegularPages "Section" "blog") }}
     <li>{{ partial "index-item" . }}</li>

@@ -2,6 +2,8 @@
 
 I'm a college student in Taiwan studying Applied English.
 
+Welcome. This is my digital garden, where I host my public notes.
+
 [[file:about.org][More about me…]]
 
 Stuff I’ve made:

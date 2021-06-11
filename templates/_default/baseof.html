@@ -63,8 +63,7 @@
     </header>
 
     <!-- Contents -->
-    {{ block "main" . }}
-    {{ end }}
+    {{ block "main" . }} {{ end }}
     <!-- ◊; show heading for posts
              ◊"◊"(when/splice (string=? (post-type here) "post")
              (to-html (post-heading here)))
@@ -76,24 +75,10 @@
 
     <!-- Footer -->
     <footer id="sitefooter">
-      <div id="footer-sep">・・・</div>
-      {{ block "footer" . }} {{ end }}
-      <div id="sitefooter-content">
-        <p>© Kisaragi Hiu 2017~2021.</p>
-        <p>
-          Content in CC-BY-SA 4.0 International; code in MIT. See
-          <a
-            rel="license"
-            href="https://github.com/kisaragi-hiu/kisaragi-hiu.com/blob/source/LICENSE.md"
-            >LICENSE</a
-          >
-          for details.<br />
-          Source code is hosted
-          <a href="https://github.com/kisaragi-hiu/kisaragi-hiu.com"
-            >on GitHub</a
-          >.
-        </p>
+      <div id="footer-sep">
+        <a class="color-primary" href="/about.html">●</a>
       </div>
+      {{ block "footer" . }} {{ end }}
     </footer>
   </body>
 </html>
