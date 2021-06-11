@@ -1,5 +1,5 @@
 #+title: Iterations of Learning
-#+date: 2017-10-10T00:00:00+0800
+#+date: 2017-10-10
 #+category: Opinions
 #+language: en
 
