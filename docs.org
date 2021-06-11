@@ -1,5 +1,9 @@
 #+title: Documentation for writing stuff on this blog
 
+* CSS
+** .flex
+- Make an element a flex list
+- Also enable flex-wrap
 * Shortcodes
 ** link shortcut shortcodes
 - github path [description]

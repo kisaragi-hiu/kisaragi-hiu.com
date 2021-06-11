@@ -14,7 +14,7 @@
         {{ end }}
     </dl>
     {{ with .GetTerms "tags" }}
-    <div class="tags list">
+    <div class="tags flex">
         {{ range $index, $value := . }}
         <a class="card tag" href="{{ .Permalink }}">{{ .LinkTitle | lower }}</a>
         {{ end }}

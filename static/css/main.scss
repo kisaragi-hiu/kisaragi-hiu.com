@@ -27,10 +27,6 @@ body,
   font-size: $font-size-main;
 }
 
-.list {
-  flex-wrap: wrap;
-}
-
 div#home {
   display: grid;
   grid-template-columns: 2fr 1fr;
@@ -214,9 +210,9 @@ div#references p {
   display: inline;
 }
 
-.flex,
-.list {
+.flex {
   display: flex;
+  flex-wrap: wrap;
 }
 
 .side-by-side {
