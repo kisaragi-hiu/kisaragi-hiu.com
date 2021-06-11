@@ -1,9 +1,9 @@
 {{ define "main" }}
 <h1 class="xl">{{ .Title }}</h1>
 {{ if .Params.toc }} {{ partial "toc" . }} {{ end }} {{ if .Params.hugo_nolist}}
-{{ .Content }} {{ else }}
+{{ partial "content" . }} {{ else }}
 <root>
-  {{ .Content }}
+  {{ partial "content" . }}
   <h2>Projects</h2>
   <ul class="index">
     {{ range .Pages }}

@@ -1,9 +1,13 @@
 {{ define "main" }}
 <h1 class="xl">{{ .Title }}</h1>
-{{ if .Params.toc }} {{ partial "toc" . }} {{ end }} {{ if
-.Params.hugo_nolist}} {{ .Content }} {{ else }}
+{{ if .Params.toc }}
+{{ partial "toc" . }}
+{{ end }}
+{{ if .Params.hugo_nolist}}
+{{ partial "content" . }}
+{{ else }}
 <root>
-  {{ .Content }}
+  {{ partial "content" . }}
   {{ range .Pages.GroupByDate "2006" }}
   <h2>{{ .Key }}</h2>
   <ul class="illust-index">

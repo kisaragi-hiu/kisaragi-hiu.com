@@ -31,11 +31,8 @@ For example, to produce full ISO 8601 format, use "%FT%T%z".
 #+end_quote
 
 #+begin_src emacs-lisp
-(format-time-string "%FT%T%z")
+(format-time-string "%FT%T%z") ; => 2021-06-07T20:21:18+0900
 #+end_src
-
-#+RESULTS:
-: 2021-06-07T20:21:18+0900
 
 * Shortened version
 

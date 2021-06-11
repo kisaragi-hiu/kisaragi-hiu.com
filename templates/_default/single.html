@@ -5,7 +5,9 @@
 {{ if .Params.toc }}
 {{ partial "toc" . }}
 {{ end }}
-{{ .Content }}
+
+{{ partial "content" . }}
+
 {{ end }}
 
 {{ define "footer" }}

@@ -2,7 +2,7 @@
 <div id="home">
 <main>
   <h1 class="xxl">Kisaragi Hiu</h1>
-  {{ .Content }}
+  {{ partial "content" . }}
   <!-- We use "where" exclude non-blog pages -->
   <!-- {{ range (where .Site.RegularPages "Section" "blog").GroupByParam "language" }}
              <div class="index-language">

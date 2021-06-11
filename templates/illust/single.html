@@ -16,7 +16,8 @@
   />
   <figcaption>
     <h1 class="xl">{{ .Title }}</h1>
-    {{ partial "param-links" . }} {{ .Content }}
+    {{ partial "param-links" . }}
+    {{ partial "content" . }}
     <dl class="meta">
       <dt>Published</dt>
       <dd>{{ .Params.date.Format "2006-01-02" }}</dd>
