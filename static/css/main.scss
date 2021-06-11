@@ -29,7 +29,15 @@ body,
 
 div#home {
   display: grid;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: 5fr 3fr;
+  aside {
+    margin-left: 1rem;
+    ul {
+      list-style: none;
+      padding: 0;
+      line-height: 2;
+    }
+  }
   @media (max-width: 1200px) {
     display: block;
   }

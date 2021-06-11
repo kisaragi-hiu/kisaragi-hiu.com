@@ -32,10 +32,12 @@
 </main>
 <aside>
     <h1>Tags</h1>
-    <ul>
-        {{ range .Site.Taxonomies.tags }}
-        <li><a href="{{.Page.Permalink}}">{{.Page.Title}}</a></li>
-        {{ end }}
+    <ul class="flex">
+      {{ range .Site.Taxonomies.tags }}
+      <li>
+        <a class="card tag" href="{{.Page.Permalink}}">{{.Page.Title}}</a>
+      </li>
+      {{ end }}
     </ul>
 </aside>
 </div>
