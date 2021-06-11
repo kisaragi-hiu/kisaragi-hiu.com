@@ -34,7 +34,8 @@ body,
 div#home {
   display: grid;
   grid-template-columns: 2fr 1fr;
-  aside ul {
+  @media (max-width: 1200px) {
+    display: block;
   }
 }
 
