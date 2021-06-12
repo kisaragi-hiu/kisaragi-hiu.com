@@ -1,5 +1,36 @@
 #+title: Documentation for writing stuff on this blog
 
+* Making new versions of pages
+
+First use the =k/hugo-snapshot-page= command. This will create a snapshot for the current version.
+
+#+caption: A version of the snapshot function. I might include this in this repository instead of in my emacs config.
+#+begin_src emacs-lisp
+(defun k/hugo-snapshot-page ()
+  "Add the current version of a page to the old version archive."
+  (interactive)
+  (let* ((default-directory (projectile-project-root))
+         (id (f-base (buffer-file-name)))
+         (keywords (org-collect-keywords '("created" "updated")))
+         (version
+          ;; updated > created
+          (or (cadr (assoc "UPDATED" keywords))
+              (cadr (assoc "CREATED" keywords))))
+         (filename (replace-regexp-in-string "[:-]" "" version))
+         (dir (f-join "content" "archive" id))
+         (orig-content (buffer-string)))
+    (make-directory dir t)
+    (with-temp-file (f-join dir (concat filename ".org"))
+      (insert orig-content)
+      (goto-char (point-min))
+      (forward-line)
+      (insert "#+archive: " id "\n"))))
+#+end_src
+
+Then edit the current version as you please.
+
+When you’re done, updated the =#+updated:= field.
+
 * Extracting date
 
 Usually getting the creation date of a page is done with ={{.Date}}=.
