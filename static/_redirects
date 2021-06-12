@@ -11,12 +11,13 @@
 /pixiv https://www.pixiv.net/member.php?id=14235181
 /aqi https://aqi.tw
 
+# This must come before the /blog -> / redirect
 # Blog -> content note migration
-# Must come before the /blog -> / redirect
 /blog/2017-10-10-iterations /iterations
 /blog/2019-05-15-closure /closures
 /blog/2019-04-17-utau-make-file /utau-make-file
 /blog/2017-11-26-east-asian-names-reverse-or-not /east-asian-name-reverse
+/blog/2017-12-22-attempt-to-explain-lambda /lambda
 
 # / is /blog
 /blog /

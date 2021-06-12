@@ -1,5 +1,10 @@
 #+title: Documentation for writing stuff on this blog
 
+* Converting dated pages to pages without dates
+
+1. move =content/blog/xxxx-xx-xx-<id>.org= to =content/<id>.org=
+2. add a line =/blog/xxxx-xx-xx-<id> /<id>= to ~_redirects~
+
 * Making new versions of pages
 
 First use the =k/hugo-snapshot-page= command. This will create a snapshot for the current version.
