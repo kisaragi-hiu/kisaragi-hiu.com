@@ -6,7 +6,25 @@
   {{ .Scratch.Set "titlecase" true }}
 {{ end }}
 
+<!-- Going through term pages: -->
+<!-- <ul>
+     {{ range (where .Site.AllPages "Kind" "term" ) }}
+     {{ if (in (.Page.Param $.Data.Plural) (anchorize $.LinkTitle)) }}
+     <li>{{ .Page }}</li>
+     {{ end }}
+     {{ end }}
+     </ul>
+-->
 {{ partial "heading-with-links" . }}
+
+<!-- HACK: getting around the fact that Hugo doesn't seem to allow tagging list pages. -->
+{{ $tags := (slice)}}
+{{ range (.Param "tags") }}
+{{ $tags = (union $tags (slice ($.GetPage (printf "/tags/%s" .)))) }}
+{{ end }}
+{{ with $tags }}
+  {{ partial "tags" . }}
+{{ end }}
 
 {{ if .Params.toc }}
 {{ partial "toc" . }}
@@ -17,11 +35,27 @@
 {{ else }}
 <root>
   {{ partial "content" . }}
-  <h2>Posts</h2>
+  {{ $tagged := (slice) }}
+  {{ range (where .Site.AllPages "Kind" "term" ) }}
+    {{ if (in (.Page.Param $.Data.Plural) (anchorize $.LinkTitle)) }}
+      {{ $tagged = (union $tagged (slice .Page))}}
+    {{ end }}
+  {{ end }}
+  {{ with $tagged }}
+  <h2>Terms</h2>
   <ul class="index">
-      {{ range .Pages }}
+  {{ range $tagged }}
+      <li>{{ partial "index-item" . }}</li>
+  {{ end }}
+  </ul>
+  {{ end }}
+  {{ with .Pages }}
+  <h2>Pages</h2>
+  <ul class="index">
+      {{ range .}}
       {{ partial "index-item" . }}
       {{ end }}
   </ul>
+  {{ end }}
 </root>
 {{ end }} {{ end }}

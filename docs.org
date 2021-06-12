@@ -1,5 +1,36 @@
 #+title: Documentation for writing stuff on this blog
 
+* Adding tags to taxonomy terms
+
+For instance, I want to tag [[notes:public/content/tags/prsk/_index.org][the page for prsk]] with “games”. But Hugo doesn’t seem to support adding taxonomy terms onto taxonomy terms, at least not out of the box.
+
+To work around this:
+
+- My taxonomy term lists now also look through all term pages, and list those with a matching term:
+
+  #+begin_src web
+  {{ partial "content" . }}
+  {{ $tagged := (slice) }}
+  {{ range (where .Site.AllPages "Kind" "term" ) }}
+    {{ if (in (.Page.Param $.Data.Plural) (anchorize $.LinkTitle)) }}
+      {{ $tagged = (union $tagged (slice .Page))}}
+    {{ end }}
+  {{ end }}
+  {{ with $tagged }}
+  <h2>Terms</h2>
+  <ul class="index">
+  {{ range $tagged }}
+      <li>{{ partial "index-item" . }}</li>
+  {{ end }}
+  </ul>
+  {{ end }}
+  #+end_src
+
+  (This was painful to figure out)
+
+- Term pages have to be created manually. For instance, because no regular page is tagged #games, I have to create =content/tags/games/_index.org= myself.
+
+
 * CSS
 ** .flex
 - Make an element a flex list
