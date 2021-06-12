@@ -1,0 +1,6 @@
+#+title: osu!
+#+hugo_notitlecase: true
+#+tags[]: games
+#+homepage: https://osu.ppy.sh
+
+A circle-clicking rhythm game that started as an emulator for [[https://en.wikipedia.org/wiki/Osu!_Tatakae!_Ouendan][Osu! Tatakae! Ouendan]].
