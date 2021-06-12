@@ -1,6 +1,6 @@
 #+title: aqi.tw
 #+created: 2021-04-13
-#+tags[]: javascript app
+#+tags[]: javascript apps
 #+homepage: https://aqi.tw
 #+github: https://github.com/kisaragi-hiu/com.kisaragi-hiu.aqi
 

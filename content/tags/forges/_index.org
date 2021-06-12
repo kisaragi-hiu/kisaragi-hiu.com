@@ -1,0 +1,3 @@
+#+title: Forges
+
+A /forge/ is a service like GitHub or GitLab which provides project management features on top of hosting version control repositories.

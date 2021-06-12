@@ -1,0 +1,2 @@
+#+title: Magit
+#+tags[]: apps emacs

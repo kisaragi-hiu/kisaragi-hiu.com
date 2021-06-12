@@ -1,0 +1,4 @@
+#+title: Continuous Integration
+#+linktitle: ci
+
+Automatic software testing and building.
