@@ -1,5 +1,5 @@
 #+title: トーキョーゲットー
-#+date: 2018-08-02
+#+created: 2018-08-02
 #+origauthor: Eve
 #+original: https://nico.ms/sm33475587
 #+voice: 闇音レンリ

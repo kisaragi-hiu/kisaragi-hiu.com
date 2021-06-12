@@ -1,5 +1,5 @@
 #+title: Grammar Zela Halalelu (Day 2)
-#+date: 2017-12-06T23:23:00+0900
+#+created: 2017-12-06T23:23:00+0900
 #+category: Hanezeve Caradhina Language Construction
 #+language: en
 

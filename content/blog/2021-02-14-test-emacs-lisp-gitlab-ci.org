@@ -1,5 +1,5 @@
 #+title: Setting up testing and coverage for Emacs Lisp on Gitlab CI
-#+date: 2021-02-14T17:34:14+0900
+#+created: 2021-02-14T17:34:14+0900
 #+category: Tutorials
 #+tags[]: emacs gitlab
 #+language: en

@@ -1,5 +1,5 @@
 #+title: M.S.S.Phantom
-#+date: 2014-12-08
+#+created: 2014-12-08
 #+origauthor: MSSP
 #+voice: 夏語遙
 #+youtube: zGwRJkyxmg4

@@ -1,5 +1,5 @@
 #+title: 教室
-#+date: 2017-04-17
+#+created: 2017-04-17
 #+pixiv: https://www.pixiv.net/artworks/62456498
 
 #+begin_quote

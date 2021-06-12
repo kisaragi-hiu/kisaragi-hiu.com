@@ -1,5 +1,5 @@
 #+title: The Ocarina (大海原與大海原)
-#+date: 2016-03-12
+#+created: 2016-03-12
 #+pixiv: https://www.pixiv.net/artworks/55769306
 
 A recreation of an opening scene in [[https://en.wikipedia.org/wiki/Wadanohara_and_the_Great_Blue_Sea][Wadanohara and the Great Blue Sea]].

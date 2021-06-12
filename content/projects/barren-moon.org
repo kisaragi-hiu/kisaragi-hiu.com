@@ -1,6 +1,6 @@
 #+title: barren-moon
 #+tags[]: pollen
-#+date: 2019-12-09
+#+created: 2019-12-09
 #+homepage: https://barren-moon.kisaragi-hiu.com
 #+gitlab: https://gitlab.com/kisaragi-hiu/barren-moon
 

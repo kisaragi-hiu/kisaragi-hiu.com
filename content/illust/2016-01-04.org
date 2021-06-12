@@ -1,3 +1,3 @@
 #+title: 窗外
-#+date: 2016-01-04
+#+created: 2016-01-04
 #+pixiv: https://www.pixiv.net/artworks/54632699

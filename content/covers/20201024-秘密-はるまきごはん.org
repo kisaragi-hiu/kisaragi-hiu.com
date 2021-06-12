@@ -1,5 +1,5 @@
 #+title: 秘密
-#+date: 2020-10-24
+#+created: 2020-10-24
 #+origauthor: はるまきごはん
 #+original: https://nico.ms/sm36748469
 #+voice: 雨月

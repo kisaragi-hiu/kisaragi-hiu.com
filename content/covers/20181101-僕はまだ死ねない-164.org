@@ -1,5 +1,5 @@
 #+title: 僕はまだ死ねない
-#+date: 2018-11-01
+#+created: 2018-11-01
 #+origauthor: 164
 #+original: https://nico.ms/sm33931514
 #+voice: 闇音レンリ

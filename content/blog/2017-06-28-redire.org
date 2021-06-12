@@ -1,5 +1,5 @@
 #+title: レディーレ Cover
-#+date: 2017-06-28T22:50:00+0800
+#+created: 2017-06-28T22:50:00+0800
 #+category: Own Vocal Experiment
 #+language: zh_TW
 

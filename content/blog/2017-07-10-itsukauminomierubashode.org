@@ -1,5 +1,5 @@
 #+title: いつか海の見える街で Cover + PV
-#+date: 2017-07-10T15:01:00+0800
+#+created: 2017-07-10T15:01:00+0800
 #+category: Own Vocal Experiment
 #+language: zh_TW
 

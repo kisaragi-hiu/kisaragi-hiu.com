@@ -1,5 +1,5 @@
 #+title: 夏の空と君の傘下で
-#+date: 2017-07-25
+#+created: 2017-07-25
 #+origauthor: utml
 #+voice: 雨月
 #+youtube: CK1C1NrghG8

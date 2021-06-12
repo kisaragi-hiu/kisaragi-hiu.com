@@ -1,5 +1,5 @@
 #+title: 明日を忘れ
-#+date: 2018-09-23
+#+created: 2018-09-23
 #+pixiv: https://www.pixiv.net/artworks/70823749
 
 The background for the video I made for [[/covers/20180926-mnemonic-やなぎなぎ.org][the mnemonic cover]].

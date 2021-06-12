@@ -1,5 +1,5 @@
 #+title: Scapecoat
-#+date: 2018-06-20
+#+created: 2018-06-20
 #+origauthor: 鼻そうめんP
 #+voice: 夏語遙
 #+original: https://nico.ms/sm22918148

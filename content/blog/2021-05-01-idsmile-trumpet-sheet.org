@@ -1,5 +1,5 @@
 #+title: So I made a trumpet score for ID Smile
-#+date: 2021-05-01T23:19:58+0700
+#+created: 2021-05-01T23:19:58+0700
 #+tags[]: trumpet prsk sheets musescore
 #+language: en
 

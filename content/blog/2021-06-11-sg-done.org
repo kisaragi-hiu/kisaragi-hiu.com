@@ -1,5 +1,5 @@
 #+title: Finally finished reading Steins;Gate
-#+date: 2021-06-12T00:48:28+0900
+#+created: 2021-06-12T00:48:28+0900
 #+language: en
 #+tags[]: steins;gate
 

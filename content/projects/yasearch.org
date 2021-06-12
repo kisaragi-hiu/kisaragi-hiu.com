@@ -1,5 +1,5 @@
 #+title: yasearch
-#+date: 2018-12-09
+#+created: 2018-12-09
 #+sourcehut: https://git.sr.ht/~kisaragi_hiu/yasearch
 #+tags[]: emacs
 

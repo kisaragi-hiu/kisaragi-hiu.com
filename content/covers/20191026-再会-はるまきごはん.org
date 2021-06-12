@@ -1,5 +1,5 @@
 #+title: 再会
-#+date: 2019-10-26
+#+created: 2019-10-26
 #+origauthor: はるまきごはん
 #+original: https://nico.ms/sm35330510
 #+voice: 雨月

@@ -1,5 +1,5 @@
 #+title: 回想録
-#+date: 2018-07-19
+#+created: 2018-07-19
 #+origauthor: 銀銀
 #+original: https://nico.ms/sm25554631
 #+voice: 雨月

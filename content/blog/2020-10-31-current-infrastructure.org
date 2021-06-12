@@ -1,5 +1,5 @@
 #+title: Current infrastructure of this site
-#+date: 2020-10-31T04:19:31+0900
+#+created: 2020-10-31T04:19:31+0900
 #+tags[]: pollen org-mode emacs frog sourcehut
 #+category: Meta
 #+toc: #t

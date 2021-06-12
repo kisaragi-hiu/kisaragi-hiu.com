@@ -1,5 +1,5 @@
 #+title: You and beautiful world
-#+date: 2018-08-29
+#+created: 2018-08-29
 #+origauthor: ゆよゆっぺ
 #+original: https://nico.ms/sm7115526
 #+voice: 暗鳴ニュイ

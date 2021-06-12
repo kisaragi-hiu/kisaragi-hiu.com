@@ -1,5 +1,5 @@
 #+title: 濫觴生命
-#+date: 2015-11-12
+#+created: 2015-11-12
 #+origauthor: orangestar
 #+voice: 雨月
 #+youtube: 3hnI8DqMVfc

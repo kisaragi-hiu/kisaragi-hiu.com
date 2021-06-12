@@ -1,7 +1,7 @@
 #+title: Inserting a link after typing “[[” in Org
 #+tags[]: emacs org-mode
 #+toc: true
-#+date: 2021-06-02T23:00:06+0900
+#+created: 2021-06-02T23:00:06+0900
 
 {{< video "/emacs-org-double-square-insert.mp4" >}}
 

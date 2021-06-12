@@ -1,5 +1,5 @@
 #+title: 銀河録
-#+date: 2016-06-19
+#+created: 2016-06-19
 #+origauthor: はるまきごはん
 #+voice: 闇音レンリ
 #+youtube: zYwkKgG07a0

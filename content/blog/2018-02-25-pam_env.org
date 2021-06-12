@@ -1,5 +1,5 @@
 #+title: Switching to .pam_environment for environment variables
-#+date: 2018-02-25T21:34:45+0900
+#+created: 2018-02-25T21:34:45+0900
 #+language: en
 #+tags[]: linux config pollen
 

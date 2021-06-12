@@ -1,5 +1,5 @@
 #+title: レム
-#+date: 2016-09-15
+#+created: 2016-09-15
 #+origauthor: nakano4
 #+voice: 雨月
 #+youtube: p5RcG2mHECA

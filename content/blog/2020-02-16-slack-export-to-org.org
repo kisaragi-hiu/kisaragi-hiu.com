@@ -1,5 +1,5 @@
 #+title: Exporting my Slack data to an Org mode file
-#+date: 2020-02-16T03:19:38+0900
+#+created: 2020-02-16T03:19:38+0900
 #+toc: #t
 #+tags[]: emacs org-mode
 #+language: en

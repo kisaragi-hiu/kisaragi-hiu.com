@@ -1,5 +1,5 @@
 #+title: LEO
-#+date: 2020-05-21
+#+created: 2020-05-21
 #+origauthor: Eve
 #+original: https://youtu.be/J3K3V36mlLM
 #+voice: 闇音レンリ

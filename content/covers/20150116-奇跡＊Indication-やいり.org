@@ -1,5 +1,5 @@
 #+title: 奇跡＊Indication
-#+date: 2015-01-16
+#+created: 2015-01-16
 #+origauthor: やいり
 #+voice: 夏語遙
 #+youtube: QKYjWBtdhvQ

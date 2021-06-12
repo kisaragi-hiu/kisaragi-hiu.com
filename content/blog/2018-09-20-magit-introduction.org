@@ -1,6 +1,6 @@
 #+title: Getting started with Magit
 #+subtitle: Or what I hope I could've read when I first tried out Magit
-#+date: 2018-09-20T23:57:41+0900
+#+created: 2018-09-20T23:57:41+0900
 #+language: en
 #+category: Tutorials
 #+tags[]: magit emacs

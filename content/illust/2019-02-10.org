@@ -1,5 +1,5 @@
 #+title: 明日を忘れ(minimalistic)
-#+date: 2019-02-10
+#+created: 2019-02-10
 #+pixiv: https://www.pixiv.net/artworks/73126503
 
 The flat version of [[file:2018-09-23.org][明日を忘れ]]. I made this for use on my phone cover.

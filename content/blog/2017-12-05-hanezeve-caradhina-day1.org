@@ -1,5 +1,5 @@
 #+title: Making up a language from Hanezeve Caradhina, Day 1
-#+date: 2017-12-05T23:32:00+0900
+#+created: 2017-12-05T23:32:00+0900
 #+category: Hanezeve Caradhina Language Construction
 #+language: en
 

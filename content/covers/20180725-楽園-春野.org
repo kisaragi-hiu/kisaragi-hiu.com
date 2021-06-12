@@ -1,5 +1,5 @@
 #+title: 楽園
-#+date: 2018-07-25
+#+created: 2018-07-25
 #+origauthor: 春野
 #+original: https://nico.ms/sm32149277
 #+voice: 雨月

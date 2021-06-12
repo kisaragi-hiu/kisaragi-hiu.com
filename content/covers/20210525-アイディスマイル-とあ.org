@@ -1,5 +1,5 @@
 #+title: アイディスマイル
-#+date: 2021-05-25
+#+created: 2021-05-25
 #+origauthor: とあ
 #+original: https://nico.ms/sm38667465
 #+voice: 闇音レンリ

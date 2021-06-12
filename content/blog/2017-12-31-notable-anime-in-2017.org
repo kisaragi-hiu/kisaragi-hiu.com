@@ -1,5 +1,5 @@
 #+title: My list of notable anime series in 2017
-#+date: 2017-12-31T23:59:57+0900
+#+created: 2017-12-31T23:59:57+0900
 #+language: en
 #+tags[]: anime
 #+category: Opinions

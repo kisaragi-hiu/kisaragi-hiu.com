@@ -1,5 +1,5 @@
 #+title: いつか海の見える街で
-#+date: 2018-05-31
+#+created: 2018-05-31
 #+origauthor: ゆら
 #+voice: 夏語遙
 #+youtube: GzxXIU1tzfk

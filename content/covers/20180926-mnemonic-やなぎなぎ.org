@@ -1,5 +1,5 @@
 #+title: mnemonic
-#+date: 2018-09-26
+#+created: 2018-09-26
 #+origauthor: やなぎなぎ
 #+original: https://www.amazon.co.jp/dp/B00EPE1K5Q/
 #+voice: 闇音レンリ

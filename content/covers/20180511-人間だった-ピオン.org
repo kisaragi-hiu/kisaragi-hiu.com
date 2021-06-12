@@ -1,5 +1,5 @@
 #+title: 人間だった
-#+date: 2018-05-11
+#+created: 2018-05-11
 #+origauthor: ピオン
 #+voice: 雨月
 #+original: https://nico.ms/sm32134306

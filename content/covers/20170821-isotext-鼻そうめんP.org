@@ -1,5 +1,5 @@
 #+title: isotext
-#+date: 2017-08-21
+#+created: 2017-08-21
 #+origauthor: 鼻そうめんP
 #+voice: 夏語遙
 #+youtube: c4hJBUAr1qI

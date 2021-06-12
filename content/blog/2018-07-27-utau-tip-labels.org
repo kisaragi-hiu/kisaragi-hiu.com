@@ -1,5 +1,5 @@
 #+title: UTAU tip: labels
-#+date: 2018-07-27T00:23:19+0900
+#+created: 2018-07-27T00:23:19+0900
 #+language: en
 #+tags[]: utau
 #+category: Tutorials

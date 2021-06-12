@@ -1,5 +1,5 @@
 #+title: UTAU Covering Experiment
-#+date: 2018-05-11T22:00:10+0900
+#+created: 2018-05-11T22:00:10+0900
 #+category: Experiments
 #+tags[]: utau
 #+language: en

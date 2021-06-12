@@ -1,5 +1,5 @@
 #+title: Lookup Cangjie encoding in Emacs with =cangjie.el=
-#+date: 2019-01-21T19:43:47+09:00
+#+created: 2019-01-21T19:43:47+09:00
 #+tags[]: emacs cangjie
 #+category: Project announcements
 #+language: en

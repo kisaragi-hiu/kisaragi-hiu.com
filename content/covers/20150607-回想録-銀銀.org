@@ -1,5 +1,5 @@
 #+title: 回想録
-#+date: 2015-06-07
+#+created: 2015-06-07
 #+origauthor: 銀銀
 #+voice: 雨月
 #+youtube: 0nEjiqtTaRc

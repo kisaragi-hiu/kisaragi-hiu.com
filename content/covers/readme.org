@@ -9,7 +9,7 @@ Frontmatter:
 #+begin_src org
 ,#+title:
 ,#+origauthor:
-,#+date:
+,#+created:
 ,#+youtube:
 ,#+niconico:
 ,#+voice:

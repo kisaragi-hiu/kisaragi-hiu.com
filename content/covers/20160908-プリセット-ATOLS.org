@@ -1,5 +1,5 @@
 #+title: プリセット
-#+date: 2016-09-08
+#+created: 2016-09-08
 #+origauthor: ATOLS
 #+voice: 雨月
 #+youtube: bArhfHt6RiM
