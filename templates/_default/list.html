@@ -17,10 +17,12 @@
 -->
 {{ partial "heading-with-links" . }}
 
-<!-- HACK: getting around the fact that Hugo doesn't seem to allow tagging list pages. -->
+<!-- Display the tags of this term page.
+     HACK: getting around the fact that Hugo doesn't seem to allow
+     tagging list pages. -->
 {{ $tags := (slice)}}
 {{ range (.Param "tags") }}
-{{ $tags = (union $tags (slice ($.GetPage (printf "/tags/%s" .)))) }}
+{{ $tags = (union $tags (slice (partial "func-tag-name-to-page" .))) }}
 {{ end }}
 {{ with $tags }}
   {{ partial "tags" . }}

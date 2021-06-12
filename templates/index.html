@@ -31,16 +31,32 @@
   </ul>
 </main>
 <aside>
-    <h1>Tags</h1>
-    <!-- .Site.Taxonomies.tags -> [weightedPage, weightedPage, ...]
-         weightedPage.Page.Permalink (O)
-         So we have to extract .Page first. -->
-    {{ $alltags := (slice) }}
-    {{ range .Site.Taxonomies.tags }}
-    {{ $alltags = (union $alltags (slice .Page)) }}
+    <!-- Manually go through every page and extract their tags.
+         This is because .Site.Taxonomies.tags does not list tags that are only
+         declared in taxonomy term pages.
+
+         "Tagging tags" isn't a well-supported thing in Hugo, yet. -->
+
+    <!-- Extract all values specified in the tags parameter -->
+    {{ $alltagnames := (slice) }}
+    {{ range .Site.AllPages }}
+    {{ $alltagnames = (union $alltagnames .Params.tags) }}
     {{ end }}
+
+    <!-- Sort them -->
+    {{ $alltagnames = (sort $alltagnames) }}
+
+
+    <!-- Convert them to tag pages -->
+    {{ $alltags := (slice) }}
+    {{ range $alltagnames }}
+    {{ $alltags = (union $alltags (slice (partial "func-tag-name-to-page" .)))}}
+    {{ end }}
+
+    <!-- Actually display them -->
     {{ with $alltags }}
-      {{ partial "tags" . }}
+    <h1>Tags</h1>
+    {{ partial "tags" . }}
     {{ end }}
 </aside>
 </div>

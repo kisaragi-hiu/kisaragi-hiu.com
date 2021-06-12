@@ -30,6 +30,32 @@ To work around this:
 
 - Term pages have to be created manually. For instance, because no regular page is tagged #games, I have to create =content/tags/games/_index.org= myself.
 
+- You can no longer rely on =.Site.Taxonomies.tags= to list all tags. Instead, you have to do something like this:
+
+  #+begin_src web
+  <!-- Extract all values specified in the tags parameter -->
+  {{ $alltagnames := (slice) }}
+  {{ range .Site.AllPages }}
+  {{ $alltagnames = (union $alltagnames .Params.tags) }}
+  {{ end }}
+
+  <!-- Sort them -->
+  {{ $alltagnames = (sort $alltagnames) }}
+
+  <!-- Convert them to tag pages -->
+  {{ $alltags := (slice) }}
+  {{ range $alltagnames }}
+  <!-- Remember to anchorize the tag name -->
+  {{ $alltags = (union $alltags (slice ((site).GetPage (printf "/tags/%s" (anchorize .))))) }}
+  {{ end }}
+
+  <!-- Now you have an equivalent of .Site.Taxonomies.tags -->
+  {{ with $alltags }}
+  <h1>Tags</h1>
+  {{ partial "tags" . }}
+  {{ end }}
+  #+end_src
+
 
 * CSS
 ** .flex
