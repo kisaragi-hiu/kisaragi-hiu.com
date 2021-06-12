@@ -1,0 +1,20 @@
+{{ define "main" }}
+
+<h1 class="xl">
+    Revision history: {{.Title}}
+</h1>
+
+<root>
+  {{ partial "content" . }}
+  {{ with .Pages }}
+  <ul class="index">
+      {{ with ($.GetPage (printf "/%s" $.Title)) }}
+      {{ partial "archive-item" . }}
+      {{ end }}
+      {{ range . }}
+      {{ partial "archive-item" . }}
+      {{ end }}
+  </ul>
+  {{ end }}
+</root>
+{{ end }}

@@ -7,6 +7,7 @@
 <a class="item" href="{{ .Permalink }}">
   <div>
     <div class="meta">
+        <!-- Ideally we want to show both creation and modification times. -->
       {{ with .Params.created }} {{ partial "date" . }} {{ end }}
     </div>
     <h2>{{ .Title }}</h2>
