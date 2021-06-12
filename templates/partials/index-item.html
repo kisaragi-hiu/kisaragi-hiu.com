@@ -6,7 +6,9 @@
    - Title (link)-->
 <a class="item" href="{{ .Permalink }}">
   <div>
-    <div class="meta">{{ with .Date }} {{ partial "date" . }} {{ end }}</div>
+    <div class="meta">
+      {{ with .Params.created }} {{ partial "date" . }} {{ end }}
+    </div>
     <h2>{{ .Title }}</h2>
   </div>
 </a>

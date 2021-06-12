@@ -1,5 +1,13 @@
 #+title: Documentation for writing stuff on this blog
 
+* Extracting date
+
+Usually getting the creation date of a page is done with ={{.Date}}=.
+
+This however gets a date even when the page doesn’t specify it.
+
+If you only want to get the date when it’s explicitly set, use ={{.Params.created}}= instead.
+
 * Adding tags to taxonomy terms
 
 For instance, I want to tag [[notes:public/content/tags/prsk/_index.org][the page for prsk]] with “games”. But Hugo doesn’t seem to support adding taxonomy terms onto taxonomy terms, at least not out of the box.
