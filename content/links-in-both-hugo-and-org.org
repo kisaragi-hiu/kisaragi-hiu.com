@@ -1,0 +1,72 @@
+#+title: Making links work in both Hugo and Org
+#+created: 2021-06-12T23:06:34+0900
+#+tags[]: hugo org-mode
+
+In a Hugo site using Org like this one, paths to the same files are different in the source code and when they’re exported. For example, to reference an image in this repository,
+
+- its source path would be something like /static/illust/2021-06-11.jpg,
+- while the exported path would be [[file:/illust/2021-06-11.jpg][/illust/2021-06-11.jpg]].
+
+This causes links to either work in Emacs (which uses source paths) or the browser (using exported paths), but not both.
+
+go-org, the Org parsing library that Hugo uses, [[https://github.com/niklasfasching/go-org/releases/tag/v1.4.0][alleviated this somewhat in version 1.4.0]]. A link to =[[about.org]]= is now exported as a link to =[[about.html]]=, allowing links in the same directory to work both in Emacs and in the browser.
+
+* TL;DR
+
+#+begin_src emacs-lisp
+(defun k/alternate-path-element-wrapper (parser)
+  "Make `org-element-link-parser' try some other paths.
+
+The paths are currently hard-coded for a Hugo project.
+
+PARSER is `org-element-link-parser', passed in by the :around advice."
+  (let* ((elem (funcall parser))
+         (path (org-element-property :path elem)))
+    (when (and (equal "file" (org-element-property :type elem))
+               (stringp path)
+               (not (f-exists? path)))
+      (-when-let* ((project-root (projectile-project-root))
+                   ;; Allow f-join to properly join project-root/dir/filename
+                   (base (if (f-absolute? path)
+                             ;; (substring path 1) is also an
+                             ;; option, but that fails to handle
+                             ;; "//path", which is supposed to mean
+                             ;; the same thing as "/path".
+                             (f-relative path "/")
+                           path))
+                   (newpath (-first #'f-exists?
+                                    (list
+                                     (f-join project-root "content" base)
+                                     (f-join project-root "static" base)))))
+        (setq elem (org-element-put-property elem :path newpath))))
+    elem))
+
+(advice-add 'org-element-link-parser :around #'k/alternate-path-element-wrapper)
+#+end_src
+
+** Explanation
+
+The path of a file link in Org is processed through =org-element=, so we can add our own logic around its link parser and have it applied everywhere.
+
+We only try to do something if we encounter a link of type =file= (and if =path= is actually parsed, for good measure).
+
+If the path does not exist on the file system, we try to see if it exists under the =content= or =static= folders in the current project. If it does, we return a new org-element using the new path. So instead of =/illust=, we’ll return =<project root>/content/illust= if the latter exists in the file system.
+
+Otherwise, we return the element unchanged.
+
+We also make sure that the path isn’t absolute. Absolute paths are useful in exported HTML (in my opinion), but will cause =f-join= to return it instead of joining it under the folders I want.
+
+* Abandoned approaches
+** Using a custom protocol
+
+If Hugo can export links in the form of =site:illust/2021-06-11.jpg= as a normal file link, we could do the custom logic in =org-link-abbrev-alist= instead.
+
+This is impossible without modifying go-org, which [[https://github.com/niklasfasching/go-org/blob/e5ae6088650075d8514e72aa5d6787c44ca6d735/org/html_writer.go#L354][hard-codes =file= when deciding how to present links]]. A site:example link will link site:example, verbatim. I’m not even sure if it’s a good idea to make it customizable.
+
+So this is a dead end.
+
+** Preprocessing Org files before handing them to Hugo
+
+What if I could write links pointing to source paths, then preprocess them to exported paths before Hugo sees it?
+
+[[https://ox-hugo.scripter.co/][ox-hugo]] might have been useful for this, although I’m not familiar with it enough.
