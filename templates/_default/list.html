@@ -37,21 +37,26 @@
 {{ else }}
 <root>
   {{ partial "content" . }}
-  {{ $tagged := (slice) }}
+
+  <!-- Store "term" items under this taxonomy term.
+       This does not just work with tags.-->
+  {{ $term_items := (slice) }}
   {{ range (where .Site.AllPages "Kind" "term" ) }}
     {{ if (in (.Page.Param $.Data.Plural) (anchorize $.LinkTitle)) }}
-      {{ $tagged = (union $tagged (slice .Page))}}
+      {{ $term_items = (union $term_items (slice .Page))}}
     {{ end }}
   {{ end }}
-  {{ with $tagged }}
+
+  {{ with $term_items }}
   <h2>Terms</h2>
   <ul class="index">
-  {{ range $tagged }}
+  {{ range $term_items }}
       <li>{{ partial "index-item" . }}</li>
   {{ end }}
   </ul>
   {{ end }}
-  {{ with .Pages }}
+
+  {{ with (where .Pages "Section" "!=" "archive") }}
   <h2>Pages</h2>
   <ul class="index">
       {{ range .}}
@@ -60,4 +65,6 @@
   </ul>
   {{ end }}
 </root>
-{{ end }} {{ end }}
+{{ end }} <!-- if hugo_nolist -->
+<!-- define main -->
+{{ end }}
