@@ -1,21 +1,17 @@
-#+title: East Asian names, to reorder or not to reorder?
+#+title: Should East Asian names be flipped when being translated to English?
 #+created: 2017-11-26T17:55:59+0800
+#+updated: 2021-06-13T03:20:54+0900
 #+category: Opinions
 #+language: en
 
-In English, some people write East Asian names (Chinese, Japanese etc.) with given name first, surname last (like "Kei Asai"). I personally dislike doing this, because names are whole word objects that shouldn't be reordered. To stay accurate and somewhat respectful, I prefer to simply transliterate, ie. romanize when translating.
+In East Asian names, the first part of a person’s name is their family name. This is unlike many other languages, which put family name last (to the point where “last name” is sometimes synonymous with “family name”).
 
-Me being born in Taiwan using Mandarin as my primary language probably contributes to this preference. Knowing the original name, then seeing it reversed in an English document throws me off quite a bit. Not to mention the fact that there are infinitely more different name formats out there, not just the English "First Middle Last" or the East Asian "Surname-Given_name".
+When these names are translated, often they would be flipped over to match English conventions.
 
-There's an exception to this: when the person already has an English name, I will use that instead.
+One has to consider the fact that they’re messing with someone’s name when doing this. It’s not a big problem, but I prefer not to do this.
 
-So, in conclusion, I think a name should always be translated by sound unless otherwise specified.
+Seeing these flipped names sometimes confuses me as well, as I’m used to their original forms.
 
-Here is a table of some Japanese and Chinese names, how they would be translated with surname kept last, and how I would translate them.
+Preserving this order respects different naming conventions.
 
-| East Asian name | "Reordered"    | My Preference  |
-|-----------------+----------------+----------------|
-| 王小明          | Xiaoming Wang  | Wang Xiaoming  |
-| 一宮エルナ      | Eruna Ichimiya | Ichimiya Eruna |
-| 郭台銘          | Terry Guo      | Terry Guo      |
-| 春埼美空        | Misora Haruki  | Haruki Misora  |
+This is really only a minor difference, so we shouldn’t be attacking people over this.
