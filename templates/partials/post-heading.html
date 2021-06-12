@@ -11,6 +11,9 @@
         {{ with .Lastmod }}
         <dt>Updated</dt><dd>{{ partial "date" . }}</dd>
         {{ end }}
+        <!-- {{ with .Params.certainty }}
+             <dt>Certainty</dt><dd>{{.}}</dd>
+             {{ end }} -->
         {{ range .GetTerms "category" }}
         <dt>Category</dt>
         <dd><a href="{{ .Permalink }}">{{ .LinkTitle }}</a></dd>
