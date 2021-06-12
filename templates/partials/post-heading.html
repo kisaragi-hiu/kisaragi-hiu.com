@@ -12,7 +12,9 @@
         <dt>
             <!-- If old versions are available, link there. -->
             {{ with $.GetPage (printf "/archive/%s" $.File.BaseFileName) }}
-            <a class="out" href="{{.Permalink}}">Updated</a>
+            <a title="View revision history"
+               class="out"
+               href="{{.Permalink}}">Updated</a>
             {{ else }}
             Updated
             {{ end }}
