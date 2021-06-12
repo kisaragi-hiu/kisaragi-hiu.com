@@ -19,6 +19,16 @@ li p {
   margin: 0 auto;
 }
 
+// HACK: doing this before I get a proper listing for archives
+.current h2::before {
+  content: "(Current)";
+  background: $color-special;
+  color: $color-special-strong;
+  border-radius: 0.25rem;
+  padding: 0.25rem;
+  margin-right: 1ch;
+}
+
 body,
 .size-normal,
 .toc *,

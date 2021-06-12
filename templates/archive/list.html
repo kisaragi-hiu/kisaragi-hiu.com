@@ -9,10 +9,10 @@
   {{ with .Pages }}
   <ul class="index">
       {{ with ($.GetPage (printf "/%s" $.Title)) }}
-      {{ partial "archive-item" . }}
+      <li class="current">{{ partial "archive-item" . }}</li>
       {{ end }}
       {{ range . }}
-      {{ partial "archive-item" . }}
+      <li>{{ partial "archive-item" . }}</li>
       {{ end }}
   </ul>
   {{ end }}

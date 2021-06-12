@@ -60,7 +60,7 @@
   <h2>Pages</h2>
   <ul class="index">
       {{ range .}}
-      {{ partial "index-item" . }}
+      <li>{{ partial "index-item" . }}</li>
       {{ end }}
   </ul>
   {{ end }}
