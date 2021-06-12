@@ -5,10 +5,6 @@
     {{ partial "date" . }}
     {{ end }}
     {{ with .GetTerms "tags" }}
-    <ul class="tags">
-        {{ range . }}
-        <li>{{ partial "tag" . }}</li>
-        {{ end }}
-    </ul>
+      {{ partial "tags" . }}
     {{ end }}
 </header>

@@ -32,14 +32,16 @@
 </main>
 <aside>
     <h1>Tags</h1>
-    <ul class="tags">
-        <!-- .Site.Taxonomies.tags -> [weightedPage, weightedPage, ...]
-             weightedPage.Page.Permalink (O)
-             So we have to pass .Page into the partial. -->
-      {{ range .Site.Taxonomies.tags }}
-        <li>{{ partial "tag" .Page }}</li>
-      {{ end }}
-    </ul>
+    <!-- .Site.Taxonomies.tags -> [weightedPage, weightedPage, ...]
+         weightedPage.Page.Permalink (O)
+         So we have to extract .Page first. -->
+    {{ $alltags := (slice) }}
+    {{ range .Site.Taxonomies.tags }}
+    {{ $alltags = (union $alltags (slice .Page)) }}
+    {{ end }}
+    {{ with $alltags }}
+      {{ partial "tags" . }}
+    {{ end }}
 </aside>
 </div>
 {{ end }}

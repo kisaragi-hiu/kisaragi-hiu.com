@@ -12,15 +12,11 @@
         <dt>Updated</dt><dd>{{ partial "date" . }}</dd>
         {{ end }}
         {{ range .GetTerms "category" }}
-        <dt class="category">Category</dt>
+        <dt>Category</dt>
         <dd><a href="{{ .Permalink }}">{{ .LinkTitle }}</a></dd>
         {{ end }}
     </dl>
     {{ with .GetTerms "tags" }}
-    <ul class="tags">
-        {{ range . }}
-        <li>{{ partial "tag" . }}</li>
-        {{ end }}
-    </ul>
+    {{ partial "tags" . }}
     {{ end }}
 </header>

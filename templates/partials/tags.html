@@ -1,0 +1,7 @@
+<ul class="tags">
+  {{ range . }}
+  <li>
+    <a class="card tag" href="{{ .Permalink }}">{{ .LinkTitle | lower }}</a>
+  </li>
+  {{ end }}
+</ul>
