@@ -9,7 +9,15 @@
         <dt>Published</dt><dd>{{ partial "date" . }}</dd>
         {{ end }}
         {{ with .Lastmod }}
-        <dt>Updated</dt><dd>{{ partial "date" . }}</dd>
+        <dt>
+            <!-- If old versions are available, link there. -->
+            {{ with $.GetPage (printf "/archive/%s" $.File.BaseFileName) }}
+            <a class="out" href="{{.Permalink}}">Updated</a>
+            {{ else }}
+            Updated
+            {{ end }}
+        </dt>
+        <dd>{{ partial "date" . }}</dd>
         {{ end }}
         <!-- {{ with .Params.certainty }}
              <dt>Certainty</dt><dd>{{.}}</dd>
