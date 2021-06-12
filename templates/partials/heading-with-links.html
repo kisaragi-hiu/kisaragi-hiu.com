@@ -1,8 +1,10 @@
+{{ $title := .Title }}
+{{ $title := (replace .Title "-" " ") }}
 <h1 class="xl">
     {{ if $.Scratch.Get "titlecase" }}
-    {{ (title .Title) }}
+    {{ (title $title) }}
     {{ else }}
-    {{ .Title }}
+    {{ $title }}
     {{ end }}
 </h1>
 {{ partial "param-links" . }}
