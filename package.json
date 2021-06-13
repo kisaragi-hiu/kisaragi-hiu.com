@@ -1,10 +1,10 @@
 {
   "devDependencies": {
-    "concurrently": "^6.1.0",
-    "cssnano": "^5.0.6",
-    "postcss-cli": "^8.3.1"
+    "concurrently": "^6.1.0"
   },
   "dependencies": {
+    "postcss-cli": "^8.3.1",
+    "cssnano": "^5.0.6",
     "sass": "^1.33.0"
   }
 }
