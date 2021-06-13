@@ -42,11 +42,11 @@ div.side-layout {
   grid-template-columns: 5fr 3fr;
   aside {
     margin-left: 1rem;
-    @media (max-width: 1200px) {
+    @media (max-width: $width-tablet) {
       margin-left: 0;
     }
   }
-  @media (max-width: 1200px) {
+  @media (max-width: $width-tablet) {
     display: block;
   }
 }
@@ -290,7 +290,7 @@ div#references p {
 }
 
 // Smaller screen size
-@media (max-width: 1200px) {
+@media (max-width: $width-tablet) {
   body {
     margin: 5% 5%;
   }

@@ -27,7 +27,7 @@
   :nth-child(4) {
     min-width: 10rem;
   }
-  @media (max-width: 500px) {
+  @media (max-width: $width-phone) {
     flex-direction: column;
     margin-bottom: 1rem;
     :nth-child(1) {
@@ -38,14 +38,14 @@
       display: none;
     }
   }
-  @media (max-width: 800px) {
+  @media (max-width: $width-phablet) {
     :nth-child(4) {
       display: none;
     }
   }
 }
 
-@media (max-width: 500px) {
+@media (max-width: $width-phone) {
   .cover .row.title {
     display: none;
   }
