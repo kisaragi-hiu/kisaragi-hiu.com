@@ -46,14 +46,14 @@
     {{ end }}
     </ul>
     {{end}}
-    <!-- Use func-page-tags instead of .GetTerms or .Site.Taxonomies.tags.
+    <!-- Use func-page-term(., tags) instead of .GetTerms(tags) or .Site.Taxonomies.tags.
          Because those do not list tags that are only declared in taxonomy term pages.
 
          "Tagging tags" isn't a well-supported thing in Hugo (yet?).
     -->
     {{ $alltags := (slice) }}
     {{ range .Site.AllPages }}
-    {{ $alltags = (union $alltags (partial "func-page-tags" . ))}}
+    {{ $alltags = (union $alltags (partial "func-page-term" (dict "page" . "taxonomy" "tags")))}}
     {{ end }}
 
     <!-- Sort them -->

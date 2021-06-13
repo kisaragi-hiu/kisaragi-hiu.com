@@ -20,8 +20,10 @@
 <!-- Display the tags of this term page.
      HACK: getting around the fact that Hugo doesn't seem to allow
      tagging list pages. -->
-{{ with (partial "func-page-tags" .) }}
-  {{ partial "tags" . }}
+<!-- NOTE: (dict "page" . "taxonomy" "tags") is not a cons cell!
+     The dot is the context dot. Remember this is not Lisp. -->
+{{ with (partial "func-page-term" (dict "page" . "taxonomy" "tags")) }}
+{{ partial "tags" . }}
 {{ end }}
 
 {{ if .Params.toc }}

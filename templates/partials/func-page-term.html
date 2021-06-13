@@ -1,0 +1,17 @@
+<!-- Return list of terms in a taxonomy of a Page as a collection of Pages.
+     Like .GetTerms(taxonomy), *except with support for taxonomy pages*.
+
+     Arguments:
+     page: the page to extract terms for
+     taxonomy: the taxonomy to extract terms from
+
+     Example:
+
+     .GetTerms("tags"):
+       (partial "func-page-term" (dict "page" . "taxonomy" "tags"))
+-->
+{{ $terms := (slice) }}
+{{ range .page.Param .taxonomy }}
+{{ $terms = (union $terms (slice ((site).GetPage (printf "/%s/%s" $.taxonomy (anchorize .)))))}}
+{{ end }}
+{{ return $terms }}

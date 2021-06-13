@@ -161,6 +161,30 @@ Retrieve Cangjie code for Han character in Emacs.
 
 Display a melpa badge as an image link.
 
+* Function partials
+
+** func-language-code-to-name
+
+#+begin_src lisp
+(partial "func-language-code-to-name" "en") ; -> "English"
+#+end_src
+
+** func-page-term
+
+Replacement for =.GetTerms= with support for “tagging tags”.
+
+=.GetTerms "tags"= doesn’t return anything in a list page, even if tags are set for the page. This function partial implements that.
+
+Arguments:
+
+- page :: the page to extract terms from. Usually =.=, just like =.GetTerms=.
+- taxonomy :: the taxonomy (eg. “tags”) to extract terms from.
+
+#+begin_src lisp
+(.GetTerms "tags")
+(partial "func-page-term" (dict "page" . "taxonomy" "tags"))
+#+end_src
+
 * Partials
 Partials are like shortcodes, but for use in other templates.
 

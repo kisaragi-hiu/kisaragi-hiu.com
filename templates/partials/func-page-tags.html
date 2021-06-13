@@ -1,7 +1,0 @@
-<!-- Return list of tags of a Page as a collection of Pages.
-     Like .GetTerms("tags"), except with support for taxonomy pages as well. -->
-{{ $tags := (slice) }}
-{{ range .Params.tags }}
-{{ $tags = (union $tags (slice ((site).GetPage (printf "/tags/%s" (anchorize .)))))}}
-{{ end }}
-{{ return $tags }}
