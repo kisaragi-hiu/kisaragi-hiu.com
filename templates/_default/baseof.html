@@ -11,6 +11,12 @@
     <meta name="description" content="" />
     <meta name="author" content="Kisaragi Hiu" />
     <meta name="keywords" content="Coding, Programming, Language, LGBT, Blog" />
+    <meta property="og:title" content="{{.Title}}" />
+    <meta property="og:type" content="{{.Kind}}" />
+    <meta property="og:url" content="{{.Permalink | absURL }}" />
+    <!-- Is this... even a good idea? -->
+    <meta property="og:image" content="/illust/thumb/2016-08-17.jpg" />
+    <meta property="og:sitename" content="Kisaragi Hiu" />
     <link rel="icon" href="/favicon.ico" />
     <link rel="canonical" href="{{ .Permalink }}" />
     <link rel="stylesheet" href="/css/main.css" />
