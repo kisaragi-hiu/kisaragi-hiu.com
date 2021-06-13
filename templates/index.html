@@ -31,6 +31,21 @@
   </ul>
 </main>
 <aside>
+    {{ $illust_featured := (slice) }}
+    {{ range (where .Site.RegularPages "Section" "illust") }}
+      {{ if (eq (.Date.Format "2006-01") (now.Format "2006-01")) }}
+      {{ $illust_featured = $illust_featured | append .}}
+      {{ end }}
+    {{ end }}
+    {{ with $illust_featured }}
+    <h1><a class="out"
+           href="/illust.html">Illustration - {{now.Format "2006-01"}}</a></h1>
+    <ul class="illust-index">
+    {{ range . }}
+      <li>{{ partial "illust-item" . }}</li>
+    {{ end }}
+    </ul>
+    {{end}}
     <!-- Manually go through every page and extract their tags.
          This is because .Site.Taxonomies.tags does not list tags that are only
          declared in taxonomy term pages.

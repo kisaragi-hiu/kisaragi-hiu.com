@@ -19,11 +19,19 @@ ul.index {
       flex-direction: row;
       align-items: center;
       transition: all 100ms ease-in-out;
-      padding: 0.5rem;
+      padding: 0.5rem; // extend the background highlight on hover
+      margin-left: -0.5rem; // counter the left padding
       border-radius: 0.5rem;
+      @media (max-width: $width-phablet) {
+        flex-direction: column-reverse;
+        align-items: flex-start;
+      }
     }
     .date {
       font-family: $monospace;
+      @media (max-width: $width-phablet) {
+        font-family: unset;
+      }
     }
     .date {
       font-size: $font-size-main;
