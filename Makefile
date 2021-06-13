@@ -1,13 +1,11 @@
 export LANG=en_US.UTF-8
 
-bin := node_modules/.bin/
-
 .DEFAULT_GOAL := build
 
 .PHONY: serve clean zip css
 
 watch-css:
-	$(bin)sass "static/css/main.scss:static/css/main.css" --watch
+	npx sass "static/css/main.scss:static/css/main.css" --watch
 
 watch-hugo:
 	hugo server
@@ -21,7 +19,7 @@ open-browser:
 	 xdg-open "http://localhost:1313")
 
 serve: public static/css/main.css
-	$(bin)concurrently "make open-browser" "make watch-css" "make watch-hugo"
+	npx concurrently "make open-browser" "make watch-css" "make watch-hugo"
 
 clean:
 	git clean -Xdf
@@ -38,4 +36,4 @@ public: static/css/main.css
 	@touch public
 
 static/css/main.css: static/css/main.scss
-	$(bin)sass --no-source-map "$<" "$@"
+	npx sass --no-source-map "$<" "$@"
