@@ -32,8 +32,8 @@ public.zip: public
 # the modified timestamp gets messed up on my system; fix that with
 # the `touch`.
 public: static/css/main.css
-	hugo
+	hugo --minify
 	@touch public
 
 static/css/main.css: static/css/main.scss
-	npx sass --no-source-map "$<" "$@"
+	npx sass --no-source-map "$<" | npx postcss --no-map --use cssnano --output "$@"
