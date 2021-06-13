@@ -46,27 +46,18 @@
     {{ end }}
     </ul>
     {{end}}
-    <!-- Manually go through every page and extract their tags.
-         This is because .Site.Taxonomies.tags does not list tags that are only
-         declared in taxonomy term pages.
+    <!-- Use func-page-tags instead of .GetTerms or .Site.Taxonomies.tags.
+         Because those do not list tags that are only declared in taxonomy term pages.
 
-         "Tagging tags" isn't a well-supported thing in Hugo, yet. -->
-
-    <!-- Extract all values specified in the tags parameter -->
-    {{ $alltagnames := (slice) }}
+         "Tagging tags" isn't a well-supported thing in Hugo (yet?).
+    -->
+    {{ $alltags := (slice) }}
     {{ range .Site.AllPages }}
-    {{ $alltagnames = (union $alltagnames .Params.tags) }}
+    {{ $alltags = (union $alltags (partial "func-page-tags" . ))}}
     {{ end }}
 
     <!-- Sort them -->
-    {{ $alltagnames = (sort $alltagnames) }}
-
-
-    <!-- Convert them to tag pages -->
-    {{ $alltags := (slice) }}
-    {{ range $alltagnames }}
-    {{ $alltags = (union $alltags (slice (partial "func-tag-name-to-page" .)))}}
-    {{ end }}
+    {{ $alltags = (sort $alltags) }}
 
     <!-- Actually display them -->
     {{ with $alltags }}

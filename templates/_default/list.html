@@ -20,11 +20,7 @@
 <!-- Display the tags of this term page.
      HACK: getting around the fact that Hugo doesn't seem to allow
      tagging list pages. -->
-{{ $tags := (slice)}}
-{{ range (.Param "tags") }}
-{{ $tags = (union $tags (slice (partial "func-tag-name-to-page" .))) }}
-{{ end }}
-{{ with $tags }}
+{{ with (partial "func-page-tags" .) }}
   {{ partial "tags" . }}
 {{ end }}
 
