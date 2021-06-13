@@ -1,5 +1,5 @@
 #+title: Pollen
-#+tags[]: ssg
+#+tags[]: ssg racket
 #+homepage: https://docs.racket-lang.org/pollen/
 #+github: https://github.com/mbutterick/pollen
 

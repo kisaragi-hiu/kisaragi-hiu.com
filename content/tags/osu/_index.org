@@ -1,4 +1,5 @@
 #+title: osu!
+#+linktitle: osu
 #+hugo_notitlecase: true
 #+tags[]: games
 #+homepage: https://osu.ppy.sh

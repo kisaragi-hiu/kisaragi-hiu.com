@@ -57,7 +57,7 @@
     {{ end }}
 
     <!-- Sort them -->
-    {{ $alltags = (sort $alltags) }}
+    {{ $alltags = (sort $alltags "Title") }}
 
     <!-- Actually display them -->
     {{ with $alltags }}

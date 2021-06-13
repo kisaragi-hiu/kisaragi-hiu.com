@@ -1,2 +1,2 @@
 #+title: Frog
-#+tags[]: ssg
+#+tags[]: ssg racket
