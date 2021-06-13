@@ -19,6 +19,8 @@
 /blog/2017-11-26-east-asian-names-reverse-or-not /east-asian-name-reverse
 /blog/2017-12-22-attempt-to-explain-lambda /lambda
 
+/taxonomy /tags/taxonomy
+
 # / is /blog
 /blog /
 /posts /

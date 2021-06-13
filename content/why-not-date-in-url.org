@@ -60,7 +60,7 @@ The reader loses the ability to see the history of the page.
      - =example.com/archive/<page>/= contains a list of previous versions as well as a link back to =example.com/<page>=
      - Each page links to =example.com/archive/page= for old versions
      - Every page under blog/ redirected to their latest versions at the new location
-     - =archive= can be a [[file:taxonomy.org][Taxonomy]] while each page exists as a Term under it
+     - =archive= can be a [[file:tags/taxonomy.org][Taxonomy]] while each page exists as a Term under it
 
 * Dated URLs still have their place
 

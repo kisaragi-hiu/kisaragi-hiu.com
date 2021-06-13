@@ -14,7 +14,6 @@
 ** General pages
 
 - [[file:iso8601.org][ISO 8601]]
-- [[file:taxonomy.org][Taxonomy]]
 - [[file:links-in-both-hugo-and-org.org][Making links work in both Hugo and Org]]
 - [[file:why-not-date-in-url.org][Why I shouldn't have put the publish date in my URLs]]
 
