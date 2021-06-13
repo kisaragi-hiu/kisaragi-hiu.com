@@ -22,7 +22,8 @@
 }
 #siteheader nav {
   display: flex;
-  justify-content: flex-end;
+  flex-wrap: wrap;
+  justify-content: flex-start;
 }
 #siteheader nav a {
   color: $color-secondary;
