@@ -10,9 +10,6 @@
   margin-bottom: 0.25rem;
 }
 
-.out {
-  color: inherit;
-  &::after {
-    content: "°";
-  }
+.out::after {
+  content: "°";
 }
