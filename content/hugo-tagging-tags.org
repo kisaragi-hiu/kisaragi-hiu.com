@@ -1,0 +1,137 @@
+#+title: Tagging tags in Hugo
+#+created: 2021-06-13T20:19:55+0900
+#+tags[]: hugo
+#+toc: true
+
+Hugo has extensive support for Taxonomies. These allow any page to be tagged with anything, with appropriate list pages generated automatically.
+
+However, this support does not extend to those list pages themselves.
+
+In a normal page template, I can use ={{.GetTerms "tags"}}= to get the current page’s tags, including the link to the listing for those tags.
+
+={{.GetTerms "tags"}}= in a Taxonomy Term template returns nothing.
+
+Fortunately Hugo is flexible enough to allow us to work around this limitation.
+
+After a lot of exploration, I believe the best solution is to define a function partial that replaces [[https://gohugo.io/templates/taxonomy-templates/#example-list-tags-in-a-single-page-template][=.GetTerms=]], providing the same interface while adding support for getting terms from a list page.
+
+* Things that need to be implemented or worked around
+** Term pages need to be manually created
+
+If a tag contains no regular pages, Hugo will not create it automatically, even if it is supposed to contain other tag pages.
+
+For example, [[file:/tags/games.org][#games]] contains [[file:/tags/osu.org][#osu]] and [[file:/tags/prsk.org][#prsk]], but it does not contain a regular page. It has to be manually created in this case.
+
+My solution to this is to write an Emacs command:
+
+#+begin_src emacs-lisp
+(defun k/hugo-new-term (term &optional taxonomy)
+  "Create a new _index.org for TERM.
+
+TAXONOMY is \"tags\" by default. Interactively, prompts for
+another taxonomy with a \\[universal-argument]."
+  (interactive
+   (list (read-string "Term: ")
+         (and current-prefix-arg
+              (read-string "Taxonomy: "))))
+  (unless taxonomy (setq taxonomy "tags"))
+  (let ((default-directory (projectile-project-root)))
+    (let ((dir (f-join "content" taxonomy term)))
+      (make-directory dir t)
+      (find-file (f-join dir "_index.org"))
+      (insert "#+title: " term))))
+#+end_src
+
+This can also be done manually or with a shell script.
+
+** =.Pages= only lists regular pages in a term page
+
+For example, [[file:/tags/ci.org][#ci]] contains [[file:blog/2021-02-14-test-emacs-lisp-gitlab-ci.org][this page]], but it also contains the tags [[file:/tags/gitlab.org][#gitlab]] and [[file:/tags/sourcehut.org][#sourcehut]].
+
+Only the regular page would be listed by ={{.Pages}}=. The term pages have to be listed separately:
+
+#+begin_src go-html-template
+{{ $term_items := (slice) }}
+{{ range (where .Site.AllPages "Kind" "term" ) }}
+  {{ if (in (.Page.Param $.Data.Plural) (anchorize $.LinkTitle)) }}
+    {{ $term_items = (union $term_items (slice .Page))}}
+  {{ end }}
+{{ end }}
+
+{{ with $term_items }}
+<h2>Terms</h2>
+<ul class="index">
+{{ range $term_items }}
+    <li>{{ partial "index-item" . }}</li>
+{{ end }}
+</ul>
+{{ end }}
+#+end_src
+
+This is possibly an area that I should refactor.
+
+** .GetTerms needs to be replaced with a function partial that also works in a term page
+
+For this I have to first explain function partials.
+
+* Function partials
+
+[[https://gohugo.io/templates/][The Hugo template language]] (based on [[https://golang.org/pkg/text/template/][Go Templates]]) does not support defining functions. It does, however, support returning raw values from partial templates.
+
+For example, this snippet would receive a Page, assign its Title to =$text=, then return =$text=.
+
+#+begin_src go-html-template
+{{ $text := .Title }}
+{{ return $text }}
+#+end_src
+
+It can then be used in a template like this (assuming the partial is called =text-return-example=):
+
+#+begin_src go-html-template
+{{ partial "text-return-example" . }}
+#+end_src
+
+Crucially, this value can also be passed to other template functions, not just inserted directly into the template output.
+
+This still leaves a limitation: it only accepts one input. [[https://gohugo.io/functions/dict/#example-using-dict-to-pass-multiple-values-to-a-partial][As the official docs demonstrated in an example]], this can be worked around by passing a =dict= to it:
+
+#+begin_src go-html-template
+{{ partial "dict-input-example" (dict "taxonomy" "tags" "page" .) }}
+#+end_src
+
+Then the =dict-input-example= partial can access it this way:
+
+#+begin_src go-html-template
+{{ printf "%s/%s" .taxonomy .page.Title }}
+#+end_src
+
+Personally, I refer to these partials that return raw values as /function partials/, and I name them with a =func-= prefix.
+
+* =func-page-term=: .GetTerms replacement
+
+It’s actually pretty short:
+
+#+begin_src go-html-template
+{{ $terms := (slice) }}
+  {{ range (.page.Param .taxonomy) }}
+    {{ $terms = (union $terms (slice ((site).GetPage (printf "/%s/%s" $.taxonomy (anchorize .)))))}}
+  {{ end }}
+{{ return $terms }}
+#+end_src
+
+- First we initialize an array called =$terms=.
+- =.taxonomy= is an input variable. Let’s assume it is “tags” in this example.
+- =.page= is also an input variable, pointing to the current page. The caller has to handle this properly.
+- =(.page.Param .taxonomy)= extracts the “tags” parameter of the current page in this example. It is assumed to be list; this is specified in the frontmatter of each page.
+- We loop over all the tags, creating a reference to their corresponding Pages with =(site).GetPage=, then add that to =$terms=.
+  - =anchorize= creates a file name from a display name.
+  - =union= accepts two collections, keeping only unique items.
+  - We have to specify =(site)=, otherwise Hugo complains that =.GetPage= isn’t available in the current context.
+  - We have to add the =$= in =$.taxonomy=, as the current context inside of the =range= block is the tag being iterated over.
+- Then we just return =$terms=, in this example the list of tags as Pages regardless of whether Hugo recognizes them as taxonomy or not.
+
+Hugo is fast enough that even with this, my whole site still builds in about 350 ms.
+
+* Result
+
+I can now add tags (and other taxonomy terms) to any page now, not just regular pages.
