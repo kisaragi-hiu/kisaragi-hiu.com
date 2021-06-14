@@ -30,7 +30,7 @@ pygmentsUseClasses: true
 
 uglyurls: true
 
-# baseURL: kisaragi-hiu.com
+baseURL: https://kisaragi-hiu.com
 
 frontmatter:
   # publishDate is used to determine if a page is from the future.
