@@ -1,0 +1,20 @@
+#+title: 用 Crowdin 管理一份翻譯專案
+#+draft: true
+#+language: zh_TW
+#+tags[]: crowdin translationtool
+
+翻譯師: [[file:crowdin-translate-intro.org][翻譯師的角度：Crowdin 基本操作]]
+
+Crowdin
+
+登入或創建帳號
+
+新增專案
+
+公開專案免費
+
+新增文本
+
+給翻譯師翻譯
+
+輸出翻譯成果
