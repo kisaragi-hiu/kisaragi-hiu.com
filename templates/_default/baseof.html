@@ -7,19 +7,54 @@
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
-    <title>{{ .Title }} | Kisaragi Hiu</title>
-    <meta name="description" content="" />
-    <meta name="author" content="Kisaragi Hiu" />
-    <meta name="keywords" content="Coding, Programming, Language, LGBT, Blog" />
-    {{ partial "meta-preview" . }}
-    <meta property="og:title" content="{{.Title}}" />
-    <meta property="og:type" content="{{.Kind}}" />
-    <meta property="og:url" content="{{.Permalink | absURL }}" />
-    <!-- Is this... even a good idea? -->
-    <meta property="og:image" content="/illust/thumb/2016-08-17.jpg" />
+    <!-- It's always present, I just want shorter code -->
+    {{ with (printf
+             "%s | %s"
+             .Title
+             (partial "func-translate"
+                      (dict "id" "Kisaragi Hiu" "page" .)))}}
+      <title>{{.}}</title>
+      <meta property="og:title" content="{{.}}" />
+    {{ end }}
+    <!-- Twitter cards don't really fit a suffix, so we use the raw .Title there. -->
+    <meta name="twitter:title" content="{{ .Title }}" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@flyin1501" />
+    <!-- A description is not required. -->
+    {{ with .Params.description }}
+      <meta name="description" content="{{.}}" />
+      <meta name="twitter:description" content="{{.}}" />
+      <meta property="og:description" content="{{.}}" />
+    {{ end }}
+
+    {{ with .Params.coverimage }}
+    <meta name="twitter:image"
+          content="{{ (absURL .) }}" />
+    <meta property="og:image"
+          content="{{ (absURL .) }}" />
+    {{ end }}
+
+    <!-- I'll figure out a way to tell Open Graph the type of a page later. -->
+    {{ $type := (partial "func-page-type" .)}}
+    <meta property="og:type" content="{{$type}}" />
+    {{ if (eq $type "article") }}
+      {{ with .Date }}
+      <meta property="og:published_time" content="{{.}}">
+      {{ end }}
+      {{ with .Lastmod }}
+      <meta property="og:modified_time" content="{{.}}">
+      {{ end }}
+      {{ with .ExpiryDate }}
+      <meta property="og:expiration_time" content="{{.}}">
+      {{ end }}
+    {{ end }}
     <meta property="og:sitename" content="Kisaragi Hiu" />
+    <meta name="author" content="Kisaragi Hiu" />
+    <meta property="og:author" content="Kisaragi Hiu" />
+    <meta name="keywords" content="Coding, Programming, Language, LGBT, Blog" />
     <link rel="icon" href="/favicon.ico" />
-    <link rel="canonical" href="{{ .Permalink }}" />
+    <meta property="og:url" content="{{.Permalink | absURL }}" />
+    <link rel="canonical" href="{{ .Permalink | absURL }}" />
     <link rel="stylesheet" href="/css/main.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Overpass+Mono&display=swap"

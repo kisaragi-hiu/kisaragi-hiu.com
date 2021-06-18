@@ -162,7 +162,6 @@ Retrieve Cangjie code for Han character in Emacs.
 Display a melpa badge as an image link.
 
 * Function partials
-
 ** func-language-code-to-name
 
 #+begin_src lisp
@@ -185,6 +184,14 @@ Arguments:
 (partial "func-page-term" (dict "page" . "taxonomy" "tags"))
 #+end_src
 
+** func-translate
+See [[file:data/readme.org][Hugo Data folder]].
+
+#+begin_src go-text-template
+{{ partial "func-translate" (dict "id" "Table of Contents" "page" .)}}
+#+end_src
+** func-page-type
+Return a page type suitable for use as =og:type=.
 * Partials
 Partials are like shortcodes, but for use in other templates.
 
@@ -210,10 +217,13 @@ For example, for cover entries it will render to something like this:
 
 Generic index item with some metadata.
 
-* page properties
+* Page properties
 
 - =toc=: If not empty, a table of content will be displayed on the page.
 - =hugo_nolist=: only applies to list pages. Only display the page’s own content and not its children, effectively turning the list into a single page. This is first used in [[file:content/projects/_index.org]].
+- =coverimage=: Path to the image used in social media cards. Will be passed through absURL.
+- =description=: A one to two sentence description. (per the recommendation from [[https://ogp.me/][Open Graph Protocol]].)
+- =pagetype=: Override for the =og:type= of the page. The =og:type= is usually inferred by =func-page-type=.
 
 * Pages vs. Blog posts
 

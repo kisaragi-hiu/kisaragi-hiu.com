@@ -1,0 +1,11 @@
+{{ $type := "" }}
+<!-- The "type" frontmatter key seems to be special. -->
+{{ if .Params.pagetype }}
+    {{ $type = .Params.pagetype }}
+{{ else if (eq .Kind "home") }}
+    {{ $type = "website" }}
+{{ else }}
+    {{ $type = "article" }}
+{{ end }}
+
+{{ return $type }}
