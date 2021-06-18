@@ -1,6 +1,6 @@
 #+title: 翻譯師的角度：Crowdin 基本操作
 #+draft: true
-#+language: zh_TW
+#+language: zh-TW
 #+tags[]: crowdin translationtool
 
 創建帳號
