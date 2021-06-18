@@ -6,7 +6,10 @@
     <hr>
     <dl class="meta">
         {{ with .Date }}
-        <dt>Published</dt><dd>{{ partial "date" . }}</dd>
+        <dt>
+            {{ partial "func-translate" (dict "id" "Published" "page" $)}}
+        </dt>
+        <dd>{{ partial "date" . }}</dd>
         {{ end }}
         {{ with .Lastmod }}
         <dt>

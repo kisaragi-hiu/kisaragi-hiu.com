@@ -1,6 +1,8 @@
 <aside id="toc">
   <header>
-    <h1>Table of Contents</h1>
+    <h1>
+      {{ partial "func-translate" (dict "id" "Table of Contents" "page" .)}}
+    </h1>
   </header>
   <!-- This is a nav. -->
   {{ .TableOfContents }}

@@ -1,0 +1,59 @@
+#+title: Hugo Data folder
+
+* Hugo Data Templates
+See [[https://gohugo.io/templates/data-templates/][Hugo: Data Templates]].
+
+YAML, JSON, and TOML files in this directory are read and made available to templates through this syntax:
+
+#+begin_src go-text-template
+{{ (site).Data.<key...> }}
+#+end_src
+
+where
+
+- (site) is the Site object. If you’re in a template with access to =.Site= feel free to use that instead.
+- =<key...>= can traverse through directories and dicts in the data file.
+  - For instance, =.Data.jazz.bass.jacopastorius= can refer to the file =/data/jazz/bass/jacopastorius.yaml=
+  - Or it can also refer to the =jacopastorius= key in the file =/data/jazz/bass.json=.
+
+Another way to access it is with [[https://gohugo.io/functions/index-function/][the =index= function]], which allows dynamic keys and keys with spaces:
+
+#+begin_src go-text-template
+{{ index (site).Data "key1" "key2" }} is the same as {{ (site).Data.key1.key2 }}
+
+{{ index (site).Data "k with space" }}
+#+end_src
+
+You have to make sure all the keys are present with =index=, otherwise it will error out with “error calling index: index of nil pointer”.
+
+* My custom translation system
+
+=strings.yaml= contains strings for my custom translation system.
+
+Why: I want to mix content in different languages in the same site, instead of creating separate sites for each language like Hugo’s builtin =i18n= and language features assume.
+
+** data/strings.yaml
+
+In this format:
+
+#+begin_src yaml
+<BCP 47 language code>:
+  <English version>: <translation>
+  <English version>: <translation>
+  # ...
+#+end_src
+
+- The language code is in [[https://www.rfc-editor.org/info/bcp47][BCP 47]], [[https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/lang][like HTML =lang= attributes]].
+- I’ve gone with using the English version as the ID for each string (like GetText’s msgid?) instead of setting an independent ID. This makes it harder for me to change a string, but allows templates to be a little more readable, I guess.
+
+** =func-translate= function partial
+
+Use it like this:
+
+#+begin_src go-text-template
+{{ partial "func-translate" (dict "id" "Table of Contents" "page" .)}}
+#+end_src
+
+Passing the page in there means I don’t have to pass in =.Params.language= every time. I don’t expect to have to get the language in any other way, so this seems fine.
+
+If it ends up being a problem I will have to change it.
