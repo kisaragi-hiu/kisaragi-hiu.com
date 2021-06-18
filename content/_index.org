@@ -1,8 +1,8 @@
 #+title: Home
 
-I'm a college student in Taiwan studying Applied English.
-
 Welcome. This is my digital garden, where I host my public notes.
+
+I'm a college student in Taiwan studying Applied English.
 
 [[file:about.org][More about me…]]
 
