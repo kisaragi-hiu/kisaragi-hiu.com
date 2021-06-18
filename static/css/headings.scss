@@ -27,8 +27,26 @@ article {
     h4::before,
     h5::before,
     h6::before {
-      color: $color-secondary;
-      opacity: 0.5;
+      // This creates a foreground gradient by
+      //
+      // - first creating a background,
+      // - then clipping it to the foreground with background-clip,
+      // - then overriding the color with text-fill-color: transparent.
+      //
+      // Unfortunately text-fill-color is non-standard.
+      // Except it still works on every browser besides IE and isn't
+      // an ancient bad idea...
+      //
+      // Concept learned from swyx.io's heading style:
+      // https://web.archive.org/web/20210217033455/https://www.swyx.io/react-sfcs-here/
+      background: linear-gradient(
+        to right,
+        $color-accent 10%,
+        $color-special-strong 80%
+      );
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      opacity: 0.8;
       // Without this headings don't line up properly...
       float: left;
     }
