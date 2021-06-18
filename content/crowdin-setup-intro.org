@@ -4,7 +4,7 @@
 #+toc: true
 #+tags[]: crowdin translationtool
 
-翻譯師: [[file:crowdin-translate-intro.org][在 Crowdin 上提供或貢獻翻譯]]
+# 另外給翻譯師的說明：[[file:crowdin-translate-intro.org][在 Crowdin 上提供或貢獻翻譯]]
 
 Crowdin 是一個翻譯平台。需要翻譯的專案可以上傳到 Crowdin 上再交給翻譯師翻譯，也可以做成公開專案讓使用者們貢獻翻譯。大宗的使用者有例如 Mojang — [[https://crowdin.com/project/minecraft][Minecraft 的翻譯都是在 Crowdin 上做的]]。
 
@@ -12,54 +12,90 @@ Crowdin 是一個翻譯平台。需要翻譯的專案可以上傳到 Crowdin 上
 
 利用 Crowdin 的價位算是合理：公開專案不用付費，而免費帳號可以管理一個私人專案。詳細可以到 [[https://crowdin.com/pricing][Crowdin 自己的 pricing 頁面]]去確認。
 
-1. 登入或創建帳號
+* 設定步驟
+** 登入或創建帳號
+
+1. 從首頁按 /Get Started For Free/ 或 /Sign Up/ 來創建帳號。
 
    [[file:crowdin/crowdin-first.jpg]]
 
+2. 可以用 email 或是其他帳號，不過都還是要用 email 認證。
+
    [[file:crowdin/crowdin-signup.jpg]]
 
-2. email 認證後新增專案
+
+** email 認證後新增專案
+
+1. 按 /Create Project/ 創建新專案。
 
    [[file:crowdin/crowdin-after-verify.jpg]]
 
+2. 設定新的專案。
+
+   - Project name :: 專案名稱。
+   - Project address :: 專案的網址。Crowdin 會幫你自動產生，不過也可以自己改。
+   - Public project / Private project :: 公開或是私人專案。
+   - Source language :: 原文語言。
+   - Target languages :: 可以選擇希望翻譯的目標語言。下面還有按鈕可以自動選擇世界前30大語言。
+
    [[file:crowdin/crowdin-create-project.jpg]]
 
-3. 新增文本
+** 新增文本
 
-   [[file:crowdin/crowdin-before-upload-file.jpg]]
+在 /Files/ 的標籤內按 /Upload Files/ 來新增要翻譯的文本。
 
-   支援的檔案格式： https://support.crowdin.com/supported-formats/
+[[file:crowdin/crowdin-before-upload-file.jpg]]
 
-   有支援的話 Crowdin 就能自動把各個字串分隔出來。
 
-   - 很多程式語言或程式平台的字串文件
-   - 通用的資料格式：XML、JSON、INI、YAML、TOML、CSV…
-   - 文件格式：
-     - Microsoft Office 的 .docx、.pptx…
-     - LibreOffice 的 .odt 等等
-   - 甚至是如 PSD 之類的圖片格式， *但你要告訴你的翻譯師們要怎麽修改它* 。
-   - *很多格式* 。
+有支援的話 Crowdin 就能自動把各個字串分隔出來。
 
-   不支援的話就會當成純文字檔 (.txt) 來處理。
+支援的檔案格式：
 
-4. 把專案交給翻譯師做翻譯。
+- 很多程式語言或程式平台的字串文件
+- 通用的資料格式：XML、JSON、INI、YAML、TOML、CSV…
+- 文件格式：
+  - Microsoft Office 的 .docx、.pptx…
+  - LibreOffice 的 .odt 等等
+  # The indentation here, including for this comment, is important. I have to drop back to HTML to get bold text without adding spaces.
+  #+html: <li><p>甚至是如 PSD 之類的圖片格式，<strong>但你要告訴你的翻譯師們要怎麽修改它</strong> 。</p></li>
+  #+html: <li><p>總之<strong>很多</strong>格式。</p></li>
 
-   如果是私人專案的話要邀請翻譯師進來：
+不支援的話就會當成純文字檔 (.txt) 來處理。
 
-   [[file:crowdin/crowdin-invite.jpg]]
+[[https://support.crowdin.com/supported-formats/][完整的列表在 Crowdin 自己的說明裡。]]
 
-   如果是公開專案的話把專案連結給對方就好。
+** 把專案交給翻譯師做翻譯
 
-   [[file:crowdin/crowdin-translate-in-progress.jpg]]
+- 如果是私人專案的話要邀請翻譯師進來：
 
-5. 下載翻譯好 (或是翻譯中) 的文本
+  1. 按看起來像是「+人」的那個按鈕
+  2. 選擇利用這個連結加入的人的職位，有翻譯師、檢查者、管理員三者可選。
+  3. 按旁邊的按鈕把下面的連結複製起來，傳給要邀請的人員。
 
-   [[file:crowdin/crowdin-one-done.jpg]]
+  [[file:crowdin/crowdin-invite.jpg]]
 
-公開專案免費
+- 如果是公開專案的話把專案連結直接傳給對方就好。
 
-新增文本
+** 翻譯師進行翻譯
 
-給翻譯師翻譯
+翻譯師加入後打開文本開始翻譯的畫面會像是這個樣子 (想當然爾，不包含我寫上去的紅字)：
 
-輸出翻譯成果
+[[file:crowdin/crowdin-translate-in-progress.jpg]]
+
+** 下載翻譯好 (或是翻譯中) 的文本
+
+回到專案管理頁面，隨時都可以下載翻譯好的文本。
+
+到 /Translations/ 標籤，可以按 /Build & Download/ 下載所有目標語言的檔案，或是點開各個語言之後按 /Download/ 下載該語言的文本。
+
+[[file:crowdin/crowdin-one-done.jpg]]
+
+下載下來的檔案會是一個 zip 壓縮檔，裡面就是翻譯好的文本。
+
+還沒有翻譯好的部分也會保留原文。
+
+[[file:crowdin/crowdin-exported.jpg]]
+
+* 結語
+
+我不清楚大規模專案的需求為何，不過如果有小規模的專案的話，Crowdin 我覺得也是一個不錯的選擇。
