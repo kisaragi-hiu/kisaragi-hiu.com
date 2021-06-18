@@ -2,6 +2,7 @@
 #+created: 2021-06-19T00:52:03+0900
 #+language: zh-TW
 #+toc: true
+#+coverimage: /crowdin/crowdin-exported.jpg
 #+tags[]: crowdin translationtool
 
 # 另外給翻譯師的說明：[[file:crowdin-translate-intro.org][在 Crowdin 上提供或貢獻翻譯]]
