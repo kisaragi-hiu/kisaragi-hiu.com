@@ -13,6 +13,7 @@ compiled
 public
 sitemap.txt
 static/external/
+/static/js/*.min.js
 tags/*
 node_modules
 *.map

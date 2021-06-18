@@ -10,6 +10,10 @@ watch-css:
 watch-hugo:
 	hugo server
 
+js:
+	mkdir -p static/js/
+	cp node_modules/medium-zoom/dist/medium-zoom.min.js static/js/
+
 # Visit the page after a second
 # Unless Firefox is already open and has a tab visiting the page
 # (I've only bothered to support Firefox here)
@@ -31,7 +35,7 @@ public.zip: public
 
 # the modified timestamp gets messed up on my system; fix that with
 # the `touch`.
-public: static/css/main.css
+public: static/css/main.css js
 	hugo --minify
 	@touch public
 
