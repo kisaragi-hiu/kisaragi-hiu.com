@@ -3,6 +3,7 @@
 @import "card";
 @import "covers";
 @import "emacs";
+@import "headings";
 @import "illust";
 @import "index";
 @import "post-heading";
@@ -14,6 +15,13 @@
 body {
   font-family: $sans-serif;
   background: #fff;
+}
+
+article {
+  img {
+    box-shadow: 0 0 0.25rem;
+    margin: 1rem 0.25rem;
+  }
 }
 
 li p {
@@ -91,10 +99,6 @@ img {
   max-height: 25rem;
 }
 
-.disabled {
-  color: $color-secondary;
-}
-
 // Project
 
 .project p {
@@ -107,11 +111,6 @@ img {
 
 // Builtin tags
 
-/* css-op-all: "+" h1,h2 h2,h3 => h1+h2,h2+h2,h1+h3,h2+h3 */
-// ◊(css-op-all "+" heading heading) {
-//   margin-top: 1rem;
-// }
-
 .xl {
   font-size: $font-size-xl;
 }
@@ -120,33 +119,6 @@ img {
   font-size: $font-size-xxl;
   margin-top: 2rem;
   margin-bottom: 3rem;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-size: $font-size-l;
-  line-height: 1.2;
-  margin-top: 2rem;
-  margin-bottom: 1rem;
-  font-weight: 300;
-  letter-spacing: normal;
-}
-
-h1 {
-  font-weight: 700;
-  color: $color-primary;
-}
-
-h2 {
-  font-weight: 600;
-}
-
-h3 {
-  margin-bottom: 0;
 }
 
 blockquote {
