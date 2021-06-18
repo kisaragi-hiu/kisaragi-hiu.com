@@ -41,12 +41,11 @@ article {
       // https://web.archive.org/web/20210217033455/https://www.swyx.io/react-sfcs-here/
       background: linear-gradient(
         to right,
-        $color-accent 10%,
-        $color-special-strong 80%
+        $color-special 10%,
+        $color-accent 80%
       );
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      opacity: 0.8;
       // Without this headings don't line up properly...
       float: left;
     }
