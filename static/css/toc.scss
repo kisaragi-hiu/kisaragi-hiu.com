@@ -1,0 +1,25 @@
+@import "variables";
+
+aside#toc {
+  // box-shadow: 0 0 1rem;
+  float: right;
+  overflow: auto;
+  margin-left: 4rem;
+  width: 40%;
+  h1 {
+    margin: 0;
+  }
+  nav {
+    ul {
+      padding-left: 1rem;
+    }
+    & > ul {
+      padding-left: revert;
+    }
+  }
+  @media (max-width: $width-phablet) {
+    float: unset;
+    margin: 1rem 0;
+    width: unset;
+  }
+}
