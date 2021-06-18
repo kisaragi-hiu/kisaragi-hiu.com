@@ -1,15 +1,60 @@
 #+title: 用 Crowdin 管理一份翻譯專案
-#+draft: true
+#+created: 2021-06-19T00:52:03+0900
 #+language: zh_TW
+#+toc: true
 #+tags[]: crowdin translationtool
 
-翻譯師: [[file:crowdin-translate-intro.org][翻譯師的角度：Crowdin 基本操作]]
+翻譯師: [[file:crowdin-translate-intro.org][在 Crowdin 上提供或貢獻翻譯]]
 
-Crowdin
+Crowdin 是一個翻譯平台。需要翻譯的專案可以上傳到 Crowdin 上再交給翻譯師翻譯，也可以做成公開專案讓使用者們貢獻翻譯。大宗的使用者有例如 Mojang — [[https://crowdin.com/project/minecraft][Minecraft 的翻譯都是在 Crowdin 上做的]]。
 
-登入或創建帳號
+(不過我不懂為什麼 Crowdin 本身沒有多國語言介面…)
 
-新增專案
+利用 Crowdin 的價位算是合理：公開專案不用付費，而免費帳號可以管理一個私人專案。詳細可以到 [[https://crowdin.com/pricing][Crowdin 自己的 pricing 頁面]]去確認。
+
+1. 登入或創建帳號
+
+   [[file:crowdin/crowdin-first.jpg]]
+
+   [[file:crowdin/crowdin-signup.jpg]]
+
+2. email 認證後新增專案
+
+   [[file:crowdin/crowdin-after-verify.jpg]]
+
+   [[file:crowdin/crowdin-create-project.jpg]]
+
+3. 新增文本
+
+   [[file:crowdin/crowdin-before-upload-file.jpg]]
+
+   支援的檔案格式： https://support.crowdin.com/supported-formats/
+
+   有支援的話 Crowdin 就能自動把各個字串分隔出來。
+
+   - 很多程式語言或程式平台的字串文件
+   - 通用的資料格式：XML、JSON、INI、YAML、TOML、CSV…
+   - 文件格式：
+     - Microsoft Office 的 .docx、.pptx…
+     - LibreOffice 的 .odt 等等
+   - 甚至是如 PSD 之類的圖片格式， *但你要告訴你的翻譯師們要怎麽修改它* 。
+   - *很多格式* 。
+
+   不支援的話就會當成純文字檔 (.txt) 來處理。
+
+4. 把專案交給翻譯師做翻譯。
+
+   如果是私人專案的話要邀請翻譯師進來：
+
+   [[file:crowdin/crowdin-invite.jpg]]
+
+   如果是公開專案的話把專案連結給對方就好。
+
+   [[file:crowdin/crowdin-translate-in-progress.jpg]]
+
+5. 下載翻譯好 (或是翻譯中) 的文本
+
+   [[file:crowdin/crowdin-one-done.jpg]]
 
 公開專案免費
 
