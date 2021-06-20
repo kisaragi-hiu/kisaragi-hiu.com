@@ -1,0 +1,10 @@
+#+title: expt, log, and root: the power triangle
+#+created: 2021-06-20T23:35:02+0900
+#+tags[]: math
+#+category: illustrated
+
+[[file:expt-log-root-triangle.jpg]]
+
+I learned this view from 3blue1brown’s video, [[https://www.youtube.com/watch?v=sULa9Lc4pck][Triangle of Power]], which sources from [[https://math.stackexchange.com/questions/30046/alternative-notation-for-exponents-logs-and-roots][this Math StackExchange answer that invented this notation]].
+
+While those sources explain this as an alternative notation, even without using it as a notation it is still a pretty useful conceptual tool.
