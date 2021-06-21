@@ -2,39 +2,37 @@
 
 // Figure in single page
 figure.illust {
-  // Make the float element contribute to the parent height
-  //     display: flow-root;
-  // Browser support is at 91.86% as of 2021-06-22.
-  //
-  // Alternatively, set `overflow` to something that's not "visible". This
-  // has support all the way to IE6.
-  //
-  // All of the above is from https://stackoverflow.com/a/32301823/6927814
-  overflow: hidden;
-  // box-shadow only shows when inside of the parent element.
-  // Use padding to extend the parent and negative margin to bring its
-  // size back.
-  //
-  // Effective margin: 2rem 0 1rem 0, but box-shadow actually shows properly.
-  padding: 3rem;
-  margin: -1rem -3rem -2rem -3rem;
+  margin: 3rem 0 2rem 0;
+  display: grid;
+  grid-template-columns: 60% 1fr;
+  grid-gap: 2rem;
   img {
-    float: left;
-    margin-right: 2rem;
-    max-width: 60%;
+    grid-column: 1/1;
+    grid-row: 1/1;
     box-shadow: 0 0 1rem rgba(0, 0, 0, 0.5);
+  }
+  figcaption {
+    grid-column: 2/2;
+    grid-row: 1/1;
   }
   h1 {
     margin-top: 0;
   }
   @media (max-width: $width-phablet) {
-    // Effective margin: 1rem 0 1rem 0, but box-shadow actually shows properly.
-    margin: -2rem -3rem -2rem -3rem;
+    grid-template-columns: 1fr;
     img {
-      float: none;
-      margin: 1rem 0;
-      max-width: 100%;
+      grid-column: 1/1;
+      grid-row: 1/1;
     }
+    figcaption {
+      grid-column: 1/1;
+      grid-row: 2/2;
+    }
+    // img {
+    //   float: none;
+    //   margin: 1rem 0;
+    //   max-width: 100%;
+    // }
   }
 }
 
