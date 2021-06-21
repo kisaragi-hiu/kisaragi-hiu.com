@@ -17,6 +17,9 @@
   <figcaption>
     <h1 class="xl">{{ .Title }}</h1>
     {{ partial "param-links" . }}
+    {{ with .GetTerms "tags" }}
+      {{ partial "tags" . }}
+    {{ end }}
     {{ partial "content" . }}
     <dl class="meta">
       <dt>Published</dt>
