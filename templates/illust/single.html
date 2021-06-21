@@ -2,7 +2,6 @@
 
 <!-- We assume that the filenaame is the publish date. -->
 
-<header class="heading">{{partial "type-path" .}}</header>
 <figure class="illust">
   <img
     src="/illust/{{ .File.BaseFileName }}.jpg"
@@ -15,17 +14,18 @@
     title="{{ .Title }}"
   />
   <figcaption>
+    {{ partial "type-path" . }}
     <h1 class="xl">{{ .Title }}</h1>
     {{ partial "param-links" . }}
     {{ with .GetTerms "tags" }}
       {{ partial "tags" . }}
     {{ end }}
-    {{ partial "content" . }}
     <dl class="meta">
       <dt>Published</dt>
       <dd>{{ .Params.date.Format "2006-01-02" }}</dd>
     </dl>
   </figcaption>
 </figure>
+{{ partial "content" . }}
 
 {{ if .Params.toc }} {{ partial "toc" . }} {{ end }} {{ end }}
