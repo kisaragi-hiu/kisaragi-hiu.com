@@ -14,18 +14,22 @@
     title="{{ .Title }}"
   />
   <figcaption>
-    {{ partial "type-path" . }}
-    <h1 class="xl">{{ .Title }}</h1>
+    <header class="heading">
+      {{ partial "type-path" . }}
+      <h1 class="xl">{{ .Title }}</h1>
+    </header>
     {{ partial "param-links" . }}
     {{ with .GetTerms "tags" }}
-      {{ partial "tags" . }}
+    {{ partial "tags" . }}
     {{ end }}
     <dl class="meta">
-      <dt>Published</dt>
-      <dd>{{ .Params.date.Format "2006-01-02" }}</dd>
+      <dt>{{ partial "func-translate" (dict "id" "Published" "page" .) }}</dt>
+      <dd>{{ partial "date" .Params.date }}</dd>
     </dl>
   </figcaption>
 </figure>
+{{ if .Params.toc }}
+{{ partial "toc" . }}
+{{ end }}
 {{ partial "content" . }}
-
-{{ if .Params.toc }} {{ partial "toc" . }} {{ end }} {{ end }}
+{{ end }}
