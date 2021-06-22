@@ -1,5 +1,5 @@
 #+title: ハルノ寂寞 雨月ver.
-#+created: 2021-06-22
+#+created: 2021-06-22T08:03:16+0900
 #+pixiv: https://www.pixiv.net/artworks/90728071
 #+tags[]: traced
 #+language: ja
