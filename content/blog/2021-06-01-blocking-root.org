@@ -1,6 +1,6 @@
 #+title: Blocking rooted devices is an antipattern
 #+created: 2021-06-01T15:57:04+0900
-#+category: Opinions
+#+series: Opinions
 #+draft: true
 #+language: en
 

@@ -1,6 +1,6 @@
 #+title: Setting up this site with Pollen and Frog
 #+created: 2017-11-14T10:56:43+0900
-#+category: Meta
+#+series: Meta
 #+language: en
 #+tags[]: frog pollen markdown
 #+toc: #t

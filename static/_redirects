@@ -19,14 +19,12 @@
 /blog/2017-11-26-east-asian-names-reverse-or-not /east-asian-name-reverse
 /blog/2017-12-22-attempt-to-explain-lambda /lambda
 
-/taxonomy /tags/taxonomy
-
 # / is /blog
 /blog /
 /posts /
 
 # old frog/pollen hybrid site URLs
-/tags/category-* /category/:splat
+/tags/category-* /series/:splat
 /tags/* /tags/:splat
 
 /projects/cangjie.el https://github.com/kisaragi-hiu/cangjie.el
@@ -41,10 +39,12 @@
 
 /KisaragiHiu.gpg /KisaragiHiu.asc
 
-/categories /category
-
 # old urls
-/category/experiment /category/experiments
+/categories /series
+# Category -> Series
+/taxonomy /tags/taxonomy
+/category/experiment /series/experiments
+/category/* /series/:splat
 
 # We have to do this explicitly
 /* /404 404

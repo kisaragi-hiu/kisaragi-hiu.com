@@ -45,7 +45,7 @@ frontmatter:
 enableGitInfo: true
 
 taxonomies:
-  category: category
+  series: series
   tag: tags
   language: language
   archive: archive

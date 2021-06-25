@@ -1,7 +1,7 @@
 #+title: A newbie’s attempt to explain lambdas
 #+archive: lambda
 #+created: 2017-12-22T15:44:25+0900
-#+category: Trying to explain
+#+series: Trying to explain
 #+language: en
 #+tags[]: racket
 

@@ -27,8 +27,8 @@
         <!-- {{ with .Params.certainty }}
              <dt>Certainty</dt><dd>{{.}}</dd>
              {{ end }} -->
-        {{ range .GetTerms "category" }}
-        <dt>Category</dt>
+        {{ range .GetTerms "series" }}
+        <dt>Series</dt>
         <dd><a href="{{ .Permalink }}">{{ .LinkTitle }}</a></dd>
         {{ end }}
     </dl>

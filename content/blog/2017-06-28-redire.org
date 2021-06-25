@@ -1,6 +1,6 @@
 #+title: レディーレ Cover
 #+created: 2017-06-28T22:50:00+0800
-#+category: Own Vocal Experiment
+#+series: Own Vocal Experiment
 #+language: zh-TW
 
 試唱了バルーン的レディーレ。

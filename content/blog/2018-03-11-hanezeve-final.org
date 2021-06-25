@@ -1,6 +1,6 @@
 #+title: Making up a language from Hanezeve Caradhina, "Day 5"
 #+created: 2018-03-11T21:24:47+0900
-#+category: Hanezeve Caradhina Language Construction
+#+series: Hanezeve Caradhina Language Construction
 #+language: en
 
 After putting this aside for three months, I finally spent another few minutes thinking what the last line can mean.

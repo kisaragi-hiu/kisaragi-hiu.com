@@ -2,7 +2,7 @@
 #+subtitle: Or what I hope I could've read when I first tried out Magit
 #+created: 2018-09-20T23:57:41+0900
 #+language: en
-#+category: Tutorials
+#+series: Tutorials
 #+tags[]: magit emacs
 #+toc: #t
 

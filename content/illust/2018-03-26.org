@@ -2,4 +2,4 @@
 #+created: 2018-03-26
 #+pixiv: https://www.pixiv.net/artworks/67950157
 
-The end result of the [[file:../category/hanezeve-caradhina-language-construction.html][Hanezeve Caradhina Language Construction]] project.
+The end result of the [[file:../series/hanezeve-caradhina-language-construction.html][Hanezeve Caradhina Language Construction]] project.

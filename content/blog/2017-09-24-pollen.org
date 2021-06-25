@@ -1,6 +1,6 @@
 #+title: Moving the blog, again
 #+created: 2017-09-24T18:20:00+0800
-#+category: Meta
+#+series: Meta
 #+tags[]: pollen
 #+language: en
 

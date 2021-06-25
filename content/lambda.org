@@ -1,7 +1,7 @@
 #+title: An attempt to explain function values (lambdas)
 #+created: 2017-12-22T15:44:25+0900
 #+updated: 2021-06-13T05:00:50+0900
-#+category: Trying to explain
+#+series: Trying to explain
 #+language: en
 #+tags[]: racket
 

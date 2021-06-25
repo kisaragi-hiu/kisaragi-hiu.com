@@ -1,7 +1,7 @@
 #+title: Three versions of random-string
 #+created: 2018-10-08T20:52:35+0900
 #+language: en
-#+category: Experiments
+#+series: Experiments
 #+tags[]: picolisp racket common-lisp
 #+toc: #t
 

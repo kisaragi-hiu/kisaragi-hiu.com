@@ -1,6 +1,6 @@
 #+title: My attempt at explaining closures
 #+created: 2019-05-15T18:16:51+0900
-#+category: Trying to explain
+#+series: Trying to explain
 #+language: en
 
 A closure is a function associated with a local, persistent, environment. It is a language feature — some languages attach local environments to functions, some languages don’t.

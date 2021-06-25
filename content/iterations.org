@@ -1,6 +1,6 @@
 #+title: Iterations of Learning
 #+created: 2017-10-10
-#+category: Opinions
+#+series: Opinions
 #+language: en
 #+updated: 2021-06-13T04:19:10+0900
 
