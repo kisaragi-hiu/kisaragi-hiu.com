@@ -44,7 +44,7 @@
 /categories /series
 # Category -> Series
 /taxonomy /tags/taxonomy
-/category/experiment /series/experiments
+/category/experiment /tags/experiments
 /category/* /series/:splat
 
 # We have to do this explicitly
