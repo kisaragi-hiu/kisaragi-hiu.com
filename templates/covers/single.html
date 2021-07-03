@@ -1,5 +1,6 @@
 {{ define "main" }}
 
+<!-- prettier-ignore -->
 <header class="heading">
   {{ partial "type-path" . }}
   <h1 class="xl">{{ .Title }} ft. {{ .Params.voice }}</h1>
@@ -35,7 +36,6 @@
 {{ partial "content" . }}
 {{ end }}
 
-<!-- prettier-ignore -->
 {{ define "footer" }}
 {{ partial "post-navigation" . }}
 {{ end }}
