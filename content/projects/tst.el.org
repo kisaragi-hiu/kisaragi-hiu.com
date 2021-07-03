@@ -1,0 +1,5 @@
+#+title: tst.el
+#+gitlab: https://gitlab.com/kisaragi-hiu/tst.el
+#+tags[]: emacs-lisp
+
+An Emacs Lisp library implementing a syntax for specifying tags inspired by TagSpaces.

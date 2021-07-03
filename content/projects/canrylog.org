@@ -1,25 +1,18 @@
 #+title: Canrylog
 #+created: 2019-01-05T21:47:20+0900
+#+gitlab: https://gitlab.com/canrylog/canrylog.el/
+#+tags[]: emacs
 
-https://gitlab.com/canrylog/canrylog.el/
+My own time tracker.
 
-My own time tracker written in Emacs Lisp.
+The core idea is that we simply track a list of events stating that from a moment onward, some task is currently active.
 
-Built on the core idea of a list of task-switching events. The core tracking file looks like this:
+I want it to be available in many platforms, but so far there is only an Emacs version.
+
+* Tracking file
+The core tracking file looks like this:
 
 #+begin_src canrylog-file
-2019-01-15T03:14:04+0800  Sleep
-2019-01-15T10:24:08+0800  Downtime
-2019-01-15T12:24:02+0800  Development:Canrylog:Design
-2019-01-15T13:46:13+0800  Skill:Development:UI
-2019-01-15T15:15:02+0900  Development:Canrylog:Design
-2019-01-15T18:10:30+0900  Skill:Piano
-2019-01-15T18:20:32+0800  Downtime
-2019-01-15T19:48:07+0900  Development:Canrylog:Emacs
-2019-01-15T20:45:43+0900  Dining:Dinner
-2019-01-15T21:48:16+0900  Development:Canrylog:cli
-2019-01-15T22:12:30+0900  Development:Canrylog:Emacs
-2019-01-15T22:38:12+0900  Downtime
 2019-01-15T22:40:18+0900  Entertainment:Gaming:osu!
 2019-01-15T23:04:56+0900  Development:Canrylog:Emacs
 2019-01-15T23:13:41+0800  Notes:Scheduling
@@ -31,11 +24,10 @@ Each line represents a “task switching event”. Each line starts with a times
 
 The task name can be broken down into a hierarchy, using a colon (=:=) to separate paths.
 
-The last event represents the currently active task.
-
-I believe that this is the most readable format for this specific purpose.
+This tells us that the currently active task is =Sleep=, while =SocialMedia:Youtube= was active between 2019-01-15T23:28:19+0800 and 2019-01-16T00:24:53+0800. All timestamps are in [[notes:public/content/iso8601.org][ISO 8601]], sorted chronologically (taking the UTC offset into account).
 
 * Emacs version
+
 My usual workflow is:
 
 - Use =canrylog-switch-task= to switch to something I’m doing or working on
@@ -52,8 +44,6 @@ I’ve also built a task list view, although that’s something that isn’t rea
 [[/canrylog-20201118-dashboard.png]]
 
 * Command line version
-
-I have also started building a command line version.
 
 https://gitlab.com/canrylog/canrylog-cli
 

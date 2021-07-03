@@ -1,0 +1,8 @@
+#+title: kisaragi-log
+#+gitlab: https://gitlab.com/kisaragi-hiu/kisaragi-log
+
+https://gitlab.com/kisaragi-hiu/kisaragi-hydration
+
+Tracking amounts of stuff in Emacs.
+
+Started as my own hydration tracker, but I wanted to track more than just water intake.

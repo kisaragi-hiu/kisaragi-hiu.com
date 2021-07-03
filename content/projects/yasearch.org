@@ -3,6 +3,33 @@
 #+sourcehut: https://git.sr.ht/~kisaragi_hiu/yasearch
 #+tags[]: emacs
 
+Yet Another web Search plugin for Emacs.
+
 Search the word under point or region on the web.
 
 /〜Because everybody needs their own web-search Emacs function〜/
+
+* Sample configuration
+
+#+begin_src emacs-lisp
+(leaf yasearch
+  :straight (yasearch :type git :repo "https://git.sr.ht/~kisaragi_hiu/yasearch")
+  :after evil
+  :init
+  (evil-define-key 'motion 'global
+    "gb" #'yasearch-operator)
+  :config
+  (setq
+   yasearch-engine-alist
+   '((dictgoo . "https://dictionary.goo.ne.jp/srch/all/%s/m0u/")
+     (wikipedia-en . "https://en.wikipedia.org/w/index.php?search=%s")
+     (wikipedia-zh . "https://zh.wikipedia.org/w/index.php?search=%s")
+     (wikipedia-ja . "https://ja.wikipedia.org/w/index.php?search=%s")
+     (kotobank . "https://kotobank.jp/word/%s")
+     (google . "https://google.com/search?q=%s")
+     (duckduckgo . "https://duckduckgo.com/?q=%s")
+     (wiktionary-zh . "https://zh.wiktionary.org/w/index.php?search=%s")
+     (wiktionary-en . "https://en.wiktionary.org/w/index.php?search=%s")
+     (wiktionary-ja . "https://ja.wiktionary.org/w/index.php?search=%s"))
+   yasearch-browser-function #'eww-browse-url))
+#+end_src

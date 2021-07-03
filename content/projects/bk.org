@@ -5,3 +5,12 @@
 #+github: https://github.com/kisaragi-hiu/bk
 
 Key-value pair storage based on JSON, intended for command line bookmarks.
+
+The file can be specified with the environment variable =$BK_FILE=, otherwise it is =${XDG_DATA_HOME}/bk/bk.json= or =~/.local/share/bk/bk.json= by default.
+
+- =bk --init= :: Initialize the key-value store. There is no need to do this manually.
+- =bk <key>= :: Retrieve the value associated with =key=.
+- =bk <key> <value>= :: Set the value associated with =key= to =value=.
+- =bk -l= or =bk --list= :: List all existing keys
+- =bk -d <key>= or =bk --delete <key>= :: Delete =key= from the key-value store
+- =bk -h= or =bk --help= :: Show a help message.

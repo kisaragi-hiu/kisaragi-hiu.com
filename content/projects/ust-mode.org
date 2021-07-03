@@ -1,8 +1,10 @@
 #+title: ust-mode
+#+tags[]: utau emacs
+#+github: https://github.com/kisaragi-hiu/ust-mode
 
-An Emacs major mode for editing UTAU projects (UST files). It is hosted [[https://github.com/kisaragi-hiu/org-msr][on Github]].
+An Emacs major mode for editing UTAU projects (UST files) as text.
+
+Only provides syntax highlighting (based on =conf-mode=) and a command to normalize paths like OutFile and CacheDir. Useful for searching for a particular flag and replacing all occurances of it, for example.
 
 #+caption: Editing a UST
 [[/emacs-ust-mode.png]]
-
-Provides syntax highlighting (based on =conf-mode=) and a command to normalize paths like OutFile and CacheDir.

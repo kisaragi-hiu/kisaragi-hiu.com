@@ -1,0 +1,5 @@
+#+title: Rozerofo
+#+github: https://github.com/kisaragi-hiu/font-rozerofo
+#+tags[]: fonts re:zero
+
+A font for the /Romoji/ script from [[https://en.wikipedia.org/wiki/Re:Zero_−_Starting_Life_in_Another_World][Re:Zero]].

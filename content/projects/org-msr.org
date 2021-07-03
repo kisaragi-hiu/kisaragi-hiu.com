@@ -1,12 +1,14 @@
 #+title: org-msr
+#+github: https://github.com/kisaragi-hiu/org-msr
+#+gitlab: https://gitlab.com/kisaragi-hiu/org-msr
 
-* Org-msr
+My personal spaced repetition system, implemented with Org-mode repeaters.
 
 Org-msr is a minimal spaced repetition setup for Org mode.
 
-[[https://github.com/kisaragi-hiu/org-msr][Github]], [[https://gitlab.com/kisaragi-hiu/org-msr][Gitlab]]
+After years of usage, I don’t actually think this has been a good idea. Nevertheless, as my vocabulary collection uses it, I’m still not moving away.
 
-** Usage
+* Usage
 
 Run =org-msr-setup= in a Org mode file to
 

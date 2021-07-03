@@ -1,0 +1,5 @@
+#+title: yaml.el
+#+github: https://github.com/kisaragi-hiu/yaml.el
+#+draft: t
+
+Work in progress: eventually might become a YAML library in pure Emacs Lisp.

@@ -1,0 +1,6 @@
+#+title: 如同月球般的荒涼
+#+gitlab: https://gitlab.com/kisaragi-hiu/barren-moon
+#+homepage: https://barren-moon.kisaragi-hiu.com
+#+tags[]: pollen
+
+A web-based book. Collection of poems I wrote in junior and senior high school.

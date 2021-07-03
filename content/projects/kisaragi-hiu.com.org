@@ -1,0 +1,6 @@
+#+title: kisaragi-hiu.com
+#+github: https://github.com/kisaragi-hiu/kisaragi-hiu.com
+
+This site. See [[/series/meta.html][the Meta series]] for some history behind it.
+
+It’s currently (and for a foreseeable future) built on Hugo.

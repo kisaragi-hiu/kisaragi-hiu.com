@@ -1,10 +1,10 @@
 #+title: dired-show-readme
-
-[[https://gitlab.com/kisaragi-hiu/dired-show-readme]]
+#+tags: emacs
+#+gitlab: https://gitlab.com/kisaragi-hiu/dired-show-readme
 
 #+caption: dired-show-readme in my dotfiles
 [[/dired-show-readme-0.2.1.png]]
 
 A Dired extension to show README of a directory like code foundries.
 
-I decided to make this after seeing it in a recent (as of 2020-04) version of Nextcloud.
+I saw Nextcloud doing it in April 2020 and wanted it in Dired.
