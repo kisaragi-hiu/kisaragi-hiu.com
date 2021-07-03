@@ -3,7 +3,7 @@
 #+language: zh-TW
 #+toc: true
 #+coverimage: /crowdin/crowdin-exported.jpg
-#+tags[]: crowdin translationtool
+#+tags[]: crowdin translation
 
 # 另外給翻譯師的說明：[[file:crowdin-translate-intro.org][在 Crowdin 上提供或貢獻翻譯]]
 

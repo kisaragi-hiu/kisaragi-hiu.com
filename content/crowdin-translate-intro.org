@@ -1,7 +1,7 @@
 #+title: 翻譯師的角度：Crowdin 基本操作
 #+draft: true
 #+language: zh-TW
-#+tags[]: crowdin translationtool
+#+tags[]: crowdin translation
 
 Opening
 
