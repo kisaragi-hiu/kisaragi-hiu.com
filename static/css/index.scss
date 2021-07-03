@@ -1,5 +1,13 @@
 @import "variables";
 
+table.index {
+  text-align: left;
+  th,
+  td {
+    border-left: 1rem none;
+  }
+}
+
 ul.index {
   padding: 0;
   li {

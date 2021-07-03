@@ -1,7 +1,16 @@
 {{ define "main" }}
-{{ partial "heading-with-links" . }}
+<article class="margin-top-2rem">
+<header class="heading">
+  {{ partial "type-path" . }}
+  <h1 class="xl">{{ .Title }}</h1>
+  {{ partial "param-links" . }}
+</header>
+{{ with .GetTerms "tags" }}
+{{ partial "tags-block" . }}
+{{ end }}
 {{ if .Params.toc }}
     {{ partial "toc" . }}
 {{ end }}
 {{ partial "content" . }}
+</article>
 {{ end }}

@@ -1,14 +1,38 @@
 {{ define "main" }}
 <h1 class="xl">{{ .Title }}</h1>
-{{ if .Params.toc }} {{ partial "toc" . }} {{ end }} {{ if .Params.hugo_nolist}}
-{{ partial "content" . }} {{ else }}
+
+<!-- prettier-ignore -->
+{{ if .Params.toc }}
+{{ partial "toc" . }}
+{{ end }}
+
+{{ if .Params.hugo_nolist}}
+{{ partial "content" . }}
+{{ else }}
+
 <root>
   {{ partial "content" . }}
   <h2>Projects</h2>
-  <ul class="index">
-    {{ range .Pages }}
-    <li>{{ partial "index-item" . }}</li>
-    {{ end }}
-  </ul>
+  <table class="index">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Tags</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{ range .Pages }}
+      <tr>
+        <th><a href="{{.Permalink}}">{{.Title}}</a></th>
+        <td>
+          <!-- prettier-ignore -->
+          {{ with .GetTerms "tags"}}
+            {{partial "tags-inline" .}}
+            {{end}}
+        </td>
+      </tr>
+      {{ end }}
+    </tbody>
+  </table>
 </root>
 {{ end }} {{ end }}
