@@ -1,5 +1,6 @@
 {{ define "main" }}
 
+<!-- prettier-ignore -->
 {{ if .Params.hugo_notitlecase }}
   {{ .Scratch.Set "titlecase" false }}
 {{ else }}
@@ -22,47 +23,48 @@
      tagging list pages. -->
 <!-- NOTE: (dict "page" . "taxonomy" "tags") is not a cons cell!
      The dot is the context dot. Remember this is not Lisp. -->
+<!-- prettier-ignore -->
 {{ with (partial "func-page-term" (dict "page" . "taxonomy" "tags")) }}
-{{ partial "tags" . }}
+{{partial "tags-block" . }}
 {{ end }}
 
+<!-- prettier-ignore -->
 {{ if .Params.toc }}
 {{ partial "toc" . }}
 {{ end }}
 
-{{ if .Params.hugo_nolist}}
-{{ partial "content" . }}
+{{ if .Params.hugo_nolist }}
+  {{ partial "content" . }}
 {{ else }}
 <root>
   {{ partial "content" . }}
 
   <!-- Store "term" items under this taxonomy term.
        This does not just work with tags.-->
+  <!-- prettier-ignore -->
   {{ $term_items := (slice) }}
   {{ range (where .Site.AllPages "Kind" "term" ) }}
     {{ if (in (.Page.Param $.Data.Plural) (anchorize $.LinkTitle)) }}
-      {{ $term_items = (union $term_items (slice .Page))}}
+      {{$term_items = (union $term_items (slice .Page))}}
     {{ end }}
   {{ end }}
 
   {{ with $term_items }}
   <h2>Terms</h2>
   <ul class="index">
-  {{ range $term_items }}
-      <li>{{ partial "index-item" . }}</li>
-  {{ end }}
+    {{ range $term_items }}
+    <li>{{ partial "index-item" . }}</li>
+    {{ end }}
   </ul>
   {{ end }}
-
+  <!-- prettier-ignore -->
   {{ with (where .Pages "Section" "!=" "archive") }}
   <h2>Pages</h2>
   <ul class="index">
-      {{ range .}}
-      <li>{{ partial "index-item" . }}</li>
-      {{ end }}
+    {{ range .}}
+    <li>{{ partial "index-item" . }}</li>
+    {{ end }}
   </ul>
   {{ end }}
 </root>
-{{ end }} <!-- if hugo_nolist -->
-<!-- define main -->
-{{ end }}
+{{ end }} {{ end }}

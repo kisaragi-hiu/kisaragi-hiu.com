@@ -4,20 +4,25 @@
 {{ partial "toc" . }}
 {{ end }}
 
-<p>Original: {{ .Params.origauthor }}<p>
+<p>Original: {{ .Params.origauthor }}</p>
 
 <div class="cover-embed-list">
-    {{ with .Params.youtube }}
-    {{ partial "youtube" . }}
-    {{ end }}
-    {{ with .Params.niconico }}
-    {{ partial "niconico" . }}
-    {{ end }}
+  <!-- prettier-ignore -->
+  {{ with .Params.youtube }}
+  {{ partial "youtube" . }}
+  {{ end }}
+
+  <!-- prettier-ignore -->
+  {{ with .Params.niconico }}
+  {{ partial "niconico" . }}
+  {{ end }}
 </div>
 
+<!-- prettier-ignore -->
 {{ partial "content" . }}
 {{ end }}
 
+<!-- prettier-ignore -->
 {{ define "footer" }}
 {{ partial "post-navigation" . }}
 {{ end }}

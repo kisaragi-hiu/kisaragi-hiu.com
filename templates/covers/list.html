@@ -1,5 +1,6 @@
 {{ define "main" }}
 <h1 class="xl">{{ .Title }}</h1>
+<!-- prettier-ignore -->
 {{ if .Params.toc }}
 {{ partial "toc" . }}
 {{ end }}
@@ -25,9 +26,12 @@
       <span>{{ .Params.origauthor }}</span>
       {{ end }}
       <span>
+        <!-- prettier-ignore -->
         {{ with .Params.youtube }}
         <a href="https://youtu.be/{{.}}">YouTube</a>
-        {{ end }} {{ with .Params.niconico }}
+        {{ end }}
+        <!-- prettier-ignore -->
+        {{ with .Params.niconico }}
         <a href="https://nico.ms/{{.}}">niconico</a>
         {{ end }}
       </span>

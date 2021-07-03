@@ -18,9 +18,10 @@
       {{ partial "type-path" . }}
       <h1 class="xl">{{ .Title }}</h1>
     </header>
+    <!-- prettier-ignore -->
     {{ partial "param-links" . }}
     {{ with .GetTerms "tags" }}
-    {{ partial "tags" . }}
+    {{ partial "tags-block" . }}
     {{ end }}
     <dl class="meta">
       <dt>{{ partial "func-translate" (dict "id" "Published" "page" .) }}</dt>
@@ -28,8 +29,12 @@
     </dl>
   </figcaption>
 </figure>
+
+<!-- prettier-ignore -->
 {{ if .Params.toc }}
 {{ partial "toc" . }}
 {{ end }}
+
 {{ partial "content" . }}
+
 {{ end }}

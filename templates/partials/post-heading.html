@@ -1,38 +1,39 @@
 <header class="heading">
-    <h1 class="xl">{{ .Title }}</h1>
-    {{ with .Param "subtitle" }}
-    <h2>{{.}}</h2>
+  <h1 class="xl">{{ .Title }}</h1>
+  {{ with .Param "subtitle" }}
+  <h2>{{.}}</h2>
+  {{ end }}
+  <hr />
+  <dl class="meta">
+    {{ with .Date }}
+    <dt>{{ partial "func-translate" (dict "id" "Published" "page" $)}}</dt>
+    <dd>{{ partial "date" . }}</dd>
     {{ end }}
-    <hr>
-    <dl class="meta">
-        {{ with .Date }}
-        <dt>
-            {{ partial "func-translate" (dict "id" "Published" "page" $)}}
-        </dt>
-        <dd>{{ partial "date" . }}</dd>
-        {{ end }}
-        {{ with .Lastmod }}
-        <dt>
-            <!-- If old versions are available, link there. -->
-            {{ with $.GetPage (printf "/archive/%s" $.File.BaseFileName) }}
-            <a title="View revision history"
-               class="out"
-               href="{{.Permalink}}">Updated</a>
-            {{ else }}
-            Updated
-            {{ end }}
-        </dt>
-        <dd>{{ partial "date" . }}</dd>
-        {{ end }}
-        <!-- {{ with .Params.certainty }}
+    <!-- prettier-ignore -->
+    {{ with .Lastmod }}
+    <dt>
+      <!-- If old versions are available, link there. -->
+      {{ with $.GetPage (printf "/archive/%s" $.File.BaseFileName) }}
+      <a title="View revision history" class="out" href="{{.Permalink}}"
+        >Updated</a
+      >
+      {{ else }}
+      <span>Updated</span>
+      <!-- with $.GetPage -->
+      {{ end }}
+    </dt>
+    <dd>{{ partial "date" . }}</dd>
+    {{ end }}
+    <!-- {{ with .Params.certainty }}
              <dt>Certainty</dt><dd>{{.}}</dd>
              {{ end }} -->
-        {{ range .GetTerms "series" }}
-        <dt>Series</dt>
-        <dd><a href="{{ .Permalink }}">{{ .LinkTitle }}</a></dd>
-        {{ end }}
-    </dl>
-    {{ with .GetTerms "tags" }}
-    {{ partial "tags" . }}
+    {{ range .GetTerms "series" }}
+    <dt>Series</dt>
+    <dd><a href="{{ .Permalink }}">{{ .LinkTitle }}</a></dd>
     {{ end }}
+  </dl>
+  <!-- prettier-ignore -->
+  {{ with .GetTerms "tags" }}
+  {{ partial "tags-block" . }}
+  {{ end }}
 </header>
