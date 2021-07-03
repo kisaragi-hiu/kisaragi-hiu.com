@@ -1,5 +1,18 @@
 {{ define "main" }}
-{{ partial "cover-heading" . }}
+
+<header class="heading">
+  {{ partial "type-path" . }}
+  <h1 class="xl">{{ .Title }} ft. {{ .Params.voice }}</h1>
+  <!-- prettier-ignore -->
+  {{ with .Date }}
+    {{ partial "date" . }}
+  {{ end }}
+  {{ with .GetTerms "tags" }}
+    {{ partial "tags-block" . }}
+  {{ end }}
+</header>
+
+<!-- prettier-ignore -->
 {{ if .Params.toc }}
 {{ partial "toc" . }}
 {{ end }}
