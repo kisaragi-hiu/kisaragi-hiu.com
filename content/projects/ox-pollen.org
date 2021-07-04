@@ -1,5 +1,6 @@
 #+title: ox-pollen
 #+github: https://github.com/kisaragi-hiu/ox-pollen
+#+tags[]: pollen org-mode
 
 ox-pollen allows exporting Org mode to Pollen markup.
 

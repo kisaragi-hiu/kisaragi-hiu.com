@@ -4,6 +4,9 @@
 #+language: en
 #+series: Project announcements
 
+#+caption: 1.0 Screenshot.
+[[/barren-moon-1.0.png]]
+
 I started writing poems (mostly in Mandarin) intermittently in 2013. Initially I put them on Blogger; I then moved them into this site in 2017. However, since they were quite different from everything else on this site (not to mention in a different language), and since I don't really have a category / tag system that works well, I effectively removed all mentions to them on this site. They were still hosted here, but there were no links in any of the main pages.
 
 Last week I finally got around to doing something about it. I've [[https://barren-moon.kisaragi-hiu.com][packaged them into a poem collection]], although it's still in Mandarin only.

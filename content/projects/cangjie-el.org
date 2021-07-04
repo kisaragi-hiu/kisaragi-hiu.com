@@ -1,7 +1,7 @@
 #+title: Cangjie.el
 #+created: 2018-08-23
 #+github: https://github.com/kisaragi-hiu/cangjie.el
-#+tags[]: emacs
+#+tags[]: emacs cangjie
 
 My first Emacs package.
 

@@ -1,4 +1,5 @@
 #+title: kisaragi-log
+#+tags[]: apps emacs
 #+gitlab: https://gitlab.com/kisaragi-hiu/kisaragi-log
 
 https://gitlab.com/kisaragi-hiu/kisaragi-hydration
