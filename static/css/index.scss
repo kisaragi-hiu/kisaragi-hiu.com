@@ -4,7 +4,9 @@ table.index {
   text-align: left;
   th,
   td {
-    border-left: 1rem none;
+    // We can't use margin here for whatever reason; this accomplishes
+    // the same thing.
+    border-right: 1rem solid #00000000;
   }
 }
 
