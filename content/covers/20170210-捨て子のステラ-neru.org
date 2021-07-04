@@ -5,3 +5,4 @@
 #+youtube: xds-iwT1-l8
 #+niconico: sm30605517
 #+original: https://nico.ms/sm29272726
+#+tags[]: video

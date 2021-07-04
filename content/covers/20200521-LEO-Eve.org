@@ -5,3 +5,4 @@
 #+voice: 闇音レンリ
 #+youtube: EI_97t8_i7o
 #+niconico: sm36898552
+#+tags[]: video

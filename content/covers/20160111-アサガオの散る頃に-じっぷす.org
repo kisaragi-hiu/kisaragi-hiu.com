@@ -5,3 +5,4 @@
 #+youtube: JqKbCtisCZQ
 #+niconico: sm27989435
 #+original: https://nico.ms/sm25793676
+#+tags[]: video

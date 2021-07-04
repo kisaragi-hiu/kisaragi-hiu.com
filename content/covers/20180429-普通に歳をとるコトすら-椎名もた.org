@@ -5,3 +5,4 @@
 #+youtube: E6BrZNuxmPw
 #+niconico: sm33124185
 #+original: https://nico.ms/sm22228044
+#+tags[]: video
