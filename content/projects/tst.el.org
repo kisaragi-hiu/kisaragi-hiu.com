@@ -1,5 +1,7 @@
 #+title: tst.el
 #+gitlab: https://gitlab.com/kisaragi-hiu/tst.el
-#+tags[]: emacs-lisp
+#+tags[]: emacs-lisp ci
 
 An Emacs Lisp library implementing a syntax for specifying tags inspired by TagSpaces.
+
+I also use this as a reference for [[notes:public/content/emacs-lisp-testing-gitlab-ci.org][setting up GitLab CI for Emacs Lisp]] whenever I don’t quite remember.

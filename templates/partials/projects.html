@@ -3,6 +3,7 @@
     <tr>
       <th>Title</th>
       <th>Tags</th>
+      <th>Repository</th>
     </tr>
   </thead>
   <tbody>
@@ -13,6 +14,16 @@
         <!-- prettier-ignore -->
         {{ with .GetTerms "tags" }}
         {{ partial "tags-inline" . }}
+        {{ end }}
+      </td>
+      <td>
+        <!-- prettier-ignore -->
+        {{ if .Params.gitlab }}
+        <a class="out" href="{{.Params.gitlab}}">GitLab</a>
+        {{ else if .Params.github }}
+        <a class="out" href="{{.Params.github}}">GitHub</a>
+        {{ else if .Params.sourcehut }}
+        <a class="out" href="{{.Params.sourcehut}}">Sourcehut</a>
         {{ end }}
       </td>
     </tr>
