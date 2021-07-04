@@ -13,26 +13,6 @@
 <root>
   {{ partial "content" . }}
   <h2>Projects</h2>
-  <table class="index">
-    <thead>
-      <tr>
-        <th>Title</th>
-        <th>Tags</th>
-      </tr>
-    </thead>
-    <tbody>
-      {{ range .Pages }}
-      <tr>
-        <th><a href="{{.Permalink}}">{{.Title}}</a></th>
-        <td>
-          <!-- prettier-ignore -->
-          {{ with .GetTerms "tags"}}
-            {{partial "tags-inline" .}}
-            {{end}}
-        </td>
-      </tr>
-      {{ end }}
-    </tbody>
-  </table>
+  {{ partial "projects" .Pages }}
 </root>
 {{ end }} {{ end }}

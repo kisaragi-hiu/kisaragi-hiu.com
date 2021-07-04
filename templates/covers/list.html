@@ -4,39 +4,13 @@
 {{ if .Params.toc }}
 {{ partial "toc" . }}
 {{ end }}
+<!-- prettier-ignore -->
 {{ if .Params.hugo_nolist}}
 {{ partial "content" . }}
 {{ else }}
 <root>
+  <!-- prettier-ignore -->
   {{ partial "content" . }}
-  <ul class="cover index">
-    <li class="row title">
-      <span>Date</span>
-      <span>Song / Voice</span>
-      <span>Original</span>
-      <span>Links</span>
-    </li>
-    {{ range .Pages }}
-    <li class="row">
-      <span class="mono">{{ partial "date" .Date }}</span>
-      <a href="{{ .Permalink }}">{{ .LinkTitle }} ft. {{ .Params.voice }}</a>
-      {{ if .Params.original }}
-      <a href="{{.Params.original}}">{{ .Params.origauthor }}</a>
-      {{ else }}
-      <span>{{ .Params.origauthor }}</span>
-      {{ end }}
-      <span>
-        <!-- prettier-ignore -->
-        {{ with .Params.youtube }}
-        <a href="https://youtu.be/{{.}}">YouTube</a>
-        {{ end }}
-        <!-- prettier-ignore -->
-        {{ with .Params.niconico }}
-        <a href="https://nico.ms/{{.}}">niconico</a>
-        {{ end }}
-      </span>
-    </li>
-    {{ end }}
-  </ul>
+  {{ partial "covers" .Pages }}
 </root>
 {{ end }} {{ end }}

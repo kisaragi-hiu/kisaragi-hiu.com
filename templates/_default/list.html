@@ -49,6 +49,7 @@
     {{ end }}
   {{ end }}
 
+  <!-- Other tags -->
   {{ with $term_items }}
   <h2>Terms</h2>
   <ul class="index">
@@ -57,9 +58,38 @@
     {{ end }}
   </ul>
   {{ end }}
+
+  <!-- Covers -->
   <!-- prettier-ignore -->
-  {{ with (where .Pages "Section" "!=" "archive") }}
+  {{ with (where .Pages "Section" "")}}
   <h2>Pages</h2>
+  <ul class="index">
+    {{ range .}}
+    <li>{{ partial "index-item" . }}</li>
+    {{ end }}
+  </ul>
+  {{ end }}
+
+  <!-- Covers -->
+  <!-- prettier-ignore -->
+  {{ with (where .Pages "Section" "projects")}}
+  <h2>Projects</h2>
+  <!-- prettier-ignore -->
+  {{ partial "projects" . }}
+  {{ end }}
+
+  <!-- Covers -->
+  <!-- prettier-ignore -->
+  {{ with (where .Pages "Section" "covers")}}
+  <h2>Covers</h2>
+  <!-- prettier-ignore -->
+  {{ partial "covers" . }}
+  {{ end }}
+
+  <!-- Public diary entries -->
+  <!-- prettier-ignore -->
+  {{ with (where .Pages "Section" "blog")}}
+  <h2>Diary entries</h2>
   <ul class="index">
     {{ range .}}
     <li>{{ partial "index-item" . }}</li>

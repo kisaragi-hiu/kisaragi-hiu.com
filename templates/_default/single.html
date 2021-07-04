@@ -1,17 +1,20 @@
 {{ define "main" }}
 
+<!-- prettier-ignore -->
 {{ partial "post-heading" . }}
 
+<!-- prettier-ignore -->
 {{ if .Params.toc }}
 {{ partial "toc" . }}
 {{ end }}
 
 {{ partial "content" . }}
-
 {{ end }}
 
 {{ define "footer" }}
+<!-- prettier-ignore -->
 {{ if (eq .Type "blog") }}
 {{ partial "post-navigation" . }}
 {{ end }}
+
 {{ end }}
