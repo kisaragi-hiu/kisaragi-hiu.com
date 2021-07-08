@@ -13,14 +13,17 @@
 
 ** General pages
 
-- [[file:iso8601.org][ISO 8601]]
-- [[file:links-in-both-hugo-and-org.org][Making links work in both Hugo and Org]]
-- [[file:why-not-date-in-url.org][Why I shouldn't have put the publish date in my URLs]]
+- [[file:/iso8601.org][ISO 8601]]
+- [[file:/links-in-both-hugo-and-org.org][Making links work in both Hugo and Org]]
+- [[file:/why-not-date-in-url.org][Why I shouldn't have put the publish date in my URLs]]
+- [[file:/emacs-lisp-testing-gitlab-ci.org][Testing & test coverage for Emacs Lisp on Gitlab CI]]
 
 ** Blog
 
-- [[file:blog/2020-03-20-hugo.org][Switching to Hugo]]
-- [[file:blog/2021-05-01-idsmile-trumpet-sheet.org][Beginner trumpet score for ID Smile]]
-- [[file:blog/2021-02-14-test-emacs-lisp-gitlab-ci.org][Testing & test coverage for Emacs Lisp on Gitlab CI]]
+- [[file:/blog/2020-03-20-hugo.org][Switching to Hugo]]
+- [[file:/blog/2021-05-01-idsmile-trumpet-sheet.org][Beginner trumpet score for ID Smile]]
 
 * etc.
+
+- [[file:/projects/aqi-tw.org][aqi.tw]]
+- [[file:/projects/blender-pseudo-vertical-text.org][Blender pseudo vertical text]]
