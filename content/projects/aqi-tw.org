@@ -1,9 +1,14 @@
 #+title: aqi.tw
 #+created: 2021-04-13
+#+updated: 2021-07-08
 #+tags[]: apps web
 #+homepage: https://aqi.tw
 #+github: https://github.com/kisaragi-hiu/com.kisaragi-hiu.aqi
 
+[[/aqi-tw-20210708.png]]
+
 A simple visualization of Taiwan’s AQI data.
 
-I’ve wanted to write this as a sort of practice since 2017, so I’m actually surprised that the domain hasn’t been taken.
+I’ve wanted to write this as a sort of practice since 2017.
+
+I was actually a little surprised that the domain wasn’t already taken between then and now (2021).
