@@ -1,0 +1,8 @@
+#+title: Blender pseudo vertical text
+#+created: 2021-07-08
+#+tags[]: blender
+#+github: https://github.com/kisaragi-hiu/blender-pseudo-vertical-text
+
+The addon I said I wanted to make in [[notes:public/content/blender-vertical-writing.org][在Blender裡用直書]].
+
+{{< video "/blender-pseudo-vertical-text-0.2.0.mp4" >}}

@@ -7,6 +7,8 @@
 
 Blender不支援直書。但如果我還是想要用直書的話怎麼辦？
 
+/2021-07-08:/ 我把[[#d41e9dcd-f02f-4eae-88ee-b03e04340d6b][下面提到用換行模擬的方式]]做成插件了。[[file:projects/blender-pseudo-vertical-text.org][插件的頁面在這裡。]]
+
 * 打字之後轉換成Mesh或Curve然後自己轉90°
 
 反正轉換成Mesh或Curve物件之後頂點和多邊形要怎麼改都可以。
@@ -20,6 +22,9 @@ Blender不支援直書。但如果我還是想要用直書的話怎麼辦？
 (連Krita也不支援直書🙁)
 
 * 用換行模擬直書
+:PROPERTIES:
+:CUSTOM_ID:       d41e9dcd-f02f-4eae-88ee-b03e04340d6b
+:END:
 
 我在[[file:/covers/20210625-ハルノ寂寞-稲葉曇.org][ハルノ寂寞 cover]]用的就是這種方式。
 
