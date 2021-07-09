@@ -1,32 +1,34 @@
-<table class="index">
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Tags</th>
-      <th>Repository</th>
-    </tr>
-  </thead>
-  <tbody>
-    {{ range . }}
-    <tr>
-      <th><a href="{{.Permalink}}">{{.Title}}</a></th>
-      <td>
-        <!-- prettier-ignore -->
-        {{ with .GetTerms "tags" }}
+<div class="index">
+  <table>
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Tags</th>
+        <th>Repository</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{ range . }}
+      <tr>
+        <th><a href="{{.Permalink}}">{{.Title}}</a></th>
+        <td>
+          <!-- prettier-ignore -->
+          {{ with .GetTerms "tags" }}
         {{ partial "tags-inline" . }}
         {{ end }}
-      </td>
-      <td>
-        <!-- prettier-ignore -->
-        {{ if .Params.gitlab }}
-        <a class="out" href="{{.Params.gitlab}}">GitLab</a>
-        {{ else if .Params.github }}
-        <a class="out" href="{{.Params.github}}">GitHub</a>
-        {{ else if .Params.sourcehut }}
-        <a class="out" href="{{.Params.sourcehut}}">Sourcehut</a>
-        {{ end }}
-      </td>
-    </tr>
-    {{ end }}
-  </tbody>
-</table>
+        </td>
+        <td>
+          <!-- prettier-ignore -->
+          {{ if .Params.gitlab }}
+          <a class="out" href="{{.Params.gitlab}}">GitLab</a>
+          {{ else if .Params.github }}
+          <a class="out" href="{{.Params.github}}">GitHub</a>
+          {{ else if .Params.sourcehut }}
+          <a class="out" href="{{.Params.sourcehut}}">Sourcehut</a>
+          {{ end }}
+        </td>
+      </tr>
+      {{ end }}
+    </tbody>
+  </table>
+</div>

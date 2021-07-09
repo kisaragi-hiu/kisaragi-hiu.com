@@ -1,12 +1,25 @@
 @import "variables";
 
-table.index {
-  text-align: left;
-  th,
-  td {
-    // We can't use margin here for whatever reason; this accomplishes
-    // the same thing.
-    border-right: 1rem solid #00000000;
+div.index {
+  overflow-x: auto;
+  & > table {
+    text-align: left;
+    border-collapse: collapse;
+    @media (max-width: $width-phablet) {
+      tr {
+        border-bottom: 1px solid #000000;
+      }
+      tr:last-child {
+        border-bottom: none;
+      }
+    }
+    th,
+    td {
+      padding: 0.25rem 0;
+      // We can't use margin here for whatever reason; this accomplishes
+      // the same thing.
+      padding-right: 1rem;
+    }
   }
 }
 
