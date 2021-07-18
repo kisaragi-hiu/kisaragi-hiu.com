@@ -1,0 +1,22 @@
+#+title: Treating the Steam Deck as a “regular” PC is setting yourself up for disappointment*
+#+subtitle: *Unless you consider a Linux PC a regular PC. Many don’t.
+#+created: 2021-07-19T00:03:12+0900
+#+series: Opinions
+#+language: en
+#+draft: true
+
+# Dated because I don’t think this article will stay relevant in the near future
+
+Valve has announced the Steam Deck, a handheld gaming device capable of running AAA games. It apparently runs on a custom build of Arch Linux, its specs even go as far as specifying that it runs KDE Plasma.
+
+This is great news for me as a Linux user. As long as they don’t drift too far from upstream, they will inevitably make games more compatible with Linux. I want this thing to succeed.
+
+So I want to say this: Don’t treat the Steam Deck as a normal gaming PC. Too many reports already claim that “you can run Windows on this thing if you want to”, for example, without noting that the point is Valve doesn’t stop you from tinkering with the software, not that Valve will give you a literal “Windows version” option when you purchase it. This can be a recipe for a massive amount of disappointment.
+
+The Steam Deck will not run literally all PC games. Yes, SteamPlay integrating Proton allowed games to be played on Linux without the developers having to port it, but it doesn’t work on every game automatically. If you expect the Steam Deck to play your entire library, you will be disappointed.
+
+Nobody complains that the Nintendo Switch doesn’t run literally every game that was made for the N64, because most people don’t expect it to. Compatibility isn’t a problem if buyers know (and understand!) what they are getting. When you’re able to play an SNES game on the Switch, it is seen as a bonus on top of what the console already delivers.
+
+Buyers need to come into the Steam Deck with the same sort of expectations.
+
+And the first step to scaling the expectations would be to not say that the Steam Deck allows you to do “[[https://www.ign.com/articles/steam-deck-hands-on-impressions-details-valve-handheld-gaming-pc][pretty much anything […] that you can do with a regular PC]]”. That statement is only roughly true, as buyers might think a regular /Windows/ PC when they read that, and end up being disappointed when they realize they have to first install Windows themselves on their new handheld device.
