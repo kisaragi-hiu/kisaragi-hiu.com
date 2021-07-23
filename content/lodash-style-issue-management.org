@@ -2,6 +2,12 @@
 #+created: 2021-07-23T17:38:26+0900
 #+draft: t
 
+- https://www.swyx.io/bottom-up-ideas/
+- https://github.com/lodash/lodash/blob/master/.github/CONTRIBUTING.md
+- https://github.com/11ty/eleventy/issues/1430
+- https://twitter.com/samselikoff/status/991395669016436736
+- https://duckduckgo.com/?t=ffab&q=lodash+style+issue+management
+
 Today I saw this reference to “Lodash style issue management” in the Eleventy repository:
 
 #+begin_quote
