@@ -1,0 +1,53 @@
+#+title: Lodash style issue management
+#+created: 2021-07-23T17:38:26+0900
+#+draft: t
+
+Today I saw this reference to “Lodash style issue management” in the Eleventy repository:
+
+#+begin_quote
+This repository is now using [[https://twitter.com/samselikoff/status/991395669016436736][lodash style issue management]] for enhancements. This means enhancement issues will now be closed instead of leaving them open.
+
+View [[https://github.com/11ty/eleventy/issues?utf8=%E2%9C%93&q=label%3Aneeds-votes+sort%3Areactions-%2B1-desc+][the enhancement backlog here]]. Don’t forget to upvote the top comment with 👍!
+
+— [[https://github.com/11ty/eleventy/issues/1430#issuecomment-878467244][zachleat, 2021-07-13]]
+#+end_quote
+
+Following the link goes to this Twitter thread:
+
+#+begin_quote
+Recently I noticed Lodash's repo had 0 open issues. As an OSS maintainer I found this fascinating because Lodash is tremendously popular, and keeping issues down is notoriously difficult.
+
+Turns out [[https://twitter.com/jdalton][@jdalton]] uses closed issues as part of his workflow:
+
+- Feature requests are closed issues with =feature= label and =votes needed= label, and a 👍 emoji reaction
+- Bugs are open issues tagged with =bug= label
+
+To see current feature requests, he provides a link that shows all issues labeled =feature=, sorted by descending count of 👍.
+
+That's how he prioritizes new feature development, so everyone knows the "most important" thing to work on next.
+
+I really love this system because
+
+1. It communicates to users that at any one time, there are many features competing for dev time
+2. It has a built-in mechanism for helping the maintainer determine priority (👍 counts)
+3. The open Issues list doesn't become a dumping ground for questions, bugs, feature requests and discussions. It stays focused on what's actively being worked on.
+4. The maintainer is better able to focus their effort and keep tabs on the overall needs of their users
+
+OSS maintainability is all about communication: telling users if their requests align with the project; if you're still actively developing; what your priorities are; and so on.
+
+Systems that nudge maintainers to fall into successful patterns in these areas are greatly needed.
+
+I would love to hear what systems or tools other folks have found success with in the areas of OSS communication! I'd also love to know if [[https://twitter.com/github][@github]] is working on any features that touch this area.
+
+— [[https://twitter.com/samselikoff/status/991395669016436736][Sam Selikoff (@samselikoff), 2018-05-02]]
+#+end_quote
+
+The Lodash CONTRIBUTING.md says this:
+
+#+begin_quote
+*Feature Requests*
+
+Feature requests should be submitted in the [[https://github.com/lodash/lodash/issues][issue tracker]], with a description of the expected behavior & use case, where they'll remain closed until sufficient interest, [[https://help.github.com/articles/about-discussions-in-issues-and-pull-requests/][e.g. 👍 reactions]], has been [[https://github.com/lodash/lodash/issues?q=label%3A%22votes+needed%22+sort%3Areactions-%2B1-desc][shown by the community]]. Before submitting a request, please search for similar ones in the [[https://github.com/lodash/lodash/issues?q=is%3Aissue+is%3Aclosed+label%3Aenhancement][closed issues]].
+
+— https://github.com/lodash/lodash/blob/master/.github/CONTRIBUTING.md
+#+end_quote
