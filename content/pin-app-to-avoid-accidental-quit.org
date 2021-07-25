@@ -1,0 +1,20 @@
+#+title: How to avoid accidentally quitting an app or a game: app pinning
+#+created: 2021-07-25T21:30:02+0900
+#+tags[]: tips
+#+language: en
+
+One thing that used to stop me from ever considering using gesture-based navigation on my phone is how easy it is to accidentally trigger a gesture in a game, particularly in a rhythm game. I’d be on a full combo attempt only to accidentally quit out to home, ruining a good play — I would rather not have to worry about that. However, a few days ago I learned that you can actually prevent this from happening simply by pinning the app.
+
+The feature is called [[https://support.google.com/android/answer/9455138][Screen Pinning]] on Android, and [[https://support.apple.com/en-us/HT202612][Guided Access]] on iOS (including iPad). It was originally designed for situations like when you have to hand your phone to somebody else, and you don’t want them to have the ability to switch to another app; it is equally as useful for avoiding accidentally quitting to home, as they block those gestures until a (less error-prone) special gesture is performed.
+
+Detailed instructions are in Apple and Google’s documentation for this feature, but here’s a summary:
+
+- iOS devices ([[https://support.apple.com/en-us/HT202612][official docs]]) ::
+  - Go to Settings → Accessibility → Guided Access, then turn it on; it seems like you have to set a password, but you can also enable Face ID or Touch ID to speed up unlocking.
+  - To pin an app: in any app, triple-click the home button (or the side button if your device doesn’t have one), tap “Guided Access”, then “Start”.
+  - To return to normal, double-click the home or side button. If you didn’t enable Face ID or Touch ID, triple-click the home or side button, then enter the password.
+- Android devices ([[https://support.google.com/android/answer/9455138][official docs]]) ::
+  - Go to Settings → Security → Advanced → App pinning, and turn it on.
+  - To pin an app: open the overview (the recent apps screen). If you see a vertical stack of cards, swipe up and a pin icon should appear; tap it. If the cards are laid out horizontally (Android >= 9), tap on the icon of the current app, then select “Pin”.
+  - To return to normal: swipe up from the bottom of the screen and hold, as if you’re opening the overview. A message will appear, telling you that the app has been unpinned.
+    - If you’re not using gesture navigation, hold the back and the overview buttons. If you’re using the Android 9 two-button navigation, hold the back and home buttons.
