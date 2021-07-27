@@ -2,9 +2,9 @@
 
 The files in this repository, unless otherwise noted, are © Kisaragi Hiu, licensed as below:
 
-- All *prose writing* (all files under `poems/` and `blog/`), and all static files (under `static/`) not otherwise attributed, are provided under a Creative Commons Attribution-ShareAlike 4.0 International License; a copy of which is provided below.
+- All *prose writing* (all Org Mode (`.org`) and Markdown (`.md`) files), and all static files (under `static/`) not otherwise attributed, are provided under a Creative Commons Attribution-ShareAlike 4.0 International License; a copy of which is provided below.
 
-- The *source code* — comprised of all `.rkt`, `.sh`, `.yml`, `template.html`, `.css`, and `.css.pp` files — is licensed under the MIT license. A copy is provided below as well.
+- The *source code* — comprised of all `.py`, `.yaml`, `.sh`, and `.json` files, as well as `.html` files under `templates/` — is licensed under the MIT license. A copy is provided below as well.
 
 ## The MIT License
 
