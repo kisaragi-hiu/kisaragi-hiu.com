@@ -1,0 +1,190 @@
+#+title: Sorting albums by duration
+#+created: 2021-08-05T00:59:00+0900
+#+tags[]: emacs emacs-lisp
+#+language: en
+#+toc: t
+
+Sometimes I listen to albums in my music collection as a sort of timer. It’s pretty neat: I know about one hour has passed when the album [[https://w.atwiki.jp/hmiku/pages/29068.html][Youthfull (koyori)]] is over (54 minutes), and I don’t have to have a clock on screen to be able to know that.
+
+To do this, I want to sort the albums by duration so I can pick one that’s at the right length. However, (at least on Linux) seemingly no music player supports it. Some just don’t have a table view for sorting anything (GNOME Music), some don’t have a list view for albums (Lollypop, [[https://github.com/elementary/music][elementary Music]]), some allow sorting albums but not by duration (Elisa)…
+
+So I ended up hacking it together myself in Emacs.
+
+* The whole thing
+#+begin_src emacs-lisp
+(defun k/song-duration (song-file)
+  "Return duration of SONG-FILE in seconds."
+  (with-temp-buffer
+    (call-process
+     "ffprobe" nil '(t nil) nil
+     "-v" "quiet"
+     "-print_format" "json"
+     "-show_streams"
+     song-file)
+    (goto-char (point-min))
+    (-some--> (json-parse-buffer
+               :object-type 'alist)
+      (map-elt it 'streams)
+      (seq-find (lambda (elem)
+                  (equal (map-elt elem 'codec_type)
+                         "audio"))
+                it)
+      (map-elt it 'duration)
+      string-to-number)))
+
+(defun k/folder-duration (folder)
+  "Return duration of all songs in FOLDER."
+  (--> (directory-files folder t)
+    (mapcar #'k/song-duration it)
+    -non-nil
+    (apply #'+ it)))
+
+(defun k/list-albums (dir)
+  "List music folders in DIR, providing a duration field for sort."
+  (interactive (list (xdg-user-dir "MUSIC")))
+  (let (folders)
+    (dolist-with-progress-reporter (folder (f-directories dir))
+        "Probing folders..."
+      (push (cons folder (k/folder-duration folder)) folders))
+    (with-current-buffer (get-buffer-create "*k/music folders*")
+      (when (= 0 (buffer-size))
+        (tabulated-list-mode)
+        (setq tabulated-list-format
+              (vector
+               '("folder" 70 t)
+               (list "duration" 20
+                     (lambda (a b)
+                       ;; An entry is (ID ["<folder>" "<duration>"]).
+                       ;;
+                       ;; <duration> looks like (label :key val :key val...)
+                       ;; when props are given.
+                       (< (-> (cadr a) (elt 1) cdr (plist-get :seconds))
+                          (-> (cadr b) (elt 1) cdr (plist-get :seconds)))))))
+        (tabulated-list-init-header))
+      (dolist (folder folders)
+        (push (list nil (vector (f-base (car folder))
+                                (list (format-seconds "%.2h:%.2m:%.2s" (cdr folder))
+                                      :seconds (cdr folder))))
+              tabulated-list-entries))
+      (revert-buffer))))
+#+end_src
+
+* Breaking it up
+** Get the duration of one file
+
+Goal: =(k/song-duration "G4L - Instrumental.wav")= should return the length of the audio file =G4L - Instrumental.wav=.
+
+#+begin_src emacs-lisp
+(defun k/song-duration (song-file)
+  "Return duration of SONG-FILE in seconds."
+  (with-temp-buffer
+    (call-process
+     "ffprobe" nil '(t nil) nil
+     "-v" "quiet"
+     "-print_format" "json"
+     "-show_streams"
+     song-file)
+    (goto-char (point-min))
+    (-some--> (json-parse-buffer
+               :object-type 'alist)
+      (map-elt it 'streams)
+      (seq-find (lambda (elem)
+                  (equal (map-elt elem 'codec_type)
+                         "audio"))
+                it)
+      (map-elt it 'duration)
+      string-to-number)))
+#+end_src
+
+First open a temporary buffer to do =call-process= in…
+
+#+begin_src emacs-lisp
+(with-temp-buffer
+#+end_src
+
+Then I use =ffprobe= to get information about an audio file. =ffprobe= is able to return JSON, so I ask it to do so.
+
+(The first nil is which file to use as stdin, nil for nothing; the second nil is specifying that we don’t want to display this buffer. The ='(t nil)= means insert stdout into this buffer and toss stderr away. I have to check the docstring everytime I use it.)
+
+#+begin_src emacs-lisp
+(call-process
+ "ffprobe" nil '(t nil) nil
+ "-v" "quiet"
+ "-print_format" "json"
+ "-show_streams"
+ song-file)
+#+end_src
+
+The JSON output looks something like this (irrelevant fields are removed here)
+
+#+begin_src json
+{
+  "streams": [
+    {
+      "index": 0,
+      "codec_name": "mp3",
+      "codec_long_name": "MP3 (MPEG audio layer 3)",
+      "codec_type": "audio",
+      "duration_ts": 1136148480,
+      "duration": "80.509388"
+    },
+    {
+      "index": 1,
+      "codec_name": "mjpeg",
+      "codec_long_name": "Motion JPEG",
+      "codec_type": "video",
+      "duration_ts": 7245845,
+      "duration": "80.509389"
+    }
+  ]
+}
+#+end_src
+
+Before we parse the JSON, we have to first go back to the beginning of the buffer as =json-parse-buffer= parses from the current cursor location, and =call-process= has moved it.
+
+#+begin_src elisp
+(goto-char (point-min))
+#+end_src
+
+Now parse the JSON output, then extract the field I want.
+
+I use =-some-->= so that if we can’t find a valid field, it’ll just return nil.
+
+I ask =json-parse-buffer= to parse JSON objects into alists because I felt like this is faster. I’m not sure, though.
+
+I also specify that I only want an audio stream. Selecting the image stream (used for embedding album art) in an audio file is fine as it will also have the same duration. However, this is still needed because =ffprobe= also returns data from pure jpeg files, and it counts them as having a duration of 0.04 seconds if I remember correctly. Counting only audio streams prevents counting image files.
+
+=ffprobe= returns the duration as seconds in a string, so I use =string-to-number= to finally convert it to a number.
+
+#+begin_src elisp
+(-some--> (json-parse-buffer
+           :object-type 'alist)
+  (map-elt it 'streams)
+  (seq-find (lambda (elem)
+              (equal (map-elt elem 'codec_type)
+                     "audio"))
+            it)
+  (map-elt it 'duration)
+  string-to-number)
+#+end_src
+
+** Get the duration of an entire album
+
+Instead of trying to list albums by looking at metadata of each song, I simply rely on albums being represented by folders.
+
+This allows the implementation to be quite simple:
+
+#+begin_src emacs-lisp
+(defun k/folder-duration (folder)
+  "Return duration of all songs in FOLDER."
+  (--> (directory-files folder t)
+    (mapcar #'k/song-duration it)
+    -non-nil
+    (apply #'+ it)))
+#+end_src
+
+This simply runs =k/song-duration= (the function from the previous section) on every immediate member of =folder=, removes the invalid values, then adds it all up.
+
+** Creating a listing based on tabulated-list-mode
+
+TODO
