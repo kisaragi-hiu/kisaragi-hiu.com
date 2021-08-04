@@ -23,7 +23,7 @@ markup:
     renderer:
       unsafe: true
   highlight:
-    lineNos: true
+    lineNos: false
 
 # We need this to use CSS to style syntax highlighting
 pygmentsUseClasses: true
