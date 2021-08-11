@@ -10,67 +10,13 @@ To do this, I want to sort the albums by duration so I can pick one that’s at 
 
 So I ended up hacking it together myself in Emacs.
 
-* The whole thing
-#+begin_src emacs-lisp
-(defun k/song-duration (song-file)
-  "Return duration of SONG-FILE in seconds."
-  (with-temp-buffer
-    (call-process
-     "ffprobe" nil '(t nil) nil
-     "-v" "quiet"
-     "-print_format" "json"
-     "-show_streams"
-     song-file)
-    (goto-char (point-min))
-    (-some--> (json-parse-buffer
-               :object-type 'alist)
-      (map-elt it 'streams)
-      (seq-find (lambda (elem)
-                  (equal (map-elt elem 'codec_type)
-                         "audio"))
-                it)
-      (map-elt it 'duration)
-      string-to-number)))
+The whole thing:
 
-(defun k/folder-duration (folder)
-  "Return duration of all songs in FOLDER."
-  (--> (directory-files folder t)
-    (mapcar #'k/song-duration it)
-    -non-nil
-    (apply #'+ it)))
+{{< gist kisaragi-hiu 57b27352392a4a9813e3f276369db131 >}}
 
-(defun k/list-albums (dir)
-  "List music folders in DIR, providing a duration field for sort."
-  (interactive (list (xdg-user-dir "MUSIC")))
-  (let (folders)
-    (dolist-with-progress-reporter (folder (f-directories dir))
-        "Probing folders..."
-      (push (cons folder (k/folder-duration folder)) folders))
-    (with-current-buffer (get-buffer-create "*k/music folders*")
-      (when (= 0 (buffer-size))
-        (tabulated-list-mode)
-        (setq tabulated-list-format
-              (vector
-               '("folder" 70 t)
-               (list "duration" 20
-                     (lambda (a b)
-                       ;; An entry is (ID ["<folder>" "<duration>"]).
-                       ;;
-                       ;; <duration> looks like (label :key val :key val...)
-                       ;; when props are given.
-                       (< (-> (cadr a) (elt 1) cdr (plist-get :seconds))
-                          (-> (cadr b) (elt 1) cdr (plist-get :seconds)))))))
-        (tabulated-list-init-header))
-      (dolist (folder folders)
-        (push (list nil (vector (f-base (car folder))
-                                (list (format-seconds "%.2h:%.2m:%.2s" (cdr folder))
-                                      :seconds (cdr folder))))
-              tabulated-list-entries))
-      (revert-buffer))))
-#+end_src
+Then, breaking it up:
 
-* Breaking it up
-** Get the duration of one file
+* Get the duration of one file
 
 Goal: =(k/song-duration "G4L - Instrumental.wav")= should return the length of the audio file =G4L - Instrumental.wav=.
 
@@ -168,7 +114,7 @@ I also specify that I only want an audio stream. Selecting the image stream (use
   string-to-number)
 #+end_src
 
-** Get the duration of an entire album
+* Get the duration of an entire album
 
 Instead of trying to list albums by looking at metadata of each song, I simply rely on albums being represented by folders.
 
@@ -185,6 +131,127 @@ This allows the implementation to be quite simple:
 
 This simply runs =k/song-duration= (the function from the previous section) on every immediate member of =folder=, removes the invalid values, then adds it all up.
 
-** Creating a listing based on tabulated-list-mode
+* Creating a listing based on tabulated-list-mode
 
-TODO
+** The =interactive= statement
+#+begin_src emacs-lisp
+(interactive (list (xdg-user-dir "MUSIC")))
+#+end_src
+
+This [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Using-Interactive.html][marks the function as an interactive command]] so that it shows up in =M-x= and can be bound to a key chord.
+
+The “input” to the interactive form tells Emacs that when run as an interactive command (through =M-x=, a key bind, or =call-interactively=), it should evaluate =(list (xdg-user-dir "MUSIC"))= and use that as the argument list, making =(xdg-user-dir "MUSIC")= the first and only argument.
+
+** Collecting duration
+
+First collect the durations into an alist mapping folder paths to their total durations.
+
+#+begin_src emacs-lisp
+(dolist-with-progress-reporter (folder (f-directories dir))
+    "Probing folders..."
+  (push (cons folder (k/folder-duration folder)) folders))
+#+end_src
+
+=dolist-with-progress-reporter= is a nicer version of =dolist= that reports the progress as it goes. =k/folder-duration= as defined in the previous section is actually quite slow, and because we're running it sequentially on all music files, it builds up.
+
+The result (saved into the =folders= variable, which has been defined by a surrounding =let=) is an alist that looks like this:
+
+#+begin_src emacs-lisp
+(let (folders)
+  (dolist-with-progress-reporter (folder (f-directories (xdg-user-dir "MUSIC")))
+      "Probing folders..."
+    (push (cons folder (k/folder-duration folder)) folders))
+  folders)
+#+end_src
+
+** Setting up a tabulated-list buffer
+
+We need to:
+
+1. Enter a new buffer to display the data collected in =folders=
+2. Start tabulated-list-mode. (Usually this is done by defining a new major mode.)
+3. Set up =tabulated-list-format=
+4. Render the header with =tabulated-list-init-header=
+5. Put our data into =tabulated-list-entries= in the right format
+6. Run =revert-buffer= to trigger tabulated-list-mode's rendering mechanism
+
+The most confusing thing for me has been figuring out what's the right shape for =tabulated-list-format= and =tabulated-list-entries=. Providing some examples probably helps:
+
+- =tabulated-list-format= is a vector in this shape:
+
+  #+begin_src emacs-lisp
+  [("folder" 70 t)
+   ("duration" 20 my-sort-function)
+   ("another column" 30 t :right-align t)
+   ...]
+  #+end_src
+
+  Each element in this vector represents a column; each column is specified as =(<name> <width> <sort> [prop] [value] [prop] [value] …)=. So the third element above specifies a column with a name “another column”, a width of 30, sorting by string comparison, and aligns to the right. Its docstring describes it better:
+
+  #+begin_quote
+  - NAME is a string describing the column.
+    This is the label for the column in the header line.
+    Different columns must have non-equal names.
+  - WIDTH is the width to reserve for the column.
+    For the final element, its numerical value is ignored.
+  - SORT specifies how to sort entries by this column.
+    If nil, this column cannot be used for sorting.
+    If t, sort by comparing the string value printed in the column.
+    Otherwise, it should be a predicate function suitable for
+    sort, accepting arguments with the same form as the elements
+    of tabulated-list-entries.
+  - PROPS is a plist of additional column properties.
+    Currently supported properties are:
+    - :right-align: If non-nil, the column should be right-aligned.
+    - :pad-right: Number of additional padding spaces to the
+      right of the column (defaults to 1 if omitted).
+
+  — [[https://git.savannah.gnu.org/cgit/emacs.git/tree/lisp/emacs-lisp/tabulated-list.el?h=emacs-27#n86][Docstring of the variable tabulated-list-format]]
+  #+end_quote
+
+  SORT, if provided as a function, always accepts two entries that look like =(<id> [<column1> <column2> …])=, regardless of which column it is assigned to. As the docstring said, this is the same format that goes into =tabulated-list-entries=.
+
+- =tabulated-list-entries= is a list in this shape:
+
+  #+begin_src emacs-lisp
+  ([("id1" ["column 1" "column 2" "column 3" …])]
+   [("id2" ["column 1" "column 2" "column 3" …])])
+  #+end_src
+
+  The ID can also be nil, but providing it allows tabulated-list to keep the cursor on the current item when sorting. If it is provided, it can be any unique object (defined as not being =equal= to any other entries in this list).
+
+  An entry's values for every column are called “column descriptors” in the docstring; they can be strings (as shown above) or a list like =("label" :key 123 :key2 456)=. The latter form is useful in sort functions, as you can store eg. numerical data there to compare with =<= without needing to use =string-to-number=.
+
+With that out of the way:
+
+#+begin_src emacs-lisp
+(with-current-buffer (get-buffer-create "*k/music folders*") ; Step 1
+  (when (= 0 (buffer-size))
+    (tabulated-list-mode) ; Step 2
+    ;; Step 3
+    (setq tabulated-list-format
+          (vector
+           '("folder" 70 t) ; first column
+           (list "duration" 20 ; second column
+                 (lambda (a b)
+                   ;; A and B look like
+                   ;; (ID [<folder> ("00:00:10" :seconds 10.0)])
+                   ;; - cadr -> grab the vector
+                   ;; - elt 1 -> skip <folder> and grab ("10.0" :seconds 10.0)
+                   ;; - cdr -> remove the label
+                   ;; - plist-get :seconds -> extract the numerical
+                   ;;   value stored below, when we set up tabulated-list-entries
+                   (< (-> (cadr a) (elt 1) cdr (plist-get :seconds))
+                      (-> (cadr b) (elt 1) cdr (plist-get :seconds)))))))
+    (tabulated-list-init-header)) ; Step 4
+  ;; Step 5
+  (dolist (folder folders)
+    ;; Goal: each entry is something like
+    ;; (nil ["deconstructing nature" ("00:46:28" :seconds 2788.2840810000002)])
+    (push (list nil (vector (f-base (car folder))
+                            (list (format-seconds "%.2h:%.2m:%.2s" (cdr folder))
+                                  :seconds (cdr folder))))
+          tabulated-list-entries))
+  ;; Step 6
+  (revert-buffer))
+#+end_src
