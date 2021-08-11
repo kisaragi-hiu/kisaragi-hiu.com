@@ -1,0 +1,81 @@
+@import "headings.css";
+@import "emacs.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  p {
+    @apply my-4;
+  }
+}
+
+@layer components {
+  .type-path + h1 {
+    @apply mt-0;
+  }
+  .gist {
+    @apply my-4;
+  }
+  .meta {
+    /* This ensures a layout like
+       dd1   dd2   dd3   dd4
+        dt1   dt2   dt3   dt4
+       Without having to change markup. */
+    @apply my-4 text-sm w-max gap-x-4;
+    display: grid;
+    grid-template: 1fr 1fr / 1fr 1fr;
+    dt {
+      grid-row: 1/1;
+    }
+    dd {
+      grid-row: 2/2;
+    }
+  }
+  .tag {
+    @apply rounded mt-0 mb-1 mr-2 px-2 py-1 text-special-strong bg-special;
+    &::before {
+      content: "#";
+    }
+  }
+  /* We don't have access to classes on Hugo's TOC */
+  #TableOfContents {
+    ul {
+      @apply pl-4;
+      list-style: revert;
+    }
+    /* just level 1 */
+    & > ul {
+      @apply pl-6;
+    }
+  }
+  a.index-item {
+    @apply text-primary hover:no-underline;
+    & > div {
+      /* extend the background highlight on hover, then counter the left padding */
+      @apply p-2 -ml-2;
+    }
+  }
+  ul.illust-index {
+    @apply p-0 flex flex-wrap gap-x-4;
+    li {
+      @apply p-0 list-none;
+    }
+    .item {
+      transition: all 100ms ease-in-out;
+      img:hover {
+        box-shadow: 0 0 1rem rgba(0, 0, 0, 0.5);
+      }
+      img {
+        box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.5);
+        max-height: 6rem;
+        max-width: 6rem;
+      }
+    }
+  }
+}
+
+.out::after {
+  content: "°";
+}

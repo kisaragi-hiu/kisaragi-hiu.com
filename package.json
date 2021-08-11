@@ -6,6 +6,8 @@
     "cssnano": "^5.0.6",
     "medium-zoom": "^1.0.6",
     "postcss-cli": "^8.3.1",
-    "sass": "^1.33.0"
+    "postcss-import": "^14.0.2",
+    "sass": "^1.33.0",
+    "tailwindcss": "^2.2.7"
   }
 }

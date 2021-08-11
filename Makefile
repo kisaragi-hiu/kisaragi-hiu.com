@@ -10,6 +10,9 @@ watch-css:
 watch-hugo:
 	hugo server
 
+watch-tailwind:
+	npx tailwindcss --postcss -i static/css/tailwind-main.css -o static/css/tailwind.css --watch
+
 js:
 	mkdir -p static/js/
 	cp node_modules/medium-zoom/dist/medium-zoom.min.js static/js/
@@ -23,7 +26,7 @@ open-browser:
 	 xdg-open "http://localhost:1313")
 
 serve: public static/css/main.css
-	npx concurrently "make open-browser" "make watch-css" "make watch-hugo"
+	npx concurrently "make open-browser" "make watch-css" "make watch-hugo" "make watch-tailwind"
 
 clean:
 	git clean -Xdf

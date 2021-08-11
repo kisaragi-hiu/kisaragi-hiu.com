@@ -1,16 +1,9 @@
 @import "variables";
 
-@import "card";
 @import "covers";
-@import "emacs";
-@import "headings";
-@import "illust";
 @import "index";
-@import "post-heading";
 @import "sitefooter";
 @import "siteheader";
-@import "tag";
-@import "toc";
 
 body {
   font-family: $sans-serif;
@@ -111,16 +104,6 @@ img {
 
 // Builtin tags
 
-.xl {
-  font-size: $font-size-xl;
-}
-
-.xxl {
-  font-size: $font-size-xxl;
-  margin-top: 2rem;
-  margin-bottom: 3rem;
-}
-
 blockquote {
   border-left: 0.3rem solid #ccc;
   margin: 1rem 0;
@@ -196,11 +179,6 @@ div#references p {
 
 .inline {
   display: inline;
-}
-
-.flex {
-  display: flex;
-  flex-wrap: wrap;
 }
 
 .side-by-side {

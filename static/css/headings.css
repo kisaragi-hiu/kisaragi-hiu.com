@@ -1,0 +1,114 @@
+@layer base {
+  /* no margin for headings following headings.
+   Similar to what we had with Pollen:
+       ◊(css-op-all "+" heading heading) {
+         margin-top: 1rem;
+       }
+   css-op-all: "+" h1,h2 h2,h3 => h1+h2,h2+h2,h1+h3,h2+h3
+   Except the way go-org exports outlines makes it impossible to use
+   the + operator. */
+  [class^="outline-text-"] > [class^="outline-"]:first-child {
+    /* Hugo exports first level headings to h2. */
+    & > h2,
+    & > h3,
+    & > h4,
+    & > h5 {
+      margin-top: 0;
+    }
+  }
+
+  article {
+    [class^="outline-"] {
+      /* common properties for the stars */
+      h2::before,
+      h3::before,
+      h4::before,
+      h5::before,
+      h6::before {
+        /* This creates a foreground gradient by
+
+         - first creating a background,
+         - then clipping it to the foreground with background-clip,
+         - then overriding the color with text-fill-color: transparent.
+
+         Unfortunately text-fill-color is non-standard.
+         Except it still works on every browser besides IE and isn't
+         an ancient bad idea...
+
+         Concept learned from swyx.io's heading style:
+         https://web.archive.org/web/20210217033455/https://www.swyx.io/react-sfcs-here/ */
+        background: linear-gradient(
+          to right,
+          $color-special 10%,
+          $color-accent 80%
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        /* Without this headings don't line up properly... */
+        float: left;
+      }
+    }
+    .outline-2 h2 {
+      &::before {
+        content: "*";
+        width: 1ch;
+        margin-left: -1ch;
+      }
+    }
+    .outline-3 h3 {
+      &::before {
+        content: "**";
+        width: 2ch;
+        margin-left: -2ch;
+      }
+    }
+    .outline-4 h4 {
+      &::before {
+        content: "***";
+        width: 3ch;
+        margin-left: -3ch;
+      }
+    }
+    .outline-5 h5 {
+      &::before {
+        content: "****";
+        width: 4ch;
+        margin-left: -4ch;
+      }
+    }
+    .outline-6 h6 {
+      &::before {
+        content: "*****";
+        width: 5ch;
+        margin-left: -5ch;
+      }
+    }
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply text-base;
+    line-height: 1.2;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    font-weight: 300;
+    letter-spacing: normal;
+  }
+
+  h1 {
+    font-weight: 700;
+    color: $color-primary;
+  }
+
+  h2 {
+    font-weight: 700;
+  }
+
+  h3 {
+    font-weight: 600;
+  }
+}

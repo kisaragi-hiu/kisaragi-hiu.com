@@ -10,6 +10,7 @@
 pollen-cache
 compiled
 /static/css/main.css
+/static/css/tailwind.css
 public
 sitemap.txt
 static/external/
