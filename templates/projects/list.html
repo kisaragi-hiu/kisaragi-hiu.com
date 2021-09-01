@@ -1,6 +1,29 @@
 {{ define "main" }}
-{{ partial "heading" .Title }}
-<hr>
+<!-- prettier-ignore -->
+{{ with (where $.Site.RegularPages "Section" "covers" | first 4)}}
+<div class="flex mt-4 h-[32rem] -z-5 absolute">
+  <h1 class="text-7xl px-8 w-16 z-10 text-white">Covers</h1>
+  <div class="-translate-x-16">
+    <svg
+      class="h-[32rem] w-full fill-accent-strong -z-5"
+      viewBox="0 0 200 100"
+      preserveAspectRatio="none"
+      aria-hidden="true"
+    >
+      <polygon points="100,0 150,0 100,100 50,100"></polygon>
+      <polygon
+        class="fill-accent"
+        points="150,0 200,0 200,100 100,100"
+      ></polygon>
+      <polygon points="0,0 100,0 100,100 0,100"></polygon>
+    </svg>
+  </div>
+</div>
+<div class="flex flex-col items-end mt-48 mb-16 mr-8 gap-4">
+  <div>{{ partial "covers" . }}</div>
+  <a href="/covers.html">More</a>
+</div>
+{{ end }}
 
 <!-- prettier-ignore -->
 {{ if .Params.toc }}
