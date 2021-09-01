@@ -14,6 +14,12 @@
   }
   aside,
   article {
+    p {
+      line-height: 1.6;
+    }
+    ul {
+      padding: revert;
+    }
     a {
       @apply text-accent-strong;
       opacity: 0.9;
@@ -26,9 +32,10 @@
     }
   }
   blockquote {
-    border-left: 0.3rem solid #ccc;
-    @apply my-4 mx-0 py-0 px-1;
-    background: #f3f3f3;
+    border-left: 0.25rem solid;
+    @apply my-4 p-4;
+    @apply border-l-special;
+    @apply bg-special-light;
   }
   dl {
     dt {
