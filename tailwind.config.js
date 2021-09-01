@@ -29,9 +29,16 @@ module.exports = {
       colors: {
         primary: "#0d0d0d",
         secondary: "#333333",
+        accent: "#cdadff",
+        "accent-strong": "#4d2b82",
         special: "#cdecff",
         "special-strong": "#246084",
         "special-light": "#cdecff50",
+      },
+      boxShadow: {
+        DEFAULT: "0 0 0.25rem #00000040",
+        md: "0 0 0.25rem #00000070",
+        white: "0 0 0.5rem #ffffff",
       },
     },
   },

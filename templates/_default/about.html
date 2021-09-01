@@ -1,7 +1,7 @@
 {{ define "main" }}
 <div class="side-layout">
     <main>
-        <h1 class="text-xl mt-4 mb-2 font-normal">{{.Title}}</h1>
+        {{ partial "heading" .Title }}
         <hr>
         {{ partial "content" . }}
     </main>

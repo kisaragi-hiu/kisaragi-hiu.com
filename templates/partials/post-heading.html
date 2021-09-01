@@ -1,5 +1,5 @@
 <header class="heading">
-  <h1 class="text-xl mt-4 mb-2 font-normal">{{ .Title }}</h1>
+  {{ partial "heading" .Title }}
   {{ with .Param "subtitle" }}
   <h2 class="mt-0 mb-8">{{.}}</h2>
   {{ end }}
