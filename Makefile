@@ -4,13 +4,13 @@ export LANG=en_US.UTF-8
 
 .PHONY: serve clean zip css
 
-watch-css:
+dev-sass:
 	npx sass "static/css/main.scss:static/css/main.css" --watch
 
-watch-hugo:
+dev-hugo:
 	hugo server
 
-watch-tailwind:
+dev-tailwind:
 	npx tailwindcss --postcss -i static/css/tailwind-main.css -o static/css/tailwind.css --watch
 
 js:
@@ -25,8 +25,8 @@ open-browser:
 	 !(pgrep firefox && python firefox-page-opened.py "localhost:1313") && \
 	 xdg-open "http://localhost:1313")
 
-serve: public static/css/main.css
-	npx concurrently "make open-browser" "make watch-css" "make watch-hugo" "make watch-tailwind"
+dev: public static/css/main.css
+	npx concurrently "make open-browser" "make dev-sass" "make dev-hugo" "make dev-tailwind"
 
 clean:
 	git clean -Xdf
