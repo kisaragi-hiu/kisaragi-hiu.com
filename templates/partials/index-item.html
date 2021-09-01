@@ -17,7 +17,7 @@
       md:items-center md:flex-row
     "
   >
-    <div class="my-0">
+    <div class="my-0 text-secondary font-mono mr-2 text-base">
       <!-- Ideally we want to show both creation and modification times. -->
       {{ with .Params.created }} {{ partial "date" . }} {{ end }}
     </div>

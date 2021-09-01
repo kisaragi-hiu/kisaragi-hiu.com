@@ -85,6 +85,15 @@
   }
 }
 
-.out::after {
-  content: "°";
+@layer utilities {
+  .out::after {
+    content: "°";
+  }
+  .side-layout {
+    grid-template-columns: 5fr 3fr;
+    @apply block lg:grid;
+    aside {
+      @apply lg:ml-4;
+    }
+  }
 }
