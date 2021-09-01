@@ -1,13 +1,26 @@
 <ul class="index flex flex-wrap gap-4">
   {{ range . }}
-  <li class="w-48 h-64 rounded shadow hover:shadow-md transition duration-100">
+  <li
+    class="
+      w-48
+      h-64
+      bg-white
+      rounded
+      shadow
+      hover:shadow-md
+      transition
+      duration-100
+    "
+  >
     <a class="h-full flex flex-col hover:no-underline" href="{{.Permalink}}">
+      <!-- Top part: the image -->
       <div class="w-full h-24">
         <img
           class="object-cover rounded-t"
           src="/thumb/{{.Params.youtube}}.jpg"
         />
       </div>
+      <!-- Bottom part: the title and metadata -->
       <div class="mx-2 mt-4">{{ partial "date" .Date }}</div>
       <div class="mx-2 flex-grow">
         <div class="font-bold">{{.LinkTitle}}</div>

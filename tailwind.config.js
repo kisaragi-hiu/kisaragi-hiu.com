@@ -25,7 +25,6 @@ module.exports = {
       ],
     },
     extend: {
-      // https://github.com/tailwindlabs/tailwindcss/discussions/1361
       colors: {
         primary: "#0d0d0d",
         secondary: "#333333",
@@ -35,6 +34,14 @@ module.exports = {
         "special-strong": "#246084",
         "special-light": "#cdecff50",
       },
+      fill: (theme) => ({
+        accent: theme("colors.accent"),
+        "accent-strong": theme("colors.accent-strong"),
+        special: theme("colors.special"),
+        "special-strong": theme("colors.special-strong"),
+      }),
+      zIndex: { "-5": "-5" },
+      // https://github.com/tailwindlabs/tailwindcss/discussions/1361
       boxShadow: {
         DEFAULT: "0 0 0.25rem #00000040",
         md: "0 0 0.25rem #00000070",
