@@ -1,7 +1,7 @@
-<ul class="tags">
+<ul class="list-none pl-0 flex flex-wrap gap-y-1 leading-loose my-4">
   {{ range . }}
   <li>
-    <a class="card tag" href="{{ .Permalink }}">{{ .LinkTitle | lower }}</a>
+    <a class="tag" href="{{ .Permalink }}">{{ .LinkTitle | lower }}</a>
   </li>
   {{ end }}
 </ul>

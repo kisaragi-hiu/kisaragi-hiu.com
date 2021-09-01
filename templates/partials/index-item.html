@@ -4,12 +4,23 @@
    - series(?)
    - Tags
    - Title (link)-->
-<a class="item" href="{{ .Permalink }}">
-  <div>
-    <div class="meta">
-        <!-- Ideally we want to show both creation and modification times. -->
+<a class="index-item" href="{{ .Permalink }}">
+  <div
+    class="
+      hover:bg-special-light
+      transition
+      duration-100
+      ease-in-out
+      rounded-lg
+      flex flex-col-reverse
+      items-start
+      md:items-center md:flex-row
+    "
+  >
+    <div class="my-0 text-secondary font-mono mr-2 text-base">
+      <!-- Ideally we want to show both creation and modification times. -->
       {{ with .Params.created }} {{ partial "date" . }} {{ end }}
     </div>
-    <h2>{{ .Title }}</h2>
+    <h2 class="m-0 font-normal text-lg">{{ .Title }}</h2>
   </div>
 </a>

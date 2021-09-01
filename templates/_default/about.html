@@ -1,21 +1,12 @@
 {{ define "main" }}
-<!-- A page will use this template by specifying #+layout: about.
-
-     An alternate way is to do this in single.html:
-     {{ if (and (eq .Type "page") (eq .Title "About")) }}
-     ...
-     {{ else }}
-     ...
-     {{ end }}
--->
 <div class="side-layout">
-  <main>{{ partial "post-heading" . }} {{ partial "content" . }}</main>
+    <main>
+        {{ partial "heading" .Title }}
+        <hr>
+        {{ partial "content" . }}
+    </main>
   <aside>
-    <header class="heading">
-      <h1 class="xl">Metadata</h1>
-      <hr />
-    </header>
-    <dl>
+    <dl class="mt-16">
       <dt>Email</dt>
       <dd>mail@kisaragi-hiu.com</dd>
       <dt>GitLab</dt>

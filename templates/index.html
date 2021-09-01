@@ -1,7 +1,7 @@
 {{ define "main" }}
 <div class="side-layout">
   <main>
-    <h1 class="xxl">Kisaragi Hiu</h1>
+    <h1 class="text-4xl">Kisaragi Hiu</h1>
     {{ partial "content" . }}
     <!-- We use "where" exclude non-blog pages -->
     <!-- {{ range (where .Site.RegularPages "Section" "blog").GroupByParam "language" }}
@@ -13,8 +13,8 @@
              <a href="/language/{{.Key}}.html">{{.Key}}</a>
              </div> -->
     <!-- {{ end }} -->
-    <hr />
-    <h1>Ideas</h1>
+    <hr class="mt-8" />
+    <h1 class="text-xl">Ideas</h1>
     <ul class="index">
       <!-- prettier-ignore -->
       {{ range (where .Site.RegularPages "Section" "") }}
@@ -22,7 +22,7 @@
       <li>{{ partial "index-item" . }}</li>
       {{ end }} {{ end }}
     </ul>
-    <h1>Public diary</h1>
+    <h1 class="text-xl">Public diary</h1>
     <ul class="index">
       {{ range (where .Site.RegularPages "Section" "blog") }}
       <li>{{ partial "index-item" . }}</li>
@@ -39,7 +39,7 @@
     {{ end }}
     {{ with $illust_featured }}
     <h1>
-      <a class="color-primary" href="/illust.html"
+      <a class="text-primary" href="/illust.html"
         >Illustrations ({{now.Format "2006-01"}})</a
       >
     </h1>

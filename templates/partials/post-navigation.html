@@ -7,7 +7,7 @@
 {{ $singles := where .Site.Pages "Kind" "page" }}
 {{ $pages := (intersect $singles $same_section) }}
 
-<ul class="page-navigation">
+<ul class="flex flex-col justify-between">
   {{ with $pages.Next . }}
   <li>Newer: <a href="{{.Permalink}}">{{.Title}}</a></li>
   {{ end }}

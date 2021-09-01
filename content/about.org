@@ -10,7 +10,7 @@ I write Emacs Lisp, make covers with UTAU, and occasionally play with Blender.
 
 * This website
 
-This site is built with Hugo; the CSS is preprocessed with Sass.
+This site is built with Hugo; the CSS is processed with [[https://tailwindcss.com/][Tailwind]].
 
 * License
 © Kisaragi Hiu 2017~2021.

@@ -1,5 +1,3 @@
 #+title: UTAU Covers
 
-One of my hobbies.
-
-See also: [[/tags/utau.html][pages about UTAU]]
+See also: [[/tags/utau.html][#UTAU]]

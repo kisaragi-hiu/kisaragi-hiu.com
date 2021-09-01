@@ -9,7 +9,7 @@
 .cask/
 pollen-cache
 compiled
-/static/css/main.css
+/static/css/built.css
 public
 sitemap.txt
 static/external/
@@ -17,3 +17,4 @@ static/external/
 tags/*
 node_modules
 *.map
+.log

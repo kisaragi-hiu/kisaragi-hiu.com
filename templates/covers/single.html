@@ -3,7 +3,7 @@
 <!-- prettier-ignore -->
 <header class="heading">
   {{ partial "type-path" . }}
-  <h1 class="xl">{{ .Title }} ft. {{ .Params.voice }}</h1>
+  <h1 class="text-xl">{{ .Title }} ft. {{ .Params.voice }}</h1>
   <!-- prettier-ignore -->
   {{ with .Date }}
     {{ partial "date" . }}
@@ -20,7 +20,7 @@
 
 <p>Original: {{ .Params.origauthor }}</p>
 
-<div class="cover-embed-list">
+<div class="flex gap-x-4">
   <!-- prettier-ignore -->
   {{ with .Params.youtube }}
   {{ partial "youtube" . }}

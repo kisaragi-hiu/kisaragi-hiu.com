@@ -1,5 +1,6 @@
 {{ define "main" }}
-<h1 class="xl">{{ .Title }}</h1>
+{{ partial "heading" .Title }}
+<hr>
 
 <!-- prettier-ignore -->
 {{ if .Params.toc }}

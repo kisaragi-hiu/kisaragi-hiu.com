@@ -1,0 +1,176 @@
+@import "headings.css";
+@import "emacs.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-size: 16pt;
+  }
+  p {
+    @apply my-4 text-base;
+  }
+  aside,
+  article {
+    p {
+      line-height: 1.6;
+    }
+    ul {
+      padding: revert;
+    }
+    a {
+      @apply text-accent-strong;
+      opacity: 0.9;
+      transition: opacity 100ms ease;
+      text-decoration: none;
+      &:hover {
+        opacity: 1;
+        text-decoration: underline;
+      }
+    }
+  }
+  blockquote {
+    border-left: 0.25rem solid;
+    @apply my-4 p-4;
+    @apply border-l-special;
+    @apply bg-special-light;
+  }
+  dl {
+    dt {
+      font-weight: 600;
+    }
+    dd {
+      margin-left: 1rem;
+    }
+  }
+  iframe {
+    @apply rounded shadow;
+  }
+  article {
+    video,
+    img {
+      @apply max-w-full max-h-96;
+      @apply my-4 mx-1;
+      @apply shadow;
+    }
+    ul {
+      list-style: revert;
+    }
+  }
+  li p {
+    margin: 0 auto;
+  }
+}
+
+@layer components {
+  .highlight {
+    overflow-x: auto;
+    @apply font-mono text-primary;
+    .hl {
+      @apply font-bold;
+    }
+    .lnt {
+      /* The line numbers */
+      @apply text-secondary mr-4;
+    }
+  }
+  .type-path + h1 {
+    @apply mt-0;
+  }
+  .gist {
+    @apply my-4;
+  }
+  .meta {
+    /* This ensures a layout like
+       dd1   dd2   dd3   dd4
+        dt1   dt2   dt3   dt4
+       Without having to change markup. */
+    @apply my-4 text-sm w-max gap-x-4;
+    display: grid;
+    grid-template: 1fr 1fr / 1fr 1fr;
+    dt {
+      grid-row: 1/1;
+    }
+    dd {
+      grid-row: 2/2;
+    }
+  }
+  .tag {
+    @apply rounded mt-0 mb-1 mr-2 px-2 py-1 text-special-strong bg-special;
+    &::before {
+      content: "#";
+    }
+  }
+  /* We don't have access to classes on Hugo's TOC */
+  #TableOfContents {
+    ul {
+      @apply pl-4;
+      list-style: revert;
+    }
+    /* just level 1 */
+    & > ul {
+      @apply pl-6;
+    }
+  }
+  a.index-item {
+    @apply text-primary hover:no-underline;
+    & > div {
+      /* extend the background highlight on hover, then counter the left padding */
+      @apply p-2 -ml-2;
+    }
+  }
+  ul.illust-index {
+    @apply p-0 flex flex-wrap gap-x-4;
+    li {
+      @apply p-0 list-none;
+    }
+    .item {
+      transition: all 100ms ease-in-out;
+      img:hover {
+        box-shadow: 0 0 1rem rgba(0, 0, 0, 0.5);
+      }
+      img {
+        box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.5);
+        max-height: 6rem;
+        max-width: 6rem;
+      }
+    }
+  }
+  .badge {
+    @apply my-auto mx-2;
+  }
+}
+
+@layer utilities {
+  .out::after {
+    content: "°";
+  }
+  .side-by-side {
+    display: grid;
+    grid-template-columns: 4fr 5fr;
+    overflow-y: auto;
+  }
+  .side-layout {
+    grid-template-columns: 5fr 3fr;
+    @apply block lg:grid;
+    aside {
+      @apply lg:ml-4;
+    }
+  }
+  /* From
+   https://www.accessibility-developer-guide.com/examples/hiding-elements/visually/
+
+   "It may be surprising, but the only way to hide an element visually
+   while retaining its perceptibility for screen readers is moving
+   them out of the viewport using absolute positioning:" */
+  .hide-visual {
+    position: absolute;
+    left: -10000px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+}

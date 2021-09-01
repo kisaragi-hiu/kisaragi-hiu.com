@@ -139,23 +139,6 @@ Display a GIF-like autoplay video.
 
 Use Org’s =#+caption= to add a figcaption.
 
-** project
-- project url title &key melpa-badge . description
-
-Used for projects in the project list.
-
-Remember that Hugo does not allow mixing positional and named arguments, so if you want to pass in the melpa-badge argument you’ll have to name =url= and =title= as well.
-
-#+begin_example
-{{% project url="https://github.com/kisaragi-hiu/cangjie.el" title="Cangjie.el" melpa-badge="cangjie" %}}
-Retrieve Cangjie code for Han character in Emacs.
-{{% /project %}}
-#+end_example
-
-- You have to use ={{% … %}}=. This is so that Org syntax can be used in the wrapped description.
-- melpa-badge shows a melpa badge of the specified package next to the title.
-- This might be renovated into just Org syntax later on.
-
 ** melpa-badge
 - melpa-badge package
 

@@ -1,29 +1,48 @@
-<ul class="cover index">
-  <li class="row title">
-    <span>Date</span>
-    <span>Song / Voice</span>
-    <span>Original</span>
-    <span>Links</span>
-  </li>
+<ul class="index flex flex-wrap gap-4">
   {{ range . }}
-  <li class="row">
-    <span class="mono">{{ partial "date" .Date }}</span>
-    <a href="{{ .Permalink }}">{{ .LinkTitle }} ft. {{ .Params.voice }}</a>
-    {{ if .Params.original }}
-    <a href="{{.Params.original}}">{{ .Params.origauthor }}</a>
-    {{ else }}
-    <span>{{ .Params.origauthor }}</span>
-    {{ end }}
-    <span>
-      <!-- prettier-ignore -->
+  <li
+    class="
+      w-48
+      h-64
+      bg-white
+      rounded
+      shadow
+      hover:shadow-md
+      transition
+      duration-100
+    "
+  >
+    <a class="h-full flex flex-col hover:no-underline" href="{{.Permalink}}">
+      <!-- Top part: the image -->
+      <div class="w-full h-24">
+        <img
+          class="object-cover rounded-t"
+          src="/thumb/{{.Params.youtube}}.jpg"
+        />
+      </div>
+      <!-- Bottom part: the title and metadata -->
+      <div class="mx-2 mt-4">{{ partial "date" .Date }}</div>
+      <div class="mx-2 flex-grow">
+        <div class="font-bold">{{.LinkTitle}}</div>
+        <div><span>ft. {{ .Params.voice }}</span></div>
+      </div>
+      {{ if .Params.original }}
+      <span class="m-2">本家 {{ .Params.origauthor }}</span>
+      {{ else }}
+      <span>本家 {{ .Params.origauthor }}</span>
+      {{ end }}
+      <!-- <span>
+      <!-- prettier-ignore
       {{ with .Params.youtube }}
       <a href="https://youtu.be/{{.}}">YouTube</a>
       {{ end }}
-      <!-- prettier-ignore -->
+      <!-- prettier-ignore
       {{ with .Params.niconico }}
       <a href="https://nico.ms/{{.}}">niconico</a>
       {{ end }}
     </span>
+ -->
+    </a>
   </li>
   {{ end }}
 </ul>

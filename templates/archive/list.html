@@ -1,19 +1,19 @@
 {{ define "main" }}
 
-<h1 class="xl">
-    Revision history: {{.Title}}
-</h1>
+<h1 class="text-xl">Revision history: {{.Title}}</h1>
 
 <root>
-  {{ partial "content" . }}
-  {{ with .Pages }}
+  {{ partial "content" . }} {{ with .Pages }}
   <ul class="index">
-      {{ with ($.GetPage (printf "/%s" $.Title)) }}
-      <li class="current">{{ partial "archive-item" . }}</li>
-      {{ end }}
-      {{ range . }}
-      <li>{{ partial "archive-item" . }}</li>
-      {{ end }}
+    <!-- prettier-ignore -->
+    {{ with ($.GetPage (printf "/%s" $.Title)) }}
+    <li>{{ partial "archive-item" (dict "ctx" . "current" true) }}</li>
+    {{ end }}
+
+    <!-- prettier-ignore -->
+    {{ range . }}
+    <li>{{ partial "archive-item" (dict "ctx" .) }}</li>
+    {{ end }}
   </ul>
   {{ end }}
 </root>
