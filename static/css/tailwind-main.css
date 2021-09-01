@@ -9,6 +9,15 @@
   p {
     @apply my-4;
   }
+  article {
+    img {
+      box-shadow: 0 0 0.25rem;
+      margin: 1rem 0.25rem;
+    }
+  }
+  li p {
+    margin: 0 auto;
+  }
 }
 
 @layer components {
