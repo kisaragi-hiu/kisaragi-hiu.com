@@ -6,13 +6,48 @@
 @tailwind utilities;
 
 @layer base {
+  html {
+    font-size: 16pt;
+  }
   p {
-    @apply my-4;
+    @apply my-4 text-base;
+  }
+  a {
+    color: $color-accent-strong;
+    opacity: 0.9;
+    transition: opacity 100ms ease;
+    text-decoration: none;
+    &:hover {
+      opacity: 1;
+      text-decoration: underline;
+    }
+  }
+  blockquote {
+    border-left: 0.3rem solid #ccc;
+    @apply my-4 mx-0 py-0 px-1;
+    background: #f3f3f3;
+  }
+  dl {
+    dt {
+      font-weight: 600;
+    }
+    dd {
+      margin-left: 1rem;
+    }
+  }
+  iframe {
+    @apply rounded;
+    box-shadow: 0 0 0.25rem;
   }
   article {
+    video,
     img {
+      @apply max-w-full max-h-96;
+      @apply my-4 mx-1;
       box-shadow: 0 0 0.25rem;
-      margin: 1rem 0.25rem;
+    }
+    ul {
+      list-style: revert;
     }
   }
   li p {
@@ -21,6 +56,17 @@
 }
 
 @layer components {
+  .highlight {
+    overflow-x: auto;
+    @apply font-mono text-primary;
+    .hl {
+      @apply font-bold;
+    }
+    .lnt {
+      /* The line numbers */
+      @apply text-secondary mr-4;
+    }
+  }
   .type-path + h1 {
     @apply mt-0;
   }
@@ -83,11 +129,19 @@
       }
     }
   }
+  .badge {
+    @apply my-auto mx-2;
+  }
 }
 
 @layer utilities {
   .out::after {
     content: "°";
+  }
+  .side-by-side {
+    display: grid;
+    grid-template-columns: 4fr 5fr;
+    overflow-y: auto;
   }
   .side-layout {
     grid-template-columns: 5fr 3fr;
@@ -95,5 +149,19 @@
     aside {
       @apply lg:ml-4;
     }
+  }
+  /* From
+   https://www.accessibility-developer-guide.com/examples/hiding-elements/visually/
+
+   "It may be surprising, but the only way to hide an element visually
+   while retaining its perceptibility for screen readers is moving
+   them out of the viewport using absolute positioning:" */
+  .hide-visual {
+    position: absolute;
+    left: -10000px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
   }
 }
