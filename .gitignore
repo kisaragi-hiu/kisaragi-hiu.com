@@ -9,8 +9,7 @@
 .cask/
 pollen-cache
 compiled
-/static/css/main.css
-/static/css/tailwind.css
+/static/css/built.css
 public
 sitemap.txt
 static/external/

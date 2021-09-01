@@ -4,14 +4,11 @@ export LANG=en_US.UTF-8
 
 .PHONY: serve clean zip css
 
-dev-sass:
-	npx sass "static/css/main.scss:static/css/main.css" --watch
-
 dev-hugo:
 	hugo server
 
 dev-tailwind:
-	npx tailwindcss --postcss -i static/css/tailwind-main.css -o static/css/tailwind.css --watch
+	npx tailwindcss --postcss -i static/css/tailwind-main.css -o static/css/built.css --watch
 
 js:
 	mkdir -p static/js/
@@ -25,8 +22,8 @@ open-browser:
 	 !(pgrep firefox && python firefox-page-opened.py "localhost:1313") && \
 	 xdg-open "http://localhost:1313")
 
-dev: public static/css/main.css
-	npx concurrently "make open-browser" "make dev-sass" "make dev-hugo" "make dev-tailwind"
+dev: public static/css/built.css
+	npx concurrently "make open-browser" "make dev-hugo" "make dev-tailwind"
 
 clean:
 	git clean -Xdf
@@ -38,9 +35,9 @@ public.zip: public
 
 # the modified timestamp gets messed up on my system; fix that with
 # the `touch`.
-public: static/css/main.css js
+public: static/css/built.css js
 	hugo --minify
 	@touch public
 
-static/css/main.css: static/css/main.scss
-	npx sass --no-source-map "$<" | npx postcss --no-map --use cssnano --output "$@"
+static/css/built.css: static/css/tailwind-main.css
+	npx tailwindcss --postcss -i static/css/tailwind-main.css -o static/css/built.css

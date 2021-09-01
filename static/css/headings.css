@@ -18,36 +18,6 @@
   }
 
   article {
-    [class^="outline-"] {
-      /* common properties for the stars */
-      h2::before,
-      h3::before,
-      h4::before,
-      h5::before,
-      h6::before {
-        /* This creates a foreground gradient by
-
-         - first creating a background,
-         - then clipping it to the foreground with background-clip,
-         - then overriding the color with text-fill-color: transparent.
-
-         Unfortunately text-fill-color is non-standard.
-         Except it still works on every browser besides IE and isn't
-         an ancient bad idea...
-
-         Concept learned from swyx.io's heading style:
-         https://web.archive.org/web/20210217033455/https://www.swyx.io/react-sfcs-here/ */
-        background: linear-gradient(
-          to right,
-          $color-special 10%,
-          $color-accent 80%
-        );
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        /* Without this headings don't line up properly... */
-        float: left;
-      }
-    }
     .outline-2 h2 {
       &::before {
         content: "*";
@@ -101,7 +71,7 @@
 
   h1 {
     font-weight: 700;
-    color: $color-primary;
+    @apply text-primary;
   }
 
   h2 {

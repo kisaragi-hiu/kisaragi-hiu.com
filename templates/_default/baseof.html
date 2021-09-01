@@ -55,8 +55,7 @@
     <link rel="icon" href="/favicon.ico" />
     <meta property="og:url" content="{{.Permalink | absURL }}" />
     <link rel="canonical" href="{{ .Permalink | absURL }}" />
-    <link rel="stylesheet" href="/css/tailwind.css" />
-    <link rel="stylesheet" href="/css/main.css" />
+    <link rel="stylesheet" href="/css/built.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Overpass+Mono&display=swap"
       rel="stylesheet"
@@ -91,18 +90,19 @@
   </head>
   <body class="m-[5%] lg:my-8 lg:mx-[15%]">
     <!-- Header -->
-    <header id="siteheader">
+      <header class="flex flex-wrap justify-between items-center" id="siteheader">
       <a href="/" id="logo">
-        <img src="/avatar.png" alt="Kisaragi Hiu" />
+        <img class="max-h-8 mr-2" src="/avatar.png" alt="Kisaragi Hiu" />
       </a>
-      <nav>
-        <a href="/">Blog</a>
-        <a href="/covers.html">Covers</a>
-        <a href="/illust.html">Illust</a>
-        <a href="/projects.html">Projects</a>
-        <a href="/about.html">About</a>
-        <a href="/index.xml">RSS</a>
-      </nav>
+      <nav class="flex flex-wrap justify-start gap-3 my-2">
+      {{ range (slice (slice "/" "Blog")
+                      (slice "/covers.html" "Covers")
+                      (slice "/illust.html" "Illust")
+                      (slice "/projects.html" "Projects")
+                      (slice "/about.html" "About")
+                      (slice "/index.xml" "RSS")) }}
+          <a class="text-secondary" href="{{ index . 0 }}">{{ index . 1 }}</a>
+      {{ end }}
     </header>
 
     <!-- Contents -->
@@ -117,8 +117,8 @@
              ◊"◊"(to-html doc) -->
 
     <!-- Footer -->
-    <footer id="sitefooter">
-      <div id="footer-sep">
+    <footer class="text-secondary">
+      <div class="mt-12 mb-10 text-center font-bold">
         <a class="text-primary" href="/about.html">●</a>
       </div>
       {{ block "footer" . }} {{ end }}
