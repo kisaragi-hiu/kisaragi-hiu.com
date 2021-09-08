@@ -1,0 +1,35 @@
+#+title: One way to set up org-protocol on Linux
+#+created: 2021-09-09T03:03:34+0900
+#+tags[]: linux emacs org-mode
+
+[[https://orgmode.org/manual/Protocols.html][Org-protocol]] allows you to write links in the browser and open Emacs when you click the link. After the Emacs side is set up, running =emacsclient org-protocol://handler?key=value= will pass =(:key "value")= to the function that is registered for =handler=. But the browser still does not recognize the link.
+
+[[https://github.com/org-roam/org-roam/blob/1795039ab93ef19611dbb3fca21c4211c4e655a9/doc/org-roam.org#linux][Org-roam's documentation explains a set up that is more in depth]] (and also covers macOS and Windows). But I didn't want to create a new =.desktop= file, so this is how I did it.
+
+One way to set up =org-protocol://= links on Linux, assuming you want to use =emacsclient -c= for Emacs in general:
+
+1. Copy =/usr/share/applications/emacs.desktop= to =~/.local/share/applications/emacs.desktop=, where it will shadow the system-wide file.
+2. Change ~Exec=~ from "emacs %F" to "emacsclient -c %U"
+   - We use %U to get URLs, instead of just files, to allow =org-protocol://= links. See also: [[https://specifications.freedesktop.org/desktop-entry-spec/desktop-entry-spec-latest.html#exec-variables][the definition of %U and other field codes in the Desktop Entry Specification]].
+   - It seems to continue to open files just fine, though if the desktop passed a file:// link to Emacs it will fail.
+3. Add "x-scheme-handler/org-protocol;" to the end of MimeType
+4. Wait a bit for it to take effect
+5. Try opening an org-protocol:// link again from, say, Firefox. It should now ask you whether you want to open this link with Emacs.
+
+Resulting =~/.local/share/applications/emacs.desktop=:
+
+#+begin_src desktop
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Name=Emacs
+GenericName=Text Editor
+Comment=Edit text
+MimeType=text/english;text/plain;text/x-makefile;text/x-c++hdr;text/x-c++src;text/x-chdr;text/x-csrc;text/x-java;text/x-moc;text/x-pascal;text/x-tcl;text/x-tex;application/x-shellscript;text/x-c;text/x-c++;x-scheme-handler/org-protocol;
+Exec=emacsclient -c %U
+Icon=emacs
+Type=Application
+Terminal=false
+Categories=Development;TextEditor;
+StartupWMClass=Emacs
+Keywords=Text;Editor;
+#+end_src
