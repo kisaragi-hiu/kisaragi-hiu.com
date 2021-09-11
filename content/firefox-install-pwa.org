@@ -1,0 +1,40 @@
+#+title: Installing a Progressive Web App on Linux with Firefox
+#+created: 2021-09-11T19:26:26+0900
+#+tags[]: linux firefox
+
+Progressive Web Apps ([[https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps][PWA]]) is just a fancy name for websites that utilize a set of APIs that allow them to replace native apps. “Installing a PWA” really just means adding a shortcut to the website while taking its [[https://developer.mozilla.org/en-US/docs/Web/Manifest][manifest]] into account.
+
+On Windows, installing a PWA using Firefox is pretty simple. For websites that provide a manifest, an install button will appear next to window controls, which adds a shortcut to the start menu when clicked. Opening the shortcut will open the website in its own window without browser controls, as if it's a native app.
+
+However, for whatever reason, this is still not implemented on Linux. I'd imagine this is fairly simple since [[https://specifications.freedesktop.org/desktop-entry-spec/desktop-entry-spec-latest.html][.desktop files and their locations are already well specified]]. In fact, Chromium already supports it:
+
+[[file:chromium-linux-pwa-install.png]]
+
+For now, the best option for installing any webpage — not just sites with a manifest, is to use [[https://github.com/peppermintos/ice][ICE-SSB]]. (“SSB” stands for Site Specific Browsers.)
+
+* Ice-SSB
+
+Ice is developed by [[https://peppermintos.com/guide/ice/][Peppermint OS]]. To use it, you open Ice itself, fill in the application name, the web address, select a category and an icon (or try to use the site's favicon), choose which browser to use, and click apply.
+
+[[file:ice-ssb-usage.mp4]]
+
+Peppermint explains why use it over Chromium's “Create application shortcuts”:
+
+#+begin_quote
+You may wonder about the difference between Ice and Chromium’s built in “Create Application Shortcuts…” tool. The answer is that Chromium’s built in tool
+
+a) does not integrate with the system menu at all and
+b) doesn’t give the user the opportunity to remove SSBs.
+
+Both of these things can be achieved in [sic] with Ice, as well as easily choosing custom icons for your SSB ‘applications’.
+#+end_quote
+
+Installation on Arch Linux and other systems with access to the AUR is simple: just install [[https://aur.archlinux.org/packages/ice-ssb/][the ice-ssb AUR package]].
+
+Installing on Debian or Ubuntu seems to involve downloading the deb file from [[https://launchpad.net/~peppermintos/+archive/ubuntu/p10-respin/+packages][one of Peppermint's PPA]] (without adding the PPA itself as some packages in there /will/ conflict with what Ubuntu or Debian provides) and installing it manually. Alternatively, you could look at the [[https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=ice-ssb][PKGBUILD for the AUR package]] for how it is installed. From what I can tell:
+
+- Download [[https://github.com/peppermintos/ice/releases/tag/v6.0.8][the latest Ice release]] and extract it to a folder (let's call this =$dir=)
+- Copy everything in =$dir/usr= to =/usr= — so =$dir/usr/bin/ice= ends up in =/usr/bin/ice=, =$dir/usr/bin/ice-firefox= ends up in =/usr/bin/ice-firefox=, and so on
+- Ice looks for Chromium at =/usr/bin/chromium-browser=, so make sure that is Chromium's executable name if you want to use it; if not, add a symlink (from =/usr/bin/chromium-browser= to wherever Chromium actually is)
+- Ice looks for Google Chrome at =/usr/bin/google-chrome=, so do the same as above if you want to use Google Chrome
+- Make sure its dependencies are installed: =python-requests=, =python-beautifulsoup4=, =python-gobject=, and =python-lxml=.
