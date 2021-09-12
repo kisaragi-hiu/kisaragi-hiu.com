@@ -14,10 +14,6 @@
   }
   aside,
   article {
-    code {
-      @apply bg-special/50 text-special-strong;
-      @apply px-1 rounded-lg;
-    }
     p {
       line-height: 1.6;
     }
@@ -59,7 +55,8 @@
       @apply my-4 mx-1;
       @apply shadow;
     }
-    ul {
+    ul,
+    ol {
       list-style: revert;
     }
   }
@@ -69,17 +66,6 @@
 }
 
 @layer components {
-  .highlight {
-    overflow-x: auto;
-    @apply font-mono text-primary;
-    .hl {
-      @apply font-bold;
-    }
-    .lnt {
-      /* The line numbers */
-      @apply text-secondary mr-4;
-    }
-  }
   .type-path + h1 {
     @apply mt-0;
   }
@@ -179,5 +165,32 @@
     width: 1px;
     height: 1px;
     overflow: hidden;
+  }
+}
+
+/* Place *outside* of any layer to always include */
+article code:not(.highlight code) {
+  @apply bg-special/50 text-special-strong;
+  @apply px-1 rounded-lg;
+}
+
+.src {
+  overflow-x: auto;
+  @apply font-mono text-primary;
+  @apply p-2 rounded bg-special-light;
+  @apply border-2 border-special-strong;
+  /* This is how you can add a language header, but it's really noisy.
+  */
+  /* code::before { */
+  /*   content: attr(data-lang); */
+  /*   display: block; */
+  /*   width: max-content; */
+  /* } */
+  .hl {
+    @apply font-bold;
+  }
+  .lnt {
+    /* The line numbers */
+    @apply text-secondary mr-4;
   }
 }
