@@ -3,30 +3,17 @@
   <main>
     <h1 class="text-4xl">Kisaragi Hiu</h1>
     {{ partial "content" . }}
-    <!-- We use "where" exclude non-blog pages -->
-    <!-- {{ range (where .Site.RegularPages "Section" "blog").GroupByParam "language" }}
-             <div class="index-language">
-             <h1>{{ partial "func-language-code-to-name" .Key }}</h1>
-             {{ range (first 5 .Pages) }}
-             {{ partial "index-item" . }}
-             {{ end }}
-             <a href="/language/{{.Key}}.html">{{.Key}}</a>
-             </div> -->
-    <!-- {{ end }} -->
     <hr class="mt-8" />
-    <h1 class="text-xl">Ideas</h1>
+    <h1 class="text-xl">Posts</h1>
     <ul class="index">
       <!-- prettier-ignore -->
-      {{ range (where .Site.RegularPages "Section" "") }}
+      {{ range (sort (union (where .Site.RegularPages "Section" "")
+                            (where .Site.RegularPages "Section" "blog"))
+                     "Date"
+                     "desc") }}
       {{ if not (.Param "special") }}
       <li>{{ partial "index-item" . }}</li>
       {{ end }} {{ end }}
-    </ul>
-    <h1 class="text-xl">Public diary</h1>
-    <ul class="index">
-      {{ range (where .Site.RegularPages "Section" "blog") }}
-      <li>{{ partial "index-item" . }}</li>
-      {{ end }}
     </ul>
   </main>
   <aside>

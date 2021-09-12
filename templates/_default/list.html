@@ -61,8 +61,11 @@
 
   <!-- Covers -->
   <!-- prettier-ignore -->
-  {{ with (where .Pages "Section" "")}}
-  <h2>Pages</h2>
+  {{ with (sort (union (where .Pages "Section" "")
+                       (where .Pages "Section" "blog"))
+                "Date"
+                "desc") }}
+  <h2 class="mb-0">Posts</h2>
   <ul class="index">
     {{ range .}}
     <li>{{ partial "index-item" . }}</li>
@@ -70,7 +73,7 @@
   </ul>
   {{ end }}
 
-  <!-- Covers -->
+  <!-- Projects -->
   <!-- prettier-ignore -->
   {{ with (where .Pages "Section" "projects")}}
   <h2>Projects</h2>
@@ -84,17 +87,6 @@
   <h2>Covers</h2>
   <!-- prettier-ignore -->
   {{ partial "covers" . }}
-  {{ end }}
-
-  <!-- Public diary entries -->
-  <!-- prettier-ignore -->
-  {{ with (where .Pages "Section" "blog")}}
-  <h2>Diary entries</h2>
-  <ul class="index">
-    {{ range .}}
-    <li>{{ partial "index-item" . }}</li>
-    {{ end }}
-  </ul>
   {{ end }}
 </root>
 {{ end }} {{ end }}
