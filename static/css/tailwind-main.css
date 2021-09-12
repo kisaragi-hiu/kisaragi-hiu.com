@@ -10,15 +10,26 @@
     font-size: 16pt;
   }
   p {
-    @apply my-4 text-base;
+    @apply my-2 text-base;
+  }
+  dl {
+    dt {
+      font-weight: 700;
+    }
+    dd {
+      margin-left: 1rem;
+    }
+  }
+  iframe {
+    @apply rounded shadow;
+  }
+  li p {
+    margin: 0 auto;
   }
   aside,
   article {
     p {
       line-height: 1.6;
-    }
-    ul {
-      padding: revert;
     }
     a {
       @apply text-accent-strong;
@@ -30,25 +41,6 @@
         text-decoration: underline;
       }
     }
-  }
-  blockquote {
-    border-left: 0.25rem solid;
-    @apply my-4 p-4;
-    @apply border-l-special;
-    @apply bg-special-light;
-  }
-  dl {
-    dt {
-      font-weight: 600;
-    }
-    dd {
-      margin-left: 1rem;
-    }
-  }
-  iframe {
-    @apply rounded shadow;
-  }
-  article {
     video,
     img {
       @apply max-w-full max-h-96;
@@ -58,10 +50,14 @@
     ul,
     ol {
       list-style: revert;
+      @apply pl-4 md:p-0;
     }
-  }
-  li p {
-    margin: 0 auto;
+    blockquote {
+      border-left: 0.25rem solid;
+      @apply my-4 p-4;
+      @apply border-l-special;
+      @apply bg-special-light;
+    }
   }
 }
 
