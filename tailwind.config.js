@@ -18,8 +18,8 @@ module.exports = {
       sans: ["Inter", ...cjkFallback, "sans-serif"],
       // serif: ["Equity"],
       mono: [
-        "Overpass Mono",
-        "Noto Sans Mono CJK",
+        "Inconsolata",
+        "Noto Sans Mono CJK TC",
         ...cjkFallback,
         "monospace",
       ],

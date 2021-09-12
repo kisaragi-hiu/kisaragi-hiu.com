@@ -14,6 +14,10 @@
   }
   aside,
   article {
+    code {
+      @apply bg-special/50 text-special-strong;
+      @apply px-1 rounded-lg;
+    }
     p {
       line-height: 1.6;
     }
