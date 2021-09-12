@@ -16,7 +16,7 @@ For now, the best option for installing any webpage — not just sites with a ma
 
 Ice is developed by [[https://peppermintos.com/guide/ice/][Peppermint OS]]. To use it, you open Ice itself, fill in the application name, the web address, select a category and an icon (or try to use the site's favicon), choose which browser to use, and click apply.
 
-[[file:ice-ssb-usage.mp4]]
+{{< video "ice-ssb-usage.mp4" >}}
 
 Peppermint explains why use it over Chromium's “Create application shortcuts”:
 
