@@ -10,8 +10,20 @@
      .GetTerms("tags"):
        (partial "func-page-term" (dict "page" . "taxonomy" "tags"))
 -->
-{{ $terms := (slice) }}
-{{ range .page.Param .taxonomy }}
-{{ $terms = (union $terms (slice ((site).GetPage (printf "/%s/%s" $.taxonomy (anchorize .)))))}}
+{{ $term_pages := (slice) }}
+{{ $terms := .page.Param .taxonomy }}
+
+<!-- Code below expects a list of strings, so make sure it's not just a single string.
+     Yes, this is how you test for the type of a variable. I hate this language.
+     https://discourse.gohugo.io/t/how-to-test-if-a-variable-is-of-a-certain-type/9207
+-->
+{{ if (eq "string" (printf "%T" $terms)) }}
+{{ $terms = (slice $terms) }}
 {{ end }}
-{{ return $terms }}
+
+<!-- Extract the page object for each term -->
+{{ range $terms }}
+{{ $term_pages = (union $term_pages (slice ((site).GetPage (printf "/%s/%s" $.taxonomy (anchorize .)))))}}
+{{ end }}
+
+{{ return $term_pages }}

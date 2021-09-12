@@ -14,8 +14,12 @@
         <td>
           <!-- prettier-ignore -->
           {{ with .GetTerms "tags" }}
-        {{ partial "tags-inline" . }}
-        {{ end }}
+            <ul class="tags-inline">
+                {{ range . }}
+                <li>{{ partial "tag" . }}</li>
+                {{ end }}
+            </ul>
+          {{ end }}
         </td>
         <td>
           <!-- prettier-ignore -->

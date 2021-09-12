@@ -4,23 +4,34 @@
    - series(?)
    - Tags
    - Title (link)-->
-<a class="index-item" href="{{ .Permalink }}">
-  <div
-    class="
-      hover:bg-special-light
-      transition
-      duration-100
-      ease-in-out
-      rounded-lg
-      flex flex-col-reverse
-      items-start
-      md:items-center md:flex-row
-    "
-  >
-    <div class="my-0 text-secondary font-mono mr-2 text-base">
-      <!-- Ideally we want to show both creation and modification times. -->
-      {{ with .Params.created }} {{ partial "date" . }} {{ end }}
+
+<div
+  class="
+    flex flex-col
+    gap-y-2
+    hover:bg-accent-light
+    transition
+    duration-100
+    ease-in-out
+    rounded
+    p-4
+    -ml-4
+  "
+>
+  <a href="{{ .Permalink }}">
+    <div>
+      <div class="font-bold">{{.Title}}</div>
+      <div class="font-mono">{{ partial "date" .Date }}</div>
     </div>
-    <h2 class="m-0 font-normal text-lg">{{ .Title }}</h2>
-  </div>
-</a>
+  </a>
+  <!-- prettier-ignore -->
+  {{ with (index (partial "func-page-term" (dict "page" . "taxonomy" "series"))
+                 0) }}
+  <a class="series" href="{{.Permalink}}">{{.LinkTitle}}</a>
+  {{ end }}
+  <ul class="tags-inline">
+    {{ range (partial "func-page-term" (dict "page" . "taxonomy" "tags")) }}
+    <li>{{ partial "tag" . }}</li>
+    {{ end }}
+  </ul>
+</div>

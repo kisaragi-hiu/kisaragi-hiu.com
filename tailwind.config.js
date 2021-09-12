@@ -30,6 +30,7 @@ module.exports = {
         secondary: "#333333",
         accent: "#cdadff",
         "accent-strong": "#4d2b82",
+        "accent-light": "#cdadff30",
         special: "#cdecff",
         "special-strong": "#246084",
         "special-light": "#cdecff50",

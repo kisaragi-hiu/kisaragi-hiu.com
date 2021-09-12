@@ -101,8 +101,18 @@
       grid-row: 2/2;
     }
   }
+  .tags-inline {
+    @apply flex flex-wrap leading-loose m-0 gap-x-2;
+  }
+  .series {
+    @apply hover:underline;
+    &::before {
+      content: "§ ";
+      @apply font-bold text-accent-strong;
+    }
+  }
   .tag {
-    @apply rounded mt-0 mb-1 mr-2 px-2 py-1 text-special-strong bg-special;
+    @apply rounded px-2 py-1 text-accent-strong bg-accent-light;
     &::before {
       content: "#";
     }
@@ -116,13 +126,6 @@
     /* just level 1 */
     & > ul {
       @apply pl-6;
-    }
-  }
-  a.index-item {
-    @apply text-primary hover:no-underline;
-    & > div {
-      /* extend the background highlight on hover, then counter the left padding */
-      @apply p-2 -ml-2;
     }
   }
   ul.illust-index {

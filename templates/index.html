@@ -5,7 +5,7 @@
     {{ partial "content" . }}
     <hr class="mt-8" />
     <h1 class="text-xl">Posts</h1>
-    <ul class="index">
+    <ul class="flex flex-col gap-4">
       <!-- prettier-ignore -->
       {{ range (sort (union (where .Site.RegularPages "Section" "")
                             (where .Site.RegularPages "Section" "blog"))
