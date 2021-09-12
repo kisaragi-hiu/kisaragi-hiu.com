@@ -169,7 +169,7 @@
 }
 
 /* Place *outside* of any layer to always include */
-article code:not(.highlight code) {
+article code:not(.src code) {
   @apply bg-special/50 text-special-strong;
   @apply px-1 rounded-lg;
 }
