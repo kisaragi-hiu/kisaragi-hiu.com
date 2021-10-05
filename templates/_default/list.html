@@ -16,7 +16,9 @@
      {{ end }}
      </ul>
 -->
-{{ partial "heading-with-links" . }}
+
+{{ partial "heading" .Title }}
+<hr>
 
 <!-- Display the tags of this term page.
      HACK: getting around the fact that Hugo doesn't seem to allow
@@ -65,7 +67,6 @@
                        (where .Pages "Section" "blog"))
                 "Date"
                 "desc") }}
-  <h2 class="mb-0">Posts</h2>
   <ul class="index">
     {{ range .}}
     <li>{{ partial "index-item" . }}</li>

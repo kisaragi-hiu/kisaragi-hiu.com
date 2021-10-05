@@ -1,6 +1,6 @@
 {{ $title := .Title }}
 {{ $title := (replace .Title "-" " ") }}
-<h1 class="text-xl">
+<h1 class="text-2xl">
     {{ if $.Scratch.Get "titlecase" }}
     {{ (title $title) }}
     {{ else }}

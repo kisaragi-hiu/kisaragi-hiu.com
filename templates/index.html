@@ -1,7 +1,7 @@
 {{ define "main" }}
 <div class="side-layout">
   <main>
-    <h1 class="text-4xl">Kisaragi Hiu</h1>
+    <div class="my-8"></div>
     {{ partial "content" . }}
     <hr class="my-8" />
     <ul class="flex flex-col">
@@ -16,6 +16,18 @@
     </ul>
   </main>
   <aside>
+    <!-- <nav class="flex flex-wrap justify-start gap-3 my-2"> -->
+    <nav class="flex flex-col">
+      <!-- prettier-ignore -->
+      {{ range (slice (slice "/" "Blog")
+                      (slice "/covers.html" "Covers")
+                      (slice "/illust.html" "Illust")
+                      (slice "/projects.html" "Projects")
+                      (slice "/about.html" "About")
+                      (slice "/index.xml" "RSS")) }}
+      <a class="" href="{{ index . 0 }}">{{ index . 1 }}</a>
+      {{ end }}
+    </nav>
     <!-- prettier-ignore -->
     {{ $illust_featured := (slice) }}
     {{ range (where .Site.RegularPages "Section" "illust") }}
@@ -58,9 +70,7 @@
       class="list-none pl-0 flex flex-wrap gap-x-2 gap-y-1 leading-loose my-4"
     >
       {{ range . }}
-      <li>
-        <a class="series" href="{{.Permalink}}">{{.LinkTitle}}</a>
-      </li>
+      <li>{{ partial "series" . }}</li>
       {{ end }}
     </ul>
     <!-- prettier-ignore -->

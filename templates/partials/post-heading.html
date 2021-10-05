@@ -6,11 +6,14 @@
   <hr />
   <dl class="meta">
     {{ with .Date }}
-    <dt>{{ partial "func-translate" (dict "id" "Published" "page" $)}}</dt>
-    <dd>{{ partial "date" . }}</dd>
+    <div>
+      <dt>{{ partial "func-translate" (dict "id" "Published" "page" $)}}</dt>
+      <dd>{{ partial "date" . }}</dd>
+    </div>
     {{ end }}
     <!-- prettier-ignore -->
     {{ with .Lastmod }}
+    <div>
     <dt>
       <!-- If old versions are available, link there. -->
       {{ with $.GetPage (printf "/archive/%s" $.File.BaseFileName) }}
@@ -23,13 +26,16 @@
       {{ end }}
     </dt>
     <dd>{{ partial "date" . }}</dd>
+    </div>
     {{ end }}
     <!-- {{ with .Params.certainty }}
              <dt>Certainty</dt><dd>{{.}}</dd>
              {{ end }} -->
     {{ range .GetTerms "series" }}
+    <div>
     <dt>Series</dt>
     <dd><a href="{{ .Permalink }}">{{ .LinkTitle }}</a></dd>
+    </div>
     {{ end }}
   </dl>
   <!-- prettier-ignore -->
