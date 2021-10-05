@@ -1,5 +1,33 @@
 #+title: Documentation for writing stuff on this blog
 
+* List of tags
+
+#+begin_src web
+<!-- Use func-page-term(., tags) instead of .GetTerms(tags) or .Site.Taxonomies.tags.
+         Because those do not list tags that are only declared in taxonomy term pages.
+
+         "Tagging tags" isn't a well-supported thing in Hugo (yet?).
+    -->
+<!-- prettier-ignore -->
+{{ $alltags := (slice) }}
+{{ range .Site.AllPages }}
+    {{ $alltags = (union $alltags
+                         (partial "func-page-term"
+                                  (dict "page" . "taxonomy" "tags")))}}
+{{ end }}
+
+<!-- Sort them -->
+{{ $alltags = (sort $alltags "Title") }}
+
+<!-- Actually display them -->
+{{ with $alltags }}
+<h1>Tags</h1>
+{{ partial "tags-block" . }}
+<!-- prettier-ignore -->
+{{ end }}
+#+end_src
+
+
 * Converting dated pages to pages without dates
 
 1. move =content/blog/xxxx-xx-xx-<id>.org= to =content/<id>.org=

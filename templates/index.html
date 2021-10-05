@@ -3,9 +3,8 @@
   <main>
     <h1 class="text-4xl">Kisaragi Hiu</h1>
     {{ partial "content" . }}
-    <hr class="mt-8" />
-    <h1 class="text-xl">Posts</h1>
-    <ul class="flex flex-col gap-4">
+    <hr class="my-8" />
+    <ul class="flex flex-col">
       <!-- prettier-ignore -->
       {{ range (sort (union (where .Site.RegularPages "Section" "")
                             (where .Site.RegularPages "Section" "blog"))
@@ -46,7 +45,7 @@
     {{ range .Site.AllPages }}
     {{ $alltags = (union $alltags
                          (partial "func-page-term"
-                                  (dict "page" . "taxonomy" "tags")))}}
+                                  (dict "page" . "taxonomy" "series")))}}
     {{ end }}
 
     <!-- Sort them -->
@@ -54,8 +53,18 @@
 
     <!-- Actually display them -->
     {{ with $alltags }}
-    <h1>Tags</h1>
-    {{ partial "tags-block" . }} {{ end }}
+    <h1>Series</h1>
+    <ul
+      class="list-none pl-0 flex flex-wrap gap-x-2 gap-y-1 leading-loose my-4"
+    >
+      {{ range . }}
+      <li>
+        <a class="series" href="{{.Permalink}}">{{.LinkTitle}}</a>
+      </li>
+      {{ end }}
+    </ul>
+    <!-- prettier-ignore -->
+    {{ end }}
   </aside>
 </div>
 {{ end }}

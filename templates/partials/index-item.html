@@ -14,8 +14,8 @@
     duration-100
     ease-in-out
     rounded
-    p-4
-    -ml-4
+    p-2
+    -ml-2
   "
 >
   <a href="{{ .Permalink }}">
@@ -24,14 +24,4 @@
       <div class="font-mono">{{ partial "date" .Date }}</div>
     </div>
   </a>
-  <!-- prettier-ignore -->
-  {{ with (index (partial "func-page-term" (dict "page" . "taxonomy" "series"))
-                 0) }}
-  <a class="series" href="{{.Permalink}}">{{.LinkTitle}}</a>
-  {{ end }}
-  <ul class="tags-inline">
-    {{ range (partial "func-page-term" (dict "page" . "taxonomy" "tags")) }}
-    <li>{{ partial "tag" . }}</li>
-    {{ end }}
-  </ul>
 </div>
