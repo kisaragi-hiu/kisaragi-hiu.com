@@ -1,0 +1,29 @@
+{{ define "main" }}
+
+<!-- prettier-ignore -->
+{{ if .Params.hugo_notitlecase }}
+  {{ .Scratch.Set "titlecase" false }}
+{{ else }}
+  {{ .Scratch.Set "titlecase" true }}
+{{ end }}
+
+<!-- Going through term pages: -->
+<!-- <ul>
+     {{ range (where .Site.AllPages "Kind" "term" ) }}
+     {{ if (in (.Page.Param $.Data.Plural) (anchorize $.LinkTitle)) }}
+     <li>{{ .Page }}</li>
+     {{ end }}
+     {{ end }}
+     </ul>
+-->
+
+{{ partial "heading" .Title }}
+<hr />
+<root>
+  <ul class="space-y-2">
+    {{ range .Pages }}
+    <li>{{ partial "series" . }}</li>
+    {{ end }}
+  </ul>
+</root>
+{{ end }}
