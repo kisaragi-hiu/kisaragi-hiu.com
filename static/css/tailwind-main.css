@@ -50,7 +50,7 @@
     ul,
     ol {
       list-style: revert;
-      @apply pl-4 md:p-0;
+      @apply pl-4;
     }
     blockquote {
       border-left: 0.25rem solid;
@@ -173,6 +173,7 @@ article code:not(.src code) {
 .src {
   overflow-x: auto;
   @apply font-mono text-primary;
+  @apply my-2;
   @apply p-2 rounded bg-special-light;
   @apply border-2 border-special-strong;
   /* This is how you can add a language header, but it's really noisy.

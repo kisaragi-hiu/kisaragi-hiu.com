@@ -1,0 +1,180 @@
+#+title: Functions passed to completing-read do more than just returning a list to select
+#+created: 2021-10-08T05:36:31+0900
+#+tags[]: emacs
+
+=completing-read= accepts a function as the collection of candidates, not just lists. I've always thought of this as a small niche.
+
+#+begin_quote
+(completing-read PROMPT COLLECTION &optional PREDICATE REQUIRE-MATCH INITIAL-INPUT HIST DEF INHERIT-INPUT-METHOD)
+
+Read a string in the minibuffer, with completion.
+
+PROMPT is a string to prompt with; normally it ends in a colon and a space.
+COLLECTION can be a list of strings, an alist, an obarray or a hash table.
+COLLECTION can also be a function to do the completion itself.
+PREDICATE limits completion to a subset of COLLECTION.
+See try-completion, all-completions, test-completion,
+and completion-boundaries, for more details on completion,
+COLLECTION, and PREDICATE.  See also Info node (elisp)Basic Completion
+for the details about completion, and Info node (elisp)Programmed
+Completion for expectations from COLLECTION when it's a function.
+#+end_quote
+
+Last night I was trying out [[https://github.com/minad/embark][Embark]] and [[https://github.com/minad/marginalia][Marginalia]] after reading [[https://karthinks.com/software/fifteen-ways-to-use-embark/][Fifteen ways to use Embark]], and I learned that the built in completion system actually supports specifying /categories/. The built in completion system knows that =find-file= is looking for files, and =describe-minor-mode= is looking for a list of minor modes; Marginalia makes use of this to decide what annotations to show, while Embark makes use of it to decide which context menu to show.
+
+It is this last fact that made me want to make use of these categories in [[/projects/canrylog.org][Canrylog]] and [[https://github.com/kisaragi-hiu/org-roam/][my Org-roam v1 fork]]. For instance, =org-roam-find-file= only shows note titles and tags, but I want it to show file paths as well. To do this, I had to first figure out how to mark categories for my candidates.
+
+The Info nodes referenced in the =completing-read= docstring provides some help:
+
+#+begin_quote
+*[[https://www.gnu.org/software/emacs/manual/html_node/elisp/Programmed-Completion.html][Programmed Completion]]*
+
+[…]
+
+The completion function should accept three arguments:
+
+- The string to be completed.
+- A predicate function with which to filter possible matches, or
+  ‘nil’ if none.  The function should call the predicate for each
+  possible match, and ignore the match if the predicate returns
+  ‘nil’.
+- A flag specifying the type of completion operation to perform […]
+  This flag may be one of the following values.
+
+  […]
+
+  - ‘metadata’ ::
+       This specifies a request for information about the state of
+       the current completion.  The return value should have the form
+       ‘(metadata . ALIST)’, where ALIST is an alist whose elements
+       are described below.
+
+  If the flag has any other value, the completion function should
+  return ‘nil’.
+
+The following is a list of metadata entries that a completion
+function may return in response to a ‘metadata’ flag argument:
+
+- ‘category’ ::
+     The value should be a symbol describing what kind of text the
+     completion function is trying to complete.  If the symbol matches
+     one of the keys in ‘completion-category-overrides’, the usual
+     completion behavior is overridden.  *Note Completion Variables::.
+
+[…]
+#+end_quote
+
+This means when /collection/ is a function, Emacs will actually probe it for more information.
+
+* Digging into find-file's collection functions
+
+There are some builtin examples of this. For instance, =find-file=:
+
+#+begin_src emacs-lisp
+;; in `find-file'
+(interactive
+ (find-file-read-args "Find file: "
+                      (confirm-nonexistent-file-or-buffer)))
+#+end_src
+
+#+begin_src emacs-lisp
+(defun find-file-read-args (prompt mustmatch)
+  (list (read-file-name prompt nil default-directory mustmatch)
+	t))
+#+end_src
+
+#+begin_src emacs-lisp
+(defun read-file-name (prompt &optional dir default-filename mustmatch initial predicate)
+  ;; ...
+  (funcall (or read-file-name-function #'read-file-name-default)
+           ;; ...
+           ))
+#+end_src
+
+#+begin_src emacs-lisp
+;; in `read-file-name-default'
+(completing-read prompt 'read-file-name-internal
+                 pred mustmatch insdef
+                 'file-name-history default-filename)))
+#+end_src
+
+Ah, here's the call to =completing-read=. The collection function is =read-file-name-internal=, which combines =completion--embedded-envvar-table= and =completion--file-name-table=. Let's look at =completion--file-name-table=:
+
+#+begin_src emacs-lisp
+(defalias 'completion--file-name-table
+  (completion-table-with-quoting #'completion-file-name-table
+                                 #'substitute-in-file-name
+                                 #'completion--sifn-requote))
+#+end_src
+
+Another combined collection function. Let's look at =completion-file-name-table= then:
+
+#+begin_src emacs-lisp
+(defun completion-file-name-table (string pred action)
+  "Completion table for file names."
+  (condition-case nil
+      (cond
+       ((eq action 'metadata) '(metadata (category . file)))
+       ((string-match-p "\\`~[^/\\]*\\'" string))
+       ;; ...
+       )))
+#+end_src
+
+There we go. The ='(metadata (category . file))= is exactly the thing I was looking for; this is how you attach a category to a collection.
+
+As an aside, these functions seem to be referred to as /completion tables/.
+* Applying this
+
+So when a collection for =completing-read= is a function, it's able to provide some metadata, including its category. But most of the time we have a fixed list of candidates to select from. What should we do?
+
+We can just do this:
+
+#+begin_src emacs-lisp :lexical t
+(defun k//mark-category (seq category)
+  "Mark SEQ as being in CATEGORY."
+  (lambda (str pred flag)
+    (pcase flag
+      ('metadata
+       `(metadata (category . ,category)))
+      (_
+       (all-completions str seq pred)))))
+#+end_src
+
+This function returns a completion table that responds to a probe of its category appropriately, as well as handing the actual completion to =all-completions=.
+
+It can then be used like this:
+
+#+begin_src emacs-lisp
+(completing-read "Prompt: "
+                 (k//mark-category '("/usr" "/tmp" "/home") 'file))
+#+end_src
+
+#+caption: Marginalia reads the category, and showed the appropriate annotations for files.
+[[/20211008T062042+0900.png]]
+
+For a list of existing categories, if Marginalia is installed, it can be seen in the variable =marginalia-annotator-registry=. These are the existing values on my installation:
+
+# Hugo highlights better when we tell it it's Scheme. Emacs Lisp would highlight =function= differently.
+#+begin_src scheme
+'((command marginalia-annotate-command marginalia-annotate-binding builtin none)
+  (embark-keybinding marginalia-annotate-embark-keybinding builtin none)
+  (customize-group marginalia-annotate-customize-group builtin none)
+  (variable marginalia-annotate-variable builtin none)
+  (function marginalia-annotate-function builtin none)
+  (face marginalia-annotate-face builtin none)
+  (color marginalia-annotate-color builtin none)
+  (unicode-name marginalia-annotate-char builtin none)
+  (minor-mode marginalia-annotate-minor-mode builtin none)
+  (symbol marginalia-annotate-symbol builtin none)
+  (environment-variable marginalia-annotate-environment-variable builtin none)
+  (input-method marginalia-annotate-input-method builtin none)
+  (coding-system marginalia-annotate-coding-system builtin none)
+  (charset marginalia-annotate-charset builtin none)
+  (package marginalia-annotate-package builtin none)
+  (imenu marginalia-annotate-imenu builtin none)
+  (bookmark marginalia-annotate-bookmark builtin none)
+  (file marginalia-annotate-file builtin none)
+  (project-file marginalia-annotate-project-file builtin none)
+  (buffer marginalia-annotate-buffer builtin none)
+  (consult-multi marginalia-annotate-consult-multi builtin none))
+#+end_src
