@@ -9,6 +9,10 @@
   html {
     font-size: 16pt;
   }
+  body {
+    width: min(90ch, 90%);
+    @apply mx-auto mt-[5%] mb-64;
+  }
   p {
     @apply my-2 text-base;
   }
@@ -44,7 +48,6 @@
     video,
     img {
       @apply max-w-full max-h-96;
-      @apply my-4 mx-1;
       @apply shadow;
     }
     ul,
@@ -82,9 +85,9 @@
     dd {
       grid-row: 2/2;
     }
-  }
-  .tags-inline {
-    @apply flex flex-wrap leading-loose m-0 gap-x-2;
+    a {
+      @apply text-accent-strong;
+    }
   }
   .series {
     @apply hover:underline;
@@ -94,7 +97,7 @@
     }
   }
   .tag {
-    @apply rounded px-2 py-1 text-accent-strong bg-accent-light;
+    @apply text-accent-strong;
     &::before {
       content: "#";
     }
@@ -133,8 +136,11 @@
 }
 
 @layer utilities {
-  .out::after {
-    content: "°";
+  .out {
+    @apply hover:underline;
+    &::after {
+      content: "°";
+    }
   }
   .side-by-side {
     display: grid;

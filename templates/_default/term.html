@@ -1,5 +1,4 @@
-{{ define "main" }}
-
+{{ define "header" }}
 <!-- prettier-ignore -->
 {{ if .Params.hugo_notitlecase }}
   {{ .Scratch.Set "titlecase" false }}
@@ -7,18 +6,22 @@
   {{ .Scratch.Set "titlecase" true }}
 {{ end }}
 
-<!-- Going through term pages: -->
-<!-- <ul>
-     {{ range (where .Site.AllPages "Kind" "term" ) }}
-     {{ if (in (.Page.Param $.Data.Plural) (anchorize $.LinkTitle)) }}
-     <li>{{ .Page }}</li>
-     {{ end }}
-     {{ end }}
-     </ul>
--->
-
+{{ partial "avatar" .Title }}
 {{ partial "heading" .Title }}
-<hr>
+<hr />
+<dl class="meta">
+  {{ with (partial "func-page-term" (dict "page" . "taxonomy" "tags")) }}
+  <div>
+    <dt>Tags on this term</dt>
+    <dd>{{ range . }} {{ partial "tag" . }} {{ end }}</dd>
+  </div>
+  {{ end }}
+</dl>
+
+<!-- prettier-ignore -->
+{{ end }}
+
+{{ define "main" }}
 
 <!-- Display the tags of this term page.
      HACK: getting around the fact that Hugo doesn't seem to allow
@@ -26,9 +29,6 @@
 <!-- NOTE: (dict "page" . "taxonomy" "tags") is not a cons cell!
      The dot is the context dot. Remember this is not Lisp. -->
 <!-- prettier-ignore -->
-{{ with (partial "func-page-term" (dict "page" . "taxonomy" "tags")) }}
-{{partial "tags-block" . }}
-{{ end }}
 
 <!-- prettier-ignore -->
 {{ if .Params.toc }}
@@ -53,23 +53,11 @@
 
   <!-- Other tags -->
   {{ with $term_items }}
-  <h2>Terms</h2>
+
+  <h2>{{ printf "Related %s" $.Data.Plural }}</h2>
   <ul class="index">
     {{ range $term_items }}
-    <li>{{ partial "index-item" . }}</li>
-    {{ end }}
-  </ul>
-  {{ end }}
-
-  <!-- Covers -->
-  <!-- prettier-ignore -->
-  {{ with (sort (union (where .Pages "Section" "")
-                       (where .Pages "Section" "blog"))
-                "Date"
-                "desc") }}
-  <ul class="index">
-    {{ range .}}
-    <li>{{ partial "index-item" . }}</li>
+    <li>{{ partial .Data.Singular . }}</li>
     {{ end }}
   </ul>
   {{ end }}
@@ -77,7 +65,9 @@
   <!-- Projects -->
   <!-- prettier-ignore -->
   {{ with (where .Pages "Section" "projects")}}
-  <h2>Projects</h2>
+  <h2>
+    Projects under <span class="{{$.Data.Singular}}">{{ $.Data.Term }}</span>
+  </h2>
   <!-- prettier-ignore -->
   {{ partial "projects" . }}
   {{ end }}
@@ -88,6 +78,22 @@
   <h2>Covers</h2>
   <!-- prettier-ignore -->
   {{ partial "covers" . }}
+  {{ end }}
+
+  <!-- Pages -->
+  <!-- prettier-ignore -->
+  {{ with (sort (union (where .Pages "Section" "")
+                       (where .Pages "Section" "blog"))
+                "Date"
+                "desc") }}
+  <h2>
+    Posts under <span class="{{$.Data.Singular}}">{{ $.Data.Term }}</span>
+  </h2>
+  <ul class="index">
+    {{ range .}}
+    <li>{{ partial "index-item" . }}</li>
+    {{ end }}
+  </ul>
   {{ end }}
 </root>
 {{ end }} {{ end }}

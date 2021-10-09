@@ -1,38 +1,53 @@
-<div class="index">
-  <table>
-    <thead>
-      <tr>
-        <th>Title</th>
-        <th>Tags</th>
-        <th>Repository</th>
-      </tr>
-    </thead>
-    <tbody>
-      {{ range . }}
-      <tr>
-        <th><a href="{{.Permalink}}">{{.Title}}</a></th>
-        <td>
-          <!-- prettier-ignore -->
-          {{ with .GetTerms "tags" }}
-            <ul class="tags-inline">
-                {{ range . }}
-                <li>{{ partial "tag" . }}</li>
-                {{ end }}
-            </ul>
-          {{ end }}
-        </td>
-        <td>
-          <!-- prettier-ignore -->
-          {{ if .Params.gitlab }}
-          <a class="out" href="{{.Params.gitlab}}">GitLab</a>
-          {{ else if .Params.github }}
-          <a class="out" href="{{.Params.github}}">GitHub</a>
-          {{ else if .Params.sourcehut }}
-          <a class="out" href="{{.Params.sourcehut}}">Sourcehut</a>
-          {{ end }}
-        </td>
-      </tr>
+<ul class="index flex flex-wrap gap-4">
+  {{ range . }}
+  <li
+    class="
+      w-48
+      h-64
+      bg-white
+      rounded
+      shadow
+      hover:shadow-md
+      transition
+      duration-100
+      flex flex-col
+    "
+  >
+    <a class="flex flex-col hover:no-underline" href="{{.Permalink}}">
+      <!-- Top part: the image -->
+      <div class="w-full h-24 mb-4">
+        <img class="max-h-full min-w-full object-cover rounded-t" src="{{ or
+        .Params.coverimage "/thumb/0nEjiqtTaRc.jpg" }}" />
+      </div>
+      <!-- Bottom part: the title and metadata -->
+      {{ with .Date }}
+      <div class="mx-2">{{ partial "date" . }}</div>
       {{ end }}
-    </tbody>
-  </table>
-</div>
+      <div class="mx-2 flex-grow">
+        <div class="font-bold">{{.LinkTitle}}</div>
+      </div>
+    </a>
+    <div class="m-2">
+      {{ with .GetTerms "tags" }}
+      <ul class="flex flex-wrap leading-loose m-0 gap-x-2">
+        {{ range . }}
+        <li>{{ partial "tag" . }}</li>
+        {{ end }}
+      </ul>
+      {{ end }}
+      <!-- prettier-ignore -->
+      {{ with .Params.status }}
+      <p>Status: {{.}}</p>
+      {{ end }}
+      <!-- prettier-ignore -->
+      {{ if .Params.gitlab }}
+      <a class="out" href="{{.Params.gitlab}}">GitLab</a>
+      {{ else if .Params.github }}
+      <a class="out" href="{{.Params.github}}">GitHub</a>
+      {{ else if .Params.sourcehut }}
+      <a class="out" href="{{.Params.sourcehut}}">Sourcehut</a>
+      {{ end }}
+    </div>
+  </li>
+  {{ end }}
+</ul>

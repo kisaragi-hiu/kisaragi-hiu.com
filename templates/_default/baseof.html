@@ -77,26 +77,19 @@
       title="Atom Feed"
     />
   </head>
-  <body class="m-[5%] lg:my-8 lg:mx-[15%]">
+  <body>
     <!-- Header -->
-    <!-- <header class="flex flex-wrap justify-between items-center"> -->
-    <header class="flex items-center">
-      <a href="/" id="logo">
-        <img class="max-h-8 mr-2" src="/avatar.png" alt="avatar" />
-      </a>
-      <h1 class="m-0 h-full text-xl">Kisaragi Hiu</h1>
+    <header>
+      {{ block "header" . }}
+      <div class="flex gap-x-2 items-center">
+        {{ partial "avatar" .Title }}
+        <h1 class="m-0 h-full text-xl">Kisaragi Hiu</h1>
+      </div>
+      {{ end }}
     </header>
 
     <!-- Contents -->
     {{ block "main" . }} {{ end }}
-    <!-- ◊; show heading for posts
-             ◊"◊"(when/splice (string=? (post-type here) "post")
-             (to-html (post-heading here)))
-             ◊; show toc if it exists
-             ◊"◊"(when/splice (select-from-metas 'toc metas)
-             (to-html (toc here)))
-             ◊; actual content
-             ◊"◊"(to-html doc) -->
 
     <!-- Footer -->
     <footer class="text-secondary">
