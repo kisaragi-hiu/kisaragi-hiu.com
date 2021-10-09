@@ -1,5 +1,6 @@
 #+title: Retome
 #+github: https://github.com/kisaragi-hiu/osuskin-retome
 #+tags[]: osu
+#+status: done
 
 My personal osu! skin, focused on glow and shadow effects.

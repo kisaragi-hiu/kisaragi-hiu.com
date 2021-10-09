@@ -3,6 +3,7 @@
 #+updated: 2018-07-09T17:46:08+0900
 #+tags[]: cli
 #+github: https://github.com/kisaragi-hiu/bk
+#+status: done
 
 Key-value pair storage based on JSON, intended for command line bookmarks.
 

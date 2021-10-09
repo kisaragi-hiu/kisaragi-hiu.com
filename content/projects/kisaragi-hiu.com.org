@@ -1,6 +1,7 @@
 #+title: kisaragi-hiu.com
 #+tags[]: hugo web
 #+github: https://github.com/kisaragi-hiu/kisaragi-hiu.com
+#+status: active
 
 This site. See [[file:/series/meta.html][the Meta series]] for some history behind it.
 

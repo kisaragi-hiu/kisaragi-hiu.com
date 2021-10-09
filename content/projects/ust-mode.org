@@ -1,6 +1,9 @@
 #+title: ust-mode
 #+tags[]: utau emacs
 #+github: https://github.com/kisaragi-hiu/ust-mode
+#+coverimage: /emacs-ust-mode.png
+#+created: 2019-10-27
+#+status: active
 
 An Emacs major mode for editing UTAU projects (UST files) as text.
 

@@ -1,5 +1,6 @@
 #+title: background-job.el
-#+tags[]: emacs-lisp
+#+tags[]: emacs-lisp experiments
 #+github: https://github.com/kisaragi-hiu/background-job.el
+#+status: done
 
 An Emacs Lisp library to start jobs in the background that try not to block the user too much.

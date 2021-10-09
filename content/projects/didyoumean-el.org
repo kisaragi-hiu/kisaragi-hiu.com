@@ -2,6 +2,7 @@
 #+created: 2019-08-20
 #+tags[]: emacs
 #+gitlab: https://gitlab.com/kisaragi-hiu/didyoumean.el
+#+status: done
 
 {{< melpa-badge "didyoumean" >}}
 

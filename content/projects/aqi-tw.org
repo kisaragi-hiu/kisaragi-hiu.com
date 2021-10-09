@@ -4,6 +4,8 @@
 #+tags[]: apps web
 #+homepage: https://aqi.tw
 #+github: https://github.com/kisaragi-hiu/com.kisaragi-hiu.aqi
+#+coverimage: /aqi-tw-20210708.png
+#+status: 95%
 
 [[/aqi-tw-20210708.png]]
 

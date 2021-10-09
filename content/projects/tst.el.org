@@ -1,6 +1,9 @@
 #+title: tst.el
 #+gitlab: https://gitlab.com/kisaragi-hiu/tst.el
 #+tags[]: emacs-lisp ci
+#+coverimage: /thumb/tst-el.png
+#+created: 2021-01-11
+#+status: done
 
 An Emacs Lisp library implementing a syntax for specifying tags inspired by TagSpaces.
 

@@ -2,6 +2,7 @@
 #+created: 2021-07-08
 #+tags[]: blender
 #+github: https://github.com/kisaragi-hiu/blender-pseudo-vertical-text
+#+status: 95%
 
 The addon I said I wanted to make in [[/blender-vertical-writing.org][在Blender裡用直書]].
 

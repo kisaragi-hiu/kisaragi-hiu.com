@@ -2,6 +2,7 @@
 #+github: https://github.com/kisaragi-hiu/org-msr
 #+gitlab: https://gitlab.com/kisaragi-hiu/org-msr
 #+tags[]: org-mode
+#+status: done
 
 My personal spaced repetition system, implemented with Org-mode repeaters.
 

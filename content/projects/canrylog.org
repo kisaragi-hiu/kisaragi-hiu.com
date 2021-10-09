@@ -2,6 +2,7 @@
 #+created: 2019-01-05T21:47:20+0900
 #+gitlab: https://gitlab.com/canrylog/canrylog.el/
 #+tags[]: emacs
+#+status: active
 
 My own time tracker.
 
