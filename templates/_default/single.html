@@ -59,9 +59,7 @@
 {{ end }}
 
 {{ define "footer" }}
-<!-- prettier-ignore -->
-{{ if (eq .Type "blog") }}
-{{ partial "post-navigation" . }}
-{{ end }}
-
+<div class="mb-64">
+  {{ partial "default-footer" . }} {{ partial "post-navigation" . }}
+</div>
 {{ end }}

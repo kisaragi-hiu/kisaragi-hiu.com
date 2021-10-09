@@ -92,11 +92,8 @@
     {{ block "main" . }} {{ end }}
 
     <!-- Footer -->
-    <footer class="text-secondary">
-      <div class="mt-12 mb-10 text-center font-bold">
-        <a class="text-primary" href="/about.html">●</a>
-      </div>
-      {{ block "footer" . }} {{ end }}
+    <footer>
+      {{ block "footer" . }} {{ partial "default-footer" . }} {{ end }}
     </footer>
     <script src="/js/medium-zoom.min.js"></script>
     <script>

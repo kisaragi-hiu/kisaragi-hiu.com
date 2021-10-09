@@ -80,6 +80,16 @@
   {{ partial "covers" . }}
   {{ end }}
 
+  <!-- Illust -->
+  <!-- prettier-ignore -->
+  {{ with (where .Pages "Section" "illust") }}
+  <h2>Illust</h2>
+  <!-- prettier-ignore -->
+  {{ range . }}
+  {{ partial "illust-item" . }}
+  {{ end }}
+  {{ end }}
+
   <!-- Pages -->
   <!-- prettier-ignore -->
   {{ with (sort (union (where .Pages "Section" "")

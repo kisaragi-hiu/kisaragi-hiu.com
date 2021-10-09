@@ -11,7 +11,7 @@
   }
   body {
     width: min(90ch, 90%);
-    @apply mx-auto mt-[5%] mb-64;
+    @apply mx-auto mt-[5%];
   }
   p {
     @apply my-2 text-base;

@@ -1,6 +1,6 @@
 #+title: Functions passed to completing-read do more than just returning a list to select
 #+created: 2021-10-08T05:36:31+0900
-#+tags[]: emacs
+#+tags[]: emacs-lisp
 
 =completing-read= accepts a function as the collection of candidates, not just lists. I've always thought of this as a small niche that's only useful for dynamic collections.
 

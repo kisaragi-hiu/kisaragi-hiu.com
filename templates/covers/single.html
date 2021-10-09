@@ -37,5 +37,7 @@
 {{ end }}
 
 {{ define "footer" }}
-{{ partial "post-navigation" . }}
+<div class="mb-64">
+  {{ partial "default-footer" . }} {{ partial "post-navigation" . }}
+</div>
 {{ end }}
