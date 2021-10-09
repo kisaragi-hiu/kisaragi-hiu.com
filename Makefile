@@ -2,7 +2,7 @@ export LANG=en_US.UTF-8
 
 .DEFAULT_GOAL := build
 
-.PHONY: serve clean zip css
+.PHONY: clean zip css dev
 
 dev-hugo:
 	hugo server
