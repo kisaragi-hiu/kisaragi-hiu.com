@@ -2,5 +2,6 @@
 #+gitlab: https://gitlab.com/kisaragi-hiu/language-startup-benchmark
 #+tags[]: experiments
 #+status: done
+#+created: 2018-01-20
 
 Time hello world in various languages to benchmark their startup times.

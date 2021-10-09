@@ -2,6 +2,7 @@
 #+tags[]: hugo web
 #+github: https://github.com/kisaragi-hiu/kisaragi-hiu.com
 #+status: active
+#+created: 2017-09-21
 
 This site. See [[file:/series/meta.html][the Meta series]] for some history behind it.
 

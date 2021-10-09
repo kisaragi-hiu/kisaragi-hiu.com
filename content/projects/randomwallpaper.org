@@ -2,5 +2,6 @@
 #+github: https://github.com/kisaragi-hiu/randomwallpaper
 #+tags[]: cli
 #+status: done
+#+created: 2016-09-13
 
 A script to set a random wallpaper from a directory every so often.

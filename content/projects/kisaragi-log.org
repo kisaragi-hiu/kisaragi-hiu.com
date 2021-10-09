@@ -2,6 +2,7 @@
 #+tags[]: apps emacs
 #+gitlab: https://gitlab.com/kisaragi-hiu/kisaragi-log
 #+status: 95%
+#+created: 2020-07-28T00:05:44+0900
 
 https://gitlab.com/kisaragi-hiu/kisaragi-hydration
 

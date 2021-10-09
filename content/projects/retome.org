@@ -2,5 +2,7 @@
 #+github: https://github.com/kisaragi-hiu/osuskin-retome
 #+tags[]: osu
 #+status: done
+#+coverimage: /retome-1.0-ja-std-2.jpg
+#+created: 2017-05-27
 
 My personal osu! skin, focused on glow and shadow effects.
