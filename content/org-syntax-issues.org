@@ -1,0 +1,18 @@
+#+title: No, Org syntax is not “clearly” superior to Markdown's
+#+created: 2021-10-10T03:56:54+0900
+#+draft: t
+
+- Because Org does not have a dedicated image link syntax, it is impossible to nest images inside of links.
+- It is impossible to put inline code, bold, or italics inside a link, at least in Emacs.
+- There is no escaping character. The manual recommends using zero-width spaces to break apart syntax tokens, but it is not acceptable to leave zero-width spaces in the exported output; once you start trying to figure out when to omit the zero-width space when exporting, you might as well just implement the standard escaping character.
+- It is literally impossible to encode italics or bold characters that aren't delimited at word boundaries /as defined by Org/. This makes it impossible to make CJK text bold without adding superfluous spaces just because Org can't handle it.
+- It is impossible to have nested quotations, which are useful when taking notes of some text that itself quotes something else.
+- It is impossible to have inline syntax start or end with spaces.
+
+Of course, there are many nice things about using Org that made me kept using it /despite/ the above.
+
+- Org blocks are wonderful. The =#+begin_*= / =#+end_*= syntax is way more powerful than Markdown's fixed set of block syntaxes: =>= (blockquote), =```= (code fence), and =    = (four spaces) (indent-based code block).
+- I like how =#+caption= is used to attach captions to elements.
+- The new Org Cite system also looks pretty good.
+
+Markdown does not provide useful features like (practically) unlimited heading levels, heading property drawers, todo status, priorities, heading tags, and so on — not by default, and I don't know if there's actually any app built on Markdown that offers all these things at once.
