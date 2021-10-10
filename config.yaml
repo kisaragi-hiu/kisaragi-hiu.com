@@ -49,7 +49,6 @@ frontmatter:
 taxonomies:
   series: series
   tag: tags
-  language: language
   archive: archive
 
 # * Languages

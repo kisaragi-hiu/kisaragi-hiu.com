@@ -1,0 +1,9 @@
+#+title: Using Frog on Android
+#+created: 2017-09-12T16:46:00+0800
+#+tags[]: android frog termux racket meta
+
+Linux Deploy is a pretty nice app on Android.
+
+I finished porting this site to Frog a few days ago. There isn't a package for Racket in Termux — Termux provides packages for Jekyll and Hugo, but I still don't really understand them, and I'm using Frog right now — but with Linux Deploy, I could create an environment (sort of like a container?) and install Debian Sid into it, enable SSH, bind =/sdcard= into it, install Racket and Frog inside, and now I can build this site on my phone.
+
+It'd be better if Termux itself provides packages for Racket though. My battery drains really fast when this container(?) is started.

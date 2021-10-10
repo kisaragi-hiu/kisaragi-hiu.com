@@ -1,7 +1,6 @@
 #+title: 新網站
 #+created: 2017-03-19T05:00:00+0800
 #+tags[]: meta
-#+language: zh-TW
 
 想要有個簡單的檔案記錄所有連結
 

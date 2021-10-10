@@ -1,0 +1,29 @@
+#+title: 翻譯師的角度：Crowdin 基本操作
+#+draft: true
+#+tags[]: crowdin translation
+
+Opening
+
+A link to [[file:crowdin-setup-intro.org][使用 Crowdin 管理一份翻譯專案]]
+
+* 設定步驟
+** 登入或創建帳號
+
+1. 從首頁按 /Get Started For Free/ 或 /Sign Up/ 來創建帳號。
+
+   [[file:crowdin/crowdin-first.jpg]]
+
+2. 可以用 email 或是其他帳號，不過都還是要用 email 認證。
+
+   [[file:crowdin/crowdin-signup.jpg]]
+
+
+** email 認證
+** 加入專案
+** 開始翻譯
+
+[[file:crowdin/crowdin-translate-in-progress.jpg]]
+
+** 幫助進行翻譯文本的檢查
+
+* 結語

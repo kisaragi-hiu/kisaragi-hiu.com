@@ -1,0 +1,13 @@
+#+title: いつか海の見える街で Cover and PV
+#+created: 2017-07-10T15:01:00+0800
+#+series: Own Vocal Experiment
+
+I tried to cover いつか海の見える街で, and also made a simple lyrics video. The background was recorded during my graduation trip at the end of our train, as my class just happened to get assigned to the last train car.
+
+The lyrics are set in Honoka Mincho, composited onto a glow + color ramp with the Alpha Over node in Blender. I accidentally deleted the .blend file for the lyrics images as I didn't realize Kdenlive wouldn't archive it.
+
+My voice… is still terrible. I guess I just have to practice.
+
+{{< youtube id="ZVCGLr8YQg0" >}}
+
+I should've make sure the fade in at the start begins after the music starts…

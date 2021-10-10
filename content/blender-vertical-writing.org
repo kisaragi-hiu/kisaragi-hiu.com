@@ -1,38 +1,38 @@
-#+title: 在Blender裡用直書
+#+title: Vertical writing in Blender
 #+created: 2021-07-04T09:37:15+0900
 #+toc: t
-#+language: zh-TW
 #+tags[]: blender video
 #+coverimage: /vertical-writing-goal.png
 
-Blender不支援直書。但如果我還是想要用直書的話怎麼辦？
+Blender doesn't support vertical writing. So what should I do when I still want to use it?
 
-/2021-07-08:/ 我把[[#d41e9dcd-f02f-4eae-88ee-b03e04340d6b][下面提到用換行模擬的方式]]做成插件了。[[file:projects/blender-pseudo-vertical-text.org][插件的頁面在這裡。]]
+/2021-07-08:/ I've now published [[#0238c6f6-6ed5-41b6-8b23-737ef4eabca9][the method below that emulates vertical writing with newlines]] as an addon [[https://blendermarket.com/products/cjk-pseudo-vertical-writing][on Blender Market]]. [[file:projects/blender-pseudo-vertical-text.org][Here's its page on my website]].
 
-* 打字之後轉換成Mesh或Curve然後自己轉90°
+* Convert Text to Mesh or Curve then rotate it myself
 
-反正轉換成Mesh或Curve物件之後頂點和多邊形要怎麼改都可以。
+You can do anything to the polygons and vertices after converting to a Mesh or a Curve.
 
-但這不成解決辦法。每個字要轉要花很多時間，要是你有很多要顯示的歌詞之類的光是轉成直書這件事情就要花掉你所有時間了。
+This is not a solution: you have to do it for /every single character/, and if you're doing it for eg. lyrics, you're going to spend all your time simply to turn the text to vertical.
 
-* 先在其他程式打好字，輸出成圖片之後輸入到Blender
 
-可以用GIMP或Inkscape之類的，它們實際上真的有直書的支援。就在那打字輸出然後帶進Blender就是了。
+* Type the text in something else with support for vertical writing, save as an image, then import into Blender
 
-(連Krita也不支援直書🙁)
+GIMP and Inkscape actually support real vertical writing. You can type your text there, export, then bring it into Blender.
 
-* 用換行模擬直書
+(Krita doesn't support vertical writing 🙁)
+
+* Emulating vertical writing with newlines
 :PROPERTIES:
-:CUSTOM_ID:       d41e9dcd-f02f-4eae-88ee-b03e04340d6b
+:CUSTOM_ID:       0238c6f6-6ed5-41b6-8b23-737ef4eabca9
 :END:
 
-我在[[file:/covers/20210625-ハルノ寂寞-稲葉曇.org][ハルノ寂寞 cover]]用的就是這種方式。
+This is what I did in [[file:/covers/20210625-ハルノ寂寞-稲葉曇.org][the cover of ハルノ寂寞]].
 
-目標是要用換行做到這樣：
+The goal is to do this with newlines:
 
 [[/vertical-writing-goal.png]]
 
-當然也可以直接自己換行（上面那張圖我就是手動換行的），但也可以用Blender的Python API來自動修改。我當時是類似這樣做的：
+You could do this yourself (the image above was done manually), but Blender's Python API is also useful here. This is what I did for the cover:
 
 #+begin_src python
 from itertools import zip_longest
@@ -52,8 +52,8 @@ bpy.app.handlers.frame_change_pre.append(add_newlines)
 
 [[/blender-vertical-text-example.jpg]]
 
-我目前是希望之後可以把它做成一個插件，讓人按一個按鈕轉換成偽直書，再按一個按鈕轉換回來。
+I hope to make it an addon, so that a user can do this conversion to pseudo vertical text in one click, and also convert it back in another.
 
-* 祈禱Blender能夠改善文字處理的功能並且內建直書的支援
+* Pray that Blender actually gets better at typesetting and build support for vertical writing into itself
 
-我希望Blender能夠成為Motion Graphics製作上能用的工具，但目前至少在東亞圈內沒有直書的支援應該不少人就不會考慮了吧。我也不知道這些東西是怎麽做出來的，所以也只能希望以後有別人會做的出來。
+I hope Blender becomes a tool that can do all of motion graphics, but right now I'd imagine the lack of vertical writing support is a deal breaker for many in East Asia. I don't know how this could be done either, so I can only hope somebody implements it.

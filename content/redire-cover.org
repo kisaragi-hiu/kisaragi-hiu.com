@@ -1,0 +1,13 @@
+#+title: レディーレ Cover
+#+created: 2017-06-28T22:50:00+0800
+#+series: Own Vocal Experiment
+
+Tried to sing バルーン's レディーレ.
+
+I wanted to try to sing it the moment I saw the original, but it took me two weeks just to finish it…
+
+This time I came back to using Ardour for mixing.
+
+It felt like more hassle than Audacity at first as I don't see a way to directly do normalization, but it's way more convenient as it's possible to rerecord a section after effects have been applied, instead of having to redo all the effects.
+
+{{< youtube id="PEWtJbIswWA" >}}

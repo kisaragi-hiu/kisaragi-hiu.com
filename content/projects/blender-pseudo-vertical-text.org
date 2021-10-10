@@ -6,4 +6,6 @@
 
 The addon I said I wanted to make in [[/blender-vertical-writing.org][在Blender裡用直書]].
 
+It's now published [[https://blendermarket.com/products/cjk-pseudo-vertical-writing][on Blender Market]] for $5.
+
 {{< video "/blender-pseudo-vertical-text-0.2.0.mp4" >}}

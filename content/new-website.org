@@ -1,0 +1,15 @@
+#+title: New website
+#+created: 2017-03-19T05:00:00+0800
+#+tags[]: meta
+
+I wanted a simple file to keep links to my profile
+
+- → Let's put it on Github Pages
+- → Let's try out Jekyll
+- → Might as well turn it into a full website
+
+Something like that.
+
+So by Blogger is now officially replaced.
+
+Yeah, new website.
