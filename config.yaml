@@ -1,8 +1,22 @@
+# * Site
 staticDir: static
 layoutDir: templates
+ignoreFiles:
+  - README\.md$
+  - readme\.md$
+  - README\.org$
+  - readme\.org$
 
-hasCJKLanguage: true
+uglyurls: true
+baseURL: https://kisaragi-hiu.com
 
+enableGitInfo: true
+
+title: Kisaragi Hiu
+author:
+  name: Kisaragi Hiu
+
+# * Content
 # Let's say it's 2021-05-25T00:30:00+0900 right now, and I have a new
 # page dated 2021-05-25. Hugo will consider that moment as being in
 # the future; it seems to assume the date to be UTC
@@ -11,12 +25,6 @@ hasCJKLanguage: true
 #
 # If I don't want something to show, I'll mark it as Draft myself.
 buildFuture: true
-
-ignoreFiles:
-  - README\.md$
-  - readme\.md$
-  - README\.org$
-  - readme\.org$
 
 markup:
   goldmark:
@@ -28,10 +36,6 @@ markup:
 # We need this to use CSS to style syntax highlighting
 pygmentsUseClasses: true
 
-uglyurls: true
-
-baseURL: https://kisaragi-hiu.com
-
 frontmatter:
   # publishDate is used to determine if a page is from the future.
   # date is used for default sorting.
@@ -42,14 +46,28 @@ frontmatter:
   lastmod: ["updated"]
   expiryDate: ["expiryDate"]
 
-enableGitInfo: true
-
 taxonomies:
   series: series
   tag: tags
   language: language
   archive: archive
 
-title: Kisaragi Hiu
-author:
-  name: Kisaragi Hiu
+# * Languages
+hasCJKLanguage: true
+defaultContentLanguage: en
+languages:
+  en:
+    contentDir: content
+    weight: 1
+  # zh:
+  #   contentDir: zh
+  #   weight: 2
+  # ja:
+  #   contentDir: ja
+  #   weight: 3
+
+# * Local Variables
+# Local Variables:
+# eval: (outline-minor-mode)
+# outline-regexp: "# [*\f]+"
+# End:
