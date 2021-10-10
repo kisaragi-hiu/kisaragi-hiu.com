@@ -1,8 +1,7 @@
 #+title: Switching to Hugo
 #+created: 2021-03-20T00:53:55+0900
-#+tags[]: hugo pollen
+#+tags[]: hugo pollen meta
 #+language: en
-#+series: Meta
 
 So I finally switched to [[https://gohugo.io/][Hugo]] because trying to iterate design elements in Pollen is just too slow. Pollen is good for defining flexible markup, but that’s not what I want for a blog.
 

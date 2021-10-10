@@ -1,8 +1,7 @@
 #+title: Setting up this site with Pollen and Frog
 #+created: 2017-11-14T10:56:43+0900
-#+series: Meta
 #+language: en
-#+tags[]: frog pollen markdown
+#+tags[]: frog pollen markdown meta
 #+toc: #t
 
 /Update 2020-10-31T03:06:28+0900: this is now outdated. See [[file:2020-10-31-current-infrastructure.org][2020-10-31 Current infrastructure]] for further changes, including the move away from Frog and the introduction of ox-pollen./

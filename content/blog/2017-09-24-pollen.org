@@ -1,7 +1,6 @@
 #+title: Moving the blog, again
 #+created: 2017-09-24T18:20:00+0800
-#+series: Meta
-#+tags[]: pollen
+#+tags[]: pollen meta
 #+language: en
 
 So, I restructured this blog again, this time using [[https://mstill.io][mstill.io]] as a template, because I don't know how to use bootstrap. And I want to use Pollen markup.
