@@ -29,6 +29,21 @@
       {{ end }}
     </nav>
     <!-- prettier-ignore -->
+    {{ $covers_featured := (slice) }}
+    {{ range (where .Site.RegularPages "Section" "covers") }}
+      {{ if (eq (.Date.Format "2006-01") (now.Format "2006-01")) }}
+        {{ $covers_featured = $covers_featured | append .}}
+      {{ end }}
+    {{ end }}
+    {{ with $covers_featured }}
+    <h1>
+      <a class="text-primary" href="/covers.html"
+        >Covers ({{now.Format "2006-01"}})</a
+      >
+    </h1>
+    {{ partial "covers" . }}
+    {{end}}
+    <!-- prettier-ignore -->
     {{ $illust_featured := (slice) }}
     {{ range (where .Site.RegularPages "Section" "illust") }}
       {{ if (eq (.Date.Format "2006-01") (now.Format "2006-01")) }}

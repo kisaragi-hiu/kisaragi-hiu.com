@@ -1,4 +1,4 @@
-<ul class="index flex flex-wrap gap-4">
+<ul class="list-none p-0 index flex flex-wrap gap-4">
   {{ range . }}
   <li
     class="
@@ -12,7 +12,7 @@
       duration-100
     "
   >
-    <a class="h-full flex flex-col hover:no-underline" href="{{.Permalink}}">
+    <a class="text-primary h-full flex flex-col hover:no-underline" href="{{.Permalink}}">
       <!-- Top part: the image -->
       <div class="w-full h-24">
         <img
