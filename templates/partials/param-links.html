@@ -1,37 +1,49 @@
 <dl class="meta">
   <!-- prettier-ignore -->
   {{ with (.Param "homepage") }}
-  <dt>Homepage</dt>
-  <dd><a class="out" href="{{.}}">{{.}}</a></dd>
+  <div>
+    <dt>Homepage</dt>
+    <dd><a class="out" href="{{.}}">{{.}}</a></dd>
+  </div>
   {{ end }}
 
   <!-- prettier-ignore -->
   {{ with (.Param "pixiv") }}
-  <dt>Pixiv</dt>
-  <dd><a class="out" href="{{.}}">Pixiv</a></dd>
+  <div>
+    <dt>Pixiv</dt>
+    <dd><a class="out" href="{{.}}">Pixiv</a></dd>
+  </div>
   {{ end }}
 
   <!-- prettier-ignore -->
   {{ with (.Param "wikipedia") }}
-  <dt>Wikipedia</dt>
-  <dd><a class="out" href="{{.}}">Wikipedia</a></dd>
+  <div>
+    <dt>Wikipedia</dt>
+    <dd><a class="out" href="{{.}}">Wikipedia</a></dd>
+  </div>
   {{ end }}
 
   <!-- prettier-ignore -->
   {{ with (.Param "gitlab") }}
-  <dt>Gitlab</dt>
-  <dd><a class="out" href="{{.}}">Gitlab</a></dd>
+  <div>
+    <dt>Gitlab</dt>
+    <dd><a class="out" href="{{.}}">Gitlab</a></dd>
+  </div>
   {{ end }}
 
   <!-- prettier-ignore -->
   {{ with (.Param "github") }}
-  <dt>Github</dt>
-  <dd><a class="out" href="{{.}}">Github</a></dd>
+  <div>
+    <dt>Github</dt>
+    <dd><a class="out" href="{{.}}">Github</a></dd>
+  </div>
   {{ end }}
 
   <!-- prettier-ignore -->
   {{ with (.Param "sourcehut") }}
-  <dt>Sourcehut</dt>
-  <dd><a class="out" href="{{.}}">Sourcehut</a></dd>
+  <div>
+    <dt>Sourcehut</dt>
+    <dd><a class="out" href="{{.}}">Sourcehut</a></dd>
+  </div>
   {{ end }}
 </dl>
