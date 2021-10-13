@@ -27,11 +27,13 @@
 <!-- prettier-ignore -->
 {{ partial "param-links" . }}
 <dl class="meta">
-  <dt>{{ partial "func-translate" (dict "id" "Published" "page" .) }}</dt>
-  <dd>{{ partial "date" .Params.date }}</dd>
+  <div>
+    <dt>{{ partial "func-translate" (dict "id" "Published" "page" .) }}</dt>
+    <dd>{{ partial "date" .Params.date }}</dd>
+  </div>
 </dl>
 
-<!-- prettier-ignore<!--  --> -->
+<!-- prettier-ignore -->
 {{ if .Params.toc }}
 {{ partial "toc" . }}
 {{ end }}
