@@ -1,0 +1,7 @@
+#+title: {{ replace .Name "-" " " | title }}
+#+created: {{ time.Format .Date "2006-01-02" }}
+#+origauthor:
+#+original:
+#+voice:
+#+youtube:
+#+niconico:

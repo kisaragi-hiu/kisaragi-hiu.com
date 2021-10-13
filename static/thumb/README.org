@@ -10,7 +10,7 @@ youtube-dl <url> --write-thumbnail --skip-download
 
 Downloading thumbnails for all cover entries with a youtube field:
 
-#+begin_src emacs-lisp
+#+begin_src emacs-lisp :results none
 (dolist-with-progress-reporter (file (directory-files
                                       (f-join (projectile-project-root)
                                               "content" "covers")
@@ -19,14 +19,15 @@ Downloading thumbnails for all cover entries with a youtube field:
   ;; `k/with-file' abstracts away the boilerplate around opening a file in Emacs
   (k/with-file file nil
     (when-let (youtube-id (cadar (org-collect-keywords '("youtube"))))
-      (shell-command-to-string
-       (format "youtube-dl '%s' --write-thumbnail --skip-download -o '%s'"
-               youtube-id youtube-id)))))
+      (unless (f-exists? (concat youtube-id ".jpg"))
+        (shell-command-to-string
+         (format "youtube-dl '%s' --write-thumbnail --skip-download -o '%s'"
+                 youtube-id youtube-id))))))
 #+end_src
 
 Convert all images into the right size:
 
-#+begin_src bash
+#+begin_src bash :results none
 parallel magick '{}' -resize 640 '{.}'.jpg ::: *.jpg *.webp
 rm *.webp
 #+end_src
