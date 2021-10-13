@@ -65,26 +65,27 @@
 }
 
 @layer components {
-  .type-path + h1 {
-    @apply mt-0;
+  .type-path {
+    @apply mt-4;
+    @apply text-sm;
+    a {
+      font-weight: 700;
+    }
+    & + h1 {
+      @apply mt-0;
+    }
   }
   .gist {
     @apply my-4;
   }
   .meta {
-    /* This ensures a layout like
-       dd1   dd2   dd3   dd4
-        dt1   dt2   dt3   dt4
-       Without having to change markup. */
+    /* Format like this:
+         dd1   dd2   dd3   dd4
+          dt1   dt2   dt3   dt4
+       Wrap each group in a <div>. This is specifically permitted in
+       its definition. */
     @apply my-4 text-sm w-max gap-x-4;
-    display: grid;
-    grid-template: 1fr 1fr / 1fr 1fr;
-    dt {
-      grid-row: 1/1;
-    }
-    dd {
-      grid-row: 2/2;
-    }
+    @apply flex;
     a {
       @apply text-accent-strong;
     }

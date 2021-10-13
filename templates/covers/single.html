@@ -1,27 +1,38 @@
 {{ define "title" }}
 {{ .Title }} ft. {{ .Params.voice }} - Covers - Kisaragi Hiu
 {{ end }}
-{{ define "main" }}
 
-<!-- prettier-ignore -->
-<header class="heading">
-  {{ partial "type-path" . }}
-  <h1 class="text-xl">{{ .Title }} ft. {{ .Params.voice }}</h1>
-  <!-- prettier-ignore -->
+{{ define "header" }}
+{{ partial "avatar" }}
+{{ partial "type-path" . }}
+{{ partial "heading" (printf "%s ft. %s" .Title .Params.voice)}}
+<hr>
+<dl class="meta">
   {{ with .Date }}
-    {{ partial "date" . }}
+    <div>
+        <dt>Published</dt>
+        <dd>{{ partial "date" . }}</dd>
+    </div>
   {{ end }}
   {{ with .GetTerms "tags" }}
-    {{ partial "tags-block" . }}
+    <div>
+        <dt>Tags</dt>
+        <dd>{{ partial "tags-block" . }}</dd>
+    </div>
   {{ end }}
-</header>
+    <div>
+        <dt>Original</dt>
+        <dd><a href="{{ .Params.original }}">{{ .Params.origauthor }}</a></dd>
+    </div>
+</dl>
+{{ end }}
+
+{{ define "main" }}
 
 <!-- prettier-ignore -->
 {{ if .Params.toc }}
 {{ partial "toc" . }}
 {{ end }}
-
-<p>Original: {{ .Params.origauthor }}</p>
 
 <div class="flex gap-x-4">
   <!-- prettier-ignore -->
