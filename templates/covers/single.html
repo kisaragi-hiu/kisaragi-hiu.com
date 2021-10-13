@@ -4,8 +4,7 @@
 
 {{ define "header" }}
 {{ partial "avatar" }}
-{{ partial "type-path" . }}
-{{ partial "heading" (printf "%s ft. %s" .Title .Params.voice)}}
+{{ partial "heading" (dict "title" (printf "%s ft. %s" .Title .Params.voice) "enableTypePath" true "ctx" .)}}
 <hr>
 <dl class="meta">
   {{ with .Date }}

@@ -206,6 +206,16 @@ Return a page type suitable for use as =og:type=.
 * Partials
 Partials are like shortcodes, but for use in other templates.
 
+** heading (:title :ctx :enableTypePath)
+
+#+begin_src go-text-template
+{{ partial "heading" (dict "title" "Hello" "enableTypePath" true "ctx" .)}}
+#+end_src
+
+- title :: The text that goes into the heading
+- enableTypePath :: Show an eg. =Covers /= text for a covers page
+- ctx :: Needed for the type path, pass the parent page into this argument
+
 ** melpa-badge
 
 like the melpa-badge shortcode, but as a partial.

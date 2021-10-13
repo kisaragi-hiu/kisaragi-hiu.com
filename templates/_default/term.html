@@ -7,7 +7,7 @@
 {{ end }}
 
 {{ partial "avatar" .Title }}
-{{ partial "heading" .Title }}
+{{ partial "heading" (dict "title" .Title) }}
 <hr />
 <dl class="meta">
   {{ with (partial "func-page-term" (dict "page" . "taxonomy" "tags")) }}

@@ -1,7 +1,7 @@
 {{ define "header" }}
 <!-- prettier-ignore -->
 {{ partial "avatar" .Title }}
-{{ partial "heading" .Title }}
+{{ partial "heading" (dict "title" .Title) }}
 <!-- prettier-ignore -->
 {{ with .Param "subtitle" }}
 <h2 class="mt-0 mb-8">{{.}}</h2>

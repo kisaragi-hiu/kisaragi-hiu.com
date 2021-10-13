@@ -1,7 +1,7 @@
 {{ define "main" }}
 <div class="side-layout">
     <main>
-        {{ partial "heading" .Title }}
+        {{ partial "heading" (dict "title" .Title) }}
         <hr>
         {{ partial "content" . }}
     </main>

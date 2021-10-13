@@ -1,1 +1,4 @@
-<h1 class="text-xl mt-6 mb-2 font-normal">{{ . }}</h1>
+{{ if .enableTypePath }}
+{{ partial "type-path" .ctx }}
+{{ end }}
+<h1 class="text-xl mt-6 mb-2 font-normal">{{ .title }}</h1>
