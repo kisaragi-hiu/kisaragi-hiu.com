@@ -1,4 +1,10 @@
+{{ $h1_top := "mt-6"}}
 {{ if .enableTypePath }}
-{{ partial "type-path" .ctx }}
+{{ $h1_top = "mt-0" }}
+{{ with .ctx }}
+<div class="mt-4 text-sm type-path">
+  <a class="font-bold" href="../{{.Type}}.html">{{.Type | humanize}}</a> /
+</div>
 {{ end }}
-<h1 class="text-xl mt-6 mb-2 font-normal">{{ .title }}</h1>
+{{ end }}
+<h1 class="text-xl {{ $h1_top }} mb-2 font-normal">{{ .title }}</h1>

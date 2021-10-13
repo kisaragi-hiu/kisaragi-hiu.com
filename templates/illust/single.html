@@ -25,10 +25,13 @@
 </figure>
 <div>
 <!-- prettier-ignore -->
-{{ partial "param-links" . }}
+
+{{ with .Params.pixiv }}
+  <a href="{{.}}" class="text-sm out text-accent-strong">{{.}}</a>
+{{ end }}
 <dl class="meta">
   <div>
-    <dt>{{ partial "func-translate" (dict "id" "Published" "page" .) }}</dt>
+    <dt>Published</dt>
     <dd>{{ partial "date" .Params.date }}</dd>
   </div>
 </dl>

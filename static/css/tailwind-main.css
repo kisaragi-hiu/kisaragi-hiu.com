@@ -66,11 +66,6 @@
 
 @layer components {
   .type-path {
-    @apply mt-4;
-    @apply text-sm;
-    a {
-      font-weight: 700;
-    }
     & + h1 {
       @apply mt-0;
     }
