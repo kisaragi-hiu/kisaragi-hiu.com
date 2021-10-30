@@ -6,9 +6,6 @@
 @tailwind utilities;
 
 @layer base {
-  html {
-    font-size: 16pt;
-  }
   body {
     width: min(90ch, 90%);
     @apply mx-auto mt-[5%];
