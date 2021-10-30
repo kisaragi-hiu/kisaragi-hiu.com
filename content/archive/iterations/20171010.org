@@ -1,7 +1,7 @@
 #+title: Iterations of Learning
 #+archive: iterations
 #+created: 2017-10-10
-#+series: Opinions
+#+tags[]: Opinions
 #+language: en
 
 Learning is based on iterations. Do something, then repeat, then repeat until you're familiar with it, is essentially the process; people call this "practice".

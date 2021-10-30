@@ -1,7 +1,7 @@
 #+title: Should East Asian names be flipped when being translated to English?
 #+created: 2017-11-26T17:55:59+0800
 #+updated: 2021-06-13T03:20:54+0900
-#+series: Opinions
+#+tags[]: Opinions
 #+language: en
 
 In East Asian names, the first part of a person’s name is their family name. This is unlike many other languages, which put family name last (to the point where “last name” is sometimes synonymous with “family name”).
