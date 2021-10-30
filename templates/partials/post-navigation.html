@@ -4,14 +4,18 @@
 <!-- (--filter (equal (section it) (section this-page)) (all-pages)) -->
 {{ $same_section := where .Site.Pages "Section" .Section }}
 <!-- (--filter (equal (kind it) "page") (all-pages)) -->
-{{ $singles := where .Site.Pages "Kind" "page" }}
-{{ $pages := (intersect $singles $same_section) }}
+{{ $singles := where .Site.Pages "Kind" "page" }} {{ $pages := (intersect
+$singles $same_section) }}
 
-<ul class="flex flex-col justify-between">
-  {{ with $pages.Next . }}
-  <li>Newer: <a href="{{.Permalink}}">{{.Title}}</a></li>
-  {{ end }}
-  {{ with $pages.Prev . }}
-  <li>Older: <a href="{{.Permalink}}">{{.Title}}</a></li>
-  {{ end }}
-</ul>
+<div class="flex my-4 gap-x-12 justify-between w-full">
+  <div class="w-1/2">
+    {{ with $pages.Next . }} {{ partial "index-item" . }} {{ else }}
+    <a href="/">◁ Home</a>
+    {{ end }}
+  </div>
+  <div class="w-1/2 text-right">
+    {{ with $pages.Prev . }} {{ partial "index-item" . }} {{ else }}
+    <span class="opacity-40">▷</span>
+    {{ end }}
+  </div>
+</div>
