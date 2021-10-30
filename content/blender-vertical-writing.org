@@ -6,22 +6,22 @@
 
 Blender doesn't support vertical writing. So what should I do when I still want to use it?
 
-/2021-07-08:/ I've now published [[#0238c6f6-6ed5-41b6-8b23-737ef4eabca9][the method below that emulates vertical writing with newlines]] as an addon [[https://blendermarket.com/products/cjk-pseudo-vertical-writing][on Blender Market]]. [[file:projects/blender-pseudo-vertical-text.org][Here's its page on my website]].
+/2021-07-08:/ I've now published [[#0238c6f6-6ed5-41b6-8b23-737ef4eabca9][option 3, emulating vertical writing with newlines]], as an addon [[https://blendermarket.com/products/cjk-pseudo-vertical-writing][on Blender Market]]. [[file:projects/blender-pseudo-vertical-text.org][Here's its page on this site]].
 
-* Convert Text to Mesh or Curve then rotate it myself
+* Option 1: Convert Text to Mesh or Curve then rotate it myself
 
 You can do anything to the polygons and vertices after converting to a Mesh or a Curve.
 
 This is not a solution: you have to do it for /every single character/, and if you're doing it for eg. lyrics, you're going to spend all your time simply to turn the text to vertical.
 
 
-* Type the text in something else with support for vertical writing, save as an image, then import into Blender
+* Option 2: Type the text in something else with support for vertical writing, save as an image, then import into Blender
 
 GIMP and Inkscape actually support real vertical writing. You can type your text there, export, then bring it into Blender.
 
 (Krita doesn't support vertical writing 🙁)
 
-* Emulating vertical writing with newlines
+* Option 3: Emulating vertical writing with newlines
 :PROPERTIES:
 :CUSTOM_ID:       0238c6f6-6ed5-41b6-8b23-737ef4eabca9
 :END:
@@ -54,6 +54,6 @@ bpy.app.handlers.frame_change_pre.append(add_newlines)
 
 I hope to make it an addon, so that a user can do this conversion to pseudo vertical text in one click, and also convert it back in another.
 
-* Pray that Blender actually gets better at typesetting and build support for vertical writing into itself
+* Option 4: Pray that Blender actually gets better at typesetting and build support for vertical writing into itself
 
 I hope Blender becomes a tool that can do all of motion graphics, but right now I'd imagine the lack of vertical writing support is a deal breaker for many in East Asia. I don't know how this could be done either, so I can only hope somebody implements it.
