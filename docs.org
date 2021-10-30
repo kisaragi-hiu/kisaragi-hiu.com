@@ -206,6 +206,19 @@ Return a page type suitable for use as =og:type=.
 * Partials
 Partials are like shortcodes, but for use in other templates.
 
+** all-terms (:taxonomy :title :pages :partial)
+
+#+begin_src go-text-template
+{{ partial
+   "all-terms"
+   (dict "taxonomy" "tags"
+         "title" "Tags"
+         "pages" .Site.AllPages
+         "partial" "tag") }}
+#+end_src
+
+The example displays a list of tags that are present in =.Site.AllPages=. Each tag is passed to the =tag= partial.
+
 ** heading (:title :ctx :enableTypePath)
 
 #+begin_src go-text-template

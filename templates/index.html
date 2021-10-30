@@ -41,8 +41,7 @@
         >Covers ({{now.Format "2006-01"}})</a
       >
     </h1>
-    {{ partial "covers" . }}
-    {{end}}
+    {{ partial "covers" . }} {{end}}
     <!-- prettier-ignore -->
     {{ $illust_featured := (slice) }}
     {{ range (where .Site.RegularPages "Section" "illust") }}
@@ -62,34 +61,19 @@
       {{ end }}
     </ul>
     {{end}}
-    <!-- Use func-page-term(., tags) instead of .GetTerms(tags) or .Site.Taxonomies.tags.
-         Because those do not list tags that are only declared in taxonomy term pages.
-
-         "Tagging tags" isn't a well-supported thing in Hugo (yet?).
-    -->
     <!-- prettier-ignore -->
-    {{ $alltags := (slice) }}
-    {{ range .Site.AllPages }}
-    {{ $alltags = (union $alltags
-                         (partial "func-page-term"
-                                  (dict "page" . "taxonomy" "series")))}}
-    {{ end }}
-
-    <!-- Sort them -->
-    {{ $alltags = (sort $alltags "Title") }}
-
-    <!-- Actually display them -->
-    {{ with $alltags }}
-    <h1>Series</h1>
-    <ul
-      class="list-none pl-0 flex flex-wrap gap-x-2 gap-y-1 leading-loose my-4"
-    >
-      {{ range . }}
-      <li>{{ partial "series" . }}</li>
-      {{ end }}
-    </ul>
-    <!-- prettier-ignore -->
-    {{ end }}
+    {{ partial
+       "all-terms"
+       (dict "taxonomy" "series"
+             "title" "Series"
+             "pages" .Site.AllPages
+             "partial" "series") }}
+    {{ partial
+       "all-terms"
+       (dict "taxonomy" "tags"
+             "title" "Tags"
+             "pages" .Site.AllPages
+             "partial" "tag") }}
   </aside>
 </div>
 {{ end }}

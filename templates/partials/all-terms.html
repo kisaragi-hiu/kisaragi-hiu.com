@@ -1,0 +1,27 @@
+<!-- Use func-page-term(., tags) instead of .GetTerms(tags) or .Site.Taxonomies.tags.
+     Because those do not list tags that are only declared in taxonomy term pages.
+
+     "Tagging tags" isn't a well-supported thing in Hugo (yet?).
+    -->
+
+<!-- prettier-ignore -->
+{{ $lst := (slice) }}
+{{ range .pages }}
+{{ $lst = (union $lst
+                 (partial "func-page-term"
+                          (dict "page" . "taxonomy" $.taxonomy)))}}
+{{ end }}
+
+<!-- Sort them -->
+{{ $lst = (sort $lst "Title") }}
+
+<!-- Actually display them -->
+{{ with $lst }}
+<h1>{{ $.title }}</h1>
+<ul class="list-none pl-0 flex flex-wrap gap-x-2 gap-y-1 leading-loose my-4">
+  {{ range . }}
+  <li>{{ partial $.partial . }}</li>
+  {{ end }}
+</ul>
+<!-- prettier-ignore -->
+{{ end }}
