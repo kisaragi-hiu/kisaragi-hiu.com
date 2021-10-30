@@ -15,7 +15,7 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     fontFamily: {
-      sans: ["Inter", ...cjkFallback, "sans-serif"],
+      sans: ["Fira Sans", ...cjkFallback, "sans-serif"],
       // serif: ["Equity"],
       mono: [
         "Inconsolata",
