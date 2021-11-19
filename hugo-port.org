@@ -240,7 +240,7 @@ Hugo shortcode: gist (user gist-id [file])
 *** DONE toc
 *** DONE tweet
 #+begin_src hugo
-{{< tweet 1116410591747305472 >}}
+{{< tweet user="flyin1501" id="1116410591747305472" >}}
 #+end_src
 *** CANCELLED update
 :LOGBOOK:

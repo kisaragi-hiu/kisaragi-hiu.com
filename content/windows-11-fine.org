@@ -18,20 +18,20 @@ I upgraded my main PC's Windows install to Windows 11. It's honestly fine, I jus
 
 - This translation is nonsense. (“Allow microphone access to location data”)
 
-  {{< tweet 1454309230626758658 >}}
+  {{< tweet user="flyin1501" id="1454309230626758658" >}}
 
 - I can tell the original text is “You're x% there”, but translating that into *「あなたはそこにx%です」 is just… broken.* Does Microsoft use Bing Translate to fill in untranslated strings? That could arguably be better than falling back to English, but surely /Microsoft/ has the ability to hire translators?
 
-  {{< tweet 1454408068578435081 >}}
+  {{< tweet user="flyin1501" id="1454408068578435081" >}}
 
 - The system tray (now called the /Taskbar Edge Icons/) still uses Windows 10-style hover background, where the background extends to the edge of the taskbar.
 
 - They seem to have forgotten to update the visual style of this menu.
 
-  {{< tweet 1454310451030884359 >}}
+  {{< tweet user="flyin1501" id="1454310451030884359" >}}
 
 - MS Gothic is used by default on the taskbar. Note how it is a bitmap font at this size — this is why MS Gothic (along with PMingLiU, SimSun, and the Korean equivalent) should be banished. Keep them for compatibility, but please make sure it's not used in a component that's newly released in 2021.
 
-  {{< tweet 1454311191400960011 >}}
+  {{< tweet user="flyin1501" id="1454311191400960011" >}}
 
 - Can the /All apps/ button in the start menu be made a little bit more prominent? I understand it works just fine on a tablet, but that button is going to be used /so much more/ often than anything else.
