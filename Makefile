@@ -8,7 +8,7 @@ dev-hugo:
 	hugo server
 
 dev-tailwind:
-	npx tailwindcss --postcss -i static/css/tailwind-main.css -o static/css/built.css --watch
+	npx tailwindcss --postcss -i css/src.css -o static/css/built.css --watch
 
 js:
 	mkdir -p static/js/
@@ -39,5 +39,5 @@ public: static/css/built.css js
 	hugo --minify
 	@touch public
 
-static/css/built.css: static/css/tailwind-main.css
-	npx tailwindcss --postcss -i static/css/tailwind-main.css -o static/css/built.css
+static/css/built.css: css/src.css
+	npx tailwindcss --postcss -i css/src.css -o static/css/built.css
