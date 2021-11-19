@@ -14,6 +14,7 @@
 
 # This must come before the /blog -> / redirect
 # Blog -> content note migration
+/blog/2018-07-27-utau-tip-labels /utau-labels
 /blog/2017-09-12-termux-and-linux-deploy /termux-and-linux-deploy
 /blog/2017-06-28-redire /redire-cover
 /blog/2017-03-19-new-website /new-website
