@@ -18,3 +18,4 @@ tags/*
 node_modules
 *.map
 .log
+.hugo_build.lock
