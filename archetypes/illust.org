@@ -1,0 +1,4 @@
+#+title: {{ .Name }}
+#+created: {{ time.Format .Date "2006-01-02" }}
+#+pixiv:
+#+tags[]:
