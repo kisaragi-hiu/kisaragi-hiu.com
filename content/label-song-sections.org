@@ -1,0 +1,17 @@
+#+title: How I label song sections
+#+draft: true
+#+created: 2021-11-20T06:00:44+0900
+
+A typical pop song usually goes like:
+
+A1, B1, R1, A2, B2, R2, Bridge, R3
+
+- A: verse, Aメロ, 主歌
+- B: Bメロ, buildup before refrains
+- R: refrain, サビ, 副歌
+- Bridge: the part connecting the last two refrains
+
+[[file:utau-labels.org][I used to use “V1” to refer to the first verse]], and “V1-R1” to refer to the B part between the first verse and the first refrain. This has always felt clumsy, which is why I'm changing it again.
+
+A1 B1 R1 Bridge
+“Intro”, “Outro”
