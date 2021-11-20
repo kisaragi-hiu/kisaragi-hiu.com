@@ -1,0 +1,48 @@
+#+title: Why I use WirePlumber
+#+subtitle: Perspective from a user with zero understanding of why it's not part of PipeWire
+#+created: 2021-11-21T02:35:44+0900
+#+tags[]: Linux
+
+Note: PipeWire still changes. This seems to be true as of PipeWire 0.3.40 and WirePlumber 0.4.5. Commands are most likely not going to be relevant after a while.
+
+There are two “session managers” that can be used with PipeWire, =pipewire-media-session= and WirePlumber. The two are not supposed to have noticeable differences, but WirePlumber seems to work better for me.
+
+* Context
+
+I use PipeWire 0.3.40 exclusively on my Arch Linux system, replacing both PulseAudio and JACK. These packages are installed:
+
+- =pipewire= & =lib32-pipewire=
+- =libpipewire02= (I'm not sure this is needed)
+- =pipewire-alsa=
+- =pipewire-jack= & =lib32-pipewire-jack=
+- =pipewire-pulse=
+- =gst-plugin-pipewire=
+- =pipewire-jack-dropin= (from AUR, for zero-config replacement of JACK)
+
+* These issues went away when I switched to WirePlumber
+
+- UTAU would sometimes not be able to play audio if Ardour (as a JACK client) is open. If I restart PipeWire (with =systemctl restart --user pipewire pipewire-pulse=), currently open instances can start playing audio, but if I close it and open a new instance I have to go through the same dance again.
+
+  UTAU is probably just an ordinary Windows app trying to play audio through Wine. My Wine config for UTAU uses the PulseAudio backend, so it's connecting to PipeWire as a PulseAudio client.
+
+  This doesn't happen when I use WirePlumber.
+
+- When I remove my headphone and plug another one in, it doesn't detect the new device until I manually restart PipeWire (again, with =systemctl restart --user pipewire pipewire-pulse=).
+
+  With WirePlumber, it seems to continue to output to the device even when my headphone is removed. This results in a better experience where I can plug another headphone in and have it just work.
+* How I switched from =pipewire-media-session= to WirePlumber
+
+#+begin_src bash
+sudo pacman -S wireplumber
+#+end_src
+
+Accept the prompt from Pacman to replace =pipewire-media-session=.
+
+Then restart PipeWire:
+
+#+begin_src bash
+systemctl --user daemon-reload
+systemctl --user restart pipewire
+#+end_src
+
+I don't think you actually have to restart both =pipewire.service= and =pipewire-pulse.service= as I did in the previous section.
