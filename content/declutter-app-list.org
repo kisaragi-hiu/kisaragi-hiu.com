@@ -1,0 +1,44 @@
+#+title: Making the Multimedia category in my Linux app menu usable again
+#+created: 2021-12-07T19:32:23+0900
+#+tags[]: linux
+
+=lsp-plugins= and =x42-plugins= both install a launcher shortcut for /every single plugin they provide/, rendering the Multimedia category in the desktop menu completely useless. In desktops where apps aren't split into categories (GNOME), the entire app list is rendered useless by pages upon pages of LSP plugins with the same exact icon.
+
+Nobody launches LV2 plugins from the app list — those who do likely knows how to use the command line. I understand that some probably do like being able to use them without a DAW, and it would indeed be nice to be able to launch them from the app list, but that's only *if the app list actually allows them to be hidden when I don't need them*. Right now, as app menus either don't support application-provided folders or even categories, packages really shouldn't be providing over 100 launcher shortcuts out of the box.
+
+With the rant out of the way, here's a workaround for this for systems using [[https://wiki.archlinux.org/title/Pacman#Hooks][Pacman hooks]]:
+
+#+begin_src ini
+[Trigger]
+Type = Package
+Operation = Install
+Operation = Upgrade
+Target = lsp-plugins
+
+[Action]
+Description = Decluttering shortcuts from lsp-plugins...
+When = PostTransaction
+Exec = /bin/bash -c 'rm /usr/share/applications/in.lsp_plug.*.desktop'
+#+end_src
+
+#+begin_src ini
+[Trigger]
+Type = Package
+Operation = Install
+Operation = Upgrade
+Target = x42-plugins
+
+[Action]
+Description = Decluttering shortcuts from x42-plugins...
+When = PostTransaction
+Exec = /bin/bash -c 'rm /usr/share/applications/com.x42_plugins.*.desktop'
+#+end_src
+
+Put these in =/etc/pacman.d/hooks= (as that's where user configuration should go; =/usr= should be fully managed by the package manager if possible). Now the useless shortcuts will be removed even after they are updated.
+
+Then, remove those files now:
+
+#+begin_src bash
+sudo rm /usr/share/applications/in.lsp_plug.*.desktop
+sudo rm /usr/share/applications/com.x42_plugins.*.desktop
+#+end_src
