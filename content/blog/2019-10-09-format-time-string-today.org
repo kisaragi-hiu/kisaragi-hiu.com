@@ -1,6 +1,6 @@
 #+title: Locales, Org timestamps, and format-time-string
 #+created: 2019-10-09T22:39:21+0900
-#+tags[]: emacs troubleshooting
+#+tags[]: emacs-lisp troubleshooting
 #+language: en
 #+toc: #t
 
