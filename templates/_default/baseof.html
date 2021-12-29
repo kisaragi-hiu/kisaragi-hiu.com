@@ -76,12 +76,7 @@
   <body>
     <!-- Header -->
     <header>
-      {{ block "header" . }}
-      <div class="flex gap-x-2 items-center">
-        {{ partial "avatar" .Title }}
-        <h1 class="m-0 h-full text-xl">Kisaragi Hiu</h1>
-      </div>
-      {{ end }}
+      {{ block "header" . }} {{ partial "avatar" .Title }} {{ end }}
     </header>
 
     <!-- Contents -->
