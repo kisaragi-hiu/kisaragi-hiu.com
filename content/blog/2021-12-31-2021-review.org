@@ -2,11 +2,18 @@
 #+created: 2021-12-31
 #+draft: true
 
-<Review>
+I'm still not sure what I'm doing, and I continue to gain immense interest for stuff before losing interest in like a week or so. No meaningful progress have been made on drawing and music composition, two things that I occasionally feel that I /really/ want to learn before backing down.
+
+I did play on stage as part of the NKUST first campus wind band club though.
+
+For something a little bit more personal: I started hormone replacement therapy this April. That's a major concern off my chest, I guess.
+
+I started using Org-roam last year, but this year I decided to fork Org-roam v1 when Org-roam v2 was released. This was mainly because I didn't feel like trying to add an ID to everything. Because I don't know how to name things, I'm just calling it [[https://github.com/kisaragi-hiu/kisaragi-notes][kisaragi-notes]].
 
 * This site
 
 - Moving to Hugo
+- And Tailwind
 - Old versions of articles
 - Illust list
 - Covers list
@@ -27,4 +34,4 @@
 
 - [[file:/projects/aqi-tw.org][aqi.tw]]
 - [[file:/projects/blender-pseudo-vertical-text.org][Blender pseudo vertical text]]
-- nkust-dcc-site (https://nkust-dcc.github.io/)
+- nkust-dcc-site ([[https://nkust-dcc.github.io/]])
