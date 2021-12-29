@@ -9,7 +9,7 @@
   html {
     font-size: 20px;
   }
-  body {
+  .outer {
     width: min(100ch, 90%);
     @apply mx-auto mt-[5%];
   }

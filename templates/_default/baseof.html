@@ -74,18 +74,20 @@
     />
   </head>
   <body>
-    <!-- Header -->
-    <header>
-      {{ block "header" . }} {{ partial "avatar" .Title }} {{ end }}
-    </header>
+    <div class="outer">
+      <!-- Header -->
+      <header>
+        {{ block "header" . }} {{ partial "avatar" .Title }} {{ end }}
+      </header>
 
-    <!-- Contents -->
-    {{ block "main" . }} {{ end }}
+      <!-- Contents -->
+      {{ block "main" . }} {{ end }}
 
-    <!-- Footer -->
-    <footer>
-      {{ block "footer" . }} {{ partial "default-footer" . }} {{ end }}
-    </footer>
+      <!-- Footer -->
+      <footer>
+        {{ block "footer" . }} {{ partial "default-footer" . }} {{ end }}
+      </footer>
+    </div>
     <script src="/js/medium-zoom.min.js"></script>
     <script>
       // This seems to be robust enough without me having to make every
