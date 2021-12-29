@@ -36,14 +36,7 @@
       line-height: 1.6;
     }
     a {
-      @apply text-accent-strong;
-      opacity: 0.9;
-      transition: opacity 100ms ease;
-      text-decoration: none;
-      &:hover {
-        opacity: 1;
-        text-decoration: underline;
-      }
+      @apply link;
     }
     figure {
       @apply max-w-max max-h-96;
@@ -64,6 +57,16 @@
 }
 
 @layer components {
+  .link {
+    @apply text-accent-strong;
+    opacity: 0.9;
+    transition: opacity 100ms ease;
+    text-decoration: none;
+    &:hover {
+      opacity: 1;
+      text-decoration: underline;
+    }
+  }
   .type-path {
     & + h1 {
       @apply mt-0;
