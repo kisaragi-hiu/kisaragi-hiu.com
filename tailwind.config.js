@@ -7,12 +7,7 @@ let cjkFallback = [
 ];
 
 module.exports = {
-  purge: {
-    content: ["./templates/**/*.html"],
-    options: { safeList: { deep: [/highlight$/] } },
-  },
-  mode: "jit",
-  darkMode: false, // or 'media' or 'class'
+  content: ["./templates/**/*.html"],
   theme: {
     fontFamily: {
       sans: ["Fira Sans", ...cjkFallback, "sans-serif"],
@@ -49,9 +44,6 @@ module.exports = {
         white: "0 0 0.5rem #ffffff",
       },
     },
-  },
-  variants: {
-    extend: {},
   },
   plugins: [],
 };
