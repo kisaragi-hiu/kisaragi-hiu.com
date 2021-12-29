@@ -1,6 +1,5 @@
-{{ define "main" }}
-{{ partial "heading" (dict "title" .Title) }}
-<hr>
+{{ define "main" }} {{ partial "heading" (dict "title" .Title) }}
+<hr />
 
 <!-- prettier-ignore -->
 {{ if .Params.toc }}
@@ -11,9 +10,9 @@
 {{ partial "content" . }}
 {{ else }}
 
-<root>
+<main class="mt-4">
+  <!-- prettier-ignore -->
   {{ partial "content" . }}
-  <h2>Projects</h2>
   {{ partial "projects" .Pages }}
-</root>
+</main>
 {{ end }} {{ end }}

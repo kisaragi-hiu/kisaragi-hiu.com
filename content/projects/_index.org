@@ -1,7 +1,1 @@
 #+title: Projects
-
-A list of my projects.
-
-*→ [[file:covers.org][UTAU Covers]]*
-
-*→ [[file:illust.org][Illustrations]]*

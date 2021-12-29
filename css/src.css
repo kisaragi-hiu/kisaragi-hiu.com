@@ -7,7 +7,7 @@
 
 @layer base {
   html {
-    font-size: 20px;
+    @apply md:text-[20px];
   }
   .outer {
     width: min(100ch, 90%);
@@ -101,7 +101,6 @@
     }
   }
   .tag {
-    @apply text-accent-strong;
     &::before {
       content: "#";
     }

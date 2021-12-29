@@ -9,13 +9,17 @@ $singles $same_section) }}
 
 <div class="flex my-4 gap-x-12 justify-between w-full">
   <div class="w-1/2">
-    {{ with $pages.Next . }} {{ partial "index-item" . }} {{ else }}
-    <a href="/">◁ Home</a>
+    {{ with $pages.Next . }}
+    <div class="flex items-center gap-x-2">
+      <span>◁</span>{{ partial "index-item" . }}
+    </div>
     {{ end }}
   </div>
   <div class="w-1/2 text-right">
-    {{ with $pages.Prev . }} {{ partial "index-item" . }} {{ else }}
-    <span class="opacity-40">▷</span>
+    {{ with $pages.Prev . }}
+    <div class="flex flex-row-reverse items-center gap-x-2">
+      <span>▷</span>{{ partial "index-item" . }}
+    </div>
     {{ end }}
   </div>
 </div>
