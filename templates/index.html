@@ -1,4 +1,8 @@
 {{ define "main" }}
+<img
+  class="blur -z-5 top-16 left-16 opacity-5 block fixed w-2/3"
+  src="/illust/2018-12-31.jpg"
+/>
 <div class="side-layout">
   <main>
     <div class="my-8"></div>
@@ -19,8 +23,7 @@
     <!-- <nav class="flex flex-wrap justify-start gap-3 my-2"> -->
     <nav class="flex flex-col">
       <!-- prettier-ignore -->
-      {{ range (slice (slice "/" "Blog")
-                      (slice "/covers.html" "Covers")
+      {{ range (slice (slice "/covers.html" "Covers")
                       (slice "/illust.html" "Illust")
                       (slice "/projects.html" "Projects")
                       (slice "/about.html" "About")
