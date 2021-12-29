@@ -1,3 +1,1 @@
 #+title: UTAU Covers
-
-See also: [[/tags/utau.html][#UTAU]]

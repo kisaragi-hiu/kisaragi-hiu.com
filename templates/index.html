@@ -13,7 +13,7 @@
     <div class="my-8"></div>
     {{ partial "content" . }}
     <hr class="my-8" />
-    <ul class="flex flex-col">
+    <ul class="flex flex-col gap-4">
       <!-- prettier-ignore -->
       {{ range (sort (union (where .Site.RegularPages "Section" "")
                             (where .Site.RegularPages "Section" "blog"))

@@ -57,6 +57,12 @@
 }
 
 @layer components {
+  /* Blog post, covers */
+  .item {
+    @apply hover:bg-accent-light;
+    @apply transition duration-100 ease-in-out;
+    @apply p-2 -m-2;
+  }
   .link {
     @apply text-accent-strong;
     opacity: 0.9;
@@ -116,7 +122,7 @@
     li {
       @apply p-0 list-none;
     }
-    .item {
+    .illust-item {
       transition: all 100ms ease-in-out;
       img:hover {
         box-shadow: 0 0 1rem rgba(0, 0, 0, 0.5);

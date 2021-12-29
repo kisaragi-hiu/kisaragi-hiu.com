@@ -1,6 +1,5 @@
-{{ define "main" }}
-{{ partial "heading" (dict "title" .Title) }}
-<hr>
+{{ define "main" }} {{ partial "heading" (dict "title" .Title) }}
+<hr />
 <!-- prettier-ignore -->
 {{ if .Params.toc }}
 {{ partial "toc" . }}
@@ -9,9 +8,9 @@
 {{ if .Params.hugo_nolist}}
 {{ partial "content" . }}
 {{ else }}
-<root>
+<main class="mt-4">
   <!-- prettier-ignore -->
   {{ partial "content" . }}
   {{ partial "covers" .Pages }}
-</root>
+</main>
 {{ end }} {{ end }}
