@@ -1,4 +1,4 @@
-#+title: Grammar Zela Halalelu (Day 2)
+#+title: Dreaming about the grammar (Day 2)
 #+created: 2017-12-06T23:23:00+0900
 #+series: Hanezeve Caradhina Language Construction
 #+language: en

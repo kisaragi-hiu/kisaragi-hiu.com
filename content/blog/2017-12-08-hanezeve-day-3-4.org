@@ -1,4 +1,4 @@
-#+title: Colwelelo Kalalila (Day 3, 4)
+#+title: Colwelelo Kalalila: Let's continue our journey (Day 3, 4)
 #+created: 2017-12-08T19:03:56+0900
 #+series: Hanezeve Caradhina Language Construction
 #+language: en

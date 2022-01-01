@@ -3,7 +3,7 @@
 
 Hanezeve Caradhina is a song in the OST of [[https://en.wikipedia.org/wiki/Made_in_Abyss][Made in Abyss]], composed by [[https://twitter.com/kevinpenkin][Kevin Penkin]] and sung by [[https://twitter.com/snare_saitou][斎藤洸 (Takeshi Saito)]].
 
-Its composer, Kevin Penkin, tweeted this when asked what the lyrics meant:
+Kevin Penkin, the composer, said this on what the lyrics meant:
 
 #+begin_quote
 It's not a real language, as we thought it would be better with this track to keep a certain amount of ambiguity in the vocals.
@@ -11,4 +11,4 @@ It's not a real language, as we thought it would be better with this track to ke
 — [[https://twitter.com/kevinpenkin/status/917331053513146368][@kevinpenkin, 2017-10-09]]
 #+end_quote
 
-I decided to construct a language for it and imagine some meanings out of it in 2017 nevertheless.
+Regardless, in 2017 I decided to go and try to construct a “language” out of it, imagining what it could perhaps plausibly mean.
