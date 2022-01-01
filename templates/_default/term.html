@@ -34,6 +34,21 @@
   {{ partial "content" . }}
 {{ else }}
 <root>
+
+  <!-- Pages -->
+  <!-- prettier-ignore -->
+  {{ with (sort (union (where .Pages "Section" "")
+                       (where .Pages "Section" "blog"))
+                "Date"
+                (or .Params.sort "desc")) }}
+  <ul class="mt-4 mb-8">
+    {{ range .}}
+    <li>{{ partial "index-item" . }}</li>
+    {{ end }}
+  </ul>
+  {{ end }}
+
+
   {{ partial "content" . }}
 
   <!-- Store "term" items under this taxonomy term.
@@ -87,22 +102,6 @@
   {{ range . }}
   {{ partial "illust-item" . }}
   {{ end }}
-  {{ end }}
-
-  <!-- Pages -->
-  <!-- prettier-ignore -->
-  {{ with (sort (union (where .Pages "Section" "")
-                       (where .Pages "Section" "blog"))
-                "Date"
-                (or .Params.sort "desc")) }}
-  <h2 class="text-xl mb-2 font-normal">
-    <span class="{{$.Data.Singular}}">{{ $.Data.Term }}</span> posts
-  </h2>
-  <ul class="index">
-    {{ range .}}
-    <li>{{ partial "index-item" . }}</li>
-    {{ end }}
-  </ul>
   {{ end }}
 </root>
 {{ end }} {{ end }}
