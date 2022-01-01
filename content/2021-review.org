@@ -1,5 +1,6 @@
 #+title: 2021 review
 #+published: 2021-12-31
+#+series: Yearly reviews
 
 I'm still not sure what I'm doing, and I continue to gain immense interest for stuff before losing interest in like a week or so. No meaningful progress have been made on drawing and music composition, two things that I occasionally feel that I /really/ want to learn before backing down.
 
@@ -8,6 +9,14 @@ I did play on stage as part of the NKUST first campus wind band club though.
 For something a little bit more personal: I started hormone replacement therapy this April. That's a major concern off my chest, I guess.
 
 I started using Org-roam last year, but this year I decided to fork Org-roam v1 when Org-roam v2 was released. This was mainly because I didn't feel like trying to add an ID to everything. Because I don't know how to name things, I'm just calling it [[https://github.com/kisaragi-hiu/kisaragi-notes][kisaragi-notes]].
+
+* Covers
+
+- [[file:covers/20210311-深夜徘徊-シャノン.org][深夜徘徊 ft. 闇音レンリ]]
+- [[file:covers/20210525-アイディスマイル-とあ.org][アイディスマイル ft. 闇音レンリ]] (also see [[file:blog/2021-05-01-idsmile-trumpet-sheet.org][the trumpet score I made for it]])
+- [[file:covers/20210625-ハルノ寂寞-稲葉曇.org][ハルノ寂寞 ft. 雨月]] (including a traced over [[notes:public/content/illust/2021-06-22.org][background]])
+- [[file:covers/20211013-運命.org][運命 ft. 闇音レンリ & 夏語遙]]
+- [[file:covers/20211208-ロウワー.org][ロウワー ft. 闇音レンリ]]
 
 * This site
 
