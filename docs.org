@@ -244,6 +244,7 @@ Generic index item with some metadata.
 * Page properties
 
 - =toc=: If not empty, a table of content will be displayed on the page.
+- =sort=: in a list page, how to sort its entries. Can be =asc= (old to new) or =desc= (new to old); default is =desc=.
 - =hugo_nolist=: only applies to list pages. Only display the page’s own content and not its children, effectively turning the list into a single page. This is first used in [[file:content/projects/_index.org]].
 - =coverimage=: Path to the image used in social media cards. Will be passed through absURL.
 - =description=: A one to two sentence description. (per the recommendation from [[https://ogp.me/][Open Graph Protocol]].)
