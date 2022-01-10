@@ -74,7 +74,7 @@ If you only want to get the date when it’s explicitly set, use ={{.Params.crea
 
 * Adding tags to taxonomy terms
 
-For instance, I want to tag [[notes:public/content/tags/prsk/_index.org][the page for prsk]] with “games”. But Hugo doesn’t seem to support adding taxonomy terms onto taxonomy terms, at least not out of the box.
+For instance, I want to tag [[file:content-en/tags/prsk/_index.org][the page for prsk]] with “games”. But Hugo doesn’t seem to support adding taxonomy terms onto taxonomy terms, at least not out of the box.
 
 To work around this:
 

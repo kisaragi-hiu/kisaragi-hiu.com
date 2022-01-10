@@ -25,7 +25,7 @@ Each line represents a “task switching event”. Each line starts with a times
 
 The task name can be broken down into a hierarchy, using a colon (=:=) to separate paths.
 
-This tells us that the currently active task is =Sleep=, while =SocialMedia:Youtube= was active between 2019-01-15T23:28:19+0800 and 2019-01-16T00:24:53+0800. All timestamps are in [[notes:public/content/iso8601.org][ISO 8601]], sorted chronologically (taking the UTC offset into account).
+This tells us that the currently active task is =Sleep=, while =SocialMedia:Youtube= was active between 2019-01-15T23:28:19+0800 and 2019-01-16T00:24:53+0800. All timestamps are in [[/iso8601.org][ISO 8601]], sorted chronologically (taking the UTC offset into account).
 
 * Emacs version
 

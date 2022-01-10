@@ -14,7 +14,7 @@ I started using Org-roam last year, but this year I decided to fork Org-roam v1 
 
 - [[file:covers/20210311-深夜徘徊-シャノン.org][深夜徘徊 ft. 闇音レンリ]]
 - [[file:covers/20210525-アイディスマイル-とあ.org][アイディスマイル ft. 闇音レンリ]] (also see [[file:blog/2021-05-01-idsmile-trumpet-sheet.org][the trumpet score I made for it]])
-- [[file:covers/20210625-ハルノ寂寞-稲葉曇.org][ハルノ寂寞 ft. 雨月]] (including a traced over [[notes:public/content/illust/2021-06-22.org][background]])
+- [[file:covers/20210625-ハルノ寂寞-稲葉曇.org][ハルノ寂寞 ft. 雨月]] (including a traced over [[file:illust/2021-06-22.org][background]])
 - [[file:covers/20211013-運命.org][運命 ft. 闇音レンリ & 夏語遙]]
 - [[file:covers/20211208-ロウワー.org][ロウワー ft. 闇音レンリ]]
 

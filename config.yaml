@@ -56,7 +56,7 @@ hasCJKLanguage: true
 defaultContentLanguage: en
 languages:
   en:
-    contentDir: content
+    contentDir: content-en
     weight: 1
   # zh:
   #   contentDir: zh

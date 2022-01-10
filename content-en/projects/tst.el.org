@@ -7,4 +7,4 @@
 
 An Emacs Lisp library implementing a syntax for specifying tags inspired by TagSpaces.
 
-I also use this as a reference for [[notes:public/content/emacs-lisp-testing-gitlab-ci.org][setting up GitLab CI for Emacs Lisp]] whenever I don’t quite remember.
+I also use this as a reference for [[/emacs-lisp-testing-gitlab-ci.org][setting up GitLab CI for Emacs Lisp]] whenever I don’t quite remember.
