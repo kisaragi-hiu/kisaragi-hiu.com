@@ -58,9 +58,9 @@ languages:
   en:
     contentDir: content-en
     weight: 1
-  # zh:
-  #   contentDir: zh
-  #   weight: 2
+  zh:
+    contentDir: content-zh
+    weight: 2
   # ja:
   #   contentDir: ja
   #   weight: 3

@@ -20,7 +20,9 @@
 <h1>{{ $.title }}</h1>
 <ul class="list-none pl-0 flex flex-wrap gap-x-2 gap-y-1 leading-loose my-4">
   {{ range . }}
+  {{ if . }} <!-- Filter out noppage -->
   <li>{{ partial $.partial . }}</li>
+  {{ end }}
   {{ end }}
 </ul>
 <!-- prettier-ignore -->
