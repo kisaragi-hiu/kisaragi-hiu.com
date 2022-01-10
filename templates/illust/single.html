@@ -12,7 +12,7 @@
     src="/illust/{{ .File.BaseFileName }}.jpg"
     {{ with .Params.alt }} alt="{{.}}" {{ end }}
     title="{{ .Title }}"
-    class="mb-4 shadow lg:max-w-[80ch]"
+    class="mb-4 shadow lg:max-w-[60ch]"
   />
   <figcaption>
     {{ with .GetTerms "tags" }}
@@ -41,7 +41,9 @@
 {{ partial "toc" . }}
 {{ end }}
 
+<div class="lg:max-w-[25vw]">
 {{ partial "content" . }}
+</div>
 </div>
 </div>
 
