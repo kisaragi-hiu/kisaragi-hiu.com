@@ -2,13 +2,13 @@
 
 Thumbnails.
 
-Downloading thumbnails using youtube-dl:
+* Downloading thumbnails using youtube-dl
 
 #+begin_src bash
 youtube-dl <url> --write-thumbnail --skip-download
 #+end_src
 
-Downloading thumbnails for all cover entries with a youtube field:
+* Downloading thumbnails for all cover entries with a youtube field
 
 #+begin_src emacs-lisp :results none
 (dolist-with-progress-reporter (file (directory-files
@@ -25,9 +25,23 @@ Downloading thumbnails for all cover entries with a youtube field:
                  youtube-id youtube-id))))))
 #+end_src
 
-Convert all images into the right size:
+* Convert all images into the right size
 
 #+begin_src bash :results none
 parallel magick '{}' -resize 640 '{.}'.jpg ::: *.jpg *.webp
 rm *.webp
+#+end_src
+
+* Download one thumbnail
+#+begin_src emacs-lisp
+(let ((youtube-id (read-string "YouTube ID: ")))
+  (unless (f-exists? (concat youtube-id ".jpg"))
+    (shell-command-to-string
+     (format "youtube-dl '%1$s' --write-thumbnail --skip-download -o '%1$s'"
+             youtube-id))
+    (shell-command-to-string
+     (format "magick '%s' -resize 640 '%s.jpg'"
+             (-first #'f-exists? (list (concat youtube-id ".jpg")
+                                       (concat youtube-id ".webp")))
+             youtube-id))))
 #+end_src
