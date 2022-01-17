@@ -1,0 +1,117 @@
+#+title: Emacs Lisp: how to check if we haven't yet created any windows
+#+created: 2022-01-18T05:06:40+0900
+#+toc: #t
+#+tags[]: emacs-lisp
+
+On my system, Emacs segfaults if this is run in a daemon before a window is created:
+
+#+begin_src emacs-lisp
+(set-fontset-font (face-attribute 'default :fontset)
+                  'han "Noto Sans Mono CJK JP")
+#+end_src
+
+I don't really know how this works, but I just need to prevent it from running during that time. So how do we check if Emacs is running as a daemon but a window hasn't been created?
+
+(I'll go back to calling them “[[https://www.emacswiki.org/emacs/Frame][frames]]” in the rest of this article.)
+
+*TL;DR:* =(terminal-name)= is always ="initial_terminal"= in a daemon before a frame is created. [[https://github.com/emacs-mirror/emacs/blob/d7f4cc0974645cc6a295740afe85c6e21d956119/lisp/emacs-lisp/debug.el#L183\]\[lisp/emacs-lisp/debug.el#L183][Like this]]:
+
+[[/20220118T062329+0900.png]]
+
+* Testing
+Let's launch a daemon to test with. In one terminal:
+
+#+begin_src bash
+emacs -Q --fg-daemon
+#+end_src
+
+We use =emacs -Q= to not load any extra init files.
+
+Now let's try the obvious. [[https://www.gnu.org/software/emacs/manual/html_node/emacs/Invoking-emacsclient.html][The Emacs manual implies that]] there will be no existing frame when Emacs is started as a daemon:
+
+#+begin_quote
+If the Emacs process has no existing frame—which can happen if it was started as a daemon (see [[https://www.gnu.org/software/emacs/manual/html_node/emacs/Emacs-Server.html][Emacs Server]])—then Emacs opens a frame on the terminal in which you called =emacsclient= .
+#+end_quote
+
+#+begin_src bash
+emacsclient --eval "(frame-list)"
+#+end_src
+
+#+RESULTS:
+: (#<frame F1 0x5562c8db0ea0>)
+
+Uhh, what?
+
+#+begin_src bash
+emacsclient --eval "(selected-frame)"
+#+end_src
+
+#+RESULTS:
+: #<frame F1 0x5562c8db0ea0>
+
+This frame is even /selected/. =(frame-live-p)= on it returns =t=, which means it claims to be displayed on a text based terminal.
+
+Let's try this instead:
+
+#+begin_src bash
+emacsclient --eval "(frame-terminal (car (frame-list)))"
+#+end_src
+
+#+RESULTS:
+: #<terminal 0 on initial_terminal>
+
+Now we're getting somewhere. We can use =terminal-name= to extract the ~initial_terminal~ name as a string:
+
+#+begin_src bash
+emacsclient --eval "(terminal-name (frame-terminal (car (frame-list))))"
+#+end_src
+
+#+RESULTS:
+: initial_terminal
+
+And, in fact, because this frame is selected already and =terminal-name= automatically uses the selected frame's terminal, we can omit its argument:
+
+#+begin_src bash
+emacsclient --eval "(terminal-name)"
+#+end_src
+
+#+RESULTS:
+: initial_terminal
+
+In a normal frame, this will return something else:
+
+#+begin_src elisp
+(terminal-name)
+#+end_src
+
+#+RESULTS:
+: :0
+
+* Additional reading
+
+After finding out the term =initial_terminal= it became easier to search for the same answer.
+
+- [[https://stackoverflow.com/questions/21151992/why-emacs-as-daemon-gives-1-more-frame-than-is-opened][Why does =(frame-list)= return one extra frame in daemon mode]]?
+
+  #+begin_quote
+  It's a "physically invisible" frame (even though =frame-visible-p=  says otherwise) associated with initial terminal where the daemon was started. I suspect that a sole reason for its existence is that emacs is not ready to run with no frames at all, and it's hard enough to fix it.
+  #+end_quote
+
+- [[https://emacs.stackexchange.com/questions/32692/daemon-mode-defer-interactive-prompts-on-startup][Deferring interactive prompts during startup in daemon mode]].
+
+  This uses
+
+  #+begin_src emacs-lisp
+  (string-equal (terminal-name (get-device-terminal nil))
+                "initial_terminal")
+  #+end_src
+
+  to determine the same thing: whether we're in daemon mode and before any frames have been created. =(get-device-terminal nil)= returns the display terminal of the selected frame, so =(terminal-name (get-device-terminal nil))= is exactly the same as =(terminal-name)=.
+
+- This technique is in fact used in Emacs itself, in =debug.el=. This was added in Emacs 27, [[https://git.savannah.gnu.org/cgit/emacs.git/commit/lisp/emacs-lisp/debug.el?id=7228488effa78dcb75284cb6d247b24804e0e7f5][in this commit]].
+
+  [[/20220118T062329+0900.png]]
+
+- What is the difference between a /terminal/ and a /frame/? Terminals are basically output devices. Multiple frames can share the same terminal.
+
+- The “initial terminal” in its current form was [[https://github.com/emacs-mirror/emacs/commit/6ed8eeffb3a2c5cbbd8622a7ccd0726c3bf92946][added in this commit]], released in Emacs 23.
