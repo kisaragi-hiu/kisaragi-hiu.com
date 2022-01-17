@@ -150,6 +150,7 @@
 
 .prose {
   @apply prose-a:link;
+  @apply max-w-none;
 
   li p:first-child {
     margin: 0 auto;
