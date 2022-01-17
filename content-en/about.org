@@ -1,8 +1,7 @@
 #+title: About
 #+created: 2017-09-24
-#+updated: 2021-06-12T07:23:24+0900
+#+updated: 2022-01-18T08:25:14+0900
 #+special: true
-#+layout: about
 
 I'm a college student in Taiwan studying Applied English.
 
@@ -10,11 +9,22 @@ I write Emacs Lisp, make covers with UTAU, and occasionally play with Blender.
 
 * This website
 
-This site is built with Hugo; the CSS is processed with [[https://tailwindcss.com/][Tailwind]].
+This site is built with Hugo; the CSS is processed with [[https://tailwindcss.com/][Tailwind]]. Its source code is hosted [[https://github.com/kisaragi-hiu/kisaragi-hiu.com][on GitHub]].
 
 * License
-© Kisaragi Hiu 2017~2021.
+© Kisaragi Hiu 2017~2022.
 
 Content in CC-BY-SA 4.0 International; code in MIT. See [[https://github.com/kisaragi-hiu/kisaragi-hiu.com/blob/source/LICENSE.md][LICENSE]] for details.
 
-Source code is hosted [[https://github.com/kisaragi-hiu/kisaragi-hiu.com][on GitHub]].
+* Links
+
+- GitLab:  [[https://gitlab.com/kisaragi-hiu][kisaragi-hiu]]
+- GitHub:  [[https://github.com/kisaragi-hiu][kisaragi-hiu]]
+- Sourcehut:  [[https://gitlab.com/kisaragi-hiu][~kisaragi_hiu]]
+- Twitter:  [[https://twitter.com/flyin1501][@flyin1501]]
+- Reddit:  [[https://www.reddit.com/user/flyin1501][u/flyin1501]]
+- YouTube:  [[https://youtube.com/channel/UCl_hsqcvdX0XdgBimRQ6R3A][UCl_hsqcvdX0XdgBimRQ6R3A]]
+- niconico:  [[https://nicovideo.jp/user/38995186][user/38995186]]
+- Pixiv:  [[https://pixiv.me/kisaragi-hiu][kisaragi-hiu]]
+- PGP fingerprint:  [[/KisaragiHiu.asc][BCC7 4B10 41D4 B7D7 CC8B F402 40EC BEAE A877 5FC2]]
+- [[https://orcid.org/][ORCID]]:  [[https://orcid.org/0000-0002-0293-7943]]
