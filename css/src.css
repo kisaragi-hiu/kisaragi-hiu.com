@@ -58,7 +58,7 @@
 
 @layer components {
   /* Blog post, covers */
-  .item {
+  .btn {
     @apply hover:bg-accent-light;
     @apply transition duration-100 ease-in-out;
     @apply p-2 -m-2;
