@@ -27,9 +27,6 @@
   iframe {
     @apply rounded shadow;
   }
-  li p {
-    margin: 0 auto;
-  }
   aside,
   article {
     p {
@@ -177,6 +174,10 @@
    they are not part of any layer. */
 
 .prose {
+  li p:first-child {
+    margin: 0 auto;
+  }
+
   /* Inline code */
   code:not(.src code) {
     @apply text-special-strong;
