@@ -14,16 +14,8 @@ js:
 	mkdir -p static/js/
 	cp node_modules/medium-zoom/dist/medium-zoom.min.js static/js/
 
-# Visit the page after a second
-# Unless Firefox is already open and has a tab visiting the page
-# (I've only bothered to support Firefox here)
-open-browser:
-	-(sleep 1 && \
-	 !(pgrep firefox && python firefox-page-opened.py "localhost:1313") && \
-	 xdg-open "http://localhost:1313")
-
 dev: public static/css/built.css
-	npx concurrently "make open-browser" "make dev-hugo" "make dev-tailwind"
+	npx concurrently "make dev-hugo" "make dev-tailwind"
 
 clean:
 	git clean -Xdf
