@@ -3,16 +3,15 @@
   class="blur -z-5 top-16 left-16 opacity-5 block fixed w-2/3"
   src="/illust/2018-12-31.jpg"
 />
-<div class="side-layout">
-  <main>
-    <h1>
+<div class="block lg:grid lg:gap-x-4 grid-cols-8">
+  <main class="col-span-5">
+    <h1 class="font-bold my-8">
       <span class="text-4xl">Kisaragi Hiu</span>
       <br />
       <span class="text-2xl">如月飛羽</span>
     </h1>
-    <div class="my-8"></div>
     {{ partial "content" . }}
-    <hr class="my-8" />
+    <hr class="my-8 opacity-50" />
     <ul class="flex flex-col gap-4">
       <!-- prettier-ignore -->
       {{ range (sort (union (where .Site.RegularPages "Section" "")
@@ -24,7 +23,7 @@
       {{ end }} {{ end }}
     </ul>
   </main>
-  <aside>
+  <aside class="col-span-3">
     <!-- <nav class="flex flex-wrap justify-start gap-3 my-2"> -->
     <nav class="flex flex-col">
       <!-- prettier-ignore -->
@@ -33,7 +32,7 @@
                       (slice "/projects.html" "Projects")
                       (slice "/about.html" "About")
                       (slice "/index.xml" "RSS")) }}
-      <a class="" href="{{ index . 0 }}">{{ index . 1 }}</a>
+      <a class="link" href="{{ index . 0 }}">{{ index . 1 }}</a>
       {{ end }}
     </nav>
     <!-- prettier-ignore -->
@@ -44,7 +43,7 @@
       {{ end }}
     {{ end }}
     {{ with $covers_featured }}
-    <h1>
+    <h1 class="font-bold mt-4">
       <a class="text-primary" href="/covers.html"
         >Covers ({{now.Format "2006-01"}})</a
       >
@@ -58,7 +57,7 @@
       {{ end }}
     {{ end }}
     {{ with $illust_featured }}
-    <h1>
+    <h1 class="font-bold mt-4">
       <a class="text-primary" href="/illust.html"
         >Illustrations ({{now.Format "2006-01"}})</a
       >

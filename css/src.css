@@ -149,7 +149,6 @@
   }
   .side-layout {
     grid-template-columns: 5fr 3fr;
-    @apply block lg:grid;
     aside {
       @apply lg:ml-4;
     }
@@ -174,6 +173,8 @@
    they are not part of any layer. */
 
 .prose {
+  @apply prose-a:link;
+
   li p:first-child {
     margin: 0 auto;
   }
