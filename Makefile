@@ -40,4 +40,4 @@ public: static/css/built.css js
 	@touch public
 
 static/css/built.css: css/src.css
-	npx tailwindcss --postcss -i css/src.css -o static/css/built.css
+	npx tailwindcss --minify --postcss -i css/src.css -o static/css/built.css

@@ -3,7 +3,6 @@
     "concurrently": "^6.1.0"
   },
   "dependencies": {
-    "cssnano": "^5.0.6",
     "medium-zoom": "^1.0.6",
     "postcss-cli": "^8.3.1",
     "postcss-import": "^14.0.2",
