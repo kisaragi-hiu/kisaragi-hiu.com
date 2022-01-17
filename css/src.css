@@ -27,30 +27,6 @@
   iframe {
     @apply rounded shadow;
   }
-  aside,
-  article {
-    p {
-      line-height: 1.6;
-    }
-    a {
-      @apply link;
-    }
-    figure {
-      @apply max-w-max max-h-96;
-      @apply shadow;
-    }
-    ul,
-    ol {
-      list-style: revert;
-      @apply pl-4;
-    }
-    blockquote {
-      border-left: 0.25rem solid;
-      @apply my-4 p-4;
-      @apply border-l-special;
-      @apply bg-special-light;
-    }
-  }
 }
 
 @layer components {
