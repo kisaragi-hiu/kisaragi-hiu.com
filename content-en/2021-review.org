@@ -20,7 +20,7 @@ I started using Org-roam last year, but this year I decided to fork Org-roam v1 
 
 * This site
 
-- Moving to Hugo
+- [[/2021-03-20-switching-to-hugo.org][Moving to Hugo]]
 - And Tailwind
 - Old versions of articles
 - Illust list

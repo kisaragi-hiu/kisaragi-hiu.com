@@ -5,7 +5,7 @@
 
 So I finally switched to [[https://gohugo.io/][Hugo]] because trying to iterate design elements in Pollen is just too slow. Pollen is good for defining flexible markup, but that’s not what I want for a blog.
 
-This is long overdue. I’ve been trying to revamp the site on and off since 2018, most recently starting to move all articles to Org mode (utilizing [[../projects/ox-pollen.org][ox-pollen]]) so that I can index them in org-roam, but switching fully to a fast static site generator is still pretty nice.
+This is long overdue. I’ve been trying to revamp the site on and off since 2018, most recently starting to move all articles to Org mode (utilizing [[/projects/ox-pollen.org][ox-pollen]]) so that I can index them in org-roam, but switching fully to a fast static site generator is still pretty nice.
 
 Things I had to port:
 
