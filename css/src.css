@@ -1,5 +1,5 @@
 @import "headings.css";
-@import "emacs.css";
+@import "highlight-theme.css";
 
 @tailwind base;
 @tailwind components;
