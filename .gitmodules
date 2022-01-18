@@ -1,3 +1,6 @@
 [submodule "static/illust"]
 	path = static/illust
 	url = gitea@git.kisaragi-hiu.com:data/illust.git
+[submodule "static/storage"]
+	path = static/storage
+	url = gitea@git.kisaragi-hiu.com:data/storage.git

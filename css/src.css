@@ -151,6 +151,11 @@
 .prose {
   @apply prose-a:link;
   @apply max-w-none;
+  @apply font-serif;
+
+  p {
+    margin: 0.5rem 0;
+  }
 
   li p:first-child {
     margin: 0 auto;
