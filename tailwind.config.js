@@ -21,6 +21,15 @@ module.exports = {
       ],
     },
     extend: {
+      typography: {
+        DEFAULT: {
+          // cancelling this out in CSS is even uglier, so just do it here
+          css: {
+            "blockquote p:first-of-type::before": false,
+            "blockquote p:last-of-type::after": false,
+          },
+        },
+      },
       colors: {
         primary: "#0d0d0d",
         secondary: "#333333",

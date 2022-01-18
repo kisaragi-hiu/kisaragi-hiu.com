@@ -157,6 +157,10 @@
     margin: 0.5rem 0;
   }
 
+  blockquote {
+    @apply not-italic;
+  }
+
   li p:first-child {
     margin: 0 auto;
   }
@@ -193,7 +197,7 @@
   }
   /* Reset @tailwindcss/typography's margins */
   pre {
-    @apply my-0;
+    @apply my-2;
   }
   /* Add a language header */
   code::before {
