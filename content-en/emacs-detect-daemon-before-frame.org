@@ -1,4 +1,4 @@
-#+title: Emacs Lisp: how to check if we haven't yet created any windows
+#+title: Emacs Lisp: how to check if we haven't yet created any windows in daemon mode
 #+created: 2022-01-18T05:06:40+0900
 #+toc: #t
 #+tags[]: emacs-lisp
