@@ -1,11 +1,4 @@
-<!-- Yes, this is how you do AND in a where query. Generate two lists and use intersect.
-     https://gohugo.io/functions/intersect/ -->
-
-<!-- (--filter (equal (section it) (section this-page)) (all-pages)) -->
-{{ $same_section := where .Site.Pages "Section" .Section }}
-<!-- (--filter (equal (kind it) "page") (all-pages)) -->
-{{ $singles := where .Site.Pages "Kind" "page" }} {{ $pages := (intersect
-$singles $same_section) }}
+{{ $pages := (partial "func-same-section" .) }}
 
 <div class="flex my-4 gap-x-12 justify-between w-full">
   <div class="w-1/2">

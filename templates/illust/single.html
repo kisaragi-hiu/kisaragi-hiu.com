@@ -1,54 +1,81 @@
-{{ define "header" }}
-<!-- prettier-ignore -->
-{{ partial "avatar" }}
-{{ end }}
-{{ define "main" }}
-
-<!-- We assume that the filename is the publish date. -->
-
-<div class="mt-8 lg:flex lg:gap-4 lg:overflow-x-auto lg:w-max">
-  <figure class="illust">
-    <img
-      src="/illust/{{ .File.BaseFileName }}.jpg"
-      {{
-      with
-      .Params.alt
-      }}
-      alt="{{.}}"
-      {{
-      end
-      }}
-      title="{{ .Title }}"
-      class="mb-4 shadow lg:max-w-[60ch]"
-    />
-    <figcaption>
-      {{ with .GetTerms "tags" }} {{ range . }} {{ partial "tag" . }} {{ end }}
-      {{ end }}
-      <h1 class="font-bold text-xl mt-0">{{ .Title }}</h1>
-    </figcaption>
-  </figure>
-  <div>
-    <!-- prettier-ignore -->
-
-    {{ with .Params.pixiv }}
-    <a href="{{.}}" class="text-sm out text-accent-strong">{{.}}</a>
+<!DOCTYPE html>
+<head>
+  <!-- prettier-ignore -->
+  {{ partial "head" . }}
+  <script>
+    window.addEventListener("load", () => {
+      // This guarantees the image never loads too early that it just pops in.
+      let img = document.querySelector("img.opacity-0");
+      img.setAttribute("src", img.getAttribute("data-src"));
+      img.removeAttribute("data-src");
+      img.addEventListener("load", () => {
+        Array.from(document.getElementsByClassName("opacity-0")).forEach(
+          (x) => {
+            x.style.transition = "opacity 500ms";
+            x.classList.remove("opacity-0");
+          }
+        );
+      });
+    });
+  </script>
+</head>
+<body class="dark w-full h-screen m-0 bg-black">
+  <div
+    class="text-white grid grid-rows-[15%_1fr] md:grid-cols-[12%_1fr_12%] w-full h-full"
+  >
+    <a href="../illust.html" class="col-start-3 col-end-3 text-5xl">
+      <div class="absolute right-[5%] top-[2vh] md:top-[5vh]">×</div></a
+    >
+    {{ with (partial "func-same-section" .).Next . }}
+    <a href="{{.Permalink}}" class="col-start-1 row-start-1 row-span-2 text-2xl"
+      ><div class="absolute left-[5%] bottom-[50vh]">◀</div></a
+    >
+    {{ end }} {{ with (partial "func-same-section" .).Prev . }}
+    <a href="{{.Permalink}}" class="col-start-3 row-span-2 row-start-2 text-2xl"
+      ><div class="absolute right-[5%] bottom-[50vh]">▶</div></a
+    >
     {{ end }}
-    <dl class="meta">
-      <div>
-        <dt>Published</dt>
-        <dd>{{ partial "date" .Params.date }}</dd>
+
+    <div class="col-start-2 col-end-2 row-start-1 row-end-auto">
+      <div class="mt-[10vh] md:mt-4">
+        <noscript>
+          <!-- prettier-ignore -->
+          <img
+            src="/illust/{{ .File.BaseFileName }}.jpg"
+            {{with .Params.alt}} alt="{{.}}" {{end}}
+            title="{{ .Title }}"
+            class="block max-h-[90vh] m-auto"
+          />
+        </noscript>
+        <!-- prettier-ignore -->
+        <img
+          data-src="/illust/{{ .File.BaseFileName }}.jpg"
+          {{with .Params.alt}} alt="{{.}}" {{end}}
+          title="{{ .Title }}"
+          class="opacity-0 block max-h-[90vh] m-auto"
+        />
       </div>
-    </dl>
 
-    <!-- prettier-ignore -->
-    {{ if .Params.toc }}
-{{ partial "toc" . }}
-{{ end }}
-
-    <div class="lg:max-w-[25vw]">{{ partial "content" . }}</div>
+      <noscript>
+        <div class="m-auto text-center">
+          <h1 class="mt-2 font-bold text-white">{{.Title}}</h1>
+          <!-- prettier-ignore -->
+          {{ with .GetTerms "tags" }}
+          {{ range . }}
+          {{ partial "tag" . }}
+          {{ end }}
+          {{ end }}
+        </div>
+      </noscript>
+      <div class="opacity-0 m-auto text-center">
+        <h1 class="mt-2 font-bold text-white">{{.Title}}</h1>
+        <!-- prettier-ignore -->
+        {{ with .GetTerms "tags" }}
+        {{ range . }}
+        {{ partial "tag" . }}
+        {{ end }}
+        {{ end }}
+      </div>
+    </div>
   </div>
-</div>
-
-{{ end }} {{ define "footer" }}
-<!-- nothing; without this comment hugo uses the default value in baseof.html -->
-{{ end }}
+</body>

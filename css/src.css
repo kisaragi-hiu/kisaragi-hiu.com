@@ -37,7 +37,7 @@
     @apply p-2 -m-2;
   }
   .link {
-    @apply text-accent-strong;
+    @apply text-accent-strong dark:text-accent;
     opacity: 0.9;
     transition: opacity 100ms ease;
     text-decoration: none;
