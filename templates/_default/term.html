@@ -34,7 +34,6 @@
   {{ partial "content" . }}
 {{ else }}
 <root>
-
   <!-- Pages -->
   <!-- prettier-ignore -->
   {{ with (sort (union (where .Pages "Section" "")
@@ -46,10 +45,7 @@
     <li>{{ partial "index-item" . }}</li>
     {{ end }}
   </ul>
-  {{ end }}
-
-
-  {{ partial "content" . }}
+  {{ end }} {{ partial "content" . }}
 
   <!-- Store "term" items under this taxonomy term.
        This does not just work with tags.-->
@@ -99,9 +95,7 @@
     <span class="{{$.Data.Singular}}">{{ $.Data.Term }}</span> illustration
   </h2>
   <!-- prettier-ignore -->
-  {{ range . }}
-  {{ partial "illust-item" . }}
-  {{ end }}
+  {{ partial "illustrations" . }}
   {{ end }}
 </root>
 {{ end }} {{ end }}

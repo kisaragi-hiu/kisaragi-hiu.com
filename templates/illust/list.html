@@ -1,5 +1,6 @@
 {{ define "main" }}
 {{ partial "heading" (dict "title" .Title) }}
+{{ partial "faint-bg" "/illust/2016-03-12.jpg" }}
 
 <hr>
 {{ if .Params.toc }}
@@ -8,15 +9,11 @@
 {{ if .Params.hugo_nolist}}
 {{ partial "content" . }}
 {{ else }}
-<root>
+<main>
   {{ partial "content" . }}
   {{ range .Pages.GroupByDate "2006" }}
-  <h2>{{ .Key }}</h2>
-  <ul class="illust-index">
-    {{ range .Pages }}
-    <li>{{ partial "illust-item" . }}</li>
-    {{ end }}
-  </ul>
+  <h2 class="mt-4 mb-2 text-lg font-serif">{{ .Key }}</h2>
+  {{ partial "illustrations" .Pages }}
   {{ end }}
-</root>
+</main>
 {{ end }} {{ end }}

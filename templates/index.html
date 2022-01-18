@@ -1,8 +1,5 @@
 {{ define "main" }}
-<img
-  class="blur -z-5 top-16 left-16 opacity-5 block fixed w-2/3"
-  src="/illust/2018-12-31.jpg"
-/>
+{{ partial "faint-bg" "/illust/2018-12-31.jpg" }}
 <div class="block lg:grid lg:gap-x-4 grid-cols-8">
   <main class="col-span-5">
     <h1 class="font-bold my-8">
@@ -62,11 +59,7 @@
         >Illustrations ({{now.Format "2006-01"}})</a
       >
     </h1>
-    <ul class="illust-index">
-      {{ range . }}
-      <li>{{ partial "illust-item" . }}</li>
-      {{ end }}
-    </ul>
+    {{ partial "illustrations" . }}
     {{end}}
     <!-- prettier-ignore -->
     {{ partial
