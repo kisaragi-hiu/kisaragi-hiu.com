@@ -10,7 +10,7 @@
     @apply md:text-[20px];
   }
   .outer {
-    width: min(100ch, 90%);
+    width: min(90ch, 90%);
     @apply mx-auto mt-[5%];
   }
   p {
