@@ -9,16 +9,12 @@
     </h1>
     {{ partial "content" . }}
     <hr class="my-8 opacity-50" />
-    <ul class="flex flex-col gap-4">
-      <!-- prettier-ignore -->
-      {{ range (sort (union (where .Site.RegularPages "Section" "")
+    <!-- prettier-ignore -->
+    {{ partial "searchable-list"
+               (sort (union (where .Site.RegularPages "Section" "")
                             (where .Site.RegularPages "Section" "blog"))
                      "Date"
-                     "desc") }}
-      {{ if not (.Param "special") }}
-      <li>{{ partial "index-item" . }}</li>
-      {{ end }} {{ end }}
-    </ul>
+                     "desc")}}
   </main>
   <aside class="col-span-3">
     <!-- <nav class="flex flex-wrap justify-start gap-3 my-2"> -->

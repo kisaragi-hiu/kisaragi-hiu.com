@@ -1,0 +1,16 @@
+<script src="/js/search.js"></script>
+<!-- prettier-ignore -->
+<input
+  type="text"
+  class="h-8 px-2"
+  placeholder="Search..."
+  id="search"
+  onkeyup="updateSearch()"
+/>
+<ul id="posts" class="mt-8 flex flex-col gap-4">
+  <!-- prettier-ignore -->
+  {{ range . }}
+  {{ if not (.Param "special") }}
+  <li data-params="{{ jsonify .Params }}">{{ partial "index-item" . }}</li>
+  {{ end }} {{ end }}
+</ul>
