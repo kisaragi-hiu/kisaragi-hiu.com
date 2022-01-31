@@ -58,18 +58,6 @@
     {{ partial "illustrations" . }}
     {{end}}
     <!-- prettier-ignore -->
-    {{ partial
-       "all-terms"
-       (dict "taxonomy" "series"
-             "title" "Series"
-             "pages" .Site.AllPages
-             "partial" "series") }}
-    {{ partial
-       "all-terms"
-       (dict "taxonomy" "tags"
-             "title" "Tags"
-             "pages" .Site.AllPages
-             "partial" "tag") }}
   </aside>
 </div>
 {{ end }}

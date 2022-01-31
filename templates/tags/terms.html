@@ -1,0 +1,9 @@
+{{ define "main" }}
+{{ partial "heading" (dict "title" .Title) }}
+<hr />
+{{ partial
+   "all-terms"
+   (dict "taxonomy" "tags"
+         "pages" .Site.AllPages
+         "partial" "tag") }}
+{{ end }}
