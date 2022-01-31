@@ -1,12 +1,39 @@
 <script src="/js/search.js"></script>
-<!-- prettier-ignore -->
-<input
-  type="text"
-  class="h-8 px-2"
-  placeholder="Search..."
-  id="search"
-  onkeyup="updateSearch()"
-/>
+<!-- outer div in relative to create a context for the absolute-positioned svg
+
+     A lot of this concept is copied from https://www.swyx.io/ideas/ -->
+<div class="relative">
+  <input
+    type="text"
+    class="border-2 h-10 px-2 w-full"
+    placeholder="Search..."
+    id="search"
+    onkeyup="updateSearch()"
+  />
+  <!-- Ionicons 5.5.2 search-outline -->
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    class="h-5 w-5 absolute top-3 right-3"
+    viewBox="0 0 512 512"
+  >
+    <title>Search</title>
+    <path
+      d="M221.09 64a157.09 157.09 0 10157.09 157.09A157.1 157.1 0 00221.09 64z"
+      fill="none"
+      stroke="currentColor"
+      stroke-miterlimit="10"
+      stroke-width="32"
+    />
+    <path
+      fill="none"
+      stroke="currentColor"
+      stroke-linecap="round"
+      stroke-miterlimit="10"
+      stroke-width="32"
+      d="M338.29 338.29L448 448"
+    />
+  </svg>
+</div>
 <ul id="posts" class="mt-8 flex flex-col gap-4">
   <!-- prettier-ignore -->
   {{ range . }}
