@@ -1,5 +1,6 @@
 #+title: Blender: how to display lyrics based on a .lrc file (for lyrics videos)
 #+tags[]: tips blender
+#+coverimage: /thumb/blender-lrc.png
 #+created: 2022-02-19T01:19:46+0900
 
 You want to create a lyrics video with Blender. You've synchronized the lyrics with the music by creating an [[https://en.wikipedia.org/wiki/LRC_(file_format)][.lrc file]], perhaps with /[[https://lrc-maker.github.io][LRC Maker]]/. How do you then synchronize it to a text object?
