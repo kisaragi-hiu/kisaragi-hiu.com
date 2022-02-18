@@ -8,21 +8,26 @@
 <hr>
 <dl class="meta">
   {{ with .Date }}
-    <div>
-        <dt>Published</dt>
-        <dd>{{ partial "date" . }}</dd>
-    </div>
+  <div>
+    <dt>Published</dt>
+    <dd>{{ partial "date" . }}</dd>
+  </div>
+  {{ end }} {{ with .GetTerms "tags" }}
+  <div>
+    <dt>Tags</dt>
+    <dd>
+      <ul class="flex flex-wrap gap-x-2">
+        {{ range . }}
+        <li>{{ partial "tag" . }}</li>
+        {{ end }}
+      </ul>
+    </dd>
+  </div>
   {{ end }}
-  {{ with .GetTerms "tags" }}
-    <div>
-        <dt>Tags</dt>
-        <dd>{{ partial "tags-block" . }}</dd>
-    </div>
-  {{ end }}
-    <div>
-        <dt>Original</dt>
-        <dd><a href="{{ .Params.original }}">{{ .Params.origauthor }}</a></dd>
-    </div>
+  <div>
+    <dt>Original</dt>
+    <dd><a href="{{ .Params.original }}">{{ .Params.origauthor }}</a></dd>
+  </div>
 </dl>
 {{ end }}
 
