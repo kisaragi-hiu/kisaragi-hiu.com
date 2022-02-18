@@ -12,7 +12,12 @@ module.exports = {
   theme: {
     fontFamily: {
       sans: ["Fira Sans", ...cjkFallback, "sans-serif"],
-      serif: ["'Equity A'", ...cjkFallback, "sans-serif"],
+      serif: [
+        "'Equity A'",
+        "'Noto Serif CJK JP'",
+        ...cjkFallback,
+        "sans-serif",
+      ],
       // serif: ["Equity"],
       mono: [
         "Inconsolata",
