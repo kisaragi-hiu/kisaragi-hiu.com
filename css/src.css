@@ -148,6 +148,10 @@
     margin: 0 auto;
   }
 
+  video {
+    margin: 0;
+  }
+
   /* Inline code */
   code:not(.src code) {
     @apply text-special-strong;
