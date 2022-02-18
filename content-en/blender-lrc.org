@@ -1,0 +1,91 @@
+#+title: Blender: how to display lyrics based on a .lrc file (for lyrics videos)
+#+tags[]: tips blender
+#+created: 2022-02-19T01:19:46+0900
+
+You want to create a lyrics video with Blender. You've synchronized the lyrics with the music by creating an [[https://en.wikipedia.org/wiki/LRC_(file_format)][.lrc file]], perhaps with /[[https://lrc-maker.github.io][LRC Maker]]/. How do you then synchronize it to a text object?
+
+#+caption: The video is for a cover of [[https://www.youtube.com/watch?v=hL75gQUcu0A][カラカラカラのカラ]]
+{{< video "/blender-lrc.mp4" >}}
+
+Like this:
+
+#+begin_src python
+import re
+import bpy
+
+def timecode_to_frame(timecode):
+    'Return the corresponding frame number for timecodes like "01:23.456".'
+    def timecode_to_miliseconds(timecode):
+        m = re.match(r"(.*?):(.*?)\.(.*)", timecode)
+        minutes = int(m.group(1))
+        seconds = int(m.group(2))
+        miliseconds = int(m.group(3))
+        return minutes * 60 * 1000 + seconds * 1000 + miliseconds
+    # one frame is this many miliseconds
+    frametime = 1000 * 1 / bpy.context.scene.render.fps
+    return timecode_to_miliseconds(timecode) / frametime
+
+# Use a list of lists so that we can iterate over it directly without having to call .items() first
+# (This probably matters because .items() would be run on every frame?)
+def parse_lyrics(text_name):
+    lyrics = []
+    for line in bpy.data.texts[text_name].lines:
+        match = re.match(r"\[(.*?)\] ?(.*)", line.body)
+        timecode = match.group(1)
+        text = match.group(2)
+        try:
+            frame = timecode_to_frame(timecode)
+        # Skip special fields and empty lines
+        except ValueError:
+            continue
+        lyrics.append([frame, text])
+    return lyrics
+
+LYRICS = parse_lyrics("lyrics.lrc")
+
+def set_text(scene):
+    current = scene.frame_current
+    length = len(LYRICS)
+    for index, pair in enumerate(LYRICS):
+        text = pair[1]
+        prev_keyframe = LYRICS[max(0, index - 1)][0]
+        next_keyframe = LYRICS[min(index + 1, length)][0]
+        if prev_keyframe <= current <= next_keyframe:
+            bpy.data.curves["Lyrics"].body = text
+            break
+
+bpy.app.handlers.frame_change_pre.clear()
+bpy.app.handlers.frame_change_pre.append(set_text)
+#+end_src
+
+In Blender, create a new Text datablock (perhaps in the Scripting workplace), call it /read_lyrics.py/ (or whatever, as well as it ends in .py), and paste the above into it. Run it through (toolbar) Text > Run Script. (Maybe also register it through (toolbar) Text > Register so that this code will run every time the Blender file is opened.)
+
+Now create another text, call it /lyrics.lrc/ (has to be this as the code above references it by name), and paste your .lrc file in there.
+
+Now go to a 3D View, create a Text 3d object, then rename the curve data to /Lyrics/ (also has to be exact for the same reason).
+
+Now the lyrics should be synchronized to the music after you add the song into the Video Sequence Editor.
+
+* Context
+
+I have [[https://kisaragi-hiu.com/covers/20191207-心象カスケード-電ポールp][made]] [[https://kisaragi-hiu.com/covers/20180429-普通に歳をとるコトすら-椎名もた][several]] [[https://kisaragi-hiu.com/covers/20180829-you-and-beautiful-world-ゆよゆっぺ][lyrics]] [[https://kisaragi-hiu.com/covers/20180926-mnemonic-やなぎなぎl][videos]] [[https://kisaragi-hiu.com/covers/20200521-leo-eve][with]] [[https://kisaragi-hiu.com/covers/20210625-ハルノ寂寞-稲葉曇][Blender]]. Up until now, I've always synchronized the lyrics like this:
+
+#+begin_src python
+def set_text(scene):
+    f = scene.frame_current
+    if f <= 406:
+        bdy = "You and beautiful world"
+    elif 407 <= f <= 586:
+        bdy = "本家 | ゆよゆっぺ、こまん"
+    elif 587 <= f <= 676:
+        bdy = "歌 | 暗鳴ニュイ"
+    # ...
+    bpy.data.curves["lyrics"].body = bdy
+
+bpy.app.handlers.frame_change_pre.clear()
+bpy.app.handlers.frame_change_pre.append(set_text)
+#+end_src
+
+This is extremely tedious, as it involves stopping the music at the right point, copying the current frame number into the script file, and repeating for the rest of the song. Every line takes like 30 seconds to a minute.
+
+Doing the same with a .lrc editor is a lot less painful, and I will be able to reuse this code going forward.
