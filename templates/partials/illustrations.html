@@ -1,8 +1,8 @@
-<ul class="p-0 flex flex-wrap illust-index">
+<ul class="p-0 flex flex-wrap illust-index mt-4">
   {{ range . }}
   <li class="p-0">
     <a class="illust-item" href="{{ .Permalink }}">
-      <img class="transition-all w-[8ch] h-[8ch] object-cover hover:opacity-50"
+      <img class="transition-all w-[10ch] h-[10ch] object-cover hover:opacity-50"
       title="{{.LinkTitle}}" alt="{{.LinkTitle}}" lazy src="/illust/thumb/{{
       .Date.Format "2006-01-02" }}.jpg"/>
     </a>

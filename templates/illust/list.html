@@ -3,17 +3,16 @@
 {{ partial "faint-bg" "/illust/2016-03-12.jpg" }}
 
 <hr>
+
 {{ if .Params.toc }}
 {{ partial "toc" . }}
 {{ end }}
 {{ if .Params.hugo_nolist}}
 {{ partial "content" . }}
 {{ else }}
+
 <main>
   {{ partial "content" . }}
-  {{ range .Pages.GroupByDate "2006" }}
-  <h2 class="mt-4 mb-2 text-lg font-serif">{{ .Key }}</h2>
   {{ partial "illustrations" .Pages }}
-  {{ end }}
 </main>
 {{ end }} {{ end }}
