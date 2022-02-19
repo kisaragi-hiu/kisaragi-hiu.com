@@ -11,7 +11,10 @@ function shouldInclude(params, needle) {
   // with the text box
   let section = params.section || "";
   section = section.toLowerCase();
-  return (title + tags + series + voice + section).includes(needle);
+
+  str = title + tags + series + voice + section;
+  // "a b" -> only items including both "a" and "b" are included
+  return needle.split(" ").every((x) => str.includes(x));
 }
 
 function updateSearch() {
