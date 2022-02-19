@@ -1,35 +1,7 @@
 <ul class="list-none p-0 flex flex-col gap-4">
   {{ range . }}
   <li class="rounded transition duration-100">
-    <a
-      class="text-primary btn pr-2 h-full flex gap-x-2 items-center hover:no-underline"
-      href="{{.Permalink}}"
-    >
-      <!-- Left part: the image -->
-      <div class="w-24">
-        <img
-          class="object-cover min-w-full max-h-full"
-          src="/thumb/{{.Params.youtube}}.jpg"
-        />
-      </div>
-      <!-- Right part: title and metadata -->
-      <div class="grow">
-        <div class="font-bold">{{.LinkTitle}} ft. {{ .Params.voice }}</div>
-        <div>{{ partial "date" .Date }}</div>
-        <span>本家 {{ .Params.origauthor }}</span>
-      </div>
-      <!-- <span>
-      <!-- prettier-ignore
-      {{ with .Params.youtube }}
-      <a href="https://youtu.be/{{.}}">YouTube</a>
-      {{ end }}
-      <!-- prettier-ignore
-      {{ with .Params.niconico }}
-      <a href="https://nico.ms/{{.}}">niconico</a>
-      {{ end }}
-    </span>
- -->
-    </a>
+    <a href="{{.Permalink}}">{{ partial "cover-item" (dict "item" .) }}</a>
   </li>
   {{ end }}
 </ul>

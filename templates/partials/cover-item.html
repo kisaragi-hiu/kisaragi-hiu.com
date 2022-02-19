@@ -1,0 +1,34 @@
+<!-- prettier-ignore -->
+{{ $item := .item }}
+{{ $title := "" }}
+{{ with .mark }}
+  {{ $title = (printf "Cover: %s ft. %s" $item.LinkTitle $item.Params.voice) }}
+{{ else }}
+  {{ $title = (printf "%s ft. %s" $item.LinkTitle $item.Params.voice) }}
+{{ end }}
+<div
+  class="
+    text-primary
+    btn
+    pr-2
+    h-full
+    flex
+    gap-x-2
+    items-center
+    hover:no-underline
+  "
+>
+  <!-- Left part: the image -->
+  <div class="w-24">
+    <img
+      class="object-cover min-w-full max-h-full"
+      src="/thumb/{{$item.Params.youtube}}.jpg"
+    />
+  </div>
+  <!-- Right part: title and metadata -->
+  <div class="grow">
+    <div class="font-bold">{{ $title }}</div>
+    <div>{{ partial "date" $item.Date }}</div>
+    <span>本家 {{ $item.Params.origauthor }}</span>
+  </div>
+</div>

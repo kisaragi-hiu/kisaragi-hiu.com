@@ -24,10 +24,11 @@
     <hr class="my-8 opacity-50" />
     <!-- prettier-ignore -->
     {{ partial "searchable-list"
-               (sort (union (where .Site.RegularPages "Section" "")
-                            (where .Site.RegularPages "Section" "blog"))
-                     "Date"
-                     "desc")}}
+               (sort ((where .Site.RegularPages "Section" "")
+                      | union (where .Site.RegularPages "Section" "covers")
+                      | union (where .Site.RegularPages "Section" "blog"))
+                                "Date"
+                                "desc")}}
   </main>
   <aside class="col-span-3">
     <!-- <nav class="flex flex-wrap justify-start gap-3 my-2"> -->
