@@ -3,9 +3,15 @@ function shouldInclude(params, needle) {
   title = title.toLowerCase();
   let series = params.series || "";
   series = series.toLowerCase();
+  let voice = params.voice || "";
+  voice = voice.toLowerCase();
   let tags = params.tags || [""];
   tags = tags.join("").toLowerCase();
-  return (title + tags + series).includes(needle);
+  // TODO: Section should be selected in a radiobutton, not filtered
+  // with the text box
+  let section = params.section || "";
+  section = section.toLowerCase();
+  return (title + tags + series + voice + section).includes(needle);
 }
 
 function updateSearch() {

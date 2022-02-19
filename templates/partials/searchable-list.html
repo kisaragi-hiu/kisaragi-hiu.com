@@ -38,6 +38,9 @@
   <!-- prettier-ignore -->
   {{ range . }}
   {{ if not (.Param "special") }}
-  <li data-params="{{ jsonify .Params }}">{{ partial "index-item" . }}</li>
-  {{ end }} {{ end }}
+  {{ $extra_params := (dict "section" .Section)}}
+  <li data-params="{{ jsonify (merge .Params $extra_params) }}">{{ partial "index-item" . }}</li>
+  <!-- prettier-ignore -->
+  {{ end }}
+  {{ end }}
 </ul>
