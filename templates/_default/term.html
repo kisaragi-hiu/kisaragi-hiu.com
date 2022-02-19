@@ -33,19 +33,17 @@
 {{ if .Params.hugo_nolist }}
   {{ partial "content" . }}
 {{ else }}
-<root>
+<main class="mt-4">
+  {{ partial "content" . }}
   <!-- Pages -->
   <!-- prettier-ignore -->
   {{ with (sort (union (where .Pages "Section" "")
                        (where .Pages "Section" "blog"))
                 "Date"
                 (or .Params.sort "desc")) }}
-  <ul class="mt-4 mb-8">
-    {{ range .}}
-    <li>{{ partial "index-item" . }}</li>
-    {{ end }}
-  </ul>
-  {{ end }} {{ partial "content" . }}
+  <!-- prettier-ignore -->
+  {{ partial "searchable-list" . }}
+  {{ end }}
 
   <!-- Store "term" items under this taxonomy term.
        This does not just work with tags.-->
@@ -71,7 +69,7 @@
   <!-- Projects -->
   <!-- prettier-ignore -->
   {{ with (where .Pages "Section" "projects")}}
-  <h2 class="text-xl mb-2 font-normal">
+  <h2 class="text-xl mt-8 mb-2 font-normal">
     <span class="{{$.Data.Singular}}">{{ $.Data.Term }}</span> projects
   </h2>
   <!-- prettier-ignore -->
@@ -97,5 +95,5 @@
   <!-- prettier-ignore -->
   {{ partial "illustrations" . }}
   {{ end }}
-</root>
+</main>
 {{ end }} {{ end }}
