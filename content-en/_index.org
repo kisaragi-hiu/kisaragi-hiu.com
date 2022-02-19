@@ -1,1 +1,5 @@
 #+title: Home
+
+I'm a college student in Taiwan studying Applied English.
+
+I write Emacs Lisp, make covers with UTAU, and occasionally play with Blender.
