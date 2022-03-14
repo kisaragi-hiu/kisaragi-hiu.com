@@ -1,0 +1,49 @@
+#+title: Linux: Finding devices on the same network
+#+created: 2022-03-15T01:48:23+0900
+#+tags[]: linux
+
+I know when I share my phone's mobile internet to my laptop through WiFi tethering, the two devices are in the same network and can see each other. But how do I find out the local IP address of the other device?
+
+After a little bit of Googling, like this:
+
+#+begin_src shell :results raw
+nmap -sn 192.168.2.87/24
+#+end_src
+
+- =-sn= disables “port scan”, which I assume means nmap will scan for devices and not scan for open ports.
+- The IP comes from the =inet= field in my WiFi device that I got from a call to =ip address=[fn:1].
+
+This is the result:
+
+#+RESULTS:
+:
+: Starting Nmap 7.92 ( https://nmap.org ) at 2022-03-15 01:53 JST
+: Nmap scan report for 192.168.2.87
+: Host is up (0.00024s latency).
+: Nmap scan report for 192.168.2.169
+: Host is up (0.0059s latency).
+: Nmap done: 256 IP addresses (2 hosts up) scanned in 6.48 seconds
+
+This means it has found two devices on the local network:
+
+- 192.168.2.87, the device I ran the command on;
+- 192.168.2.169, the only other device on the local network, so it's the device that I'm looking for.
+
+#+html: <hr>
+
+[fn:1] What =ip address= returns, with irrelevant parts removed:
+
+     #+begin_src shell :results raw
+     ip address
+     #+end_src
+
+     #+RESULTS:
+     :
+     : […]
+     : 3: wlp6s0: […]
+     :     […]
+     :     inet 192.168.2.87/24 brd 192.168.2.255 scope global dynamic noprefixroute wlp6s0
+     :        valid_lft 2847sec preferred_lft 2847sec
+     :     inet6 fe80::d3d:871a:3b5b:24bb/64 scope link noprefixroute
+     :        valid_lft forever preferred_lft forever
+     : […]
