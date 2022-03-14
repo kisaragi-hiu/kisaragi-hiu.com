@@ -1,7 +1,7 @@
 #+title: Why I use WirePlumber
 #+subtitle: Perspective from a user with zero understanding of why it's not part of PipeWire
 #+created: 2021-11-21T02:35:44+0900
-#+tags[]: Linux
+#+tags[]: linux
 
 Note: PipeWire still changes. This seems to be true as of PipeWire 0.3.40 and WirePlumber 0.4.5. Commands are most likely not going to be relevant after a while.
 
