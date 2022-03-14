@@ -59,10 +59,7 @@
 {{ end }}
 
 {{ define "footer" }}
-<div class="mb-64">
+<div class="mb-40">
   {{ partial "default-footer" . }}
-  {{ if (not .Params.special) }}
-    {{ partial "post-navigation" . }}
-  {{ end }}
 </div>
 {{ end }}
