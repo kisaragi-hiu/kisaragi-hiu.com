@@ -12,3 +12,16 @@ After trying for a little bit, this is why:
 - It seems like there are more themes available on the AUR, but I haven't wanted to try because =kimpanel= looks the best.
 
 Unless something breaks spectacularly, I'm probably not switching again for some time.
+
+* Aside: making =fcitx.el= work for fcitx5
+
+[[https://github.com/cute-jumper/fcitx.el][=fcitx.el=]] is an Emacs package that automatically disables the input method when entering contexts that only really ever expects English input. For example, it disables the IME when leaving insert state, allowing normal state commands to go through.
+
+It works out of the box for fcitx 4; for fcitx5, this will make it work:
+
+#+BEGIN_SRC emacs-lisp
+(setq fcitx-use-dbus nil ; fcitx.el doesn't know fcitx5's new dbus interface
+      ;; the command name changed, but the switches and arguments haven't
+      fcitx-remote-command "fcitx5-remote")
+(fcitx-default-setup)
+#+END_SRC
