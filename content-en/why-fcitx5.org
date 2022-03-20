@@ -1,0 +1,14 @@
+#+title: Why switch to fcitx5
+#+created: 2022-03-20T15:29:28+0900
+#+tags[]: linux
+
+[[https://github.com/fcitx/fcitx5][The README]] does not explain at all, only that it's the /next generation/. I had no issue with fcitx4, and I don't care that fcitx4 in maintenance mode. Why should I switch?
+
+After trying for a little bit, this is why:
+
+- Better integration with Plasma. The KCM is shipped as part of fcitx5, instead of as a separate package (=kcm-fcitx=). It's not integrated as well as ibus does to GNOME though — keyboard layouts and input methods are still configured in different pages. GNOME just merges the two.
+- You can bind any key to switch to the next input method now. Fcitx 4 only offered four options, none of which use the Super key to avoid conflict with other apps
+- There is this new concept of input method groups. I find it pointless in my use case, but maybe some people rely on this. Windows offered something similar: you switch languages with =<S-space>= and switch input method within a language with =C-space=.
+- It seems like there are more themes available on the AUR, but I haven't wanted to try because =kimpanel= looks the best.
+
+Unless something breaks spectacularly, I'm probably not switching again for some time.
