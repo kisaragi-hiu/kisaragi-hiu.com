@@ -35,7 +35,7 @@ I started using Org-roam last year, but this year I decided to fork Org-roam v1 
 
 ** Blog
 
-- [[file:/blog/2020-03-20-hugo.org][Switching to Hugo]]
+- [[file:/2021-03-20-switching-to-hugo.org][Switching to Hugo]]
 - [[file:/blog/2021-05-01-idsmile-trumpet-sheet.org][Beginner trumpet score for ID Smile]]
 
 * etc.
