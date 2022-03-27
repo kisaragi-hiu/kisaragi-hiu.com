@@ -28,7 +28,8 @@ youtube-dl <url> --write-thumbnail --skip-download
 * Convert all images into the right size
 
 #+begin_src bash :results none
-parallel magick '{}' -resize 640 '{.}'.jpg ::: *.jpg *.webp
+# parallel magick '{}' -resize 640 '{.}'.jpg ::: *.jpg *.webp
+parallel magick '{}' -resize 640 '{.}'.jpg ::: *.webp
 rm *.webp
 #+end_src
 
