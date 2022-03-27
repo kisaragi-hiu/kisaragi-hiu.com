@@ -1,0 +1,16 @@
+#+title: 2022 review
+#+published: 2022-12-31
+#+draft: t
+#+series: Yearly reviews
+
+* Covers
+
+- [[file:covers/20220116-絶対的少年値.org][絶対的少年値]]
+- [[file:covers/20220328-カラカラカラのカラ.org][カラカラカラのカラ]]
+
+* This site
+
+- [[file:why-fcitx5.org][Why switch to fcitx5]]
+- [[file:finding-devices-on-the-same-network.org][Linux: Finding devices on the same network]]
+- [[file:blender-lrc.org][Blender: how to display lyrics based on a .lrc file (for lyrics videos)]]
+- [[file:emacs-detect-daemon-before-frame.org][Emacs Lisp: how to check if we haven't yet created any windows in daemon mode]]
