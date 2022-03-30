@@ -8,7 +8,7 @@ let cjkFallback = [
 
 module.exports = {
   darkMode: "class",
-  content: ["./templates/**/*.html"],
+  content: ["./templates/**/*.html", "./content-en/**/*.org"],
   theme: {
     fontFamily: {
       sans: ["Fira Sans", ...cjkFallback, "sans-serif"],
