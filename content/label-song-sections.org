@@ -1,6 +1,7 @@
 #+title: How I label song sections
 #+draft: true
 #+created: 2021-11-20T06:00:44+0900
+#+language: en
 
 A typical pop song usually goes like:
 

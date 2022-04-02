@@ -1,6 +1,7 @@
 #+title: Why switch to fcitx5
 #+created: 2022-03-20T15:29:28+0900
-#+tags[]: linux
+#+language: en
+#+tags[]: linux review
 
 [[https://github.com/fcitx/fcitx5][The README]] does not explain at all, only that it's the /next generation/. I had no issue with fcitx4, and I don't care that fcitx4 in maintenance mode. Why should I switch?
 

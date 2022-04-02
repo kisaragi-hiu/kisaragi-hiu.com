@@ -2,6 +2,7 @@
 #+created: 2021-10-10T16:44:40+0900
 #+updated: 2022-01-01T21:12:16+0900
 #+tags[]: meta
+#+language: en
 
 I use a Japanese name despite being Taiwanese. When I introduce myself as Kisaragi in college, sometimes people mistaken me as being Japanese. I think I need to at least attempt to clarify this.
 

@@ -15,6 +15,13 @@
 
 # This must come before the /blog -> / redirect
 # Blog -> content note migration
+/blog/2021-06-02-insert-key-double-key /2021-06-02-insert-key-double-key
+/blog/2021-05-01-idsmile-trumpet-sheet /2021-05-01-idsmile-trumpet-sheet
+/blog/2017-09-24-pollen /2017-09-24-pollen
+/blog/2017-09-13-discovering-racket /2017-09-13-discovering-racket
+/blog/2016-06-30-han-characters /2016-06-30-han-characters
+/blog/2020-02-16-slack-export-to-org /2020-02-16-slack-export-to-org
+/blog/2020-10-25-ox-pollen /2020-10-25-ox-pollen
 /blog/2020-10-31-current-infrastructure /2020-10-31-infrastructure
 /blog/2020-03-20-hugo /2021-03-20-switching-to-hugo
 /blog/2020-12-16-2020-review /2020-review

@@ -1,6 +1,7 @@
 #+title: Making the Multimedia category in my Linux app menu usable again
 #+created: 2021-12-07T19:32:23+0900
 #+tags[]: linux
+#+language: en
 
 =lsp-plugins= and =x42-plugins= both install a launcher shortcut for /every single plugin they provide/, rendering the Multimedia category in the desktop menu completely useless. In desktops where apps aren't split into categories (GNOME), the entire app list is rendered useless by pages upon pages of LSP plugins with the same exact icon.
 

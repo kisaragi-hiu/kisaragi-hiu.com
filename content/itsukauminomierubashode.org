@@ -1,6 +1,7 @@
 #+title: いつか海の見える街で Cover and PV
 #+created: 2017-07-10T15:01:00+0800
 #+series: Own Vocal Experiment
+#+language: en
 
 I tried to cover いつか海の見える街で, and also made a simple lyrics video. The background was recorded during my graduation trip at the end of our train, as my class just happened to get assigned to the last train car.
 

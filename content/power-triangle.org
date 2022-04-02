@@ -1,6 +1,7 @@
 #+title: expt, log, and root: the power triangle
 #+created: 2021-06-20T23:35:02+0900
 #+tags[]: math illustrated
+#+language: en
 
 [[file:expt-log-root-triangle.jpg]]
 

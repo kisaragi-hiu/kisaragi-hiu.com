@@ -2,6 +2,7 @@
 #+created: 2022-01-18T05:06:40+0900
 #+toc: #t
 #+tags[]: emacs-lisp
+#+language: en
 
 On my system, Emacs segfaults if this is run in a daemon before a window is created:
 

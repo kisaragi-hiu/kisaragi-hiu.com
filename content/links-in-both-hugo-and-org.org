@@ -1,6 +1,7 @@
 #+title: Making links work in both Hugo and Org
 #+created: 2021-06-12T23:06:34+0900
 #+tags[]: hugo org-mode
+#+language: en
 # #+certainty: works
 
 In a Hugo site using Org like this one, paths to the same files are different in the source code and when they’re exported. For example, to reference an image in this repository,

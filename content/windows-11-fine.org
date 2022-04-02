@@ -1,6 +1,7 @@
 #+title: Windows 11 is fine
 #+created: 2021-10-31T04:33:56+0900
-#+tags[]: Windows Opinions
+#+tags[]: windows Opinions review
+#+language: en
 
 I upgraded my main PC's Windows install to Windows 11. It's honestly fine, I just don't like the fact that Microsoft broke the promise to make Windows 10 the “last release of Windows” (ie. future updates are always versions of Windows 10) and nobody seems to care. So here's a brain dump of what I think of Windows 11 so far, roughly sorted from positive to negative.
 

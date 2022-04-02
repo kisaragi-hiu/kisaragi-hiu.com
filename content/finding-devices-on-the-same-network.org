@@ -1,6 +1,7 @@
 #+title: Linux: Finding devices on the same network
 #+created: 2022-03-15T01:48:23+0900
 #+tags[]: linux
+#+language: en
 
 I know when I share my phone's mobile internet to my laptop through WiFi tethering, the two devices are in the same network and can see each other. But how do I find out the local IP address of the other device?
 

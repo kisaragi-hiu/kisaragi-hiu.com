@@ -1,6 +1,7 @@
 #+title: One way to set up org-protocol on Linux
 #+created: 2021-09-09T03:03:34+0900
 #+tags[]: linux emacs org-mode
+#+language: en
 
 [[https://orgmode.org/manual/Protocols.html][Org-protocol]] allows you to write links in the browser and open Emacs when you click the link. After the Emacs side is set up, running =emacsclient org-protocol://handler?key=value= will pass =(:key "value")= to the function that is registered for =handler=. But the browser still does not recognize the link.
 

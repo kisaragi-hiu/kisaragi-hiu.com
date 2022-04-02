@@ -1,6 +1,7 @@
 #+title: Installing a Progressive Web App on Linux with Firefox
 #+created: 2021-09-11T19:26:26+0900
 #+tags[]: linux firefox
+#+language: en
 
 Progressive Web Apps ([[https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps][PWA]]) is just a fancy name for websites that utilize a set of APIs that allow them to replace native apps. “Installing a PWA” really just means adding a shortcut to the website while taking its [[https://developer.mozilla.org/en-US/docs/Web/Manifest][manifest]] into account.
 

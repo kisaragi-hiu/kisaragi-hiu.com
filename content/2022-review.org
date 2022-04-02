@@ -1,6 +1,7 @@
 #+title: 2022 review
 #+published: 2022-12-31
 #+draft: t
+#+language: en
 #+series: Yearly reviews
 
 * Covers

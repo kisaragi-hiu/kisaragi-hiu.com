@@ -3,6 +3,7 @@
 #+toc: t
 #+tags[]: blender video
 #+coverimage: /vertical-writing-goal.png
+#+language: en
 
 Blender doesn't support vertical writing. So what should I do when I still want to use it?
 

@@ -1,6 +1,9 @@
 #+title: New website
 #+created: 2017-03-19T05:00:00+0800
 #+tags[]: meta
+#+language: en
+
+(Translated from [[./zh-new-website.org][the original]].)
 
 I wanted a simple file to keep links to my profile
 

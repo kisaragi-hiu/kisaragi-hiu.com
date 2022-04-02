@@ -2,6 +2,7 @@
 #+created: 2021-06-13T20:19:55+0900
 #+tags[]: hugo taxonomy
 #+toc: true
+#+language: en
 
 Hugo has extensive support for Taxonomies. These allow any page to be tagged with anything, with appropriate list pages generated automatically.
 

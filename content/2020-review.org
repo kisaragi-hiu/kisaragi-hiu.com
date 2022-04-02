@@ -3,6 +3,7 @@
 #+tags[]: org-mode utau emacs trumpet
 #+series: Yearly reviews
 #+toc: #t
+#+language: en
 
 Last year I saw [[https://www.taniarascia.com/2019-into-2020/][Tania Rascia’s 2019 into 2020]] article and thought I should do the same, but I procrastinated so much that now I’m writing a review for 2020 instead of 2019.
 
@@ -10,7 +11,7 @@ Last year I saw [[https://www.taniarascia.com/2019-into-2020/][Tania Rascia’s 
 
 I wrote way too few articles this year. I’ve been keeping more private notes, some of which are more suited to this blog, so I’ll probably publish more next year.
 
-- [[file:2020-10-31-current-infrastructure.org][Current infrastructure of this site]]
+- [[file:2020-10-31-infrastructure.org][Current infrastructure of this site]]
 - [[file:2020-10-25-ox-pollen.org][ox-pollen announcement]]
 - [[file:2020-02-16-slack-export-to-org.org][Exporting my Slack data to an Org mode file]]
 
@@ -40,7 +41,7 @@ I also made way too few covers this year. There are at least two covers that are
 
 ** new Emacs packages
 
-- [[file:../projects/ox-pollen.org][ox-pollen]]
+- [[file:projects/ox-pollen.org][ox-pollen]]
 - +kisaragi-hydration+ → [[https://gitlab.com/kisaragi-hiu/kisaragi-log][kisaragi-log]]
 - [[https://gitlab.com/kisaragi-hiu/dired-show-readme][dired-show-readme]]
 

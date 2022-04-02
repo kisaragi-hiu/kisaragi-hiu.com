@@ -2,6 +2,7 @@
 #+tags[]: emacs org-mode
 #+toc: true
 #+created: 2021-06-02T23:00:06+0900
+#+language: en
 
 {{< video "/emacs-org-double-square-insert.mp4" >}}
 

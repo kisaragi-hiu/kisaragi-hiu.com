@@ -1,6 +1,7 @@
 #+title: What to do when Piapro Studio no longer uses tempo from the DAW after loading a VSQx
 #+created: 2021-11-27T21:01:39+0900
 #+tags[]: tips
+#+language: en
 
 When you load a VSQx into Piapro Studio (perhaps for tuning reference), it will follow the tempo from the VSQx instead of the tempo of the current DAW project.
 

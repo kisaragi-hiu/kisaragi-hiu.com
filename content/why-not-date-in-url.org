@@ -1,6 +1,7 @@
 #+title: Why I shouldn't have put the publish date in my URLs
 #+created: 2021-06-07T19:41:30+0900
 #+updated: 2021-06-12T07:52:01+0900
+#+language: en
 
 Two philosophies:
 
