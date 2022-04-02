@@ -7,7 +7,7 @@ Maybe this is better suited in [[file:about.org][About]]. For now, I’m listing
 - “Maintaining” a Linux system since 2014, self hosting stuff on Linode since 2019
 - English, Mandarin, Japanese
 - Some familiarity with Racket and Pollen
-- Made this site in 2017 (see [[file:blog/2020-10-31-current-infrastructure.org][2020-10-31 Current infrastructure of this site]] for how it’s set up)
+- Made this site in 2017 (see [[file:2020-10-31-infrastructure.org][2020-10-31 Current infrastructure of this site]] for how it’s set up)
 - Good enough understanding of Emacs Lisp to develop packages helping myself
 - UTAU covers
 

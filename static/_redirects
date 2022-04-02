@@ -15,6 +15,7 @@
 
 # This must come before the /blog -> / redirect
 # Blog -> content note migration
+/blog/2020-10-31-current-infrastructure /2020-10-31-infrastructure
 /blog/2020-03-20-hugo /2021-03-20-switching-to-hugo
 /blog/2020-12-16-2020-review /2020-review
 /blog/2018-07-27-utau-tip-labels /utau-labels
