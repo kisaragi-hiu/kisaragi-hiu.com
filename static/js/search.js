@@ -15,7 +15,8 @@ function ensureArray(obj) {
 
 function shouldInclude(params, needle, filters) {
   if (
-    !filters.every((filter) => {
+    filters.length != 0 &&
+    !filters.some((filter) => {
       return params[filter.type] == filter.value;
     })
   ) {
