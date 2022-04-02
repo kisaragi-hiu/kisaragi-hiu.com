@@ -53,17 +53,6 @@ taxonomies:
 
 # * Languages
 hasCJKLanguage: true
-defaultContentLanguage: en
-languages:
-  en:
-    contentDir: content-en
-    weight: 1
-  zh:
-    contentDir: content-zh
-    weight: 2
-  # ja:
-  #   contentDir: ja
-  #   weight: 3
 
 # * Local Variables
 # Local Variables:
