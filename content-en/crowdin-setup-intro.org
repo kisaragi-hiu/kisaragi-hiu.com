@@ -1,4 +1,4 @@
-#+title: 使用 Crowdin 管理一份翻譯專案
+#+title: 使用 Crowdin 管理翻譯專案
 #+created: 2021-06-19T00:52:03+0900
 #+language: zh-TW
 #+toc: true
