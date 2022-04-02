@@ -6,8 +6,8 @@ I write Emacs Lisp, make covers with UTAU, and occasionally play with Blender.
 
 #+begin_export html
 <ul class="not-prose mt-4 flex list-none p-0 gap-x-4 font-sans">
-  <li><a class="btn" href="/barren-moon">如同月球般的荒涼</a></li>
-  <li><a class="btn" href="https://nicovideo.jp/user/38995186">niconico</a></li>
-  <li><a class="btn" href="https://pixiv.me/kisaragi-hiu">pixiv</a></li>
+  <li><a class="block btn" href="/barren-moon">如同月球般的荒涼</a></li>
+  <li><a class="block btn" href="https://nicovideo.jp/user/38995186">niconico</a></li>
+  <li><a class="block btn" href="https://pixiv.me/kisaragi-hiu">pixiv</a></li>
 </ul>
 #+end_export

@@ -1,9 +1,9 @@
 {{ $code := . }}
 {{ $name := "" }}
 {{ if (eq $code "en") }}
-    {{ $name = "English" }}
+    {{ $name = "en" }}
 {{ else if (eq $code "zh-TW") }}
-    {{ $name = "中文" }}
+    {{ $name = "zh" }}
 {{ end }}
 
 {{ return $name }}

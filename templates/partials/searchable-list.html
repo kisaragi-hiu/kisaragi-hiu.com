@@ -1,4 +1,33 @@
 <script src="/js/search.js"></script>
+
+{{ define "partials/inline/button-checkbox" }}
+<!-- prettier-ignore -->
+{{ $label := .value }}
+{{ $partial := .partial }}
+{{ $type := .type }}
+<div class="inline-block">
+  <input
+    class="peer hidden"
+    type="checkbox"
+    data-filter="{{ jsonify . }}"
+    id="{{$type}}:{{$label}}"
+    name="{{$type}}:{{$label}}"
+    onchange="updateSearch()"
+  />
+  <label
+    class="hover:bg-accent-light bg-white px-3 p-2 peer-checked:bg-accent-light"
+    for="{{$type}}:{{$label}}"
+  >
+    <!-- prettier-ignore -->
+    {{ if $partial }}
+    {{ partial $partial $label }}
+    {{ else }}
+    {{ $label }}
+    {{ end }}
+  </label>
+</div>
+{{ end }}
+
 <!-- outer div in relative to create a context for the absolute-positioned svg
 
      A lot of this concept is copied from https://www.swyx.io/ideas/ -->
@@ -10,36 +39,48 @@
     id="search"
     onkeyup="updateSearch()"
   />
-  <!-- Ionicons 5.5.2 search-outline -->
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    class="h-5 w-5 absolute top-3 right-3"
-    viewBox="0 0 512 512"
-  >
-    <title>Search</title>
-    <path
-      d="M221.09 64a157.09 157.09 0 10157.09 157.09A157.1 157.1 0 00221.09 64z"
-      fill="none"
-      stroke="currentColor"
-      stroke-miterlimit="10"
-      stroke-width="32"
-    />
-    <path
-      fill="none"
-      stroke="currentColor"
-      stroke-linecap="round"
-      stroke-miterlimit="10"
-      stroke-width="32"
-      d="M338.29 338.29L448 448"
-    />
-  </svg>
+  {{ partial "ionicons-search-outline" "h-5 w-5 absolute top-3 right-3" }}
+  <!-- prettier-ignore -->
+  {{ $sections := (slice) }}
+  {{ range . }}
+  {{ with .Section }}
+  {{ $sections = (union $sections (slice .)) }}
+  {{ end }}
+  {{ end }}
+  {{ $languages := (slice) }}
+  {{ range . }}
+  {{ with .Params.language }}
+  {{ $languages = (union $languages (slice .)) }}
+  {{ end }}
+  {{ end }}
+  <div id="filters" class="items-center flex space-x-2 my-2">
+    {{ partial "ionicons-filter" "h-5 w-5" }}
+    <div class="flex my-2">
+      {{ range $languages }}
+      <!-- prettier-ignore -->
+      {{ partial "inline/button-checkbox"
+                   (dict "value" .
+                         "partial" "func-language-code-to-name"
+                         "type" "language") }}
+      {{ end }}
+    </div>
+    <!-- <div class="flex my-2">
+         {{ range $sections }}
+         {{ partial "inline/button-checkbox"
+         (dict "value" .
+         "type" "section") }}
+         {{ end }}
+         </div> -->
+  </div>
 </div>
 <ul id="posts" class="mt-8 flex flex-col gap-8">
   <!-- prettier-ignore -->
   {{ range . }}
   {{ if not (.Param "special") }}
   {{ $extra_params := (dict "section" .Section)}}
-  <li data-params="{{ jsonify (merge .Params $extra_params) }}">{{ partial "index-item" . }}</li>
+  <li data-params="{{ jsonify (merge .Params $extra_params) }}">
+    {{ partial "index-item" . }}
+  </li>
   <!-- prettier-ignore -->
   {{ end }}
   {{ end }}

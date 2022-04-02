@@ -38,7 +38,7 @@
   }
   .btn {
     @apply hover;
-    @apply block shadow rounded bg-white py-1 m-0 my-2;
+    @apply shadow rounded bg-white py-1 m-0 my-2;
   }
   .link {
     @apply text-accent-strong dark:text-accent;
