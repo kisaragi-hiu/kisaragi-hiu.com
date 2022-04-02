@@ -4,6 +4,8 @@
     {{ $name = "en" }}
 {{ else if (eq $code "zh-TW") }}
     {{ $name = "zh" }}
+{{ else }}
+    {{ $name = $code }}
 {{ end }}
 
 {{ return $name }}
