@@ -1,16 +1,26 @@
+function ensureString(str) {
+  if (str) {
+    return str.toLowerCase();
+  } else {
+    return "";
+  }
+}
+function ensureArray(obj) {
+  if (obj) {
+    return obj.join("").toLowerCase();
+  } else {
+    return [""];
+  }
+}
+
 function shouldInclude(params, needle) {
-  let title = params.title || "";
-  title = title.toLowerCase();
-  let series = params.series || "";
-  series = series.toLowerCase();
-  let voice = params.voice || "";
-  voice = voice.toLowerCase();
-  let tags = params.tags || [""];
-  tags = tags.join("").toLowerCase();
+  let title = ensureString(params.title);
+  let series = ensureString(params.series);
+  let voice = ensureString(params.voice);
+  let tags = ensureArray(params.tags);
   // TODO: Section should be selected in a radiobutton, not filtered
   // with the text box
-  let section = params.section || "";
-  section = section.toLowerCase();
+  let section = ensureString(params.section);
 
   str = title + tags + series + voice + section;
   // "a b" -> only items including both "a" and "b" are included
