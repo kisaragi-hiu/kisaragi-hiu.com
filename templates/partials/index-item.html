@@ -4,7 +4,7 @@
     {{ if eq .Section "covers" }}
       {{ partial "cover-item" (dict "item" . "mark" true) }}
     {{ else }}
-    <div class="flex flex-col btn gap-y-2 rounded max-h-16">
+    <div class="flex flex-col hover gap-y-2 rounded max-h-16">
       <div class="font-bold">{{.Title}}</div>
       {{ partial "date" .Date }}
     </div>

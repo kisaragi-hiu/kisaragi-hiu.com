@@ -6,8 +6,8 @@ I write Emacs Lisp, make covers with UTAU, and occasionally play with Blender.
 
 #+begin_export html
 <ul class="not-prose mt-4 flex list-none pl-2 gap-x-6 font-sans">
-  <li><a class="block shadow rounded bg-white btn py-1" href="/barren-moon">如同月球般的荒涼</a></li>
-  <li><a class="block shadow rounded bg-white btn py-1" href="https://nicovideo.jp/user/38995186">niconico</a></li>
-  <li><a class="block shadow rounded bg-white btn py-1" href="https://pixiv.me/kisaragi-hiu">pixiv</a></li>
+  <li><a class="block shadow rounded bg-white hover py-1" href="/barren-moon">如同月球般的荒涼</a></li>
+  <li><a class="block shadow rounded bg-white hover py-1" href="https://nicovideo.jp/user/38995186">niconico</a></li>
+  <li><a class="block shadow rounded bg-white hover py-1" href="https://pixiv.me/kisaragi-hiu">pixiv</a></li>
 </ul>
 #+end_export
