@@ -6,3 +6,4 @@
 #+youtube: aFUMBFt3sSA
 #+niconico: sm33771568
 #+tags[]: video
+#+language: ja

@@ -5,3 +5,4 @@
 #+original: https://nico.ms/sm33274770
 #+youtube: DWSBNbyRgc8
 #+niconico: sm33331444
+#+language: ja

@@ -5,3 +5,4 @@
 #+voice: 雨月
 #+youtube: b5WpZ2BhKl4
 #+niconico: sm33584472
+#+language: ja

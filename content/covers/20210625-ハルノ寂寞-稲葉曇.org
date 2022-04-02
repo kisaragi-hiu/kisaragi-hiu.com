@@ -6,6 +6,7 @@
 #+youtube: _fvwAsjfyIw
 #+niconico: sm38934737
 #+tags[]: video
+#+language: ja
 
 UST: 月灯ケイジ ([[https://youtu.be/6zjgi-PE_as]])
 

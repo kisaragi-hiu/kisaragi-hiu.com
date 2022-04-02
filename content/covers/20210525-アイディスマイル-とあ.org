@@ -6,3 +6,4 @@
 #+youtube: dh58iKxZJDY
 #+niconico: sm38787385
 #+tags[]: prsk
+#+language: ja

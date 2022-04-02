@@ -5,3 +5,4 @@
 #+voice: 波音リツ
 #+youtube: rAA2IVMlfrc
 #+niconico: sm34076143
+#+language: ja

@@ -5,3 +5,4 @@
 #+voice: 闇音レンリ
 #+youtube: kQIPrB9dhgQ
 #+niconico: sm38405476
+#+language: ja

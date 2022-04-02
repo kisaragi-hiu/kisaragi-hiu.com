@@ -6,3 +6,4 @@
 #+niconico: sm31632838
 #+original: https://nico.ms/sm21646208
 #+tags[]: video
+#+language: ja

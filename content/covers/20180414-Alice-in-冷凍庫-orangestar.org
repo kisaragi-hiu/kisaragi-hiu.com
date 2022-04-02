@@ -5,3 +5,4 @@
 #+youtube: mr_3vDJRb10
 #+niconico: sm33048044
 #+original: https://nico.ms/sm28242091
+#+language: ja

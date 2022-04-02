@@ -5,3 +5,4 @@
 #+voice: 暗鳴ニュイ
 #+youtube: SdWmNkjrNa4
 #+niconico: sm39904449
+#+language: ja

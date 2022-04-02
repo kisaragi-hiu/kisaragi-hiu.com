@@ -6,6 +6,7 @@
 #+niconico: sm30026279
 #+original: https://nico.ms/sm17696073
 #+tags[]: video
+#+language: zh-TW
 
 I also wrote the Mandarin lyrics for this.
 

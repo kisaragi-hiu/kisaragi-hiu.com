@@ -5,5 +5,6 @@
 #+youtube: 0nEjiqtTaRc
 #+niconico: sm26435147
 #+original: https://nico.ms/sm25554631
+#+language: ja
 
 This was my first time using a VCV voicebank.

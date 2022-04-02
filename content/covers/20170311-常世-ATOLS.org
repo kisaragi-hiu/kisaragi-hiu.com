@@ -5,3 +5,4 @@
 #+youtube: 4mtoBVKQ4Ns
 #+niconico: sm30812780
 #+original: https://nico.ms/sm30743792
+#+language: ja

@@ -5,3 +5,4 @@
 #+voice: 夏語遙
 #+youtube: Gqunm4l6riM
 #+niconico: sm35939529
+#+language: ja

@@ -5,3 +5,4 @@
 #+youtube: d1g3_nWRwpM
 #+niconico: sm25132527
 #+original: https://nico.ms/sm25005757
+#+language: ja

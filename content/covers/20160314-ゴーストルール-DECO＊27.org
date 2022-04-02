@@ -5,3 +5,4 @@
 #+youtube: ZStCs4ULKTE
 #+niconico: sm28417565
 #+original: https://nico.ms/sm27965309
+#+language: ja
