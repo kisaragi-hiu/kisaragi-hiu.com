@@ -189,6 +189,7 @@
   /* Reset @tailwindcss/typography's margins */
   pre {
     @apply my-2;
+    line-height: 1;
   }
   /* Add a language header */
   code::before {
