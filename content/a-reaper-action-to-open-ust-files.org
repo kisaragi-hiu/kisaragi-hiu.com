@@ -1,0 +1,199 @@
+#+title: A Reaper action to open UST files
+#+created: 2022-04-04T03:08:37+0900
+#+tags[]: REAPER utau
+#+language: en
+
+#+caption: The command in action
+{{< video "open-ust-from-reaper.mp4" >}}
+
+{{< toc >}}
+
+So I bought [[https://www.reaper.fm/][Reaper]] for its folder tracks and easy to use piano roll, but also because of reviews talking about how they sink tons of time into customizing it exactly to their likings. It sounded to me like it's the Emacs of DAWs. As I tried using it for a new UTAU cover, I wanted to try out this capability.
+
+First I had to choose a language. Reaper [[https://www.reaper.fm/sdk/reascript/reascript.php][can be extended]] with 3 languages: EEL2, a custom language; Lua 5.3; and Python, which must be installed separately. EEL2 isn't particularly useful outside of Reaper, and support for Python is limited, so I went with Lua. I've wanted to try using Lua somewhere for some time, so this works out.
+
+My UTAU cover projects are organized in a few ways:
+
+- The UST files might live alongside the exported wav files;
+  #+begin_src tree
+  ├── a1-main.wav
+  └── a1-main.ust
+  #+end_src
+- or the USTs might live in a =ust/= folder while the wav files live in the project root;
+  #+begin_src tree
+  ├── a1-main.wav
+  └── ust
+      └── a1-main.ust
+  #+end_src
+- or the USTs might be in =ust/= and the wav files are in =wav/=
+
+  #+begin_src tree
+  ├── wav
+  │   └── a1-main.wav
+  └── ust
+      └── a1-main.ust
+  #+end_src
+
+After some use of Reaper, I learned that external files are imported into /media items/, which has a list of /takes/, which each has a /source/.
+
+I want to grab the selected /media item/, find the source path of it, figure out a list of possible UST locations based on that path, then open it with a command like =xdg-open=.
+
+* Grabbing the path
+
+Searching through [[https://www.reaper.fm/sdk/reascript/reascripthelp.html][the documentation]] (with Firefox's C-f search):
+
+- *reaper.GetSelectedMediaItem(project, index)* returns the selected media item.
+  - =project= is =0= for the active project — a lot of functions take this argument for some reason.
+  - =index= is the 0-based index to choose which one to return if there are multiple selected items. Despite this being Lua, Reaper's own indices are still 0-based; thankfully the documentation does acknowledge this.
+- *reaper.GetActiveTake(item)* returns the /active/ take of =item=.
+- *reaper.GetMediaItemTake_Source(take)* returns the /source/ of =take=; a source has other properties (like length, type, sample rate…), so we don't have a file name yet.
+- Finally, *reaper.GetMediaSourceFileName(source)* returns the file name of =source=.
+
+The naming conventions seem a little inconsistent. Ideally a more cohesive integration with Lua might model these objects as Lua tables, so instead of =reaper.GetMediaItemTake_Source(take)= one could write =take.source= instead, but this is fine.
+
+Every time we save the file in Reaper's builtin editor, the entire file is evaluated, and global variables are shown on the right pane. So I find it useful to put code in a =main= function and not declare =local= until I don't need the value to be shown anymore.
+
+#+begin_src lua
+function main()
+    selected_item = reaper.GetSelectedMediaItem(0, 0)
+    active_take = reaper.GetActiveTake(selected_item)
+    source = reaper.GetMediaItemTake_Source(active_take)
+    source_path = reaper.GetMediaSourceFileName(source)
+end
+#+end_src
+
+* Create a list of possible UST locations and return the first one that exists
+
+Now that we have the path in the =source_path= variable, we try to find a UST that exists.
+
+What I want to do would be something like this in Emacs Lisp:
+
+#+begin_src emacs-lisp
+(let ((source-path
+       "/kisaragi-common/cloud/Projects/1.done/20210625 ハルノ寂寞 - 稲葉曇[utau cover music]/lead.wav"))
+  (-first
+   #'f-exists?
+   (list
+    ;; root/abc.wav -> root/abc.ust
+    (concat (f-no-ext (f-filename source-path)) ".ust")
+    ;; root/abc.wav -> root/ust/abc.ust
+    (f-join (f-dirname source-path)
+            "ust"
+            (concat (f-no-ext (f-filename source-path)) ".ust"))
+    ;; root/wav/abc.wav -> root/ust/abc.ust
+    (f-join (f-dirname source-path)
+            ".."
+            "ust"
+            (concat (f-no-ext (f-filename source-path)) ".ust")))))
+
+;; -> "/kisaragi-common/cloud/Projects/1.done/20210625 ハルノ寂寞 - 稲葉曇[utau cover music]/ust/lead.ust"
+#+end_src
+
+Unfortunately I wasn't able to find builtin functions in Lua that manipulated paths like this. In the end I had to copy some code from [[https://github.com/moteus/lua-path][github:moteus/lua-path]], as I didn't find a proven way to import modules from LuaRocks.
+
+Extracting some functions and adopting them so that they don't depend on other lua-path modules:
+
+#+begin_src lua
+-- From
+-- https://github.com/moteus/lua-path/blob/5a32c705/lua/path.lua#L147
+function splitext(P)
+    local s1, s2 = string.match(P, "(.-[^\\/.])(%.[^\\/.]*)$")
+    if s1 then
+        return s1, s2
+    end
+    return P, ""
+end
+
+-- From
+-- https://github.com/moteus/lua-path/blob/5a32c705/lua/path.lua#L153
+function splitpath(P)
+    return string.match(P, "^(.-)[\\/]?([^\\/]*)$")
+end
+
+-- Modified from
+-- https://github.com/moteus/lua-path/blob/5a32c705/lua/path.lua#L134
+--
+-- No, I have zero idea what select('#') or #var means
+if reaper.GetOS():match("^Win") then
+    PATH_SEPARATOR = "\\"
+else
+    PATH_SEPARATOR = "/"
+end
+function joinpaths(...)
+    local t, n = {...}, select("#", ...)
+    local r = t[1]
+    for i = 2, #t do
+        r = r .. PATH_SEPARATOR .. t[i]
+    end
+    return r
+end
+#+end_src
+
+These are enough to write down our three candidates:
+
+#+begin_src lua
+source_dir, filename = splitpath(source_path)
+base = splitext(filename)
+
+candidates = {}
+-- Intention: root/abc.wav -> root/abc.ust
+candidates[1] = joinpaths(source_dir, base .. ".ust")
+-- Intention: root/abc.wav -> root/ust/abc.ust
+candidates[2] = joinpaths(source_dir, "ust", base .. ".ust")
+-- Intention: root/wav/abc.wav -> root/ust/abc.ust
+candidates[3] = joinpaths(source_dir, "..", "ust", base .. ".ust")
+#+end_src
+
+Checking for file existence can be done in Reaper with =reaper.file_exists(path)=.
+
+Next, a simple question: how do I iterate through a list of items and return the first one that matches a condition in Lua?
+
+In short, like this:
+
+#+begin_src lua
+-- Assuming `candidates` is already prepared beforehand
+
+local ret
+for _idx, path in next, candidates do
+    if reaper.file_exists(path) then
+        ret = path
+        break
+    end
+end
+#+end_src
+
+- =_idx= is just me carrying Emacs Lisp's naming convention for throwaway variables over into Lua
+- =for … in …= is the [[https://www.lua.org/manual/5.3/manual.html#3.3.5][/generic/ for statement]]. It calls the first argument (=next= here) on the second and third arguments (=candidates= and nil here). In this case, it iterates through each element of =candidates= in an unspecified order (this is done by =next=).
+
+* Actually opening the file after finding it
+
+Assuming we found the UST file (and saved it into =ret=), we want to open it with UTAU.
+
+We can delegate figuring out where the UTAU executable is to the system via =xdg-open= (and equivalent commands on Windows and macOS).
+
+In Lua, the function to run a system command is =os.execute=. Unfortunately it doesn't seem to have an option to skip the shell, but for what I'm doing it's good enough.
+
+Additionally, Reaper provides a function that returns the operating system name, so we don't have to do this ourselves.
+
+#+begin_src lua
+-- Be sure to not name it lowercase `os` because that will overwrite
+-- the builtin os table.
+OS = reaper.GetOS()
+if OS:match("^Win") then
+    command = "start"
+-- Lua's string matching patterns don't have the or operator ("|").
+elseif OS:match("^macOS") or OS:match("^OSX") then
+    command = "open"
+elseif OS:match("^Other") then
+    command = "xdg-open"
+end
+if ret then
+    os.execute(command .. " " .. '"' .. ret .. '"')
+end
+#+end_src
+
+Granted, I never actually tested this outside of Linux, but I like to at least make an effort to write cross-platform code.
+
+* The end result
+
+{{< gist kisaragi-hiu 96c3a6becf0e935d4a1a17321ac02e56 >}}
