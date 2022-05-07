@@ -1,0 +1,63 @@
+#+title: Listing unused functions in Emacs Lisp with elisp-unused
+#+draft: t
+#+created: 2022-05-08T06:37:39+0900
+#+tags[]: emacs-lisp
+
+While writing some Emacs Lisp code, I felt I wanted to be able to see all unused functions in my project so that I can perhaps purge them. However, I wasn't able to find any tool that does this.
+
+I did find this blog post about [[https://emacs.cafe/emacs/javascript/2017/05/12/finding-unused-functions.html][writing about 30 lines of Emacs Lisp to do the same for JavaScript]], and thought this should be easy enough to do for Emacs Lisp.
+
+To find all unused functions, one must
+
+1. find all function definitions in the project, then
+2. find references for all of them and filter out ones with more than one references (the definition itself).
+
+That blog post was able to find definitions with [[https://github.com/mooz/js2-mode][=js2-mode=]]'s AST and find references with [[https://github.com/js-emacs/xref-js2][=xref-js2=]]. For Emacs Lisp, it seems like there is no easily available function that finds all definitions; as for finding references, there is =xref-find-references= (or =(xref-backend-references 'elisp <identifier>)=), but there is no Emacs Lisp-specific implementation and so it apparently just does a =find | grep=.
+
+Since [[https://github.com/jacktasia/dumb-jump][dumb-jump]] is also able to go to definitions, I looked there next. After a bit of fiddling around (=M-:= is an awesome REPL; writing code in a buffer then =pp-eval-last-sexp= is also really nice), this is the result:
+
+#+begin_src emacs-lisp
+(defun elisp-unused--find-def (thing project)
+  "Find definitions using THING in PROJECT.
+
+If PROJECT is non-nil, look there instead."
+  (let ((results (cl-letf (((symbol-function 'dumb-jump--get-symbol-start)
+                            (lambda (&rest _) nil))
+                           ((symbol-function 'dumb-jump-get-point-context)
+                            (lambda (&rest _) nil))
+                           ((symbol-function 'dumb-jump-get-point-line)
+                            (lambda (&rest _) nil))
+                           ((symbol-function 'dumb-jump-get-point-symbol)
+                            (lambda (&rest _) thing))
+                           ((symbol-function 'dumb-jump-get-ctx-type-by-language)
+                            (lambda (&rest _) "function")))
+                   (dumb-jump-fetch-results
+                    (or (buffer-file-name) default-directory)
+                    (or project (projectile-project-root))
+                    "elisp"
+                    nil))))
+    (plist-get results :results)))
+#+end_src
+
+It is ungodly. I'm overriding dumb-jump's local functions to force =dumb-jump-fetch-results= to ignore all context and use my arguments instead. But I also didn't want to reimplement dumb-jump's way of communicating with ag, rg, git grep, or grep, so… this is the compromise.
+
+#+begin_src emacs-lisp
+(let ((default-directory
+        (file-name-directory (file-truename (find-library-name "elisp-unused")))))
+  (elisp-unused--find-def "defun" default-directory))
+#+end_src
+
+#+RESULTS:
+| :path | elisp-unused.el            | :line |  52 | :context | (defun elisp-unused--find-references (identifier)                           | :diff |   -7 | :target | defun |
+| :path | elisp-unused.el            | :line |  91 | :context | (defun elisp-unused--find-def (thing project)                               | :diff |  -46 | :target | defun |
+| :path | elisp-unused.el            | :line | 115 | :context | (defun elisp-unused--find-defined-things (&optional project)                | :diff |  -70 | :target | defun |
+| :path | elisp-unused.el            | :line | 124 | :context | (elisp-unused--find-def "defun" project)                                    | :diff |  -79 | :target | defun |
+| :path | elisp-unused.el            | :line | 159 | :context | (defun elisp-unused--find-unused-callables (&optional project interactive?) | :diff | -114 | :target | defun |
+| :path | elisp-unused.el            | :line | 189 | :context | (defun elisp-unused-list-unused-callables (&optional project)               | :diff | -144 | :target | defun |
+| :path | tests/test-elisp-unused.el | :line |   8 | :context | (defun init (&optional dir)                                                 | :diff |   37 | :target | defun |
+| :path | tests/test-elisp-unused.el | :line |  18 | :context | (insert "(defun used/return-one () 1)                                       | :diff |   27 | :target | defun |
+| :path | tests/test-elisp-unused.el | :line |  20 | :context | (defun unused/a () 10)                                                      | :diff |   25 | :target | defun |
+| :path | tests/test-elisp-unused.el | :line |  21 | :context | (defun unused/another () 10)                                                | :diff |   24 | :target | defun |
+| :path | tests/test-elisp-unused.el | :line |  24 | :context | (defun teardown ()                                                          | :diff |   21 | :target | defun |
+
+Next, to find
