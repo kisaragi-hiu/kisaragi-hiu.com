@@ -3,12 +3,13 @@
 #+tags[]: REAPER utau
 #+language: en
 
-#+caption: The command in action
-{{< video "open-ust-from-reaper.mp4" >}}
-
 {{< toc >}}
 
 So I bought [[https://www.reaper.fm/][Reaper]] for its folder tracks and easy to use piano roll, but also because of reviews talking about how they sink tons of time into customizing it exactly to their likings. It sounded to me like it's the Emacs of DAWs. As I tried using it for a new UTAU cover, I wanted to try out this capability.
+
+#+caption: The command in action
+#+attr_html: :class w-1/2
+{{< video "open-ust-from-reaper.mp4" >}}
 
 First I had to choose a language. Reaper [[https://www.reaper.fm/sdk/reascript/reascript.php][can be extended]] with 3 languages: EEL2, a custom language; Lua 5.3; and Python, which must be installed separately. EEL2 isn't particularly useful outside of Reaper, and support for Python is limited, so I went with Lua. I've wanted to try using Lua somewhere for some time, so this works out.
 

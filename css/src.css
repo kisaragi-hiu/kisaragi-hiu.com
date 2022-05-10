@@ -7,6 +7,7 @@
 
 @layer base {
   html {
+    background: #f8f8f8;
     @apply md:text-[20px];
   }
   .outer {
@@ -59,13 +60,13 @@
     @apply my-4;
   }
   .meta {
+    @apply my-4 text-sm w-max gap-x-4;
     /* Format like this:
          dd1   dd2   dd3   dd4
           dt1   dt2   dt3   dt4
        Wrap each group in a <div>. This is specifically permitted in
        its definition. */
-    @apply my-4 text-sm w-max gap-x-4;
-    @apply flex;
+    /* @apply flex; */
     a {
       @apply text-accent-strong;
     }

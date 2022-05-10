@@ -1,11 +1,6 @@
 <!-- prettier-ignore -->
 {{ $item := .item }}
-{{ $title := "" }}
-{{ with .mark }}
-  {{ $title = (printf "Cover: %s ft. %s" $item.LinkTitle $item.Params.voice) }}
-{{ else }}
-  {{ $title = (printf "%s ft. %s" $item.LinkTitle $item.Params.voice) }}
-{{ end }}
+{{ $title := (partial "func-cover-title" .) }}
 <div
   class="text-primary hover pr-2 h-full flex gap-x-2 items-center hover:no-underline"
 >

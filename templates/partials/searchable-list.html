@@ -15,7 +15,7 @@
     onchange="updateSearch()"
   />
   <label
-    class="hover:bg-accent-light bg-white px-3 p-2 peer-checked:bg-accent-light"
+    class="hover:bg-accent-light bg-white px-3 p-2 peer-checked:bg-accent-light peer-checked:outline-8"
     for="{{$type}}:{{$label}}"
   >
     <!-- prettier-ignore -->
@@ -73,13 +73,18 @@
          </div> -->
   </div>
 </div>
-<ul id="posts" class="mt-8 flex flex-col gap-8">
+<ul id="posts" class="mt-8 flex flex-col gap-4">
   <!-- prettier-ignore -->
   {{ range . }}
   {{ if not (.Param "special") }}
   {{ $extra_params := (dict "section" .Section)}}
   <li data-params="{{ jsonify (merge .Params $extra_params) }}">
-    {{ partial "index-item" . }}
+    <div>
+      <span class="inline-block w-[10ch]">{{ partial "date" .Date }}</span>
+      <a href="{{.Permalink}}" class="link font-bold"
+        >{{ partial "func-cover-title" (dict "item" . "mark" true)}}</a
+      >
+    </div>
   </li>
   <!-- prettier-ignore -->
   {{ end }}

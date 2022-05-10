@@ -9,7 +9,10 @@
   name="viewport"
   content="width=device-width, initial-scale=1, shrink-to-fit=no"
 />
-<title>{{ block "title" . }} {{.Title}} - Kisaragi Hiu {{ end }}</title>
+<title>
+  {{ block "title" . }} {{if .IsHome}}Kisaragi Hiu{{else}}{{.Title}} - Kisaragi
+  Hiu {{end}}{{end}}
+</title>
 <meta property="og:title" content="{{.Title}}" />
 <!-- Twitter cards don't really fit a suffix, so we use the raw .Title there. -->
 <meta name="twitter:title" content="{{ .Title }}" />

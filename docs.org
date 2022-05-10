@@ -92,7 +92,7 @@ To work around this:
   <h2>Terms</h2>
   <ul class="index">
   {{ range $tagged }}
-      <li>{{ partial "index-item" . }}</li>
+      <li>(return the index items here)</li>
   {{ end }}
   </ul>
   {{ end }}
@@ -173,6 +173,19 @@ Use Org’s =#+caption= to add a figcaption.
 Display a melpa badge as an image link.
 
 * Function partials
+** func-cover-title
+
+Return the title of the page; for cover items, construct the title from multiple props.
+
+Arguments:
+
+- item :: return the title of this page
+- mark :: when the page is a cover item, this controls whether to add a "Cover: " prefix.
+
+#+begin_src lisp
+    (partial "func-cover-title" (dict "item" . "mark" true))
+#+end_src
+
 ** func-language-code-to-name
 
 #+begin_src lisp
@@ -237,10 +250,6 @@ Example: ={{ partial "melpa-badge" "magit" }}=
 
 Used in the =project= shortcode definition.
 
-** index-item
-
-Generic index item with some metadata.
-
 * Page properties
 
 - =toc=: If not empty, a table of content will be displayed on the page.
@@ -273,7 +282,7 @@ Example:
     <h1>{{ .Key }}</h1>
     {{ range .Pages }}
     {{ .Scratch.Set "noyear" true }}
-    {{ partial "index-item" . }}
+    <!-- Do stuff here -->
     {{ end }}
 </div>
 {{ end }}
