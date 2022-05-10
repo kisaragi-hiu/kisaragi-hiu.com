@@ -1,10 +1,12 @@
 <!-- Usage: partial "func-translate" (dict "id" "Table of Contents" "page" .) -->
-{{ $string := "" }}
+{{ $string := .id }}
 {{ $language := (or .page.Params.language "en") }}
 {{ if (eq $language "en") }}
 <!-- English string = ID. This way IDs are synchronized with English text. -->
   {{ $string = .id }}
 {{ else }}
-  {{ $string = (index (site).Data.strings $language .id)}}
+  {{ with (index (site).Data.strings $language .id) }}
+  {{ $string = . }}
+  {{ end }}
 {{ end }}
-{{ return $string}}
+{{ return $string }}
