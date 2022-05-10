@@ -63,7 +63,7 @@ Only the regular page would be listed by ={{.Pages}}=. The term pages have to be
 <h2>Terms</h2>
 <ul class="index">
 {{ range $term_items }}
-    <li>{{ partial "index-item" . }}</li>
+    <li>(return the index items here)</li>
 {{ end }}
 </ul>
 {{ end }}

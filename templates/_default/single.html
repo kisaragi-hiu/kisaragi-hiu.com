@@ -1,51 +1,10 @@
 {{ define "header" }}
 <!-- prettier-ignore -->
-{{ partial "avatar" .Title }}
 {{ partial "heading" (dict "title" .Title) }}
 <!-- prettier-ignore -->
 {{ with .Param "subtitle" }}
 <h2 class="mt-0 mb-8">{{.}}</h2>
 {{ end }}
-<hr />
-<dl class="meta">
-  {{ with .Date }}
-  <div>
-    <dt>{{ partial "func-translate" (dict "id" "Published" "page" $)}}</dt>
-    <dd>{{ partial "date" . }}</dd>
-  </div>
-  {{ end }}
-  <!-- prettier-ignore -->
-  {{ with .Lastmod }}
-  <div>
-    <dt>
-      <!-- If old versions are available, link there. -->
-      {{ with $.GetPage (printf "/archive/%s" $.File.BaseFileName) }}
-      <a title="View revision history" class="out" href="{{.Permalink}}"
-        >Updated</a
-      >
-      {{ else }}
-      <span>Updated</span>
-      <!-- with $.GetPage -->
-      {{ end }}
-    </dt>
-    <dd>{{ partial "date" . }}</dd>
-  </div>
-  {{ end }}
-  <!-- prettier-ignore -->
-  {{ with .GetTerms "tags" }}
-  <div>
-    <dt>Tags</dt>
-    <dd>{{ range . }} {{ partial "tag" . }} {{ end }}</dd>
-  </div>
-  {{ end }}
-  <!-- prettier-ignore -->
-  {{ range .GetTerms "series" }}
-  <div>
-    <dt>Series</dt>
-    <dd><a href="{{ .Permalink }}">{{ .LinkTitle }}</a></dd>
-  </div>
-  {{ end }}
-</dl>
 <!-- prettier-ignore -->
 {{ end }}
 
@@ -59,7 +18,11 @@
 {{ end }}
 
 {{ define "footer" }}
-<div class="mb-40">
+<div class="mt-4 mb-40">
+  <hr />
+  <!-- prettier-ignore -->
+  {{ partial "metas" . }}
+  {{ partial "post-navigation" . }}
   {{ partial "default-footer" . }}
 </div>
 {{ end }}

@@ -1,0 +1,12 @@
+{{ $item := .item }} {{ $title := "" }} {{ $mark := .mark }}
+<!-- prettier-ignore -->
+{{ if eq $item.Section "covers" }}
+  {{ with $mark }}
+    {{ $title = (printf "Cover: %s ft. %s" $item.LinkTitle $item.Params.voice) }}
+  {{ else }}
+    {{ $title = (printf "%s ft. %s" $item.LinkTitle $item.Params.voice) }}
+  {{ end }}
+{{ else }}
+  {{ $title = $item.LinkTitle }}
+{{ end }}
+{{ return $title }}

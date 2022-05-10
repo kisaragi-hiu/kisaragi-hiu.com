@@ -1,0 +1,46 @@
+<dl class="meta">
+  {{ with .Date }}
+  <div>
+    <dt>{{ partial "func-translate" (dict "id" "Published" "page" $)}}</dt>
+    <dd>{{ partial "date" . }}</dd>
+  </div>
+  {{ end }}
+  <!-- prettier-ignore -->
+  {{ with .Lastmod }}
+  <div>
+    <dt>
+      <!-- If old versions are available, link there. -->
+      {{ with $.GetPage (printf "/archive/%s" $.File.BaseFileName) }}
+      <a title="View revision history" class="out" href="{{.Permalink}}"
+        >Updated</a
+      >
+      {{ else }}
+      <span>Updated</span>
+      <!-- with $.GetPage -->
+      {{ end }}
+    </dt>
+    <dd>{{ partial "date" . }}</dd>
+  </div>
+  {{ end }}
+  <!-- prettier-ignore -->
+  {{ with .Params.original }}
+  <div>
+    <dt>{{ partial "func-translate" (dict "id" "Original" "page" $)}}</dt>
+    <dd><a href="{{ $.Params.original }}">{{ $.Params.origauthor }}</a></dd>
+  </div>
+  {{ end }}
+  <!-- prettier-ignore -->
+  {{ with .GetTerms "tags" }}
+  <div>
+    <dt>Tags</dt>
+    <dd>{{ range . }} {{ partial "tag" . }} {{ end }}</dd>
+  </div>
+  {{ end }}
+  <!-- prettier-ignore -->
+  {{ range .GetTerms "series" }}
+  <div>
+    <dt>Series</dt>
+    <dd><a href="{{ .Permalink }}">{{ .LinkTitle }}</a></dd>
+  </div>
+  {{ end }}
+</dl>
