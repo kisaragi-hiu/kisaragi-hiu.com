@@ -1,6 +1,7 @@
 #+title: レディーレ Cover
 #+created: 2017-06-28T22:50:00+0800
 #+series: Own Vocal Experiment
+#+language: en
 
 Tried to sing バルーン's レディーレ.
 
