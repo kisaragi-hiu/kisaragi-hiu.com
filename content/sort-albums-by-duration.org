@@ -1,4 +1,4 @@
-#+title: Sorting albums by duration
+#+title: Creating a list sorted by duration in Emacs
 #+created: 2021-08-05T00:59:00+0900
 #+tags[]: emacs emacs-lisp
 #+language: en

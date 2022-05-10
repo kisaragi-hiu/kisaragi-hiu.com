@@ -1,4 +1,4 @@
-#+title: Current infrastructure of this site
+#+title: Infrastructure of this site as of October 2020
 #+created: 2020-10-31T04:19:31+0900
 #+tags[]: pollen org-mode emacs frog sourcehut meta
 #+toc: #t

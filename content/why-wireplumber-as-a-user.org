@@ -1,4 +1,4 @@
-#+title: Why I use WirePlumber
+#+title: PipeWire should probably use WirePlumber by default
 #+subtitle: Perspective from a user with zero understanding of why it's not part of PipeWire
 #+created: 2021-11-21T02:35:44+0900
 #+tags[]: linux pipewire
