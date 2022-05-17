@@ -1,0 +1,88 @@
+#+title: Fixing leaf-keywords "unrecognized keyword" error in Flycheck
+#+created: 2022-05-17T15:31:05+0900
+#+tags[]: emacs-lisp
+
+After setting up [[https://github.com/conao3/leaf-keywords.el][leaf-keywords]] and Flycheck properly:
+
+#+begin_src emacs-lisp
+(straight-use-package 'leaf)
+(straight-use-package 'leaf-keywords)
+
+(require 'leaf)
+(require 'leaf-keywords)
+(leaf-keywords-init)
+
+(leaf flycheck
+  :straight t
+  :hook prog-mode-hook)
+#+end_src
+
+Despite =leaf-keywords= being loaded, Flycheck will now return an error from leaf.el complaining that =:straight= is an unrecognized keyword.
+
+I tried putting =leaf-keywords-init= in a =eval-when-compile= or a =(cl-eval-when (compile load eval))= block, to no avail.
+
+For the longest time I just turned Flycheck off in my init file (the only place where leaf.el is used), but yesterday I decided to take another look at it.
+
+[[https://github.com/flycheck/flycheck/blob/f8c679fff349850c80541a31de50009c3c15d4c9/flycheck.el#L8638][This is how Flycheck checks Emacs Lisp code]] (I only included the command part):
+
+#+begin_src emacs-lisp
+(flycheck-define-checker emacs-lisp
+  "An Emacs Lisp syntax checker using the Emacs Lisp Byte compiler.
+
+See Info Node `(elisp)Byte Compilation'."
+  :command ("emacs" (eval flycheck-emacs-args)
+            (eval
+             (let ((path (pcase flycheck-emacs-lisp-load-path
+                           (`inherit load-path)
+                           (p (seq-map #'expand-file-name p)))))
+               (flycheck-prepend-with-option "--directory" path)))
+            (option "--eval" flycheck-emacs-lisp-package-user-dir nil
+                    flycheck-option-emacs-lisp-package-user-dir)
+            (option "--eval" flycheck-emacs-lisp-initialize-packages nil
+                    flycheck-option-emacs-lisp-package-initialize)
+            (option "--eval" flycheck-emacs-lisp-check-declare nil
+                    flycheck-option-emacs-lisp-check-declare)
+            "--eval" (eval (flycheck-emacs-lisp-bytecomp-config-form))
+            "--eval" (eval flycheck-emacs-lisp-check-form)
+            "--"
+            source-inplace)
+  ;; ...
+  )
+#+end_src
+
+This calls Emacs in a subprocess with:
+
+1. =flycheck-emacs-args= (default is ="-Q"= and ="--batch"=)
+2. =flycheck-emacs-lisp-load-path= (or the host's =load-path= if its value is =inherit=) passed into =load-path= of the subprocess so that =require='s work
+3. =package.el= packages initialized
+4. the flag for whether =declare-function= statememts should be checked passed in
+5. the byte compiler set up to run in the right directory
+
+Then finally it evaluates =flycheck-emacs-lisp-check-form=, which has code that essentially byte-compiles the current buffer and reports the warnings and errors.
+
+I suspected that leaf-keywords does not have a chance to be initialized in the subprocess, and… yeah. I'm not sure why =eval-when-compile= didn't work though. Perhaps the “compile” in that context is different from what the byte compiler does?
+
+Either way, this is the workaround I ended up with:
+
+#+begin_src emacs-lisp
+;; HACK: without this, the keywords added by leaf-keywords don't
+;; take effect in the checker process, so they all trigger an
+;; "unrecognized keyword" error.
+(setq flycheck-emacs-lisp-check-form
+      (if (string-match-p "leaf-keywords"
+                          flycheck-emacs-lisp-check-form)
+          ;; Don't do anything on subsequent evals
+          flycheck-emacs-lisp-check-form
+        (format
+         "(progn %s %s)"
+         '(progn
+            (require 'leaf-keywords nil t)
+            (leaf-keywords-init))
+         flycheck-emacs-lisp-check-form)))
+#+end_src
+
+Which just =require='s =leaf-keywords= and initializes it right before the actual check happens.
+
+It seems to me that changes to Emacs Lisp behavior — in this case the presence of features of a macro — should take place on load. It is analogous to a hypothetical package providing =pcase= patterns; it would be similarly surprising if such a package doesn't activate those extensions on load.
+
+But, as it stands right now, the workaround is good enough for me.
