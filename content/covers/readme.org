@@ -1,6 +1,8 @@
 * Cover project listing
 
-UTAU covers and maybe my own cover experiment.
+UTAU covers and maybe [[../blog/2018-05-11-utau-tuning-experiment.org][my own covers]].
+
+Also remember to update the thumbnail in [[../static/thumb/README.org][static/thumb]].
 
 Filename: date-name-origauthor, with spaces replaced with dashes
 
