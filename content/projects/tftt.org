@@ -1,0 +1,9 @@
+#+title: tftt
+#+created: 2022-05-29T09:26:30+0900
+#+tags[]: trumpet
+#+homepage: https://kisaragi-hiu.com/tftt
+#+github: https://github.com/kisaragi-hiu/trumpet-fingerings-practice-tool-experiment
+#+status: 95%
+#+coverimage: /tftt.png
+
+[[/tftt.png]]

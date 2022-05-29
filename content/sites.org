@@ -1,0 +1,11 @@
+#+title: Sites
+#+special: t
+
+#+caption: 如同月球般的荒涼
+[[https://barren-moon.kisaragi-hiu.com][file:barren-moon-1.0.png]]
+
+#+caption: [[https://kisaragi-hiu.com/timer][timer]]
+[[https://kisaragi-hiu.com/timer][file:kisaragi-timer.png]]
+
+#+caption: experimental trumpet fingerings training tool
+[[https://kisaragi-hiu.com/tftt][file:tftt.png]]
