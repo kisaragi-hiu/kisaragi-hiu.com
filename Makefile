@@ -12,7 +12,6 @@ dev-tailwind:
 
 js:
 	mkdir -p static/js/
-	cp node_modules/medium-zoom/dist/medium-zoom.min.js static/js/
 
 dev: public static/css/built.css
 	npx concurrently "make dev-hugo" "make dev-tailwind"

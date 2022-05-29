@@ -24,14 +24,5 @@
         {{ block "footer" . }} {{ partial "default-footer" . }} {{ end }}
       </footer>
     </div>
-    <script src="/js/medium-zoom.min.js"></script>
-    <script>
-      // This seems to be robust enough without me having to make every
-      // image a figure with a caption.
-      mediumZoom("article img, figure img", {
-        background: "#00000050",
-        margin: 20,
-      });
-    </script>
   </body>
 </html>
