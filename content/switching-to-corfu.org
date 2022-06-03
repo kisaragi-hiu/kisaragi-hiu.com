@@ -1,0 +1,88 @@
+#+title: Switching to Corfu
+#+created: 2022-06-03T21:45:43+0900
+#+tags[]: emacs
+
+I switched to using [[https://github.com/minad/corfu][Corfu]] as my in-buffer completion framework this afternoon.
+
+I've never been happy about my Company configuration, so when I read Corfu's README it just sounded like it is for me.
+
+Corfu uses child frames by default — I haven't had good results with child frames, but so far with Corfu it seems to work just fine. I also have a need to use Emacs in a terminal (in [[https://termux.com/][Termux]]), which [[https://codeberg.org/akib/emacs-corfu-terminal][corfu-terminal]] solves pretty easily.
+
+So far I'm pretty happy about how it feels. I also know I don't really have to worry about a lack of backend support — which is why I don't use FlyMake — because =cape-company-to-capf= provides support for Company backends.
+
+TL;DR (I'm using [[https://github.com/conao3/leaf.el][leaf]], which is basically a leaner =use-package=):
+
+#+begin_src emacs-lisp
+(dolist (pkg '((corfu :type git :host github
+                      :repo "emacs-straight/corfu"
+                      ;; The default recipe doesn't put extensions into `load-path'.
+                      ;;
+                      ;; This is also a thing with Vertoco. It's annoying.
+                      :files ("*" "extensions/*.el" (:exclude ".git")))
+               ;; `corfu-terminal''s dependency. Right now straight.el does not
+               ;; support NonGNU ELPA, so this has to be installed separately.
+               (popon
+                :type git
+                :repo "https://codeberg.org/akib/emacs-popon.git")
+               (corfu-terminal
+                :type git
+                :repo "https://codeberg.org/akib/emacs-corfu-terminal.git")
+               cape
+               kind-icon
+               company
+               company-glsl
+               company-shell))
+  (straight-use-package pkg))
+
+(leaf corfu
+  :init
+  (setq corfu-auto t
+        corfu-quit-no-match t
+        corfu-quit-at-boundary 'separator)
+  (global-corfu-mode)
+  :config
+  (define-key corfu-map
+    (kbd "SPC") #'corfu-insert-separator)
+  (setq completion-cycle-threshold 3)
+  ;; Use Corfu in `eval-expression' and other commands that bind
+  ;; `completion-at-point' in the minibuffer.
+  ;;
+  ;; WHY IS THIS NOT AVAILABLE IN AN OPTION IF IT'S ALREADY LISTED IN
+  ;; THE README
+  (add-hook 'minibuffer-setup-hook (lambda ()
+                                     (when (memq #'completion-at-point
+                                                 (flatten-tree
+                                                  (current-local-map)))
+                                       (corfu-mode))))
+  (leaf cape
+    ;; Available: cape-file cape-dabbrev cape-history cape-keyword
+    ;; cape-tex cape-sgml cape-rfc1345 cape-abbrev cape-ispell
+    ;; cape-dict cape-symbol cape-line
+    :init
+    (add-hook 'completion-at-point-functions #'cape-file)
+    (add-hook 'completion-at-point-functions #'cape-dabbrev 90)
+    (add-hook 'prog-mode-hook
+              (lambda ()
+                (add-hook 'completion-at-point-functions
+                          #'cape-keyword nil t)))
+    :config
+    (require 'company)
+    (cl-loop for backend in '(company-glsl company-shell company-ledger)
+             do (add-hook 'completion-at-point-functions
+                          (cape-company-to-capf backend))))
+  (leaf kind-icon
+    :after corfu
+    :require t
+    :config
+    (add-to-list 'corfu-margin-formatters #'kind-icon-margin-formatter))
+  (leaf corfu-terminal
+    :after corfu
+    :require t
+    :init (corfu-terminal-mode))
+  (leaf corfu-history
+    :after corfu
+    :config
+    (with-eval-after-load 'safehist
+      (cl-pushnew 'corfu-history savehist-additional-variables))
+    (corfu-history-mode)))
+#+end_src
