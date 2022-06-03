@@ -6,34 +6,23 @@
 {{ define "main" }}
 <!-- prettier-ignore -->
 <div class="">
-  <main>
-    <div class="block lg:grid lg:grid-cols-6">
-      <h1 class="font-bold my-8 col-span-4">
-        <span class="text-4xl">Kisaragi Hiu</span>
-        <br />
-        <span class="text-2xl">如月飛羽</span>
-      </h1>
-      <nav class="flex flex-col col-span-2">
-        <!-- prettier-ignore -->
-        {{ range (slice (slice "/covers.html" "Covers")
-                        (slice "/illust.html" "Illust")
-                        (slice "/projects.html" "Projects")
-                        (slice "/about.html" "About")
-                        (slice "/index.xml" "RSS")) }}
-        <a class="link" href="{{ index . 0 }}">{{ index . 1 }}</a>
-        {{ end }}
-      </nav>
-    </div>
-    {{ partial "content" . }}
-    <hr class="my-8 opacity-50" />
-    <!-- prettier-ignore -->
-    {{ partial "searchable-list"
-               (sort ((where .Site.RegularPages "Section" "")
-                      | union (where .Site.RegularPages "Section" "covers")
-                      | union (where .Site.RegularPages "Section" "blog"))
-                                "Date"
-                                "desc")}}
-  </main>
+  <div class="block lg:grid lg:grid-cols-6">
+    <h1 class="font-bold my-8 col-span-4">
+      <span class="text-4xl">Kisaragi Hiu</span>
+      <br />
+      <span class="text-2xl">如月飛羽</span>
+    </h1>
+    <nav class="flex flex-col col-span-2">
+      <!-- prettier-ignore -->
+      {{ range (slice (slice "/covers.html" "Covers")
+                      (slice "/illust.html" "Illust")
+                      (slice "/projects.html" "Projects")
+                      (slice "/about.html" "About")
+                      (slice "/index.xml" "RSS")) }}
+      <a class="link" href="{{ index . 0 }}">{{ index . 1 }}</a>
+      {{ end }}
+    </nav>
+  </div>
   <aside class="col-span-3">
     <!-- <nav class="flex flex-wrap justify-start gap-3 my-2"> -->
     <!-- prettier-ignore -->
@@ -66,5 +55,16 @@
     {{ partial "illustrations" . }} {{end}}
     <!-- prettier-ignore -->
   </aside>
+  <main>
+    {{ partial "content" . }}
+    <hr class="my-8 opacity-50" />
+    <!-- prettier-ignore -->
+    {{ partial "searchable-list"
+               (sort ((where .Site.RegularPages "Section" "")
+                      | union (where .Site.RegularPages "Section" "covers")
+                      | union (where .Site.RegularPages "Section" "blog"))
+                                "Date"
+                                "desc")}}
+  </main>
 </div>
 {{ end }}
