@@ -1,0 +1,136 @@
+#+title: Performance comparison between cl-lib, dash, and seq
+#+created: 2022-06-05T00:45:51+0900
+#+tags[]: emacs-lisp
+
+Caveats: Not compiled
+
+* Conclusions
+
+- In general cl-lib functions are faster than dash.el functions, which are in turn faster than seq.el functions
+- dash.el only works with lists
+- seq.el is extensible
+
+* Hardware
+
+#+begin_src shell :results output
+uname -a
+emacs -Q --batch --eval "(princ (format \"Emacs: %s\\n\" emacs-version))"
+neofetch cpu gpu memory
+#+end_src
+
+#+RESULTS:
+: Linux MF-PC 5.15.43-1-lts #1 SMP Wed, 25 May 2022 14:08:34 +0000 x86_64 GNU/Linux
+: Emacs: 28.1
+: cpu: AMD Ryzen 5 2600 (12) @ 3.400GHz
+: gpu: AMD ATI Radeon RX 460/560D / Pro 450/455/460/555/555X/560/560X
+: memory: 3838MiB / 7958MiB
+
+* Comparisons
+** =cl-remove-duplicates=, =-uniq=, =seq-uniq=
+
+#+begin_src emacs-lisp
+(let ((lst (make-list 100000 8)))
+  (k/benchmark 1000
+    :average nil
+    (cl-remove-duplicates lst)
+    (-uniq lst)
+    (seq-uniq lst)))
+#+end_src
+
+#+RESULTS:
+| 13.590758685000019 | 30.99724775300001 | 62.90745350600006 |
+
+** =cl-some=, =-some=, =seq-some=
+
+#+begin_src emacs-lisp
+(let ((lst (make-list 1000000 8)))
+  (k/benchmark 100
+    :average nil
+    (cl-some #'cl-oddp lst)
+    (-some #'cl-oddp lst)
+    (seq-some #'cl-oddp lst)))
+#+end_src
+
+#+RESULTS:
+| 3.7378299149999985 | 3.7899056669999993 | 8.671395568999998 |
+
+* Appendix: Support code
+
+#+begin_src emacs-lisp
+(defun k/average (&rest numbers)
+  "Return average of NUMBERS.
+
+NUMBERS is `-flatten'ed before use."
+  (setq numbers (-flatten numbers))
+  (/ (apply #'+ numbers) (length numbers)))
+
+(defmacro k/time (&rest body)
+  "Run BODY, then return amount of time it ran for."
+  `(let ((start (current-time)))
+     ,@body
+     (float-time (time-subtract (current-time) start))))
+
+(defmacro k/benchmark (n &rest forms)
+  "Run each of FORMS N times, then return average amount of time each ran for.
+
+Extra: When AVERAGE is nil (it defaults to t), return the total
+elapsed time, not averaged.
+\n(fn N &key (AVERAGE t) &rest FORMS)"
+  (declare (indent 1))
+  (let* ((unique-nil (make-symbol "-nil-"))
+         ;; This dance with an uninterned symbol allows us to
+         ;; distinguish when it's not supplied and when a nil is
+         ;; given.
+         (average-arg (-some--> forms
+                        (seq-take it 2)
+                        (-replace nil unique-nil it)
+                        (plist-get it :average)))
+         (average? (not (eq average-arg unique-nil)))
+         (forms
+          (if average-arg (cddr forms) forms))
+         (elem-vars (mapcar (lambda (_elem) (gensym)) forms))
+         (dotimes (cl-find-if #'fboundp
+                              '(dotimes-with-progress-reporter dotimes))))
+    `(let (,@elem-vars)
+       (,dotimes (_ ,n) "Benchmarking"
+                 ,@(cl-mapcar
+                    (lambda (elem elem-var) `(push (k/time ,elem) ,elem-var))
+                    forms
+                    elem-vars))
+       (list ,@(mapcar
+                (lambda (results-var)
+                  (if average?
+                      `(k/average ,results-var)
+                    `(apply #'+ ,results-var)))
+                elem-vars)))))
+
+(defmacro k/benchmark-compiled (n &rest forms)
+  "Run each of FORMS N times, then return average amount of time each ran for."
+  (declare (indent 1))
+  ;; uninterned symbol here to hide it from FORMS
+  (let ((prep (make-symbol "--prep--"))
+        (count (make-symbol "--count--")))
+    `(let ((,prep (make-progress-reporter
+                   ;; I guess if the string ends with a paren progress
+                   ;; reporter doesn't add the ellipsis?
+                   "Benchmarking (compiled)..."
+                   ;; 1-, because length is 1-indexed but prep is 0-indexed
+                   0 (1- ,(* n (length forms)))))
+           (,count 0))
+       (prog1 (mapcar
+               #'k/average
+               (list
+                ,@(--map
+                   ;; doing this because we cannot access our own
+                   ;; progress reporter from within `benchmark-run-compiled'
+                   `(let (results)
+                      (dotimes (i ,n results)
+                        (push
+                         (car
+                          (benchmark-run-compiled 1 ,it))
+                         results)
+                        (progress-reporter-update
+                         ,prep (setq ,count (1+ ,count)))))
+                   forms)))
+         (progress-reporter-done ,prep)))))
+#+end_src
