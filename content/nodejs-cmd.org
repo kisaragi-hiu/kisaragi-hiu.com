@@ -1,0 +1,85 @@
+#+title: NodeJS: How to await an asynchronous child process
+#+created: 2022-06-07T01:04:42+0900
+#+tags[]: nodejs
+#+series: Tutorials
+
+#+html: TL;DR: <a href="#tldr">the solution</a>.
+
+If you need a command to happen after another, you can use [[https://nodejs.org/docs/latest-v18.x/api/child_process.html#child_processspawnsynccommand-args-options][spawnSync]] and other *Sync functions in the [[https://nodejs.org/docs/latest-v18.x/api/child_process.html][child_process]] module. However, the command's output will not be printed to the terminal as it runs: you might decide to read the return value and send the command's output to your program's output yourself, but all output will be bunched up and printed at once.
+
+#+begin_src js
+const { execSync } = require("child_process");
+const process = require("process");
+
+process.stdout.write(execSync("echo one; sleep 1; echo two; sleep 1").toString())
+console.log("This must happen last.");
+#+end_src
+
+{{< video "/nodejs-cmd-node-sync.mp4" >}}
+
+For reference, this is what I want to happen:
+
+#+begin_src shell
+echo one
+sleep 1
+echo two
+sleep 1
+echo "This must happen last."
+#+end_src
+
+{{< video "/nodejs-cmd-bash.mp4" >}}
+
+To actually send the child process's output to your program's output as they come, you have to use the asynchronous version and attach a handler on it. But now things get out of order.
+
+#+begin_src js
+const { spawn } = require("child_process");
+const process = require("process");
+
+function cmd(...command) {
+  let p = spawn(command[0], command.slice(1));
+  p.stdout.on("data", (x) => {
+    process.stdout.write(x.toString());
+  });
+  p.stderr.on("data", (x) => {
+    process.stderr.write(x.toString());
+  });
+}
+
+cmd("bash", "-c", "echo one; sleep 1; echo two; sleep 1");
+console.log("This must happen last.");
+#+end_src
+
+{{< video "/nodejs-cmd-node-async-1.mp4" >}}
+
+#+html: <a id="tldr"></a>
+
+The solution is to [[https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/Promise][wrap it in a promise]] and use =await=. (If you're using =.mjs= you can use =await= without being in an async function.)
+
+#+begin_src js :results output
+const { spawn } = require("child_process");
+const process = require("process");
+
+function cmd(...command) {
+  let p = spawn(command[0], command.slice(1));
+  return new Promise((resolveFunc) => {
+    p.stdout.on("data", (x) => {
+      process.stdout.write(x.toString());
+    });
+    p.stderr.on("data", (x) => {
+      process.stderr.write(x.toString());
+    });
+    p.on("exit", (code) => {
+      resolveFunc(code);
+    });
+  });
+}
+
+async function main() {
+  await cmd("bash", "-c", "echo one; sleep 1; echo two; sleep 1");
+  console.log("This must happen last.");
+}
+
+main();
+#+end_src
+
+{{< video "/nodejs-cmd-node-async-2.mp4" >}}
