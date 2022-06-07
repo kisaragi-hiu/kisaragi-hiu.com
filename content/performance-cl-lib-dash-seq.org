@@ -19,6 +19,7 @@ neofetch cpu gpu memory
 #+end_src
 
 #+RESULTS:
+:
 : Linux MF-PC 5.15.43-1-lts #1 SMP Wed, 25 May 2022 14:08:34 +0000 x86_64 GNU/Linux
 : Emacs: 28.1
 : cpu: AMD Ryzen 5 2600 (12) @ 3.400GHz
@@ -26,33 +27,39 @@ neofetch cpu gpu memory
 : memory: 3838MiB / 7958MiB
 
 * Comparisons
-** =cl-remove-duplicates=, =-uniq=, =seq-uniq=
+- =cl-remove-duplicates=, =-uniq=, =seq-uniq=
 
-#+begin_src emacs-lisp
-(let ((lst (make-list 100000 8)))
-  (k/benchmark 1000
-    :average nil
-    (cl-remove-duplicates lst)
-    (-uniq lst)
-    (seq-uniq lst)))
-#+end_src
+  #+begin_src emacs-lisp
+  (let ((lst (make-list 100000 8)))
+    (k/benchmark 1000
+      :average nil
+      (cl-remove-duplicates lst)
+      (-uniq lst)
+      (seq-uniq lst)))
+  #+end_src
 
-#+RESULTS:
-| 13.590758685000019 | 30.99724775300001 | 62.90745350600006 |
+  #+RESULTS:
+  :
+  : 13.590758685000019
+  : 30.99724775300001
+  : 62.90745350600006
 
-** =cl-some=, =-some=, =seq-some=
+- =cl-some=, =-some=, =seq-some=
 
-#+begin_src emacs-lisp
-(let ((lst (make-list 1000000 8)))
-  (k/benchmark 100
-    :average nil
-    (cl-some #'cl-oddp lst)
-    (-some #'cl-oddp lst)
-    (seq-some #'cl-oddp lst)))
-#+end_src
+  #+begin_src emacs-lisp
+  (let ((lst (make-list 1000000 8)))
+    (k/benchmark 100
+      :average nil
+      (cl-some #'cl-oddp lst)
+      (-some #'cl-oddp lst)
+      (seq-some #'cl-oddp lst)))
+  #+end_src
 
-#+RESULTS:
-| 3.7378299149999985 | 3.7899056669999993 | 8.671395568999998 |
+  #+RESULTS:
+  :
+  : 3.7378299149999985
+  : 3.7899056669999993
+  : 8.671395568999998
 
 * Appendix: Support code
 
