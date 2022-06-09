@@ -1,10 +1,10 @@
 #+title: As a Taiwanese, why do I prefer to use a Japanese name?
 #+created: 2021-10-10T16:44:40+0900
-#+updated: 2022-01-01T21:12:16+0900
+#+updated: 2022-06-10T05:13:41+0900
 #+tags[]: meta
 #+language: en
 
-I use a Japanese name despite being Taiwanese. When I introduce myself as Kisaragi in college, sometimes people mistaken me as being Japanese. I think I need to at least attempt to clarify this.
+I use a Japanese name despite being Taiwanese. When I introduce myself as Kisaragi, sometimes people mistaken me as being Japanese. I think I need to at least attempt to explain this.
 
 * Why foreign names are fine
 
@@ -30,5 +30,3 @@ I later learned that 如月 is an old East Asian name for February.
 Eventually I realized there's actually an existing brand which is also called /Moonlight Feather/, which prompted me to finally figure out another English name. I didn't want to choose a random name like, say, /Alice/, that I felt no connections to, so I wanted to use a transcription of 如月飛羽 instead.
 
 /Ru Yue Fei Yu/ felt too clunky, and turns out /Kisaragi Hiu/ actually does work as a Japanese name, so Kisaragi Hiu it is.
-
-This is, to be honest, not necessarily more thought than what my parents had put into my given name. However, it at least reflects /my/ outlook on myself, instead of an expectation that doesn't serve me.
