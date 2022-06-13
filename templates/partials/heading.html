@@ -7,9 +7,4 @@
   <a class="link font-bold" href="../{{.Type}}.html">{{.Type | humanize}}</a> /
 </div>
 {{ end }} {{ end }}
-<h1
-  class="text-xl {{ $h1_top }} mb-4 font-bold w-full flex justify-between group "
->
-  {{ .title }}
-  <a class="opacity-10 group-hover:opacity-100 link ml-4" href="/">↑</a>
-</h1>
+<h1 class="text-xl {{ $h1_top }} mb-4 font-bold">{{ .title }}</h1>
