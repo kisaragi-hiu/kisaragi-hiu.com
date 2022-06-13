@@ -1,10 +1,12 @@
-<a href="/">
+{{ if .IsHome }}
+<img class="max-h-8 inline-block align-bottom" src="/avatar.png" alt="avatar" />
+{{ else }}
+<span href="/">
   <img
     class="max-h-8 inline-block align-bottom"
     src="/avatar.png"
     alt="avatar"
   />
-  {{ with . }} {{ if not .IsHome }}
-  <span class="inline-block font-bold text-xl align-bottom">Kisaragi Hiu</span>
-  {{ end }} {{ end }}
-</a>
+  <a href="/" class="inline-block link font-bold text-xl">Kisaragi Hiu</a>
+</span>
+{{ end }}

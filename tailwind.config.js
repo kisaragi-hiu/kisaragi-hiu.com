@@ -40,7 +40,7 @@ module.exports = {
         primary: "#0d0d0d",
         secondary: "#333333",
         accent: "#cdadff",
-        "accent-strong": "#4d2b82",
+        "accent-strong": "#7E49B6",
         "accent-light": "#cdadff30",
         special: "#cdecff",
         "special-strong": "#246084",
