@@ -30,7 +30,7 @@
     {{ with $covers_featured }}
     <h1 class="font-bold mt-4">
       <a class="text-primary" href="/covers.html"
-        >Covers ({{now.Format "2006-01"}})</a
+        >Recent covers ({{now.Format "2006-01"}})</a
       >
     </h1>
     {{ partial "covers" . }} {{end}}
@@ -44,7 +44,7 @@
     {{ with $illust_featured }}
     <h1 class="font-bold mt-4">
       <a class="text-primary" href="/illust.html"
-        >Illustrations ({{now.Format "2006-01"}})</a
+        >Recent illustrations ({{now.Format "2006-01"}})</a
       >
     </h1>
     {{ partial "illustrations" . }} {{end}}
