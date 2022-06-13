@@ -7,7 +7,7 @@ I’ve been obsessed over [[https://pjsekai.sega.jp/][Project Sekai]] in the las
 
 I wanted to try to play it when practicing the trumpet, so I tried making a sheet for it. When I started a few hours before writing this post the full version wasn’t uploaded yet, so I focused on transcribing the [[https://www.youtube.com/watch?v=QdYji4SVH3A][short version]] onto the sheet.
 
-[[/ID Smile copy.pdf][The finished PDF file is here.]] (It’s only 70 kilobytes, barely bigger than the favicon of this site.)
+[[/ID Smile copy.pdf][The finished PDF file is here.]] (It’s only 70 kilobytes.)
 
 * Making it
 I first wrote the notes in LMMS, then exported that to midi.
