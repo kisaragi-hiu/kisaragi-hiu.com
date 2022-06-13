@@ -1,4 +1,4 @@
-#+title: Download built packages without fetching repositories when using Straight
+#+title: Download packages without fetching repositories when using Straight*
 #+created: 2022-06-14T01:48:20+0900
 #+tags[]: emacs
 
