@@ -1,6 +1,9 @@
 {{ define "header" }} {{ partial "avatar" . }}
 <!-- prettier-ignore -->
 {{ partial "heading" (dict "title" .Title) }}
+{{ with (and (not (.Param "special")) .Date) }}
+<div class="-mt-4">{{ partial "date" . }}</div>
+{{ end }}
 <!-- prettier-ignore -->
 {{ with .Param "subtitle" }}
 <h2 class="mt-0 mb-8">{{.}}</h2>
@@ -18,11 +21,10 @@
 {{ end }}
 
 {{ define "footer" }}
-<div class="mt-4 mb-40">
+<div class="mt-4 mb-20">
   <hr />
   <!-- prettier-ignore -->
   {{ if not (.Param "special") }}
-  {{ partial "metas" . }}
   {{ partial "post-navigation" . }}
   {{ end }}
   {{ partial "default-footer" . }}

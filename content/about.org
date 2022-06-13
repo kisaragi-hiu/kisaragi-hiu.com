@@ -11,11 +11,6 @@ I write Emacs Lisp, make covers with UTAU, and occasionally play with Blender.
 
 This site is built with Hugo; the CSS is processed with [[https://tailwindcss.com/][Tailwind]]. The source code is hosted [[https://github.com/kisaragi-hiu/kisaragi-hiu.com][on GitHub]].
 
-* License
-© Kisaragi Hiu 2017~2022.
-
-Content in CC-BY-SA 4.0 International; code in MIT. See [[https://github.com/kisaragi-hiu/kisaragi-hiu.com/blob/source/LICENSE.md][LICENSE]] for details.
-
 * Links
 
 - GitLab:  [[https://gitlab.com/kisaragi-hiu][kisaragi-hiu]]
