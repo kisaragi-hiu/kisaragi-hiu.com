@@ -1,6 +1,6 @@
 {{ define "header" }}
 <!-- prettier-ignore -->
-{{ partial "avatar" }}
+{{ partial "avatar" . }}
 {{ partial "heading" (dict "title" .Title "enableTypePath" true "ctx" .)}}
 <hr />
 <dl class="meta">

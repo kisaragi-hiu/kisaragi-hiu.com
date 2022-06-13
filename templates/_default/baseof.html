@@ -12,9 +12,7 @@
   <body>
     <div class="outer">
       <!-- Header -->
-      <header>
-        {{ block "header" . }} {{ partial "avatar" .Title }} {{ end }}
-      </header>
+      <header>{{ block "header" . }} {{ partial "avatar" . }} {{ end }}</header>
 
       <!-- Contents -->
       {{ block "main" . }} {{ end }}

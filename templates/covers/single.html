@@ -4,7 +4,7 @@
 {{ end }}
 
 {{ define "header" }}
-{{ partial "avatar" }}
+{{ partial "avatar" . }}
 {{ partial "heading"
            (dict "title" (partial "func-cover-title" (dict "item" .))
                  "enableTypePath" true

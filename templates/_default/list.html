@@ -6,7 +6,7 @@
   {{ .Scratch.Set "titlecase" true }}
 {{ end }}
 
-{{ partial "avatar" .Title }}
+{{ partial "avatar" . }}
 {{ partial "heading" (dict "title" .Title) }}
 <hr />
 {{ with (partial "func-page-term" (dict "page" . "taxonomy" "tags")) }}
