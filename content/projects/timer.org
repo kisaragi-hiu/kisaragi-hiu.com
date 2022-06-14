@@ -1,7 +1,6 @@
 #+title: timer
 #+tags[]: web apps
 #+created: 2021-08-30
-#+tags[]: apps web
 #+homepage: https://kisaragi-hiu.com/timer
 #+github: https://github.com/kisaragi-hiu/timer
 #+status: 20%

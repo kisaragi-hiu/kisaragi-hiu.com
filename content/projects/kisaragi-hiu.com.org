@@ -1,9 +1,9 @@
 #+title: kisaragi-hiu.com
-#+tags[]: hugo web
+#+tags[]: web hugo
 #+github: https://github.com/kisaragi-hiu/kisaragi-hiu.com
 #+status: active
 #+created: 2017-09-21
 
-This site. See [[file:/series/meta.html][the Meta series]] for some history behind it.
+This site. See [[file:/tags/meta.html][#meta]] for some history behind it.
 
 It’s currently (and for a foreseeable future) built on Hugo.

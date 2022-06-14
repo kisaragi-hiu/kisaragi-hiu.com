@@ -1,7 +1,7 @@
 #+title: Canrylog
 #+created: 2019-01-05T21:47:20+0900
 #+gitlab: https://gitlab.com/canrylog/canrylog.el/
-#+tags[]: emacs
+#+tags[]: apps emacs
 #+status: active
 
 My own time tracker.

@@ -1,4 +1,10 @@
-{{ define "main" }} {{ partial "heading" (dict "title" .Title) }}
+{{ define "extra-head"}}
+<script src="/js/search.js"></script>
+<!-- prettier-ignore -->
+{{ end }}
+
+{{ define "main" }}
+{{ partial "heading" (dict "title" .Title) }}
 <hr />
 
 <!-- prettier-ignore -->
@@ -13,6 +19,24 @@
 <main class="mt-4">
   <!-- prettier-ignore -->
   {{ partial "content" . }}
-  {{ partial "projects" .Pages }}
+  <div class="relative">{{ partial "searchbox" .}}</div>
+  <ul id="posts" class="p-0 mt-2 list-none flex flex-col gap-2">
+    {{ range .Pages }}
+    <li data-params="{{ jsonify .Params }}">
+      <div class="flex gap-x-1 items-baseline">
+        <span class="grow">
+          <span class="inline-block w-[9ch]">{{ partial "date" .Date }}</span>
+          <a href="{{.Permalink}}" class="link font-bold"> {{.LinkTitle}} </a>
+        </span>
+        <span class="inline-block">
+          <!-- prettier-ignore -->
+          {{ range .GetTerms "tags" }}
+          {{ partial "tag" . }}
+          {{ end }}
+        </span>
+      </div>
+    </li>
+    {{ end }}
+  </ul>
 </main>
 {{ end }} {{ end }}

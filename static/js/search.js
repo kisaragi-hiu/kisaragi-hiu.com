@@ -39,7 +39,7 @@ function updateSearch() {
   let filters = [];
   document
     .getElementById("filters")
-    .querySelectorAll("input:checked")
+    ?.querySelectorAll("input:checked")
     .forEach((x) => {
       filters.push(JSON.parse(x.getAttribute("data-filter")));
     });

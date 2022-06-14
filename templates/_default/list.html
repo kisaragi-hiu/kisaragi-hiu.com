@@ -72,8 +72,14 @@
   <h2 class="text-xl mt-8 mb-2 font-normal">
     <span class="{{$.Data.Singular}}">{{ $.Data.Term }}</span> projects
   </h2>
-  <!-- prettier-ignore -->
-  {{ partial "projects" . }}
+  <ul>
+    {{ range . }}
+    <li>
+      <span class="inline-block w-[10ch]">{{ partial "date" .Date }}</span>
+      <a href="{{.Permalink}}" class="link font-bold"> {{.LinkTitle}} </a>
+    </li>
+    {{ end }}
+  </ul>
   {{ end }}
 
   <!-- Covers -->

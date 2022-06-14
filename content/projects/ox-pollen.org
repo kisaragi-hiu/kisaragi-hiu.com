@@ -1,6 +1,6 @@
 #+title: ox-pollen
 #+github: https://github.com/kisaragi-hiu/ox-pollen
-#+tags[]: pollen org-mode
+#+tags[]: emacs-lisp org-mode pollen
 #+status: done
 #+created: 2020-10-16
 

@@ -1,5 +1,32 @@
 #+title: Documentation for writing stuff on this blog
 
+* Group by anything
+
+#+begin_src go-html-template
+{{ $pages_in_tag := (slice) }}
+
+{{ range $tag := $alltags }}
+  {{ $pages_in_tag = (slice) }}
+  {{ range $pages }}
+    {{ if eq (index (.GetTerms "tags") 0) $tag }}
+    {{ $pages_in_tag = (union $pages_in_tag (slice .))}}
+    {{ end }}
+  {{ end }}
+  {{ with $pages_in_tag }}
+<h2 class="font-bold mt-4">{{ $tag.LinkTitle }}</h2>
+<ul class="p-0 list-none flex flex-col gap-2">
+  {{ range . }}
+  <li>
+    <span class="inline-block w-[10ch]">{{ partial "date" .Date }}</span>
+    <a href="{{.Permalink}}" class="link font-bold">{{.LinkTitle}}</a>
+  </li>
+  {{ end }}
+</ul>
+{{ end }}
+{{ end }}
+#+end_src
+
+
 * List of tags
 
 #+begin_src web
