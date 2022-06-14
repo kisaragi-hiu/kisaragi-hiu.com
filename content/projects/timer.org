@@ -3,8 +3,7 @@
 #+created: 2021-08-30
 #+homepage: https://kisaragi-hiu.com/timer
 #+github: https://github.com/kisaragi-hiu/timer
-#+status: 20%
+
+A /vanilla JS/ timer with frame counts.
 
 [[/kisaragi-timer.png]]
-
-A timer with frame counts.

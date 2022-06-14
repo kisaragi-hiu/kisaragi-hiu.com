@@ -1,0 +1,11 @@
+#+title: org-import-simplenote
+#+tags[]: emacs
+#+github: https://github.com/kisaragi-hiu/org-import-simplenote
+#+created: 2022-03-03
+
+Import a [[https://simplenote.com][Simplenote]] archive as Org headings.
+
+1. Go to Simplenote → Settings → Tools → Export Notes
+2. A =notes.zip= should now be downloaded
+3. In an Org buffer, run =org-import-simplenote= and select the zip file
+4. Each Simplenote item will be imported as an Org heading

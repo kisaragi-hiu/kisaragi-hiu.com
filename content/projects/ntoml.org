@@ -1,0 +1,9 @@
+#+title: ntoml.el
+#+tags[]: experiments emacs-lisp
+#+github: https://github.com/kisaragi-hiu/experiment-wip-ntoml.el
+#+status: active
+#+created: 2022-06-04
+
+An attempt at creating a [[https://toml.io/en/v1.0.0][TOML 1.0]] decoder / encoder for Emacs Lisp.
+
+To reflect the experimental status, the repository name is currently really ugly.

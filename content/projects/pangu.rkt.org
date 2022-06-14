@@ -1,0 +1,6 @@
+#+title: pangu.rkt
+#+tags[]: racket
+#+github: https://github.com/kisaragi-hiu/pangu.rkt
+#+created: 2019-12-12
+
+Racket port of [[https://github.com/vinta/pangu.js][pangu.js]] (adding space automatically around CJK text).

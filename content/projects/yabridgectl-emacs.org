@@ -1,0 +1,9 @@
+#+title: yabridgectl-emacs
+#+tags[]: emacs
+#+github: https://github.com/kisaragi-hiu/yabridgectl-emacs
+#+created: 2022-05-25
+#+coverimage: /yabridgectl-emacs.png
+
+An Emacs GUI for [[https://github.com/robbert-vdh/yabridge][yabridge]].
+
+[[/yabridgectl-emacs.png]]
