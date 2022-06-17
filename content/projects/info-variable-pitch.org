@@ -1,0 +1,7 @@
+#+title: info-variable-pitch.el
+#+created: 2022-06-17
+#+tags[]: emacs
+#+github: https://github.com/kisaragi-hiu/info-variable-pitch
+#+status: done
+
+Like [[https://github.com/cadadr/elisp/blob/stable/org-variable-pitch.el][org-variable-pitch]] but for Info.
