@@ -1,14 +1,14 @@
 #+title: Performance comparison between cl-lib, dash, and seq
 #+created: 2022-06-05T00:45:51+0900
+#+updated: 2022-06-19T00:03:56+0900
 #+tags[]: emacs-lisp
 
 Caveats: Not compiled
 
 * Conclusions
 
-- In general cl-lib functions are faster than dash.el functions, which are in turn faster than seq.el functions
-- dash.el only works with lists
-- seq.el is extensible
+- In general seq.el is the slowest while dash.el and cl-lib.el can be really similar
+- dash.el anaphoric forms are really slow unless your code is compiled
 
 * Hardware
 
@@ -30,35 +30,35 @@ neofetch cpu gpu memory
 
   #+begin_src emacs-lisp
   (let ((lst (make-list 1000 8)))
-    (k/benchmark-run 10000
+    (k/benchmark-run-compiled 10000
       (cl-remove-duplicates lst)
       (-uniq lst)
       (seq-uniq lst)))
   #+end_src
 
   #+RESULTS:
-  |       total | gc-count |            gc-time |
-  |-------------+----------+--------------------|
-  | 1.226403209 |        0 |                0.0 |
-  |  0.93308848 |        4 |  0.716502461000001 |
-  | 8.197203663 |       11 | 2.1480029300000005 |
+  | form# |              total | gc-count |            gc-time |
+  |-------+--------------------+----------+--------------------|
+  |     1 | 1.2218649209999999 |        0 |                0.0 |
+  |     2 |        0.782352202 |        4 |  0.572720627999999 |
+  |     3 |        7.634342811 |       10 | 1.6153261860000008 |
 
 - =cl-some=, =-some=, =seq-some=
 
   #+begin_src emacs-lisp
   (let ((lst (make-list 1000000 8)))
-    (k/benchmark-run 100
+    (k/benchmark-run-compiled 100
       (cl-some #'cl-oddp lst)
       (-some #'cl-oddp lst)
       (seq-some #'cl-oddp lst)))
   #+end_src
 
   #+RESULTS:
-  |             total | gc-count | gc-time |
-  |-------------------+----------+---------|
-  |       3.790968908 |        0 |     0.0 |
-  |       3.496558383 |        0 |     0.0 |
-  | 8.371602185999999 |        0 |     0.0 |
+  | form# |       total | gc-count | gc-time |
+  |-------+-------------+----------+---------|
+  |     1 | 3.544746294 |        0 |     0.0 |
+  |     2 | 3.492227451 |        0 |     0.0 |
+  |     3 |  8.25177755 |        0 |     0.0 |
 
 - =cl-remove-if-not=, =-filter=, =seq-filter=
 
@@ -72,42 +72,95 @@ neofetch cpu gpu memory
   #+end_src
 
   #+RESULTS:
-  |              total | gc-count |            gc-time |
-  |--------------------+----------+--------------------|
-  | 1.0588285579999999 |        0 |                0.0 |
-  |        0.326594488 |        0 |                0.0 |
-  | 44.359205577000004 |       24 |  5.687170252000001 |
-  |        1.729285066 |        2 | 0.6450764219999954 |
+  | form# |        total | gc-count |             gc-time |
+  |-------+--------------+----------+---------------------|
+  |     1 |  0.714135675 |        0 |                 0.0 |
+  |     2 |   0.32884339 |        0 |                 0.0 |
+  |     3 | 37.158839579 |       24 |   4.404030558999999 |
+  |     4 |  1.093679718 |        1 | 0.17384918300000152 |
 
   Wait what? =-filter= is built on =--filter=, how is =-filter= faster?
 
   Let me try it compiled:
 
   #+begin_src emacs-lisp :lexical t
-  ;; The `let' doesn't work when using `benchmark-run-compiled' under
-  ;; the hood if we wrap it around the entire block.
-  ;;
-  ;; `make-list' is fast enough that this isn't an issue.
-  (k/benchmark-run-compiled 100
-    (let ((lst (make-list 100000 8)))
-      (cl-remove-if-not #'cl-oddp lst))
-    (let ((lst (make-list 100000 8)))
-      (-filter #'cl-oddp lst))
-    (let ((lst (make-list 100000 8)))
-      (--filter (cl-oddp it) lst))
-    (let ((lst (make-list 100000 8)))
+  (let ((lst (make-list 100000 8)))
+    (k/benchmark-run-compiled 100
+      (cl-remove-if-not #'cl-oddp lst)
+      (-filter #'cl-oddp lst)
+      (--filter (cl-oddp it) lst)
       (seq-filter #'cl-oddp lst)))
   #+end_src
 
   #+RESULTS:
-  |              total | gc-count |             gc-time |
-  |--------------------+----------+---------------------|
-  |         1.70707883 |        2 |   0.733798936999996 |
-  |        0.905389277 |        1 | 0.40623841200000044 |
-  | 1.9187352329999998 |        2 |  0.8186001740000037 |
-  |        2.523814185 |        3 |  1.3518518529999994 |
+  | form# |       total | gc-count |            gc-time |
+  |-------+-------------+----------+--------------------|
+  |     1 | 0.729619645 |        0 |                0.0 |
+  |     2 | 0.326527578 |        0 |                0.0 |
+  |     3 | 0.721325904 |        0 |                0.0 |
+  |     4 |  1.14963817 |        1 | 0.1869714140000056 |
 
-  While this is much less extreme, somehow =--filter= is still slower after accounting for GC time?
+  This is still weird: =-filter= shouldn't be faster than =--filter=. Maybe this has something to do with =-filter= being native-compiled but this code block only being byte-compiled?
+
+- =cl-reduce=, =-reduce-from=, =seq-reduce=
+
+  #+begin_src emacs-lisp :lexical t
+  (let (alist)
+    (dotimes (i 10000)
+      (push (cons i (random 100000)) alist))
+    (k/benchmark-run 1000
+      (cl-reduce #'+ alist :key #'cdr)
+      (-reduce-from
+       (lambda (acc it)
+         (+ acc (cdr it)))
+       0 alist)
+      (--reduce-from
+       (+ acc (cdr it))
+       0 alist)
+      (seq-reduce
+       (lambda (acc it)
+         (+ acc (cdr it)))
+       alist 0)))
+  #+end_src
+
+  #+RESULTS:
+  | form# |              total | gc-count |             gc-time |
+  |-------+--------------------+----------+---------------------|
+  |     1 |        0.935825261 |        1 | 0.17034076499999884 |
+  |     3 |        3.527490777 |        7 |  1.4262473060000005 |
+  |     2 |       22.028482852 |       16 |   2.960690408000005 |
+  |     4 | 3.7460073979999997 |        6 |   1.181612537999996 |
+
+  As before, the anaphoric version takes a surprisingly long time when the call site is not compiled.
+
+  #+begin_src emacs-lisp :lexical t
+  (let (alist)
+    (dotimes (i 10000)
+      (push (cons i (random 100000)) alist))
+    (k/benchmark-run-compiled 1000
+      (cl-reduce #'+ alist :key #'cdr)
+      (-reduce-from
+       (lambda (acc it)
+         (+ acc (cdr it)))
+       0 alist)
+      (--reduce-from
+       (+ acc (cdr it))
+       0 alist)
+      (seq-reduce
+       (lambda (acc it)
+         (+ acc (cdr it)))
+       alist 0)))
+  #+end_src
+
+  #+RESULTS:
+  | form# |              total | gc-count |            gc-time |
+  |-------+--------------------+----------+--------------------|
+  |     1 | 0.8647354349999999 |        1 | 0.1690255750000027 |
+  |     3 | 0.5711138920000001 |        0 |                0.0 |
+  |     2 |          0.5425557 |        0 |                0.0 |
+  |     4 | 1.0427903459999999 |        0 |                0.0 |
+
+  This is more in line with what I expect.
 
 * Appendix: Support code
 
@@ -116,19 +169,33 @@ neofetch cpu gpu memory
   "Benchmark each of FORMS with `benchmark-run' with N repetitions."
   (declare (indent 1))
   `(list
-    '(total gc-count gc-time)
+    '(form\# total gc-count gc-time)
     'hline
-    ,@(cl-loop for form in forms
-               collect `(benchmark-run ,n
-                          ,form))))
+    ,@(cl-loop with index = 1
+               for form in forms
+               collect
+               (prog2
+                   (garbage-collect)
+                   `(cons ,index (benchmark-run ,n
+                                   ,form))
+                 (cl-incf index)))))
 
 (defmacro k/benchmark-run-compiled (n &rest forms)
-  "Benchmark each of FORMS with `benchmark-run-compiled' with N repetitions."
+  "Benchmark each of FORMS, byte-compiled, with N repetitions."
   (declare (indent 1))
   `(list
-    '(total gc-count gc-time)
+    '(form\# total gc-count gc-time)
     'hline
-    ,@(cl-loop for form in forms
-               collect `(benchmark-run-compiled ,n
-                          ,form))))
+    ,@(cl-loop with index = 1
+               for form in forms
+               collect
+               (prog2
+                   (garbage-collect)
+                   `(cons ,index
+                          ;; Because `benchmark-run-compiled'
+                          ;; quotes the lambda, it is not able to
+                          ;; see any let form around it.
+                          (benchmark-call (byte-compile (lambda () ,form))
+                                          ,n))
+                 (cl-incf index)))))
 #+end_src
