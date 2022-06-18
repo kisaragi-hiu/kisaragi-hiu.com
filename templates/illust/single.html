@@ -89,9 +89,7 @@
         {{ end }}
         <!-- prettier-ignore -->
         {{ with .GetTerms "tags" }}
-        {{ range . }}
-        {{ partial "tag" . }}
-        {{ end }}
+        <p class="m-0">{{ range . }} {{ partial "tag" . }} {{ end }}</p>
         {{ end }}
       </div>
     </div>
