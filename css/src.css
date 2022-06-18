@@ -44,6 +44,10 @@
     @apply hover;
     @apply shadow rounded bg-white py-1 m-0 my-2;
   }
+  .iconlink {
+    transition: all 100ms ease;
+    @apply fill-secondary/40 hover:fill-secondary;
+  }
   .link {
     /* font-weight: 700; */
     text-decoration: none;

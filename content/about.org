@@ -3,9 +3,9 @@
 #+updated: 2022-01-18T08:25:14+0900
 #+special: true
 
-I'm a college student in Taiwan studying Applied English.
+I study /Applied English/ in [[https://www.nkust.edu.tw][National Kaohsiung University of Science and Technology]].
 
-I write Emacs Lisp, make covers with UTAU, and occasionally play with Blender.
+I write Emacs Lisp, contribute translations, make covers with UTAU, and occasionally play with Blender.
 
 * This website
 
@@ -21,5 +21,5 @@ This site is built with Hugo; the CSS is processed with [[https://tailwindcss.co
 - YouTube:  [[https://youtube.com/channel/UCl_hsqcvdX0XdgBimRQ6R3A][UCl_hsqcvdX0XdgBimRQ6R3A]]
 - niconico:  [[https://nicovideo.jp/user/38995186][user/38995186]]
 - Pixiv:  [[https://pixiv.me/kisaragi-hiu][kisaragi-hiu]]
-- PGP fingerprint:  [[/KisaragiHiu.asc][BCC7 4B10 41D4 B7D7 CC8B F402 40EC BEAE A877 5FC2]]
+- PGP:  [[/KisaragiHiu.asc][BCC7 4B10 41D4 B7D7 CC8B F402 40EC BEAE A877 5FC2]]
 - [[https://orcid.org/][ORCID]]:  [[https://orcid.org/0000-0002-0293-7943]]

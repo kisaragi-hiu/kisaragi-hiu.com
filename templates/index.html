@@ -1,5 +1,4 @@
 {{ define "main" }}
-<!-- prettier-ignore -->
 <div class="">
   <div class="block lg:grid lg:grid-cols-6">
     <h1 class="font-bold my-8 col-span-4">
@@ -16,6 +15,27 @@
                       (slice "/index.xml" "RSS")) }}
       <a class="link" href="{{ index . 0 }}">{{ index . 1 }}</a>
       {{ end }}
+      <div class="space-x-1 mt-2">
+        <!-- prettier-ignore -->
+        {{ range (slice (slice "https://www.patreon.com/kisaragihiu" "patreon")
+                        (slice "https://twitter.com/flyin1501" "twitter")
+                        (slice "https://github.com/kisaragi-hiu" "github")
+                        (slice "https://gitlab.com/kisaragi-hiu" "gitlab")
+                        (slice "https://youtube.com/channel/UCl_hsqcvdX0XdgBimRQ6R3A" "youtube")
+                        (slice "http://pixiv.me/kisaragi-hiu" "pixiv")
+                        (slice "https://nicovideo.jp/user/38995186" "niconico")) }}
+        <a class="" href="{{ index . 0 }}">
+          <svg
+            class="h-6 w-6 inline iconlink"
+            role="img"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            {{ partial "simple-icon" (index . 1) }}
+          </svg>
+        </a>
+        {{ end }}
+      </div>
     </nav>
   </div>
   <aside class="col-span-3">
