@@ -1,0 +1,8 @@
+#+title: git-zip-commit
+#+tags[]: emacs git
+#+github: https://github.com/kisaragi-hiu/git-zip-commit
+#+created: 2022-06-24
+
+Pack a commit's changed files into a zip file.
+
+Just a command to make it easier for me to submit KDE =zh_TW= translations.
