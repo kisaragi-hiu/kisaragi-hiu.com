@@ -1,0 +1,23 @@
+#+title: How to preserve cursor location when pausing in REAPER?
+#+created: 2022-07-02T01:47:28+0900
+
+This is what happens when you pause in Reaper:
+
+#+caption: The snapping is me seeking with my mouse (I forgot to include the mouse cursor while recording).
+{{< video "/20220702/reaper-default.mp4" >}}
+
+When starting playback again, it always starts from the same point.
+
+This is a reasonable default, but sometimes I might want it to not snap back to where I started playback, like the “After stopping keep position” mode in LMMS:
+
+#+caption: Notice how the cursor does not snap back.
+{{< video "/20220702/lmms-preserve.mp4" >}}
+
+It isn't immediately obvious how this can be done in Reaper. LMMS has a prominent button that changes this behavior (the one next to the left of the search icon), but not for Reaper. It isn't an option in preferences as well. There is in fact [[http://forum.cockos.com/showthread.php?p=444695][a feature request from before 2010 that asks for an option to do this]].
+
+Turns out this behavior is available in Reaper — it's just that it is a separate action (bound to =C-SPC= by default) and has a minimally discoverable name of /Play/Pause/ (as opposed to /Play/Stop/) that requires you to already understand how Reaper distinguishes between “pause” and “stop”.
+
+#+caption: Pressing C-SPC instead of SPC. Edit cursor is snapped to playback position when stopped.
+{{< video "/20220702/reaper-preserve.mp4" >}}
+
+Hope this helps the option be a little more discoverable.
