@@ -1,0 +1,90 @@
+#+title: kisaragi-hiu.com scripts
+
+Some code that I use when adding stuff to this repository.
+
+* Thumbnails
+** Downloading thumbnails using youtube-dl
+
+#+begin_src bash
+youtube-dl <url> --write-thumbnail --skip-download
+#+end_src
+
+** Downloading thumbnails for all cover entries with a youtube field
+
+#+begin_src emacs-lisp :results none
+(let ((default-directory (expand-file-name "static/thumb/")))
+  (dolist-with-progress-reporter (file (directory-files
+                                        (f-join (projectile-project-root)
+                                                "content" "covers")
+                                        :full "\\.org$"))
+      "Downloading thumbnails from YouTube..."
+    ;; `k/with-file' abstracts away the boilerplate around opening a file in Emacs
+    (k/with-file file nil
+      (when-let (youtube-id (cadar (org-collect-keywords '("youtube"))))
+        (unless (f-exists? (concat youtube-id ".jpg"))
+          (shell-command-to-string
+           (format "youtube-dl '%s' --write-thumbnail --skip-download -o '%s'"
+                   youtube-id youtube-id)))))))
+#+end_src
+
+** Convert all thumbnails into the right size
+
+#+begin_src bash :results none
+cd ./static/thumb/ || exit 1
+
+# parallel magick '{}' -resize 640 '{.}'.jpg ::: *.jpg *.webp
+parallel magick '{}' -resize 640 '{.}'.jpg ::: *.webp
+rm *.webp
+#+end_src
+
+** Download one thumbnail
+#+NAME: ytdlthumb
+#+begin_src emacs-lisp :var call=1 :results none
+(defun kisaragi-hiu.com/download-thumbnail (id)
+  (let ((youtube-id id))
+    (unless (f-exists? (concat youtube-id ".jpg"))
+      (shell-command-to-string
+       (format "youtube-dl '%1$s' --write-thumbnail --skip-download -o '%1$s'"
+               youtube-id))
+      (shell-command-to-string
+       (format "magick '%s' -resize 640 '%s.jpg'"
+               (-first #'f-exists? (list (concat youtube-id ".jpg")
+                                         (concat youtube-id ".webp")))
+               youtube-id)))))
+
+(when (and call (> call 0))
+  (kisaragi-hiu.com/download-thumbnail (read-string "YouTube ID: ")))
+#+end_src
+
+* Adding one illustration
+
+- Create entry in =content/illust/yyyy-mm-dd.org=
+- Copy file to =static/illust/yyyy-mm-dd.jpg=
+  - If it's a png, copy it to =static/illust/yyyy-mm-dd.png= then run ~make jpg~
+- Run ~make thumb~ in =static/illust=
+
+* Adding one cover entry
+
+#+begin_src emacs-lisp :results none :noweb eval
+<<ytdlthumb(call=0)>>
+(require 's)
+(let ((created    (format-time-string "%F"))
+      (title      (read-string "Title: "))
+      (origauthor (read-string "Original author: "))
+      (origlink   (read-string "Link to original: "))
+      (voice      (read-string "Voicebank: "))
+      (yt         (read-string "YouTube ID: "))
+      (nc         (read-string "niconico ID: "))
+      (lang       (completing-read "Language code: " '("ja" "zh-TW" "en"))))
+  (with-temp-file (format "public/content/covers/%s-%s.org" created title)
+    (insert
+     (s-lex-format "#+title: ${title}
+,#+created: ${created}
+,#+origauthor: ${origauthor}
+,#+original: ${origlink}
+,#+voice: ${voice}
+,#+youtube: ${yt}
+,#+niconico: ${nc}
+,#+language: ${lang}"))
+    (kisaragi-hiu.com/download-thumbnail yt)))
+#+end_src
