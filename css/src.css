@@ -223,8 +223,11 @@
     font-weight: 700;
     @apply font-serif italic -ml-1 mb-2 -mt-2;
   }
+  span.line {
+    display: block;
+  }
   .hl {
-    @apply font-bold;
+    background-color: #374861;
   }
   .lnt {
     /* The line numbers */

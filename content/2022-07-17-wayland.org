@@ -1,0 +1,64 @@
+#+title: My Plasma Wayland experience in July 2022
+#+created: 2022-07-17T23:14:02+0900
+#+draft: t
+
+* Nice things
+
+- Alacritty and other apps start much faster.
+
+* Problems I faced
+
+- The default cursor (DMZ-Black) would show up from time to time despite having changed the default.
+
+- *Drawing tablet weirdness*
+
+  Drawing tablets are considered a different pointing device in Wayland, which sure, fair enough. But it's still incredibly janky.
+
+  Drag-and-drop doesn't work. Plasma's startup animation show up in the wrong place. Menus open in the wrong place until a mouse has interacted with them.
+
+  #+caption: The menus open incorrectly until a mouse has interacted with them.
+  {{< video "/20220718-wayland-drawing-tablet-jank.mp4" >}}
+
+- *My Emacs config broke under Wayland (my fault)*
+
+  Trying to connect to my Emacs daemon makes it return “Authorization required, but no authorization protocol specified”. This is a problem with my config: I have a =k/set-display-if-empty= hack that makes it possible for an Emacs daemon started in a systemd user unit to send notifications under X when there isn't a graphical frame open.
+
+  #+begin_src emacs-lisp
+  (defun k/set-display-if-empty (&optional _)
+    "Set the environment variable DISPLAY to \":0\" if it's not set.
+
+  This allows running X related stuff even when there's no frame active."
+    (unless (or (getenv "DISPLAY")
+                (getenv "WAYLAND_DISPLAY"))
+      (make-thread
+       (lambda ()
+         (while (not (getenv "DISPLAY"))
+           (setenv "DISPLAY" ":0")
+           (sleep-for 2))))))
+
+  (dolist (hook '(delete-frame-functions
+                  after-init-hook))
+    (add-hook hook #'k/set-display-if-empty))
+  #+end_src
+
+  When Emacs is started with a systemd user unit, it does not inherit environment variables from the desktop environment, so without this =notify-send= wouldn't work if there is no active frame.
+
+  You can see me trying to avoid setting =DISPLAY= if Emacs is started under Wayland. The problem is that =WAYLAND_DISPLAY= is also not inherited, so I still end up setting =DISPLAY= under Wayland, which presumably makes Emacs attempt to connect to a nonexistant X server.
+
+  This is the solution:
+
+  #+begin_src emacs-lisp :hl_lines 9-10 :linenos false
+  (defun k/set-display-if-empty (&optional _)
+    "Set the environment variable DISPLAY to \":0\" if it's not set.
+
+  This allows running X related stuff even when there's no frame active."
+    (unless (or (getenv "DISPLAY")
+                (getenv "WAYLAND_DISPLAY"))
+      (make-thread
+       (lambda ()
+         (if (getenv "WAYLAND_DISPLAY")
+             (setenv "DISPLAY" nil)
+           (while (not (getenv "DISPLAY"))
+             (setenv "DISPLAY" ":0")
+             (sleep-for 2)))))))
+  #+end_src
