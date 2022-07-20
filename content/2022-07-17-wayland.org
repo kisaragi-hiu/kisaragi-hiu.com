@@ -1,14 +1,34 @@
 #+title: My Plasma Wayland experience in July 2022
 #+created: 2022-07-17T23:14:02+0900
-#+draft: t
+#+updated: 2022-07-20T21:53:39+0900
+#+tags[]: linux wayland
+
+Last time I tried (many years ago), trying to log into the Plasma Wayland session just popped me straight back to the display manager. As it has been several years, I want to try it out again.
+
+The computer I did this on is a conventional desktop PC with a mouse and keyboard, along with a Wacom drawing tablet. The GPU is a Radeon 460.
+
+Overall it's the same at best and somewhat broken at worst. Although it's /much/ better than the last time I tried (2015 if I remember right, back when GNOME 3.16 was recent) and likely a better experience for some users, for example with multiple monitors or with touch devices, it is still not ready for me.
+
+* Differences
+
+- Mouse sensitivity is a little different. This is easily remedied by turning it down a bit in System Settings, but still a little weird as I was already using libinput on X.
 
 * Nice things
 
 - Alacritty and other apps start much faster.
+- /Almost/ everything remains unchanged.
 
 * Problems I faced
 
+- Keyboard rebinds are a little janky until I set the options again.
+
+  =Capslock → menu= wouldn't work, =menu → super= made the key emit both =super= and =menu=. (=Super= = the Windows key = what Plasma calls =meta=.)
+
+  This went away after I went into System Settings, reset keyboard options, then re-enabled them again.
+
 - The default cursor (DMZ-Black) would show up from time to time despite having changed the default.
+
+- Occasionally the wrong cursor would be used, for example the drag-and-drop cursor might be used when I'm not dragging anything.
 
 - *Drawing tablet weirdness*
 
@@ -19,7 +39,7 @@
   #+caption: The menus open incorrectly until a mouse has interacted with them.
   {{< video "/20220718-wayland-drawing-tablet-jank.mp4" >}}
 
-- *My Emacs config broke under Wayland (my fault)*
+- *(my fault)* My Emacs config assumed X11 and therefore broke under Wayland
 
   Trying to connect to my Emacs daemon makes it return “Authorization required, but no authorization protocol specified”. This is a problem with my config: I have a =k/set-display-if-empty= hack that makes it possible for an Emacs daemon started in a systemd user unit to send notifications under X when there isn't a graphical frame open.
 
