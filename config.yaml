@@ -7,7 +7,7 @@ ignoreFiles:
   - README\.org$
   - readme\.org$
 
-uglyurls: true
+uglyurls: false
 baseURL: https://kisaragi-hiu.com
 
 enableGitInfo: true
@@ -53,7 +53,6 @@ taxonomies:
 
 # * Languages
 hasCJKLanguage: true
-
 # * Local Variables
 # Local Variables:
 # eval: (outline-minor-mode)

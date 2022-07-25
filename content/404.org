@@ -1,6 +1,10 @@
 #+title: 404
 #+special: true
 
+#+begin_export html
+<script type="text/javascript" src="js/404.js"></script>
+#+end_export
+
 This page does not exist.
 
 [[/][Back to home.]]
