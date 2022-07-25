@@ -5,7 +5,7 @@ export LANG=en_US.UTF-8
 .PHONY: clean zip css dev
 
 dev-hugo:
-	hugo server
+	hugo server --disableFastRender
 
 dev-tailwind:
 	npx tailwindcss --postcss -i css/src.css -o static/css/built.css --watch

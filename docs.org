@@ -1,5 +1,11 @@
 #+title: Documentation for writing stuff on this blog
 
+* Posts with children pages
+
+The main page should be a branch bundle (=path/to/page/_index.org=); the children should be regular files that sit in the same directory (=path/to/page/<child-page>.org=).
+
+The main page also needs a =type: regularpage= param for it to show up in indices.
+
 * Group by anything
 
 #+begin_src go-html-template

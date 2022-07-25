@@ -76,6 +76,7 @@
     <!-- prettier-ignore -->
     {{ partial "searchable-list"
                (sort ((where .Site.RegularPages "Section" "")
+                      | union (where .Site.AllPages "Params.type" "regularpage")
                       | union (where .Site.RegularPages "Section" "translated")
                       | union (where .Site.RegularPages "Section" "covers")
                       | union (where .Site.RegularPages "Section" "blog"))

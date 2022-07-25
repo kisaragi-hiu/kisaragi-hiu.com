@@ -7,7 +7,7 @@ ignoreFiles:
   - README\.org$
   - readme\.org$
 
-uglyurls: false
+uglyurls: true
 baseURL: https://kisaragi-hiu.com
 
 enableGitInfo: true
