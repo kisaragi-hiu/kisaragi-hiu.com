@@ -2,6 +2,7 @@
 #+created: 2022-07-17T23:14:02+0900
 #+updated: 2022-07-20T21:53:39+0900
 #+tags[]: linux wayland
+#+toc: t
 
 Last time I tried (many years ago), trying to log into the Plasma Wayland session just popped me straight back to the display manager. As it has been several years, I want to try it out again.
 
