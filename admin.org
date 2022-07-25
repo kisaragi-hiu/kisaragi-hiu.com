@@ -68,18 +68,20 @@ rm *.webp
 #+begin_src emacs-lisp :results none :noweb eval
 <<ytdlthumb(call=0)>>
 (require 's)
-(let ((created    (format-time-string "%F"))
-      (title      (read-string "Title: "))
-      (origauthor (read-string "Original author: "))
-      (origlink   (read-string "Link to original: "))
-      (voice      (read-string "Voicebank: "))
-      (yt         (read-string "YouTube ID: "))
-      (nc         (read-string "niconico ID: "))
-      (lang       (completing-read "Language code: " '("ja" "zh-TW" "en"))))
-  (with-temp-file (format "public/content/covers/%s-%s.org" created title)
+(let* ((now        (current-time))
+       (date       (format-time-string "%F" now))
+       (date-abbr  (format-time-string "%Y%m%d" now))
+       (title      (read-string "Title: "))
+       (origauthor (read-string "Original author: "))
+       (origlink   (read-string "Link to original: "))
+       (voice      (read-string "Voicebank: "))
+       (yt         (read-string "YouTube ID: "))
+       (nc         (read-string "niconico ID: "))
+       (lang       (completing-read "Language code: " '("ja" "zh-TW" "en"))))
+  (with-temp-file (format "public/content/covers/%s-%s.org" date-abbr title)
     (insert
      (s-lex-format "#+title: ${title}
-,#+created: ${created}
+,#+created: ${date}
 ,#+origauthor: ${origauthor}
 ,#+original: ${origlink}
 ,#+voice: ${voice}

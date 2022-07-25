@@ -15,6 +15,8 @@
 /barren-moon https://barren-moon.kisaragi-hiu.com
 
 # This must come before the /blog -> / redirect
+# Created on an incorrect path initially
+/covers/2022-07-14-大地の閾を探して /covers/20220714-大地の閾を探して
 # Blog -> content note migration
 /blog/2021-06-02-insert-key-double-key /2021-06-02-insert-key-double-key
 /blog/2021-05-01-idsmile-trumpet-sheet /2021-05-01-idsmile-trumpet-sheet
