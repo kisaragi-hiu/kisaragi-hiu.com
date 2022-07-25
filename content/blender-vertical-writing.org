@@ -7,7 +7,7 @@
 
 Blender doesn't support vertical writing. So what should I do when I still want to use it?
 
-/2021-07-08:/ I've now published [[#0238c6f6-6ed5-41b6-8b23-737ef4eabca9][option 3, emulating vertical writing with newlines]], as an addon [[https://blendermarket.com/products/cjk-pseudo-vertical-writing][on Blender Market]]. [[file:projects/blender-pseudo-vertical-text.org][Here's its page on this site]].
+/2021-07-08:/ I've now published [[#0238c6f6-6ed5-41b6-8b23-737ef4eabca9][option 3, emulating vertical writing with newlines]], as an addon [[https://blendermarket.com/products/cjk-pseudo-vertical-writing][on Blender Market]]. [[file:/projects/blender-pseudo-vertical-text.org][Here's its page on this site]].
 
 * Option 1: Convert Text to Mesh or Curve then rotate it myself
 
