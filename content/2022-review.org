@@ -10,17 +10,16 @@
 - [[file:covers/20220328-カラカラカラのカラ.org][カラカラカラのカラ]]
 - [[file:covers/20220520-みっともないわ.org][みっともないわ]]
 - [[file:covers/20220603-幻影.org][幻影]]
+- [[file:covers/20220714-大地の閾を探して.org][大地の閾を探して]]
 
 * This site
 
-- [[file:why-fcitx5.org][Why switch to fcitx5]]
-- [[file:finding-devices-on-the-same-network.org][Linux: Finding devices on the same network]]
-- [[file:blender-lrc.org][Blender: how to display lyrics based on a .lrc file (for lyrics videos)]]
-- [[file:emacs-detect-daemon-before-frame.org][Emacs Lisp: how to check if we haven't yet created any windows in daemon mode]]
+12 new articles.
 
 * Contributions
 
 - [[https://github.com/oakmac/parinfer-elisp][parinfer-elisp]] (parinferlib.el, vendored by parinfer-mode[fn:1]): [[https://github.com/oakmac/parinfer-elisp/pull/14][Increase performance by 50%]]
+- [[https://github.com/org-roam/org-roam/][Org-roam]]: [[https://github.com/org-roam/org-roam/pull/2221][Fix file modification detection failing in some edge cases]]
 
 [fn:1] [[https://github.com/DogLooksGood/parinfer-mode][parinfer-mode]] has been deprecated and archived, but since I find no particular reason to switch to parinfer-rust-mode I've been trying to maintain [[https://github.com/kisaragi-hiu/parinfer-mode][my own fork]].
 
