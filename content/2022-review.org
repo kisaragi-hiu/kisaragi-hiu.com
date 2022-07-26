@@ -16,6 +16,11 @@
 
 12 new articles.
 
+* Translation
+
+- Submitted strings to KDE
+- Submitted strings to [[https://flathub.org/apps/details/org.gnome.gitlab.YaLTeR.Identity][Identity]], [[https://flathub.org/apps/details/io.github.seadve.Kooha][Kooha]]
+
 * Contributions
 
 - [[https://github.com/oakmac/parinfer-elisp][parinfer-elisp]] (parinferlib.el, vendored by parinfer-mode[fn:1]): [[https://github.com/oakmac/parinfer-elisp/pull/14][Increase performance by 50%]]
