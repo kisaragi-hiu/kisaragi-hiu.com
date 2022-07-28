@@ -5,7 +5,7 @@ export LANG=en_US.UTF-8
 .PHONY: clean zip css dev
 
 dev-hugo:
-	hugo server --disableFastRender
+	~/git/hugo/hugo server --disableFastRender
 
 dev-tailwind:
 	npx tailwindcss --postcss -i css/src.css -o static/css/built.css --watch
@@ -26,9 +26,15 @@ public.zip: public
 
 # the modified timestamp gets messed up on my system; fix that with
 # the `touch`.
-public: static/css/built.css js
+public: static/css/built.css js modules
 	hugo --minify
 	@touch public
 
 static/css/built.css: css/src.css
 	npx tailwindcss --minify --postcss -i css/src.css -o static/css/built.css
+
+modules: static/barren-moon
+.PHONY: modules
+
+static/barren-moon:
+	git clone "git@gitlab.com:kisaragi-hiu/barren-moon" -b release static/barren-moon

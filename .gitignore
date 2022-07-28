@@ -12,8 +12,9 @@ compiled
 /static/css/built.css
 public
 sitemap.txt
-static/external/
+/static/external/
 /static/js/*.min.js
+/static/barren-moon
 tags/*
 node_modules
 *.map

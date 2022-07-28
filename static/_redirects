@@ -12,7 +12,7 @@
 /aqi https://aqi.tw
 /timer/* https://wizardly-mahavira-16cc40.netlify.app/:splat 200
 /tftt/* https://fantastic-sawine-86f651.netlify.app/:splat 200
-/barren-moon https://barren-moon.kisaragi-hiu.com
+# /barren-moon https://barren-moon.kisaragi-hiu.com
 
 # This must come before the /blog -> / redirect
 # Created on an incorrect path initially
