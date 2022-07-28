@@ -38,8 +38,10 @@ MODULES := public/barren-moon public/timer
 modules: $(MODULES)
 
 public/barren-moon:
+	-rm -rf public/barren-moon
 	git clone "https://gitlab.com/kisaragi-hiu/barren-moon" -b release public/barren-moon
 public/timer:
+	-rm -rf public/timer
 	git clone "https://github.com/kisaragi-hiu/timer" -b release public/timer
 
-.PHONY: modules
+.PHONY: modules $(MODULES)
