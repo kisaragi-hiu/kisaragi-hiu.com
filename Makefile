@@ -33,13 +33,13 @@ public: static/css/built.css js modules
 	hugo --minify
 	@touch public
 
-MODULES := static/barren-moon static/timer
+MODULES := public/barren-moon public/timer
 
 modules: $(MODULES)
 
-static/barren-moon:
-	git clone "https://gitlab.com/kisaragi-hiu/barren-moon" -b release static/barren-moon
-static/timer:
-	git clone "https://github.com/kisaragi-hiu/timer" -b release static/timer
+public/barren-moon:
+	git clone "https://gitlab.com/kisaragi-hiu/barren-moon" -b release public/barren-moon
+public/timer:
+	git clone "https://github.com/kisaragi-hiu/timer" -b release public/timer
 
-.PHONY: modules $(MODULES)
+.PHONY: modules
