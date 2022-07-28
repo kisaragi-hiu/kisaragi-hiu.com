@@ -37,3 +37,4 @@ public: static/css/built.css js $(modules)
 
 static/barren-moon:
 	git clone "https://gitlab.com/kisaragi-hiu/barren-moon" -b release static/barren-moon
+.PHONY: static/barren-moon
