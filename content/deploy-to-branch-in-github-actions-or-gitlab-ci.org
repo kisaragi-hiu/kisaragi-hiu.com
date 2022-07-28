@@ -1,0 +1,99 @@
+#+title: GitHub Actions / GitLab CI: deploy to branch
+#+created: 2022-07-29T00:26:23+0900
+#+tags[]: ci git
+
+Why? Now your latest release is one =git clone <url> -b release <local-path>= away. That's what I want.
+
+* GitLab CI
+#+begin_src yaml
+image: archlinux:latest
+
+variables:
+  SSH_PRIVATE_KEY: $SSH_PRIVATE_KEY
+
+before_script:
+  - pacman -Syu --noconfirm make git openssh
+
+"default":
+  stage: "build"
+  script:
+    - make public
+  after_script:
+    - mkdir ~/.ssh
+    - echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+    - chmod 600 ~/.ssh/id_rsa
+    - touch ~/.ssh/known_hosts
+    - ssh-keyscan gitlab.com >> ~/.ssh/known_hosts
+    - cd public
+    - git init --initial-branch=release
+    - git config user.name "Built on CI"
+    - git config user.email "your-email@example.com"
+    - git add .
+    - git commit -m "Deploy to Git"
+    - git push --force "git@gitlab.com:$CI_PROJECT_PATH" release
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "push"
+#+end_src
+
+** Things of note
+
+- Substitude “make” with your build script, of course.
+
+- This assumes your output directory is called “public”.
+
+- Push access with the deploy token is still not a thing ([[https://gitlab.com/gitlab-org/gitlab/-/issues/14101][gitlab-org/gitlab#14101]]), so we emulate it with SSH.
+
+  1. Run =ssh-keygen= to create an SSH key locally (make sure to not overwrite your own 💥).
+  2. Copy the private key
+  3. Go to repository → Settings → CI/CD → Variables and add a new Variable, =SSH_PRIVATE_KEY=, then paste the private key in it.
+     - The name is not special, just has to match what's in ~.gitlab-ci.yml~
+     - For some reason I still get the file contents when I use type = File, so I just don't bother.
+  4. Copy the public key
+  5. Go to repository → Settings → Repository → Deploy Keys, then paste it there
+     - Grant write permissions as that's the thing we're using it for
+  6. Done! Now pushing to the repository /should/ result in the build also being pushed to the =release= branch.
+
+- The private key needs to have the right Unix permissions.
+
+- SSH rejects new hosts by default when run noninteractively, so we need to add an =ssh-keyscan= in there to tell SSH we trust gitlab.com. Figuring out why this does not increase the amount of trust we put in is exercise for the reader. (Hint: we already trust gitlab.com.)
+
+* GitHub Actions
+
+#+begin_src yaml
+name: "release"
+on:
+  push:
+    branches:
+      - main
+
+env:
+  "GITHUB_REPOSITORY": $GITHUB_REPOSITORY
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      # We rely on actions/checkout
+      - uses: actions/checkout@v2
+      - name: "Build"
+        run: |
+          make
+      - name: "Push"
+        run: |
+          git config user.name "Built on CI"
+          git config user.email "your-email@example.com"
+          cd dist
+          mv ../.git .
+          git checkout --orphan release
+          git add .
+          git commit -m "Deploy to Git"
+          git push --force origin release
+#+end_src
+
+** Things of note
+
+- Substitude “make” with your build script.
+
+- This assumes your output directory is called “dist”.
+
+- [[https://github.com/actions/checkout][actions/checkout]] already sets things up so that pushing will just work, but we still have to set up the directory structure of the new orphan branch. The way I chose to do this is to just move =.git=, which is functionally the same as first deleting everything except =.git= and =dist=, then moving everything in =dist= to project root, then deleting =dist= itself.
