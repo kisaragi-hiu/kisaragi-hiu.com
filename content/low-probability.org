@@ -1,0 +1,4 @@
+#+title: How not to act on a lower probabulity event
+#+draft: t
+#+subtitle: High risk does not always equal high reward
+#+created: 2022-07-17T22:21:29+0900
