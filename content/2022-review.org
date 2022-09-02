@@ -33,4 +33,4 @@
 - [[file:projects/tftt.org][tftt]]
 - [[file:projects/yabridgectl-emacs.org][yabridgectl-emacs]]
 - [[file:projects/org-import-simplenote.org][org-import-simplenote]]
-- https://github.com/kisaragi-hiu/interis
+- https://github.com/kisaragi-hiu/interris
