@@ -8,7 +8,7 @@
 @layer base {
   html {
     background: #f8f8f8;
-    @apply md:text-[20px];
+    @apply md:text-[20px] text-primary;
   }
   .outer {
     width: min(80ch, 90%);
