@@ -1,6 +1,7 @@
 #+title: GitHub Actions / GitLab CI: deploy to branch
 #+created: 2022-07-29T00:26:23+0900
 #+tags[]: ci git
+#+language: en
 
 Why? Now your latest release is one =git clone <url> -b release <local-path>= away. That's what I want.
 

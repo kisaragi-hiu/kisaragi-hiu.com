@@ -34,17 +34,6 @@
   {{ partial "content" . }}
 {{ else }}
 <main class="mt-4">
-  {{ partial "content" . }}
-  <!-- Pages -->
-  <!-- prettier-ignore -->
-  {{ with (sort (union (where .Pages "Section" "")
-                       (where .Pages "Section" "blog"))
-                "Date"
-                (or .Params.sort "desc")) }}
-  <!-- prettier-ignore -->
-  {{ partial "searchable-list" . }}
-  {{ end }}
-
   <!-- Store "term" items under this taxonomy term.
        This does not just work with tags.-->
   <!-- prettier-ignore -->
@@ -54,52 +43,21 @@
       {{$term_items = (union $term_items (slice .Page))}}
     {{ end }}
   {{ end }}
+  {{ partial "content" . }}
 
-  <!-- Other tags -->
-  {{ with $term_items }}
-
-  <h2>{{ printf "Related %s" $.Data.Plural }}</h2>
-  <ul class="index">
-    {{ range $term_items }}
-    <li>{{ partial .Data.Singular . }}</li>
-    {{ end }}
-  </ul>
-  {{ end }}
-
-  <!-- Projects -->
+  <!-- Pages -->
   <!-- prettier-ignore -->
-  {{ with (where .Pages "Section" "projects")}}
-  <h2 class="text-xl mt-8 mb-2 font-normal">
-    <span class="{{$.Data.Singular}}">{{ $.Data.Term }}</span> projects
-  </h2>
-  <ul>
-    {{ range . }}
-    <li>
-      <span class="inline-block w-[10ch]">{{ partial "date" .Date }}</span>
-      <a href="{{.Permalink}}" class="link font-bold"> {{.LinkTitle}} </a>
-    </li>
-    {{ end }}
-  </ul>
-  {{ end }}
-
-  <!-- Covers -->
+  {{ with (sort ((where .Pages "Section" "")
+                 | union (where .Pages "Section" "blog")
+                 | union (where .Pages "Section" "projects")
+                 | union (where .Pages "Section" "covers")
+                 | union (where .Pages "Section" "illust")
+                 | union $term_items
+                 )
+                "Date"
+                (or .Params.sort "desc")) }}
   <!-- prettier-ignore -->
-  {{ with (where .Pages "Section" "covers")}}
-  <h2 class="text-xl mb-2 font-normal">
-    <span class="{{$.Data.Singular}}">{{ $.Data.Term }}</span> covers
-  </h2>
-  <!-- prettier-ignore -->
-  {{ partial "covers" . }}
-  {{ end }}
-
-  <!-- Illust -->
-  <!-- prettier-ignore -->
-  {{ with (where .Pages "Section" "illust") }}
-  <h2 class="text-xl mb-2 font-normal">
-    <span class="{{$.Data.Singular}}">{{ $.Data.Term }}</span> illustration
-  </h2>
-  <!-- prettier-ignore -->
-  {{ partial "illustrations" . }}
+  {{ partial "searchable-list" . }}
   {{ end }}
 </main>
 {{ end }} {{ end }}

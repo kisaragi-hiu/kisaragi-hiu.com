@@ -5,7 +5,8 @@ lc:
   "zh_TW": "中"
   "ja": "日"
 sections:
-  "covers": "Covers"
-  "blog": "Articles"
+  "covers": "Cover"
+  "blog": "Article"
   "illust": "Illust"
   "projects": "Project"
+  "tags": "Tag"

@@ -49,30 +49,38 @@
   {{ $languages = (union $languages (slice .)) }}
   {{ end }}
   {{ end }}
+  {{ if (or (gt (len $languages) 1)
+            (gt (len $sections) 1))}}
   <div id="filters" class="items-start flex space-x-2 my-2">
     {{ partial "ionicons-filter" "h-5 w-5" }}
     <div>Filter:</div>
-    <div class="">
-      <div>Language:</div>
-      {{ range $languages }}
-      <!-- prettier-ignore -->
-      {{ partial "inline/button-checkbox"
+    <div class="space-y-2">
+      {{ if (gt (len $languages) 1)}}
+      <div>
+        <div>Language:</div>
+        {{ range $languages }}
+        <!-- prettier-ignore -->
+        {{ partial "inline/button-checkbox"
                    (dict "value" .
                          "dict" (site).Data.names.lc
                          "type" "language") }}
       {{ end }}
-    </div>
-    <div class="">
-      <div>Type:</div>
-      {{ range $sections }}
-      <!-- prettier-ignore -->
-      {{ partial "inline/button-checkbox"
+      </div>
+      {{ end }} {{ if (gt (len $sections) 1)}}
+      <div>
+        <div>Type:</div>
+        {{ range $sections }}
+        <!-- prettier-ignore -->
+        {{ partial "inline/button-checkbox"
                    (dict "value" .
                          "dict" (site).Data.names.sections
                          "type" "section") }}
       {{ end }}
+      </div>
+      {{ end }}
     </div>
   </div>
+  {{ end }}
 </div>
 <ul id="posts" class="mt-8 flex flex-col gap-4">
   <!-- prettier-ignore -->
