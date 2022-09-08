@@ -4,6 +4,7 @@
 <!-- prettier-ignore -->
 {{ $label := .value }}
 {{ $partial := .partial }}
+{{ $dict := .dict }}
 {{ $type := .type }}
 <div class="inline-block">
   <input
@@ -21,6 +22,8 @@
     <!-- prettier-ignore -->
     {{ if $partial }}
     {{ partial $partial $label }}
+    {{ else if $dict }}
+    {{ (index $dict $label) }}
     {{ else }}
     {{ $label }}
     {{ end }}
@@ -53,7 +56,7 @@
       <!-- prettier-ignore -->
       {{ partial "inline/button-checkbox"
                    (dict "value" .
-                         "partial" "func-language-code-to-name"
+                         "dict" (site).Data.lc
                          "type" "language") }}
       {{ end }}
     </div>

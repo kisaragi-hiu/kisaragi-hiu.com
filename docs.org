@@ -219,12 +219,6 @@ Arguments:
     (partial "func-cover-title" (dict "item" . "mark" true))
 #+end_src
 
-** func-language-code-to-name
-
-#+begin_src lisp
-(partial "func-language-code-to-name" "en") ; -> "English"
-#+end_src
-
 ** func-page-term
 
 Replacement for =.GetTerms= with support for “tagging tags”.
