@@ -1,1 +1,5 @@
 #+title: Home
+
+Just someone who's semi-competent at getting mediocre at stuff.
+
+I write Emacs Lisp programs, contribute translations (English to Mandarin (=zh_TW=) and English to Japanese), make covers with UTAU, and occasionally play with Blender.
