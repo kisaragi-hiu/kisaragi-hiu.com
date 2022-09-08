@@ -10,7 +10,7 @@
 {{ partial "heading" (dict "title" .Title) }}
 <hr />
 {{ with (partial "func-page-term" (dict "page" . "taxonomy" "tags")) }}
-<div class="mt-2">{{ range . }} {{ partial "tag" . }} {{ end }}</div>
+<div class="mt-2 meta">{{ range . }} {{ partial "tag" . }} {{ end }}</div>
 {{ end }}
 
 <!-- prettier-ignore -->

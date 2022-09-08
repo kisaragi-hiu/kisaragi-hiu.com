@@ -1,0 +1,93 @@
+#+title: Task Runners
+#+created: 2022-09-09T00:13:55+0900
+#+toc: t
+#+language: en
+#+tags[]: make list
+
+A task runner runs … tasks.
+
+In the JS world, some module bundlers also act as a task runner, but it's more useful to think of the task runner as a separate thing.
+
+Some task runners that I know of and would consider using:
+
+* Make
+Make can be seen as a task runner that happens to come with file-based dependency management.
+
+- Pro: Installed everywhere
+- Con: You better hope your file names never contain spaces
+
+Usage:
+
+#+begin_src makefile
+a-target-file: a-dependency
+	echo "some shell command that runs to create a-target-file"
+
+a-dependency:
+	touch a-dependency
+
+a-non-file-task:
+	echo "this always runs"
+.PHONY: a-non-file-task
+# ^ this declares it to actually be a non-file task
+#+end_src
+
+#+begin_src shell
+make a-non-file-task
+#+end_src
+
+
+* npm scripts
+
+- Pro: name tasks pre- and post- to run them before or after other tasks
+- Pro: You can run project-local tools installed with =npm= directly without having to specify =npx=
+- Con: No dependency management
+- Con: =package.json= has no comments.
+
+  You can fake it by:
+
+  - writing =//= lines anyways and hope that tools accept it
+  - [[https://stackoverflow.com/a/14221781/6927814][writing comments]] in a top-level ="//"= key
+  - [[https://stackoverflow.com/a/18048155/6927814][using duplicate keys]] and hope that tools are well-behaved and throw out the comment
+  - [[https://stackoverflow.com/a/45815391/6927814][using extra dummy keys]] like ="scriptsComments"=
+  - [[https://stackoverflow.com/a/50878067/6927814][writing extra scripts]] that echo a comment out
+
+  But none of it beats actually having real comment syntax.
+
+Usage:
+
+Declare your tasks in =package.json=:
+
+#+begin_src json
+{
+  "scripts": {
+    "dev": "python -m http.server 8080",
+    "preanother": "echo 'this is special and runs before `another`'",
+    "another": "npm run dev",
+    "postanother": "echo 'this is special and runs after `another`'",
+    "yet-another-task": "mkdir public"
+  }
+}
+#+end_src
+
+#+begin_src shell
+npm run yet-another-task
+#+end_src
+
+This is also [[https://yarnpkg.com/cli/run][supported by Yarn]] ([[https://classic.yarnpkg.com/en/docs/cli/run][including Yarn 1]]):
+
+#+begin_src shell
+yarn run yet-another-task
+#+end_src
+
+* Just a bunch of scripts
+
+A bunch of scripts will also work.
+
+- Pro: flexibility
+- Con: you'll most likely end up writing a bunch of boilerplate
+
+Example:
+
+- ./utils/publish.sh
+- ./utils/build.sh
+- ./utils/lint.sh

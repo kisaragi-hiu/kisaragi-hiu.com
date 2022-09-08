@@ -9,6 +9,8 @@
 <!-- prettier-ignore -->
 {{ with .Param "subtitle" }}
 <h2 class="mt-0 mb-8">{{.}}</h2>
+{{ end }} {{ with .GetTerms "tags" }}
+<div class="meta">{{ range . }} {{ partial "tag" . }} {{ end }}</div>
 {{ end }}
 <!-- prettier-ignore -->
 {{ end }}
