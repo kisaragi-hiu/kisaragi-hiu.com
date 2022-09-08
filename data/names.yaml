@@ -1,0 +1,9 @@
+# Mapping of internal code to public facing names.
+lc:
+  # Language Code -> Name
+  "en": "En"
+  "zh_TW": "中"
+  "ja": "日"
+sections:
+  "covers": "Covers"
+  "blog": "Articles"
