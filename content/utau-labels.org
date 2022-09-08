@@ -1,8 +1,7 @@
 #+title: UTAU tip: labels
 #+created: 2018-07-27T00:23:19+0900
 #+language: en
-#+tags[]: utau tips
-#+series: Tutorials
+#+tags[]: utau tips tutorials
 
 In UTAU, labels are a simple way to mark sections of the UST to easily jump around. I've been using them to make notes in the UST since [[https://www.youtube.com/watch?v=PNLT7WUuXHM][my メリュー cover]], and for marking sections since [[https://www.youtube.com/watch?v=3hnI8DqMVfc][my 濫觴生命 cover]].
 

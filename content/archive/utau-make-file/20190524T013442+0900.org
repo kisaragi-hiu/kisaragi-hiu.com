@@ -1,8 +1,7 @@
 #+title: A Makefile for UTAU Projects
 #+created: 2019-04-17T19:50:52+0800
 #+updated: 2019-05-24T01:34:42+0900
-#+series: Tutorials
-#+tags[]: make utau
+#+tags[]: make utau tutorials
 #+language: en
 #+archive: utau-make-file
 

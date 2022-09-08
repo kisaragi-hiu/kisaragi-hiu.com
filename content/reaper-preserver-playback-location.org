@@ -1,5 +1,6 @@
 #+title: How to preserve cursor location when pausing in REAPER?
 #+created: 2022-07-02T01:47:28+0900
+#+tags[]: tutorials
 
 This is what happens when you pause in Reaper:
 

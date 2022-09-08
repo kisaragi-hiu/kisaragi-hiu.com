@@ -66,6 +66,7 @@
 /taxonomy /tags/taxonomy
 /category/experiment /tags/experiments
 /category/* /series/:splat
+/series/tutorials /tags/tutorials
 
 # We have to do this explicitly
 /* /404 404

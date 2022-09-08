@@ -1,7 +1,6 @@
 #+title: Setting the width of Emacs profiler reports
 #+created: 2019-05-16T21:39:41+0900
-#+series: Tutorials
-#+tags[]: emacs config
+#+tags[]: emacs config tutorials
 #+language: en
 
 *TL;DR*: [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Setting-Generalized-Variables.html][=setf=]] the caar of =profiler-report-cpu-line-format= and =profiler-report-memory-line-format= to a larger width (default 50 and 55).

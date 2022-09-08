@@ -1,7 +1,6 @@
 #+title: NodeJS: How to await an asynchronous child process
 #+created: 2022-06-07T01:04:42+0900
-#+tags[]: nodejs
-#+series: Tutorials
+#+tags[]: nodejs tutorials
 
 #+html: TL;DR: <a href="#tldr">the solution</a>.
 
