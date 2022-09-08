@@ -72,7 +72,7 @@
   {{ if not (.Param "special") }}
   {{ $extra_params := (dict "section" .Section)}}
   <li data-params="{{ jsonify (merge .Params $extra_params) }}">
-    <div class="h-6">
+    <div class="min-h-[1.5rem]">
       <span class="inline-block w-[10ch]">{{ partial "date" .Date }}</span>
       {{ if eq .Section "translated" }}
       <span class="bg-green-500 text-white p-1">TRANSLATED</span>
