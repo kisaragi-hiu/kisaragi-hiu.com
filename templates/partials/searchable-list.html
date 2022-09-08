@@ -78,7 +78,8 @@
   <!-- prettier-ignore -->
   {{ range . }}
   {{ if not (.Param "special") }}
-  {{ $extra_params := (dict "section" .Section)}}
+  <!-- Non special single pages are just normal blog posts -->
+  {{ $extra_params := (dict "section" (or .Section "blog"))}}
   <li data-params="{{ jsonify (merge .Params $extra_params) }}">
     <div class="min-h-[1.5rem] flex">
       <span class="inline-block w-[10ch]">{{ partial "date" .Date }}</span>

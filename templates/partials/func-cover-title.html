@@ -1,12 +1,19 @@
-{{ $item := .item }} {{ $title := "" }} {{ $mark := .mark }}
 <!-- prettier-ignore -->
-{{ if eq $item.Section "covers" }}
-  {{ with $mark }}
-    {{ $title = (printf "Cover: %s ft. %s" $item.LinkTitle $item.Params.voice) }}
-  {{ else }}
-    {{ $title = (printf "%s ft. %s" $item.LinkTitle $item.Params.voice) }}
-  {{ end }}
+{{ $item := .item }}
+{{ $title := "" }}
+{{ $mark := .mark }}
+{{ $section := (or $item.Section "blog") }}
+<!-- prettier-ignore -->
+{{ if eq $section "covers" }}
+  {{ $title = (printf "%s ft. %s" $item.LinkTitle $item.Params.voice) }}
 {{ else }}
   {{ $title = $item.LinkTitle }}
+{{ end }}
+{{ with $mark }}
+  {{ if (not (eq $section "blog")) }}
+    {{ $title = (printf "%s: %s"
+                        (index (site).Data.names.sections $section)
+                        $title) }}
+  {{ end }}
 {{ end }}
 {{ return $title }}
