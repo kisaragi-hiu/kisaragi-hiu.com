@@ -77,7 +77,7 @@ rm *.webp
        (voice      (read-string "Voicebank: "))
        (yt         (read-string "YouTube ID: "))
        (nc         (read-string "niconico ID: "))
-       (lang       (completing-read "Language code: " '("ja" "zh-TW" "en"))))
+       (lang       (completing-read "Language code: " '("ja" "zh_TW" "en"))))
   (with-temp-file (format "public/content/covers/%s-%s.org" date-abbr title)
     (insert
      (s-lex-format "#+title: ${title}

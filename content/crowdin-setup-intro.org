@@ -1,6 +1,6 @@
 #+title: 使用 Crowdin 管理翻譯專案
 #+created: 2021-06-19T00:52:03+0900
-#+language: zh-TW
+#+language: zh_TW
 #+toc: true
 #+coverimage: /crowdin/crowdin-exported.jpg
 #+tags[]: crowdin translation

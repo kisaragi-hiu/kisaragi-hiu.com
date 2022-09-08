@@ -3,7 +3,7 @@
 #+toc: t
 #+tags[]: blender video
 #+coverimage: /vertical-writing-goal.png
-#+language: zh-TW
+#+language: zh_TW
 
 Blender不支援直書。但如果我還是想要用直書的話怎麼辦？
 
