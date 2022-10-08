@@ -78,7 +78,7 @@ rm *.webp
        (yt         (read-string "YouTube ID: "))
        (nc         (read-string "niconico ID: "))
        (lang       (completing-read "Language code: " '("ja" "zh_TW" "en"))))
-  (with-temp-file (format "public/content/covers/%s-%s.org" date-abbr title)
+  (with-temp-file (format "content/covers/%s-%s.org" date-abbr title)
     (insert
      (s-lex-format "#+title: ${title}
 ,#+created: ${date}
@@ -87,6 +87,6 @@ rm *.webp
 ,#+voice: ${voice}
 ,#+youtube: ${yt}
 ,#+niconico: ${nc}
-,#+language: ${lang}"))
-    (kisaragi-hiu.com/download-thumbnail yt)))
+,#+language: ${lang}")))
+  (kisaragi-hiu.com/download-thumbnail yt))
 #+end_src
