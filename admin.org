@@ -39,9 +39,10 @@ rm *.webp
 
 ** Download one thumbnail
 #+NAME: ytdlthumb
-#+begin_src emacs-lisp :var call=1 :results none
+#+begin_src emacs-lisp :var call=1
 (defun kisaragi-hiu.com/download-thumbnail (id)
-  (let ((youtube-id id))
+  (let ((youtube-id id)
+        (default-directory (expand-file-name "static/thumb/")))
     (unless (f-exists? (concat youtube-id ".jpg"))
       (shell-command-to-string
        (format "youtube-dl '%1$s' --write-thumbnail --skip-download -o '%1$s'"
@@ -87,6 +88,7 @@ rm *.webp
 ,#+voice: ${voice}
 ,#+youtube: ${yt}
 ,#+niconico: ${nc}
-,#+language: ${lang}")))
+,#+language: ${lang}
+")))
   (kisaragi-hiu.com/download-thumbnail yt))
 #+end_src
