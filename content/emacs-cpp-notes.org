@@ -1,0 +1,47 @@
+#+title: Trying to set up Emacs for C++
+#+created: 2022-10-10T22:14:34+0900
+#+tags[]: emacs c++
+#+language: en
+
+This is how I have set up Emacs for C++.
+
+First, install the necessary packages.
+
+- [[https://clangd.llvm.org/][Clangd]]
+- [[https://github.com/rizsotto/Bear][Bear]]
+- [[https://emacs-lsp.github.io/lsp-mode/][LSP Mode]]
+  #+begin_src elisp
+  (straight-use-package 'lsp-mode)
+
+  (when (executable-find "clangd")
+    (add-hook 'c++-mode-hook #'lsp))
+  #+end_src
+
+Then we need to run a build through Bear once.
+
+As far as I can tell, the C++ ecosystem generally manages the dependency tree as part of the build system, rather than the compiler. This information has to be passed to Clangd so that it knows where to find the header files.
+
+CMake has native support for this through the ~-DCMAKE_EXPORT_COMPILE_COMMANDS=1~ flag. There is an extension for Bazel as well. For other build systems, there is Bear, which intercepts calls to the compiler to extract this information during a build and write it to =compile_commands.json=.
+
+This is done like this:
+
+#+begin_src shell
+bear -- make
+#+end_src
+
+I also like to set up a [[task-runners.org][task runner]]. For other languages I'd use Make for this, but as Make is already being used as the build system, I resort to using npm scripts just for this purpose.
+
+For instance, with a package.json like this:
+
+#+begin_src json
+{
+  "scripts": {
+    "autogen": "./autogen.sh",
+    "wip": "bear -- make -j8 CPPFLAGS+='-DGTK_DISABLE_SINGLE_INCLUDES -DGDK_DISABLE_DEPRECATED -DGTK_DISABLE_DEPRECATED -DGSEAL_ENABLE -Wno-deprecated-declarations -Wno-parentheses'",
+    "mk": "bear -- make -j8 CPPFLAGS+='-Wno-deprecated-declarations -Wno-parentheses'",
+    "autogen+make": "./autogen.sh; npm run mk"
+  }
+}
+#+end_src
+
+This allows me to run [[https://github.com/emacs-taskrunner/ivy-taskrunner][ivy-taskrunner]] (which I've bound to =SPC l l=) and issue a rebuild quickly.
