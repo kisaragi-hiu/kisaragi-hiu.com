@@ -1,14 +1,5 @@
 {{ if .IsHome }}
 <img class="max-h-8 inline-block align-bottom" src="/avatar.png" alt="avatar" />
-{{ else if intersect (slice .Section) (slice "projects" "illust" "covers"
-"translated") }}
-<a href="/">
-  <img
-    class="max-h-8 inline-block align-bottom"
-    src="/avatar.png"
-    alt="avatar"
-  />
-</a>
 {{ else }}
 <span href="/">
   <img

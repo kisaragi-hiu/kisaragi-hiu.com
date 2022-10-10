@@ -10,7 +10,7 @@
   {{ $title = $item.LinkTitle }}
 {{ end }}
 {{ with $mark }}
-  {{ if (not (eq $section "blog")) }}
+  {{ if (not (intersect (slice "blog" "translated") (slice $section))) }}
     {{ $title = (printf "%s: %s"
                         (index (site).Data.names.sections $section)
                         $title) }}

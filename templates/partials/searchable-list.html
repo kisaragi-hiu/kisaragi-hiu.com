@@ -16,7 +16,7 @@
     onchange="updateSearch()"
   />
   <label
-    class="hover:bg-accent-light bg-white border-accent-strong border px-1 peer-checked:bg-accent-light peer-checked:outline-8"
+    class="hover:bg-accent-light bg-white dark:bg-black border-accent-strong border px-1 peer-checked:bg-accent-light peer-checked:outline-8"
     for="{{$type}}:{{$label}}"
   >
     <!-- prettier-ignore -->
@@ -82,22 +82,14 @@
   </div>
   {{ end }}
 </div>
-<ul id="posts" class="mt-8 flex flex-col gap-4">
+<ul id="posts" class="mt-8 flex flex-col">
   <!-- prettier-ignore -->
   {{ range . }}
   {{ if not (.Param "special") }}
   <!-- Non special single pages are just normal blog posts -->
   {{ $extra_params := (dict "section" (or .Section "blog"))}}
   <li data-params="{{ jsonify (merge .Params $extra_params) }}">
-    <div class="min-h-[1.5rem] flex">
-      <span class="inline-block w-[10ch]">{{ partial "date" .Date }}</span>
-      {{ if eq .Section "translated" }}
-      <span class="bg-green-500 text-white p-1">TRANSLATED</span>
-      {{ end }}
-      <a href="{{.Permalink}}" class="link font-bold"
-        >{{ partial "func-cover-title" (dict "item" . "mark" true)}}</a
-      >
-    </div>
+    <a href="{{.Permalink}}">{{ partial "cover-item" (dict "item" . ) }}</a>
   </li>
   <!-- prettier-ignore -->
   {{ end }}

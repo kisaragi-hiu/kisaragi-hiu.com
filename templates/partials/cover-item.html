@@ -1,20 +1,42 @@
 <!-- prettier-ignore -->
 {{ $item := .item }}
 {{ $title := (partial "func-cover-title" .) }}
+{{ $thumb := false }}
+{{ $is_cover := $item.Params.youtube }}
+{{ if (eq $item.Section "covers") }}
+  {{ $thumb = (printf "/thumb/%s.jpg" $item.Params.youtube) }}
+{{ else if (eq $item.Section "illust") }}
+  {{ $thumb = (printf "/illust/thumb/%s.jpg" $item.File.BaseFileName) }}
+{{ else if $item.Params.coverimage }}
+  {{ $thumb = $item.Params.coverimage }}
+{{ end }}
 <div
   class="text-primary hover pr-2 h-full flex gap-x-2 items-center hover:no-underline"
 >
+  {{ if $thumb }}
   <!-- Left part: the image -->
-  <div class="w-24">
-    <img
-      class="object-cover min-w-full max-h-full"
-      src="/thumb/{{$item.Params.youtube}}.jpg"
-    />
-  </div>
+  <img class="w-24 object-cover max-h-16 py-2" src="{{ $thumb }}" />
+  {{ end }}
   <!-- Right part: title and metadata -->
   <div class="grow">
-    <div class="font-bold">{{ $title }}</div>
-    <div>{{ partial "date" $item.Date }}</div>
+    <div class="md:flex">
+      <div class="grow font-bold">{{ $title }}</div>
+      <div class="">{{ partial "date" $item.Date }}</div>
+    </div>
+    {{ if $is_cover }}
     <span>本家 {{ $item.Params.origauthor }}</span>
+    {{ else }}
+    <!-- prettier-ignore -->
+    {{ range (slice "series" "tags")}}
+    {{ $type := . }}
+    {{ with $item.GetTerms $type }}
+    <span>
+      <!-- prettier-ignore -->
+      {{ range . }}
+      <!-- This cannot be a link because cover-item is usually already in a link. -->
+      <span class="{{$type}} proselink">{{ .LinkTitle | lower}}</span>
+      {{ end }}
+    </span>
+    {{ end }} {{ end }} {{ end }}
   </div>
 </div>

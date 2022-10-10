@@ -5,9 +5,14 @@
 @tailwind components;
 @tailwind utilities;
 
+/* This works, actually. But it needs to be here. */
+.text-primary {
+  @apply dark:text-[#ffffff];
+}
+
 @layer base {
   html {
-    background: #f8f8f8;
+    @apply bg-[#f8f8f8] dark:bg-[#0d0c0f];
     @apply md:text-[20px] text-primary;
   }
   .outer {
@@ -38,15 +43,16 @@
   .hover {
     @apply hover:bg-accent-light;
     @apply transition duration-100 ease-in-out;
-    @apply p-2 -m-2;
+    @apply p-2 -mx-2;
   }
   .btn {
     @apply hover;
-    @apply shadow rounded bg-white py-1 m-0 my-2;
+    @apply shadow rounded bg-white dark:bg-black py-1 m-0 my-2;
   }
   .iconlink {
     transition: all 100ms ease;
     @apply fill-secondary/40 hover:fill-secondary;
+    @apply dark:fill-secondary-dark hover:fill-secondary-dark/40;
   }
   .link {
     /* font-weight: 700; */
@@ -59,6 +65,14 @@
       @apply bg-accent/20;
     }
   }
+  .proselink {
+    @apply text-accent-strong dark:text-accent;
+    text-decoration: none;
+    &:hover {
+      @apply bg-accent-light;
+    }
+  }
+
   .type-path {
     & + h1 {
       @apply mt-0;
@@ -76,17 +90,15 @@
        its definition. */
     /* @apply flex; */
     a {
-      @apply text-accent-strong;
+      @apply proselink;
     }
   }
   .series {
-    @apply hover:underline;
     &::before {
       content: "§ ";
-      @apply font-bold text-accent-strong;
     }
   }
-  .tag {
+  .tags {
     &::before {
       content: "#";
     }
@@ -145,9 +157,10 @@
    they are not part of any layer. */
 
 .prose {
-  @apply prose-a:link;
-  @apply max-w-none;
-  @apply font-serif;
+  @apply max-w-none dark:prose-invert;
+  a {
+    @apply proselink;
+  }
 
   p {
     margin: 1rem 0;
@@ -182,7 +195,7 @@
 
   /* Inline code */
   code:not(.src code) {
-    @apply text-special-strong;
+    @apply text-special-strong dark:text-special;
     @apply px-1 rounded-lg;
     /* Reset @tailwindcss/typography's way of displaying inline code */
     &:before,
@@ -198,7 +211,7 @@
     font-size: inherit;
     &:before {
       content: "#+RESULTS: ";
-      @apply text-accent-strong;
+      @apply text-accent-strong dark:text-accent;
     }
   }
 }
@@ -221,7 +234,7 @@
     display: block;
     width: max-content;
     font-weight: 700;
-    @apply font-serif italic -ml-1 mb-2 -mt-2;
+    @apply italic -ml-1 mb-2 -mt-2;
   }
   span.line {
     display: block;

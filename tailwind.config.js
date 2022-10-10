@@ -7,11 +7,17 @@ let cjkFallback = [
 ];
 
 module.exports = {
-  darkMode: "class",
+  // darkMode: "class",
   content: ["./templates/**/*.html", "./content/**/*.org"],
   theme: {
     fontFamily: {
-      sans: ["Fira Sans", ...cjkFallback, "sans-serif"],
+      sans: [
+        "'Equity A'",
+        "'Noto Serif CJK JP'",
+        "'Fira Sans'",
+        ...cjkFallback,
+        "sans-serif",
+      ],
       serif: [
         "'Equity A'",
         "'Noto Serif CJK JP'",
@@ -38,7 +44,9 @@ module.exports = {
       },
       colors: {
         primary: "#0d0d0d",
+        "primary-dark": "#fefefe",
         secondary: "#333333",
+        "secondary-dark": "#cccccc",
         accent: "#cdadff",
         "accent-strong": "#7E49B6",
         "accent-light": "#cdadff30",

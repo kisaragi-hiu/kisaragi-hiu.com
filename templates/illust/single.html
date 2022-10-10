@@ -26,9 +26,18 @@
   <div
     class="text-white grid grid-rows-[15%_1fr] md:grid-cols-[12%_1fr_12%] w-full h-full"
   >
-    <a href="../illust.html" class="col-start-3 col-end-3 text-5xl">
-      <div class="absolute right-[5%] top-[2vh] md:top-[5vh]">×</div></a
+    <noscript>
+      <a href="../illust.html" class="col-start-3 col-end-3 text-5xl">
+        <div class="absolute right-[5%] top-[2vh] md:top-[5vh]">×</div></a
+      >
+    </noscript>
+
+    <button
+      onclick="javascript:window.history.back();"
+      class="col-start-3 col-end-3 text-5xl"
     >
+      <div class="absolute right-[5%] top-[2vh] md:top-[5vh]">×</div>
+    </button>
     {{ with (partial "func-same-section" .).Next . }}
     <a href="{{.Permalink}}" class="col-start-1 row-start-1 row-span-2 text-2xl"
       ><div class="absolute left-[5%] bottom-[50vh]">◀</div></a
