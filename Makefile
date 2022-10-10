@@ -13,7 +13,7 @@ dev-tailwind:
 js:
 	mkdir -p static/js/
 
-dev: public static/css/built.css
+dev:
 	npx concurrently "make dev-hugo" "make dev-tailwind"
 
 static/css/built.css: css/src.css
