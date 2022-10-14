@@ -1,4 +1,4 @@
-<ul class="list-none p-0 flex flex-col">
+<ul class="list-none p-0 flex flex-col space-y-2">
   {{ range . }}
   <li class="rounded transition duration-100">
     <a href="{{.Permalink}}">{{ partial "cover-item" (dict "item" .) }}</a>
