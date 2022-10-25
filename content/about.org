@@ -2,16 +2,26 @@
 #+created: 2017-09-24
 #+updated: 2022-01-18T08:25:14+0900
 #+special: true
+#+hidetitle: true
+
+* 關於我
+大概可以說是軟體工程師吧。有的時候會做翻譯。最近有在做 KDE 的繁中翻譯。
+
+主要的領域：UTAU 翻唱和混音、軟體翻譯、Emacs 與 Web 開發。
+
+這裡大部分時候是用英文。
+
+這個網站可以說像是我做過的東西的紀錄。
+
+* About me
 
 I study /Applied English/ in [[https://www.nkust.edu.tw][National Kaohsiung University of Science and Technology]].
 
 I write Emacs Lisp, contribute translations, make covers with UTAU, and occasionally play with Blender.
 
-* This website
+This site is my blog, my /digital garden/, a library of what I've made, and a playground for web technologies.
 
-This site is built with Hugo; the CSS is processed with [[https://tailwindcss.com/][Tailwind]]. The source code is hosted [[https://github.com/kisaragi-hiu/kisaragi-hiu.com][on GitHub]].
-
-* Links
+* 連結 / Links
 
 - GitLab:  [[https://gitlab.com/kisaragi-hiu][kisaragi-hiu]]
 - GitHub:  [[https://github.com/kisaragi-hiu][kisaragi-hiu]]
@@ -24,3 +34,19 @@ This site is built with Hugo; the CSS is processed with [[https://tailwindcss.co
 - Pixiv:  [[https://pixiv.me/kisaragi-hiu][kisaragi-hiu]]
 - PGP:  [[/KisaragiHiu.asc][BCC7 4B10 41D4 B7D7 CC8B F402 40EC BEAE A877 5FC2]]
 - [[https://orcid.org/][ORCID]]:  [[https://orcid.org/0000-0002-0293-7943]]
+
+* About this website
+
+This site is built with Hugo; the CSS is processed with [[https://tailwindcss.com/][Tailwind]]. The source code is hosted [[https://github.com/kisaragi-hiu/kisaragi-hiu.com][on GitHub]].
+
+There are some /sub-sites/ — individual sites hosted as subdirectories. These are built through their own CI, [[/deploy-to-branch-in-github-actions-or-gitlab-ci.org][deployed to a branch]], then pulled into this site during CI on Netlify. A list of these, plus other websites that I've made, can be seen under the [[https://kisaragi-hiu.com/tags/web][#web]] tag.
+
+The build process is driven from a Makefile, used [[/task-runners.org][mostly as a task runner]]. A =dev= job starts the development servers of both Hugo and Tailwind. During build, the CSS is generated first and put into =./static/=, which is then picked up by Hugo along with other direct-copy files. The end result is built into =./public/=, which Netlify then picks up and hosts.
+
+The theme is entirely created with Hugo templates, treating Hugo as if it's a components framework. Before this [[/2020-10-31-infrastructure.org][I used Pollen]], which effectively allows writing templates with Racket, and moving from that to Go Templates is quite painful; I wouldn't have switched if it weren't for Hugo's blazing fast render speed.
+
+There is an incomplete article history system, an incomplete translation system that has hit a dead end, and I can't decide if I should write in English (which I'm more familiar with in technical writing) or Mandarin (which is necessary if I want even a chance for people around me to understand what I'm writing).
+
+There is almost zero JS: I dislike unnecessary client side code because I know how sluggish an average React site is on an average mid-range phone. But as a result I have to hack together a lot more things by myself, such as the close button in the single Illustration view that actually just does a browser-back and is subtly wrong.
+
+The font is Noto Serif CJK and [[https://mbtype.com/fonts/equity/][Equity]].

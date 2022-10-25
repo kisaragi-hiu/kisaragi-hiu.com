@@ -284,6 +284,7 @@ Used in the =project= shortcode definition.
 - =hugo_nolist=: only applies to list pages. Only display the page’s own content and not its children, effectively turning the list into a single page. This is first used in [[file:content/projects/_index.org]].
 - =coverimage=: Path to the image used in social media cards. Will be passed through absURL.
 - =description=: A one to two sentence description. (per the recommendation from [[https://ogp.me/][Open Graph Protocol]].)
+- =hidetitle= (only implemented for generic single pages for now): hide the automatic heading
 - =pagetype=: Override for the =og:type= of the page. The =og:type= is usually inferred by =func-page-type=.
 
 * Pages vs. Blog posts

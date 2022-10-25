@@ -1,1 +1,5 @@
 #+title: UTAU Covers
+
+These are covers of mostly VOCALOID songs, made with the /vocal synthesis platform/ [[http://utau2008.web.fc2.com/][UTAU]]. ([[/what-is-utau.org][What is UTAU?]])
+
+The off-vocal version of these songs are published by their artists. I then use UTAU, plus the voicebanks, to create the vocals; this is called tuning. I then mix the tuned vocal-only audio into the off-vocal, hopefully not screwing up the mix in the process. Then it's combined with the original video (or with videos that I made), then published to [[https://www.youtube.com/channel/UCl_hsqcvdX0XdgBimRQ6R3A][YouTube]] and [[https://www.nicovideo.jp/mylist/63752011][niconico]].

@@ -1,11 +1,10 @@
 #+title: Home
 
-Just someone who's semi-competent at getting mediocre at stuff.
+This is a library of what I've made, a /digital garden/ of mine, and a playground for web technologies.
 
-I write Emacs Lisp programs, contribute translations (English to Mandarin (=zh_TW=) and English to Japanese), make covers with UTAU, and occasionally play with Blender.
+# Sub-sites:
 
-Sub-sites:
-
-- [[/tftt][experimental trumpet fingerings training tool]]
-- [[/barren-moon][如同月球般的荒涼]]
-- [[/timer][timer]]
+# - [[/tftt][experimental trumpet fingerings training tool]]
+# - [[/barren-moon][如同月球般的荒涼]]
+# - [[/timer][timer]]
+# - [[https://aqi.tw/][aqi.tw]]

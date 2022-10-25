@@ -1,17 +1,22 @@
-{{ define "header" }} {{ partial "avatar" . }}
-<!-- prettier-ignore -->
-{{ partial "heading" (dict "title" .Title
-                           "enableTypePath" true
-                           "ctx" .) }}
-{{ with (and (not (.Param "special")) .Date) }}
-<div class="-mt-4">{{ partial "date" . }}</div>
-{{ end }}
-<!-- prettier-ignore -->
-{{ with .Param "subtitle" }}
+{{ define "header" }}
+  {{ partial "avatar" . }}
+  {{ if not (.Param "hidetitle") }}
+    {{ partial "heading"
+      (dict
+      "title" .Title
+      "enableTypePath" true
+      "ctx" .)
+    }}
+  {{ end }}
+  {{ with (and (not (.Param "special")) .Date) }}
+    <div class="-mt-4">{{ partial "date" . }}</div>
+  {{ end }}
+  <!-- prettier-ignore -->
+  {{ with .Param "subtitle" }}
 <h2 class="mt-0 mb-8">{{.}}</h2>
 {{ end }}
-<!-- prettier-ignore -->
-{{ if (or (.GetTerms "tags") (.GetTerms "series")) }}
+  <!-- prettier-ignore -->
+  {{ if (or (.GetTerms "tags") (.GetTerms "series")) }}
 <div class="meta">
   <!-- prettier-ignore -->
   {{ range (.GetTerms "tags") }}
@@ -22,12 +27,12 @@
   {{ end }}
 </div>
 {{ end }}
-<!-- prettier-ignore -->
+  <!-- prettier-ignore -->
 {{ end }}
 
 {{ define "main" }}
-<!-- prettier-ignore -->
-{{ if .Params.toc }}
+  <!-- prettier-ignore -->
+  {{ if .Params.toc }}
 {{ partial "toc" . }}
 {{ end }}
 
@@ -35,12 +40,12 @@
 {{ end }}
 
 {{ define "footer" }}
-<div class="mt-4 mb-20">
-  <hr />
-  <!-- prettier-ignore -->
-  {{ if not (.Param "special") }}
+  <div class="mt-4 mb-20">
+    <hr />
+    <!-- prettier-ignore -->
+    {{ if not (.Param "special") }}
   {{ partial "post-navigation" . }}
   {{ end }}
   {{ partial "default-footer" . }}
-</div>
+  </div>
 {{ end }}

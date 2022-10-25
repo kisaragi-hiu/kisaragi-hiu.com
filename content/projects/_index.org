@@ -1,1 +1,10 @@
 #+title: Projects
+
+Software projects. Not a complete list, because if I force myself to go through the bureaucracy of registering an entry here before starting a project I'd stop wanting to do it.
+
+The date denotes roughly when a project was started.
+
+Beware that:
+
+- I am subject to [[http://winestockwebdesign.com/Essays/Lisp_Curse.html][the Lisp Curse]] — specifically in regards to leaving stuff 80% or 60% complete after I scratched the initial itch to do it, not that my stuff would necessarily actually be at the level of an average lone wolf Lisp developer.
+- I thus should mark which projects are actually /done/ or /usable/, but I haven't gotten around to do it either.

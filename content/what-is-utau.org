@@ -1,0 +1,25 @@
+#+title: What is UTAU?
+#+created: 2022-10-25T22:24:03+0900
+#+tags[]: utau
+#+series: Trying to explain
+
+I wanted a small primer on [[http://utau2008.web.fc2.com/index.html][UTAU]] for the covers page but it grew too large, so here it is.
+
+#+html: <hr>
+
+UTAU, made by [[http://utau2008.blog47.fc2.com/][飴屋／菖蒲（あめや・あやめ）]], consists of:
+
+- An editor for notes to be sung, including extra data for each note denoting lyrics, singing styles, etc.
+- The format for those notes — general virtual instruments have MIDI, while UTAU has UST (which stands for /UTAU Sequence Text/)
+- /Voicebanks/, which are collections (folders) of samples sung by (for example) their creators
+- A /wavtool/ (tool1) and a /resampler/ (tool2), which together process the voicebank according to the notes in the UST and produce an audio file in the end.
+
+UTAU's official editor has not been updated since 2013; between then and now (2022-10-25) there has already been 3 (!) versions of VOCALOID released. But, because the ecosystem is made of relatively decipherable formats (UST is [[https://en.wikipedia.org/wiki/Shift_JIS][Shift-JIS]] plaintext), almost every piece of actual software can be replaced — there is essentially an unwritten standard. As a result, the ecosystem is still alive despite the lack of official updates.
+
+- The editor can be run with Wine on Linux. There are somewhat compatible alternatives such as [[https://github.com/stakira/OpenUtau][OpenUtau]], but they're different enough that I can never get used to them. Some editors have their own project formats instead of using UST.
+- Voicebanks can be created by anybody, and a /lot/ have been created. I mainly use [[https://tll555.wixsite.com/index/uzuki][雨月]] by [[https://www.nicovideo.jp/user/29870647][柏木]], [[https://renrivoice.wixsite.com/renri-voice][闇音レンリ]] by [[https://twitter.com/yuzuri_0415][yuzuri]], and [[https://dic.pixiv.net/a/夏語遙][夏語遙]] by Voicemith.
+- wavtools and resamplers affect what sort of control you have over the singing. [[https://w.atwiki.jp/utaou/pages/65.html][Here's a list of resamplers]]; I use =tn_fnds= and =moresampler= primarily. I find the default wavtool good enough. (=moresampler= is special in that it takes control of both steps of the rendering.)
+
+UTAU allows one to record their own voice and make that voice sing in a relatively realistic way (compared to manually stitching together clips) by creating voicebanks. It also allows one to get into the world of vocal synthesis at no cost (though this is through people donating their time).
+
+I continue to make UTAU covers because I can't sing, I hate my voice, and because I don't have a place to sing in anyways. I'm essentially expressing myself through the voices of these characters, and I think this applies to a lot of people who do vocal synthesis.
