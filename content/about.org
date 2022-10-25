@@ -15,8 +15,9 @@ This site is built with Hugo; the CSS is processed with [[https://tailwindcss.co
 
 - GitLab:  [[https://gitlab.com/kisaragi-hiu][kisaragi-hiu]]
 - GitHub:  [[https://github.com/kisaragi-hiu][kisaragi-hiu]]
+- KDE Identity: [[https://invent.kde.org/moonlight][moonlight]]
 - Sourcehut:  [[https://gitlab.com/kisaragi-hiu][~kisaragi_hiu]]
-- Twitter:  [[https://twitter.com/flyin1501][@flyin1501]]
+- Twitter:  [[https://twitter.com/kisaragi_hiu][@kisaragi_hiu]]
 - Reddit:  [[https://www.reddit.com/user/flyin1501][u/flyin1501]]
 - YouTube:  [[https://youtube.com/channel/UCl_hsqcvdX0XdgBimRQ6R3A][UCl_hsqcvdX0XdgBimRQ6R3A]]
 - niconico:  [[https://nicovideo.jp/user/38995186][user/38995186]]
