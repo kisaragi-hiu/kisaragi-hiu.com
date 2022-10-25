@@ -16,29 +16,6 @@
           <a class="proselink mr-2" href="{{ index . 0 }}">{{ index . 1 }}</a>
         {{ end }}
       </div>
-      <div class="space-x-1 mt-2">
-        {{ range
-          (slice
-          (slice "https://www.patreon.com/kisaragihiu" "patreon")
-          (slice "https://twitter.com/flyin1501" "twitter")
-          (slice "https://github.com/kisaragi-hiu" "github")
-          (slice "https://gitlab.com/kisaragi-hiu" "gitlab")
-          (slice "https://youtube.com/channel/UCl_hsqcvdX0XdgBimRQ6R3A" "youtube")
-          (slice "http://pixiv.me/kisaragi-hiu" "pixiv")
-          (slice "https://nicovideo.jp/user/38995186" "niconico"))
-        }}
-          <a class="" href="{{ index . 0 }}">
-            <svg
-              class="h-6 w-6 inline iconlink"
-              role="img"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              {{ partial "simple-icon" (index . 1) }}
-            </svg>
-          </a>
-        {{ end }}
-      </div>
     </nav>
 
     {{ partial "content" . }}
