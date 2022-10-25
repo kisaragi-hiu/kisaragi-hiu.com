@@ -1,91 +1,93 @@
 {{ define "main" }}
-<div class="">
-  <h1 class="font-bold mt-8">
-    <span class="text-4xl">Kisaragi Hiu</span>
-    <br />
-    <span class="text-2xl">如月飛羽</span>
-  </h1>
-  <nav class="flex flex-col mt-4">
-    <div>
-      <!-- prettier-ignore -->
-      {{ range (slice (slice "/covers.html" "Covers")
-                      (slice "/illust.html" "Illust")
-                      (slice "/projects.html" "Projects")
-                      (slice "/about.html" "About")
-                      (slice "/index.xml" "RSS")) }}
-      <a class="proselink mr-2" href="{{ index . 0 }}">{{ index . 1 }}</a>
-      {{ end }}
-    </div>
-    <div class="space-x-1 mt-2">
-      <!-- prettier-ignore -->
-      {{ range (slice (slice "https://www.patreon.com/kisaragihiu" "patreon")
-                        (slice "https://twitter.com/flyin1501" "twitter")
-                        (slice "https://github.com/kisaragi-hiu" "github")
-                        (slice "https://gitlab.com/kisaragi-hiu" "gitlab")
-                        (slice "https://youtube.com/channel/UCl_hsqcvdX0XdgBimRQ6R3A" "youtube")
-                        (slice "http://pixiv.me/kisaragi-hiu" "pixiv")
-                        (slice "https://nicovideo.jp/user/38995186" "niconico")) }}
-      <a class="" href="{{ index . 0 }}">
-        <svg
-          class="h-6 w-6 inline iconlink"
-          role="img"
-          viewBox="0 0 24 24"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          {{ partial "simple-icon" (index . 1) }}
-        </svg>
-      </a>
-      {{ end }}
-    </div>
-  </nav>
+  <div class="">
+    <h1 class="font-bold mt-8">
+      <span class="text-4xl">Kisaragi Hiu</span>
+      <br />
+      <span class="text-2xl">如月飛羽</span>
+    </h1>
+    <nav class="flex flex-col mt-4">
+      <div>
+        {{ range (slice (slice "/covers.html" "Covers")
+          (slice "/illust.html" "Illust")
+          (slice "/projects.html" "Projects")
+          (slice "/about.html" "About")
+          (slice "/index.xml" "RSS"))
+        }}
+          <a class="proselink mr-2" href="{{ index . 0 }}">{{ index . 1 }}</a>
+        {{ end }}
+      </div>
+      <div class="space-x-1 mt-2">
+        {{ range
+          (slice
+          (slice "https://www.patreon.com/kisaragihiu" "patreon")
+          (slice "https://twitter.com/flyin1501" "twitter")
+          (slice "https://github.com/kisaragi-hiu" "github")
+          (slice "https://gitlab.com/kisaragi-hiu" "gitlab")
+          (slice "https://youtube.com/channel/UCl_hsqcvdX0XdgBimRQ6R3A" "youtube")
+          (slice "http://pixiv.me/kisaragi-hiu" "pixiv")
+          (slice "https://nicovideo.jp/user/38995186" "niconico"))
+        }}
+          <a class="" href="{{ index . 0 }}">
+            <svg
+              class="h-6 w-6 inline iconlink"
+              role="img"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              {{ partial "simple-icon" (index . 1) }}
+            </svg>
+          </a>
+        {{ end }}
+      </div>
+    </nav>
 
-  {{ partial "content" . }}
-  <aside class="col-span-3">
-    <!-- <nav class="flex flex-wrap justify-start gap-3 my-2"> -->
-    <!-- prettier-ignore -->
-    {{ $covers_featured := (slice) }}
-    {{ range (where .Site.RegularPages "Section" "covers") }}
-      {{ if (eq (.Date.Format "2006-01") (now.Format "2006-01")) }}
-        {{ $covers_featured = $covers_featured | append .}}
+    {{ partial "content" . }}
+    <aside class="col-span-3">
+      <!-- <nav class="flex flex-wrap justify-start gap-3 my-2"> -->
+      {{ $covers_featured := (slice) }}
+      {{ range (where .Site.RegularPages "Section" "covers") }}
+        {{ if (eq (.Date.Format "2006-01") (now.Format "2006-01")) }}
+          {{ $covers_featured = $covers_featured | append . }}
+        {{ end }}
       {{ end }}
-    {{ end }}
-    {{ with $covers_featured }}
-    <h1 class="font-bold mt-4">
-      <a class="text-primary" href="/covers.html"
-        >New covers ({{now.Format "2006-01"}})</a
-      >
-    </h1>
-    {{ partial "covers" . }} {{end}}
-    <!-- prettier-ignore -->
-    {{ $illust_featured := (slice) }}
-    {{ range (where .Site.RegularPages "Section" "illust") }}
-      {{ if (eq (.Date.Format "2006-01") (now.Format "2006-01")) }}
-        {{ $illust_featured = $illust_featured | append .}}
+      {{ with $covers_featured }}
+        <h1 class="font-bold mt-4">
+          <a class="text-primary" href="/covers.html"
+            >New covers ({{ now.Format "2006-01" }})</a
+          >
+        </h1>
+        {{ partial "covers" . }}
       {{ end }}
-    {{ end }}
-    {{ with $illust_featured }}
-    <h1 class="font-bold mt-4">
-      <a class="text-primary" href="/illust.html"
-        >New illustrations ({{now.Format "2006-01"}})</a
-      >
-    </h1>
-    {{ partial "illustrations" . }} {{end}}
-    <!-- prettier-ignore -->
-  </aside>
-  <main>
-    <hr class="my-8 opacity-50" />
-    <h1 class="font-bold mt-4">Entries</h1>
-    <!-- prettier-ignore -->
-    {{ partial "searchable-list"
-               (sort ((where .Site.RegularPages "Section" "")
-                      | union (where .Site.AllPages "Params.type" "regularpage")
-                      | union (where .Site.RegularPages "Section" "translated")
-                      | union (where .Site.RegularPages "Section" "projects")
-                      | union (where .Site.RegularPages "Section" "illust")
-                      | union (where .Site.RegularPages "Section" "covers")
-                      | union (where .Site.RegularPages "Section" "blog"))
-                                "Date"
-                                "desc")}}
-  </main>
-</div>
+      {{ $illust_featured := (slice) }}
+      {{ range (where .Site.RegularPages "Section" "illust") }}
+        {{ if (eq (.Date.Format "2006-01") (now.Format "2006-01")) }}
+          {{ $illust_featured = $illust_featured | append . }}
+        {{ end }}
+      {{ end }}
+      {{ with $illust_featured }}
+        <h1 class="font-bold mt-4">
+          <a class="text-primary" href="/illust.html"
+            >New illustrations ({{ now.Format "2006-01" }})</a
+          >
+        </h1>
+        {{ partial "illustrations" . }}
+      {{ end }}
+    </aside>
+    <main>
+      <hr class="my-8 opacity-50" />
+      <h1 class="font-bold mt-4">Entries</h1>
+      {{ partial "searchable-list"
+        (sort
+        ( (where .Site.RegularPages "Section" "")
+        | union (where .Site.AllPages "Params.type" "regularpage")
+        | union (where .Site.RegularPages "Section" "translated")
+        | union (where .Site.RegularPages "Section" "projects")
+        | union (where .Site.RegularPages "Section" "illust")
+        | union (where .Site.RegularPages "Section" "covers")
+        | union (where .Site.RegularPages "Section" "blog"))
+        "Date"
+        "desc")
+      }}
+    </main>
+  </div>
 {{ end }}
