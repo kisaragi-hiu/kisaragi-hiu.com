@@ -16,7 +16,9 @@
     @apply md:text-[20px] text-primary;
   }
   .outer {
-    width: min(80ch, 90%);
+    /* min() requires Chrome 79 / Firefox 75, from 2019 / 2020 */
+    width: 90%;
+    max-width: 80ch;
     @apply mx-auto mt-[5%];
   }
   p {
