@@ -22,7 +22,7 @@
       <ul id="posts" class="p-0 mt-2 list-none flex flex-col gap-2">
         {{ range .Pages }}
           <li data-params="{{ jsonify .Params }}">
-            <div class="flex gap-x-1 items-baseline">
+            <div class="flex space-x-1 items-baseline">
               <span class="grow">
                 <span class="inline-block w-[10ch]"
                   >{{ partial "date" .Date }}</span
