@@ -37,12 +37,12 @@ function shouldInclude(params, needle, filters) {
 function updateSearch() {
   let input_elem = document.getElementById("search");
   let filters = [];
-  document
+  let elems = document
     .getElementById("filters")
-    ?.querySelectorAll("input:checked")
-    .forEach((x) => {
-      filters.push(JSON.parse(x.getAttribute("data-filter")));
-    });
+    .querySelectorAll("input:checked");
+  elems.forEach((x) => {
+    filters.push(JSON.parse(x.getAttribute("data-filter")));
+  });
   let needle = input_elem.value.toLowerCase();
   for (const post of document.getElementById("posts").children) {
     let params = JSON.parse(post.getAttribute("data-params"));
