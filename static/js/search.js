@@ -1,18 +1,36 @@
-function ensureString(str) {
+/**
+ * Ensure `str` is a string.
+ * @param {?string} str
+ * @returns {string}
+ */
+function normalizeString(str) {
   if (str) {
     return str.toLowerCase();
   } else {
     return "";
   }
 }
-function ensureArray(obj) {
+/**
+ * Join `obj` into a string.
+ * @param {?array} obj
+ * @returns {string}
+ */
+function normalizeArray(obj) {
   if (obj) {
     return obj.join("").toLowerCase();
   } else {
-    return [""];
+    return "";
   }
 }
 
+/**
+ * Return whether `params` should be included in the results.
+ * @param {object} params - The item itself.
+ * @param {string} needle - The current search string.
+ * @param {array} filters - Exclude an item if it does not at least
+ * match one of the filters.
+ * @returns {boolean}
+ */
 function shouldInclude(params, needle, filters) {
   if (
     filters.length != 0 &&
@@ -22,13 +40,13 @@ function shouldInclude(params, needle, filters) {
   ) {
     return false;
   }
-  let title = ensureString(params.title);
-  let series = ensureString(params.series);
-  let voice = ensureString(params.voice);
-  let tags = ensureArray(params.tags);
+  let title = normalizeString(params.title);
+  let series = normalizeString(params.series);
+  let voice = normalizeString(params.voice);
+  let tags = normalizeArray(params.tags);
   // TODO: Section should be selected in a radiobutton, not filtered
   // with the text box
-  let section = ensureString(params.section);
+  let section = normalizeString(params.section);
 
   str = title + tags + series + voice + section;
   // "a b" -> only items including both "a" and "b" are included
