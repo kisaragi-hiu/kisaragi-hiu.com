@@ -7,6 +7,17 @@ My system environment has been quite a mess this past month.
 
 I used to put my environment variables in =~/.profile=. However, the variables suddenly stopped being applied one day. I tried to switch my display manager from sddm, to gdm, then to lightdm, to no avail. I know =~/.profile=, being essentially a bash script, is somewhat insecure; =~/.pam_environment= is also probably the right way going forward, so I started moving variables into it.
 
+/Update 2022-10-31: “Right way going forward”, lol. It got deprecated for “problematic security”; [[https://bugs.archlinux.org/task/68945][Arch Linux disabled it on 2022-10-20]]./
+
+#+begin_quote
+~user_readenv=0|1~
+Turns on or off the reading of the user specific environment file. 0 is off, 1 is on. By default this option is off as user supplied environment variables in the PAM environment could affect behavior of subsequent modules in the stack without the consent of the system administrator.
+
+Due to problematic security this functionality is deprecated since the 1.5.0 version and will be removed completely at some point in the future.
+
+https://man.archlinux.org/man/pam_env.8
+#+end_quote
+
 * Preprocessing =.pam_environment=
 
 I had a piece of code in my =~/.profile= that checks Racket and Ruby's versions and sets the PATH to point to ~raco~ and ~gem~'s bin directory. =~/.pam_environment= alone can't do that, so I wrote a Pollen version of the file and rendered / compiled it into the final =~/.pam_environment=.

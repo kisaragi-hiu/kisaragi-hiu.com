@@ -1,0 +1,66 @@
+#+title: Migrating away from .pam_environment
+#+created: 2022-10-31T02:56:43+0900
+#+tags[]: linux config
+
+So apparently =~/.pam_environment= has been deprecated [[https://bugs.archlinux.org/task/68945][for several years now]]; on Arch Linux, =~/.pam_environment= stopped being read since 2022-10-20. I guess I have to migrate to environment.d then.
+
+[[https://wiki.archlinux.org/title/Environment_variables][ArchWiki is really helpful]], but it took searching for Fcitx on Twitter — because, with my environment variables now unset, the input method isn't working anymore — and stumbling onto [[https://twitter.com/boronology/status/1584159897377128448][this tweet]] before I learned that this is a thing.
+
+I don't know what the standard for a change to make it onto the [[https://archlinux.org/news/][Arch Linux news page]], but apparently "if you set your environment variables via this method that works on both Wayland and X, your environment variables will cease to take effect" is not breaking enough. I don't know, maybe it really isn't: configuration incompatibilities don't usually make it onto the news page, and [[https://archlinux.org/news/grub-bootloader-upgrade-and-configuration-incompatibilities/][the grub one]] is an exception because it's the bootloader.
+
+It's complicated, I just wish there is /some/ way of learning about a major change in a fundamental component.
+
+* Options
+Anyways. There are some options here:
+
+- Use the system wide =/etc/environment= instead ::
+
+  I don't have a good way to version control system-wide configuration like I do with user configuration files. There is etckeeper, sure, but it attempts to keep track of every config file and every change, and I didn't want to fight against that.
+
+- Use a Plasma pre-startup script ::
+
+  This is Plasma-specific, and I'd still like to have the option to occasionally DE-hop.
+
+- Use =~/.profile= or something like it ::
+
+  SDDM sources =~/.profile= (for both [[https://github.com/sddm/sddm/blob/master/data/scripts/Xsession][Xsession]] and [[https://github.com/sddm/sddm/blob/master/data/scripts/wayland-session][wayland-session]]) and I'm fine with using something that's SDDM-specific. …Except:
+
+  - It only sources =~/.profile= if the shell is not Zsh, csh, tcsh, or Fish. For Zsh, it sources =~/.zprofile= instead.
+  - It sources =~/.xprofile= for all shells… except, as the name suggests, it does not source it for Wayland.
+
+  I also want to be shell-agnostic and display-server-agnostic, so… also no.
+
+- Use systemd's =~/.config/environment.d= ::
+
+  While this only applies to systemd user services, both GNOME and Plasma can be started as systemd user services. The argument against desktop environments having a hard dependency on systemd is mainly to ensure that they continue to work outside of Linux, and I'm personally comfortable to just depend on it.
+
+* The migration
+
+The configuration format is documented in [[https://man.archlinux.org/man/environment.d.5][environment.d(5)]].
+
+In =~/.config/environment.d/99-kisaragi.conf= (I'm bad at naming):
+
+#+begin_src conf
+GTK_IM_MODULE=fcitx
+QT_IM_MODULE=fcitx
+# The value is "@im=fcitx". Everything after the first "=" is the value.
+XMODIFIERS=@im=fcitx
+
+GOPATH=/home/kisaragi-hiu/.gopath
+GOPROXY=direct
+
+PATH=/home/kisaragi-hiu/.local/bin:/home/kisaragi-hiu/.local/share/npm-global/bin:${PATH}:/usr/local/bin:/usr/bin
+
+VISUAL=nvim
+EDITOR=nvim
+TERMINAL=alacritty
+BROWSER=firefox
+
+# ssh with kwallet
+SSH_ASKPASS=/usr/bin/ksshaskpass
+MAGICK_OCL_DEVICE=OFF
+ALTERNATE_EDITOR=
+WINEDEBUG=-all
+#+end_src
+
+Then it's done after a restart.
