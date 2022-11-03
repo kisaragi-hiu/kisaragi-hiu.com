@@ -1,72 +1,72 @@
 {{ define "header" }}
-<!-- prettier-ignore -->
-{{ partial "avatar" . }}
-{{ partial "heading" (dict "title" .Title "enableTypePath" true "ctx" .)}}
-<hr />
-<dl class="meta">
-  {{ with .GetTerms "tags" }}
-  <div>
-    <dt>Tags</dt>
-    <dd>{{ range . }} {{ partial "tag" . }} {{ end }}</dd>
-  </div>
-  {{ end }}
   <!-- prettier-ignore -->
-  {{ with (.Param "homepage") }}
+  {{ partial "avatar" . }}
+{{ partial "heading" (dict "title" .Title "enableTypePath" true "ctx" .) }}
+  <hr />
+  <dl class="meta">
+    {{ with .GetTerms "tags" }}
+      <div>
+        <dt>Tags</dt>
+        <dd>{{ range . }}{{ partial "tag" . }}{{ end }}</dd>
+      </div>
+    {{ end }}
+    <!-- prettier-ignore -->
+    {{ with (.Param "homepage") }}
   <div>
     <dt>Homepage</dt>
     <dd><a class="out" href="{{.}}">{{.}}</a></dd>
   </div>
   {{ end }}
 
-  <!-- prettier-ignore -->
-  {{ with (.Param "pixiv") }}
+    <!-- prettier-ignore -->
+    {{ with (.Param "pixiv") }}
   <div>
     <dt>Pixiv</dt>
-    <dd><a class="out" href="{{.}}">Pixiv</a></dd>
+    <dd><a class="out" href="{{.}}">{{.}}</a></dd>
   </div>
   {{ end }}
 
-  <!-- prettier-ignore -->
-  {{ with (.Param "wikipedia") }}
+    <!-- prettier-ignore -->
+    {{ with (.Param "wikipedia") }}
   <div>
     <dt>Wikipedia</dt>
-    <dd><a class="out" href="{{.}}">Wikipedia</a></dd>
+    <dd><a class="out" href="{{.}}">{{.}}</a></dd>
   </div>
   {{ end }}
 
-  <!-- prettier-ignore -->
-  {{ with (.Param "gitlab") }}
+    <!-- prettier-ignore -->
+    {{ with (.Param "gitlab") }}
   <div>
     <dt>Gitlab</dt>
-    <dd><a class="out" href="{{.}}">Gitlab</a></dd>
+    <dd><a class="out" href="{{.}}">{{.}}</a></dd>
   </div>
   {{ end }}
 
-  <!-- prettier-ignore -->
-  {{ with (.Param "github") }}
+    <!-- prettier-ignore -->
+    {{ with (.Param "github") }}
   <div>
     <dt>Github</dt>
-    <dd><a class="out" href="{{.}}">Github</a></dd>
+    <dd><a class="out" href="{{.}}">{{.}}</a></dd>
   </div>
   {{ end }}
 
-  <!-- prettier-ignore -->
-  {{ with (.Param "sourcehut") }}
+    <!-- prettier-ignore -->
+    {{ with (.Param "sourcehut") }}
   <div>
     <dt>Sourcehut</dt>
-    <dd><a class="out" href="{{.}}">Sourcehut</a></dd>
+    <dd><a class="out" href="{{.}}">{{.}}</a></dd>
   </div>
   {{ end }}
-</dl>
-<!-- prettier-ignore -->
+  </dl>
+  <!-- prettier-ignore -->
 {{ end }}
 
 {{ define "main" }}
-<article class="mt-8">
-  <!-- prettier-ignore -->
-  {{ if .Params.toc }}
+  <article class="mt-8">
+    <!-- prettier-ignore -->
+    {{ if .Params.toc }}
     {{ partial "toc" . }}
     {{ end }}
     {{ partial "content" . }}
-</article>
+  </article>
 {{ end }}
