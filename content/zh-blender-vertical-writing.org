@@ -1,11 +1,11 @@
-#+title: 在Blender裡用直書
+#+title: 在 Blender 裡用直書
 #+created: 2021-07-04T09:37:15+0900
 #+toc: t
 #+tags[]: blender video
 #+coverimage: /vertical-writing-goal.png
 #+language: zh_TW
 
-Blender不支援直書。但如果我還是想要用直書的話怎麼辦？
+Blender 不支援直書。但如果我還是想要用直書的話怎麼辦？
 
 /2021-07-08:/ 我把[[#d41e9dcd-f02f-4eae-88ee-b03e04340d6b][下面提到用換行模擬的方式]]做成插件了。[[file:/projects/blender-pseudo-vertical-text.org][插件的頁面在這裡。]]
 
