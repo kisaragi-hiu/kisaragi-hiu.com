@@ -84,13 +84,13 @@
     @apply my-4;
   }
   .meta {
-    @apply my-4 text-sm w-max space-x-4;
+    @apply my-4 text-sm w-max;
     /* Format like this:
          dd1   dd2   dd3   dd4
           dt1   dt2   dt3   dt4
        Wrap each group in a <div>. This is specifically permitted in
        its definition. */
-    /* @apply flex; */
+    /* @apply flex space-x-4; */
     a {
       @apply proselink;
     }
@@ -175,6 +175,10 @@
 
   blockquote {
     @apply not-italic;
+  }
+
+  img {
+    @apply shadow;
   }
 
   figure {

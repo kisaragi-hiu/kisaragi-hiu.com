@@ -1,0 +1,13 @@
+#+title: Kemdict
+#+created: 2022-11-04T05:55:59+0900
+#+tags[]: web
+#+github: https://github.com/kisaragi-hiu/kemdict
+#+status: usable
+#+language: zh_TW
+#+homepage: https://kemdict.kisaragi-hiu.com
+
+教育部有很多本辭典，但要一次搜尋它們很不方便。Kemdict 提供一個介面同時搜尋《重編國語辭典修訂本》、《國語辭典簡編本》、《成語典》、《臺灣閩南語常用詞辭典》，並且像 [[https://www.weblio.jp][Weblio]] 一樣把定義列在同一個頁面上。
+
+另外，教育部的辭典在現代用語上有些部分沒有收錄、有些部分與現況不符，因此我希望像[[http://www.practical-japanese.com/][実用日本語表現辞典]]一樣記錄下這些詞。我目前把這個叫做 [[https://kemdict.kisaragi-hiu.com/dict-kisaragi/][Kisaragi's Extras]]，同樣包含在 Kemdict 裡面。
+
+[[/kemdict-0.1.0.png]]
