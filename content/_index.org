@@ -2,6 +2,8 @@
 
 This is a library of what I've made, a /digital garden/ of mine, and a playground for web technologies.
 
+If you like this, please consider [[https://www.buymeacoffee.com/kisaragihiu][buying a meal for me]] to keep both me and this site alive. Thank you.
+
 # Sub-sites:
 
 # - [[/tftt][experimental trumpet fingerings training tool]]
