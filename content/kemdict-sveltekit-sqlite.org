@@ -1,0 +1,137 @@
+#+title: Making a SvelteKit site that reads data from a local SQLite database
+#+created: 2022-11-17T20:46:18+0900
+#+tags[]: javascript svelte nodejs
+
+Rough draft. I might provide a minimum template for reference later.
+
+We're not reading and writing data. That's a separate problem.
+
+I'm skipping over the creation of a normal SvelteKit project.
+
+* Context
+[[https://github.com/kemdict/kemdict][Kemdict]] is a frontend providing combined search to 5 existing dictionaries (plus a small one that I created to house words that I think should be in a dictionary).
+
+The raw data was combined and shaped into a 130MB JSON file.
+
+It is currently using Eleventy. I generated one HTML file per word, which amounts to 170000 files in one directory. This is so large it cannot be hosted on Netlify or Cloudflare Pages (it works on GitHub Pages, thank you GitHub). It's also impossible to add more search capabilities without blowing up the file count even more.
+
+I tried Eleventy Serverless + Netlify On-demand Builders, but loading a 130MB JSON file still takes forever.
+
+After seeing [[https://twitter.com/swyx/status/1588662110187581440][swyx's tweet about making stuff available through an API]] and seeing that [[https://github.com/airbytehq/mvp-cms/][it's]] made with SvelteKit I thought it was a good template to follow. However the amount of data I'm working with makes it better to use a database.
+
+* Preparing the database
+
+Because I have a preexisting JSON, I'll turn it into a database.
+
+The approach for reading a database will not differ even if you have a preexisting database.
+
+This is decently doable as long as we keep using JSON for nested data. Automatic full conversion seems to be an unsolved problem. This conversion is done during build time by:
+
+- Creating a database with better-sqlite3
+- Creating a table; the columns are the title and one column for each dictionary (hard-coded list)
+- Reading the combined JSON file into an array of entries
+- For each entry in the array, insert it into the database; wrap this in a transaction to make it go super fast
+
+The database is still about 160MB, actually larger than the original JSON. But we can gzip it. In my case that brought it down to 40MB. Then it can be read in like this:
+
+#+begin_src js
+import { error } from "@sveltejs/kit";
+import * as fs from "node:fs";
+import * as zlib from "node:zlib";
+import Database from "better-sqlite3";
+
+// Do this dance in order to not retain a reference to rawdb.
+let db;
+{
+  let raw = fs.readFileSync("./src/lib/entries.db.gz");
+  let rawdb = zlib.gunzipSync(raw);
+  // passing a buffer to better-sqlite3 makes it create an in memory
+  // database as if we're opening a file whose content is the same as
+  // the buffer
+  db = new Database(rawdb);
+}
+#+end_src
+
+* Accessing the database
+This code runs in the server as a +page.server.js. This does not work on Cloudflare Pages because we specifically depend on Node and not just any JS runtime. (Cloudflare Workers has its own JS runtime.)
+
+The file path is more complex on Netlify. This is the project structure I have:
+
+#+begin_src text
+kemdict
+├─ dicts
+│  ├─ ...
+└─ web
+    ├─ ...
+    └─ src
+       └─ lib
+          ├─ ...
+          └─ entries.db.gz
+#+end_src
+
+I build in =web=; this is like a monorepo. On Netlify, the subdirectory is set to =web=, and =src/lib/entries.db.gz= is added to =included_files=.
+
+During build time the function sees the database in =src/lib/entries.db.gz=, but during runtime it's in =web/src/lib/entries.db.gz=. The subdirectory is not honored during runtime; I'm not sure it should, but this should be documented.
+
+Because we use better-sqlite3, the serverless function and the build environment must use the same Node version (because packages are installed for the build environment). The latest serverless function runtime is Node 16, so we set the build time environment to Node 16 as well.
+
+- =AWS_LAMBDA_JS_RUNTIME=: ~nodejs16.x~ (newest as of writing)
+- =NODE_VERSION=: ~16~ (to match the above)
+
+The +page.server.js looks like this in the end
+
+#+begin_src js
+export const prerender = false;
+
+import { error } from "@sveltejs/kit";
+import * as fs from "node:fs";
+import * as zlib from "node:zlib";
+import Database from "better-sqlite3";
+// Do this dance in order to not retain a reference to rawdb.
+let db;
+{
+  let raw;
+  try {
+    raw = fs.readFileSync("./src/lib/entries.db.gz");
+  } catch (e) {
+    if (e instanceof Error && e.code === "ENOENT") {
+      raw = fs.readFileSync("./web/src/lib/entries.db.gz");
+    } else {
+      throw e;
+    }
+  }
+  let rawdb = zlib.gunzipSync(raw);
+  db = new Database(rawdb);
+}
+
+const statement_word = db.prepare("select * from entries where title = ?");
+/**
+ ,* Return the word object from the DB.
+ ,* @param {string} title
+ ,* @returns {object}
+ ,*/
+function getWord(title) {
+  // If the word doesn't exist it'll simply return `undefined`.
+  let ret = statement_word.get(title);
+  if (ret) {
+    for (let prop in ret) {
+      if (prop !== "title") {
+        ret[prop] = JSON.parse(ret[prop]);
+      }
+    }
+  }
+  return ret;
+}
+
+/** @type {import('./$types').PageServerLoad} */
+export function load({ params }) {
+  const w = params.word;
+  const word = getWord(w);
+
+  if (word) {
+    return { word: word };
+  } else {
+    throw error(404, "`Word ${w} not found.`");
+  }
+}
+#+end_src
