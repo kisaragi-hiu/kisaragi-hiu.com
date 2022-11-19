@@ -1,21 +1,23 @@
-#+title: Making a SvelteKit site that reads data from a local SQLite database
+#+title: Making a serverless SvelteKit site that reads data from a local SQLite database
 #+created: 2022-11-17T20:46:18+0900
+#+updated: 2022-11-19T22:08:11+0900
 #+tags[]: javascript svelte nodejs
+#+toc: t
 
-Rough draft. I might provide a minimum template for reference later.
+Rough draft. I might later provide a minimum template for reference.
 
-We're not reading and writing data. That's a separate problem.
+We're not reading and writing runtime data. A dedicated database (like Supabase) is better in that case. Here, I just want to read from an already created SQLite database.
 
-I'm skipping over the creation of a normal SvelteKit project.
+“Serverless” here means “the server side code is written as short-lived one-request functions”, which in practice means “I'm using Netlify (or Vercel or Cliudflare etc.) to make the site with no upfront monetary investment and no need to manage my own server”, which is its nornal definition despite contradicting what “server-less” may seem to suggest.
+
+I'm skipping over the creation of a normal SvelteKit project for now.
 
 * Context
 [[https://github.com/kemdict/kemdict][Kemdict]] is a frontend providing combined search to 5 existing dictionaries (plus a small one that I created to house words that I think should be in a dictionary).
 
 The raw data was combined and shaped into a 130MB JSON file.
 
-It is currently using Eleventy. I generated one HTML file per word, which amounts to 170000 files in one directory. This is so large it cannot be hosted on Netlify or Cloudflare Pages (it works on GitHub Pages, thank you GitHub). It's also impossible to add more search capabilities without blowing up the file count even more.
-
-I tried Eleventy Serverless + Netlify On-demand Builders, but loading a 130MB JSON file still takes forever.
+It used Eleventy before. I generated one HTML file per word, which amounts to 170000 files in one directory. This is so large it cannot be hosted on Netlify or Cloudflare Pages (it works on GitHub Pages, thank you GitHub). It's also impossible to add more search capabilities without blowing up the file count even more. I tried Eleventy Serverless + Netlify On-demand Builders, but loading a 130MB JSON file still takes forever.
 
 After seeing [[https://twitter.com/swyx/status/1588662110187581440][swyx's tweet about making stuff available through an API]] and seeing that [[https://github.com/airbytehq/mvp-cms/][it's]] made with SvelteKit I thought it was a good template to follow. However the amount of data I'm working with makes it better to use a database.
 
@@ -32,10 +34,16 @@ This is decently doable as long as we keep using JSON for nested data. Automatic
 - Reading the combined JSON file into an array of entries
 - For each entry in the array, insert it into the database; wrap this in a transaction to make it go super fast
 
-The database is still about 160MB, actually larger than the original JSON. But we can gzip it. In my case that brought it down to 40MB. Then it can be read in like this:
+The database is still about 160MB, actually larger than the original JSON. But we can +gzip+ it. In my case that brought it down to 40MB. Then it can be read in in the frontend.
+
+We'll put this database in =src/lib/=. It can live anywhere, actually, this doesn't even allow us to access it as =$lib/entries.db.gz=.
+
+* Accessing the database
+This code runs in the server as a +page.server.js. This does not work on Cloudflare Pages because we specifically depend on Node and not just any JS runtime. (Cloudflare Workers has its own JS runtime.)
+
+In =src/routes/word/[word]/+page.server.js=:
 
 #+begin_src js
-import { error } from "@sveltejs/kit";
 import * as fs from "node:fs";
 import * as zlib from "node:zlib";
 import Database from "better-sqlite3";
@@ -52,33 +60,54 @@ let db;
 }
 #+end_src
 
-* Accessing the database
-This code runs in the server as a +page.server.js. This does not work on Cloudflare Pages because we specifically depend on Node and not just any JS runtime. (Cloudflare Workers has its own JS runtime.)
+Paths are relative to project root, both during prerender and at serve time, because the code runs in that directory.
 
-The file path is more complex on Netlify. This is the project structure I have:
+When deployed as a serverless function, Netlify will see the dependencies and copy them into the context of the serverless function for you. But, by default, paths accessed in a =readFileSync= aren't copied, so you have to tell Netlify that you want it copied. In =netlify.toml=:
 
-#+begin_src text
-kemdict
-├─ dicts
-│  ├─ ...
-└─ web
-    ├─ ...
-    └─ src
-       └─ lib
-          ├─ ...
-          └─ entries.db.gz
+#+begin_src toml
+[functions]
+included_files = ["./src/lib/entries.db.gz"]
 #+end_src
 
-I build in =web=; this is like a monorepo. On Netlify, the subdirectory is set to =web=, and =src/lib/entries.db.gz= is added to =included_files=.
+…except, if your project lives in a subdirectory of the repository and you build on Netlify (instead of another CI and deploying to Netlify afterwards), it is copied to a place as if you never specified the subdirectory. As in:
 
-During build time the function sees the database in =src/lib/entries.db.gz=, but during runtime it's in =web/src/lib/entries.db.gz=. The subdirectory is not honored during runtime; I'm not sure it should, but this should be documented.
+- Kemdict's repository is structured like this:
+  - kemdict
+    - dicts
+      - entries.db.gz
+    - web
+      - netlify.toml
+      - src
+        - lib
+          - entries.db.gz
+- =included_files= is still just =./src/lib/entries.db.gz=
+- In Netlify's build settings, subdirectory is specified to be =web=
+- At build time paths are relative to =web=
+- When Netlify copies the file, it is copied to =web/src/lib/entries.db.gz= under the serverless function's worling directory!
 
-Because we use better-sqlite3, the serverless function and the build environment must use the same Node version (because packages are installed for the build environment). The latest serverless function runtime is Node 16, so we set the build time environment to Node 16 as well.
+The subdirectory is not honored by the copy destination; I don't know if it should or shouldn't, but this should ne documented.
 
-- =AWS_LAMBDA_JS_RUNTIME=: ~nodejs16.x~ (newest as of writing)
-- =NODE_VERSION=: ~16~ (to match the above)
+To work around this, I just try both paths. We need to keep the =./src/= still because I still want this code to be able to load during build.
 
-The +page.server.js looks like this in the end
+#+begin_src js
+let db;
+{
+  let raw;
+  try {
+    raw = fs.readFileSync("./src/lib/entries.db.gz");
+  } catch (e) {
+    if (e instanceof Error && e.code === "ENOENT") {
+      raw = fs.readFileSync("./web/src/lib/entries.db.gz");
+    } else {
+      throw e;
+    }
+  }
+  let rawdb = zlib.gunzipSync(raw);
+  db = new Database(rawdb);
+}
+#+end_src
+
+The +page.server.js looks like this in the end:
 
 #+begin_src js
 export const prerender = false;
@@ -135,3 +164,12 @@ export function load({ params }) {
   }
 }
 #+end_src
+
+* Building
+
+Because we use better-sqlite3, the serverless function and the build environment must use the same Node version (because packages are installed for the build environment). The latest serverless function runtime is Node 16, so we set the build time environment to Node 16 as well.
+
+- =AWS_LAMBDA_JS_RUNTIME=: ~nodejs16.x~ (newest as of writing)
+- =NODE_VERSION=: ~16~ (to match the above)
+
+The same can be done if you build on another CI. Just make sure the build environment, including the Node version, matches with Netlify's runtime environment. GitHub Actions + Ubuntu 22.04 + Node 16, for instance, matches with =nodejs16.x=.
