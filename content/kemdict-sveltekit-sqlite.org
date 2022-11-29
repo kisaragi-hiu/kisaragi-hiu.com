@@ -4,172 +4,536 @@
 #+tags[]: javascript svelte nodejs
 #+toc: t
 
-Rough draft. I might later provide a minimum template for reference.
+Version history:
+
+- 2022-11-30: rewrite to make it not about Kemdict
+- 2022-11-19: clarify that this is about SvelteKit on serverless platforms
+- 2022-11-17: first draft
+
+Still a rough draft even though the whole thing has been rewritten.
+
+Reference repository: https://github.com/kisaragi-hiu/demo-sveltekit-sqlite
 
 We're not reading and writing runtime data. A dedicated database (like Supabase) is better in that case. Here, I just want to read from an already created SQLite database.
 
-“Serverless” here means “the server side code is written as short-lived one-request functions”, which in practice means “I'm using Netlify (or Vercel or Cliudflare etc.) to make the site with no upfront monetary investment and no need to manage my own server”, which is its nornal definition despite contradicting what “server-less” may seem to suggest.
+Keep in mind that if the amount of data you have warrants putting it in an SQLite database and not just JSON, it is almost always better to use a dedicated database or to deploy to Node instead, because a serverless function would have to read the database every time it's invoked.
 
-I'm skipping over the creation of a normal SvelteKit project for now.
+“Serverless” here means “the server side code is written as short-lived one-request functions”, which in practice means “I'm using Netlify (or Vercel or Cloudflare etc.) to make the site with no upfront monetary investment and no need to manage my own server”, which is its nornal definition despite contradicting what “server-less” may seem to suggest.
 
-* Context
-[[https://github.com/kemdict/kemdict][Kemdict]] is a frontend providing combined search to 5 existing dictionaries (plus a small one that I created to house words that I think should be in a dictionary).
+* Create the project
 
-The raw data was combined and shaped into a 130MB JSON file.
+While you can use [[https://github.com/sveltejs/kit/tree/master/packages/create-svelte][SvelteKit's template]] (=npm create svelte@latest my-app=), deferring to the template defeats the point of writing a blog post about it.
 
-It used Eleventy before. I generated one HTML file per word, which amounts to 170000 files in one directory. This is so large it cannot be hosted on Netlify or Cloudflare Pages (it works on GitHub Pages, thank you GitHub). It's also impossible to add more search capabilities without blowing up the file count even more. I tried Eleventy Serverless + Netlify On-demand Builders, but loading a 130MB JSON file still takes forever.
+#+begin_src shell
+mkdir demo-sveltekit-sqlite
+cd demo-sveltekit-sqlite
+git init
+echo "{}" > package.json
+#+end_src
 
-After seeing [[https://twitter.com/swyx/status/1588662110187581440][swyx's tweet about making stuff available through an API]] and seeing that [[https://github.com/airbytehq/mvp-cms/][it's]] made with SvelteKit I thought it was a good template to follow. However the amount of data I'm working with makes it better to use a database.
+- Using Git, of course.
+- In my opinion, because a project like this isn't supposed to be published as a package (i.e. required as a dependency by anything), it is only cumbersome to have to fill out the name and version, so what I often end up doing is to just create a =package.json= with an empty object in it.
+
+Also, set up which files should be ignored by git. =.gitignore=:
+
+#+begin_src gitignore
+node_modules/
+.svelte-kit/
+#+end_src
+
+
+** "type": "module"
+
+There are [[https://nodejs.org/api/esm.html#enabling][two ways to import modules]] in NodeJS: ECMAScript modules (=import=) and CommonJS modules (=require=), with the former being preferred in new code because it is part of standard JavaScript (ECMAScript).
+
+| "type":    | extension | which system is used? |
+|------------+-----------+-----------------------|
+| omitted    | =".js"=     | CommonJS              |
+| ="module"=   | =".js"=     | ES modules            |
+| ="commonjs"= | =".js"=     | CommonJS              |
+| anything   | =".cjs"=    | CommonJS              |
+| anything   | =".mjs"=    | ES modules            |
+
+Because we want this project to use ES modules unless otherwise specified, we'll write this in =package.json=:
+
+#+begin_src json
+{
+  "type": "module"
+}
+#+end_src
+
+* Install SvelteKit
+
+#+begin_src shell
+npm install -D @sveltejs/kit vite
+#+end_src
+
+I'm going to use [[https://mdsvex.com/][mdsvex]] immediately. This is a [[https://svelte.dev/docs#compile-time-svelte-preprocess][Svelte preprocessor]] that lets you write Svelte components (and thus SvelteKit routes) in Markdown (MDX).
+
+#+begin_src shell
+npm install -D mdsvex
+#+end_src
+
+I'm also going to use [[https://github.com/sveltejs/svelte-preprocess][svelte-preprocess]]. This is another Svelte preprocessor, and it lets you write component logic in TypeScript or style in Sass, among [[https://github.com/sveltejs/svelte-preprocess#features][other features]].
+
+#+begin_src shell
+npm install -D svelte-preprocess
+#+end_src
+
+* Configure SvelteKit and Vite
+
+Vite is like a supercharged dev server and a production bundler that figures out a bunch of stuff for you. In reality the production bundler part uses Rollup, but that is almost an implementation detail that you don't have to worry about unless you want to use Rollup plugins.
+
+For example, using Tailwind CSS is just a matter of installing the =tailwindcss= package and importing your source CSS as usual. Vite knows what to do.
+
+In the case of SvelteKit, Vite doesn't have support for it built in, so SvelteKit provides a Vite plugin to glue them together.
+
+=vite.config.js=:
+
+#+begin_src js
+import { sveltekit } from "@sveltejs/kit/vite";
+
+export default {
+  plugins: [sveltekit()],
+};
+#+end_src
+
+- This configuration grabs SvelteKit's Vite plugin and tells Vite to use it.
+- See [[https://vitejs.dev/config/][Vite's documentation]] for more configuration options. For example, I set [[https://vitejs.dev/config/shared-options.html#clearscreen][=clearScreen=]] to false because it doesn't work well inside of Eshell or [[https://github.com/emacs-taskrunner/emacs-taskrunner][emacs-taskrunner]].
+
+=svelte.config.js=:
+
+#+begin_src js
+import { mdsvex } from "mdsvex";
+import adapter from "@sveltejs/adapter-auto";
+import preprocess from "svelte-preprocess";
+
+export default {
+  extensions: [".svelte", ".svelte.md", ".md", ".svx"],
+  preprocess: [
+    preprocess(),
+    mdsvex({
+      smartypants: {
+        dashes: "oldschool",
+      },
+      extensions: [".svelte.md", ".md", ".svx"],
+      layout: "src/lib/MarkdownLayout.svelte",
+    }),
+  ],
+
+  kit: {
+    adapter: adapter(),
+  },
+};
+#+end_src
+
+- In =extensions=, we tell Svelte which files should be considered as components. By default this is =.svelte=, but we add some more to then be recognized by mdsvex.
+- We need an adapter, which turns an intermediate build result into code that can be deployed on different platforms, including, for example, [[https://github.com/sveltejs/kit/tree/master/packages/adapter-cloudflare][Cloudflare]], [[https://github.com/sveltejs/kit/tree/master/packages/adapter-netlify][Netlify]], and [[https://github.com/sveltejs/kit/tree/master/packages/adapter-node][as a server side Node application]]. The default here is [[https://github.com/sveltejs/kit/tree/master/packages/adapter-auto][adapter-auto]], which choose one to use depending on where the application is being built.
+- In =preprocess=, we declare the Svelte preprocessors in order. We run it through =svelte-preprocess= first, then =mdsvex= — I'm not sure this is the best order though.
+- We tell mdsvex that
+  - We want smart dashes in the style where two dashes become an en-dash and three become an em-dash
+  - Markdown files should act as if they are wrapped by the component exported by =src/lib/MarkdownLayout.svelte= (we'll create it later)
+
+* Not using adapter-auto
+
+=adapter-auto= looks at the build time environment to determine which adapter it should use. But this only works if you're building on the same platform as you are deploying. For building, I prefer to use GitHub Actions instead of using, say, Cloudflare Pages or Netlify or Vercel's build (CI) system.
+
+So I prefer to just use adapter-netlify (for example) directly.
+
+#+begin_src shell
+npm install -D @sveltejs/adapter-netlify
+#+end_src
+
+#+begin_src js
+import { mdsvex } from "mdsvex";
+// I prefer to name it like this
+import adapterNetlify from "@sveltejs/adapter-netlify";
+import preprocess from "svelte-preprocess";
+
+export default {
+  extensions: [".svelte", ".svelte.md", ".md", ".svx"],
+  preprocess: [
+    preprocess(),
+    mdsvex({
+      smartypants: {
+        dashes: "oldschool",
+      },
+      extensions: [".svelte.md", ".md", ".svx"],
+      layout: "src/lib/MarkdownLayout.svelte",
+    }),
+  ],
+
+  kit: {
+    adapter: adapterNetlify(),
+  },
+};
+#+end_src
+
+
+
+* Set up Prettier
+
+[[https://prettier.io][Prettier]] formats code for you so you never have to worry about it again.
+
+As it doesn't support Svelte syntax out of the box, we have to install it with =prettier-plugin-svelte=.
+
+#+begin_src shell
+npm install -D prettier prettier-plugin-svelte
+#+end_src
+
+Then register it in [[https://prettier.io/docs/en/configuration.html][=.prettierrc=]] (I prefer YAML):
+
+#+begin_src yaml
+overrides:
+  - files: "*.svelte"
+    options:
+      parser: "svelte"
+#+end_src
+
+* Adding some pages and some components
+
+Let's finally create some pages. Create the directory structure:
+
+#+begin_src shell
+mkdir src/
+mkdir src/lib
+mkdir src/routes
+#+end_src
+
+Create =src/app.html=. This is [[https://kit.svelte.dev/docs/project-structure#project-files][SvelteKit's root template]].
+
+#+begin_src html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="referrer" content="no-referrer" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    %sveltekit.head%
+    <link rel="icon" href="%sveltekit.assets%/favicon.ico" />
+  </head>
+  <body>
+    <div data-sveltekit-reload class="container">%sveltekit.body%</div>
+  </body>
+</html>
+#+end_src
+
+- See [[https://kit.svelte.dev/docs/project-structure#project-files][the documentation]] for an explanation for the =%sveltekit.*%= stuff.
+- I'm adding =data-sveltekit-reload= to a containing element so that it will apply to every a tag in the app. This disables client side routing across the entire app, and is equivalent to ~router = false~ in previous versions of SvelteKit. A normal app should not have this — I added this here to demonstrate how you would achieve this because it took me way too long to figure out. Normally you'd keep the router on, and also use [[https://kit.svelte.dev/docs/link-options#data-sveltekit-preload-data][the preload tags]] to get navigation to appear snappier.
+
+Create =src/routes/+layout.svelte=. Layouts are components that are wrapped around every page that it applies to. =src/routes/+layout.svelte= applies to every page, while =src/routes/abc/+layout.svelte= would only apply to pages under =abc/=.
+
+The difference between this file (the root layout) and =app.html= is that this is still a Svelte component, so you can import files in a script tag, use components, etc.
+
+=src/routes/+layout.svelte=:
+
+#+begin_src svelte
+<script>
+  // import "../src.css";
+  // We'll add the CSS later
+</script>
+
+<slot />
+#+end_src
+
+=src/lib/MarkdownLayout.svelte= (the component we declared above to wrap all Markdown files):
+
+#+begin_src svelte
+<div class="prose">
+  <slot />
+</div>
+#+end_src
+
+At this point we can already start the dev server.
+
+#+begin_src shell
+npx vite dev
+#+end_src
+
+*Note that I'm not using the npm scripts that Vite ships in its templates.* Is there really a point to saying =npm run dev= instead of =npx vite dev=? In terms of using consistent task names across projects, sure, but not when explaining how things work. We can add it later.
+
+Now let's add the root page.
+
+=src/routes/+page.svelte=:
+
+#+begin_src svelte
+<script>
+  const description = "Here's my description!";
+</script>
+
+<svelte:head>
+  <meta name="description" content={description} />
+  <title>Here's a title!</title>
+</svelte:head>
+
+<h1>Example reading data from a local SQLite database</h1>
+<p>Hello World!</p>
+#+end_src
+
+[[/20221130T025355+0900.png]]
+
+* Adding Tailwind CSS
+
+I find that, when using a component framework / templating system, Tailwind CSS really allows you to be more confident that changing parts of your CSS isn't going to break some random thing elsewhere.
+
+Install it:
+
+#+begin_src shell
+npm install -D tailwindcss
+#+end_src
+
+Create a =postcss.config.cjs= (because Tailwind's config and PostCSS plugins use CommonJS):
+
+#+begin_src js
+module.exports = {
+  plugins: [
+    // You don't need to install this separately: you already depend
+    // on postcss-import when installing tailwindcss.
+    require("postcss-import"),
+    require("tailwindcss/nesting"),
+    // This must come last
+    require("tailwindcss"),
+  ],
+};
+#+end_src
+
+Vite will [[https://vitejs.dev/guide/features.html#postcss][detect the presence of the PostCSS config and process the CSS]] with PostCSS  automatically. Because Tailwind is actually a PostCSS plugin (that happens to have its own CLI), this means it will be processed by Tailwind as specified above.
+
+Then create a =tailwind.config.cjs=:
+
+#+begin_src js
+module.exports = {
+  content: ["./src/**/*.{svelte,md,ts,js,html}"],
+};
+#+end_src
+
+- This file needs to exist, otherwise Tailwind will emit an error.
+- =content= specifies where Tailwind utility classes might be referenced. Utility classes that are referenced will be included in the final output, and those that aren't won't. If you don't specify =content=, no utility tags will be emitted, so it's /de-facto/ necessary.
+- With Vite, you don't have to worry about where that output goes: during development it is inlined, and in a production build it is placed in the build output, with the relevant =<link>= tags added automatically.
+- See [[https://tailwindcss.com/docs/configuration][Tailwind's docs on configuration]] for what other options are available here.
+
+Now create the CSS file:
+
+=src/src.css=:
+
+#+begin_src css
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+#+end_src
+
+And actually import the CSS file in the root layout, =src/routes/+layout.svelte=:
+
+#+begin_src svelte
+<script>
+ import "../src.css";
+</script>
+
+<slot />
+#+end_src
+
+Now use them in the root route, =src/routes/+page.svelte=:
+
+#+begin_src svelte
+<script>
+  const description = "Here's my description!";
+</script>
+
+<svelte:head>
+  <meta name="description" content={description} />
+  <title>Here's a title!</title>
+</svelte:head>
+
+<main class="w-[95%] max-w-2xl mx-auto mt-48">
+<h1 class="text-3xl font-bold">Example reading data from a local SQLite database</h1>
+<p>Hello World!</p>
+</main>
+#+end_src
 
 * Preparing the database
 
-Because I have a preexisting JSON, I'll turn it into a database.
+We're ready to start creating pages based on data from a database. For this I'll use [[https://github.com/codecrafters-io/sample-sqlite-databases][a sample database from codecrafters.io]]. Download the =superheros.db= and just place it in project root for now.
 
-The approach for reading a database will not differ even if you have a preexisting database.
+* Read the database on a server route
 
-This is decently doable as long as we keep using JSON for nested data. Automatic full conversion seems to be an unsolved problem. This conversion is done during build time by:
+Unless you want to dabble with sending both [[https://github.com/sql-js/sql.js][a WebAssembly build of SQLite]] and the full database to your user, we'll have to read the database on the server side. (I don't know how to do that anyways.)
 
-- Creating a database with better-sqlite3
-- Creating a table; the columns are the title and one column for each dictionary (hard-coded list)
-- Reading the combined JSON file into an array of entries
-- For each entry in the array, insert it into the database; wrap this in a transaction to make it go super fast
+In case this is confusing: the server side of a “serverless” application is the serverless functions.
 
-The database is still about 160MB, actually larger than the original JSON. But we can +gzip+ it. In my case that brought it down to 40MB. Then it can be read in in the frontend.
+This server side can be a =+page.server.js= (pages only rendered on the server side) or a =+server.js= (API routes that return raw data and not HTML). In this example I'm going to use an API route, then fetch from it on the client side, but this isn't necessary.
 
-We'll put this database in =src/lib/=. It can live anywhere, actually, this doesn't even allow us to access it as =$lib/entries.db.gz=.
+We need =better-sqlite3= for this.
 
-* Accessing the database
-This code runs in the server as a +page.server.js. This does not work on Cloudflare Pages because we specifically depend on Node and not just any JS runtime. (Cloudflare Workers has its own JS runtime.)
+#+begin_src shell
+npm install better-sqlite3
+#+end_src
 
-In =src/routes/word/[word]/+page.server.js=:
+Note that currently =better-sqlite3= does not install for Node 19. On Arch Linux, you can move to an LTS by installing, say, the =nodejs-lts-hydrogen= package, which is Node 18.
+
+Also note that this means we have a hard dependency on NodeJS itself, so we cannot deploy to Cloudflare Pages because Cloudflare Workers has its own runtime that isn't compatible.
+
+I'll put the API route in =/heroes=, with the API ~/heroes?q=<query>~; it will return a list of heroes from the database whose names match the query.
+
+In =src/routes/heroes/+server.js=:
 
 #+begin_src js
-import * as fs from "node:fs";
-import * as zlib from "node:zlib";
-import Database from "better-sqlite3";
+import { json, error } from "@sveltejs/kit";
 
-// Do this dance in order to not retain a reference to rawdb.
-let db;
-{
-  let raw = fs.readFileSync("./src/lib/entries.db.gz");
-  let rawdb = zlib.gunzipSync(raw);
-  // passing a buffer to better-sqlite3 makes it create an in memory
-  // database as if we're opening a file whose content is the same as
-  // the buffer
-  db = new Database(rawdb);
+import Database from "better-sqlite3";
+import fs from "node:fs";
+
+let db = new Database(fs.readFileSync("superheroes.db"));
+
+export function GET({ url }) {
+  const query = url.searchParams.get("q");
+  if (!query) {
+    throw error(401, "Query (`?q=`) is required");
+  }
+  const stmt = db.prepare("select * from superheroes where name like ?");
+  return json(stmt.all(`%${query}%`));
 }
 #+end_src
 
-Paths are relative to project root, both during prerender and at serve time, because the code runs in that directory.
+- See [[https://kit.svelte.dev/docs/routing#server][=server.js=]] docs for details on GET, =json=, etc.
+- See [[https://github.com/WiseLibs/better-sqlite3/blob/master/docs/api.md][better-sqlite3's docs]] for how we're interacting with the database, particularly [[https://github.com/WiseLibs/better-sqlite3/blob/master/docs/api.md#preparestring---statement][=Database#prepare()=]], [[https://github.com/WiseLibs/better-sqlite3/blob/master/docs/api.md#allbindparameters---array-of-rows][=Statement#all()=]], and [[https://github.com/WiseLibs/better-sqlite3/blob/master/docs/api.md#binding-parameters][Binding Parameters]].
+- We're creating the database by passing it the file contents. This creates an in-memory database, changes to which will be lost. That's fine because the whole premise is that we're reading from a preexisting database that we don't write to.
+- You could make the database writable by passing the file path to the constructor directly, but keep in mind that this will not work in a serverless function, because each invocation is getting its own copy and the modified versions will not be merged together. You need to use a database service or abandon the premise of running your app on serverless platforms.
+- The file path is relative to the project root, i.e. where you started Vite.
+- On Netlify, in a monorepo (i.e. your project root is not your repository root), the file path will be relative to the project root during build as expected, but during runtime of the serverless function *it will be relative to repository root instead*. This feels like a bug, but we'll just have to work around it later.
 
-When deployed as a serverless function, Netlify will see the dependencies and copy them into the context of the serverless function for you. But, by default, paths accessed in a =readFileSync= aren't copied, so you have to tell Netlify that you want it copied. In =netlify.toml=:
+Now test the API route out: navigate to =localhost:5173/heroes?q=aqua=, and you should see a JSON array of heroes with “aqua” in their names.
+
+* Create a component for rendering a list of heroes
+
+Create =src/lib/components=. The name “components” is not special, but “lib” is: things under this folder can be imported as =$lib/…= instead of having to use relative paths.
+
+Then create =src/lib/components/SuperHeroes.svelte=:
+
+#+begin_src svelte
+<script>
+  export let items = [];
+</script>
+
+<ul>
+  {#each items as item}
+    <li class="w-full flex justify-between">
+      {item.name}{#if item.first_appearance_year}<span
+          >First appearance: {item.first_appearance_year}</span
+        >{/if}
+    </li>
+  {/each}
+</ul>
+#+end_src
+
+- =export let <name>= is Svelte's way of declaring input arguments for components. We set it to an empty array by default, because the =each= below requires it to be an array.
+- Each item gets a list item; Tailwind classes are used liberally.
+
+* Creating a search bar, fetching results, and rendering results
+
+#+begin_src svelte
+<script>
+  import SuperHeroes from "$lib/components/SuperHeroes.svelte"; // 1
+  const description = "Here's my description!";
+  async function update(value) {
+    if (value.trim().length > 0) {
+      items = await fetch(`/heroes?q=${value.trim()}`).then((v) => v.json());
+    } else {
+      items = [];
+    }
+  } // 6
+  let items = [];
+  let value;
+  $: update(value); // 5
+</script>
+
+<svelte:head>
+  <meta name="description" content={description} />
+  <title>Here's a title!</title>
+</svelte:head>
+
+<main class="w-[95%] max-w-2xl mx-auto mt-48">
+  <h1 class="text-3xl font-bold">
+    Example reading data from a local SQLite database
+  </h1>
+  <p>Search for superheroes below</p>
+  <input
+    class="p-2"
+    type="search"
+    autocomplete="off"
+    placeholder="Search"
+    bind:value
+  /> <!-- 2, 4 -->
+  <SuperHeroes {items} /> <!-- 3 -->
+</main>
+#+end_src
+
+1. We have to import the component.
+2. The value of the input element is always written into the =value= variable of the component. This is done with =bind:=. Because the variable and the element field have the same name, we can write =bind:value= instead of ~bind:value={value}~. In fact, the former seems to be the preferred style according to the formatter (Prettier and =prettier-plugin-svelte=).
+3. Similarly, =<SuperHeroes {items} />= is the preferred shorthand for ~<SuperHeroes items={items} />~.
+4. Also note that there doesn't seem to be a way to add comments in the element properties part.
+5. Whenver =value= is updated, we run =update(value)=. This behavior is enabled by the =$:=. Svelte analyzes the right hand side to find variables that are depended on, and if they change the statement will be re-run.
+6. The =update= function fetches the result from the API route and sets =items= directly, triggering a rerender of =SuperHeroes= if it changed. As a special case, if the input is empty, we clear the =items= array.
+
+This does a /lot/ of network requests, but I think it's fine as a demonstration.
+
+* TODO Compressing the database
+
+- Just use gz
+- =new Database(zlib.gunzipSync(fs.readFileSync("data.db.gz")))=
+
+* TODO automating stuff with Make or npm scripts
+* TODO GitHub Actions
+
+- Install deps
+- Build (with correct Node version)
+- Install netlify-cli
+- Deploy
+
+* Deploying to Netlify
+
+TODO: actually test this on our demo repository
+
+To deploy to Netlify, we need to:
+
+- Use adapter-netlify (or use adapter-auto and satisfy its requirements for building for Netlify)
+- Make sure we install native dependencies — just =better-sqlite3= here — in the same Node version as would be used to run the serverless function. This is because Netlify copies the build-time =node_modules= to the context of where the serverless functions would be run.
+  - The build time Node version is controlled by the =NODE_VERSION= on Netlify's build servers
+  - The run time Node version is controlled by =AWS_LAMBDA_JS_RUNTIME=; the latest version as of writing is Node 16, specified as “nodejs16.x”
+- Make sure the database is actually copied to the right place
+
+=netlify.toml=:
 
 #+begin_src toml
 [functions]
-included_files = ["./src/lib/entries.db.gz"]
+included_files = ["superheroes.db"]
 #+end_src
 
-…except, if your project lives in a subdirectory of the repository and you build on Netlify (instead of another CI and deploying to Netlify afterwards), it is copied to a place as if you never specified the subdirectory. As in:
+On Netlify, in a monorepo (i.e. your project root is not your repository root), the file path will be relative to the project root during build as expected, but during runtime of the serverless function *it will be relative to repository root instead*. This feels like a bug, but we can work around it.
 
-- Kemdict's repository is structured like this:
-  - kemdict
-    - dicts
-      - entries.db.gz
-    - web
-      - netlify.toml
-      - src
-        - lib
-          - entries.db.gz
-- =included_files= is still just =./src/lib/entries.db.gz=
-- In Netlify's build settings, subdirectory is specified to be =web=
-- At build time paths are relative to =web=
-- When Netlify copies the file, it is copied to =web/src/lib/entries.db.gz= under the serverless function's worling directory!
-
-The subdirectory is not honored by the copy destination; I don't know if it should or shouldn't, but this should ne documented.
-
-To work around this, I just try both paths. We need to keep the =./src/= still because I still want this code to be able to load during build.
+Instead of
 
 #+begin_src js
-let db;
-{
-  let raw;
-  try {
-    raw = fs.readFileSync("./src/lib/entries.db.gz");
-  } catch (e) {
-    if (e instanceof Error && e.code === "ENOENT") {
-      raw = fs.readFileSync("./web/src/lib/entries.db.gz");
-    } else {
-      throw e;
-    }
-  }
-  let rawdb = zlib.gunzipSync(raw);
-  db = new Database(rawdb);
-}
+let db = new Database(fs.readFileSync("superheroes.db"));
 #+end_src
 
-The +page.server.js looks like this in the end:
+assuming the project lives at =./subdir= under the repository, you could do
 
 #+begin_src js
-export const prerender = false;
+function readDB(path) {
+    return new Database(fs.readFileSync(path));
+}
 
-import { error } from "@sveltejs/kit";
-import * as fs from "node:fs";
-import * as zlib from "node:zlib";
-import Database from "better-sqlite3";
-// Do this dance in order to not retain a reference to rawdb.
 let db;
-{
-  let raw;
-  try {
-    raw = fs.readFileSync("./src/lib/entries.db.gz");
-  } catch (e) {
+try {
+    db = readDB("superheroes.db");
+} catch (e) {
     if (e instanceof Error && e.code === "ENOENT") {
-      raw = fs.readFileSync("./web/src/lib/entries.db.gz");
+        db = readDB("subdir/superheroes.db")
     } else {
-      throw e;
+        throw e
     }
-  }
-  let rawdb = zlib.gunzipSync(raw);
-  db = new Database(rawdb);
-}
-
-const statement_word = db.prepare("select * from entries where title = ?");
-/**
- ,* Return the word object from the DB.
- ,* @param {string} title
- ,* @returns {object}
- ,*/
-function getWord(title) {
-  // If the word doesn't exist it'll simply return `undefined`.
-  let ret = statement_word.get(title);
-  if (ret) {
-    for (let prop in ret) {
-      if (prop !== "title") {
-        ret[prop] = JSON.parse(ret[prop]);
-      }
-    }
-  }
-  return ret;
-}
-
-/** @type {import('./$types').PageServerLoad} */
-export function load({ params }) {
-  const w = params.word;
-  const word = getWord(w);
-
-  if (word) {
-    return { word: word };
-  } else {
-    throw error(404, "`Word ${w} not found.`");
-  }
 }
 #+end_src
-
-* Building
-
-Because we use better-sqlite3, the serverless function and the build environment must use the same Node version (because packages are installed for the build environment). The latest serverless function runtime is Node 16, so we set the build time environment to Node 16 as well.
-
-- =AWS_LAMBDA_JS_RUNTIME=: ~nodejs16.x~ (newest as of writing)
-- =NODE_VERSION=: ~16~ (to match the above)
-
-The same can be done if you build on another CI. Just make sure the build environment, including the Node version, matches with Netlify's runtime environment. GitHub Actions + Ubuntu 22.04 + Node 16, for instance, matches with =nodejs16.x=.

@@ -13,7 +13,7 @@
 @layer base {
   html {
     @apply bg-[#f8f8f8] dark:bg-[#0d0c0f];
-    @apply md:text-[20px] text-primary;
+    @apply text-primary;
   }
   .outer {
     /* min() requires Chrome 79 / Firefox 75, from 2019 / 2020 */
@@ -108,7 +108,7 @@
   /* We don't have access to classes on Hugo's TOC */
   #TableOfContents {
     ul {
-      @apply pl-4;
+      @apply pl-4 my-0;
       list-style: revert;
     }
     /* just level 1 */
@@ -212,6 +212,9 @@
     &:after {
       content: "";
     }
+  }
+  a code:not(.src code) {
+    @apply text-accent-strong dark:text-accent;
   }
 
   /* Org's #+RESULTS: */
