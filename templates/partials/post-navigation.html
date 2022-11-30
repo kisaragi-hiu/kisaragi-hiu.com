@@ -1,19 +1,18 @@
 {{ $pages := (partial "func-same-section" .) }}
 
 <div class="flex flex-col gap-y-2 prose">
-  <h3 class="text-lg font-bold">Related</h3>
   <!-- prettier-ignore -->
   {{ with $pages.Next . }}
-  <div class="flex items-center space-x-2">
-    Newer:
+  <div class="flex items-center">
+    <span class="mr-2">Newer:</span>
     <a class="link" href="{{.Permalink}}"
       >{{partial "date" .Date}} {{partial "func-cover-title" (dict "item"
       .)}}</a
     >
   </div>
   {{ end }} {{ with $pages.Prev . }}
-  <div class="flex items-center space-x-2">
-    Older:
+  <div class="flex items-center">
+    <span class="mr-2">Older:</span>
     <a class="link" href="{{.Permalink}}"
       >{{ partial "date" .Date }} {{partial "func-cover-title" (dict "item"
       .)}}</a

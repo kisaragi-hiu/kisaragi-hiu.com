@@ -41,11 +41,21 @@
 
 {{ define "footer" }}
   <div class="mt-4 mb-20">
-    <hr />
-    <!-- prettier-ignore -->
-    {{ if not (.Param "special") }}
+  <hr />
+  <!-- prettier-ignore -->
+  {{ if not (.Param "special") }}
   {{ partial "post-navigation" . }}
   {{ end }}
   {{ partial "default-footer" . }}
-  </div>
+
+<hr />
+<script src="https://utteranc.es/client.js"
+        repo="kisaragi-hiu/kisaragi-hiu.com"
+        issue-term="pathname"
+        label="comments"
+        theme="preferred-color-scheme"
+        crossorigin="anonymous"
+        async>
+</script>
+</div>
 {{ end }}
