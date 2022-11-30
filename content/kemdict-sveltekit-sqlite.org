@@ -3,12 +3,15 @@
 #+updated: 2022-11-19T22:08:11+0900
 #+tags[]: javascript svelte nodejs
 #+toc: t
+# I want a floating TOC when the screen is large enough
 
 Version history:
 
 - 2022-11-30: rewrite to make it not about Kemdict
 - 2022-11-19: clarify that this is about SvelteKit on serverless platforms
 - 2022-11-17: first draft
+
+# Give me a hook here
 
 Still a rough draft even though the whole thing has been rewritten.
 
@@ -18,7 +21,11 @@ We're not reading and writing runtime data. A dedicated database (like Supabase)
 
 Keep in mind that if the amount of data you have warrants putting it in an SQLite database and not just JSON, it is almost always better to use a dedicated database or to deploy to Node instead, because a serverless function would have to read the database every time it's invoked.
 
+# But we're still doing it. Why? (1) This is what I was looking for a week or two ago, (2) moving between the two is easy thanks to the adapters architecture
+
 “Serverless” here means “the server side code is written as short-lived one-request functions”, which in practice means “I'm using Netlify (or Vercel or Cloudflare etc.) to make the site with no upfront monetary investment and no need to manage my own server”, which is its nornal definition despite contradicting what “server-less” may seem to suggest.
+
+# Move this elsewhere
 
 * Create the project
 
@@ -86,6 +93,8 @@ Vite is like a supercharged dev server and a production bundler that figures out
 
 For example, using Tailwind CSS is just a matter of installing the =tailwindcss= package and importing your source CSS as usual. Vite knows what to do.
 
+# incorrect. It's a matter of setting up postcss.config.js.
+
 In the case of SvelteKit, Vite doesn't have support for it built in, so SvelteKit provides a Vite plugin to glue them together.
 
 =vite.config.js=:
@@ -137,6 +146,9 @@ export default {
 * Not using adapter-auto
 
 =adapter-auto= looks at the build time environment to determine which adapter it should use. But this only works if you're building on the same platform as you are deploying. For building, I prefer to use GitHub Actions instead of using, say, Cloudflare Pages or Netlify or Vercel's build (CI) system.
+
+# build (ci) system reads like a mouthful.
+# also probably mention GH Actions is cheaper than Netlify, at the expense of perhaps being harder to configure.
 
 So I prefer to just use adapter-netlify (for example) directly.
 
@@ -228,6 +240,8 @@ Create =src/routes/+layout.svelte=. Layouts are components that are wrapped arou
 
 The difference between this file (the root layout) and =app.html= is that this is still a Svelte component, so you can import files in a script tag, use components, etc.
 
+# You *can*, but why should I? Because this lets you tell Vite all your pages depend on this CSS file. Mention this.
+
 =src/routes/+layout.svelte=:
 
 #+begin_src svelte
@@ -240,6 +254,8 @@ The difference between this file (the root layout) and =app.html= is that this i
 #+end_src
 
 =src/lib/MarkdownLayout.svelte= (the component we declared above to wrap all Markdown files):
+
+# clarify that this isn't a sveltekit layout
 
 #+begin_src svelte
 <div class="prose">
@@ -254,6 +270,8 @@ npx vite dev
 #+end_src
 
 *Note that I'm not using the npm scripts that Vite ships in its templates.* Is there really a point to saying =npm run dev= instead of =npx vite dev=? In terms of using consistent task names across projects, sure, but not when explaining how things work. We can add it later.
+
+# Do that. We haven't written the section.
 
 Now let's add the root page.
 
@@ -301,6 +319,8 @@ module.exports = {
 #+end_src
 
 Vite will [[https://vitejs.dev/guide/features.html#postcss][detect the presence of the PostCSS config and process the CSS]] with PostCSS  automatically. Because Tailwind is actually a PostCSS plugin (that happens to have its own CLI), this means it will be processed by Tailwind as specified above.
+
+# as specified above?
 
 Then create a =tailwind.config.cjs=:
 
@@ -365,6 +385,8 @@ In case this is confusing: the server side of a “serverless” application is 
 
 This server side can be a =+page.server.js= (pages only rendered on the server side) or a =+server.js= (API routes that return raw data and not HTML). In this example I'm going to use an API route, then fetch from it on the client side, but this isn't necessary.
 
+# “isn't necessary” sounds like you can do with neither. It sounds wrong.
+
 We need =better-sqlite3= for this.
 
 #+begin_src shell
@@ -376,6 +398,8 @@ Note that currently =better-sqlite3= does not install for Node 19. On Arch Linux
 Also note that this means we have a hard dependency on NodeJS itself, so we cannot deploy to Cloudflare Pages because Cloudflare Workers has its own runtime that isn't compatible.
 
 I'll put the API route in =/heroes=, with the API ~/heroes?q=<query>~; it will return a list of heroes from the database whose names match the query.
+
+# rewrite this.
 
 In =src/routes/heroes/+server.js=:
 
@@ -397,10 +421,13 @@ export function GET({ url }) {
 }
 #+end_src
 
+# number these
+
 - See [[https://kit.svelte.dev/docs/routing#server][=server.js=]] docs for details on GET, =json=, etc.
 - See [[https://github.com/WiseLibs/better-sqlite3/blob/master/docs/api.md][better-sqlite3's docs]] for how we're interacting with the database, particularly [[https://github.com/WiseLibs/better-sqlite3/blob/master/docs/api.md#preparestring---statement][=Database#prepare()=]], [[https://github.com/WiseLibs/better-sqlite3/blob/master/docs/api.md#allbindparameters---array-of-rows][=Statement#all()=]], and [[https://github.com/WiseLibs/better-sqlite3/blob/master/docs/api.md#binding-parameters][Binding Parameters]].
 - We're creating the database by passing it the file contents. This creates an in-memory database, changes to which will be lost. That's fine because the whole premise is that we're reading from a preexisting database that we don't write to.
 - You could make the database writable by passing the file path to the constructor directly, but keep in mind that this will not work in a serverless function, because each invocation is getting its own copy and the modified versions will not be merged together. You need to use a database service or abandon the premise of running your app on serverless platforms.
+  # add an if afterwards
 - The file path is relative to the project root, i.e. where you started Vite.
 - On Netlify, in a monorepo (i.e. your project root is not your repository root), the file path will be relative to the project root during build as expected, but during runtime of the serverless function *it will be relative to repository root instead*. This feels like a bug, but we'll just have to work around it later.
 
@@ -537,3 +564,5 @@ try {
     }
 }
 #+end_src
+
+# Incomplete!
