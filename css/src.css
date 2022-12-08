@@ -59,11 +59,9 @@
   .link {
     /* font-weight: 700; */
     text-decoration: none;
-    border-bottom: 2px solid;
     @apply border-accent;
     &:hover {
       opacity: 1;
-      border-bottom-width: 2px;
       @apply bg-accent/20;
     }
   }
@@ -84,7 +82,7 @@
     @apply my-4;
   }
   .meta {
-    @apply my-4 text-sm w-max;
+    @apply text-sm w-max;
     /* Format like this:
          dd1   dd2   dd3   dd4
           dt1   dt2   dt3   dt4

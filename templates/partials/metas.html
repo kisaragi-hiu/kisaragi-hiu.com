@@ -1,9 +1,9 @@
-<dl class="meta">
+<dl class="meta my-4">
   {{ with .Date }}
-  <div>
-    <dt>{{ partial "func-translate" (dict "id" "Published" "page" $)}}</dt>
-    <dd>{{ partial "date" . }}</dd>
-  </div>
+    <div>
+      <dt>{{ partial "func-translate" (dict "id" "Published" "page" $) }}</dt>
+      <dd>{{ partial "date" . }}</dd>
+    </div>
   {{ end }}
   <!-- prettier-ignore -->
   {{ with .Lastmod }}

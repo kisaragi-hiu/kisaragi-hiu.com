@@ -3,7 +3,7 @@
   {{ partial "avatar" . }}
 {{ partial "heading" (dict "title" .Title "enableTypePath" true "ctx" .) }}
   <hr />
-  <dl class="meta">
+  <dl class="meta my-4">
     {{ with .GetTerms "tags" }}
       <div>
         <dt>Tags</dt>

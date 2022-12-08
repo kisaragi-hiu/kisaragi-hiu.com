@@ -17,7 +17,7 @@
 {{ end }}
   <!-- prettier-ignore -->
   {{ if (or (.GetTerms "tags") (.GetTerms "series")) }}
-<div class="meta">
+<div class="meta mb-4">
   <!-- prettier-ignore -->
   {{ range (.GetTerms "tags") }}
     {{ partial "tag" . }}
@@ -41,21 +41,21 @@
 
 {{ define "footer" }}
   <div class="mt-4 mb-20">
-  <hr />
-  <!-- prettier-ignore -->
-  {{ if not (.Param "special") }}
-  {{ partial "post-navigation" . }}
-  {{ end }}
-  {{ partial "default-footer" . }}
+    <hr class="mb-4" />
+    {{ if not (.Param "special") }}
+      {{ partial "post-navigation" . }}
+    {{ end }}
+    {{ partial "default-footer" . }}
 
-<hr />
-<script src="https://utteranc.es/client.js"
-        repo="kisaragi-hiu/kisaragi-hiu.com"
-        issue-term="pathname"
-        label="comments"
-        theme="preferred-color-scheme"
-        crossorigin="anonymous"
-        async>
-</script>
-</div>
+    <hr />
+    <script
+      src="https://utteranc.es/client.js"
+      repo="kisaragi-hiu/kisaragi-hiu.com"
+      issue-term="pathname"
+      label="comments"
+      theme="preferred-color-scheme"
+      crossorigin="anonymous"
+      async
+    ></script>
+  </div>
 {{ end }}

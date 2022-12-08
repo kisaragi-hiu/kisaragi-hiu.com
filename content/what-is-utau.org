@@ -7,7 +7,7 @@ I wanted a small primer on [[http://utau2008.web.fc2.com/index.html][UTAU]] for 
 
 #+html: <hr>
 
-UTAU, made by [[http://utau2008.blog47.fc2.com/][飴屋／菖蒲（あめや・あやめ）]], consists of:
+UTAU, made by [[http://utau2008.blog47.fc2.com/][飴屋／菖蒲 (あめや・あやめ)]], consists of:
 
 - An editor for notes to be sung, including extra data for each note denoting lyrics, singing styles, etc.
 - The format for those notes — general virtual instruments have MIDI, while UTAU has UST (which stands for /UTAU Sequence Text/)
