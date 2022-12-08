@@ -3,34 +3,40 @@
 #+draft: t
 #+language: en
 #+series: Yearly reviews
+#+toc: t
+
+* Projects
+
+- [[file:projects/kemdict.org][Kemdict]], my new flagship project. It provides a unified search interface for 5 dictionaries from the Taiwanese Ministry of Education, plus a space for me to try to fill in missing words or meanings. (This wouldn't need to exist if Wiktionary didn't consider Chinese languages as just one language.)
+- [[file:projects/yabridgectl-emacs.org][yabridgectl-emacs]], a simple Emacs user interface for [[https://github.com/robbert-vdh/yabridge][yabridge]], like an interactive version of =yabridgectl=.
+- [[file:projects/org-import-simplenote.org][org-import-simplenote]]
+- https://github.com/kisaragi-hiu/interris
+- [[file:projects/ntoml.org][ntoml.el]], a half-done half-abandoned attempt to create a pure Emacs Lisp TOML 1.0 decoder / encoder. Not anywhere near usable.
+- [[file:projects/tftt.org][tftt]], a 1-day project to
 
 * Covers
+
+I made 6 covers this year.
 
 - [[file:covers/20220116-絶対的少年値.org][絶対的少年値]]
 - [[file:covers/20220328-カラカラカラのカラ.org][カラカラカラのカラ]]
 - [[file:covers/20220520-みっともないわ.org][みっともないわ]]
 - [[file:covers/20220603-幻影.org][幻影]]
 - [[file:covers/20220714-大地の閾を探して.org][大地の閾を探して]]
+- [[file:covers/20221009-みかげ日記.org][みかげ日記]]
 
 * This site
 
-12 new articles.
+20 new articles.
 
 * Translation
 
-- Submitted strings to KDE
-- Submitted strings to [[https://flathub.org/apps/details/org.gnome.gitlab.YaLTeR.Identity][Identity]], [[https://flathub.org/apps/details/io.github.seadve.Kooha][Kooha]]
+I started contributing =zh_TW= translations to strings to KDE.
+
+I also translated [[https://flathub.org/apps/details/org.gnome.gitlab.YaLTeR.Identity][Identity]] and [[https://flathub.org/apps/details/io.github.seadve.Kooha][Kooha]].
 
 * Contributions
 
-- [[https://github.com/oakmac/parinfer-elisp][parinfer-elisp]] (parinferlib.el, vendored by parinfer-mode[fn:1]): [[https://github.com/oakmac/parinfer-elisp/pull/14][Increase performance by 50%]]
+- [[https://github.com/oakmac/parinfer-elisp][parinfer-elisp]] (parinferlib.el, vendored by parinfer-mode): [[https://github.com/oakmac/parinfer-elisp/pull/14][Increase performance by 50%]]. [[https://github.com/DogLooksGood/parinfer-mode][parinfer-mode]] has been deprecated and archived, but I've been trying to maintain [[https://github.com/kisaragi-hiu/parinfer-mode][my own fork]] because I'm not used to parinfer-rust-mode.
 - [[https://github.com/org-roam/org-roam/][Org-roam]]: [[https://github.com/org-roam/org-roam/pull/2221][Fix file modification detection failing in some edge cases]]
-
-[fn:1] [[https://github.com/DogLooksGood/parinfer-mode][parinfer-mode]] has been deprecated and archived, but since I find no particular reason to switch to parinfer-rust-mode I've been trying to maintain [[https://github.com/kisaragi-hiu/parinfer-mode][my own fork]].
-
-* Projects
-- [[file:projects/ntoml.org][ntoml.el]]
-- [[file:projects/tftt.org][tftt]]
-- [[file:projects/yabridgectl-emacs.org][yabridgectl-emacs]]
-- [[file:projects/org-import-simplenote.org][org-import-simplenote]]
-- https://github.com/kisaragi-hiu/interris
+- [[https://github.com/search?p=1&q=is:closed+is:pr+author:kisaragi-hiu+archived:false+created:>2022-01-01&type=Issues][20 more drive-by PRs on GitHub that have been merged]]
