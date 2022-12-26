@@ -2,7 +2,7 @@
 #+special: t
 
 #+caption: 如同月球般的荒涼
-[[https://barren-moon.kisaragi-hiu.com][file:barren-moon-1.0.png]]
+[[https://kisaragi-hiu.com/barren-moon][file:barren-moon-1.0.png]]
 
 #+caption: [[https://kisaragi-hiu.com/timer][timer]]
 [[https://kisaragi-hiu.com/timer][file:kisaragi-timer.png]]
