@@ -43,7 +43,7 @@ module.exports = {
         },
       },
       colors: {
-        dropd: "#0d0c0f",
+        dropd: "#09080d",
         dropl: "#f8f8f8",
         primary: "#0d0d0d",
         "primary-dark": "#fefefe",

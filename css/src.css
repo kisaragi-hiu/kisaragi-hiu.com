@@ -11,6 +11,9 @@
 }
 
 @layer base {
+  html {
+    @apply text-primary;
+  }
   p {
     @apply my-2 text-base;
   }
@@ -144,6 +147,7 @@
 
 .prose {
   @apply max-w-none dark:prose-invert;
+  @apply text-primary;
   a {
     @apply proselink;
   }
