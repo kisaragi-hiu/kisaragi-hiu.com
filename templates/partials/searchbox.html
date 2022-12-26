@@ -1,7 +1,7 @@
-{{ $placeholder := (printf "Search %d entries..." (len .))}}
+{{ $placeholder := (printf "Search %d entries..." (len .)) }}
 <input
   type="text"
-  class="border-2 h-10 px-2 w-full dark:bg-black"
+  class="h-10 px-2 w-full border-b-2 border-secondary-light dark:bg-black dark:border-secondary"
   placeholder="{{ $placeholder }}"
   id="search"
   onkeyup="updateSearch()"

@@ -1,35 +1,36 @@
 <script src="/js/search.js"></script>
 
 {{ define "partials/inline/button-checkbox" }}
-<!-- prettier-ignore -->
-{{ $label := .value }}
+  <!-- prettier-ignore -->
+  {{ $label := .value }}
 {{ $partial := .partial }}
 {{ $dict := .dict }}
 {{ $type := .type }}
-<div class="inline-block">
-  <input
-    class="peer hidden"
-    type="checkbox"
-    data-filter="{{ jsonify . }}"
-    id="{{$type}}:{{$label}}"
-    name="{{$type}}:{{$label}}"
-    onchange="updateSearch()"
-  />
-  <label
-    class="hover:bg-accent-light bg-white dark:bg-black border-accent-strong border px-1 peer-checked:bg-accent-light peer-checked:outline-8"
-    for="{{$type}}:{{$label}}"
-  >
-    <!-- prettier-ignore -->
-    {{ if $partial }}
+  <div class="inline-block">
+    <input
+      class="peer hidden"
+      type="checkbox"
+      data-filter="{{ jsonify . }}"
+      id="{{ $type }}:{{ $label }}"
+      name="{{ $type }}:{{ $label }}"
+      onchange="updateSearch()"
+    />
+    <label
+      class="hover:bg-accent-light bg-white dark:bg-black border-accent-strong border px-1 peer-checked:bg-accent-light peer-checked:outline-8"
+      for="{{ $type }}:{{ $label }}"
+    >
+      <!-- prettier-ignore -->
+      {{ if $partial }}
     {{ partial $partial $label }}
     {{ else if $dict }}
     {{ (or (index $dict $label) $label) }}
     {{ else }}
     {{ $label }}
     {{ end }}
-  </label>
-</div>
+    </label>
+  </div>
 {{ end }}
+
 
 <!-- outer div in relative to create a context for the absolute-positioned svg
 
@@ -39,47 +40,52 @@
   <!-- prettier-ignore -->
   {{ $sections := (slice) }}
   {{ range . }}
-  {{ with .Section }}
-  {{ $sections = (union $sections (slice .)) }}
-  {{ end }}
+    {{ with .Section }}
+      {{ $sections = (union $sections (slice .)) }}
+    {{ end }}
   {{ end }}
   {{ $languages := (slice) }}
   {{ range . }}
-  {{ with .Params.language }}
-  {{ $languages = (union $languages (slice .)) }}
+    {{ with .Params.language }}
+      {{ $languages = (union $languages (slice .)) }}
+    {{ end }}
   {{ end }}
-  {{ end }}
-  {{ if (or (gt (len $languages) 1)
-            (gt (len $sections) 1))}}
-  <div id="filters" class="items-start flex space-x-2 my-2">
-    {{ partial "ionicons-filter" "h-5 w-5" }}
-    <div>Filter:</div>
-    <div class="space-y-2">
-      {{ if (gt (len $languages) 1)}}
-      <div>
-        <div>Language:</div>
-        {{ range $languages }}
-        <!-- prettier-ignore -->
-        {{ partial "inline/button-checkbox"
+  {{ if (or (gt (len $languages) 1) (gt (len $sections) 1)) }}
+    <div
+      id="filters"
+      class="bg-white dark:bg-zinc-900 p-2 items-start flex space-x-2 my-2"
+    >
+      <div id="filtersbtn" class="flex space-x-2">
+        <span>{{ partial "ionicons-filter" "h-5 w-5" }}</span>
+        <span>Filter:</span>
+      </div>
+      <div class="space-y-2">
+        {{ if (gt (len $languages) 1) }}
+          <div>
+            <div>Language:</div>
+            {{ range $languages }}
+              <!-- prettier-ignore -->
+              {{ partial "inline/button-checkbox"
                    (dict "value" .
                          "dict" (site).Data.names.lc
                          "type" "language") }}
-      {{ end }}
-      </div>
-      {{ end }} {{ if (gt (len $sections) 1)}}
-      <div>
-        <div>Type:</div>
-        {{ range $sections }}
-        <!-- prettier-ignore -->
-        {{ partial "inline/button-checkbox"
+            {{ end }}
+          </div>
+        {{ end }}
+        {{ if (gt (len $sections) 1) }}
+          <div>
+            <div>Type:</div>
+            {{ range $sections }}
+              <!-- prettier-ignore -->
+              {{ partial "inline/button-checkbox"
                    (dict "value" .
                          "dict" (site).Data.names.sections
                          "type" "section") }}
-      {{ end }}
+            {{ end }}
+          </div>
+        {{ end }}
       </div>
-      {{ end }}
     </div>
-  </div>
   {{ end }}
 </div>
 <ul id="posts" class="mt-8 flex flex-col space-y-2">

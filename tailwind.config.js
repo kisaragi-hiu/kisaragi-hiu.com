@@ -43,10 +43,12 @@ module.exports = {
         },
       },
       colors: {
+        dropd: "#0d0c0f",
+        dropl: "#f8f8f8",
         primary: "#0d0d0d",
         "primary-dark": "#fefefe",
         secondary: "#333333",
-        "secondary-dark": "#cccccc",
+        "secondary-light": "#cccccc",
         accent: "#cdadff",
         "accent-strong": "#7E49B6",
         "accent-light": "#cdadff30",

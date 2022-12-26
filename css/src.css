@@ -7,20 +7,10 @@
 
 /* This works, actually. But it needs to be here. */
 .text-primary {
-  @apply dark:text-[#ffffff];
+  @apply dark:text-primary-dark;
 }
 
 @layer base {
-  html {
-    @apply bg-[#f8f8f8] dark:bg-[#0d0c0f];
-    @apply text-primary;
-  }
-  .outer {
-    /* min() requires Chrome 79 / Firefox 75, from 2019 / 2020 */
-    width: 90%;
-    max-width: 80ch;
-    @apply mx-auto mt-[5%];
-  }
   p {
     @apply my-2 text-base;
   }
@@ -54,7 +44,7 @@
   .iconlink {
     transition: all 100ms ease;
     @apply fill-secondary/40 hover:fill-secondary;
-    @apply dark:fill-secondary-dark hover:fill-secondary-dark/40;
+    @apply dark:fill-secondary-light hover:fill-secondary-light/40;
   }
   .link {
     /* font-weight: 700; */

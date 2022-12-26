@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{or .Params.language .Lang}}">
+<html lang="{{ or .Params.language .Lang }}">
   <head>
     {{ partial "head" . }}
     <link
@@ -8,19 +8,21 @@
       href="/feed.xml"
       title="Atom Feed"
     />
-    {{ block "extra-head" . }} {{ end }}
+    {{ block "extra-head" . }}{{ end }}
   </head>
-  <body>
-    <div class="outer">
+  <body class="text-primary bg-dropl dark:bg-dropd">
+    <!-- min() requires Chrome 79 / Firefox 75, from 2019 / 2020 -->
+    <div class="w-[90%] max-w-[80ch] mx-auto mt-[5%] mb-4">
       <!-- Header -->
-      <header>{{ block "header" . }} {{ partial "avatar" . }} {{ end }}</header>
+      <header>{{ block "header" . }}{{ partial "avatar" . }}{{ end }}</header>
 
       <!-- Contents -->
-      {{ block "main" . }} {{ end }}
+      {{ block "main" . }}{{ end }}
+
 
       <!-- Footer -->
       <footer>
-        {{ block "footer" . }} {{ partial "default-footer" . }} {{ end }}
+        {{ block "footer" . }}{{ partial "default-footer" . }}{{ end }}
       </footer>
     </div>
   </body>
