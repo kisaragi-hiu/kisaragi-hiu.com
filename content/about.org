@@ -5,13 +5,21 @@
 #+hidetitle: true
 
 * 關於我
-大概可以說是軟體工程師吧。有的時候會做翻譯。最近有在做 KDE 的繁中翻譯。
+我是如月飛羽，一個來自台灣的程式開發者。有的時候會做翻譯，主要是會用 Web 技術或是 Emacs 做一些小工具。
+
+我的程式作品集：
+
+- [[https://kemdict.kisaragi-hiu.com][Kemdict 國語整合典]]（SvelteKit）
+- [[https://aqi.tw/][aqi.tw 臺灣空氣品質]]（純 JS 的嘗試）
+- [[/barren-moon][如同月球般的荒涼]]（2019 年的 Hugo 練習）
+- [[/projects/canrylog.html][Canrylog]]（我自己用的時間管理程式）
+- [[https://gitlab.com/kisaragi-hiu/dired-show-readme][dired-show-readme]]（讓 Emacs 的 Dired 檔案管理員開啟資料夾時同時顯示 README 檔案內容）
 
 主要的領域：UTAU 翻唱和混音、軟體翻譯、Emacs 與 Web 開發。
 
 這裡大部分時候是用英文。
 
-這個網站可以說像是我做過的東西的紀錄。
+由於心理狀態的關係學業上不是很順利，但還是希望能對人有幫助。
 
 * About me
 
@@ -29,7 +37,7 @@ This site is my blog, my /digital garden/, a library of what I've made, and a pl
 - Sourcehut:  [[https://gitlab.com/kisaragi-hiu][~kisaragi_hiu]]
 - Twitter:  [[https://twitter.com/kisaragi_hiu][@kisaragi_hiu]]
 - Reddit:  [[https://www.reddit.com/user/flyin1501][u/flyin1501]]
-- YouTube:  [[https://youtube.com/channel/UCl_hsqcvdX0XdgBimRQ6R3A][UCl_hsqcvdX0XdgBimRQ6R3A]]
+- YouTube:  [[https://youtube.com/@kisaragi-hiu][@kisaragi-hiu]]
 - niconico:  [[https://nicovideo.jp/user/38995186][user/38995186]]
 - Pixiv:  [[https://pixiv.me/kisaragi-hiu][kisaragi-hiu]]
 - PGP:  [[/KisaragiHiu.asc][BCC7 4B10 41D4 B7D7 CC8B F402 40EC BEAE A877 5FC2]]

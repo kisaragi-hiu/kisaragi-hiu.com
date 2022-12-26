@@ -2,9 +2,14 @@
 
 This is a library of what I've made, a /digital garden/ of mine, and a playground for web technologies.
 
-# Sub-sites:
+#+html: <hr>
 
-# - [[/tftt][experimental trumpet fingerings training tool]]
-# - [[/barren-moon][如同月球般的荒涼]]
-# - [[/timer][timer]]
-# - [[https://aqi.tw/][aqi.tw]]
+我是如月飛羽，一個來自台灣的程式開發者。有的時候會做翻譯，主要是會用 Web 技術或是 Emacs 做一些小工具。
+
+我的程式作品集：
+
+- [[https://kemdict.kisaragi-hiu.com][Kemdict 國語整合典]]（SvelteKit）
+- [[https://aqi.tw/][aqi.tw 臺灣空氣品質]]（純 JS 的嘗試）
+- [[/barren-moon][如同月球般的荒涼]]（2019 年的 Hugo 練習）
+- [[/projects/canrylog.html][Canrylog]]（我自己用的時間管理程式）
+- [[https://gitlab.com/kisaragi-hiu/dired-show-readme][dired-show-readme]]（讓 Emacs 的 Dired 檔案管理員開啟資料夾時同時顯示 README 檔案內容）

@@ -19,6 +19,28 @@
         </div>
       </nav>
       {{ partial "content" . }}
+      <ul class="flex flex-wrap mt-6">
+        {{ range $k, $v := (site).Data.links }}
+          <li>
+            <a
+              target="_blank"
+              rel="noreferrer"
+              href="{{ $v }}"
+              title="{{ $k }}"
+              class="mr-2 k-btn"
+            >
+              <svg
+                class="h-4 w-4 inline fill-black dark:fill-white"
+                role="img"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                {{ partial "simple-icon" (lower $k) }}
+              </svg>
+            </a>
+          </li>
+        {{ end }}
+      </ul>
       <div>
         <!-- <nav class="flex flex-wrap justify-start gap-3 my-2"> -->
         {{ $covers_featured := (slice) }}
@@ -54,7 +76,9 @@
 
     <main class="col-span-7 col-start-6 row-start-1">
       <hr class="lg:hidden my-8 opacity-50" />
-      <h1 class="font-bold mt-4 mb-2">Entries</h1>
+      <h1 class="font-bold mt-4 mb-2">
+        Blog posts / Projects / Covers / Illustrations
+      </h1>
       {{ partial "searchable-list"
         (sort
         ( (where .Site.RegularPages "Section" "")
