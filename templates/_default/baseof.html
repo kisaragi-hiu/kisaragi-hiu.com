@@ -12,13 +12,19 @@
   </head>
   <body class="text-primary dark:text-primary-dark bg-dropl dark:bg-dropd">
     <!-- min() requires Chrome 79 / Firefox 75, from 2019 / 2020 -->
-    <div class="w-[90%] max-w-[80ch] mx-auto pt-[5%] pb-4">
+    <div class="w-[90%] max-w-[120ch] mx-auto pt-[5%] pb-4">
       <!-- Header -->
       <header>{{ block "header" . }}{{ partial "avatar" . }}{{ end }}</header>
 
       <!-- Contents -->
-      {{ block "main" . }}{{ end }}
-
+      {{ $narrow := (or (.Scratch.Get "wide") true) }}
+      {{ $cls := "max-w-[100ch]" }}
+      {{ if .IsHome }}
+        {{ $cls = "" }}
+      {{ end }}
+      <div class="{{ $cls }} mx-auto">
+        {{ block "main" . }}{{ end }}
+      </div>
 
       <!-- Footer -->
       <footer>

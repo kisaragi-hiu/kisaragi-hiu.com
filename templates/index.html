@@ -1,57 +1,59 @@
 {{ define "main" }}
-  <div class="">
-    <h1 class="font-bold mt-8">
-      <span class="text-4xl">Kisaragi Hiu</span>
-      <br />
-      <span class="text-2xl">如月飛羽</span>
-    </h1>
-    <nav class="flex flex-col mt-4">
+  <div class="lg:grid grid-cols-12 gap-x-4">
+    <div class="col-span-5">
+      <h1 class="font-bold mt-8">
+        <span class="text-4xl">Kisaragi Hiu</span>
+        <br />
+        <span class="text-2xl">如月飛羽</span>
+      </h1>
+      <nav class="flex flex-col mt-4">
+        <div>
+          {{ range (slice (slice "/covers.html" "Covers")
+            (slice "/illust.html" "Illust")
+            (slice "/projects.html" "Projects")
+            (slice "/about.html" "About")
+            (slice "/index.xml" "RSS"))
+          }}
+            <a class="proselink mr-2" href="{{ index . 0 }}">{{ index . 1 }}</a>
+          {{ end }}
+        </div>
+      </nav>
+      {{ partial "content" . }}
       <div>
-        {{ range (slice (slice "/covers.html" "Covers")
-          (slice "/illust.html" "Illust")
-          (slice "/projects.html" "Projects")
-          (slice "/about.html" "About")
-          (slice "/index.xml" "RSS"))
-        }}
-          <a class="proselink mr-2" href="{{ index . 0 }}">{{ index . 1 }}</a>
+        <!-- <nav class="flex flex-wrap justify-start gap-3 my-2"> -->
+        {{ $covers_featured := (slice) }}
+        {{ range (where .Site.RegularPages "Section" "covers") }}
+          {{ if (eq (.Date.Format "2006-01") (now.Format "2006-01")) }}
+            {{ $covers_featured = $covers_featured | append . }}
+          {{ end }}
+        {{ end }}
+        {{ with $covers_featured }}
+          <h1 class="font-bold mt-4">
+            <a class="" href="/covers.html"
+              >New covers ({{ now.Format "2006-01" }})</a
+            >
+          </h1>
+          {{ partial "covers" . }}
+        {{ end }}
+        {{ $illust_featured := (slice) }}
+        {{ range (where .Site.RegularPages "Section" "illust") }}
+          {{ if (eq (.Date.Format "2006-01") (now.Format "2006-01")) }}
+            {{ $illust_featured = $illust_featured | append . }}
+          {{ end }}
+        {{ end }}
+        {{ with $illust_featured }}
+          <h1 class="font-bold mt-4">
+            <a href="/illust.html"
+              >New illustrations ({{ now.Format "2006-01" }})</a
+            >
+          </h1>
+          {{ partial "illustrations" . }}
         {{ end }}
       </div>
-    </nav>
+    </div>
 
-    {{ partial "content" . }}
-    <aside class="col-span-3">
-      <!-- <nav class="flex flex-wrap justify-start gap-3 my-2"> -->
-      {{ $covers_featured := (slice) }}
-      {{ range (where .Site.RegularPages "Section" "covers") }}
-        {{ if (eq (.Date.Format "2006-01") (now.Format "2006-01")) }}
-          {{ $covers_featured = $covers_featured | append . }}
-        {{ end }}
-      {{ end }}
-      {{ with $covers_featured }}
-        <h1 class="font-bold mt-4">
-          <a class="" href="/covers.html"
-            >New covers ({{ now.Format "2006-01" }})</a
-          >
-        </h1>
-        {{ partial "covers" . }}
-      {{ end }}
-      {{ $illust_featured := (slice) }}
-      {{ range (where .Site.RegularPages "Section" "illust") }}
-        {{ if (eq (.Date.Format "2006-01") (now.Format "2006-01")) }}
-          {{ $illust_featured = $illust_featured | append . }}
-        {{ end }}
-      {{ end }}
-      {{ with $illust_featured }}
-        <h1 class="font-bold mt-4">
-          <a href="/illust.html"
-            >New illustrations ({{ now.Format "2006-01" }})</a
-          >
-        </h1>
-        {{ partial "illustrations" . }}
-      {{ end }}
-    </aside>
-    <main>
-      <hr class="my-8 opacity-50" />
+    <main class="col-span-7 col-start-6 row-start-1">
+      <hr class="lg:hidden my-8 opacity-50" />
       <h1 class="font-bold mt-4 mb-2">Entries</h1>
       {{ partial "searchable-list"
         (sort
