@@ -3,22 +3,22 @@
 
      Why? This allows some pages to completely escape the main layouts. -->
 
-{{ $title := .Title }}
-{{ if .IsHome }}
-  {{ $title = "Kisaragi Hiu's home page" }}
-{{ end }}
 <meta charset="utf-8" />
 <meta http-equiv="x-ua-compatible" content="ie=edge" />
 <meta
   name="viewport"
   content="width=device-width, initial-scale=1, shrink-to-fit=no"
 />
+{{ $title := .Title }}
+{{ if .IsHome }}
+  {{ $title = "Kisaragi Hiu's home page" }}
+{{ end }}
 <title>
   {{ block "title" . }}
     {{ if .IsHome }}
-      {{ $title }}
+      Kisaragi Hiu's home page
     {{ else }}
-      {{ $title }} - Kisaragi Hiu
+      {{ .Title }} - Kisaragi Hiu
     {{ end }}
   {{ end }}
 </title>
