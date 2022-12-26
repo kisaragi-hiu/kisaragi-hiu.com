@@ -18,9 +18,9 @@ module.exports = {
         ...cjkFallback,
         "sans-serif",
       ],
-      serif: [
-        "'Equity A'",
-        "'Noto Serif CJK JP'",
+      sansserif: [
+        "'Overpass'",
+        "'Noto Sans CJK JP'",
         ...cjkFallback,
         "sans-serif",
       ],

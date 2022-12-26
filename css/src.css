@@ -34,6 +34,11 @@
 }
 
 @layer components {
+  .k-btn {
+    @apply hover;
+    @apply shadow text-primary bg-white dark:bg-black py-1 m-0 my-2;
+    @apply font-sansserif;
+  }
   /* Blog post, covers */
   .hover {
     @apply hover:bg-accent-light;

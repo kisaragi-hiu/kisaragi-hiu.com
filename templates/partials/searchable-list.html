@@ -35,59 +35,67 @@
 <!-- outer div in relative to create a context for the absolute-positioned svg
 
      A lot of this concept is copied from https://www.swyx.io/ideas/ -->
-<div class="relative">
-  {{ partial "searchbox" . }}
-  <!-- prettier-ignore -->
-  {{ $sections := (slice) }}
+<div class="flex space-x-2 items-center">
+  <div class="relative w-full">
+    {{ partial "searchbox" . }}
+  </div>
+  <div class="relative">
+    <!-- prettier-ignore -->
+    {{ $sections := (slice) }}
   {{ range . }}
-    {{ with .Section }}
-      {{ $sections = (union $sections (slice .)) }}
+      {{ with .Section }}
+        {{ $sections = (union $sections (slice .)) }}
+      {{ end }}
     {{ end }}
-  {{ end }}
   {{ $languages := (slice) }}
   {{ range . }}
-    {{ with .Params.language }}
-      {{ $languages = (union $languages (slice .)) }}
+      {{ with .Params.language }}
+        {{ $languages = (union $languages (slice .)) }}
+      {{ end }}
     {{ end }}
-  {{ end }}
   {{ if (or (gt (len $languages) 1) (gt (len $sections) 1)) }}
-    <div
-      id="filters"
-      class="bg-white dark:bg-zinc-900 p-2 items-start flex space-x-2 my-2"
-    >
-      <div class="flex space-x-2">
-        <span>{{ partial "ionicons-filter" "h-5 w-5" }}</span>
-        <span>Filter:</span>
-      </div>
-      <div class="space-y-2">
-        {{ if (gt (len $languages) 1) }}
-          <div>
-            <div>Language:</div>
-            {{ range $languages }}
-              <!-- prettier-ignore -->
-              {{ partial "inline/button-checkbox"
+      <div
+        id="filters"
+        class="dropdown dropdown-end items-start flex space-x-2 my-2"
+      >
+        <label tabindex="0" class="k-btn flex items-center space-x-2 h-10">
+          <span>{{ partial "ionicons-filter" "h-5 w-5" }}</span>
+          <span>Filter</span>
+        </label>
+        <div
+          tabindex="0"
+          class="dropdown-content space-y-2 bg-white dark:bg-zinc-900 p-4 shadow w-64"
+        >
+          {{ if (gt (len $languages) 1) }}
+            <div>
+              <div>Language:</div>
+              {{ range $languages }}
+                <!-- prettier-ignore -->
+                {{ partial "inline/button-checkbox"
                    (dict "value" .
                          "dict" (site).Data.names.lc
                          "type" "language") }}
-            {{ end }}
-          </div>
-        {{ end }}
-        {{ if (gt (len $sections) 1) }}
-          <div>
-            <div>Type:</div>
-            {{ range $sections }}
-              <!-- prettier-ignore -->
-              {{ partial "inline/button-checkbox"
+              {{ end }}
+            </div>
+          {{ end }}
+          {{ if (gt (len $sections) 1) }}
+            <div>
+              <div>Type:</div>
+              {{ range $sections }}
+                <!-- prettier-ignore -->
+                {{ partial "inline/button-checkbox"
                    (dict "value" .
                          "dict" (site).Data.names.sections
                          "type" "section") }}
-            {{ end }}
-          </div>
-        {{ end }}
+              {{ end }}
+            </div>
+          {{ end }}
+        </div>
       </div>
-    </div>
-  {{ end }}
+    {{ end }}
+  </div>
 </div>
+
 <ul id="posts" class="mt-8 flex flex-col space-y-2">
   <!-- prettier-ignore -->
   {{ range . }}
