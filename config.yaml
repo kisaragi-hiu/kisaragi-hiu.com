@@ -53,6 +53,15 @@ taxonomies:
 
 # * Languages
 hasCJKLanguage: true
+
+# This style fits better
+services:
+  twitter:
+    disableInlineCSS: true
+
+privacy:
+  twitter:
+    simple: true
 # * Local Variables
 # Local Variables:
 # eval: (outline-minor-mode)
