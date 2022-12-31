@@ -8,7 +8,7 @@ This is a library of what I've made, a /digital garden/ of mine, and a playgroun
 
 我的程式作品集：
 
-- [[https://kemdict.kisaragi-hiu.com][Kemdict 國語整合典]]（SvelteKit）
+- [[https://kemdict.com][Kemdict 國語整合典]]（SvelteKit）
 - [[https://aqi.tw/][aqi.tw 臺灣空氣品質]]（純 JS 的嘗試）
 - [[/barren-moon][如同月球般的荒涼]]（2019 年的 Hugo 練習）
 - [[/projects/canrylog.html][Canrylog]]（我自己用的時間管理程式）
