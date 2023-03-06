@@ -1,4 +1,5 @@
 #+title: Trying to set up Emacs for C++
+#+alias: Trying to set up Emacs for Cpp
 #+created: 2022-10-10T22:14:34+0900
 #+tags[]: emacs c++
 #+language: en

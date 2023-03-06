@@ -1,0 +1,80 @@
+#+title: Astro: How to render a loading state for an element
+#+created: 2023-03-07T01:26:29+0900
+#+tags[]: astro javascript
+
+Sometimes you just have a component that takes a while to hydrate, and you want to show a loading indicator instead of pretending that it is interactive.
+
+In SvelteKit you can do this:
+
+#+begin_src svelte
+<script>
+  import { browser } from "$app/environment";
+  import Spinner from "$lib/Spinner.svelte";
+
+  import Component from "./Component.svelte";
+  import TreeThatTakes from "./TreeThatTakes.svelte";
+  import SomeTime from "./SomeTime.svelte";
+  import ToHydrate from "./ToHydrate.svelte";
+</script>
+
+{#if browser}
+  <Component>
+    <TreeThatTakes />
+    <SomeTime />
+    <ToHydrate />
+  </Component>
+{:else}
+  <Spinner />
+{/if}
+#+end_src
+
+Now the server side renders the spinner, and after it's hydrated the main component tree will be rendered on the client.
+
+Astro does not have an equivalent variable that you can use, however.
+
+[[https://stackoverflow.com/a/75274563][This StackOverflow answer by wassfila]] shows how you do it in Astro:
+
+- render both on the server but with the main component tree hidden,
+- then on the client, after the component has been loaded, unhide the main component tree and hide the spinner.
+
+When using Svelte with Astro it looks like this (assuming you have a global class =.hidden {display: none}=):
+
+#+begin_src svelte
+<script>
+  import Spinner from "$src/components/Spinner.svelte";
+  import { onMount } from "svelte";
+  let spinner;
+  let main;
+  // Thanks https://stackoverflow.com/a/75274563
+  onMount(() => {
+    spinner.classList.toggle("hidden");
+    main.classList.toggle("hidden");
+  });
+
+  import Component from "./Component.svelte";
+  import TreeThatTakes from "./TreeThatTakes.svelte";
+  import SomeTime from "./SomeTime.svelte";
+  import ToHydrate from "./ToHydrate.svelte";
+</script>
+
+<div class="hidden" bind:this={main}>
+  <Component>
+    <TreeThatTakes />
+    <SomeTime />
+    <ToHydrate />
+  </Component>
+</div>
+<div bind:this={spinner}>
+  <Spinner />
+</div>
+#+end_src
+
+Of course, this component also has to actually be loaded on the client.
+
+#+begin_src astro
+---
+import MyComponent from "$src/components/MyComponent.svelte";
+---
+
+<MyComponent client:load />
+#+end_src
