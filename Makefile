@@ -4,6 +4,9 @@ export LANG=en_US.UTF-8
 
 .PHONY: clean zip css dev
 
+node_modules: package.json
+	npm install
+
 dev-hugo:
 	hugo server --disableFastRender
 

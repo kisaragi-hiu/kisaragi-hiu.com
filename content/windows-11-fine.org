@@ -19,20 +19,51 @@ I upgraded my main PC's Windows install to Windows 11. It's honestly fine, I jus
 
 - This translation is nonsense. (“Allow microphone access to location data”)
 
-  {{< tweet user="flyin1501" id="1454309230626758658" >}}
+  #+begin_quote
+  「マイクに位置情報へのアクセスを許可する」??
+  =@Windows_Japan= #Windows11
+
+  [[/20211030T133631+0900.png]]
+
+  — 如月飛羽🌈 (=@kisaragi_hiu=) [[https://twitter.com/kisaragi_hiu/status/1454309230626758658][October 30, 2021]]
+  #+end_quote
 
 - I can tell the original text is “You're x% there”, but translating that into *「あなたはそこにx%です」 is just… broken.* Does Microsoft use Bing Translate to fill in untranslated strings? That could arguably be better than falling back to English, but surely /Microsoft/ has the ability to hire translators?
 
-  {{< tweet user="flyin1501" id="1454408068578435081" >}}
+  #+begin_quote
+  何なの、この翻訳？
+
+  =@Windows_Japan= #Windows11
+
+  [[/20211030_202028.jpg]]
+
+  — 如月飛羽🌈 (=@kisaragi_hiu=) [[https://twitter.com/kisaragi_hiu/status/1454408068578435081][October 30, 2021]]
+  #+end_quote
 
 - The system tray (now called the /Taskbar Edge Icons/) still uses Windows 10-style hover background, where the background extends to the edge of the taskbar.
 
 - They seem to have forgotten to update the visual style of this menu.
 
-  {{< tweet user="flyin1501" id="1454310451030884359" >}}
+  #+begin_quote
+  "Visual Consistency"
+
+  #Windows11
+
+  [[/20211030T135148+0900.png]]
+
+  — 如月飛羽🌈 (=@kisaragi_hiu=) [[https://twitter.com/kisaragi_hiu/status/1454310451030884359][October 30, 2021]]
+  #+end_quote
 
 - MS Gothic is used by default on the taskbar. Note how it is a bitmap font at this size — this is why MS Gothic (along with PMingLiU, SimSun, and the Korean equivalent) should be banished. Keep them for compatibility, but please make sure it's not used in a component that's newly released in 2021.
 
-  {{< tweet user="flyin1501" id="1454311191400960011" >}}
+  #+begin_quote
+  こんなところで MS Gothic を使わないでほしい… =@Windows_Japan=
+
+  #Windows11
+
+  [[/20211030T135450+0900.png]]
+
+  — 如月飛羽🌈 (=@kisaragi_hiu=) [[https://twitter.com/kisaragi_hiu/status/1454311191400960011][October 30, 2021]]
+  #+end_quote
 
 - Can the /All apps/ button in the start menu be made a little bit more prominent? I understand it works just fine on a tablet, but that button is going to be used /so much more/ often than anything else.

@@ -11,7 +11,11 @@ I'm currently making a new cover using UTAU, after having broken the last streak
 
 My biggest obstacle is automating the rendering itself: I don't know if UTAU has a command line interface, and using =xdotool= proved to be too unreliable when I tried. (It was frustrating.)
 
-{{< tweet user="flyin1501" id="1116410591747305472" >}}
+#+begin_quote
+How do I render a UST from the command line…
+
+— 如月飛羽🌈 (=@kisaragi_hiu=) [[https://twitter.com/kisaragi_hiu/status/1116410591747305472][April 12, 2019]]
+#+end_quote
 
 As it turned out, automating the rest of the rendering process is still really helpful. Here is the Makefile for UTAU projects [fn:1]:
 
