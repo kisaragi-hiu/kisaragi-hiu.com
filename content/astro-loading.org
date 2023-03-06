@@ -41,6 +41,7 @@ When using Svelte with Astro it looks like this (assuming you have a global clas
 
 #+begin_src svelte
 <script>
+  // I map "$src" to "/src" in tsconfig.json to not have to deal with relative paths
   import Spinner from "$src/components/Spinner.svelte";
   import { onMount } from "svelte";
   let spinner;
