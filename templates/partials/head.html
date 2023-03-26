@@ -82,7 +82,12 @@
       o.src = t;
       o.id = "fathom-script";
       m.parentNode.insertBefore(o, m);
-    })(document, window, "//fathom.kisaragi-hiu.com/tracker.js", "fathom");
+    })(
+      document,
+      window,
+      "https://fathom.kisaragi-hiu.com/tracker.js",
+      "fathom"
+    );
     fathom("set", "siteId", "FYSHR");
     fathom("trackPageview");
   }

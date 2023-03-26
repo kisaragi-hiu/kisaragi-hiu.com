@@ -14,8 +14,8 @@
   class="text-primary hover pr-2 h-full flex space-x-2 items-center hover:no-underline"
 >
   {{ if $thumb }}
-  <!-- Left part: the image -->
-  <img class="w-24 object-cover max-h-16 py-2" src="{{ $thumb }}" />
+    <!-- Left part: the image -->
+    <img alt="" class="w-24 object-cover max-h-16 py-2" src="{{ $thumb }}" />
   {{ end }}
   <!-- Right part: title and metadata -->
   <div class="grow">
@@ -24,10 +24,10 @@
       <div class="">{{ partial "date" $item.Date }}</div>
     </div>
     {{ if $is_cover }}
-    <span>本家 {{ $item.Params.origauthor }}</span>
+      <span>本家 {{ $item.Params.origauthor }}</span>
     {{ else }}
-    <!-- prettier-ignore -->
-    {{ range (slice "series" "tags")}}
+      <!-- prettier-ignore -->
+      {{ range (slice "series" "tags")}}
     {{ $type := . }}
     {{ with $item.GetTerms $type }}
     <span>
@@ -37,6 +37,7 @@
       <span class="{{$type}} proselink">{{ .LinkTitle | lower}}</span>
       {{ end }}
     </span>
-    {{ end }} {{ end }} {{ end }}
+    {{ end }} {{ end }}
+    {{ end }}
   </div>
 </div>
