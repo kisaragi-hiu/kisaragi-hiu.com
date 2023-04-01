@@ -47,15 +47,17 @@
     {{ end }}
     {{ partial "default-footer" . }}
 
-    <hr />
-    <script
-      src="https://utteranc.es/client.js"
-      repo="kisaragi-hiu/kisaragi-hiu.com"
-      issue-term="pathname"
-      label="comments"
-      theme="preferred-color-scheme"
-      crossorigin="anonymous"
-      async
-    ></script>
+    {{ if not (eq .Title "404") }}
+      <hr />
+      <script
+        src="https://utteranc.es/client.js"
+        repo="kisaragi-hiu/kisaragi-hiu.com"
+        issue-term="pathname"
+        label="comments"
+        theme="preferred-color-scheme"
+        crossorigin="anonymous"
+        async
+      ></script>
+    {{ end }}
   </div>
 {{ end }}
