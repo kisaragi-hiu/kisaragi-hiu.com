@@ -14,7 +14,6 @@ public
 sitemap.txt
 /static/external/
 /static/js/*.min.js
-/static/_redirects
 tags/*
 node_modules
 *.map
