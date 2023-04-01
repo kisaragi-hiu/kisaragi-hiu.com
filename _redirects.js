@@ -1,3 +1,12 @@
+function subproject(from, to, code = "200!") {
+  return `
+${from}/* ${to}/:splat ${code}
+${from} ${to}/ ${code}
+`.trim();
+}
+
+console.log(
+  `
 # /static is now available under /
 /static/* /:splat 200
 
@@ -8,11 +17,13 @@
 
 # Rewrites
 /poems /barren-moon
-/barren-moon/* https://barren-moon.kisaragi-hiu.com/:splat 200!
-/timer/* https://gleaming-sable-d8c2fd.netlify.app/:splat 200!
-/list-of-plants-of-formosa/* https://snazzy-cactus-50328e.netlify.app/:splat 200!
-/list-of-plants-of-formosa https://snazzy-cactus-50328e.netlify.app/ 200!
-/tftt/* https://fantastic-sawine-86f651.netlify.app/:splat 200!
+${subproject("/barren-moon", "https://barren-moon.kisaragi-hiu.com")}
+${subproject("/timer", "https://gleaming-sable-d8c2fd.netlify.app")}
+${subproject(
+  "/list-of-plants-of-formosa",
+  "https://snazzy-cactus-50328e.netlify.app"
+)}
+${subproject("/tftt", "https://fantastic-sawine-86f651.netlify.app")}
 
 # etc.
 
@@ -76,4 +87,5 @@
 
 # We have to do this explicitly
 /* /404 404
-
+`.trim()
+);

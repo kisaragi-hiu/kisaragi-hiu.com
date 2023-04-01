@@ -14,7 +14,7 @@ public
 sitemap.txt
 /static/external/
 /static/js/*.min.js
-/static/barren-moon
+/static/_redirects
 tags/*
 node_modules
 *.map

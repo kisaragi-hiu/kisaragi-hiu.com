@@ -22,6 +22,9 @@ dev:
 static/css/built.css: css/src.css
 	npx tailwindcss --minify --postcss -i css/src.css -o static/css/built.css
 
+static/_redirects: _redirects.js
+	node _redirects.js > static/_redirects
+
 clean:
 	git clean -Xdf
 
