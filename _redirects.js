@@ -1,3 +1,12 @@
+// I remember why I used the deploy to Git hack now...
+//
+// When rewriting, Netlify does not redirect you to /abc/ for /abc,
+// resulting in fetching resources from one directory higher.
+//
+// This function is an unsuccessful attempt to get Netlify to actually
+// redirect /abc to /abc/.
+//
+// Right now I'm instead just doing client side redirects.
 function subproject(from, to, code = "200!") {
   return `
 ${from}/* ${to}/:splat ${code}

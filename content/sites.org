@@ -9,3 +9,6 @@
 
 #+caption: experimental trumpet fingerings training tool
 [[https://kisaragi-hiu.com/tftt][file:tftt.png]]
+
+#+caption: list of plants of formosa digitization
+[[https://kisaragi-hiu.com/list-of-plants-of-formosa][list-of-plants-of-formosa]]
