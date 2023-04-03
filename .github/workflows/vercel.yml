@@ -19,6 +19,7 @@ jobs:
         with:
           submodules: true
           ssh-key: ${{ secrets.SSH_KEY }}
+          ssh-known-hosts: ${{ secrets.SSH_KNOWN_HOSTS }}
       # - uses: pnpm/action-setup@v2
       #   with:
       #     version: 8
