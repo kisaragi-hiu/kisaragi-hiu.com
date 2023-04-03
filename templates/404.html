@@ -1,0 +1,24 @@
+{{ define "header" }}
+  <script type="text/javascript" src="/js/404.js"></script>
+  {{ partial "avatar" . }}
+  {{ partial "heading"
+    (dict
+    "title" "404"
+    "enableTypePath" true
+    "ctx" .)
+  }}
+{{ end }}
+
+{{ define "main" }}
+  <article class="prose">
+    <p>This page does not exist.</p>
+    <p><a href="/">Back to home.</a></p>
+  </article>
+{{ end }}
+
+{{ define "footer" }}
+  <div class="mt-8 mb-20">
+    <hr class="mb-4" />
+    {{ partial "default-footer" . }}
+  </div>
+{{ end }}

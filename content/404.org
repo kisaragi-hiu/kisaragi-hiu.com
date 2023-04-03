@@ -1,6 +1,0 @@
-#+title: 404
-#+special: true
-
-This page does not exist.
-
-[[/][Back to home.]]
