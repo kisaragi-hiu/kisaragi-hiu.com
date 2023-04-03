@@ -1,6 +1,9 @@
 // This is what I actually edit when I commit vercel.json.
 
-let config = {};
+let config = {
+  buildCommand: "make build.vercel",
+  outputDirectory: "public",
+};
 function rewrite(from, to) {
   config.rewrites = config.rewrites || [];
   config.rewrites.push({

@@ -1,4 +1,6 @@
 {
+  "buildCommand": "make build.vercel",
+  "outputDirectory": "public",
   "rewrites": [
     {
       "source": "/static/:slug*",
