@@ -38,3 +38,8 @@ public.zip: public
 public: static/css/built.css js
 	hugo --minify
 	@touch public
+
+build.vercel: static/css/built.css js
+	@hugo --minify -d .vercel/output/static
+	@echo "Creating Vercel output config..."
+	@echo '{"version":3}' > .vercel/output/config.json

@@ -1,0 +1,46 @@
+name: Deploy
+
+on:
+  push:
+    branch:
+      - source
+  workflow_dispatch:
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  "build":
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          submodules: true
+          ssh-key: ${{ secrets.SSH_KEY }}
+      # - uses: pnpm/action-setup@v2
+      #   with:
+      #     version: 8
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: "0.111.3"
+          extended: true
+      - name: Set up Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+          cache: "npm"
+      - name: Install packages
+        run: |
+          npm ci
+      - name: Build
+        run: |
+          make build.vercel
+      - name: Deploy
+        env:
+          VERCEL_SITE_ID: ${{ secrets.VERCEL_SITE_ID }}
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+        run: |
+          vercel deploy --prebuilt --prod --token ${{ secrets.VERCEL_TOKEN }}
