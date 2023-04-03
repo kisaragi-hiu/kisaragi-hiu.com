@@ -13,7 +13,10 @@ function redirect(from, to) {
   config.redirects.push({ source: from, destination: to });
 }
 function subproject(from, to) {
+  // Add the trailing slash
+  redirect(`${from}/:slug*`, `${from}/:slug*/`);
   redirect(from, `${from}/`);
+  // Tell the server where to find the content
   rewrite(`${from}/:slug*`, `${to}/:slug*`);
   rewrite(`${from}/`, to);
 }
@@ -130,4 +133,4 @@ redirect("/category/experiment", "/tags/experiments");
 redirect("/category/:series*", "/series/:series*");
 redirect("/series/tutorials", "/tags/tutorials");
 
-console.log(JSON.stringify(config));
+console.log(JSON.stringify(config, undefined, 2));
