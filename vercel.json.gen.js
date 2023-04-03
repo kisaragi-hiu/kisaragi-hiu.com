@@ -12,6 +12,8 @@ function redirect(from, to) {
   config.redirects = config.redirects || [];
   config.redirects.push({ source: from, destination: to });
 }
+// Yes, this is better than doing the same on the client side for
+// every single subproject.
 function subproject(from, to) {
   // Add the trailing slash
   redirect(`${from}/:slug(.*)*:last([^/])`, `${from}/:slug*:last*/`);
