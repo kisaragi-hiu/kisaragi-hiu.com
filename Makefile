@@ -39,7 +39,10 @@ public: static/css/built.css js
 	hugo --minify
 	@touch public
 
-build.vercel: static/css/built.css js
+vercel.json: generate-vercel-config.js
+	node generate-vercel-config.js > vercel.json
+
+build.vercel: static/css/built.css js vercel.json
 	@hugo --minify -d .vercel/output/static
 	@echo "Creating Vercel output config..."
 	@echo '{"version":3}' > .vercel/output/config.json
