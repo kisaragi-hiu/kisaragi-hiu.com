@@ -13,9 +13,9 @@ function redirect(from, to) {
   config.redirects.push({ source: from, destination: to });
 }
 function subproject(from, to) {
+  redirect(from, `${from}/`);
   rewrite(`${from}/:slug*`, `${to}/:slug*`);
   rewrite(`${from}/`, to);
-  rewrite(from, to);
 }
 
 rewrite("/static/:slug*", "/:slug*");
