@@ -31,7 +31,7 @@ for (const x of ["/feed.xml", "/rss.xml", "/atom.zml", "/feeds/all.atom.xml"]) {
   rewrite(x, "/index.xml");
 }
 redirect("/poems", "/barren-moon");
-subproject("/barren-moon", "https://barren-moon.vercel.app");
+subproject("/barren-moon", "https://barren-moon.kisaragi-hiu.com");
 subproject("/timer", "https://timer-alpha-one.vercel.app");
 subproject(
   "/list-of-plants-of-formosa",
