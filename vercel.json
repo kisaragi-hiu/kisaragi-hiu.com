@@ -21,7 +21,7 @@
       "destination": "/index.xml"
     },
     {
-      "source": "/barren-moon/:slug*",
+      "source": "/barren-moon/:slug(.*)*",
       "destination": "https://barren-moon.vercel.app/:slug*"
     },
     {
@@ -29,7 +29,7 @@
       "destination": "https://barren-moon.vercel.app"
     },
     {
-      "source": "/timer/:slug*",
+      "source": "/timer/:slug(.*)*",
       "destination": "https://timer-alpha-one.vercel.app/:slug*"
     },
     {
@@ -37,7 +37,7 @@
       "destination": "https://timer-alpha-one.vercel.app"
     },
     {
-      "source": "/list-of-plants-of-formosa/:slug*",
+      "source": "/list-of-plants-of-formosa/:slug(.*)*",
       "destination": "https://list-of-plants-of-formosa.vercel.app/:slug*"
     },
     {
@@ -45,7 +45,7 @@
       "destination": "https://list-of-plants-of-formosa.vercel.app"
     },
     {
-      "source": "/tftt/:slug*",
+      "source": "/tftt/:slug(.*)*",
       "destination": "https://trumpet-fingerings-practice-tool-experiment.vercel.app/:slug*"
     },
     {
@@ -59,7 +59,7 @@
       "destination": "/barren-moon"
     },
     {
-      "source": "/barren-moon/:slug*",
+      "source": "/barren-moon/:slug(.*)*([^/])",
       "destination": "/barren-moon/:slug*/"
     },
     {
@@ -67,7 +67,7 @@
       "destination": "/barren-moon/"
     },
     {
-      "source": "/timer/:slug*",
+      "source": "/timer/:slug(.*)*([^/])",
       "destination": "/timer/:slug*/"
     },
     {
@@ -75,7 +75,7 @@
       "destination": "/timer/"
     },
     {
-      "source": "/list-of-plants-of-formosa/:slug*",
+      "source": "/list-of-plants-of-formosa/:slug(.*)*([^/])",
       "destination": "/list-of-plants-of-formosa/:slug*/"
     },
     {
@@ -83,7 +83,7 @@
       "destination": "/list-of-plants-of-formosa/"
     },
     {
-      "source": "/tftt/:slug*",
+      "source": "/tftt/:slug(.*)*([^/])",
       "destination": "/tftt/:slug*/"
     },
     {

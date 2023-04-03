@@ -14,10 +14,10 @@ function redirect(from, to) {
 }
 function subproject(from, to) {
   // Add the trailing slash
-  redirect(`${from}/:slug*`, `${from}/:slug*/`);
+  redirect(`${from}/:slug(.*)*([^/])`, `${from}/:slug*/`);
   redirect(from, `${from}/`);
   // Tell the server where to find the content
-  rewrite(`${from}/:slug*`, `${to}/:slug*`);
+  rewrite(`${from}/:slug(.*)*`, `${to}/:slug*`);
   rewrite(`${from}/`, to);
 }
 
