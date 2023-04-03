@@ -59,32 +59,32 @@
       "destination": "/barren-moon"
     },
     {
-      "source": "/barren-moon/:slug(.*)*([^/])",
-      "destination": "/barren-moon/:slug*/"
+      "source": "/barren-moon/:slug(.*)*:last([^/])",
+      "destination": "/barren-moon/:slug*:last*/"
     },
     {
       "source": "/barren-moon",
       "destination": "/barren-moon/"
     },
     {
-      "source": "/timer/:slug(.*)*([^/])",
-      "destination": "/timer/:slug*/"
+      "source": "/timer/:slug(.*)*:last([^/])",
+      "destination": "/timer/:slug*:last*/"
     },
     {
       "source": "/timer",
       "destination": "/timer/"
     },
     {
-      "source": "/list-of-plants-of-formosa/:slug(.*)*([^/])",
-      "destination": "/list-of-plants-of-formosa/:slug*/"
+      "source": "/list-of-plants-of-formosa/:slug(.*)*:last([^/])",
+      "destination": "/list-of-plants-of-formosa/:slug*:last*/"
     },
     {
       "source": "/list-of-plants-of-formosa",
       "destination": "/list-of-plants-of-formosa/"
     },
     {
-      "source": "/tftt/:slug(.*)*([^/])",
-      "destination": "/tftt/:slug*/"
+      "source": "/tftt/:slug(.*)*:last([^/])",
+      "destination": "/tftt/:slug*:last*/"
     },
     {
       "source": "/tftt",
