@@ -14,6 +14,7 @@ function redirect(from, to) {
 }
 function subproject(from, to) {
   rewrite(`${from}/:slug*`, `${to}/:slug*`);
+  rewrite(`${from}/`, to);
   rewrite(from, to);
 }
 
