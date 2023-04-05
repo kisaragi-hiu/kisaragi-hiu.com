@@ -46,7 +46,7 @@ module.exports = {
         dropd: "#09080d",
         dropl: "#f8f8f8",
         primary: "#0d0d0d",
-        "primary-dark": "#fefefe",
+        "primary-dark": "#e4e4e7",
         secondary: "#333333",
         "secondary-light": "#cccccc",
         accent: "#cdadff",
