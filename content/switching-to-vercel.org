@@ -1,0 +1,120 @@
+#+title: Why I switched to Vercel for this site
+#+subtitle: …from Netlify. As a Hugo site.
+#+created: 2023-04-06T01:57:49+0900
+#+tags[]: meta web
+
+#+begin_quote
+*TL;DR*: Vercel allows me to host subprojects like
+
+- subproject A: kisaragi-hiu.com/subproject-a → example-1aLyX9xX8.vercel.app
+- subproject B: kisaragi-hiu.com/subproject-b → example-T7nmDoVGB.vercel.app
+- parent: kisaragi-hiu.com
+
+without adding an ugly client side redirect snippet to every single subproject.
+#+end_quote
+
+I have some projects that I want to host as subdirectories, instead of their own domains or subdomains. So, like https://kisaragi-hiu.com/list-of-plants-of-formosa and not like =barren-moon.kisaragi-hiu.com=.
+
+There are some ways to do this: pull the code for these “subprojects” during build of the parent site and build them together, which is slow, and subproject changes only show up after a parent rebuild; build the subprojects beforehand, and pull the built artifacts during parent build, which isn't as slow but changes still only show up after a parent rebuild; or build and host the subprojects and the parent separately, and rely on the [[https://docs.netlify.com/routing/redirects/rewrites-proxies/][URL rewrites feature]], also called /URL proxies/.
+
+This is ideal, as now I just need to set it up like this:
+
+- subproject A: example-1aLyX9xX8.netlify.app
+- subproject B: example-T7nmDoVGB.netlify.app
+- parent: kisaragi-hiu.com
+
+Then add
+
+#+begin_src text
+/subproject-a https://example-1aLyX9xX8.netlify.app 200!
+/subproject-b https://example-T7nmDoVGB.netlify.app 200!
+#+end_src
+
+to the parent =_redirects=, and subprojects will update as soon as I deploy them, and the parent project remains fast to build.
+
+The problem is, on Netlify the path normalization is flawed but still cannot be turned off. In this configuration, it makes =/subproject-a= and =/subproject-a/= serve the same content [[https://answers.netlify.com/t/bug-in-non-trailing-slash-rewrite/452/1][without normalizing which one the browser navigates to, causing relative paths to not resolve correctly]]. The only workaround is to jump to the right one on the client side like this:
+
+#+begin_src js
+// https://answers.netlify.com/t/bug-in-non-trailing-slash-rewrite/452/24
+if (
+  (window.location.href.match(/\//g) || []).length > 2 &&
+  !window.location.href.endsWith("/")
+) {
+  window.location.href = window.location.href + "/";
+}
+#+end_src
+
+Vercel does not have this problem. Its redirect engine does not normalize away trailing slashes before your redirect rules are applied, allowing you to manipulate it as you will, for example to always add a trailing slash like this:
+
+#+begin_src json
+{
+  "rewrites": [
+    {
+      "source": "/barren-moon/:slug(.*)*",
+      "destination": "https://barren-moon.kisaragi-hiu.com/:slug*"
+    },
+    {
+      "source": "/barren-moon/",
+      "destination": "https://barren-moon.kisaragi-hiu.com"
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/barren-moon/:slug(.*)*:last([^/])",
+      "destination": "/barren-moon/:slug*:last*/"
+    },
+    {
+      "source": "/barren-moon",
+      "destination": "/barren-moon/"
+    }
+  ]
+}
+#+end_src
+
+#+begin_quote
+Caveats of this example: the redirects part should've been done with the [[https://vercel.com/docs/concepts/projects/project-configuration#trailingslash][trailingSlash]] property (by simply setting it to true), but I only realized it's a feature that exists after having trial-and-error'd to this solution, at which point I didn't want to bother changing it.
+
+I also generate my =vercel.json= on build, so I'm not actually writing this much code.
+#+end_quote
+
+That's the entire reason. Vercel allows me to host subprojects like this without adding an ugly client side redirect snippet to every single subproject. The rest is a braindump of thoughts I have about the process.
+
+#+html: <hr>
+
+- Vercel does not seem to have an easy way to deploy a zip file through its API. Fair enough — the CLI is easy enough to use, and it's not like there isn't [[https://vercel.com/docs/rest-api/endpoints#create-a-new-deployment][an API]] still.
+- The existence of the [[https://vercel.com/blog/build-output-api][Build Output API]] is pretty nice.
+- When using an external CI (GitHub Actions for this site) to build before deploying to Vercel, I expected =vercel deploy --prebuilt= to still pick up the =vercel.json= at root (including the redirects and rewrites within), but it doesn't seem to do that. Switching to setting up the environment and building through =vercel pull= and =vercel build= (still on GitHub Actions, using [[https://vercel.com/guides/how-can-i-use-gitlab-pipelines-with-vercel][Vercel's guide for GitLab CI as a reference]]) allowed the redirect rules to be applied, implying one of those (I guess =vercel build=) is propagating =vercel.json= settings to =.vercel/output/config.json= … I guess.
+- For this site (the parent project) specifically, I had to build on GitHub Actions because I need private submodules during build, and need to set up a build-time SSH key to access those submodules.
+- For [[https://gitlab.com/kisaragi-hiu/list-of-plants-of-formosa/][list-of-plants-of-formosa]], I couldn't build on Vercel's servers because I need =asciidoctor= installed, and the docs for setting up non-npm dependencies /for build/ (not serverless functions) seems to be non-existent. I'm building on GitLab CI instead.
+- Vercel's docs are beautiful, easy to search and navigate, but often lacks crucial details.
+  - The [[https://vercel.com/docs/build-output-api/v3][Build Output API]] page has no links to its child pages, relying on the left side table of contents to link to them; I was reading the docs on my phone, and because the mobile layout hides the site-wide table of contents, there were no links to any of them, and I incorrectly thought it's entirely documented by examples and a blog post despite the fancy name as a result.
+  - The [[https://vercel.com/docs/concepts/projects/project-configuration#redirects][redirects]] and rewrites field pattern syntax is actually “documented” only with examples.
+
+    #+begin_quote
+    Rewrite object definition:
+
+    - source: A pattern that matches each incoming pathname (excluding querystring).
+    - destination: An absolute pathname to an existing resource or an external URL.
+
+    — https://vercel.com/docs/concepts/projects/project-configuration#rewrites
+    #+end_quote
+
+    The source does not explain what sort of pattern it is. I happen to recognize that it looks like [[https://www.npmjs.com/package/path-to-regexp][path-to-regexp]], but this isn't exactly obvious.
+
+    The destination is worse: it's obviously not just a pathname, and I still have no idea how the syntax works beyond that =:name*= stands for the thing matched as the =name= field in the source pattern.
+
+- To make it so that Vercel does not automatically deploy on push (so that you can manually deploy, or automatically deploy from another CI), you have to
+
+  1. Follow the [[https://vercel.com/docs/concepts/deployments/configure-a-build#skip-build-step][Skip Build Step]] instructions (set framework preset to “Other”, override the build command, and leave it empty)
+
+  2. Discover that this actually means your files are served as-is from the repository and a deploy still happens
+
+  3. Go to Project Settings → Git → Ignored Build Step, and set the command to =true= to always act as if the Git hash hasn't changed
+
+  Clear as mud, right?
+
+- I like how Vercel's default project name / subdomain is derived from the repository name (like =timer-alpha-one= for a project called =timer=), rather than being effectively random like on Netlify (like =gleaming-sable-d8c2fd=). The project overview is easily recognizable by default.
+
+- Vercel doesn't support generating a [[https://docs.netlify.com/configure-builds/repo-permissions-linking/#deploy-keys][deploy (SSH) key]] for builds of a project in order to authenticate with private submodules. This is relatively easy to work around: use another build service that does support it, then build and deploy from there.
+
+- Both Vercel and Netlify's mobile interface are quite easy to use. For various reasons, I actually did the migration on my phone over the course of about 4 hours — I hit more issues than I expected and had to go through a few push-to-production test cycles, but at least fighting my way through desktop interfaces on a 5 inch screen wasn't one of them.
