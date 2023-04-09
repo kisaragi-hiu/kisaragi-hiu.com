@@ -2,7 +2,7 @@ name: Deploy
 
 on:
   push:
-    branch:
+    branches:
       - source
   workflow_dispatch:
 
