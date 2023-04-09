@@ -26,6 +26,8 @@ function subproject(from, to) {
   rewrite(`${from}/`, to);
 }
 
+redirect("/:path(.*)*.html", "/:path*");
+
 rewrite("/static/:slug*", "/:slug*");
 for (const x of ["/feed.xml", "/rss.xml", "/atom.zml", "/feeds/all.atom.xml"]) {
   rewrite(x, "/index.xml");
