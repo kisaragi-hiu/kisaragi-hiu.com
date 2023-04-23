@@ -1,0 +1,29 @@
+#+title: 2023 review
+#+published: 2023-12-31
+#+draft: t
+#+language: en
+#+series: Yearly reviews
+#+toc: t
+
+* Projects
+
+I think I made some projects that I'm reasonably proud of.
+
+- [[file:projects/kemdict.org][Kemdict]] updates.
+
+- [[https://nowww.tw][nowww.tw]], an attempt at an advocate site for Taiwanese websites to /please/ redirect their apex domains to their www subdomains.
+  #+caption: The first URL is 404 but the second isn't.
+  [[/20230424T000503+0900.png]]
+
+- [[https://github.com/kisaragi-hiu/emacs-jieba][emacs-jieba]]. Jieba is a tokenizer for Mandarin; jieba-rs is a Rust implementation of it. emacs-jieba is a new Emacs Lisp binding to jieba-rs, allowing fast Mandarin tokenization in Emacs Lisp. Used for Kemdict.
+
+* Contributions
+
+
+* Covers
+
+I made 0 UTAU covers this year so far.
+
+* This site
+
+Moved this site to Vercel.
