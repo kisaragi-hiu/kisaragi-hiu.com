@@ -66,29 +66,8 @@
   href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;600;700&family=Inconsolata&display=swap"
   rel="stylesheet"
 />
-<!-- Fathom Analytics -->
-<script>
-  let dnt = navigator.doNotTrack || navigator.msDoNotTrack || null;
-  if (dnt !== "yes" && dnt !== "1") {
-    (function (f, a, t, h, o, m) {
-      a[h] =
-        a[h] ||
-        function () {
-          (a[h].q = a[h].q || []).push(arguments);
-        };
-      (o = f.createElement("script")),
-        (m = f.getElementsByTagName("script")[0]);
-      o.async = 1;
-      o.src = t;
-      o.id = "fathom-script";
-      m.parentNode.insertBefore(o, m);
-    })(
-      document,
-      window,
-      "https://fathom.kisaragi-hiu.com/tracker.js",
-      "fathom"
-    );
-    fathom("set", "siteId", "FYSHR");
-    fathom("trackPageview");
-  }
-</script>
+<script
+  defer
+  data-domain="kisaragi-hiu.com"
+  src="https://plausible.io/js/script.js"
+></script>
