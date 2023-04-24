@@ -13,7 +13,7 @@
 @layer base {
   html {
     @apply text-primary;
-    font-size: 20px;
+    font-size: 16px;
   }
   hr {
     @apply border-gray-300 dark:border-gray-700;

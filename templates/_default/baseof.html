@@ -12,7 +12,11 @@
   </head>
   <body class="text-primary dark:text-primary-dark bg-dropl dark:bg-dropd">
     <!-- min() requires Chrome 79 / Firefox 75, from 2019 / 2020 -->
-    <div class="w-[90%] max-w-[100ch] mx-auto pt-[5%] pb-4">
+    {{ $maxw := "max-w-[100ch]" }}
+    {{ if .IsHome }}
+      {{ $maxw = "max-w-[120ch]" }}
+    {{ end }}
+    <div class="w-[90%] {{ $maxw }} mx-auto pt-[5%] pb-4">
       <!-- Header -->
       <header>{{ block "header" . }}{{ partial "avatar" . }}{{ end }}</header>
 
