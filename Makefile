@@ -8,7 +8,7 @@ node_modules: package.json
 	npm install
 
 dev-hugo:
-	hugo server --disableFastRender -D
+	hugo server --disableFastRender --buildDrafts
 
 dev-tailwind:
 	npx tailwindcss --postcss -i css/src.css -o static/css/built.css --watch
