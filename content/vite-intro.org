@@ -1,0 +1,26 @@
+#+title: What is Vite?
+#+subtitle: A light introduction to Vite
+#+tags[]: web javascript vite
+#+created: 2023-04-26T01:56:57+0900
+
+When I first learned [[https://vitejs.dev/][Vite]], I found its official slogan, "frontend tooling" and "development environment", to be extremely vague.
+
+Granted, I also find it hard to describe satisfactorily — “Super-fast dev server + sensible defaults for Rollup” might be a little more descriptive, but might not reflect the project's vision.
+
+So, what is Vite? The [[https://vitejs.dev/guide/][/Getting Started/ page]] says it best:
+
+#+begin_quote
+Vite […] is a build tool that aims to provide a faster and leaner development experience for modern web projects. It consists of two major parts:
+
+- A dev server that provides [[https://vitejs.dev/guide/features.html][rich feature enhancements]] over [[https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules][native ES modules]], for example extremely fast [[https://vitejs.dev/guide/features.html#hot-module-replacement][Hot Module Replacement (HMR)]].
+
+- A build command that bundles your code with [[https://rollupjs.org][Rollup]], pre-configured to output highly optimized static assets for production.
+
+Vite is opinionated and comes with sensible defaults out of the box, but is also highly extensible via its [[https://vitejs.dev/guide/api-plugin.html][Plugin API]] and [[https://vitejs.dev/guide/api-javascript.html][JavaScript API]] with full typing support.
+#+end_quote
+
+The dev server is an alternative to using in-browser =import= (“native ES modules”) during development.
+
+[[https://medium.com/the-node-js-collection/modern-javascript-explained-for-dinosaurs-f695e9747b70][Traditionally]] you set up a bundler, then you set up a development server that provides hot reload and such. The development mode might be part of the bundler, or it might be a standalone.
+
+With Vite, you don't set up the bundler yourself. It plays the role of a bundler in a project. Using Vite is like using [[https://github.com/webpack/webpack-dev-server][webpack-dev-server]] + Webpack, except the dev server is Vite itself, the bundler is Rollup, and a default bundler config is provided by Vite.
