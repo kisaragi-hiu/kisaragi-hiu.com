@@ -45,7 +45,7 @@ rm *.webp
         (default-directory (expand-file-name "static/thumb/")))
     (unless (f-exists? (concat youtube-id ".jpg"))
       (shell-command-to-string
-       (format "youtube-dl '%1$s' --write-thumbnail --skip-download -o '%1$s'"
+       (format "yt-dlp '%1$s' --write-thumbnail --skip-download -o '%1$s'"
                youtube-id))
       (shell-command-to-string
        (format "magick '%s' -resize 640 '%s.jpg'"
@@ -56,6 +56,8 @@ rm *.webp
 (when (and call (> call 0))
   (kisaragi-hiu.com/download-thumbnail (read-string "YouTube ID: ")))
 #+end_src
+
+#+RESULTS: ytdlthumb
 
 * Adding one illustration
 
