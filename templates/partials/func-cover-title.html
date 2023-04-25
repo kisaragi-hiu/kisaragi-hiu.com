@@ -3,17 +3,18 @@
 {{ $title := "" }}
 {{ $mark := .mark }}
 {{ $section := (or $item.Section "blog") }}
-<!-- prettier-ignore -->
 {{ if eq $section "covers" }}
   {{ $title = (printf "%s ft. %s" $item.LinkTitle $item.Params.voice) }}
 {{ else }}
   {{ $title = $item.LinkTitle }}
 {{ end }}
-{{ with $mark }}
-  {{ if (not (intersect (slice "blog" "translated") (slice $section))) }}
+{{ if $mark }}
+  <!-- if section is not blog or translated, add the mark -->
+  {{ if (not (intersect (slice $section) (slice "blog" "translated"))) }}
     {{ $title = (printf "%s: %s"
-                        (index (site).Data.names.sections $section)
-                        $title) }}
+      (index (site).Data.names.sections $section)
+      $title)
+    }}
   {{ end }}
 {{ end }}
 {{ return $title }}

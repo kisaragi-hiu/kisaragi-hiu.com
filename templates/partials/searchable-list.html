@@ -97,15 +97,16 @@
 </div>
 
 <ul id="posts" class="mt-4 flex flex-col space-y-2">
-  <!-- prettier-ignore -->
   {{ range . }}
-  {{ if not (.Param "special") }}
-  <!-- Non special single pages are just normal blog posts -->
-  {{ $extra_params := (dict "section" (or .Section "blog"))}}
-  <li data-params="{{ jsonify (merge .Params $extra_params) }}">
-    <a href="{{.Permalink}}">{{ partial "cover-item" (dict "item" . ) }}</a>
-  </li>
-  <!-- prettier-ignore -->
-  {{ end }}
+    {{ if not (.Param "special") }}
+      <!-- Non special single pages are just normal blog posts -->
+      {{ $extra_params := (dict "section" (or .Section "blog")) }}
+      <li data-params="{{ jsonify (merge .Params $extra_params) }}">
+        <a href="{{ .Permalink }}"
+          >{{ partial "cover-item" (dict "item" . "mark" true ) }}</a
+        >
+      </li>
+      <!-- prettier-ignore -->
+    {{ end }}
   {{ end }}
 </ul>

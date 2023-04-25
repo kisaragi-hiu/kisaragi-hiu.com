@@ -20,24 +20,32 @@
   <!-- Right part: title and metadata -->
   <div class="grow">
     <div class="md:flex">
-      <div class="grow font-bold">{{ $title }}</div>
-      <div class="">{{ partial "date" $item.Date }}</div>
+      <div class="grow font-bold">
+        {{ $title }}
+        {{ if $item.Draft }}
+          <span class="font-sansserif text-green-700 dark:text-green-500"
+            >DRAFT</span
+          >
+        {{ end }}
+      </div>
+      <div>{{ partial "date" $item.Date }}</div>
     </div>
     {{ if $is_cover }}
       <span>本家 {{ $item.Params.origauthor }}</span>
     {{ else }}
-      <!-- prettier-ignore -->
-      {{ range (slice "series" "tags")}}
-    {{ $type := . }}
-    {{ with $item.GetTerms $type }}
-    <span>
-      <!-- prettier-ignore -->
-      {{ range . }}
-      <!-- This cannot be a link because cover-item is usually already in a link. -->
-      <span class="{{$type}} proselink">{{ .LinkTitle | lower}}</span>
+      {{ range (slice "series" "tags") }}
+        {{ $type := . }}
+        {{ with $item.GetTerms $type }}
+          <span>
+            {{ range . }}
+              <!-- This cannot be a link because cover-item is usually already in a link. -->
+              <span class="{{ $type }} proselink"
+                >{{ .LinkTitle | lower }}</span
+              >
+            {{ end }}
+          </span>
+        {{ end }}
       {{ end }}
-    </span>
-    {{ end }} {{ end }}
     {{ end }}
   </div>
 </div>
