@@ -1,11 +1,15 @@
 <!-- prettier-ignore -->
 {{ $h1_top := "mt-6"}}
 {{ if .enableTypePath }}
-{{ with .ctx }}
-{{ if (not (in (slice "page") .Type)) }}
-{{ $h1_top = "mt-0" }}
-<div class="mt-4 text-sm type-path">
-  <a class="link font-bold" href="../{{.Type}}.html">{{.Type}}</a> /
-</div>
-{{ end }} {{ end }} {{ end }}
-<h1 class="text-xl {{ $h1_top }} mb-4 font-bold">{{ .title }}</h1>
+  {{ with .ctx }}
+    {{ if (not (in (slice "page") .Type)) }}
+      {{ $h1_top = "mt-0" }}
+      <div class="mt-4 text-sm type-path">
+        <a class="link font-bold" href="../{{ .Type }}.html">{{ .Type }}</a> /
+      </div>
+    {{ end }}
+  {{ end }}
+{{ end }}
+<h1 class="text-xl {{ $h1_top }} mb-4 font-bold font-sansserif">
+  {{ .title }}
+</h1>

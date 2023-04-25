@@ -11,25 +11,24 @@
       "ctx" .)
     }}
   {{ end }}
-  {{ with (and (not (.Param "special")) .Date) }}
-    <div class="-mt-4">{{ partial "date" . }}</div>
-  {{ end }}
-  <!-- prettier-ignore -->
+  {{ $marginTweak := "-mt-4" }}
   {{ with .Param "subtitle" }}
-<h2 class="mt-0 mb-8">{{.}}</h2>
-{{ end }}
-  <!-- prettier-ignore -->
+    <h2 class="{{ $marginTweak }} font-sansserif">{{ . }}</h2>
+    {{ $marginTweak = "" }}
+  {{ end }}
+  {{ with (and (not (.Param "special")) .Date) }}
+    <div class="{{ $marginTweak }} font-sansserif">{{ partial "date" . }}</div>
+  {{ end }}
   {{ if (or (.GetTerms "tags") (.GetTerms "series")) }}
-<div class="meta mb-4">
-  <!-- prettier-ignore -->
-  {{ range (.GetTerms "tags") }}
-    {{ partial "tag" . }}
+    <div class="meta font-sansserif mb-4">
+      {{ range (.GetTerms "tags") }}
+        {{ partial "tag" . }}
+      {{ end }}
+      {{ range (.GetTerms "series") }}
+        {{ partial "series" . }}
+      {{ end }}
+    </div>
   {{ end }}
-  {{ range (.GetTerms "series") }}
-    {{ partial "series" . }}
-  {{ end }}
-</div>
-{{ end }}
   <!-- prettier-ignore -->
 {{ end }}
 
