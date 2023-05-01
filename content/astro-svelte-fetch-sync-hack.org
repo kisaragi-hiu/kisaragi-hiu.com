@@ -1,0 +1,102 @@
+#+title: A hack to fetch a URL synchronously in Svelte (Astro)
+#+created: 2023-05-01T14:10:48+0900
+#+tags[]: web astro svelte
+
+[[https://github.com/sveltejs/svelte/issues/5501][Svelte doesn't currently have top level await]], meaning that in a server-side rendering context, it is impossible to, say, wait a [[https://developer.mozilla.org/en-US/docs/Web/API/fetch][fetch]] to finish before sending it to the client. There is the =#await= block, but I want the wait to happen on the server. (I don't care about the full page load taking a little longer as my use case is easily cacheable and already cached on Cloudflare.)
+
+#+begin_src svelte
+<script>
+  export let tl = "Guá ū tsi̍t-ē mī-kiānn bē hōo lí khuànn";
+  async function toPOJ(text) {
+    const response = await fetch("https://pojtl.kemdict.com/toPOJ", {
+      method: "POST",
+      body: text,
+    });
+    return response.text();
+  }
+
+  // const result = await toPOJ(tl);
+  //   -> error as Svelte doesn't have top level await
+</script>
+
+<div>
+  {#await toPOJ(tl)}
+    <span>...</span>
+  {:then value}
+    <!-- Waited on the client side -->
+    <span>{value}</span>
+  {/await}
+</div>
+#+end_src
+
+There are a few options for me here:
+
+- Since I'm using Astro, it is relatively easy to just switch to, say, React or [[https://docs.astro.build/en/core-concepts/astro-components/][=.astro=]] for this specific component. But in my use case this would require porting a large number of components.
+- I could also just bite the bullet and allow the value to be waited on the client side.
+
+Or, well… there's a hack that doesn't require porting and can still wait for the fetch on the server side. The downside is just that it's admittedly stupid.
+
+One other point I haven't mentioned is that I'm deploying the application [[https://docs.astro.build/en/guides/server-side-rendering/][in SSR mode]] to Node, so I have access to Node builtins. Including [[https://nodejs.org/docs/latest-v18.x/api/child_process.html][=node:child_process=]], which has the =execSync= family, which will run a process, wait for it to finish, and return its output.
+
+So the hack is to run a child process ([[https://stackoverflow.com/questions/28628985/what-does-shell-out-or-shelling-out-mean][shelling out]], though I'm not going through a shell), and have that child process do the actual network request. The child process can be a call to =curl= or literally any other program, but I'm going to use Node because it's more familiar.
+
+This is the script I ended up with:
+
+#+begin_src js
+// hack/postSync.mjs
+/**
+ ,* @file POST some stuff to a URL.
+ ,* Usage: one of
+ ,*   echo input | node postSync.mjs <url>
+ ,*   node postSync.mjs <url> <input>
+ ,*/
+
+// The argument count would break if called as a standalone script.
+const url = process.argv[2] || process.exit(1);
+
+async function do_it(text) {
+  const response = await fetch(url, {
+    method: "POST",
+    body: text,
+  });
+  console.log(await response.text());
+}
+
+// Support both reading from stdin and reading from the second argument
+// Because I'm not sure about the length limit of an argument
+let text = "";
+if (process.argv.length > 3) {
+  text = process.argv[3];
+  do_it(text);
+} else {
+  process.stdin.on("readable", () => {
+    let chunk;
+    while (null !== (chunk = process.stdin.read())) {
+      text += chunk;
+    }
+  });
+  process.stdin.on("end", () => {
+    do_it(text);
+  });
+}
+#+end_src
+
+And I'm not even bothering with a top level await in this script, because Node will only exit when the async function finishes.
+
+It's then called like this:
+
+#+begin_src js
+import { spawnSync } from "node:child_process";
+
+export function toPOJ(text) {
+  return spawnSync(
+    "node",
+    ["hack/postSync.mjs", "https://pojtl.kemdict.com/toPOJ"],
+    { input: text }
+  ).stdout;
+}
+#+end_src
+
+This function, from the point of view of the main application, is just a normal non-async function that happens to block a little bit. If there's a need to, say, fetch multiple URLs, I can also modify the /postSync/ script to accept multiple URLs and await them all at once there.
+
+This /hopefully/ isn't too much debt to take on, and is probably a reasonable stopgap solution until Svelte /maybe/ eventually gets support for top level await.
