@@ -1,0 +1,199 @@
+#+title: Setting up an internal helper library for a TypeScript monorepo
+#+created: 2023-05-06T09:59:25+0900
+#+tags[]: web typescript javascript
+
+You have a TypeScript project, organized in a monorepo because there is some common code you want to share between, say, your backend and frontend. Let's say it looks like this:
+
+#+begin_src
+- backend/index.ts
+- backend/utils.ts <- you want to share this with frontend
+- frontend/index.ts
+#+end_src
+
+Unfortunately it's not as easy as throwing the common TypeScript code into a folder.
+
+You have to treat the common code as if you're making a helper library, which also means building the TypeScript yourself.
+
+This is one way that works:
+
+* Set up the helper library
+
+The directory layout looks something like this:
+
+#+begin_src
+- backend/index.ts
+- utils/index.ts
+- frontend/index.ts
+#+end_src
+
+Now add a =utils/package.json=:
+
+#+begin_src json
+{
+  "name": "utils",
+  "private": "true"
+}
+#+end_src
+
+Then install TypeScript for =utils=, as well as whatever =utils= depends on — =utils= is just a normal package, and does not rely on downstream packages to provide dependencies.
+
+We can then set up the build process of =utils=. Add a =tsconfig.json=:
+
+#+begin_src yaml
+# tsconfig.json
+# (remove the comments to get JSON)
+{
+  "compilerOptions": {
+    # Since you're probably already bundling the code in downstream
+    # packages of this helper (backend/ and frontend/ in this
+    # example), the helper library itself doesn't need to compile to
+    # older JavaScript. Same logic applies for the module system used.
+    "target": "esnext",
+    "module": "esnext",
+    # Don't complain about eg. @types/node problems
+    "skipLibCheck": true,
+    # Generate d.ts files (and their sourcemaps) so you still get
+    # types when editing backend/ and frontend/
+    "declaration": true,
+    "declarationMap": true,
+    # Put the resulting files in dist/
+    "outDir": "./dist/",
+    "removeComments": true,
+    # Other configuration for the amount of strictness you want.
+    "strict": true,
+    "noImplicitAny": false
+  }
+}
+#+end_src
+
+Then, in =package.json=, declare where the compiled main file will live. This isn't necessary if it goes to =./index.js= in =utils=, but I use =./dist= because it's easier to ignore from version control and doesn't clutter up file managers as much.
+
+#+begin_src yaml
+# package.json
+# (remove the comments to get JSON)
+{
+  "name": "utils",
+  "private": "true",
+  # assuming the source entry point is index.ts
+  "main": "./dist/index.js"
+}
+#+end_src
+
+Now the JS can be built with =npx tsc=. It will pick up the =tsconfig.json= on its own. We can put it into a script so that downstream packages can build the helper with a predictable command:
+
+#+begin_src yaml
+# package.json
+# (remove the comments to get JSON)
+{
+  # …
+  "scripts": {
+    # "npx" is not necessary in npm scripts
+    "dev": "tsc --watch",
+    "build": "tsc"
+  }
+  # …
+}
+#+end_src
+
+* Set up downstream packages
+
+In downstream packages of =utils=, register it as a linked package, like this:
+
+#+begin_src json
+{
+  …
+  "utils": "file:../utils"
+  …
+}
+#+end_src
+
+Adjust the path to actually point to where =utils= is. For instance, if your monorepo looks like
+
+#+begin_src
+- app/backend
+- app/frontend
+- utils
+#+end_src
+
+then =app/backend/package.json= needs to use =file:../../utils= to actually point to the utils directory.
+
+Run a =npm install= (or equivalent if you're using pnpm), and the local dependency will now be linked to, say, =backend/utils=.
+
+(+How to set this up with Yarn is left as an exercise for the reader+ I don't know how to set this up with Yarn.)
+
+In the build process of the downstream package, you need to make sure to build the helper package as well. For example, if the downstream package is built like this:
+
+#+begin_src json
+{
+  "scripts": {
+    "build": "astro build"
+  },
+  "name": "frontend",
+  "type": "module",
+  "private": true,
+  "dependencies": {
+    "utils": "file:../utils"
+  }
+}
+#+end_src
+
+You can change it into something like:
+
+#+begin_src json
+{
+  "scripts": {
+    "build": "(cd ../utils && npm run build) && astro build"
+  },
+  ...
+}
+#+end_src
+
+to build the helper before building the downsteam package.
+
+* Result
+
+After all this setup, a project like this should just work.
+
+#+begin_src
+- backend/
+  - index.mjs
+  - package.json  # see above
+  - …
+- utils/
+  - index.ts
+  - package.json  # see above
+  - tsconfig.json # see above
+  - …
+- frontend/
+  - index.ts
+  - package.json  # see above
+  - …
+#+end_src
+
+#+begin_src typescript
+// utils/index.ts
+
+export function upcase(s: string) {
+  return s.toUpperCase();
+}
+
+export const kv = new Map();
+kv.set("hello", "world")
+#+end_src
+
+
+#+begin_src typescript
+// frontend/index.mjs
+
+import { upcase } from "utils"
+
+console.log(upcase("test"))
+#+end_src
+
+#+begin_src typescript
+// backend/index.mjs
+
+import { kv } from "utils"
+
+console.log(kv.get("hello"))
+#+end_src
