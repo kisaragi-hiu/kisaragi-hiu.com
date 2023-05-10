@@ -18,3 +18,4 @@ This is a library of what I've made, a /digital garden/ of mine, and a playgroun
 
 - [[/list-of-plants-of-formosa][臺灣植物名彙數位化]]
 - [[https://nowww.tw][請重新導向到 www]]
+- [[https://changelog-db.netlify.app][ChangelogDB]]
