@@ -12,15 +12,15 @@ module.exports = {
   theme: {
     fontFamily: {
       sans: [
-        "'Equity A'",
-        "'Noto Serif CJK JP'",
+        "'Overpass'",
+        "'Noto Sans CJK JP'",
         "'Fira Sans'",
         ...cjkFallback,
         "sans-serif",
       ],
-      sansserif: [
-        "'Overpass'",
-        "'Noto Sans CJK JP'",
+      serif: [
+        "'Equity A'",
+        "'Noto Serif CJK JP'",
         ...cjkFallback,
         "sans-serif",
       ],

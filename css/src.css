@@ -41,7 +41,7 @@
   .k-btn {
     @apply hover;
     @apply shadow text-primary bg-white dark:bg-black py-1 m-0 my-2;
-    @apply font-sansserif;
+    @apply font-serif;
   }
   /* Blog post, covers */
   .hover {

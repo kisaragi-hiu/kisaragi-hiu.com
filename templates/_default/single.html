@@ -13,14 +13,14 @@
   {{ end }}
   {{ $marginTweak := "-mt-4" }}
   {{ with .Param "subtitle" }}
-    <h2 class="{{ $marginTweak }} font-sansserif">{{ . }}</h2>
+    <h2 class="{{ $marginTweak }} font-serif">{{ . }}</h2>
     {{ $marginTweak = "" }}
   {{ end }}
   {{ with (and (not (.Param "special")) .Date) }}
-    <div class="{{ $marginTweak }} font-sansserif">{{ partial "date" . }}</div>
+    <div class="{{ $marginTweak }} font-serif">{{ partial "date" . }}</div>
   {{ end }}
   {{ if (or (.GetTerms "tags") (.GetTerms "series")) }}
-    <div class="meta font-sansserif mb-4">
+    <div class="meta font-serif mb-4">
       {{ range (.GetTerms "tags") }}
         {{ partial "tag" . }}
       {{ end }}
