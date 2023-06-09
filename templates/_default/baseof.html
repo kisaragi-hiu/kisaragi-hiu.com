@@ -12,9 +12,9 @@
   </head>
   <body class="text-primary dark:text-primary-dark bg-dropl dark:bg-dropd">
     <!-- min() requires Chrome 79 / Firefox 75, from 2019 / 2020 -->
-    {{ $maxw := "max-w-[100ch]" }}
+    {{ $maxw := "max-w-[1024px]" }}
     {{ if .IsHome }}
-      {{ $maxw = "max-w-[120ch]" }}
+      {{ $maxw = "max-w-[1280px]" }}
     {{ end }}
     <div class="w-[90%] {{ $maxw }} mx-auto pt-[5%] pb-4">
       <!-- Header -->
@@ -22,7 +22,7 @@
 
       <!-- Contents -->
       {{ $narrow := (or (.Scratch.Get "wide") true) }}
-      {{ $cls := "max-w-[80ch]" }}
+      {{ $cls := "max-w-[768px]" }}
       {{ if .IsHome }}
         {{ $cls = "" }}
       {{ end }}
