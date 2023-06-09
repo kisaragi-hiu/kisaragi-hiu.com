@@ -10,7 +10,7 @@ To hook it up, we need to (a) go back in history (b) when the back button is pre
 
 * (a) Dynamically go back in history
 
-framework7-svelte exports a f7ready function, which calls its callback after the Framework7 app instance is ready — the app instance is passed in as the only argument.
+framework7-svelte exports an =f7ready= function, which calls its callback after the Framework7 app instance is ready — the app instance is passed in as the only argument.
 
 The app keeps a current view, and each view keeps its own history of pages. A view would be something like a top level tab; a page would be like a list item. (I'm not sure if there is a history to go back to the previous view.)
 
@@ -18,8 +18,8 @@ Assuming the app instance is in the =f7= variable, the current view is =f7.views
 
 Some useful methods of the router:
 
-- router.navigate(url, {…})
-- *router.back()*
+- =router.navigate(url, {…})=
+- *=router.back()=*
 
 So once we figure out /when/ to run it, the function to run is =f7.views.current.router.back()=, with =f7= being the app instance passed in from =f7ready=.
 
@@ -43,11 +43,6 @@ App.addListener("backButton", () => {
 
 In app.svelte's =<script>= section:
 
-- Wait for Svelte to be ready, then
-- Wait for Framework7 to be ready, then, with =f7= being the Framework7 app instance
-- Tell the Capacitor app instance to listen for the =backButton= event, and
-- Grab the current view's router and tell it to go back.
-
 #+begin_src js
 import { onMount } from "svelte";
 import { App as CapacitorApp } from "@capacitor/app";
@@ -61,6 +56,13 @@ onMount(() => {
   });
 });
 #+end_src
+
+This:
+
+- Wait for Svelte to be ready, then
+- Wait for Framework7 to be ready, then, with =f7= being the Framework7 app instance
+- Tell the Capacitor app instance to listen for the =backButton= event, and
+- Grab the current view's router and tell it to go back.
 
 You'll notice, however, that pressing back on the top most page does nothing. We can check if the current page is the top most page of the current view by checking if =router.history.length= is 1, like this:
 
@@ -92,10 +94,8 @@ Now you can put this in the app.svelte of your Framework7 / Svelte / Capacitor a
 
 * Caveats
 
-This doesn't close drawers properly. Drawers are implemented as Views, so the way I'm doing it it'll treat a drawer like a tab, with its own page history. This is clearly wrong.
-
-You might find something useful [[https://framework7.io/docs/view][in the docs for views]] to help you fix this, perhaps setting [[https://framework7.io/docs/view#param-browserHistory][=browserHistory=]] and using the webview browser's history instead of Framework7's history. Personally, I'm just going to avoid using drawers because [[https://kemdict.com][my usecase]] probably allows me to do that.
+This doesn't close drawers properly. Drawers are implemented as Views, so the way I'm doing it it'll treat a drawer like a tab, with its own page history. This is clearly wrong. You might find something useful [[https://framework7.io/docs/view][in the docs for views]] to help you fix this, perhaps setting [[https://framework7.io/docs/view#param-browserHistory][=browserHistory=]] and using the webview browser's history instead of Framework7's history. Personally, I'm just going to avoid using drawers because [[https://kemdict.com][my usecase]] probably allows me to do that.
 
 This also doesn't work for alerts and other popups. The callback after the back button is pressed needs more work to match other apps.
 
-This is only /very/ lightly tested, but I don't see how anything here would be wrong.
+This is only /very/ lightly tested, but I don't see how anything else here would be wrong.
