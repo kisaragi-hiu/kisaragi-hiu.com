@@ -1,0 +1,101 @@
+#+title: Setting up the back button in Framework7 Svelte on Capacitor on Android
+#+created: 2023-06-10T05:17:40+0900
+#+tags[]: web svelte capacitor framework7
+
+The back button is not hooked up by default in [[https://framework7.io/][Framework7]], even if you choose the Capacitor template.
+
+(This is for framework7-svelte. Your mileage may vary, as I haven't checked.)
+
+To hook it up, we need to (a) go back in history (b) when the back button is pressed.
+
+* (a) Dynamically go back in history
+
+framework7-svelte exports a f7ready function, which calls its callback after the Framework7 app instance is ready — the app instance is passed in as the only argument.
+
+The app keeps a current view, and each view keeps its own history of pages. A view would be something like a top level tab; a page would be like a list item. (I'm not sure if there is a history to go back to the previous view.)
+
+Assuming the app instance is in the =f7= variable, the current view is =f7.views.current= ([[https://framework7.io/docs/view#view-app-methods][docs]]). The view's router is =<view>.router=.
+
+Some useful methods of the router:
+
+- router.navigate(url, {…})
+- *router.back()*
+
+So once we figure out /when/ to run it, the function to run is =f7.views.current.router.back()=, with =f7= being the app instance passed in from =f7ready=.
+
+* (b) Doing stuff when the back button is pressed
+
+Capacitor has a feature to emit an event when the back button is pressed, as documented [[https://ionicframework.com/docs/developing/hardware-back-button][in this page for Ionic Framework]]. We're not using Ionic Framework, but this feature is in Capacitor, so we can still make use of it.
+
+This is part of [[https://capacitorjs.com/docs/apis/app][@capacitor/app]]. After it is installed (remember to =npx cap sync=), pressing the back button will emit an event instead of just quitting the app.
+
+Capacitor seems to have its own event handling system, separate from the DOM's normal =addEventListener=. The API is =app.addListener(name, callback)= (with app being Capacitor's app instance). To hook onto the back button event:
+
+#+begin_src js
+import { App } from "@capacitor/app";
+
+App.addListener("backButton", () => {
+  console.log("This runs whenever the back button is pressed")
+});
+#+end_src
+
+* Hooking them together
+
+In app.svelte's =<script>= section:
+
+- Wait for Svelte to be ready, then
+- Wait for Framework7 to be ready, then, with =f7= being the Framework7 app instance
+- Tell the Capacitor app instance to listen for the =backButton= event, and
+- Grab the current view's router and tell it to go back.
+
+#+begin_src js
+import { onMount } from "svelte";
+import { App as CapacitorApp } from "@capacitor/app";
+import { f7ready } from "framework7-svelte";
+
+onMount(() => {
+  f7ready((f7) => {
+    CapacitorApp.addListener("backButton", () => {
+      f7.views.current.router.back();
+    });
+  });
+});
+#+end_src
+
+You'll notice, however, that pressing back on the top most page does nothing. We can check if the current page is the top most page of the current view by checking if =router.history.length= is 1, like this:
+
+#+begin_src js
+import { onMount } from "svelte";
+import { App as CapacitorApp } from "@capacitor/app";
+import { f7ready } from "framework7-svelte";
+
+onMount(() => {
+  f7ready((f7) => {
+    CapacitorApp.addListener("backButton", () => {
+      const router = f7.views.current.router;
+      if (router.history.length > 1) {
+        router.back();
+      } else {
+        // I'm not sure if it's better to minimize, like this:
+        CapacitorApp.minimizeApp();
+        // Or to exit, like this.
+        // CapacitorApp.exitApp();
+        // The fact that minimize only runs on Android doesn't matter,
+        // as this event only fires on Android anyways.
+      }
+    });
+  });
+});
+#+end_src
+
+Now you can put this in the app.svelte of your Framework7 / Svelte / Capacitor app and get a back button navigation that actually works.
+
+* Caveats
+
+This doesn't close drawers properly. Drawers are implemented as Views, so the way I'm doing it it'll treat a drawer like a tab, with its own page history. This is clearly wrong.
+
+You might find something useful [[https://framework7.io/docs/view][in the docs for views]] to help you fix this, perhaps setting [[https://framework7.io/docs/view#param-browserHistory][=browserHistory=]] and using the webview browser's history instead of Framework7's history. Personally, I'm just going to avoid using drawers because [[https://kemdict.com][my usecase]] probably allows me to do that.
+
+This also doesn't work for alerts and other popups. The callback after the back button is pressed needs more work to match other apps.
+
+This is only /very/ lightly tested, but I don't see how anything here would be wrong.

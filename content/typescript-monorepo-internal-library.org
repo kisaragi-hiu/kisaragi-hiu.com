@@ -2,6 +2,8 @@
 #+created: 2023-05-06T09:59:25+0900
 #+tags[]: web typescript javascript
 
+/2023-06-10T05:16:30+0900: This article needs a full rewrite. What I wrote doesn't work./
+
 You have a TypeScript project, organized in a monorepo because there is some common code you want to share between, say, your backend and frontend. Let's say it looks like this:
 
 #+begin_src
