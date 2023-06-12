@@ -1,0 +1,12 @@
+#+title: ChangelogDB
+#+created: 2023-05-02
+#+updated: 2023-06-10
+#+tags[]: web apps emacs sveltekit svelte
+#+homepage: https://changelog-db.netlify.app
+#+github: https://github.com/changelog-db/changelog-db
+
+The missing changelog field in package.json.
+
+PyPI has it, and it's great! The JavaScript ecosystem should have it as well.
+
+For now, this is a manually collected npm package changelog index.
