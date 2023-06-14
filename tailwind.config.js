@@ -7,7 +7,7 @@ let cjkFallback = [
 ];
 
 module.exports = {
-  // darkMode: "class",
+  darkMode: "class",
   content: ["./templates/**/*.html", "./content/**/*.org"],
   theme: {
     fontFamily: {

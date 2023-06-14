@@ -8,6 +8,17 @@
       href="/feed.xml"
       title="Atom Feed"
     />
+    <script>
+      if (
+        localStorage.theme === "dark" ||
+        ((!localStorage.theme || localStorage.theme === "auto") &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches)
+      ) {
+        document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+      }
+    </script>
     {{ block "extra-head" . }}{{ end }}
   </head>
   <body class="text-primary dark:text-primary-dark bg-dropl dark:bg-dropd">

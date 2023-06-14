@@ -6,6 +6,7 @@
         <br />
         <span class="text-2xl">如月飛羽</span>
       </h1>
+      {{ partial "darkModeToggle" . }}
       <nav class="flex flex-col mt-4">
         <div>
           {{ range (slice (slice "/covers.html" "Covers")
@@ -93,4 +94,7 @@
       }}
     </main>
   </div>
+{{ end }}
+{{ define "footer" }}
+  <span></span>
 {{ end }}
