@@ -1,0 +1,22 @@
+#+title: Links
+#+created: 2023-07-02
+#+updated: 2023-07-02T11:30:21+0900
+#+special: true
+#+hidetitle: true
+
+* Links
+
+- GitLab:  [[https://gitlab.com/kisaragi-hiu][kisaragi-hiu]]
+- GitHub:  [[https://github.com/kisaragi-hiu][kisaragi-hiu]]
+- KDE Identity: [[https://invent.kde.org/moonlight][moonlight]]
+- Sourcehut:  [[https://gitlab.com/kisaragi-hiu][~kisaragi_hiu]]
+- Twitter:  [[https://twitter.com/kisaragi_hiu][@kisaragi_hiu]]
+- Instagram: [[https://www.instagram.com/kisaragi_hiu/][kisaragi_hiu]]
+- misskey.io: [[https://misskey.io/@kisaragi_hiu][@kisaragi_hiu]]
+- mstdn.jp: [[https://mstdn.jp/@kisaragi_hiu][@kisaragi_hiu]]
+- +Reddit:  [[https://www.reddit.com/user/flyin1501][u/flyin1501]]+
+- YouTube:  [[https://youtube.com/@kisaragi-hiu][@kisaragi-hiu]]
+- niconico:  [[https://nicovideo.jp/user/38995186][user/38995186]]
+- Pixiv:  [[https://pixiv.me/kisaragi-hiu][kisaragi-hiu]]
+- PGP:  [[/KisaragiHiu.asc][BCC7 4B10 41D4 B7D7 CC8B F402 40EC BEAE A877 5FC2]]
+- [[https://orcid.org/][ORCID]]:  [[https://orcid.org/0000-0002-0293-7943]]
