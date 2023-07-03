@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="{{ or .Params.language .Lang }}">
   <head>
+    {{ if .IsHome }}
+      <link rel="me" href="https://mastodon.social/@kisaragi_hiu" />
+    {{ end }}
     {{ partial "head" . }}
     <link
       rel="alternate"
