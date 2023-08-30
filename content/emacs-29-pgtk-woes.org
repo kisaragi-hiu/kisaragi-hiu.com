@@ -1,0 +1,22 @@
+#+title: Emacs 29 pgtk woes
+#+created: 2023-08-31T00:34:10+0900
+#+tags[]: emacs
+
+Emacs on my systems has had an issue where IME inputs would pass through to Emacs instead of going to the IME. For instance, 「新鮮」 is typed as vupvu0 RET; some characters would slip through into Emacs. I'm not sure if it's just my configuration or not.
+
+In Emacs 29, when not using pgtk, the issue persists, no change here. But if I use =x-gtk-use-native-input=, the problem goes away — mostly. Now Shift no longer registers for the IME. For example, I use Kana input in Mozc to type Japanese on my US-layout keyboard, and there を is typed as Shift-0, while 0 on its own types わ. With this issue, that's no longer possible.
+
+When using pgtk, on the other hand, it appears to be fixed entirely. Except, Emacs pops a gigantic irregular warning that pgtk should not be used under X because it causes sporadic crashes (I don't care) and “various issues with keyboard input” (such as with =C-;= and =C-S-u= as the NEWS mentions) (but it literally fixes a major issue for me).
+
+This thing is implemented in =pgtk_display_x_warning= as a normal GTK dialog instead of using literally any other warning mechanisms available in Emacs.
+
+#+caption: src/pgtkterm.c, line 6802
+#+begin_src C
+/* If the PGTK port is being used under X, complain very loudly, as
+   that isn't supported.  */
+pgtk_display_x_warning (dpy);
+#+end_src
+
+At least give me the option to disable it!
+
+As things stand, I'm not seeing a good justification for this use case to be declared unsupported to this extent. An irregular warning like this would be justified if things would be extremely broken, but you still want the user to at least have the option to try. Pgtk isn't that broken, and if the point is to tell users you're on your own this is the wrong way to do it.
