@@ -20,3 +20,49 @@ pgtk_display_x_warning (dpy);
 At least give me the option to disable it!
 
 As things stand, I'm not seeing a good justification for this use case to be declared unsupported to this extent. An irregular warning like this would be justified if things would be extremely broken, but you still want the user to at least have the option to try. Pgtk isn't that broken, and if the point is to tell users you're on your own this is the wrong way to do it.
+
+Update 2023-09-01: here's my workaround:
+
+#+begin_src emacs-lisp
+(k/once-after-make-frame
+  (when (and (display-graphic-p)
+             (executable-find "xdotool"))
+    (when-let (window-id (ignore-errors
+                           (k/call-process-to-string
+                             "xdotool" "search"
+                             "--all"
+                             "--pid" (format "%s" (emacs-pid))
+                             "--name" "^Warning$")))
+      (k/call-process-to-string
+        "xdotool" "windowclose" window-id))))
+#+end_src
+
+Where =k/once-after-make-frame= adds a self-removing hook to =server-after-make-frame-hook=:
+
+#+begin_src emacs-lisp
+(defmacro k/once-after-make-frame (&rest body)
+  "Eval BODY on `server-after-make-frame-hook' just once."
+  (declare (indent 0))
+  `(let (func)
+     ;; Using `setq' allows the function itself to see the variable.
+     ;; I learned this trick from deferred.el.
+     (setq func (lambda ()
+                  ,@body
+                  (remove-hook 'server-after-make-frame-hook func)))
+     (add-hook 'server-after-make-frame-hook func)))
+#+end_src
+
+And =k/call-process-to-string= is a =call-process= wrapper:
+
+#+begin_src emacs-lisp
+(defun k/call-process-to-string (command &rest args)
+  "Call COMMAND with ARGS; return stdout.
+
+If COMMAND returns with a non-zero exit code, signal an error."
+  (declare (indent 0))
+  (with-temp-buffer
+    (let ((code (apply #'call-process command nil '(t nil) nil args)))
+      (unless (= 0 code)
+        (error "%s exited with exit code %s" command code)))
+    (string-trim (buffer-string))))
+#+end_src
