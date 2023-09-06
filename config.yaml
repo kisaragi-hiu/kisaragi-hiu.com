@@ -61,6 +61,12 @@ services:
 privacy:
   twitter:
     simple: true
+
+security:
+  goTemplates:
+    # Allow Hugo template variables in JS template literals.
+    # The template is written by me.
+    allowActionJSTmpl: true
 # * Local Variables
 # Local Variables:
 # eval: (outline-minor-mode)
