@@ -1,4 +1,4 @@
-#+title: kisaragi-hiu.com scripts
+#+title: kisaragi-hiu.com admin scripts
 
 Some code that I use when adding stuff to this repository.
 
