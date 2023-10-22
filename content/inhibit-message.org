@@ -1,0 +1,122 @@
+#+title: Emacs: silencing messages
+#+subtitle: Why inhibit-message isn't enough
+#+created: 2023-10-22T18:50:08+0900
+#+tags[]: emacs emacs-lisp
+
+Ignoring [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Batch-Mode.html][batch mode]], the =message= function displays a message to the user in the echo area and logs it in the message log buffer (default =*Messages*=).
+
+If we're calling some code that we don't control (or sometimes even if we do), we might want to suppress either behavior. To do that:
+
+- To make =message= not show something in the echo area temporarily, let-bind =inhibit-message= to non-nil.
+
+  #+begin_src emacs-lisp
+  (let ((inhibit-message t))
+    ;; Logs but does not show in echo area
+    (message "%s" "abc")
+    (some-code-that-calls-message))
+  #+end_src
+
+- To make =message= not log messages to the log buffer, let bind =message-log-max= to nil.
+
+  #+begin_src emacs-lisp
+  (let ((message-log-max nil))
+    ;; Shows in echo area but does not log
+    (message "%s" "abc")
+    (some-code-that-calls-message))
+  #+end_src
+
+Additionally, you can utilize =inhibit-redisplay= to prevent intermediate messages from flashing to the user. This is something that builtin files.el should do but, uh, currently doesn't.
+
+#+begin_src emacs-lisp
+;; Emacs 29
+(defun files--message (format &rest args)
+  ;; ...
+  (apply #'message format args)
+  ;; Redisplay can run here and flash the to-be-cleared message to the
+  ;; user
+  (when save-silently (message nil)))
+#+end_src
+
+However, this is still not enough. The =message= function will clear the echo area instead of leave it as-is when =inhibit-message= is non-nil.
+
+This is what the [[https://github.com/cask/shut-up/][shut-up]] package is useful for. The =shut-up= macro it provides temporarily rebinds =message= to a function that only inserts the message to a temporary buffer and prevents it from doing anything to the echo area.
+
+* Examples
+
+Our test code looks like this:
+
+#+begin_src emacs-lisp :results silent
+(progn
+  (message "Prior") ; simulate prior content in echo area
+  (run-at-time
+   1 nil
+   (lambda ()
+     ;; The part being tested
+     (let ((inhibit-message t))
+       (message "...")))))
+#+end_src
+
+Let's abstract it a bit.
+
+#+begin_src emacs-lisp :results silent
+(defmacro k:test-message-inhibiting (&rest body)
+  (declare (indent 0))
+  `(progn
+     ;; Put some prior content into the echo area, to see what happens
+     ;; to existing content in the echo area.
+     ;; If this is run in Org or with eval-last-sexp, they will both
+     ;; display something in the echo area, which also works as the
+     ;; prior content.
+     (message "Prior")
+     (run-at-time
+      1 nil
+      (lambda ()
+        ,@body))))
+#+end_src
+
+Now let's start testing.
+
+#+begin_src emacs-lisp :results silent
+(k:test-message-inhibiting
+  (message "..."))
+#+end_src
+
+- =...= is shown in the echo area
+- =...= is written into =*Messages*=
+
+#+begin_src emacs-lisp :results silent
+(k:test-message-inhibiting
+  (let ((inhibit-message t))
+    (message "...")))
+#+end_src
+
+- The echo area is cleared
+- =...= is written into =*Messages*=
+
+#+begin_src emacs-lisp :results silent
+(k:test-message-inhibiting
+  (let ((message-log-max nil))
+    (message "...")))
+#+end_src
+
+- =...= is shown in the echo area
+- =...= is /not/ written into =*Messages*=
+
+#+begin_src emacs-lisp :results silent
+(k:test-message-inhibiting
+  (let ((inhibit-redisplay t))
+    (message "...")))
+#+end_src
+
+- =...= is shown in the echo area. Although redisplay doesn't happen within the =let=, the message is still written to the echo area (and haven't been overwritten), so the next redisplay still shows the message.
+- =...= is written into =*Messages*=
+
+#+begin_src emacs-lisp :results silent
+(require 'shut-up)
+(k:test-message-inhibiting
+  (shut-up
+    (message "...")))
+#+end_src
+
+- Echo area is untouched
+- =*Messages*= is untouched
