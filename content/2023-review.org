@@ -1,6 +1,5 @@
 #+title: 2023 review
 #+published: 2023-12-31
-#+draft: t
 #+language: en
 #+series: Yearly reviews
 #+toc: t
@@ -15,15 +14,62 @@ I think I made some projects that I'm reasonably proud of.
   #+caption: The first URL is 404 but the second isn't.
   [[/20230424T000503+0900.png]]
 
+- [[https://github.com/changelog-db/changelog-db][ChangelogDB]], an attempt to manually build a package name → changelog URL index.
+
 - [[https://github.com/kisaragi-hiu/emacs-jieba][emacs-jieba]]. Jieba is a tokenizer for Mandarin; jieba-rs is a Rust implementation of it. emacs-jieba is a new Emacs Lisp binding to jieba-rs, allowing fast Mandarin tokenization in Emacs Lisp. Used for Kemdict.
 
-* Contributions
+- [[file:projects/canrylog.org][Canrylog]] goal tracking, telling myself if I've spent enough time on a task within a week.
 
+  [[/20231231T215521+0900.png]]
+
+- [[https://github.com/kisaragi-hiu/Emacs.AppImage][kisaragi-hiu/Emacs.AppImage]], an attempt to build AppImages for multiple versions of Emacs. There are crashes and quirks, but I believe this is the easiest way to get ready-built Linux binaries for older (25+) Emacs versions for, say, testing compatibility during package developent.
+
+* Contributions
+** Translation
+- (Translation) osu!stream: Provide translations for “Universal Offset” for Japanese, Traditional Chinese, and Simplified Chinese ([[https://github.com/ppy/osu-stream/pull/47][ppy/osu-stream#47]])
+
+I also provided quite a lot of translation to KDE projects. I've spent at least 70 hours on translating KDE projects this year (tracked with Canrylog), and while it's harder to get a log from websvn compared to from GitHub or GitLab, I've, for instsnce, gotten KF6 trunk to over 95% translated, up from 81% at the start of December.
+
+December 9th:
+
+{{< tweet user="kisaragi_hiu" id="1733443661244096563" >}}
+
+Now:
+
+#+caption: >95%!
+[[/20231231T230706+0900.png]]
+
+I've also started adding translations for KDE websites. For instance, [[https://kde.org/zh-tw]] and [[https://apps.kde.org/zh-tw/]] are now partially translated.
+
+Thanks to [[https://pan93.com/][Yi-Jyun Pan]] ([[https://blog.pan93.com][his blog]]) for sponsoring my commit access to the KDE SVN repository, where KDE translations are hosted.
+
+** Emacs Lisp
+- (Emacs Lisp) Make Helpful mark customizable variables in the summary, like it already did for interactive functions ([[https://github.com/Wilfred/helpful/pull/310][Helpful.el#310]])
+- (Emacs Lisp) emacs-rime: allow RET to insert current candidate & shift-RET to insert preedit, fixing compatibility with bopomofo ([[https://github.com/DogLooksGood/emacs-rime/pull/220][emacs-rime#220]])
+** Others
+- (C++) Fixed Lokalize's F6 shortcut, so that it switches to the search and replace page if it is already open, rather than doing nothing ([[https://invent.kde.org/sdk/lokalize/-/merge_requests/83][invent:sdk/lokalize#83]])
+- (JS) netlify-cli: replace deprecated string-similarity dependency with fastest-levenshtein ([[https://github.com/netlify/cli/pull/5759][netlify-cli#5759]])
+- (JS) netlify/build (dependency of netlify-cli): Removed unnecessary dependency on package =node-cli= to cut down number of deprecation warnings when installing netlify-cli ([[https://github.com/netlify/build/pull/5029][netlify/build#5029]])
+- (JS) unjs/theme-colors: add 950 shade, following Tailwind CSS 3.3's change ([[https://github.com/unjs/theme-colors/pull/19][unjs/theme-colors#19]])
+- (JS/design) Fix an illustration in Meilisearch's documentation being unreadable in dark mode ([[https://github.com/meilisearch/documentation/pull/2161][meilisearch/documentation#2161]])
 
 * Covers
 
-I made 0 UTAU covers this year so far.
+I made 4 UTAU covers this year.
+
+- [[file:covers/20230426-ザムザ.org][ザムザ]]
+- [[file:covers/20230917-Cruel-Clocks.org][Cruel-Clocks]]
+- [[file:covers/20230906-期待通り.org][期待通り]]
+- [[file:covers/20230712-きゅうくらりん.org][きゅうくらりん]]
 
 * This site
 
 Moved this site to Vercel.
+
+I haven't been working on it enough though.
+
+* Personal
+
+I'm like 90% certain I'm about to fail too many classes and get expelled without graduation. Which, yeah, hurts now that I've written it out. I'm like living without thinking about the near term future now.
+
+I don't know where to go from here, I don't have a job or an income, my schedule is still fucked and it's not like I'm working harder than anyone else either.
