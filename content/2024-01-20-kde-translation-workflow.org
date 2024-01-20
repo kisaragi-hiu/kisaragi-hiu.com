@@ -1,0 +1,238 @@
+#+title: 我的 KDE 翻譯流程
+#+created: 2024-01-20T20:50:31+0900
+#+tags[]: kde translation
+
+我想把我目前的 KDE 翻譯流程寫下來、公開出來。
+
+我目前是 KDE 正體中文翻譯團隊的一員，在 pan93412 的邀請下有直接提交翻譯的權限。因此我的流程在沒有直接提交的權限時可能會比較不方便。
+
+翻譯團隊目前據我所知主要是用 Telegram 在 l10n-tw 頻道上交流。
+
+* 基礎知識
+
+KDE 的翻譯目前全部都在一個 SVN 版本庫裡。以前 KDE 所有軟體的版控也在同一個版本庫進行，但目前程式碼的部分都已經移轉到 KDE 自己的 GitLab 實體上面 ([[https://invent.kde.org][KDE Invent]])，只剩翻譯還在 SVN 裡。
+
+KDE 的 SVN 版本庫可以透過 https://websvn.kde.org 直接瀏覽檔案，像是 cgit 一樣。不需要提交權限的唯讀版本庫網址是 =svn://anonsvn.kde.org/home/kde/<路徑>=; 需要提交權限的版本庫網址是 =svn+ssh://svn@svn.kde.org/home/kde/<路徑>=
+
+KDE 軟體翻譯有兩種分支：
+
+- 軟體類型：KDE 5 時代的是 kf5，KDE 6 時代的是 kf6
+- 釋出版本：開發中版本軟體的翻譯在 “trunk”，最近一個已釋出的大 (major) 版本（例如 Plasma 目前是 5.27）的翻譯在 “stable”
+- 另外當然還有各個語言的分支。
+- 又另外還有 /messages/ 和 /docmessages/ 的差別：前者是應用程式的字串，後者是用 DocBook 寫的說明文件，也就是各 KDE 軟體裡稱作「〇〇手冊」的東西。
+
+一般翻譯在 trunk 進行，新版本釋出前 trunk 會複製到 stable（現有的 stable 應該是就會被取代），如果想要在下一個小 (minor) 版本就看到自己的翻譯的話也是可以在那之前自己把 trunk 的新翻譯複製過去。
+
+SVN 的「分支」可以當做是普通複製的資料夾，尤其是在不需要考慮分支之間的合併的時候。一個提交可以一次更改多個分支裡的內容，就好像整個 SVN 版本庫是一個 Git monorepo 一樣，不過我目前不確定這是不是其他人會喜歡的做法。
+
+* 基礎軟體
+
+KDE 的翻譯檔案是 Gettext PO 格式。我是用 [[https://invent.kde.org/sdk/lokalize/][Lokalize]] 進行翻譯，因為它在本機上（不需要像 Weblate 一樣還要設定伺服器）就可以使用全專案分析或搜尋之類的功能。也有人用 [[https://poedit.net/][POEdit]]，不過因為它比較是編輯單個 PO 檔案（而不是一整個資料夾的不同的 PO 檔案）所以我自己是用不習慣。
+
+KDE 的伺服器會自動每隔一段時間從各個軟體的 Git 版本庫抓取字串並整理成 PO 檔，然後合併到 SVN 版本庫裡現有的 PO 檔。負責做這些事情的軟體叫做 [[https://invent.kde.org/sysadmin/l10n-scripty][Scripty]]。它也會自動把新的翻譯同步回去各個軟體的 Git 版本庫裡。這都是自動的，只要知道它的存在就好。
+
+* 用 git-svn
+
+我之前有一段時間是用 git-svn 在抓取翻譯。把翻譯在本機上丟到一個 Git 版本庫的好處是，我可以翻譯一些東西完了之後用 [[https://magit.vc/][Magit]] 去檢查我的翻譯，還有刪掉翻譯沒有變動但是 Lokalize 修改了格式的部分 —— Scripty 也會自動把格式修回去，但反正我可以讓伺服器上少一點變動。
+
+用 git-svn 的問題是，它比較希望抓取所有的歷史，而要 clone 一個跨 trunk/stable 的版本庫的時候會需要花 *非常* 久的時間和網路用量。所以後來我改用我現在的流程。
+
+如果要用 git-svn 的話：
+
+#+begin_src shell
+git svn clone -r HEAD svn://anonsvn.kde.org/home/kde/trunk/l10n-kf5/zh_TW/messages trunk-kf5-zh_TW
+#+end_src
+
+- 語法是 =git svn clone <source> <target>=, 跟 git clone 一樣
+- 這是正體中文/kf5/trunk，不會有 kf6 的翻譯。
+- =-r HEAD= 會叫 git svn *不要* 包含整個歷史。我只是要再製一個本機複本，不是要做 SVN → Git 的移轉。
+- 如果之後要改上游網址的話，因為 git-svn 有特別的處理，沒辦法直接用 git remote 之類的指令來改。會需要打開 =.git/config=, 然後把裡面 =svn-remote= 區塊的 =url= 設為新的網址，然後把 =rewriteRoot= 設為舊的網址。（實際上的區塊還包含那個 svn-remote 的名稱，所以直接打開來編輯會比較快。）
+
+* 我目前的流程
+** 工作複本設定
+
+直接用 SVN 讓我能夠只 clone 部分的資料夾。git-svn 好像也支援這類功能，但是它實在是太慢了。
+
+#+begin_src shell
+svn update --set-depth empty 路徑 # 路徑/ 是空資料夾
+svn update --set-depth files 路徑 # 路徑/檔案1 ...
+# 路徑/檔案1 ... 和 路徑/資料夾1/ ...，後者是空資料夾
+svn update --set-depth immediates 路徑
+svn update --set-depth infinity 路徑 # 所有子資料夾和檔案，深度無限
+#+end_src
+
+KDE 的 SVN 版本庫長這樣：
+
+: /branches/
+: /branches/<一堆我沒興趣的資料夾>
+: /branches/stable/
+: /branches/stable/<一堆我沒興趣的資料夾>
+: /branches/stable/l10n-kf5/ # 其中有 templates、zh_TW 和別的語言
+: /branches/stable/l10n-kf6/ # 其中有 templates、zh_TW 和別的語言
+: /tags/<一堆我沒興趣的資料夾>
+: /trunk/
+: /trunk/<一堆我沒興趣的資料夾>
+: /trunk/l10n-kf5/ # 其中有 templates、zh_TW 和別的語言
+: /trunk/l10n-kf6/ # 其中有 templates、zh_TW 和別的語言
+
+我的目的是要讓我的工作複本長這樣：
+
+: /branches/stable/l10n-kf5/ # 其中有 templates、zh_TW 和參考用的 ja
+: /branches/stable/l10n-kf6/ # 其中有 templates、zh_TW 和參考用的 ja
+: /trunk/l10n-kf5/ # 其中有 templates、zh_TW 和參考用的 ja
+: /trunk/l10n-kf6/ # 其中有 templates、zh_TW 和參考用的 ja
+: /trunk/l10n-kf6/zh_TW/messages/konsole/konsole.po # 完整路徑範例
+
+首先我先簽出工作複本，確保不要不小心簽出整個版本庫：
+
+#+begin_src shell
+svn checkout --depth immediates svn://anonsvn.kde.org/home/kde/ ~/kde-svn
+cd ~/kde-svn
+#+end_src
+
+接下來，我的目的是要這樣做：
+
+#+begin_src shell
+svn update --set-depth infinity branches/stable/l10n-kf{5,6}/{templates,ja,zh_TW} trunk/l10n-kf{5,6}/{ja,zh_TW,templates}
+
+# "kf{5,6}" 代表 "kf5 kf6"，是 shell 的 brace expansion
+#+end_src
+
+但是 SVN 會抱怨：
+
+: svn: E155007: None of the targets are working copies
+
+現在的問題是， =/trunk= 的深度是 =empty= ，而要再製它底下的東西的話它本身不能是 =empty= 。我們只剩三個選項： =infinity= 下載太多東西， =immediates= 會給我們一大堆空的資料夾（不過這樣會很明顯有哪些能用的資料夾）； =files= 會給我們它底下的檔案，雖然我還是不想要那些檔案，但是這是最不糟的選項。
+
+這樣，我們需要把目標資料夾的親資料夾個別設為深度 = ~files~ 。我的做法是，就…
+
+#+begin_src shell
+svn update --set-depth files branches
+svn update --set-depth files branches/stable
+svn update --set-depth files branches/stable/l10n-kf{5,6}
+# 親資料夾都沒有 empty depth 了，所以可以設定目標的 depth = infinity 了
+svn update --set-depth infinity branches/stable/l10n-kf{5,6}/{templates,ja,zh_TW}
+
+svn update --set-depth files trunk
+svn update --set-depth files trunk/l10n-kf{5,6}
+# 同樣，親資料夾都沒有 empty depth 了，所以可以設定目標的 depth
+svn update --set-depth infinity trunk/l10n-kf{5,6}/{ja,zh_TW,templates}
+#+end_src
+
+** Lokalize 設定
+
+我的路徑長這樣：
+
+: ~/kde-svn/branches/stable/l10n-kf5/zh_TW
+: ~/kde-svn/branches/stable/l10n-kf5/ja
+: ~/kde-svn/branches/stable/l10n-kf5/templates
+:
+: ~/kde-svn/branches/stable/l10n-kf6/zh_TW
+: ~/kde-svn/branches/stable/l10n-kf6/ja
+: ~/kde-svn/branches/stable/l10n-kf6/templates
+:
+: ~/kde-svn/trunk/l10n-kf5/zh_TW
+: ~/kde-svn/trunk/l10n-kf5/ja
+: ~/kde-svn/trunk/l10n-kf5/templates
+:
+: ~/kde-svn/trunk/l10n-kf6/zh_TW
+: ~/kde-svn/trunk/l10n-kf6/ja
+: ~/kde-svn/trunk/l10n-kf6/templates
+
+Lokalize 可以設定專案，而屬於專案的 PO 檔是在專案檔 (=.lokalize=) 同一個資料夾底下的所有 PO 檔。
+
+我希望同一個 Lokalize 專案裡可以同時看到 kf5 和 kf6 的檔案。問題是，現有的路徑裡如果同時看到 kf5 和 kf6 也就代表會同時看到 templates 和 =zh_TW= ，而這會導致我沒有辦法利用 Lokalize 的 PO 樣本的功能。
+
+我的解決方法是用 symlink 把我需要的資料夾格式做出來。
+
+: (在 ~/kde-translations/ 裡面)
+: # {lang} 是 ja, zh_TW 或 templates
+: {lang}/kf{5,6} -> ~/kde-svn/trunk/l10n-kf{5,6}/{lang}
+: # 讓 stable 和 trunk 的 Lokalize 專案共用 Glossary
+: zh_TW/terms.tbx -> ../terms.tbx
+: # trunk 的 Lokalize 專案設定
+: zh_TW/index.lokalize
+:
+: stable.{lang}/kf{5,6} -> ~/kde-svn/branches/stable/l10n-kf{5,6}/{lang}
+: # 讓 stable 和 trunk 的 Lokalize 專案共用 Glossary
+: stable.zh_TW/terms.tbx -> ../terms.tbx
+: # stable 的 Lokalize 專案設定
+: stable.zh_TW/index.lokalize
+
+=zh_TW/index.lokalize= 的內容：
+
+#+begin_src ini
+[General]
+AltDir=../ja
+BranchDir=../stable.zh_TW
+PotBaseDir=../templates ; 這是預設值，實際上會忽略
+PotBranchDir=../stable.templates
+LangCode=zh_TW
+LanguageSource=Project
+MailingList=zh-l10n@lists.slat.org
+ProjLangTeam=Traditional Chinese <zh-l10n@lists.slat.org>
+ProjectID=kde-translations-zh_TW ; 讓 stable 和 trunk 用同樣的翻譯記憶體
+TargetLangCode=zh_TW
+#+end_src
+
+=stable.zh_TW/index.lokalize= 的內容：
+
+#+begin_src ini
+[General]
+AltDir=../stable.ja
+BranchDir=../zh_TW
+PotBaseDir=../stable.templates
+PotBranchDir=../templates
+LangCode=zh_TW
+LanguageSource=Project
+MailingList=zh-l10n@lists.slat.org
+ProjLangTeam=Traditional Chinese <zh-l10n@lists.slat.org>
+ProjectID=kde-translations-zh_TW ; 讓 stable 和 trunk 用同樣的翻譯記憶體
+TargetLangCode=zh_TW
+#+end_src
+
+這樣我就有一個 Lokalize 專案可以一次翻譯正體中文的所有軟體（應該已經不需要回去看 KDE4 還有什麼了…），並且透過 Lokalize 的自動同步功能，在設定好 BranchDir 之後也會自動在我修改 trunk 的時候自動幫我修改可以直接套用的 stable 的翻譯。
+
+** 翻譯流程
+
+我現在的翻譯流程是：
+
+- 在開始翻譯之前用 =svn update= 抓最新的變更，因為讓 SVN 自動合併 PO 檔會很麻煩（尤其是 Scripty 自動更新的來源原始碼行號的註解）
+- 然後 *我會在 =~/kde-svn= 開一個新的 Git 版本庫* 。這完全只是用來 diff 變更前和變更後的差異用的而已，但我個人覺得這比 svn diff 還要好用，尤其我在翻譯完之後還可以用 Magit 來回顧做檢查。
+
+  #+begin_src shell
+  git init
+  git add ./trunk ./branches
+  git commit -m "before"
+  #+end_src
+
+- 然後打開 Lokalize 開始翻譯。
+- 翻譯完之後先檢查我有沒有漏掉 =%1= 之類的格式字串。
+
+  #+begin_src shell
+  fd -e po -x msgfmt -o /dev/null --check-format
+  # 當然也可以用 find，但我通常覺得 fd 比較直覺
+  # https://github.com/sharkdp/fd
+  #+end_src
+
+- 打開 Magit，檢查各個變更的區塊，然後寫提交訊息
+- 把寫到 Git 裡的提交訊息複製起來
+- 用 =svn status= 確認有沒有新檔案需要加入版控 —— SVN 沒有一個 staging area，但是新檔案還是需要先明確的 =svn add= 過才會在 =commit= 時包含。
+- *確認我沒有把 .git 標成加入版控* 。有提交權限就有檢查自己有沒有提交垃圾的責任；with great power comes great responsibility.
+- 用 =svn add= 把新檔案加入版控
+- =svn commit=, 讓它開編輯器來編輯提交訊息，然後把剛剛複製的提交訊息貼上
+- 存檔提交
+
+* Glossary 管理
+
+我有在考慮要不要把我在用的 Lokalize glossary 提交到 SVN 版本庫裡。有其他某些語言團隊這樣做，像是烏克蘭語。
+
+KDE 整個 SVN 版本庫裡目前有 23 個 .tbx（語料庫）檔案；要搜尋比 GitHub 還要不方便，但是可以這樣搜尋：
+
+#+begin_src shell
+svn list -R $(svn info --show-item=url) > /tmp/files
+#+end_src
+
+然後用編輯器打開剛寫入的 =/tmp/files= 直接搜尋。
+
+因為用詞管理有它複雜的地方，我不覺得我能自己做這個決定，所以目前我還是沒有上傳我自己的 glossary。不過我有把存到我的雲端上然後至少在自己的筆電和桌機之間同步它。
