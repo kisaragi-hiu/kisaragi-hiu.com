@@ -1,0 +1,237 @@
+#+title: Glossary
+#+created: 2024-03-01T03:25:21+0900
+#+tags[]: translation
+
+This is my current KDE localization glossary plus some comments.
+
+I use the glossary kind of as a reference. While there are some items that are strongly binding (stuff like always using 剪貼簿 for “Clipboard” and never 剪貼板), I haven't found a way to annotate that yet beyond just knowing it myself.
+
+This list is exported from my current Lokalize glossary with this code:
+
+#+begin_src elisp :results value list
+;; With begin_src elisp :results value list
+(let ((xml (with-temp-buffer
+             (insert-file-contents "/kisaragi-common/cloud/kde-translation/terms.tbx")
+             (libxml-parse-xml-region (point-min) (point-max)))))
+  (--map
+   (format
+    "%s → %s ::"
+    (-->
+     (dom-elements it 'lang "en-US")
+     (dom-by-tag it 'term)
+     (mapcar #'cl-third it)
+     (s-join " | " it))
+    (-->
+     (dom-elements it 'lang "zh-TW")
+     (dom-by-tag it 'term)
+     (mapcar #'cl-third it)
+     (s-join " | " it)))
+   (dom-by-tag xml 'termEntry)))
+#+end_src
+
+* Enterprise
+- ACL → 存取控制清單 ::  This is existing accepted usage, used by at least Microsoft and Amazon
+- bucket → 儲存貯體 :: as in an S3 bucket. This is [[https://docs.aws.amazon.com/zh_tw/AmazonS3/latest/userguide/creating-buckets-s3.html][what Amazon shows to =zh_TW= users]].
+
+* App-specific
+- fill log cache | filling log cache → 填入紀錄快取 :: This is for Kdesvn (KDE's Subversion client, not to be confused with KDE's Subversion repository).
+- clip → 素材 :: This is for Kdenlive. It's still half untranslated, and this probably needs more review.
+- Plasma Shell | shell → Plasma 殼層 | Plasma Shell :: I find 殼層 to be harder to understand than just importing the original word sometimes.
+- moderation → 審核 | 站務 | 管理 ::
+- moderation action → 站務動作 ::
+- moderation decision → 審核決定 :: I think these were for Ruqola.
+- thunderstorm with → 雷風暴夾帶 :: This was for KWeather.
+- post → 嘟文 :: For Tokodon. Perhaps it should return to 貼文 now that Mastodon has stopped calling posts “toots”, but this is Mastodon's choice to make, and Mastodon's =zh_TW= translation still uses 嘟文. (Fun fact: Twitter's =zh_TW= translation also hasn't given up on 推文 either.)
+* Concepts
+- distro | distribution → 發行版 :: I'm sorry, nobody says 散布版 and unfortunately human language is not consistent. As a translator providing strings to users, understandability is my first priority.
+- release notes → 發行註記 | 發行備註 :: 發行註記 is used more often within KDE right now.
+- release → 發行 | 釋出 | 釋出版 :: Unfortunately 發行版 clashes with “distro”. Again, my priority is not to fix an inconsistency in existing usage, it is to provide understandable and familiar strings to users / readers.
+- pre-release → 預先發行 ::
+- changelog → 變更紀錄 | 更動紀錄 | changelog ::
+- package → 軟體包 | 套件 :: There are two common choices: 軟體包 is a mouthful but clashes with less things (used by KDE and Arch (pacman) at least), and 套件 which may be ambiguous with “kit” (used by openSUSE (zypper) at least). Some people feel strongly about switching to 軟體包; I don't particularly have a strong preference so I roll with 軟體包 as well.
+- package manager → 軟體包管理員 | 套件管理員 :: Same choice as “package”. Also, in this case I want to make sure I use 管理員 for this term and don't stray into 管理器 randomly.
+- bar chart | bar → 長條圖 ::
+- stacked bar | stacked bar chart → 堆疊長條圖 ::
+- pie chart | pie → 圓餅圖 ::
+- line chart | line → 折線圖 :: These chart names somewhat align with Excel.
+- line → 行 | 列 :: In a table, 行 is for columns and 列 is for rows. In a text file, it is customary to use 行, probably because this usage originated back when Mandarin was primarily written vertically. This is inconsistent, and some translators have been trying to use 列 consistently. Personally, (when I get to choose) I use 欄 for columns and 列 for rows in a table; and 行 for lines and 欄 for columns for text lines, as I find the effort to steer Taiwanese Mandarin to use 列 for text lines to be a futile effort.
+- disk → 磁碟 :: I find it easy to accidentally use 硬碟 for this, which introduces more ambiguity.
+- disc → 碟片 ::
+- sector → 磁區 :: as in a disk or disc.
+- keyframe → 關鍵幀 | 關鍵影格 ::
+- frame rate → 幀率 :: This is part of a series of unsure word choices regarding (video) frames.
+- process → 處理程序 | 程序 | 行程 :: 行程 is the consistent norm in KDE. Although I'd very much like to switch to 程序 like literally every other environment (Windows, macOS, GNOME, xfce, etc.), there appears to be strong preference to keep it as-is in KDE, so I'm keeping it as-is.
+* Unintuitive translations
+- freebusy | free/busy → 行程資訊 | 空閒/忙碌 :: As in a calendar. 行程資訊 is a pretty good (but hard-to-think-up) translation, so I threw it into the glossary.
+- grand debut → 隆重登場 ::
+- hamburger menu → 三點選單 ::
+- legend → 圖例 :: Found this to be unintuitive
+- mouse-over | hover → 滑鼠停駐 | 滑鼠停留於...上 | 滑鼠懸停 ::
+* UI & Miscellaneous
+- import → 匯入 ::
+- export → 匯出 :: AFAIK 導出/導入 is =zh_CN=, while 輸出/輸入 is poorly converted =zh_CN=.
+- app | application → 應用程式 :: Or maybe “app” (ㄟ ㄆㄧ ㄆㄧ). Taiwanese Mandarin never uses 應用.
+- archive → 封存檔 | 封存 :: Not 壓縮檔 as archives may or may not be compressed. This difference isn't always kept even in original English text though.
+- audio → 音效 | 音訊 :: I prefer 音訊 for audio /signal/ because it's *訊*. Depends on the context though.
+- argument → 引數 | 參數 :: I'm still not sure which one is better.
+- choose → 選擇 ::
+- select → 選取 ::
+- select file → 選擇檔案 :: There is kind of a difference with 選擇 and 選取, with "choose" using 選擇 more and "select" using 選取 more.
+- Copy to clipboard → 複製到剪貼簿 ::
+- appearance → 外觀 ::
+- caret → 文字游標 | 游標 ::
+- caret → "^"（符號） ::
+- category → 分類 | 類別 ::
+- change → 變更 | 改變 | 修改 | 更改 ::
+- checkbox → 勾選方塊 | 核取方塊 ::
+- collection → 收藏 | 集合 ::
+- command line → 命令列 | 指令列 :: I'm still not entirely sure if Taiwanese Mandarin prefers 命令 or 指令 for commands. Using 列 instead of 行 in this case is more common though.
+- check out | checking out | checkout → 簽出 ::
+- conditional breakpoint → 條件中斷點 ::
+- configuration |  → 設定 | 配置 :: Note that “Configure <x> settings” is best translated as 調整<x>設定.
+- console → 主控台 :: Sometimes this is used as a synonym for “terminal”.
+- commit | committed → 提交 ::
+- contacts → 聯絡人 ::
+- convergent → 跨平台 | 響應式 ::
+- could not find → 找不到 ::
+- credentials → 認證資訊 ::
+- cursor → 游標 :: Not 遊標.
+- cycle through → 循環切換 :: There isn't a direct translation for “cycle” as a verb (go through possible options in a loop), but this is good enough.
+- dbus | d-bus → D-Bus :: Source text spelling may not be consistent, but we might as well make it consistent in translated text.
+- debugger → 除錯器 :: I'm thinking maybe debug should be 偵錯 though, like Android.
+- details → 詳細資料 :: I sometimes say 詳細資訊 or 詳情 instead.
+- dialog → 對話框 | 對話方塊 ::
+- dictionary → 字典 :: Mainly to tell myself to not randomly decide to use 辭典 or 詞典.
+- diff → 差異 ::
+- dismiss → 忽略 :: This seems common enough?
+- dump → 傾印檔 | 傾印 ::
+- episode → 集數 :: Just 集 isn't enough (集總覽 feels wrong). After checking several =zh_TW= apps, 集數 is the common translation.
+- evaluate → 計算 | 估算 ::
+- event → 事件 :: Perhaps this should be 活動 in calendars, but right now this is the translation I'm using.
+- existing → 現存 | 現有 | 既存 ::
+- enter → 進入%s模式 ::
+- exit → 離開%s模式 :: These are /for reference/ glossary items.
+- fallback → 後備 :: I found this hard to translate at first, but 後備 does make a lot of sense (後備字型). 備用 also works.
+- favicon → favicon | 小圖示 | 網站圖示 ::
+- favorite | favourite → 最愛 | 我的最愛 | 收藏 | 加入最愛 ::
+- fetch → 抓取 | 取得 :: 取得 is the most generic, but could clash with “retrieve” or “get”. In the context of version control systems, 抓取 is what has made its way into Git.
+- file → 檔案 :: Obviously. Point is, it's not 文件. This glossary item is also mainly just to speed up insertion in Lokalize.
+- fixes bug → 修正臭蟲 :: Sometimes I translate “bug” as 錯誤. The
+- flexible → 靈活 | 有彈性 ::
+- font | fonts → 字型 ::
+- geolocation → 地理位置 ::
+- get new → 取得新%s… :: As in getnewstuff.
+- graphics driver | graphics drivers → 顯示卡驅動程式 ::
+- health certificate → 健康證明 ::
+- hibernate | suspend → 休眠 ::
+- identifier | identifiers → 識別子 :: Or maybe even just “ID”.
+- image → 影像 | 圖片 :: The current norm is 影像, but I find that it kind of suggests that it's a video. I wish to switch to 圖片 but haven't tried yet.
+- image → 映像檔 :: As in an ISO image. This has its own Mandarin word and cannot be the same as in a PNG image.
+- indicator → 指示器 ::
+- inhibition → 阻擋 | 睡眠阻擋 :: “Inhibit suspend” is common enough that I threw this in here.
+- itinerary → 旅行計劃 | 行程預定 ::
+- keyboard shortcuts | keyboard shortcut → 鍵盤快捷鍵 :: To tell myself to use 快捷鍵 consistently, instead of 捷徑 or 快速鍵.
+- layout → 配置 | 佈局 | 版型 | 版面配置 ::
+- localized → 翻譯後 | 本地化(後) ::
+- log → 紀錄 | 日誌 ::
+- log cache → 紀錄快取 ::
+- logo → 標誌 | 圖標 | 圖示 ::
+- man page → man page | man 頁面 ::
+- menu → 選單 ::
+- merge → 合併 ::
+- mimetype | mime type | mime types → MIME 類型 ::
+- modifier key | modifier keys → 組合鍵 | 修飾鍵 ::
+- module → 模組 ::
+- note → 筆記 | 記事 | 便條 | 備註 ::
+- notification area → 通知區域 ::
+- pages → 頁面 ::
+- parse | parsing → 剖析 |  ::
+- part → 部件 ::
+- patron → 贊助者 | patron ::
+- pipe → 管線 ::
+- plain text → 純文字 ::
+- preset → 預設 | 預設檔 | 預設集 :: As a noun, 預設檔 works better than 預設. I find that 預設 along reads more like 預設值, so 儲存預設 just feels wrong. 儲存預設檔, on the other hand, works fine.
+- preview → 預覽 ::
+- protocol → 協定 ::
+- remote → 遠端 ::
+- render | rendering → 繪製 | 輸出(?) | 運算(?) | 渲染 | 算繪 :: This is currently a mess. I'd personally go with 渲染 because it's (a) popular and (b) unambiguous in the context of a computer program. But 算繪 appears better accepted among translators (and is also popular enough to be understood). 輸出 is rewriting it to “output” and works in limited cases; 繪製 is for UI rendering.
+- reply-to → 回覆至 | 回覆地址 ::
+- repository | repositories → 版本庫 | 儲存庫 | 檔案庫 | 主目錄 ::
+- retrieval | retrieve → 收取 | 取得 ::
+- revision → 修訂版 ::
+- revoke → 撤銷 | 註銷 | 撤回 | 廢止 ::
+- room → 聊天室 :: As in chat apps.
+- screenshot → 螢幕截圖 | 螢幕快照 :: I strongly prefer 螢幕截圖 due to popularity and understandability. 螢幕快照 appears to be referring to snapshot, but it's not as clear literally, nor does it appear to be used elsewhere.
+- script → 文稿 ::
+- search → 搜尋 ::
+- security advisory → 安全性公告 ::
+- sensor → 感測器 ::
+- server → 伺服器 ::
+- session → 工作階段 ::
+- show → 顯示 ::
+- show | show hidden files last → 將隱藏檔案排在最後 ::
+- sidebar → 側邊欄 ::
+- sleep | suspend → 睡眠 ::
+- socket → socket ::
+- sound theme → 音效主題 ::
+- status → 狀態 ::
+- step | step size → 間隔 | 間隔值 | 間距 ::
+- syntax → 語法 ::
+- system tray → 系統匣 :: btw 匣 is ㄐㄧㄚˊ in Taiwanese Mandarin despite [[https://dict.concised.moe.edu.tw/search.jsp?word=匣][what the ministry of education says]].
+- system-wide → 全系統 ::
+- tag → 標籤 ::
+- task switcher → 工作切換器 ::
+- template → 範本 ::
+- this cannot be undone | this action cannot be undone → 這個動作無法復原 ::
+- thread → 對話串 | 串文 ::
+- timestamp → 時間戳 | 時間 ::
+- todo | TODO → 待辦事項 ::
+- toggle → 切換 ::
+- token → 權杖 | token ::
+- toolbar → 工具列 ::
+- toolkit → 部件工具箱 | 工具箱 | 元件函式庫 | 介面開發工具 | 應用程式框架 ::
+- tooltip → 工作提示 ::
+- transfer → 傳輸 ::
+- type → 類型 | 形態 | 型態 ::
+- undo | undoes → 還原 :: Trying to keep myself from using 回復 or 復原.
+- update → 更新 ::
+- url → 網址 | URL ::
+- user interface → 使用者介面 | 圖形介面 ::
+- user's manual | user manual → 使用者手冊 ::
+- widget style |  → 元件樣式 ::
+- plasmoid → Plasma 元件 | Plasma 小元件 | Plasmoid | 小元件 | 小程式 ::
+- applet → 小程式 ::
+- widgets → 元件 :: as much as I'd like to call widgets 小程式 to be the same as Android (and Windows 7?), calling it 元件 appears to be an established norm here.
+- working copy → 工作複本 ::
+- workspace → 作業空間 | 工作空間 ::
+- GNU GPL | GNU General Public License → GNU 通用公共授權 ::
+- issue tracker → 議題追蹤 | 問題追蹤平台 ::
+- guideline → 準則 | 指引 ::
+- username → 使用者名稱 ::
+- puzzle game → 益智遊戲 ::
+- digit → 數字 | [幾]位數 | 數字字元 ::
+- truncate | truncation → 截斷 | 截短 ::
+- board → 棋盤 | (遊玩)區域 :: For KDE games.
+- dataset | data set → 資料集 ::
+- time out | timeout | timed out → 逾時 ::
+- edit → 編輯 ::
+- list → 列表 | 清單 :: I have a vague sense that 列表 is for table-like lists (hence the 表) and 清單 is for general lists. I'm not entirely sure.
+- insert → 插入 ::
+- watermark → 浮水印 ::
+- this image editor tool can → 這個影像編輯器工具可以用來 :: Fast insertion in digikam.
+- eastern → 東部 | 東 :: For fast insertion.
+- regular expression | regexp | regex → 正則表達式 ::
+- mount → 掛載 :: Not 裝載.
+- scheme → 機制 :: Although “color scheme” is 配色方案.
+- wizard → 精靈 ::
+- thread → 執行緒 ::
+- debug adapter → 除錯配接器 ::
+- debug adapter protocol → 除錯配接協定 ::
+- fediverse → 聯邦宇宙 ::
+- volume group → 卷冊群組 ::
+- port → 連接埠 ::
+- this can take a while → 這可能會花上一段時間 ::
+- follow → 跟隨 ::
+- tarball → tarball | tar 壓縮檔 ::
+- Package download wiki page → 軟體包下載維基頁面 ::
+- source info page → 原始碼資訊頁面 ::
