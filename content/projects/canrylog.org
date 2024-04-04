@@ -48,9 +48,8 @@ I’ve also built a task list view, although that’s something that isn’t rea
 
 https://gitlab.com/canrylog/canrylog-cli
 
-Currently the tracking file location is hard coded, as I’ve only been working on the current version for less than 3 hours.
+I revamped the whole thing again on 2024-03-25. Current features:
 
-Commands implemented:
-
-- =canrylog switch-to <task>=
-- =canrylog current=
+- =canrylog switch= pops up a list of tasks to select, then switches to it
+- =canrylog config= to configure time tracking repo
+- =canrylog task duration= to check the duration of a task

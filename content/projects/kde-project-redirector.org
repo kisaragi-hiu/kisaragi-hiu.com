@@ -1,0 +1,16 @@
+#+title: Quick redirector for KDE Projects
+#+created: 2024-03-22T08:25:32+0900
+#+tags[]: web javascript apps
+#+homepage: https://kde-project.kisaragi-hiu.com
+#+github: https://github.com/kisaragi-hiu/kde-project.kisaragi-hiu.com
+#+status: 90%
+
+A [[https://workers.cloudflare.com/][Cloudflare Workers]] project to redirect KDE project IDs to their KDE Invent repositories. Useful for checking context while translating for KDE, as translation files are named after project IDs but Invent doesn't have an easy way to go from ID to repo.
+
+Includes an index page listing all projects.
+
+- Package manager: Bun
+- Runtime: Cloudflare Workers (workerd)
+- Bundler: Esbuild (through Wrangler)
+- Dev server: Bun (because =wrangler dev= doesn't work for me and Bun.serve has the same interface as Workers)
+- Linter: Biome
