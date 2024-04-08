@@ -34,6 +34,7 @@ module.exports = {
     },
     extend: {
       typography: {
+        // biome-ignore lint: tailwind API
         DEFAULT: {
           // cancelling this out in CSS is even uglier, so just do it here
           css: {
@@ -65,6 +66,7 @@ module.exports = {
       zIndex: { "-5": "-5" },
       // https://github.com/tailwindlabs/tailwindcss/discussions/1361
       boxShadow: {
+        // biome-ignore lint: tailwind API
         DEFAULT: "0 0 0.25rem #00000040",
         md: "0 0 0.25rem #00000070",
         white: "0 0 0.5rem #ffffff",

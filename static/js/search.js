@@ -4,11 +4,8 @@
  * @returns {string}
  */
 function normalizeString(str) {
-  if (str) {
-    return str.toLowerCase();
-  } else {
-    return "";
-  }
+  if (!str) return "";
+  return str.toLowerCase();
 }
 /**
  * Join `obj` into a string.
@@ -16,11 +13,8 @@ function normalizeString(str) {
  * @returns {string}
  */
 function normalizeArray(obj) {
-  if (obj) {
-    return obj.join("").toLowerCase();
-  } else {
-    return "";
-  }
+  if (!obj) return "";
+  return obj.join("").toLowerCase();
 }
 
 /**
@@ -33,20 +27,20 @@ function normalizeArray(obj) {
  */
 function shouldInclude(params, needle, filters) {
   if (
-    filters.length != 0 &&
+    filters.length !== 0 &&
     !filters.some((filter) => {
-      return params[filter.type] == filter.value;
+      return params[filter.type] === filter.value;
     })
   ) {
     return false;
   }
-  let title = normalizeString(params.title);
-  let series = normalizeString(params.series);
-  let voice = normalizeString(params.voice);
-  let tags = normalizeArray(params.tags);
+  const title = normalizeString(params.title);
+  const series = normalizeString(params.series);
+  const voice = normalizeString(params.voice);
+  const tags = normalizeArray(params.tags);
   // TODO: Section should be selected in a radiobutton, not filtered
   // with the text box
-  let section = normalizeString(params.section);
+  const section = normalizeString(params.section);
 
   str = title + tags + series + voice + section;
   // "a b" -> only items including both "a" and "b" are included
@@ -55,8 +49,10 @@ function shouldInclude(params, needle, filters) {
 function updateSearch() {
   const inputElem = document.getElementById("search");
   const filters = [];
-  const filtersElem = document.getElementById("filters")
-  const elems = filtersElem ? filtersElem.querySelectorAll("input:checked") : [];
+  const filtersElem = document.getElementById("filters");
+  const elems = filtersElem
+    ? filtersElem.querySelectorAll("input:checked")
+    : [];
   for (const x of elems) {
     filters.push(JSON.parse(x.getAttribute("data-filter")));
   }
