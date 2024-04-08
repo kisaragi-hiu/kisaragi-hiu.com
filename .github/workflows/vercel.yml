@@ -12,23 +12,24 @@ defaults:
 
 jobs:
   "build":
+    # This comes with
+    # - Vercel CLI
+    # - Make
     runs-on: ubuntu-22.04
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           submodules: true
           ssh-key: ${{ secrets.SSH_KEY }}
           ssh-known-hosts: ${{ secrets.SSH_KNOWN_HOSTS }}
-      # - uses: pnpm/action-setup@v2
-      #   with:
-      #     version: 8
       - name: Set up Node
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: "18"
+          node-version: "20"
           cache: "npm"
       - name: Create Vercel config
+        # This uses Node
         run: |
           make vercel.json
       - name: Build and deploy
