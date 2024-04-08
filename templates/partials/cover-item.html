@@ -1,4 +1,3 @@
-<!-- prettier-ignore -->
 {{ $item := .item }}
 {{ $title := (partial "func-cover-title" .) }}
 {{ $thumb := false }}
@@ -15,7 +14,7 @@
 >
   {{ if $thumb }}
     <!-- Left part: the image -->
-    <img alt="" class="w-24 object-cover max-h-16 py-2" src="{{ $thumb }}" />
+    <img alt="" class="w-24 object-cover max-h-12 rounded" src="{{ $thumb }}" />
   {{ end }}
   <!-- Right part: title and metadata -->
   <div class="grow">

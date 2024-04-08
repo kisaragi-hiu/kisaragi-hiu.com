@@ -1,7 +1,7 @@
-<ul class="list-none p-0 flex flex-col space-y-2">
+<ul class="list-none p-0 flex flex-col">
   {{ range . }}
-  <li class="rounded transition duration-100">
-    <a href="{{.Permalink}}">{{ partial "cover-item" (dict "item" .) }}</a>
-  </li>
+    <li class="rounded transition duration-100">
+      <a href="{{ .Permalink }}">{{ partial "cover-item" (dict "item" .) }}</a>
+    </li>
   {{ end }}
 </ul>
