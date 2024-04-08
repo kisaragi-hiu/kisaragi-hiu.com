@@ -8,13 +8,13 @@ function normalizeString(str) {
   return str.toLowerCase();
 }
 /**
- * Join `obj` into a string.
- * @param {?array} obj
- * @returns {string}
+ * Normalize string elements of `arr`.
+ * @param {any[]} arr
+ * @returns {any[]}
  */
-function normalizeArray(obj) {
-  if (!obj) return "";
-  return obj.join("").toLowerCase();
+function normalizeArray(arr) {
+  if (!arr) return [];
+  return arr.map((x) => x.toLowerCase());
 }
 
 /**
@@ -42,9 +42,12 @@ function shouldInclude(params, needle, filters) {
   // with the text box
   const section = normalizeString(params.section);
 
-  str = title + tags + series + voice + section;
+  str = title + tags.join("") + series + voice + section;
   // "a b" -> only items including both "a" and "b" are included
-  return needle.split(" ").every((x) => str.includes(x));
+  return needle.split(" ").every((x) => {
+    if (x.startsWith("#")) return tags.includes(x.slice(1));
+    return str.includes(x);
+  });
 }
 function updateSearch() {
   const inputElem = document.getElementById("search");
