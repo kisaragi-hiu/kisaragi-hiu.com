@@ -15,6 +15,7 @@ jobs:
     # This comes with
     # - Vercel CLI
     # - Make
+    # - Node 18
     runs-on: ubuntu-22.04
     steps:
       - name: Checkout
@@ -23,11 +24,9 @@ jobs:
           submodules: true
           ssh-key: ${{ secrets.SSH_KEY }}
           ssh-known-hosts: ${{ secrets.SSH_KNOWN_HOSTS }}
-      - name: Set up Node
-        uses: actions/setup-node@v4
+      - uses: oven-sh/setup-bun@v1
         with:
-          node-version: "20"
-          cache: "npm"
+          bun-version: latest
       - name: Create Vercel config
         # This uses Node
         run: |
