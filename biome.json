@@ -1,15 +1,17 @@
 {
   "$schema": "https://biomejs.dev/schemas/1.6.3/schema.json",
   "organizeImports": {
-    "enabled": false
+    "enabled": true
   },
   "json": {
     "formatter": {
-      "enabled": false
+      "indentStyle": "space",
+      "enabled": true
     }
   },
   "formatter": {
-    "enabled": false
+    "indentStyle": "space",
+    "enabled": true
   },
   "linter": {
     "enabled": true,
