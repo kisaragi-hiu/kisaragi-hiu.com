@@ -50,16 +50,13 @@
     {{ partial "default-footer" . }}
 
     {{ if not (eq .Title "404") }}
-      <hr />
-      <script
-        src="https://utteranc.es/client.js"
-        repo="kisaragi-hiu/kisaragi-hiu.com"
-        issue-term="pathname"
-        label="comments"
-        theme="preferred-color-scheme"
-        crossorigin="anonymous"
-        async
-      ></script>
+      <div class="block dark:hidden">
+        {{ partial "utterances" "github-light" }}
+      </div>
+      <div class="dark:block hidden">
+        <hr />
+        {{ partial "utterances" "github-dark" }}
+      </div>
     {{ end }}
   </div>
 {{ end }}
