@@ -16,7 +16,7 @@ dev-hugo:
 dev-tailwind:
 	bunx tailwindcss --postcss -i css/src.css -o static/css/built.css --watch
 
-js:
+static/js:
 	mkdir -p static/js/
 
 dev:
@@ -35,14 +35,14 @@ public.zip: public
 
 # the modified timestamp gets messed up on my system; fix that with
 # the `touch`.
-public: static/css/built.css js
+public: static/css/built.css static/js
 	hugo --minify
 	@touch public
 
 vercel.json: generate-vercel-config.ts
 	bun generate-vercel-config.ts > vercel.json
 
-build.vercel: static/css/built.css js vercel.json
+build.vercel: static/css/built.css static/js vercel.json
 	@hugo --minify -d .vercel/output/static
 	@echo "Creating Vercel output config..."
 	@echo '{"version":3}' > .vercel/output/config.json
