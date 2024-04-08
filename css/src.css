@@ -64,7 +64,7 @@
     }
   }
   .proselink {
-    @apply text-accent-strong dark:text-accent;
+    @apply accentColor;
     text-decoration: none;
     &:hover {
       @apply bg-accent-light;
@@ -118,6 +118,9 @@
 }
 
 @layer utilities {
+  .accentColor {
+    @apply text-accent-strong dark:text-accent;
+  }
   .out {
     @apply hover:underline;
     &::after {
@@ -211,7 +214,7 @@
     }
   }
   a code:not(.src code) {
-    @apply text-accent-strong dark:text-accent;
+    @apply accentColor;
   }
 
   /* Org's #+RESULTS: */
@@ -221,7 +224,7 @@
     font-size: inherit;
     &:before {
       content: "#+RESULTS: ";
-      @apply text-accent-strong dark:text-accent;
+      @apply accentColor;
     }
   }
 }

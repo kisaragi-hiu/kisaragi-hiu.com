@@ -10,37 +10,33 @@
   {{ partial "heading" (dict "title" .Title) }}
   <hr />
 
-  <!-- prettier-ignore -->
   {{ if .Params.toc }}
-{{ partial "toc" . }}
-{{ end }}
+    {{ partial "toc" . }}
+  {{ end }}
 
-{{ if .Params.hugo_nolist }}
+  {{ if .Params.hugo_nolist }}
     {{ partial "content" . }}
   {{ else }}
     <main class="mt-4">
-      <!-- prettier-ignore -->
       {{ partial "content" . }}
       <div class="relative mt-2">{{ partial "searchbox" .Pages }}</div>
-      <ul id="posts" class="p-0 mt-2 list-none flex flex-col gap-2">
+      <ul id="posts" class="p-0 mt-2 list-none flex flex-col">
         {{ range .Pages }}
           <li data-params="{{ jsonify .Params }}">
-            <div class="flex space-x-1 items-baseline">
-              <span class="grow">
-                <span class="inline-block w-[10ch]"
-                  >{{ partial "date" .Date }}</span
-                >
-                <a href="{{ .Permalink }}" class="link font-bold">
-                  {{ .LinkTitle }}
-                </a>
-              </span>
+            <a
+              class="flex space-x-1 items-baseline link hover"
+              href="{{ .Permalink }}"
+            >
+              <span class="inline-block w-[10ch]"
+                >{{ partial "date" .Date }}</span
+              >
+              <span class="font-bold grow">{{ .LinkTitle }}</span>
               <span class="inline-block">
-                <!-- prettier-ignore -->
                 {{ range .GetTerms "tags" }}
-          {{ partial "tag" . }}
-          {{ end }}
+                  <span class="tags accentColor">{{ .LinkTitle | lower }}</span>
+                {{ end }}
               </span>
-            </div>
+            </a>
           </li>
         {{ end }}
       </ul>

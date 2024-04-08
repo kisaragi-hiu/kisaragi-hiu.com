@@ -5,18 +5,15 @@
 {{ define "main" }}
   {{ partial "heading" (dict "title" .Title) }}
   <hr />
-  <!-- prettier-ignore -->
   {{ if .Params.toc }}
-{{ partial "toc" . }}
-{{ end }}
-  <!-- prettier-ignore -->
-  {{ if .Params.hugo_nolist}}
-{{ partial "content" . }}
-{{ else }}
-<main class="mt-4">
-  <!-- prettier-ignore -->
-  {{ partial "content" . }}
-  {{ partial "covers" .Pages }}
-</main>
-{{ end }}
+    {{ partial "toc" . }}
+  {{ end }}
+  {{ if .Params.hugo_nolist }}
+    {{ partial "content" . }}
+  {{ else }}
+    <main class="mt-4">
+      {{ partial "content" . }}
+      {{ partial "covers" .Pages }}
+    </main>
+  {{ end }}
 {{ end }}
