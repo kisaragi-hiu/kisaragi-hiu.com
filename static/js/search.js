@@ -53,17 +53,16 @@ function shouldInclude(params, needle, filters) {
   return needle.split(" ").every((x) => str.includes(x));
 }
 function updateSearch() {
-  let input_elem = document.getElementById("search");
-  let filters = [];
-  let elems = document
-    .getElementById("filters")
-    .querySelectorAll("input:checked");
-  elems.forEach((x) => {
+  const inputElem = document.getElementById("search");
+  const filters = [];
+  const filtersElem = document.getElementById("filters")
+  const elems = filtersElem ? filtersElem.querySelectorAll("input:checked") : [];
+  for (const x of elems) {
     filters.push(JSON.parse(x.getAttribute("data-filter")));
-  });
-  let needle = input_elem.value.toLowerCase();
+  }
+  const needle = inputElem.value.toLowerCase();
   for (const post of document.getElementById("posts").children) {
-    let params = JSON.parse(post.getAttribute("data-params"));
+    const params = JSON.parse(post.getAttribute("data-params"));
     if (shouldInclude(params, needle, filters)) {
       post.style.display = "unset";
     } else {
