@@ -19,7 +19,7 @@
   {{ else }}
     <main class="mt-4">
       {{ partial "content" . }}
-      <div class="relative mt-2">{{ partial "searchbox" .Pages }}</div>
+      <div class="relative mt-4">{{ partial "searchbox" .Pages }}</div>
       <ul id="posts" class="p-0 mt-2 list-none flex flex-col">
         {{ range .Pages }}
           <li data-params="{{ jsonify .Params }}">
