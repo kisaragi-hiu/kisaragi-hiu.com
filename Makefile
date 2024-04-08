@@ -22,9 +22,6 @@ dev:
 static/css/built.css: css/src.css
 	bunx tailwindcss --minify --postcss -i css/src.css -o static/css/built.css
 
-static/_redirects: _redirects.js
-	bun _redirects.js > static/_redirects
-
 clean:
 	git clean -Xdf
 
