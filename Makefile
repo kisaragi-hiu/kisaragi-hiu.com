@@ -39,8 +39,8 @@ public: static/css/built.css js
 	hugo --minify
 	@touch public
 
-vercel.json: generate-vercel-config.js
-	node generate-vercel-config.js > vercel.json
+vercel.json: generate-vercel-config.ts
+	bun generate-vercel-config.ts > vercel.json
 
 build.vercel: static/css/built.css js vercel.json
 	@hugo --minify -d .vercel/output/static

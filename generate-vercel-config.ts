@@ -1,23 +1,25 @@
 // This is what I actually edit when I commit vercel.json.
 
-let config = {
+import type { VercelConfig } from "@vercel/client";
+
+let config: VercelConfig = {
   buildCommand: "make build.vercel",
   outputDirectory: "public",
 };
-function rewrite(from, to) {
+function rewrite(from: string, to: string) {
   config.rewrites = config.rewrites || [];
   config.rewrites.push({
     source: from,
     destination: to,
   });
 }
-function redirect(from, to) {
+function redirect(from: string, to: string) {
   config.redirects = config.redirects || [];
   config.redirects.push({ source: from, destination: to });
 }
 // Yes, this is better than doing the same on the client side for
 // every single subproject.
-function subproject(from, to) {
+function subproject(from: string, to: string) {
   // Add the trailing slash
   redirect(`${from}/:slug(.*)*:last([^/])`, `${from}/:slug*:last*/`);
   redirect(from, `${from}/`);

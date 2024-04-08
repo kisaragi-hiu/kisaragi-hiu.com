@@ -30,7 +30,7 @@ This dance is necessary as:
 
 ## Build locally
 
-- Install packages needed for build: Hugo, Node, npm, then `npm install`
+- Install packages needed for build: Hugo, Bun, then `bun install`
 - Fetch assets
   - /static/illust from my personal git forge
   - Maybe also external icons in the future
