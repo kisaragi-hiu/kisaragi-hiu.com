@@ -19,7 +19,10 @@
       "style": {
         "useTemplate": "off",
         "noNonNullAssertion": "off",
-        "useNamingConvention": "warn"
+        "useNamingConvention": {
+          "level": "warn",
+          "options": { "strictCase": false, "requireAscii": false }
+        }
       },
       "suspicious": { "noExplicitAny": "off" }
     }
