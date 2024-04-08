@@ -28,5 +28,11 @@
       },
       "suspicious": { "noExplicitAny": "off" }
     }
-  }
+  },
+  "overrides": [
+    {
+      "include": ["**/*.min.js"],
+      "linter": { "enabled": false }
+    }
+  ]
 }
