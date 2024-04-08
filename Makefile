@@ -2,7 +2,10 @@ export LANG=en_US.UTF-8
 
 .DEFAULT_GOAL := build
 
-.PHONY: clean zip css dev
+.PHONY: clean zip css dev lint
+
+lint:
+	bunx @biomejs/biome lint .
 
 bun.lockb: package.json
 	bun install

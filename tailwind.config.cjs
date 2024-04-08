@@ -1,4 +1,4 @@
-let cjkFallback = [
+const cjkFallback = [
   "Noto Sans CJK TC",
   "Microsoft Jhenghei",
   "Microsoft Yahei",
