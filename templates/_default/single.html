@@ -2,7 +2,7 @@
   {{ if (eq .Title "404") }}
     <script type="text/javascript" src="/js/404.js"></script>
   {{ end }}
-  {{ partial "avatar" . }}
+  {{ partial "main-header" . }}
   {{ if not (.Param "hidetitle") }}
     {{ partial "heading"
       (dict

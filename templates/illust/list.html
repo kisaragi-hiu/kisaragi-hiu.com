@@ -1,17 +1,22 @@
-{{ define "main" }}
-{{ partial "heading" (dict "title" .Title) }}
-
-<hr>
-
-{{ if .Params.toc }}
-{{ partial "toc" . }}
+{{ define "header" }}
+  {{ partial "main-header" . }}
 {{ end }}
-{{ if .Params.hugo_nolist}}
-{{ partial "content" . }}
-{{ else }}
 
-<main>
-  {{ partial "content" . }}
-  {{ partial "illustrations" .Pages }}
-</main>
-{{ end }} {{ end }}
+{{ define "main" }}
+  {{ partial "heading" (dict "title" .Title) }}
+
+
+  <hr />
+
+  {{ if .Params.toc }}
+    {{ partial "toc" . }}
+  {{ end }}
+  {{ if .Params.hugo_nolist }}
+    {{ partial "content" . }}
+  {{ else }}
+    <main>
+      {{ partial "content" . }}
+      {{ partial "illustrations" .Pages }}
+    </main>
+  {{ end }}
+{{ end }}

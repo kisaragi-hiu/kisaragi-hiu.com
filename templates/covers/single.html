@@ -1,45 +1,46 @@
 {{ define "title" }}
-<!-- prettier-ignore -->
-{{ .Title }} ft. {{ .Params.voice }} - Covers - Kisaragi Hiu
+  <!-- prettier-ignore -->
+  {{ .Title }} ft. {{ .Params.voice }} - Covers - Kisaragi Hiu
 {{ end }}
 
 {{ define "header" }}
-{{ partial "avatar" . }}
-{{ partial "heading"
-           (dict "title" (partial "func-cover-title" (dict "item" .))
-                 "enableTypePath" true
-                 "ctx" .)}}
+  {{ partial "main-header" . }}
+  {{ partial "heading"
+    (dict "title" (partial "func-cover-title" (dict "item" .))
+    "enableTypePath" true
+    "ctx" .)
+  }}
 {{ end }}
 
 {{ define "main" }}
 
-<!-- prettier-ignore -->
-{{ if .Params.toc }}
+  <!-- prettier-ignore -->
+  {{ if .Params.toc }}
 {{ partial "toc" . }}
 {{ end }}
 
-<div class="max-lg:space-y-4 lg:space-x-4 lg:flex">
-  <!-- prettier-ignore -->
-  {{ with .Params.youtube }}
+  <div class="max-lg:space-y-4 lg:space-x-4 lg:flex">
+    <!-- prettier-ignore -->
+    {{ with .Params.youtube }}
   {{ partial "youtube" . }}
   {{ end }}
 
-  <!-- prettier-ignore -->
-  {{ with .Params.niconico }}
+    <!-- prettier-ignore -->
+    {{ with .Params.niconico }}
   {{ partial "niconico" . }}
   {{ end }}
-</div>
+  </div>
 
-<!-- prettier-ignore -->
-{{ partial "content" . }}
+  <!-- prettier-ignore -->
+  {{ partial "content" . }}
 {{ end }}
 
 {{ define "footer" }}
-<div class="mt-4 mb-40">
-  <hr />
-  <!-- prettier-ignore -->
-  {{ partial "metas" . }}
+  <div class="mt-4 mb-40">
+    <hr />
+    <!-- prettier-ignore -->
+    {{ partial "metas" . }}
   {{ partial "post-navigation" . }}
   {{ partial "default-footer" . }}
-</div>
+  </div>
 {{ end }}

@@ -246,6 +246,16 @@ Return a page type suitable for use as =og:type=.
 * Partials
 Partials are like shortcodes, but for use in other templates.
 
+** main-header ()
+
+The primary header content for /projects, /covers, etc.
+
+** global-nav (class)
+
+The “Covers, Illust, Projects…” link list.
+
+Class is the HTML class string on the =nav=.
+
 ** all-terms (:taxonomy :title :pages :partial)
 
 #+begin_src go-text-template
