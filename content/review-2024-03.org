@@ -4,5 +4,5 @@
 #+series: Monthly reviews
 #+language: en
 
-TODO I will write this once I finish Canrylog's monthly report, which
-shouldn't take long.
+- kde-project.kisaragi-hiu.com
+- Finally got canrylog-cli into a working state
