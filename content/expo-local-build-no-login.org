@@ -1,0 +1,33 @@
+#+title: Expo: How to do a local build without the dev server and without logging in
+#+created: 2024-04-10T13:48:51+0900
+#+tags[]: javascript expo
+
+I'm trying to test out the startup process of an open source React Native app built with Expo, so I really need the dev server to get out of the way in this case.
+
+[[https://docs.expo.dev/guides/local-app-development/][Expo docs]] describes two ways to build locally, which are (a) use =expo run= and (b) use =eas --local=. This is not the whole picture.
+
+In Expo, your actual build options, as far as I can tell, are:
+
+- Use =expo run:<platform>=, which builds a magical hot-reloading app, coupled with the dev server, has incredible development experience, but in this exact case we want to avoid
+- Use =eas build --platform <platform> --local=
+  - This requires logging in?!?!
+  - Okay fine, I made an account, EAS is useful — what do you mean I don't have the permission?! I'm just trying to build locally!
+- Open the native project, which is automatically generated after =expo run=, then build it like a normal native project. This is probably the most user friendly way.
+- Use the =react-native= CLI, which comes with the =react-native= package and is still guaranteed to be installed in your Expo project.
+
+The debug build of the =react-native= CLI still requires a dev server, as it still does some incredible magic to get hot reloading working, and is still not suited for this particular case. However, the production build does not have that issue.
+
+For Android, the production build is called the “release” variant. This is the default name that Android projects use.
+
+The release build builds an [[https://developer.android.com/guide/app-bundle][app bundle]] though. To install it I need to use [[https://github.com/google/bundletool][bundletool]], which is for some reason not in SDK or Platform Tools…? Sure, at least someone has graciously packaged it [[https://aur.archlinux.org/packages/bundletool][on the AUR]]. Then, I have to extract an (optionally device-tailored) Apk Set (apks) then install it.
+
+#+begin_src sh
+bundletool build-apks \
+    --connected-device \
+    --bundle=./android/app/build/outputs/bundle/release/app-release.aab \
+    --output=/tmp/x.apks
+bundletool install-apks \
+    --apks=/tmp/x.apks
+#+end_src
+
+Finally I can see an uninterrupted startup sequence without having to keep the dev server running!
