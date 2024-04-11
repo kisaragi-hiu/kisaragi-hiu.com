@@ -1,12 +1,12 @@
 <nav class="{{ . }}">
-  <div>
+  <div class="space-x-2">
     {{ range (slice (slice "/covers.html" "Covers")
       (slice "/illust.html" "Illust")
       (slice "/projects.html" "Projects")
       (slice "/about.html" "About")
       (slice "/index.xml" "RSS"))
     }}
-      <a class="proselink mr-2" href="{{ index . 0 }}">{{ index . 1 }}</a>
+      <a class="proselink" href="{{ index . 0 }}">{{ index . 1 }}</a>
     {{ end }}
   </div>
 </nav>

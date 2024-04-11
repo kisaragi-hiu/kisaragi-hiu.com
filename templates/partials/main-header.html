@@ -1,4 +1,5 @@
-<div class="flex max-sm:flex-col max-sm:space-y-2 justify-between">
-  {{ partial "avatar" . }}
+<div class="flex max-sm:flex-col max-sm:space-y-2 gap-x-2 items-end">
+  <div class="flex-grow">{{ partial "avatar" . }}</div>
   {{ partial "global-nav" "flex flex-col" }}
+  {{ partial "darkModeToggle" . }}
 </div>

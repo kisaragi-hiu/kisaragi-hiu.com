@@ -6,8 +6,10 @@
         <br />
         <span class="text-2xl">如月飛羽</span>
       </h1>
-      {{ partial "darkModeToggle" . }}
-      {{ partial "global-nav" "flex flex-col mt-4" }}
+      <div class="flex gap-x-2 items-end">
+        {{ partial "global-nav" "flex flex-col mt-4" }}
+        {{ partial "darkModeToggle" . }}
+      </div>
       {{ partial "content" . }}
       <ul class="flex flex-wrap mt-6">
         {{ range $k, $v := (site).Data.links }}
