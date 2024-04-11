@@ -160,6 +160,7 @@
 .prose {
   @apply max-w-none dark:prose-invert;
   @apply text-primary;
+  @apply font-serif;
   a {
     @apply proselink;
   }
