@@ -44,6 +44,7 @@ module.exports = {
         },
       },
       colors: {
+        // background dark and light
         dropd: "#09080d",
         dropl: "#f8f8f8",
         primary: "#0d0d0d",

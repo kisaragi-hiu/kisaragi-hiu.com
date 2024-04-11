@@ -157,10 +157,19 @@
 /* Statements below are always included in the built output because
    they are not part of any layer. */
 
-.prose {
-  @apply max-w-none dark:prose-invert;
+/* This wrapper over .prose ensures my definitions have priority. */
+.k-prose {
+  @apply prose dark:prose-invert;
+  @apply max-w-none;
   @apply text-primary;
   @apply font-serif;
+
+  h2 {
+    @apply text-primary dark:text-primary-dark;
+  }
+  ul > li::marker {
+    @apply text-secondary;
+  }
   a {
     @apply proselink;
   }
