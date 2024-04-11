@@ -11,13 +11,7 @@ module.exports = {
   content: ["./templates/**/*.html", "./content/**/*.org"],
   theme: {
     fontFamily: {
-      sans: [
-        "'Overpass'",
-        "'Noto Sans CJK JP'",
-        "'Fira Sans'",
-        ...cjkFallback,
-        "sans-serif",
-      ],
+      sans: ["'Overpass'", "'Noto Sans CJK JP'", ...cjkFallback, "sans-serif"],
       serif: [
         "'Equity A'",
         "'Noto Serif CJK JP'",
