@@ -1,8 +1,16 @@
 #+title: Monthly review for March 2024
 #+created: 2024-04-09T01:14:36+0900
+#+updated: 2024-04-16T23:30:37+0900
 #+tags[]: javascript
 #+series: Monthly reviews
 #+language: en
 
-- kde-project.kisaragi-hiu.com
-- Finally got canrylog-cli into a working state
+I felt like I should write reports on what I've been doing, to more accurately guage how much work I've actually done, so here it is.
+
+I became [[https://ev.kde.org/members/#:~:text=Kisaragi%20Hiu][a KDE e.V. member]] at the end of February for my translation work for KDE, following an invitation from Jeff Huang, another zh-TW translator for KDE and other Free Software.
+
+In March, I started making [[https://kde-project.kisaragi-hiu.com][kde-project.kisaragi-hiu.com]], a redirector from KDE project IDs and also a fast-loading KDE project list, utilizing KDE's own metadata for projects. It's basically done by the end of March. This took about 10 hours.
+
+I also finally got the command line version of [[/projects/canrylog][Canrylog]] into a somewhat usable state. Whereas previously it was so unusable I wasn't even using it through Termux:Tasker on my phone, opting for a shell wrapper for emacsclient instead, now I'm relying on it (and my Tasker setup) every time I open a tracked app on my phone. [[https://gitlab.com/canrylog/canrylog-cli][canrylog-cli]] is written in TypeScript, tested and bundled with Bun (as it's the least painful option), built on push with GitLab CI, and published to npm for easy installation. Dependencies are bundled, like Vercel's CLI (but unlike Netlify's CLI), as it's meant to be an end-user application. This took about 12 hours.
+
+I also logged about 18 hours of translation for KDE.
