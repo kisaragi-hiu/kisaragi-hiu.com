@@ -1,6 +1,54 @@
 #+title: Monthly review for April 2024
-#+created: 2024-04-09T01:43:45+0900
+#+created: 2024-05-01T13:10:57+0900
 #+tags[]: javascript
 #+series: Monthly reviews
 #+language: en
-#+draft: t
+
+This month I think I did quite a few things, which I'm now more able to quantify thanks to my progress on Canrylog.
+
+I logged about 45 hours developing stuff, and 17 hours translating KDE.
+
+* AUR packages
+
+I adopted the AUR packages {{< aur rime-pinyin-zhwiktionary >}} and {{< aur fcitx5-pinyin-zhwiktionary >}} (they share a PKGBUILD) in order to fix 404 during build. They were relying on a specific Wiktionary dump from 2022 being provided, instead of using the latest versions.
+
+I also created the AUR package {{< aur rime-pinyin-zhwiktionary-hant >}}, trying to provide a Wiktionary corpus for Traditional Chinese RIME users.
+
+There was a particularly nasty issue with the package {{< aur python-pdm-pep517 >}}, which is a makedependency of {{< aur cmake-language-server >}}, where it would modify the global Git config and change the user name and email, as [[https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=python-pdm-pep517&id=725a919d07335f869458dad97684085ba01ccf3f#n64][the PKGBUILD]] seemed to have been written assuming that it'd run on some temporary environment. I got bit by this and [[https://github.com/kisaragi-hiu/scratchpad/commit/4ec1505125cd3031cd472b9e6fde6b03e63a0518][had a few commits under “Your Name”]]. I committed a fix then disowned the package again.
+
+* Making my [[https://rime.im][RIME]] dictionary a standalone repository: [[https://github.com/kisaragi-hiu/kisaragi-rime-tw][kisaragi-rime-tw]]
+
+Since I have the need to type a lot while translating, I started to find the default candidates and behavior that RIME provided to be a little annoying sometimes. For instance, keeping the word frequency learning on means I can't rely on particular words being in particular places, like for 時間 and 事件: with my current setup after turning off frequency learning I can now rely on ㄕ ㄐㄧㄢ =RET= always giving me 時間, whereas before I'd have to type out the full tones and/or slow down to check the candidate list before I commit the text.
+
+(The frequency learning can be turned off [[https://github.com/rime/home/wiki/CustomizationGuide#%E9%97%9C%E9%96%89%E7%94%A8%E6%88%B6%E8%A9%9E%E5%85%B8%E5%92%8C%E5%AD%97%E9%A0%BB%E8%AA%BF%E6%95%B4][by setting enable_user_dict to false for the translator]].)
+
+But with freqeuncy learning turned off, the default dictionaries would sometimes provide suggestions that for Taiwanese Mandarin would be wrong or questionable. To fix that I effectively forked [[https://github.com/rime/rime-essay][rime-essay]] as well as the =.dict.yaml= of [[https://github.com/rime/rime-terra-pinyin][rime-terra-pinyin]] in order to modify them to provide more suitable suggestions for Taiwanese Mandarin.
+
+* Existing projects
+
+- I made my [[https://kde-project.kisaragi-hiu.com/][Quick redirector for KDE Projects]] show a suggestion if the user had a typo, so that even if I misremember [[https://invent.kde.org/frameworks/kcmutils/][kcmutils]] as “kcm-utils” I'd still be able to quickly get to where I want.
+- canrylog-cli: released 0.1.6 ~ 0.2.2, which includes
+  - an =about= command that acknowledges dependencies
+  - a rudimentary auto sync feature based on Git, for feature parity with canrylog.el
+  - rudimentary reporting: report which task was active for any given moment
+
+* Work in progress
+
+- I spent some time (about 8 hours) trying to make [[https://github.com/kisaragi-hiu/shelter][a searchable list of all disaster shelters in Taiwan]] based on data provided by local governments, starting from the early hours of April 23. This was prompted by the sudden uptick in aftershocks from the April 3 earthquakes, and [[https://github.com/kisaragi-hiu/shelter/commit/89b22b15ac30232473147732c07a57afe6473afd][has a commit that was made during a minute-long earthquake]]. It's… usable enough that I would use it if I needed to go find a shelter in Kaohsiung, but far from complete right now.
+- I started to try to use Tauri to make [[https://github.com/kisaragi-hiu/scratchpad/][a cross platform scratchpad note app]]. This is currently just a prototype.
+- I spent some effort trying to make an offline Wiktionary, but I'm considering giving up after realizing that it's absolutely not as simple as grabbing the dump, sticking it into an SQLite database, making an alright interface and being able to enjoy an offline copy of Wiktionary that loads quickly. Wiktionary, even smaller ones like Japanese Wiktionary or Chinese (actually just Mandarin) Wiktionary, is just too big for that to necessarily be faster than simply using the online version.
+
+* Open source contributions
+
+- I made two PRs to [[https://bsky.app/][Bluesky]]'s official client, one to fix the navigation bar on Android always being bright on dark mode (it's quite gnarly) ([[https://github.com/bluesky-social/social-app/pull/3464][bluesky-social/social-app#3464]]), and another to fix the Android app still using the default Material Teal as the accent color (which looks out of place) ([[https://github.com/bluesky-social/social-app/pull/3555][bluesky-social/social-app#3555]]).
+- I tried out Wakatime again for automatic time tracking (but just for development). While configuring it, I found that a configuration key was being interpreted differently in its VSCode plugin versus in its CLI app, so I [[https://github.com/wakatime/vscode-wakatime/pull/386][filed a PR to fix the VSCode plugin]]. The key in question was also documented in a way that was a little misleading; I filed [[https://github.com/wakatime/wakatime-cli/pull/1043][wakatime/wakatime-cli#1043]] to fix that too.
+- [[https://github.com/cxa/lsp-biome/pull/1][cxa/lsp-biome#1]]: make the lsp-mode client for Biome also activate in cjs and cts files
+- I hooked up [[https://shiki.matsu.io/][Shiki]] to support a few more languages, as well as use a much better grammar for Common Lisp. The languages are:
+  - [[https://github.com/nico-castell/desktop-file-support][.desktop]], [[https://github.com/emilast/vscode-logfile-highlighter][log files]], [[https://github.com/hangxingliu/vscode-systemd/][systemd units]], [[https://github.com/textmate/gettext.tmbundle/blob/master/Syntaxes/Gettext.tmLanguage][Gettext]] (via [[https://github.com/shikijs/textmate-grammars-themes/pull/49][shikijs/textmate-grammars-themes#49]])
+  - [[https://github.com/Eugleo/magic-racket][Racket]], [[https://github.com/kongeor/vsc-fennel][Fennel]], [[https://github.com/hylang/vscode-hy][Hy]], and [[https://github.com/qingpeng9802/vscode-common-lisp][Common Lisp]] (via [[https://github.com/shikijs/textmate-grammars-themes/pull/50][shikijs/textmate-grammars-themes#50]])
+  - Shiki really made this easy. If there is a TextMate or VSCode grammar for a language, then the language could be easily added to Shiki.
+  - However there doesn't appear to be an Emacs Lisp grammar. Fair enough, who edits Emacs Lisp outside of Emacs? But that does mean if I want syntax highlighting tailored to Emacs Lisp I may just have to fork [[https://github.com/qingpeng9802/vscode-common-lisp][qingpeng9802/vscode-common-lisp]] and morph it into being for Emacs Lisp instead…
+
+* etc.
+
+I logged 17 hours in KDE translation.
