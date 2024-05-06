@@ -1,0 +1,18 @@
+#+title: Monthly review for May 2024
+#+created: 2024-06-01T13:10:57+0900
+#+tags[]: javascript
+#+series: Monthly reviews
+#+language: en
+#+draft: t
+
+Shiki: add support for Vala, Genie, QML, QSS, qmldir, Haxe, HXML, Wikitext, Soy
+https://github.com/shikijs/textmate-grammars-themes/pull/54
+
+TODO: add Emacs Lisp support to Shiki via [[https://github.com/Alhadis/language-emacs-lisp/blob/07ef9e419b80478a0976acbc6ef9d190b07e508e/grammars/emacs-lisp.cson]]. I didn't know it existed, but a look at GitHub Linguist showed me that it's a thing
+
+Citation Needed sticker in Mandarin
+https://kisaragi-hiu.booth.pm/items/5716168
+
+Pending: https://invent.kde.org/websites/ballot-kde-org/-/merge_requests/2
+
+Canrylog: I can now see how much time I've spent on a task or tag over some period.
