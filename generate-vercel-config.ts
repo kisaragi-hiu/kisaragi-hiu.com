@@ -110,6 +110,8 @@ redirect(
   "/emacs-lisp-testing-gitlab-ci",
 );
 
+redirect("/bsky", "https://bsky.app/profile/kisaragi-hiu.com");
+
 // / is /blog
 redirect("/blog", "/");
 redirect("/posts", "/");
