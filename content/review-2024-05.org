@@ -18,3 +18,5 @@ Pending: https://invent.kde.org/websites/ballot-kde-org/-/merge_requests/2
 Canrylog: I can now see how much time I've spent on a task or tag over some period.
 
 Pending: make GitHub recognize & highlight Dune https://github.com/github-linguist/linguist/pull/6814
+
+Pending: https://github.com/emacs-typescript/typescript.el/pull/189
