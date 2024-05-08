@@ -1,6 +1,7 @@
 #+title: Canrylog
 #+created: 2019-01-05T21:47:20+0900
-#+gitlab: https://gitlab.com/canrylog/canrylog.el/
+#+gitlab: https://gitlab.com/canrylog
+#+homepage: https://canrylog.gitlab.io
 #+tags[]: apps emacs
 #+status: active
 
