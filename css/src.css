@@ -55,20 +55,12 @@
     @apply dark:fill-secondary-light hover:fill-secondary-light/40;
   }
   .link {
-    /* font-weight: 700; */
-    text-decoration: none;
     @apply border-accent;
-    &:hover {
-      opacity: 1;
-      @apply bg-accent/20;
-    }
+    @apply no-underline hover:underline;
   }
   .proselink {
     @apply accentColor;
-    text-decoration: none;
-    &:hover {
-      @apply bg-accent-light;
-    }
+    @apply no-underline hover:underline;
   }
 
   .type-path {
