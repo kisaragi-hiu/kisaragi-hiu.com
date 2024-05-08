@@ -8,7 +8,8 @@
 Shiki: add support for Vala, Genie, QML, QSS, qmldir, Haxe, HXML, Wikitext, Soy
 https://github.com/shikijs/textmate-grammars-themes/pull/54
 
-TODO: add Emacs Lisp support to Shiki via [[https://github.com/Alhadis/language-emacs-lisp/blob/07ef9e419b80478a0976acbc6ef9d190b07e508e/grammars/emacs-lisp.cson]]. I didn't know it existed, but a look at GitHub Linguist showed me that it's a thing
+Shiki: add support for Emacs Lisp via [[https://github.com/Alhadis/language-emacs-lisp][Alhadis/language-emacs-lisp]]
+https://github.com/shikijs/textmate-grammars-themes/pull/56
 
 Citation Needed sticker in Mandarin
 https://kisaragi-hiu.booth.pm/items/5716168
@@ -19,4 +20,4 @@ Canrylog: I can now see how much time I've spent on a task or tag over some peri
 
 Pending: make GitHub recognize & highlight Dune https://github.com/github-linguist/linguist/pull/6814
 
-Pending: https://github.com/emacs-typescript/typescript.el/pull/189
+[[https://github.com/emacs-typescript/typescript.el/pull/189][emacs-typescript/typescript.el#189]]: Make =typescript-mode= recognize the =satisfies= keyword added in TypeScript 4.9. =typescript-mode= is more or less left behind in favor of the tree-sitter-based TypeScript mode that's now built into Emacs 29+, but I'm still using =typescript-mode= since I haven't yet bothered to set up tree-sitter.

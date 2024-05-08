@@ -10,7 +10,6 @@
 我的程式作品集：
 
 - [[https://kemdict.com][Kemdict 國語整合典]]（SvelteKit）
-- [[https://aqi.tw/][aqi.tw 臺灣空氣品質]]（純 JS 的嘗試）
 - [[/barren-moon][如同月球般的荒涼]]（2019 年的 Hugo 練習）
 - [[https://canrylog.gitlab.io][Canrylog]]（個人時間管理程式）
 - [[https://gitlab.com/kisaragi-hiu/dired-show-readme][dired-show-readme]]（讓 Emacs 的 Dired 檔案管理員開啟資料夾時同時顯示 README 檔案內容）
@@ -35,8 +34,9 @@ This site is my blog, my /digital garden/, a library of what I've made, and a pl
 - GitHub:  [[https://github.com/kisaragi-hiu][kisaragi-hiu]]
 - KDE Identity: [[https://invent.kde.org/moonlight][moonlight]]
 - Sourcehut:  [[https://gitlab.com/kisaragi-hiu][~kisaragi_hiu]]
+- Bluesky: [[https://kisaragi-hiu.com/bsky][@kisaragi-hiu.com]]
 - Twitter:  [[https://twitter.com/kisaragi_hiu][@kisaragi_hiu]]
-- Reddit:  [[https://www.reddit.com/user/flyin1501][u/flyin1501]]
+- Reddit:  [[https://www.reddit.com/user/kisaragihiu][u/kisaragihiu]]
 - YouTube:  [[https://youtube.com/@kisaragi-hiu][@kisaragi-hiu]]
 - niconico:  [[https://nicovideo.jp/user/38995186][user/38995186]]
 - Pixiv:  [[https://pixiv.me/kisaragi-hiu][kisaragi-hiu]]

@@ -48,6 +48,7 @@ But with freqeuncy learning turned off, the default dictionaries would sometimes
   - [[https://github.com/Eugleo/magic-racket][Racket]], [[https://github.com/kongeor/vsc-fennel][Fennel]], [[https://github.com/hylang/vscode-hy][Hy]], and [[https://github.com/qingpeng9802/vscode-common-lisp][Common Lisp]] (via [[https://github.com/shikijs/textmate-grammars-themes/pull/50][shikijs/textmate-grammars-themes#50]])
   - Shiki really made this easy. If there is a TextMate or VSCode grammar for a language, then the language could be easily added to Shiki.
   - However there doesn't appear to be an Emacs Lisp grammar. Fair enough, who edits Emacs Lisp outside of Emacs? But that does mean if I want syntax highlighting tailored to Emacs Lisp I may just have to fork [[https://github.com/qingpeng9802/vscode-common-lisp][qingpeng9802/vscode-common-lisp]] and morph it into being for Emacs Lisp instead…
+    - Edit 2024-05-09: there is, [[https://github.com/Alhadis/language-emacs-lisp/][Alhadis/language-emacs-lisp]] (Atom plugin for Emacs Lisp), which is also used by GitHub Linguist to provide syntax highlighting for Emacs Lisp on GitHub. [[https://github.com/shikijs/textmate-grammars-themes/pull/56][I filed a PR]] a few days ago and it's been merged.
 
 * etc.
 
