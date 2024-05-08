@@ -1,27 +1,33 @@
 {{ $pages := (partial "func-same-section" .) }}
 
 
-<div class="flex flex-col items-center gap-y-2 k-prose">
+<div
+  class="flex max-md:flex-col grayDivide md:divide-x max-md:divide-y items-top justify-between [&>a]:py-2 [&>a]:pr-2"
+>
   {{ with $pages.Next . }}
-    <div class="flex items-center">
-      <span class="mr-2">Newer:</span>
-      <a class="link" href="{{ .Permalink }}"
-        >{{ partial "date" .Date }}
-        {{ partial "func-cover-title" (dict "item"
-          .)
-        }}</a
+    <a
+      class="flex flex-col items-start text-start md:w-1/2 group"
+      href="{{ .Permalink }}"
+    >
+      <span class="secondaryColor font-bold">← Newer</span>
+      <span>{{ partial "date" .Date }}</span>
+      <span class="accentColor group-hover:underline"
+        >{{ partial "func-cover-title" (dict "item" . ) }}</span
       >
-    </div>
+    </a>
+  {{ else }}
+    <div></div>
   {{ end }}
   {{ with $pages.Prev . }}
-    <div class="flex items-center">
-      <span class="mr-2">Older:</span>
-      <a class="link" href="{{ .Permalink }}"
-        >{{ partial "date" .Date }}
-        {{ partial "func-cover-title" (dict "item"
-          .)
-        }}</a
+    <a
+      class="flex flex-col md:items-end md:text-end md:w-1/2 group"
+      href="{{ .Permalink }}"
+    >
+      <span class="secondaryColor font-bold">Older →</span>
+      <span>{{ partial "date" .Date }}</span>
+      <span class="accentColor group-hover:underline"
+        >{{ partial "func-cover-title" (dict "item" . ) }}</span
       >
-    </div>
+    </a>
   {{ end }}
 </div>

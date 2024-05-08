@@ -16,7 +16,7 @@
     font-size: 18px;
   }
   hr {
-    @apply border-gray-300 dark:border-gray-700;
+    @apply grayBorder;
   }
   p {
     @apply my-2 text-base;
@@ -118,8 +118,17 @@
 }
 
 @layer utilities {
+  .grayDivide {
+    @apply divide-gray-300 dark:divide-gray-700;
+  }
+  .grayBorder {
+    @apply border-gray-300 dark:border-gray-700;
+  }
   .accentColor {
     @apply text-accent-strong dark:text-accent;
+  }
+  .secondaryColor {
+    @apply text-gray-500 dark:text-gray-400;
   }
   .out {
     @apply hover:underline;
