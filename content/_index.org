@@ -6,6 +6,8 @@ This is a library of what I've made, a /digital garden/ of mine, and a playgroun
 
 我是如月飛羽，一個來自台灣的程式開發者。有的時候會做翻譯，主要是會用 Web 技術或是 Emacs 做一些小工具。
 
+[[https://cv.kisaragi-hiu.com][CV]]
+
 我的程式作品集：
 
 - [[https://kemdict.com][Kemdict 國語整合典]]（Svelte, Astro）
