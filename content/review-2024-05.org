@@ -1,23 +1,35 @@
 #+title: Monthly review for May 2024
-#+created: 2024-06-01T13:10:57+0900
+#+created: 2024-06-01T19:36:26+0900
 #+tags[]: javascript
 #+series: Monthly reviews
 #+language: en
-#+draft: t
 
-Shiki: add support for Vala, Genie, QML, QSS, qmldir, Haxe, HXML, Wikitext, Soy
-https://github.com/shikijs/textmate-grammars-themes/pull/54
+This month I spent 32 hours on translation (22 of which are for KDE), and 30 hours on development.
 
-Shiki: add support for Emacs Lisp via [[https://github.com/Alhadis/language-emacs-lisp][Alhadis/language-emacs-lisp]]
-https://github.com/shikijs/textmate-grammars-themes/pull/56
+* Open source contributions
 
-Citation Needed sticker in Mandarin
-https://kisaragi-hiu.booth.pm/items/5716168
+- Shiki: add support for Vala, Genie, QML, QSS, qmldir, Haxe, HXML, Wikitext, Soy ([[https://github.com/shikijs/textmate-grammars-themes/pull/54][shikijs/textmate-grammar-themes#54]])
+- Shiki: add support for Emacs Lisp via [[https://github.com/Alhadis/language-emacs-lisp][Alhadis/language-emacs-lisp]] ([[https://github.com/shikijs/textmate-grammars-themes/pull/56][shikijs/textmate-grammar-themes#56]])
+- Fix code links being indistinguishable from non-link inline code in Remix docs ([[https://github.com/remix-run/remix-website/pull/262][remix-run/remix-website#262]]). This was a case of CSS specificity being a little unintuitive. I plan to file a PR for reactrouter.com which has a similar issue, though it's not as severe —  I thought it didn't have the same problem at first.
+- [[https://github.com/emacs-typescript/typescript.el/pull/189][emacs-typescript/typescript.el#189]]: Make =typescript-mode= recognize the =satisfies= keyword added in TypeScript 4.9. =typescript-mode= is more or less left behind in favor of the tree-sitter-based TypeScript mode that's now built into Emacs 29+, but I'm still using =typescript-mode= since I haven't yet bothered to set up tree-sitter.
+- [[https://github.com/highlightjs/highlight.js/pull/4058][highlightjs/highlight.js#4058]]: Same for highlight.js, adding support for =satisfies= in TS. highlight.js is used by, for instance, [[https://www.solidjs.com/blog/solid-start-the-shape-frameworks-to-come#:~:text=satisfies][SolidJS's website]] (even though IMO Shiki is a much better choice since Shiki 1.0), so once this is released and trickles down into websites the days of seeing =satisfies= unrecognized in a popular component framework's announcement post should finally be over. highlight.js has already accumulated 7 months of unreleased changes, though.
 
-Pending: https://invent.kde.org/websites/ballot-kde-org/-/merge_requests/2
+* In-progrss contributions
 
-Canrylog: I can now see how much time I've spent on a task or tag over some period.
+- Pending: Make KDE e.V.'s voting system actually usable on mobile without excessive zoom ([[https://invent.kde.org/websites/ballot-kde-org/-/merge_requests/2]])
+- Pending: make GitHub recognize & highlight Dune, the OCaml build system ([[https://github.com/github-linguist/linguist/pull/6814]])
+- Work in progress: Make Plasma's pager open overview when clicking on the current desktop. This still needs me to find / implement a way to check whether the “effect” is currently enabled. ([[https://invent.kde.org/plasma/plasma-desktop/-/merge_requests/2256]])
 
-Pending: make GitHub recognize & highlight Dune https://github.com/github-linguist/linguist/pull/6814
+* Translations
 
-[[https://github.com/emacs-typescript/typescript.el/pull/189][emacs-typescript/typescript.el#189]]: Make =typescript-mode= recognize the =satisfies= keyword added in TypeScript 4.9. =typescript-mode= is more or less left behind in favor of the tree-sitter-based TypeScript mode that's now built into Emacs 29+, but I'm still using =typescript-mode= since I haven't yet bothered to set up tree-sitter.
+I started providing Taiwanese Mandarin translations to HandBrake. The next Linux HandBrake release should already be a lot less painful to use in =zh_TW=, with simple interface strings.
+
+I also translated https://github.com/eltos/PasteIntoFile into Taiwanese Mandarin after seeing an invitation to translate in the l10n-tw community.
+
+Kdenlive is now 112 strings away from being fully translated. I want to finish it in a final push or two, maybe today or tomorrow.
+
+* Other projects
+
+- Citation Needed sticker in Mandarin https://kisaragi-hiu.booth.pm/items/5716168
+- Canrylog: I can now see how much time I've spent on a task or tag over some period.
+- I started adding a translation memory feature to [[https://github.com/kisaragi-hiu/k-po-mode][k-po-mode]], my po-mode fork that I wish to morph into a translation environment that can rival Lokalize.
