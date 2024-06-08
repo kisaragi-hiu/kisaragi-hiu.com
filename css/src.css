@@ -165,6 +165,10 @@
   @apply text-primary;
   @apply font-serif;
 
+  figcaption {
+    @apply text-special-strong dark:text-special;
+  }
+
   h2 {
     @apply text-primary dark:text-primary-dark;
   }
@@ -268,7 +272,7 @@
   /* Reset @tailwindcss/typography's margins */
   pre {
     @apply my-2;
-    line-height: 1;
+    line-height: 1.4;
   }
   /* Add a language header */
   code::before {

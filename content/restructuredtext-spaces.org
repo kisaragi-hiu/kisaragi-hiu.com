@@ -1,0 +1,26 @@
+#+title: reStructuredText 中文：如何讓連結不要有多餘的空格
+#+created: 2024-06-09T01:57:45+0900
+#+language: zh_TW
+#+tags[]: reStructuredText markup
+
+[[https://zh.wikipedia.org/zh-tw/ReStructuredText][reStructuredText]] 的文內語法周圍需要有空格，但這樣的話中文連結不就必須要有多餘的空格了嗎？（像是 _這個_ 樣子）
+
+我解釋一下為什麼會這樣覺得：[[https://orgmode.org/][Org Mode]] 的文內語法就是這樣，光是*加上星號*不夠加上粗體，因為 Org Mode 的設計者在不使用空格斷詞的語言的考量與 “/a/random/path” 好寫程度的取捨上選擇了後者。（因為這篇文章是用 Org 寫的，你會發現下一段的 inline code 也是多一堆空格。）另外查 reST 的中文介紹（像是 [[https://learn-rst.readthedocs.io/zh-cn/latest/reST-入门.html]]）的時候也會看到中文連結的確有多的空格。
+
+這件事情在添加 footnote 的時候也會出現： =foo[1]= 不會被視為 footnote，必須是 =foo [1]= ，但這樣就會在輸出時多一個空格了。
+
+實際上多餘的空格是可以避免的：在空格前面加上 =\= 把它 escape 掉，這樣就會在確保語法正確的同時讓空格不出現在輸出裡。
+
+#+caption: 範例生成結果
+[[/20240609T021351+0900.png]]
+
+#+caption: 原始碼。換行符也可以 escape 掉（不然也會變成多餘的空格）
+#+begin_src rst
+透過 MLT 框架，**Kdenlive** 整合了許多處理或建立影片與音訊的效果。另外，\
+**Kdenlive** 也提供強大的\ :doc:`標題工具 </effects_and_compositions/titles>`\
+、可利用 AI 進行\ :doc:`語音轉文字 </effects_and_compositions/speech_to_text>`\
+的\ :doc:`字幕 </effects_and_compositions/subtitles>`\ 功能、\ :ref:`巢狀時間軸
+功能 <sequence>`\ （23.04 版新增）、透過與 Glaxnimate 整合而實現的\ :ref:`動畫
+<add_animation>`\ 支援（22.08 版新增）等等而可以作為創作影片的完整軟體方案。最新
+的功能資訊請參照 :doc:`/more_information/whats_new` 。
+#+end_src
