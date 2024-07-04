@@ -1,0 +1,19 @@
+#+title: Monthly review for June 2024
+#+created: 2024-07-04
+#+series: Monthly reviews
+#+language: en
+#+draft: t
+
+This month I spent 49 hours on translation, 15 of which are for KDE, and 17 hours on development.
+
+* Work
+
+I was contracted by MODA's [[https://ocf.tw/p/oss_localization/][open source localization project]] to produce one set of translations for GIMP.
+
+* Open source contributions
+
+* In-progress contributions
+
+* Translations
+
+* Other projects

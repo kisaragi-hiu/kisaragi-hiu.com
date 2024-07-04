@@ -14,7 +14,7 @@ This month I spent 32 hours on translation (22 of which are for KDE), and 30 hou
 - [[https://github.com/emacs-typescript/typescript.el/pull/189][emacs-typescript/typescript.el#189]]: Make =typescript-mode= recognize the =satisfies= keyword added in TypeScript 4.9. =typescript-mode= is more or less left behind in favor of the tree-sitter-based TypeScript mode that's now built into Emacs 29+, but I'm still using =typescript-mode= since I haven't yet bothered to set up tree-sitter.
 - [[https://github.com/highlightjs/highlight.js/pull/4058][highlightjs/highlight.js#4058]]: Same for highlight.js, adding support for =satisfies= in TS. highlight.js is used by, for instance, [[https://www.solidjs.com/blog/solid-start-the-shape-frameworks-to-come#:~:text=satisfies][SolidJS's website]] (even though IMO Shiki is a much better choice since Shiki 1.0), so once this is released and trickles down into websites the days of seeing =satisfies= unrecognized in a popular component framework's announcement post should finally be over. highlight.js has already accumulated 7 months of unreleased changes, though.
 
-* In-progrss contributions
+* In-progress contributions
 
 - Pending: Make KDE e.V.'s voting system actually usable on mobile without excessive zoom ([[https://invent.kde.org/websites/ballot-kde-org/-/merge_requests/2]])
 - Pending: make GitHub recognize & highlight Dune, the OCaml build system ([[https://github.com/github-linguist/linguist/pull/6814]])
