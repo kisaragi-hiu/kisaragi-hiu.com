@@ -7,7 +7,7 @@
 
 Version history:
 
-- 2024-07-10: Mark TODOs as just “Unfinished” instead, and try to apply some of the comments that I wrote. I don't plan to update this further.
+- 2024-07-10: Mark todos as just “Unfinished” instead, and try to apply some of the comments that I wrote. I don't plan to update this further.
 - 2022-11-30: rewrite to make it not about Kemdict
 - 2022-11-19: clarify that this is about SvelteKit on serverless platforms
 - 2022-11-17: first draft
