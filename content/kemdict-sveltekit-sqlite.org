@@ -1,17 +1,16 @@
 #+title: Making a serverless SvelteKit site that reads data from a local SQLite database
 #+created: 2022-11-17T20:46:18+0900
-#+updated: 2022-11-19T22:08:11+0900
+#+updated: 2024-07-10T12:00:28+0900
 #+tags[]: javascript svelte nodejs
 #+toc: t
 # I want a floating TOC when the screen is large enough
 
 Version history:
 
+- 2024-07-10: Mark TODOs as just “Unfinished” instead, and try to apply some of the comments that I wrote. I don't plan to update this further.
 - 2022-11-30: rewrite to make it not about Kemdict
 - 2022-11-19: clarify that this is about SvelteKit on serverless platforms
 - 2022-11-17: first draft
-
-# Give me a hook here
 
 Still a rough draft even though the whole thing has been rewritten.
 
@@ -21,7 +20,7 @@ We're not reading and writing runtime data. A dedicated database (like Supabase)
 
 Keep in mind that if the amount of data you have warrants putting it in an SQLite database and not just JSON, it is almost always better to use a dedicated database or to deploy to Node instead, because a serverless function would have to read the database every time it's invoked.
 
-# But we're still doing it. Why? (1) This is what I was looking for a week or two ago, (2) moving between the two is easy thanks to the adapters architecture
+Draft note: But we're still doing it. Why? (1) This is what I was looking for a week or two ago, (2) moving between the two is easy thanks to the adapters architecture
 
 “Serverless” here means “the server side code is written as short-lived one-request functions”, which in practice means “I'm using Netlify (or Vercel or Cloudflare etc.) to make the site with no upfront monetary investment and no need to manage my own server”, which is its nornal definition despite contradicting what “server-less” may seem to suggest.
 
@@ -91,9 +90,7 @@ npm install -D svelte-preprocess
 
 Vite is like a supercharged dev server and a production bundler that figures out a bunch of stuff for you. In reality the production bundler part uses Rollup, but that is almost an implementation detail that you don't have to worry about unless you want to use Rollup plugins.
 
-For example, using Tailwind CSS is just a matter of installing the =tailwindcss= package and importing your source CSS as usual. Vite knows what to do.
-
-# incorrect. It's a matter of setting up postcss.config.js.
+For example, using Tailwind CSS is just a matter of installing the =tailwindcss= package, setting up postcss.config.js, and importing your source CSS as usual. Vite knows what to do, and it will run CSS files through the PostCSS pipeline (which Tailwind runs in) when importing once it sees the PostCSS config.
 
 In the case of SvelteKit, Vite doesn't have support for it built in, so SvelteKit provides a Vite plugin to glue them together.
 
@@ -145,10 +142,7 @@ export default {
 
 * Not using adapter-auto
 
-=adapter-auto= looks at the build time environment to determine which adapter it should use. But this only works if you're building on the same platform as you are deploying. For building, I prefer to use GitHub Actions instead of using, say, Cloudflare Pages or Netlify or Vercel's build (CI) system.
-
-# build (ci) system reads like a mouthful.
-# also probably mention GH Actions is cheaper than Netlify, at the expense of perhaps being harder to configure.
+=adapter-auto= looks at the build time environment to determine which adapter it should use. But this only works if you're building on the same platform as you are deploying. For building, I prefer to use GitHub Actions instead of using, say, Cloudflare Pages or Netlify or Vercel's build system (CI).
 
 So I prefer to just use adapter-netlify (for example) directly.
 
@@ -238,9 +232,7 @@ Create =src/app.html=. This is [[https://kit.svelte.dev/docs/project-structure#p
 
 Create =src/routes/+layout.svelte=. Layouts are components that are wrapped around every page that it applies to. =src/routes/+layout.svelte= applies to every page, while =src/routes/abc/+layout.svelte= would only apply to pages under =abc/=.
 
-The difference between this file (the root layout) and =app.html= is that this is still a Svelte component, so you can import files in a script tag, use components, etc.
-
-# You *can*, but why should I? Because this lets you tell Vite all your pages depend on this CSS file. Mention this.
+The difference between this file (the root layout) and =app.html= is that this is still a Svelte component, so you can import files in a script tag, use components, etc. Doing so lets you tell Vite that all your pages depend on the files being imported.
 
 =src/routes/+layout.svelte=:
 
@@ -255,7 +247,7 @@ The difference between this file (the root layout) and =app.html= is that this i
 
 =src/lib/MarkdownLayout.svelte= (the component we declared above to wrap all Markdown files):
 
-# clarify that this isn't a sveltekit layout
+Note that this isn't a SvelteKit “layout” like =+layout.svelte=. This is just a normal component that's not involved in routing, it's just that we've told mdsvex to use this component to wrap Markdown content.
 
 #+begin_src svelte
 <div class="prose">
@@ -269,9 +261,7 @@ At this point we can already start the dev server.
 npx vite dev
 #+end_src
 
-*Note that I'm not using the npm scripts that Vite ships in its templates.* Is there really a point to saying =npm run dev= instead of =npx vite dev=? In terms of using consistent task names across projects, sure, but not when explaining how things work. We can add it later.
-
-# Do that. We haven't written the section.
+*Note that I'm not using the npm scripts that Vite ships in its templates.* Is there really a point to saying =npm run dev= instead of =npx vite dev=? In terms of using consistent task names across projects, sure, but not when explaining how things work. Just keep in mind that the former runs a script that's defined in the project, while the latter is actually calling the command itself.
 
 Now let's add the root page.
 
@@ -318,9 +308,7 @@ module.exports = {
 };
 #+end_src
 
-Vite will [[https://vitejs.dev/guide/features.html#postcss][detect the presence of the PostCSS config and process the CSS]] with PostCSS  automatically. Because Tailwind is actually a PostCSS plugin (that happens to have its own CLI), this means it will be processed by Tailwind as specified above.
-
-# as specified above?
+Vite will [[https://vitejs.dev/guide/features.html#postcss][detect the presence of the PostCSS config and process the CSS]] with PostCSS  automatically. Because Tailwind is actually a PostCSS plugin (that happens to have its own CLI), this means it will be processed by Tailwind.
 
 Then create a =tailwind.config.cjs=:
 
@@ -383,9 +371,7 @@ Unless you want to dabble with sending both [[https://github.com/sql-js/sql.js][
 
 In case this is confusing: the server side of a “serverless” application is the serverless functions.
 
-This server side can be a =+page.server.js= (pages only rendered on the server side) or a =+server.js= (API routes that return raw data and not HTML). In this example I'm going to use an API route, then fetch from it on the client side, but this isn't necessary.
-
-# “isn't necessary” sounds like you can do with neither. It sounds wrong.
+This server side can be a =+page.server.js= (pages only rendered on the server side) or a =+server.js= (API routes that return raw data and not HTML). In this example I'm going to use an API route, then fetch from it on the client side.
 
 We need =better-sqlite3= for this.
 
@@ -506,13 +492,13 @@ Then create =src/lib/components/SuperHeroes.svelte=:
 
 This does a /lot/ of network requests, but I think it's fine as a demonstration.
 
-* TODO Compressing the database
+* (Unfinished) Compressing the database
 
 - Just use gz
 - =new Database(zlib.gunzipSync(fs.readFileSync("data.db.gz")))=
 
-* TODO automating stuff with Make or npm scripts
-* TODO GitHub Actions
+* (Unfinished) automating stuff with Make or npm scripts
+* (Unfinished) GitHub Actions
 
 - Install deps
 - Build (with correct Node version)
@@ -521,7 +507,7 @@ This does a /lot/ of network requests, but I think it's fine as a demonstration.
 
 * Deploying to Netlify
 
-TODO: actually test this on our demo repository
+Unfinished: actually test this on our demo repository
 
 To deploy to Netlify, we need to:
 
@@ -564,5 +550,3 @@ try {
     }
 }
 #+end_src
-
-# Incomplete!
