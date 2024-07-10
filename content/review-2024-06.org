@@ -1,19 +1,24 @@
 #+title: Monthly review for June 2024
-#+created: 2024-07-04
+#+created: 2024-07-10T11:43:25+0900
 #+series: Monthly reviews
 #+language: en
-#+draft: t
 
 This month I spent 49 hours on translation, 15 of which are for KDE, and 17 hours on development.
 
+I left college, though not as a graduation due to personal failures. I guess I can just put it like that…
+
 * Work
 
-I was contracted by MODA's [[https://ocf.tw/p/oss_localization/][open source localization project]] to produce one set of translations for GIMP.
+I was contracted by MODA's [[https://ocf.tw/p/oss_localization/][zh_TW open source localization project]] to produce one set of translations for GIMP.
 
 * Open source contributions
 
-* In-progress contributions
+- [JS] Opened an issue for [[https://github.com/tc39/proposal-async-context][tc39/proposal-async-context]] pointing out there's a 404 link to an old Node blog post that had disappeared. This is otherwise unremarkable, I was just amazed by how fast the link was [[https://github.com/nodejs/nodejs.org/pull/6825][repaired by reinstating that post]].
+- [CSS] [[https://github.com/remix-run/react-router-website/pull/111][remix-run/react-router-website#111]]: fix pre/code links not changing color when =:active= in dark mode. This was a follow up to [[https://github.com/remix-run/remix-website/pull/262][remix-run/remix-website#262]], fixing the same underlying issue where Tailwind =text-inherit= has lower specificity than the dark mode fallback, meaning you need to use =text-inherit dark:text-inherit=.
+- [Emacs] [[https://github.com/seagle0128/doom-modeline/pull/725][doom-modeline#725]]: calculate anzu count faster and with less memory. The code was collecting a list only to calculate its length and throw the list away, so the PR makes it simply count up an integer. This makes =evil-search= less painful.
+
+This month I spent most of my effort on the GIMP translation project, and I'm happy with what I submitted back to OCF.
 
 * Translations
 
-* Other projects
+Kdenlive is now fully translated in =zh_TW=, and I continued to translate new strings as they came in.

@@ -1,0 +1,18 @@
+#+title: Monthly review for July 2024
+#+created: 2024-07-10
+#+series: Monthly reviews
+#+language: en
+#+draft: t
+
+I'm continuing in a bit of a limbo state right now, switching between procrastination and hyperfocused work while being really unsure about stuff. This, well, isn't healthy.
+
+* Open source contributions
+
+- [Emacs] [[https://github.com/xenodium/ready-player/pull/3][xenodium/ready-player#3]]: Fix "read only" error when playing a song after another finishes
+- [KDE / Qt / QML] [[https://invent.kde.org/plasma/plasma-desktop/-/merge_requests/2351][plasma/plasma-desktop!2351]]: Make tasks in the task manager (window bar) use a more sensible maximum horizontal width by default, and provide a user option to choose between wide/medium/narrow items. More information can be found at the MR itself, but this basically makes tasks look less cluttered, especially on tall horizontal panels, while also providing a new option to tweak the max size to one's liking. Vertical panels are not affected.
+
+* Translations
+
+* Other projects
+
+I'm trying to make an alternative statistics interface to https://l10n.kde.org/, which hopefully I can manage to finish rather than abandon. My goal is to make an interface that's easier to navigate, as well as provide more graphs and have a place where I can analyze the data.
