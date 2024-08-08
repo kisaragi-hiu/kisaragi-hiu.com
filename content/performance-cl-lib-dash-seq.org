@@ -1,6 +1,6 @@
 #+title: Performance comparison between cl-lib, dash, and seq
 #+created: 2022-06-05T00:45:51+0900
-#+updated: 2022-06-19T00:03:56+0900
+#+updated: 2024-08-08T23:15:04+0900
 #+tags[]: emacs-lisp
 #+toc: t
 
@@ -27,6 +27,27 @@ neofetch cpu gpu memory
 : memory: 4027MiB / 7958MiB
 
 * Comparisons
+- =cl-find-if=, =-first=, =--first=, =seq-find=
+
+  #+begin_src emacs-lisp
+  (let ((lst nil))
+    (dotimes (i 10000)
+      (push i lst))
+    (k/benchmark-run-compiled 10000
+      (cl-find-if (lambda (v) (> v 5000)) lst)
+      (-first (lambda (v) (> v 5000)) lst)
+      (--first (> it 5000) lst)
+      (seq-find (lambda (v) (> v 5000)) lst)))
+  #+end_src
+
+  #+RESULTS:
+  | form# |                 total | gc-count | gc-time |
+  |-------+-----------------------+----------+---------|
+  |     1 |  0.007544591999999999 |        0 |     0.0 |
+  |     2 | 0.0007781799999999998 |        0 |     0.0 |
+  |     3 |           0.000181285 |        0 |     0.0 |
+  |     4 |            0.81976651 |        0 |     0.0 |
+
 - =cl-remove-duplicates=, =-uniq=, =seq-uniq=
 
   #+begin_src emacs-lisp
