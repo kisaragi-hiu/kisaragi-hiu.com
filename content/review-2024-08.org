@@ -1,0 +1,11 @@
+#+title: Monthly review for August 2024
+#+created: 2024-08-08
+#+series: Monthly reviews
+#+language: en
+#+draft: t
+
+* Translations
+
+- Get the Taiwanese Mandarin translations for [[https://gitlab.freedesktop.org/xdg/shared-mime-info][shared-mime-info]] back up to fully translated (891 strings), up from 78% (700/891 strings).
+
+  And for some reason also get into an argument about the translation for “source code” in the l10n-tw Telegram channel. 源碼 and 原始碼 are both fine, even if I prefer the latter since it seems more familiar to me; 源始碼 is trying to impose a language revision in a top-down manner (literally no one writes that and it only ever gets interpreted as a typo; it has the wrong register and is in fact not more “pure”, thank you very much), and 來源碼 only makes sense in the context of the source code ←→ object code contrast.
