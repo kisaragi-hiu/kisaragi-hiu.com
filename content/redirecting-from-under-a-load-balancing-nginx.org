@@ -1,0 +1,59 @@
+#+title: Redirecting from under a load balancing NGINX
+#+created: 2024-09-05T02:54:44+0900
+#+tags[]: nginx
+
+Let's say I have a server program running locally on 127.0.0.1:8080; and I've already set up DNS such that /example.com/ points to the IP of the server this program is running on. I can then set up Nginx like this as a reverse proxy, mapping the domain name to a program so that I can host multiple programs for multiple domains on the same machine.
+
+#+begin_src conf
+server {
+    server_name example.com;
+    location / {
+        proxy_pass http://127.0.0.1:8080/;
+    }
+}
+#+end_src
+
+This works fine, but whenever I restart the program the site goes down, understandably.
+
+To ensure restarting the program doesn't cause downtime, I can split the work into multiple instances, then restart them one by one when updating their code (2 old instances → (kill one) 1 old instance → (start a new instance) 1 old instance, 1 new instance → (kill the remaining old instance) 1 new instance →  (start another new instance) 2 new instances). This is easily doable, there's just a million ways to do it: enable reuse port and run them with the same port or use another load balancer; restart the processes yourself or set up some other system for it.
+
+Using multiple ports and load balancing with Nginx looks like this:
+
+#+begin_src conf
+upstream myapp {
+    server 127.0.0.1:8080;
+    server 127.0.0.1:8081;
+}
+server {
+    server_name example.com;
+    location / {
+        proxy_pass http://myapp/;
+    }
+}
+#+end_src
+
+And this works fine, until the next day when you discover when your app tries to redirect it's redirecting to =http://myapp/<path>=. As in, the internal address that references a server block that only Nginx understands (because the upstream definition is within Nginx) is being sent to the client by fucking default.
+
+[[https://docs.nginx.com/nginx/admin-guide/load-balancer/http-load-balancer/][Articles]] [[https://www.linode.com/docs/guides/use-nginx-as-a-front-end-proxy-and-software-load-balancer/][about]] [[https://ithelp.ithome.com.tw/m/articles/10280840][load]] balancing all just seem to magically never need to care about this case or something. Or maybe a =proxy_redirect http://<upstream name> http://$http_host= is good enough [[https://stackoverflow.com/a/26025618/6927814][as in this SO answer]]? Or maybe there's some other way? I dunno, this should be a basic use case (have redirects continue working behind a load balancer) and should be long resolved and documented!
+
+What worked for me after a few painful reloads is something like:
+
+#+begin_src conf
+upstream kemdict {
+    server localhost:8080;
+    server localhost:8081;
+}
+server {
+    server_name kemdict.com;
+    location / {
+        proxy_pass http://kemdict/;
+        # This is a string operation
+        # Even though the servers are emitting localhost:8080/... or
+        # localhost:8081/..., somewhere within Nginx they're being rewritten to
+        # myapp/... and sent out. proxy_redirect is operating after that rewrite
+        proxy_redirect https://kemdict/ https://kemdict.com/;
+    }
+}
+#+end_src
+
+(The full configuration includes proper set up for https, which is why I'm matching on https and replacing it with https.)
