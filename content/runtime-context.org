@@ -20,8 +20,8 @@ For local apps: then there's only one place left where the code can run.
 For server-client architectures:
 
 - The server listens for requests. When one comes, the server runs some code to make a response.
-  - I call this "on response"
-  - "server-side rendering" happens here, generally. For instance, in the "SSG/SSR/SPA" distinction "SSR" refers to rendering on response. (However, sometimes "SSR" includes any rendering not done on the client: "SSR support" in, say, something like Svelte means it's able to render the HTML outside the browser.)
+  - I call this "response time"
+  - "server-side rendering" happens here, generally. For instance, in the "SSG/SSR/SPA" distinction "SSR" refers to rendering in response to a request. (However, sometimes "SSR" includes any rendering not done on the client: "SSR support" in, say, something like Svelte means it's able to render the HTML outside the browser.)
 - The response reaches the client and might include more code for the client.
   - ie. client-side
 
@@ -31,7 +31,7 @@ So, for instance, when writing a SvelteKit or server-side rendered Astro project
 
 - (edit time: I sometimes prefer to just automate something in Emacs)
 - build time
-- on response
+- response time
 - client side
 
 JS metaframeworks allow us to share code across different contexts, but they are still different contexts, and sometimes it is necessary to distinguish between them. Having this mental model has been pretty useful.
