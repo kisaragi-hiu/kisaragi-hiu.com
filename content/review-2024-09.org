@@ -1,0 +1,24 @@
+#+title: Monthly review for September 2024
+#+created: 2024-09-16
+#+series: Monthly reviews
+#+language: en
+#+draft: t
+
+* Open source contributions
+
+- Make @pkgjs/parseargs work on [[https://gitlab.gnome.org/GNOME/gjs][gjs]] and other runtimes that don't have =global= (understandably, since =global= is a Node-specific name) ([[https://github.com/pkgjs/parseargs/pull/158][@pkgjs/parseargs#158]]). This is the same =parseArgs= that went into node:util which strikes an amazing balance between being powerful (named and positional arguments, full types) and being simple (no subcommands, not a whole framework for defining commands).
+
+  I wanted this to be able to write a command in gjs, in order to [[https://github.com/kisaragi-hiu/glib-date-playground][build an interactive interface for GLib (GTK) date formats]] so that I can preview the formats in the strings of elementary OS.
+
+- KDE: Removed an extra separator from System Settings → Font Management ([[https://invent.kde.org/plasma/plasma-workspace/-/merge_requests/4701][plasma-workspace!4701]]). This page is in need of some overhaul (hopefully without losing features as well), and while poking around to see what I can do I noticed it's just adding this extra separator.
+
+* My own projects
+
+- The previously mentioned [[https://github.com/kisaragi-hiu/glib-date-playground][glib-date-playground]]. This took about 4 hours.
+- I'm building [[https://github.com/kisaragi-hiu/nanostores-search-params][nanostores-search-params]], which aims to be sveltekit-search-params or nuqs but usable for Astro.
+
+* Translations
+
+- I started contributing translations to elementary OS. The last zh_TW (zh_Hant) translation before me was 2 years ago…
+
+  Right now I've successfully gotten the Traditional Chinese translation to overtake Simplified Chinese in string count, but not (yet) in word count. Traditional Chinese users are going to have a much better time using the new elementary OS release than if I (or someone) didn't step in.

@@ -1,16 +1,22 @@
 #+title: Monthly review for August 2024
-#+created: 2024-08-08
+#+created: 2024-09-16
 #+series: Monthly reviews
 #+language: en
-#+draft: t
 
 * Open source contributions
 
 - Add language support for Dune (dune-project) to GitHub Linguist  ([[https://github.com/github-linguist/linguist/pull/6814][github-linguist/linguist#6814]]). I opened it in June but with too many filenames that do not meet GitHub's usage requirements, which is why it took until now to be approved.
 
+* My own projects
+
+- I'm trying to make a dashboard for KDE translations that's able to show a bit more stats than Websvn or l10n.kde.org. I spent 13 hours on it this week.
+- I spent another 10 hours transcribing List Of Plants Of Formosa.
+
 * Translations
 
-- Get the Taiwanese Mandarin translations for [[https://gitlab.freedesktop.org/xdg/shared-mime-info][shared-mime-info]] back up to fully translated (891 strings), up from 78% (700/891 strings).
+- I spent 21 hours on translation, 10 of which are for KDE.
+- I tried to submit translations for GnuPG. The previous language coordinator for =zh_TW= handed it over to me, and I submitted directly to upstream, but I'm still waiting for a reply or merge. I'll have to try again / follow up on this.
+- Got the Taiwanese Mandarin translations for [[https://gitlab.freedesktop.org/xdg/shared-mime-info][shared-mime-info]] back up to fully translated (891 strings), up from 78% (700/891 strings).
 
   And for some reason also get into an argument about the translation for “source code” in the l10n-tw Telegram channel. 源碼 and 原始碼 are both fine, even if I prefer the latter since it seems more familiar to me; 源始碼 is trying to impose a language revision in a top-down manner (literally no one writes that and it only ever gets interpreted as a typo; it has the wrong register and is in fact not more “pure”, thank you very much), and 來源碼 only makes sense in the context of the source code ←→ object code contrast.
 
