@@ -52,7 +52,7 @@ redirect(
 );
 redirect("/niconico", "https://www.nicovideo.jp/user/38995186");
 redirect("/pixiv", "https://www.pixiv.net/member.php?id=14235181");
-redirect("/aqi", "https://aqi.tw");
+redirect("/aqi", "https://aqi.kisaragi-hiu.com");
 
 // This must come before the /blog -> / redirect
 // Created on an incorrect path initially
