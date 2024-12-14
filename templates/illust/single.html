@@ -32,12 +32,9 @@
       >
     </noscript>
 
-    <button
-      onclick="javascript:window.history.back();"
-      class="col-start-3 col-end-3 text-5xl"
-    >
+    <a href="/illust" class="col-start-3 col-end-3 text-5xl">
       <div class="absolute right-[5%] top-[2vh] md:top-[5vh]">×</div>
-    </button>
+    </a>
     {{ with (partial "func-same-section" .).Next . }}
     <a href="{{.Permalink}}" class="col-start-1 row-start-1 row-span-2 text-2xl"
       ><div class="absolute left-[5%] bottom-[50vh]">◀</div></a
