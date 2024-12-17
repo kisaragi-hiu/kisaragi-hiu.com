@@ -1,0 +1,18 @@
+#+title: use-license
+#+created: 2024-09-22T18:02:06+0900
+#+updated: 2024-12-06T22:15:39+0900
+#+tags[]: cli typescript
+#+github: https://github.com/kisaragi-hiu/use-license
+#+status: done
+
+Yet another license selector. This can be used like this:
+
+#+begin_src sh
+npx use-license MIT # an SPDX identifier
+#+end_src
+
+or without an argument to select a license from SPDX. This will then write the selected or specifies license to =./LICENSE=.
+
+I wrote this because I thought the prior art is too complicated and also need more upkeep than really is necessary. This package fetches directly from [[https://github.com/spdx/license-list-data][SPDX's license list data]], instead of using the [[https://github.com/sindresorhus/spdx-license-list][sindresorhus/spdx-license-list package]]. My guess is that that package exists perhaps to make SPDX's license list easier to access.
+
+This package doesn't fill in templates. It basically automates the process of going to https://spdx.org/licenses/ yourself in a browser to copy a license's text. I think that's the most time consuming part, where as filling in the license template can just be done in an editor.
