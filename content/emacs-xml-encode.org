@@ -1,0 +1,26 @@
+#+title: Emacs: turning parsed XML/HTML nodes back into text (encoding/printing/writing it out)
+#+created: 2024-12-23T16:47:15+0900
+#+tags[]: emacs
+#+series: tips
+
+TL;DR you might want =shr-dom-print=.
+
+#+html: <hr>
+
+I wanted to write this down because it's kind of non-obvious.
+
+To parse XML / HTML text into nodes, there are =libxml-parse-xml-region= and =libxml-parse-html-region= functions which return nodes that can be manipulated with, say, functions from =dom.el=. But after you got the right parse tree and want to write it out back into a text with XML tags, neither xml.c nor xml.el offer an option for that.
+
+xml.el has an =xml-print= function, but it seems to expect a parse tree that strictly follows XML (and fails on text nodes, for instance). This may be no fault of xml.el (my need is more with processing loose XML-ish text; so, basically, SGML).
+
+The “parse tree → strings” action has a bunch of names, and in Elisp where everything is its own library it's not even consistent within the language:
+
+- =json.el= calls it =json-encode=,
+- =json.c= calls it =json-serialize= (on my system there's also =undo-tree=, =projectile=, =markdown.el=)
+- =yaml.el= calls it =yaml-encode=,
+- =xml.el= calls it =xml-print=,
+- for Elisp s-expressions there are =print= or =prin1= (but you can also use =format=)
+
+…so it's kind of hard to search for.
+
+The function that best matched my uses was =shr-dom-print=, which takes a parse tree accepted by =dom.el= and writes its XML representation into the current buffer. To write/print/encode a parse tree into valid XML, maybe =shr-dom-to-xml= also helps.
