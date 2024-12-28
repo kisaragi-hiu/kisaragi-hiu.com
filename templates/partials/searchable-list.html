@@ -1,11 +1,10 @@
 <script src="/js/search.js"></script>
 
 {{ define "partials/inline/button-checkbox" }}
-  <!-- prettier-ignore -->
   {{ $label := .value }}
-{{ $partial := .partial }}
-{{ $dict := .dict }}
-{{ $type := .type }}
+  {{ $partial := .partial }}
+  {{ $dict := .dict }}
+  {{ $type := .type }}
   <div class="inline-block">
     <input
       class="peer hidden"
@@ -19,14 +18,13 @@
       class="hover:bg-accent-light bg-white dark:bg-black border-accent-strong border px-1 peer-checked:bg-accent-light peer-checked:outline-8"
       for="{{ $type }}:{{ $label }}"
     >
-      <!-- prettier-ignore -->
       {{ if $partial }}
-    {{ partial $partial $label }}
-    {{ else if $dict }}
-    {{ (or (index $dict $label) $label) }}
-    {{ else }}
-    {{ $label }}
-    {{ end }}
+        {{ partial $partial $label }}
+      {{ else if $dict }}
+        {{ (or (index $dict $label) $label) }}
+      {{ else }}
+        {{ $label }}
+      {{ end }}
     </label>
   </div>
 {{ end }}
@@ -40,20 +38,19 @@
     {{ partial "searchbox" . }}
   </div>
   <div class="relative">
-    <!-- prettier-ignore -->
     {{ $sections := (slice) }}
-  {{ range . }}
+    {{ range . }}
       {{ with .Section }}
         {{ $sections = (union $sections (slice .)) }}
       {{ end }}
     {{ end }}
-  {{ $languages := (slice) }}
-  {{ range . }}
+    {{ $languages := (slice) }}
+    {{ range . }}
       {{ with .Params.language }}
         {{ $languages = (union $languages (slice .)) }}
       {{ end }}
     {{ end }}
-  {{ if (or (gt (len $languages) 1) (gt (len $sections) 1)) }}
+    {{ if (or (gt (len $languages) 1) (gt (len $sections) 1)) }}
       <div
         id="filters"
         class="dropdown dropdown-end items-start flex space-x-2 my-2"
@@ -70,11 +67,12 @@
             <div>
               <div>Language:</div>
               {{ range $languages }}
-                <!-- prettier-ignore -->
                 {{ partial "inline/button-checkbox"
-                   (dict "value" .
-                         "dict" (site).Data.names.lc
-                         "type" "language") }}
+                  (dict
+                  "value" .
+                  "dict" (site).Data.names.lc
+                  "type" "language")
+                }}
               {{ end }}
             </div>
           {{ end }}
@@ -82,11 +80,12 @@
             <div>
               <div>Type:</div>
               {{ range $sections }}
-                <!-- prettier-ignore -->
                 {{ partial "inline/button-checkbox"
-                   (dict "value" .
-                         "dict" (site).Data.names.sections
-                         "type" "section") }}
+                  (dict
+                  "value" .
+                  "dict" (site).Data.names.sections
+                  "type" "section")
+                }}
               {{ end }}
             </div>
           {{ end }}
@@ -106,7 +105,6 @@
           >{{ partial "cover-item" (dict "item" . "mark" true ) }}</a
         >
       </li>
-      <!-- prettier-ignore -->
     {{ end }}
   {{ end }}
 </ul>
