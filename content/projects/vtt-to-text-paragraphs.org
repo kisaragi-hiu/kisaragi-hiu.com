@@ -1,0 +1,11 @@
+#+title: VTT subtitle paragraph splitter
+#+created: 2024-12-17
+#+tags[]: typescript
+#+github: https://github.com/kisaragi-hiu/vtt-to-text-paragraphs
+#+status: done
+
+Extract text from subtitle files for further analysis.
+
+If current start time - previous end time is more than epsilon (default 100ms), an extra newline is added when copying lines over.
+
+A simple script built on top of =@plussub/srt-vtt-parser=.
