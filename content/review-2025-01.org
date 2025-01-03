@@ -1,0 +1,7 @@
+#+title: Review for January 2025
+#+created: 2025-01-04
+#+series: Monthly reviews
+#+language: en
+#+draft: t
+
+https://invent.kde.org/graphics/krita/-/merge_requests/2304 fixing self-reported https://bugs.kde.org/show_bug.cgi?id=498216

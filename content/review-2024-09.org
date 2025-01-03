@@ -1,8 +1,9 @@
-#+title: Monthly review for September 2024
-#+created: 2024-09-16
+#+title: Review for September 2024
+#+created: 2025-01-04
 #+series: Monthly reviews
 #+language: en
-#+draft: t
+
+2025-01-04: So it's been a while since I wrote a “monthly” review. This is partially because I'm again trying to finish my college studies. Nevertheless, I would like to at least publish what I wrote in September.
 
 * Open source contributions
 
@@ -16,6 +17,16 @@
 
 - The previously mentioned [[https://github.com/kisaragi-hiu/glib-date-playground][glib-date-playground]]. This took about 4 hours.
 - I'm building [[https://github.com/kisaragi-hiu/nanostores-search-params][nanostores-search-params]], which aims to be sveltekit-search-params or nuqs but usable for Astro.
+
+  /2025-01-04: I've ended up having practically abandoning it./
+
+- [[https://github.com/kisaragi-hiu/use-license][kisaragi-hiu/use-license]], which is yet another take on a tool to quickly choose a license. My unique take here is that I'm directly reading my license list and text from [[https://github.com/spdx/license-list-data/][SPDX's list]], instead of through another package that needs to be (and isn't) regularly updated.
+
+  This has at least been fairly useful to myself.
+
+  #+begin_src sh
+  npx use-license MIT
+  #+end_src
 
 * Translations
 

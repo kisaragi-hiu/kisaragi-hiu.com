@@ -1,0 +1,26 @@
+#+title: Review for October 2024 ~ December 2024
+#+created: 2025-01-04T07:02:59+0900
+#+series: Monthly reviews
+#+language: en
+
+2025-01-04: [[file:review-2024-09.org][Again]], it's been a while since I updated these.
+
+* Open source contributions
+
+There's like none other than a stalled effort to make a change to the Font Management page in KDE's System Settings.
+
+* My own projects
+
+- (Node) [[https://github.com/kisaragi-hiu/vtt-to-text-paragraphs][kisaragi-hiu/vtt-to-text-paragraphs]], a small script utilizing =@plussub/srt-vtt-parser= to read a subtitle file and output the subtitles into a text file, split into paragraphs based on the length of pauses
+- (Bun) [[https://github.com/kisaragi-hiu/thai-numbers-deck][kisaragi-hiu/thai-numbers-deck]] An Anki deck for Thai numerals and a script for creating it (utilizing [[https://www.npmjs.com/package/anki-apkg-export][npm:anki-apkg-export]])
+
+* Translations
+
+Between September 2024 and December 2024, I successfully provided the rest of elementary OS's Traditional Chinese translations, although there's still a fair bit of it that's waiting for the next release of many elementary apps. This is without any use of generative AI or machine translation — I feel like I kind of need to clarify that. It's simply about 30 hours of work through [[https://apps.kde.org/lokalize/][Lokalize]] and some custom tooling to push and pull translations between Weblate and my local checkout.
+
+Because my local history had changes in the way I pulled translation files, the total number of strings and words are a bit different, but from the version in my local repository:
+
+- In early September, there were 4831 translated strings (61% compared to 7911 total strings as of today), 16588 translated words (45% compared to 36783 total words as of today)
+- Right now (2025-01-04) 7898 out of 7911 strings are translated, which is 36762 out of 36783 words; the rest are strings that are marked on Weblate as cannot be translated. There is probably a string or two that has been added recently that I haven't updated yet.
+
+Apart from for elementary, I also have occasionally updated translations for KDE.
