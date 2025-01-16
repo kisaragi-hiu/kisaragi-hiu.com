@@ -1,0 +1,31 @@
+#+title: RIME 停用它自己的英數輸入模式
+#+created: 2025-01-16T23:55:32+0900
+#+tags[]: rime
+#+series: tips
+
+我電腦上習慣用 [[https://rime.im/][RIME]] 輸入法引擎提供的注音輸入法，但它預設（就像其他注音輸入法一樣）有自己的英數模式。因為系統的輸入法引擎（我是用 fcitx5）也有英文輸入模式，這造成有的時候會在切換回 RIME 之後還是英數模式，打字時有幾秒鐘被卡到的感覺。
+
+之前我一直以為這沒辦法，直到看到 Windows 注音輸入法也能從設定把它的 Shift 按鍵綁定關掉（進而停用它自己的英數模式）之後我才想繼續去找 RIME 能不能改。
+
+這其實是可以的。[[https://github.com/rime/rime-prelude/blob/master/default.yaml][RIME 的預設 default.yaml 設定值]]（也就是 default.custom.yaml 在修補的檔案）有這樣子的內容：
+
+#+begin_src yaml
+ascii_composer:
+  good_old_caps_lock: true
+  switch_key:
+    Shift_L: inline_ascii
+    Shift_R: commit_text
+    Control_L: noop
+    Control_R: noop
+    Caps_Lock: clear
+    Eisu_toggle: clear
+#+end_src
+
+只要把 =Shift_L= 的動作改成 none 就可以了，方法是在 default.custom.yaml 裡這樣寫：
+
+#+begin_src yaml
+patch:
+  ascii_composer:
+    switch_key:
+      Shift_L: noop
+#+end_src
