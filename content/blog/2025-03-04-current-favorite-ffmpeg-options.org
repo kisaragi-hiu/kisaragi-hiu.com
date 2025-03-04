@@ -1,0 +1,21 @@
+#+title: 我目前偏好使用的 ffmpeg 編碼設定
+#+created: 2025-03-04T18:37:57+0900
+#+language: zh_TW
+#+tags[]: ffmpeg
+
+取夠好的品質並且不要浪費空間。假設只有一個音訊跟一個視訊軌。假設音訊是雙聲道。
+
+#+begin_src sh
+ffmpeg -i "whatever.mov" -c:a libopus -c:v libx265 -crf 23 -r 60 "out.mkv"
+#+end_src
+
+- 用 opus 音訊編碼然後用預設設定，它是夠好的
+- 包裝用 mkv，印象中它比較不挑編碼
+- 影片用 hevc / h265，然後用 crf 23，也是我偏好的平衡
+- 需要改影格率的話放在輸出前面。我讀說明文件的印象是只有極少數情況才會需要指定輸入影格率。
+
+也可以用硬體加速，不過因為 crf 是 libx265 的功能所以沒辦法指定 crf，要用其他指定品質的方式。
+
+#+begin_src sh
+ffmpeg -hwaccel vaapi -hwaccel_output_format vaapi -i whatever.mov -c:a libopus -vaapi_device /dev/dri/renderD128 -c:v hevc_vaapi -r 60 out.mkv
+#+end_src
