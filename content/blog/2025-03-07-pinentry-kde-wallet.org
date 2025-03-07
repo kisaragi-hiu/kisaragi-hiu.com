@@ -1,0 +1,28 @@
+#+title: Plasma: Avoiding having to type the login password again when first using Git / GPG
+#+created: 2025-03-08T00:18:16+0900
+#+language: en
+#+tags[]: plasma git gnupg linux
+
+GnuPG uses Pinentry, which can read from the dbus secret service provider (which KDE Wallet is one). But KDE Wallet has an option to encrypt wallets using GPG, which in this cause would cause a deadlock:
+
+- gpg refers to pinentry
+- pinentry refers to kwallet
+- kwallet refers to gpg
+
+ArchWiki says this:
+
+#+begin_quote
+*Note:* When using [[https://wiki.archlinux.org/title/KDE][KDE]], the Secret Service API integration is disabled to [[https://dev.gnupg.org/rPefb6de7fb2c15c1e31349b80fa7c8c1d4694c6cf][prevent a deadlock]] in case [[https://wiki.archlinux.org/title/KDE_Wallet][KDE Wallet]] uses GnuPG encryption. If you use KDE Wallet with the classic, blowfish encrypted file instead, re-enable the Secret Service API integration by setting the [[https://wiki.archlinux.org/title/Environment_variable][environment variable]] =PINENTRY_KDE_USE_WALLET= to a non-empty value.
+— https://wiki.archlinux.org/title/GnuPG#gpg-agent
+#+end_quote
+
+This means every time we start Plasma, the first time we use Git (the main thing we're using GPG with) we have to enter the login password again. It got annoying just now.
+
+I don't know how GNOME Keyring handles it. Maybe KDE Wallet just shouldn't use GPG encryption: it's at-rest encryption, no need to bring in GPG or something. But it's tradeoffs.
+
+Either way, solutions for me:
+
+- like ArchWiki suggests, since my wallet isn't encrypted, just set =PINENTRY_KDE_USE_KWALLET=.
+  - Setting an environment variable on Plasma is still kind of a pain. It should be as simple as on Windows, with a GUI page to configure envvars to be made available to applications. But alas…
+- There's an option to /not/ use KDE Wallet as the secret service provider, likely designed specifically for this. I already have gnome-keyring installed. I chose this instead.
+  - I unticked it then relogged. And it just worked. pinentry just worked as well.
