@@ -1,0 +1,16 @@
+#+title: Notes on JavaScript Macros
+#+created: 2024-03-27T22:21:06+0900
+#+published: 2025-03-09T21:14:20+0900
+#+language: en
+#+tags[]: javascript
+
+Just some notes on macros in the JavaScript ecosystem.
+
+- Babel :: Babel plugins basically function as macros, as compile-time transformations. They are also capable of doing literally anything: JSX, TypeScript, and new JS syntaxes all have implementations as Babel plugins. Creating and maintaining a plugin for each macro is cumbersome, though: it's not at all as simple as a =defmacro=.
+- [[https://github.com/kentcdodds/babel-plugin-macros][babel-plugin-macros]] :: Appears to be adopted widely. Macros are modules exporting a main compile-time function - this function receives some compilation state and writes into that state.
+- [[https://www.sweetjs.org][Sweet.js]] :: Compile-time functions returning syntax objects. Can implement new constructs like cond-case. Can define new operators. Has a cli for transpilation as well as a Babel backend.
+- [[https://bun.sh/docs/bundler/macros][Bun macros]] :: Compile-time (bundle-time) functions. Written as normal functions marked as macros at import. Cannot alter syntax or do metaprogramming - return value must be serializable and cannot be functions.
+- [[https://github.com/jarred-sumner/decky][decky]] :: Bun also supports esbuild plugins that only use the onLoad and onResolve hooks. This means it probably also supports decky, which uses decorator syntax for compile-time functions. They receive a custom AST and return a string.
+- [[https://parceljs.org/features/macros/][Parcel macros]] :: Almost exactly like Bun macros, except (a) macros can generate assets and tell Parcel about them and (b) they can return functions, albeit only those created with the Function constructor; and a few other minor differences.
+
+/2025-03-09T21:12:36+0900: Gotta love it when I find an old blog post sitting uncommitted in an old checkout that I'm only coming back to now. This is a reason why I cannot use LLMs: I can't know what I wrote and what I didn't write otherwise./
