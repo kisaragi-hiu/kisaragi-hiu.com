@@ -1,0 +1,9 @@
+#+title: elpas.kisaragi-hiu.com
+#+created: 2025-03-18
+#+updated: 2025-03-30
+#+tags[]: web apps emacs
+#+homepage: https://elpas.kisaragi-hiu.com
+#+github: https://github.com/kisaragi-hiu/elpas
+#+status: 90%
+
+Searching across MELPA, GNU ELPA, and NonGNU ELPA at the same time in a browser is basically impossible, and you have to do it within Emacs instead. This aims to change that.
