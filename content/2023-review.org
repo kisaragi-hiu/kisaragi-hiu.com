@@ -32,7 +32,7 @@ I also provided quite a lot of translation to KDE projects. I've spent at least 
 
 December 9th:
 
-{{< tweet user="kisaragi_hiu" id="1733443661244096563" >}}
+{{< x user="kisaragi_hiu" id="1733443661244096563" >}}
 
 Now:
 

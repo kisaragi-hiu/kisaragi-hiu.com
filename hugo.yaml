@@ -12,8 +12,9 @@ baseURL: https://kisaragi-hiu.com
 enableGitInfo: true
 
 title: Kisaragi Hiu
-author:
-  name: Kisaragi Hiu
+params:
+  author:
+    name: Kisaragi Hiu
 
 # * Content
 # Let's say it's 2021-05-25T00:30:00+0900 right now, and I have a new
@@ -55,11 +56,11 @@ hasCJKLanguage: true
 
 # This style fits better
 services:
-  twitter:
+  x:
     disableInlineCSS: true
 
 privacy:
-  twitter:
+  x:
     simple: true
 
 security:
