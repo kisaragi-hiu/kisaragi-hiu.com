@@ -71,5 +71,7 @@ module.exports = {
   plugins: [require("@tailwindcss/typography"), require("daisyui")],
   daisyui: {
     base: false,
+    // Needed otherwise the log spills into prettier's output
+    logs: false,
   },
 };
