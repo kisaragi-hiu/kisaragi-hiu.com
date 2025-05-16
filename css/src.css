@@ -173,7 +173,7 @@
     @apply text-primary dark:text-primary-dark;
   }
   ul > li::marker {
-    @apply text-secondary;
+    @apply text-secondary dark:text-primary-dark;
   }
   a {
     @apply proselink;
