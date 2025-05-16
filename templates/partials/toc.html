@@ -1,12 +1,11 @@
-<aside
-  class="k-prose mx-0 mb-4 md:float-right md:ml-16 md:w-[40%] overflow-auto"
-  id="toc"
->
+<div class="mx-0 mb-4 mt-4 overflow-auto" id="toc">
   <header>
-    <h1 class="text-base mt-0 mb-4">
+    <h1 class="font-serif font-bold mt-0 mb-0">
       {{ partial "func-translate" (dict "id" "Table of Contents" "page" .) }}
     </h1>
   </header>
   <!-- This is a nav. -->
-  {{ .TableOfContents }}
-</aside>
+  <div class="k-prose">
+    {{ .TableOfContents }}
+  </div>
+</div>
