@@ -6,12 +6,13 @@
 {{- else if $.IsHome -}}
   <!-- All regular pages except:
      - those with a "special" param set to "true" like /about
-     - covers and archive
+     - covers and archive and poems
   -->
   {{- $special := where $pctx.RegularPages "Params.special" "true" -}}
   {{- $covers := where $pctx.RegularPages "Section" "covers" -}}
   {{- $archive := where $pctx.RegularPages "Section" "archive" -}}
-  {{- $pages = $pctx.RegularPages | complement $special $covers $archive -}}
+  {{- $poems := where $pctx.RegularPages "Section" "poems" -}}
+  {{- $pages = $pctx.RegularPages | complement $special $covers $archive $poems -}}
 {{- else -}}
 {{- $pages = $pctx.Pages -}}
 {{- end -}}

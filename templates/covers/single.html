@@ -1,5 +1,4 @@
 {{ define "title" }}
-  <!-- prettier-ignore -->
   {{ .Title }} ft. {{ .Params.voice }} - Covers - Kisaragi Hiu
 {{ end }}
 
@@ -14,24 +13,21 @@
 
 {{ define "main" }}
 
-  <!-- prettier-ignore -->
   {{ if .Params.toc }}
-{{ partial "toc" . }}
-{{ end }}
+    {{ partial "toc" . }}
+  {{ end }}
+
 
   <div class="max-lg:space-y-4 lg:space-x-4 lg:flex">
-    <!-- prettier-ignore -->
     {{ with .Params.youtube }}
-  {{ partial "youtube" . }}
-  {{ end }}
+      {{ partial "youtube" . }}
+    {{ end }}
 
-    <!-- prettier-ignore -->
     {{ with .Params.niconico }}
-  {{ partial "niconico" . }}
-  {{ end }}
+      {{ partial "niconico" . }}
+    {{ end }}
   </div>
 
-  <!-- prettier-ignore -->
   {{ partial "content" . }}
 {{ end }}
 

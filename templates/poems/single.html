@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<head>
+  <!-- prettier-ignore -->
+  {{ partial "head" . }}
+</head>
+<body class="font-serif text-primary-dark bg-dropd">
+  <main class="mx-auto md:w-[40rem] mt-8">
+    <a href="/" class="block link text-xl font-bold">
+      {{ .Title }}
+      <img
+        class="max-h-8 inline-block align-bottom float-right"
+        src="/avatar.png"
+        alt="avatar"
+      />
+    </a>
+    <div class="">
+      <div>{{ time.Format "2006-01-02" .Date }}</div>
+    </div>
+    {{ .Content }}
+    {{ partial "post-navigation" . }}
+  </main>
+</body>
