@@ -61,3 +61,11 @@
     {{ partial "content" . }}
   </article>
 {{ end }}
+
+{{ define "footer" }}
+  <div class="mt-4 mb-40">
+    <hr />
+    {{ partial "post-navigation" . }}
+    {{ partial "default-footer" . }}
+  </div>
+{{ end }}

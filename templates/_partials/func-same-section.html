@@ -1,9 +1,21 @@
-<!-- Yes, this is how you do AND in a where query. Generate two lists and use intersect.
-     https://gohugo.io/functions/intersect/ -->
+{{/* -*- mode: go -*- */}}
+{{/* Yes, this is how you do AND in a where query. Generate two lists and use intersect.
+  https://gohugo.io/functions/intersect/
+*/}}
 
-<!-- all-pages.filter($1.section == this-page.section) -->
-{{ $same_section := where .Site.Pages "Section" .Section }}
-<!-- all-pages.filter($1.kind == "page") -->
+{{/* all-pages.filter($1.section == this-page.section) */}}
+{{ $same_section := slice }}
+
+{{/* Treat top and blog sections as the same */}}
+{{ if (or (eq .Section "") (eq .Section "blog")) }}
+  {{ $same_section = (union
+    (where .Site.Pages "Section" "")
+    (where .Site.Pages "Section" "blog"))
+  }}
+{{ else }}
+  {{ $same_section = where .Site.Pages "Section" .Section }}
+{{ end }}
+{{/* all-pages.filter($1.kind == "page") */}}
 {{ $singles := where .Site.Pages "Kind" "page" }}
 
 {{ $pages := (intersect $singles $same_section) }}
