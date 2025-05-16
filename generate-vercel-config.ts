@@ -31,7 +31,7 @@ function subproject(from: string, to: string) {
 redirect("/:path(.*)*.html", "/:path*");
 
 rewrite("/static/:slug*", "/:slug*");
-for (const x of ["/feed.xml", "/rss.xml", "/atom.zml", "/feeds/all.atom.xml"]) {
+for (const x of ["/feed.xml", "/rss.xml", "/atom.xml", "/feeds/all.atom.xml"]) {
   rewrite(x, "/index.xml");
 }
 subproject("/barren-moon", "https://barren-moon.kisaragi-hiu.com");
