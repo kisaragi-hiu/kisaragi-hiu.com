@@ -1,0 +1,71 @@
+<!doctype html>
+<head>
+  {{ partial "head" . }}
+  <link
+    href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New&display=swap"
+    rel="stylesheet"
+  />
+  <style>
+    body {
+      font-family: "Zen Kaku Gothic New", sans-serif;
+    }
+  </style>
+</head>
+<body class="text-primary-dark bg-dropd">
+  <main class="mx-auto md:w-[40rem] mt-8">
+    <a href="/" class="block link text-xl font-bold">
+      {{ .Title }}
+      <img
+        class="max-h-8 inline-block align-bottom float-right"
+        src="/avatar.png"
+        alt="avatar"
+      />
+    </a>
+    <!-- Display the tags of this term page.
+     HACK: getting around the fact that Hugo doesn't seem to allow
+     tagging list pages. -->
+    <!-- NOTE: (dict "page" . "taxonomy" "tags") is not a cons cell!
+     The dot is the context dot. Remember this is not Lisp. -->
+
+    {{ if .Params.toc }}
+      {{ partial "toc" . }}
+    {{ end }}
+
+    {{ if .Params.hugo_nolist }}
+      {{ partial "content" . }}
+    {{ else }}
+      <main class="mt-4">
+        <!-- Store "term" items under this taxonomy term.
+       This does not just work with tags.-->
+        {{ $term_items := (slice) }}
+        {{ range (where .Site.AllPages "Kind" "term" ) }}
+          {{ if (in (.Page.Param $.Data.Plural) (anchorize $.LinkTitle)) }}
+            {{ $term_items = (union $term_items (slice .Page)) }}
+          {{ end }}
+        {{ end }}
+        {{ partial "content" . }}
+
+
+        <!-- Pages -->
+        {{ with (sort ((where .Pages "Section" "poems")) "Date" "desc") }}
+          <ul>
+            {{ range . }}
+              {{ if not (.Param "special") }}
+                <li>
+                  <a
+                    class="flex hover justify-between text-primary-dark"
+                    href="{{ .Permalink }}"
+                  >
+                    <span>{{ .Title }}</span>
+                    <span>{{ time.Format "2006-01-02" .Date }}</span>
+                  </a></li
+                  >
+                </li>
+              {{ end }}
+            {{ end }}
+          </ul>
+        {{ end }}
+      </main>
+    {{ end }}
+  </main>
+</body>
