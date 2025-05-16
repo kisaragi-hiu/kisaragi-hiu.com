@@ -60,11 +60,10 @@ redirect(
   "/covers/2022-07-14-大地の閾を探して",
   "/covers/20220714-大地の閾を探して",
 );
-
 // Blog -> content note migration
 redirect(
-  "/2021-06-02-insert-key-double-key",
   "/blog/2021-06-02-insert-key-double-key",
+  "/2021-06-02-insert-key-double-key",
 );
 redirect(
   "/blog/2021-05-01-idsmile-trumpet-sheet",
