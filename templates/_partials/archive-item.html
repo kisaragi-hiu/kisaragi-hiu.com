@@ -1,20 +1,20 @@
 {{ $ctx := .ctx }}
 
+
 <!-- Clone of index-item that uses Updated time.
      Working around index items not yet showing both. -->
 <a href="{{ $ctx.Permalink }}">
   <div>
     <span>
-      <!-- prettier-ignore -->
       {{ with (or $ctx.Params.updated $ctx.Params.created) }}
-      {{ partial "date" . }}
+        {{ partial "date" . }}
       {{ end }}
     </span>
     <span>{{ $ctx.Title }}</span>
     {{ if .current }}
-    <span class="text-special-strong bg-special rounded px-1 ml-1"
-      >Current</span
-    >
+      <span class="text-special-strong bg-special rounded px-1 ml-1"
+        >Current</span
+      >
     {{ end }}
   </div>
 </a>

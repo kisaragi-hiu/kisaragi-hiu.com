@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <head>
-  <!-- prettier-ignore -->
   {{ partial "head" . }}
   <script>
     // <noscript> versions don't have the opacity-0 class. Only when JS
@@ -36,30 +35,34 @@
       <div class="absolute right-[5%] top-[2vh] md:top-[5vh]">×</div>
     </a>
     {{ with (partial "func-same-section" .).Next . }}
-    <a href="{{.Permalink}}" class="col-start-1 row-start-1 row-span-2 text-2xl"
-      ><div class="absolute left-[5%] bottom-[50vh]">◀</div></a
-    >
-    {{ end }} {{ with (partial "func-same-section" .).Prev . }}
-    <a href="{{.Permalink}}" class="col-start-3 row-span-2 row-start-2 text-2xl"
-      ><div class="absolute right-[5%] bottom-[50vh]">▶</div></a
-    >
+      <a
+        href="{{ .Permalink }}"
+        class="col-start-1 row-start-1 row-span-2 text-2xl"
+        ><div class="absolute left-[5%] bottom-[50vh]">◀</div></a
+      >
     {{ end }}
+    {{ with (partial "func-same-section" .).Prev . }}
+      <a
+        href="{{ .Permalink }}"
+        class="col-start-3 row-span-2 row-start-2 text-2xl"
+        ><div class="absolute right-[5%] bottom-[50vh]">▶</div></a
+      >
+    {{ end }}
+
 
     <div class="col-start-2 col-end-2 row-start-1 row-end-auto">
       <div class="mt-[10vh] md:mt-4">
         <noscript>
-          <!-- prettier-ignore -->
           <img
             src="/illust/{{ .File.BaseFileName }}.jpg"
-            {{with .Params.alt}} alt="{{.}}" {{end}}
+            {{ with .Params.alt }}alt="{{ . }}"{{ end }}
             title="{{ .Title }}"
             class="block max-h-[90vh] m-auto"
           />
         </noscript>
-        <!-- prettier-ignore -->
         <img
           data-src="/illust/{{ .File.BaseFileName }}.jpg"
-          {{with .Params.alt}} alt="{{.}}" {{end}}
+          {{ with .Params.alt }}alt="{{ . }}"{{ end }}
           title="{{ .Title }}"
           class="opacity-0 block max-h-[90vh] m-auto"
         />
@@ -67,32 +70,30 @@
 
       <noscript>
         <div class="m-auto text-center">
-          <h1 class="mt-2 font-bold text-white">{{.Title}}</h1>
-          <!-- prettier-ignore -->
+          <h1 class="mt-2 font-bold text-white">{{ .Title }}</h1>
           {{ with .GetTerms "tags" }}
-          {{ range . }}
-          {{ partial "tag" . }}
-          {{ end }}
+            {{ range . }}
+              {{ partial "tag" . }}
+            {{ end }}
           {{ end }}
         </div>
       </noscript>
       <div class="opacity-0 m-auto text-center flex flex-col">
-        <h1 class="mt-2 font-bold text-white">{{.Title}}</h1>
+        <h1 class="mt-2 font-bold text-white">{{ .Title }}</h1>
         {{ with .Params.pixiv }}
-        <a href="{{.}}">
-          <svg
-            class="h-4 w-4 inline fill-white"
-            role="img"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            {{ partial "simple-icon" "pixiv" }}
-          </svg>
-        </a>
+          <a href="{{ . }}">
+            <svg
+              class="h-4 w-4 inline fill-white"
+              role="img"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              {{ partial "simple-icon" "pixiv" }}
+            </svg>
+          </a>
         {{ end }}
-        <!-- prettier-ignore -->
         {{ with .GetTerms "tags" }}
-        <p class="m-0">{{ range . }} {{ partial "tag" . }} {{ end }}</p>
+          <p class="m-0">{{ range . }}{{ partial "tag" . }}{{ end }}</p>
         {{ end }}
       </div>
     </div>

@@ -29,16 +29,14 @@
       {{ end }}
     </div>
   {{ end }}
-  <!-- prettier-ignore -->
 {{ end }}
 
 {{ define "main" }}
-  <!-- prettier-ignore -->
   {{ if .Params.toc }}
-{{ partial "toc" . }}
-{{ end }}
+    {{ partial "toc" . }}
+  {{ end }}
 
-{{ partial "content" . }}
+  {{ partial "content" . }}
 {{ end }}
 
 {{ define "footer" }}
