@@ -3,61 +3,38 @@
   {{ partial "head" . }}
   {{ partial "poems-font" . }}
 </head>
-<body class="text-primary-dark bg-dropd">
-  <main class="mx-auto md:w-[40rem] mt-8">
-    <a href="/" class="block link text-xl font-bold">
+<body class="bg-dropd text-primary-dark">
+  <main class="mx-auto mt-8 md:w-[40rem]">
+    <a href="/" class="link block text-xl font-bold">
       {{ .Title }}
       <img
-        class="max-h-8 inline-block align-bottom float-right"
+        class="float-right inline-block max-h-8 align-bottom"
         src="/avatar.png"
         alt="avatar"
       />
     </a>
-    <!-- Display the tags of this term page.
-     HACK: getting around the fact that Hugo doesn't seem to allow
-     tagging list pages. -->
-    <!-- NOTE: (dict "page" . "taxonomy" "tags") is not a cons cell!
-     The dot is the context dot. Remember this is not Lisp. -->
-
-    {{ if .Params.toc }}
-      {{ partial "toc" . }}
-    {{ end }}
-
-    {{ if .Params.hugo_nolist }}
+    <div class="mt-4">
       {{ partial "content" . }}
-    {{ else }}
-      <main class="mt-4">
-        <!-- Store "term" items under this taxonomy term.
-       This does not just work with tags.-->
-        {{ $term_items := (slice) }}
-        {{ range (where .Site.AllPages "Kind" "term" ) }}
-          {{ if (in (.Page.Param $.Data.Plural) (anchorize $.LinkTitle)) }}
-            {{ $term_items = (union $term_items (slice .Page)) }}
-          {{ end }}
-        {{ end }}
-        {{ partial "content" . }}
 
 
-        <!-- Pages -->
-        {{ with (sort ((where .Pages "Section" "poems")) "Date" "desc") }}
-          <ul>
-            {{ range . }}
-              {{ if not (.Param "special") }}
-                <li>
-                  <a
-                    class="flex hover justify-between text-primary-dark"
-                    href="{{ .Permalink }}"
-                  >
-                    <span>{{ .Title }}</span>
-                    <span>{{ time.Format "2006-01-02" .Date }}</span>
-                  </a></li
-                  >
-                </li>
-              {{ end }}
+      <!-- Pages -->
+      {{ with (sort (where .Pages "Section" "poems") "Date" "desc") }}
+        <ul>
+          {{ range . }}
+            {{ if not (.Param "special") }}
+              <li>
+                <a
+                  class="hover flex justify-between text-primary-dark"
+                  href="{{ .Permalink }}"
+                >
+                  <span>{{ .Title }}</span>
+                  <span>{{ time.Format "2006-01-02" .Date }}</span>
+                </a>
+              </li>
             {{ end }}
-          </ul>
-        {{ end }}
-      </main>
-    {{ end }}
+          {{ end }}
+        </ul>
+      {{ end }}
+    </div>
   </main>
 </body>
