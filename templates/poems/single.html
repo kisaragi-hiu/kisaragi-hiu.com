@@ -1,22 +1,14 @@
 <!doctype html>
 <head>
   {{ partial "head" . }}
-  <link
-    href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New&display=swap"
-    rel="stylesheet"
-  />
-  <style>
-    body {
-      font-family: "Zen Kaku Gothic New", sans-serif;
-    }
-  </style>
+  {{ partial "poems-font" . }}
 </head>
-<body class="text-primary-dark bg-dropd">
-  <main class="mx-auto md:w-[40rem] mt-8">
-    <a href="/poems" class="block link text-xl font-bold">
+<body class="bg-dropd text-primary-dark">
+  <main class="m-4 md:mx-auto md:mt-8 md:w-[30rem]">
+    <a href="/poems" class="link block text-xl font-bold">
       {{ .Title }}
       <img
-        class="max-h-8 inline-block align-bottom float-right"
+        class="float-right inline-block max-h-8 align-bottom"
         src="/avatar.png"
         alt="avatar"
       />
@@ -25,6 +17,5 @@
       <div>{{ time.Format "2006-01-02" .Date }}</div>
     </div>
     {{ .Content }}
-    {{ partial "post-navigation" . }}
   </main>
 </body>
