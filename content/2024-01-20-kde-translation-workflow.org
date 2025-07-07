@@ -1,6 +1,7 @@
 #+title: 我的 KDE 翻譯流程
 #+created: 2024-01-20T20:50:31+0900
 #+tags[]: kde translation
+#+language: zh_TW
 
 我想把我目前的 KDE 翻譯流程寫下來、公開出來。
 

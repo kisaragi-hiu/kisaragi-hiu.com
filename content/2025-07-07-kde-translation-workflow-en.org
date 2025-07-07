@@ -1,0 +1,281 @@
+#+title: My KDE translation workflow
+#+created: 2025-07-07T23:46:18+0900
+#+tags[]: kde translation
+#+language: en
+
+[[./2024-01-20-kde-translation-workflow.org][Mandarin version]]
+
+Thought I might write down my current workflow for contributing to KDE and publish it.
+
+/Disclaimer: everything written here is *my* understanding. If anything deviates from how things actually are, blame me for getting the facts wrong./
+
+I'm currently a member of the Traditional Chinese (=zh_TW=) translation team for KDE, having gotten commit permissions after the invitation of pan93412. My workflow is therefore built on the assumption that I can directly commit changes to the KDE Subversion repository (after careful checks).
+
+The =zh_TW= translation team communicates on the l10n-tw channel on Telegram; each translation team is different.
+
+* Basic knowledge
+
+KDE translations are entirely kept within one SVN repository. This repository was once home to all KDE code as well, but nowadays the code has long been migrated to Git repositories, and eventually onto KDE's own GitLab instance called [[https://invent.kde.org][KDE Invent]]. But translations are still kept in this central repository.
+
+The Subversion repository can be browsed directly in the browser from https://websvn.kde.org, which is kind of like browsing a Git repository with cgit. The read-only repository path that can be accessed without commit rights is =svn://anonsvn.kde.org/home/kde/<path>=, while the read-write repository path which needs commit rights to access (including reads) is =svn+ssh://svn@svn.kde.org/home/kde/<path>=. These links are both provided for convenience on Websvn.
+
+# Begin extra Subversion primer
+
+Also some possibly surprising stuff about Subversion for the modern Git user:
+
+- How Subversion was typically used was AFAIK kind of like a mix between a monorepo and a self-hosted Git forge: all your projects live in this one place, but you have the option of checking out just one project.
+- Subversion branches are just copies of folders. Like, you literally branch with =svn copy=. The structure of trunk, branches, and tags was apparently managed by convention.
+
+# End extra Subversion primer
+
+Here's an example path for a translation file:
+
+#+begin_src text
+/trunk/l10n-kf6/zh_TW/messages/ark/ark.po
+#+end_src
+
+There are a few types of branches in KDE translations to keep in mind:
+
+- Software type: kf5 for KDE 5 era software (as well as websites and documentations), kf6 for KDE 6 / Qt 6 stuff. When a program is ported from Qt 5 to Qt 6, at some point they get moved to kf6.
+  - kf5 lives in =trunk/l10n-kf5/<language>=, kf6 lives in =trunk/l10n-kf6/<language>=
+- Release version:
+  - =trunk= is for in-development program versions. It tracks the main branches from each program's code repository. New translations here get released when the program gets a major release.
+  - =stable= is AFAIK the latest major version of each program. New translations here get released when the program gets a minor (bugfix) release.
+  - trunk lives in =/trunk=, stable lives in =/branches/stable=. There are other folders within =/branches= but I regard them as historical artifacts and we most likely shouldn't be touching those.
+- Of course each language can be thought of as a branch.
+- There is a difference between /messages/ and /docmessages/. The former is strings in each program, the latter is the manual for the program (usually written in DocBook) if it has one.
+
+Normally translation is done in /trunk/. When a major version is released, =trunk= at that moment gets copied to =stable= (and the previous =stable= gets replaced). You can manually copy new translations into =stable= if you want to see them released earlier, in the next minor / bugfix version.
+
+Again, SVN "branches" are basically just folders, /especially if you don't need to worry about merging branches/ as is the case in our usecase.
+
+One commit can modify multiple branches, just like how in a Git monorepo one benefit is that you can modify multiple projects in one commit. I do this to translate trunk and stable in the same commit (because Lokalize, once set up, is able to automatically synchronize the other branch as you translate), although I still don't know how other people think about this.
+
+* Basic software
+
+KDE translation files are in the Gettext PO format. I use KDE's own [[https://invent.kde.org/sdk/lokalize/][Lokalize]] to translate, because it provides project-wide analysis, search, and translation memory all locally. Some people use / recommend [[https://poedit.net/][POEdit]], but since it edits individual PO files instead of supporting entire folders / projects, I have never been able to get used to it.
+
+KDE's servers will periodically pull strings from each program's Git repository into PO files ("extract") and "merge" them into existing PO files (thus preserving previous translations) on SVN. This process is done by a program called [[https://invent.kde.org/sysadmin/l10n-scripty][Scripty]]. Scripty also automatically synchronizes all translations back into each program's Git repositories. All of this is automated, one just has to keep it in mind, I don't really worry about it too much.
+
+The time the synchronization happens seems to be around UTC 00:00 each day, so uhh, remember to pull (=svn update=) and merge your translations before you push (=svn commit=) if you have unpushed changes across that moment.
+
+* Workflow option 1: git-svn
+
+For a while I used git-svn to pull translations.
+
+The reason why I insist on having a Git repository locally is that I can use [[https://magit.vc/][Magit]] to review my translations, compared to the latest pull, and even delete extraneous changes caused by Lokalize's format slightly differing from Scripty's format. Scripty will fix the format automatically, but I might as well save that extra commit on the server.
+
+The problem specifically with git-svn is that it seems to want to clone /all/ folders under the path being cloned, so if I want a checkout that includes both trunk and stable it will take /very/ long and require a /very/ large amount of bandwidth.
+
+To use git-svn, do something like:
+
+#+begin_src shell
+git svn clone -r HEAD svn://anonsvn.kde.org/home/kde/trunk/l10n-kf5/zh_TW/messages path-to-your-local-folder
+#+end_src
+
+- The syntax is =git svn clone <source> <target>=, just like git clone
+- This is Traditional Chinese (=zh_TW=), kf5, trunk. Checking out both kf5 and kf6 in the same clone requires checking out trunk in its entirety, which has the same issue as cloning the root (it seems to want clone every language and everything else under =trunk=), so you just have to have multiple checkouts if you want to work on them all.
+- =-r HEAD= tells git svn to /not/ include the whole history, as we just want a local checkout, and we're not doing a Git migration.
+- Modifying the remote URL (for instance, to move a checkout from the read-only URL to the read-write URL) takes more effort than a simple =git remote= command since git-svn does some special stuff. It can be done: Open =.git/config=, then find the =svn-remote= section, set the =url= to the new URL, and set =rewriteRoot= to the old URL. (The actual section name will include the name of the svn-remote, so editing the config file is just faster.)
+
+Once a translation is done... find some way to pack the newly changed files and send them off to someone in your language team who has commit access. Each team is different, you'll probably have to ask around about this.
+
+* My current workflow: svn checkout with a local Git repository
+** Setting up the working copy
+
+Using SVN directly allows me to clone just a part of a folder. git-svn seems to have support for something similar, but it's way slower.
+
+#+begin_src shell
+svn update --set-depth empty path # path/ ends up as an empty folder
+svn update --set-depth files path # path/file1 ...
+# path/file1 ... and path/folder1/ ...，the latter is an empty folder (ie. its depth is "empty")
+svn update --set-depth immediates path
+svn update --set-depth infinity path # every subfolder and files, infinite depth
+#+end_src
+
+The KDE Subversion repository looks like this:
+
+: /branches/
+: /branches/<whatever>
+: /branches/stable/
+: /branches/stable/<whatever>
+: /branches/stable/l10n-kf5/ # includes "templates", "zh_TW" and other languages
+: /branches/stable/l10n-kf6/ # includes "templates", "zh_TW" and other languages
+: /tags/<whatever>
+: /trunk/
+: /trunk/<whatever>
+: /trunk/l10n-kf5/ # includes "templates", "zh_TW" and other languages
+: /trunk/l10n-kf6/ # includes "templates", "zh_TW" and other languages
+
+And my goal is to get my working copy to look like this:
+
+我的目的是要讓我的工作複本長這樣：
+
+: /branches/stable/l10n-kf5/ # includes "templates", zh_TW, and (for reference) ja
+: /branches/stable/l10n-kf6/ # includes "templates", zh_TW, and (for reference) ja
+: /trunk/l10n-kf5/ # includes "templates", zh_TW, and (for reference) ja
+: /trunk/l10n-kf6/ # includes "templates", zh_TW, and (for reference) ja
+: /trunk/l10n-kf6/zh_TW/messages/konsole/konsole.po # example of a full path
+
+To achieve this, first I check out a working copy, while making sure to not end up checking out the entire repository (which takes a few GB; reminder that SVN doesn't store versions locally, as a centralized version control system)
+
+#+begin_src shell
+svn checkout --depth immediates svn://anonsvn.kde.org/home/kde/ ~/kde-svn
+cd ~/kde-svn
+#+end_src
+
+Then my goal is to do this:
+
+#+begin_src shell
+svn update --set-depth infinity branches/stable/l10n-kf{5,6}/{templates,ja,zh_TW}
+svn update --set-depth infinity trunk/l10n-kf{5,6}/{ja,zh_TW,templates}
+
+# "kf{5,6}/{ja,zh_TW}" expands to "kf5/ja kf6/ja kf5/zh_TW kf6/zh_TW". This is called brace expansion and is a feature of shell
+#+end_src
+
+But Subversion complains:
+
+: svn: E155007: None of the targets are working copies
+
+The problem is that =/trunk= has =empty= depth, and to clone stuff below a folder the folder cannot be =empty= depth. There are only 3 options: =infinity= downloads everything which is too much; =immediates= will show a bunch of folders which I don't care about; =files= will include just the immediate files, which I still don't want, but is the least bad option.
+
+So, we need to set the depth of every folder in the ancestry of each target folder to =files=. To do this... here's a dumb but /whatever, it works/ way to do it:
+
+#+begin_src shell
+svn update --set-depth files branches
+svn update --set-depth files branches/stable
+svn update --set-depth files branches/stable/l10n-kf{5,6}
+# No parent folder has depth = empty at this point, so we can now set the target depth as infinity
+svn update --set-depth infinity branches/stable/l10n-kf{5,6}/{templates,ja,zh_TW}
+
+svn update --set-depth files trunk
+svn update --set-depth files trunk/l10n-kf{5,6}
+# Again, parent folders are all depth = files, so we can now set the target depth as infinity
+svn update --set-depth infinity trunk/l10n-kf{5,6}/{ja,zh_TW,templates}
+#+end_src
+
+** Lokalize set up
+
+Now the paths look like this
+
+: ~/kde-svn/branches/stable/l10n-kf5/zh_TW
+: ~/kde-svn/branches/stable/l10n-kf5/ja
+: ~/kde-svn/branches/stable/l10n-kf5/templates
+:
+: ~/kde-svn/branches/stable/l10n-kf6/zh_TW
+: ~/kde-svn/branches/stable/l10n-kf6/ja
+: ~/kde-svn/branches/stable/l10n-kf6/templates
+:
+: ~/kde-svn/trunk/l10n-kf5/zh_TW
+: ~/kde-svn/trunk/l10n-kf5/ja
+: ~/kde-svn/trunk/l10n-kf5/templates
+:
+: ~/kde-svn/trunk/l10n-kf6/zh_TW
+: ~/kde-svn/trunk/l10n-kf6/ja
+: ~/kde-svn/trunk/l10n-kf6/templates
+
+Lokalize supports projects. A project contains all PO files under the same folder where the project =.lokalize= file is located.
+
+My goal is that the same Lokalize project can see both files from kf5 and kf6. The problem is that, with the way the Subversion repository is laid out, a folder containing both kf5 and kf6 would also necessarily contain all checked out languages and templates. This would make it so that I'm not able to utilize Lokalize's feature where a template file from a corresponding templates repository can show up in the current project.
+
+(Bad writing: I haven't introduced that feature yet. Sorry about that, I guess.)
+
+My solution is, uh, symlinks. Just make the folder structure I need with symlinks.
+
+: (Within ~/kde-translations/)
+: # {lang} is ja, zh_TW, or templates
+: {lang}/kf{5,6} -> ~/kde-svn/trunk/l10n-kf{5,6}/{lang}
+: # Make the Lokalize projects for stable and trunk share the same Glossary
+: zh_TW/terms.tbx -> ../terms.tbx
+: # trunk's Lokalize project file
+: zh_TW/index.lokalize
+:
+: stable.{lang}/kf{5,6} -> ~/kde-svn/branches/stable/l10n-kf{5,6}/{lang}
+: # Make the Lokalize projects for stable and trunk share the same Glossary
+: stable.zh_TW/terms.tbx -> ../terms.tbx
+: # trunk's Lokalize project file
+: stable.zh_TW/index.lokalize
+
+Contents of =zh_TW/index.lokalize=:
+
+#+begin_src ini
+[General]
+AltDir=../ja
+BranchDir=../stable.zh_TW
+PotBaseDir=../templates ; This is the default and can be left out
+PotBranchDir=../stable.templates
+LangCode=zh_TW
+LanguageSource=Project
+MailingList=zh-l10n@lists.slat.org
+ProjLangTeam=Traditional Chinese <zh-l10n@lists.slat.org> ; adapt as needed, of course
+ProjectID=kde-translations-zh_TW ; Make stable and trunk use the same Translation Memory
+TargetLangCode=zh_TW
+#+end_src
+
+Contents of =stable.zh_TW/index.lokalize=:
+
+#+begin_src ini
+[General]
+AltDir=../stable.ja
+BranchDir=../zh_TW
+PotBaseDir=../stable.templates
+PotBranchDir=../templates
+LangCode=zh_TW
+LanguageSource=Project
+MailingList=zh-l10n@lists.slat.org
+ProjLangTeam=Traditional Chinese <zh-l10n@lists.slat.org> ; adapt as needed, of course
+ProjectID=kde-translations-zh_TW ; Make stable and trunk use the same Translation Memory
+TargetLangCode=zh_TW
+#+end_src
+
+The result is that I have one single Lokalize project that contains the Traditional Chinese translation for all KDE projects. With this setup, especially with BranchDir being set up properly, Lokalize also automatically saves changes into stable when I edit trunk.
+
+Diff checking and review are explained below.
+
+** The actual workflow
+
+My current translation workflow looks like this:
+
+- Before translation, use =svn update= to pull the latest changes. I want to minimize merges, because merging PO files is very annoying (especially when line number comments cause merge conflicts that need manual resolution).
+- Then *I create a new local Git repository in my Subversion checkout*. This Git repository is entirely for diffing my local changes, but for me it's far easier to check a Git diff (especially because I get to use Magit) than =svn diff=.
+
+  #+begin_src shell
+  git init
+  git add ./trunk ./branches
+  git commit -m "before"
+  #+end_src
+
+- Then I'll open Lokalize and start translating.
+- As an automatable check for a common mistake, I'll do this to check if I messed up format strings like =%1=.
+
+  #+begin_src shell
+  fd -e po -x msgfmt -o /dev/null --check-format
+  # You could also use find, but I feel fd is more intuitive so this is just what I've been using
+  # https://github.com/sharkdp/fd
+  #+end_src
+
+- Open Magit, check every hunk, and write the commit message
+- Copy the commit message into the clipboard
+- Use =svn status= to check if any new files need to be tracked. This comes up when a new template file shows up and haven't been translated before. Subversion does not have a staging area, but new files still need an =svn add= to be marked as tracked in order to be included in the next =svn commit=.
+- Use =svn add= to mark any new files as tracked.
+- *Make absolutely sure I haven't accidentally added the .git folder*. Subversion does not have the capability to locally mark a folder as never tracked and should never be added, so this ends up having to be done manually. Commit access means I have the responsibility to check whether I'm committing garbage; with great power comes great responsibility.
+- =svn commit=, let it open the editor, and paste in the commit message that I wrote
+- Save and exit and let the commit go through
+
+This local Git repository is purely there for my own use. Nowadays usually I use =svn update; git add .; git commit -m before= to git-commit the state before a translating session instead of destroying the Git repository and setting it up again, but I don't actually have to keep it around.
+
+* Glossary management
+
+I have considered committing the Lokalize glossary I use into Subversion, which seems to be a thing some translation teams do.
+
+There are 23 (as of 2024-01, when I wrote the Mandarin version of this article) .tbx glossary files in the entire KDE Subversion repository.
+
+(This search is a lot harder than on eg. GitHub, but can still kind of be done like this:
+
+#+begin_src shell
+svn list -R $(svn info --show-item=url) > /tmp/files
+#+end_src
+
+then doing a local search in the =/tmp/files= that that command writes into.)
+
+Since there's more complicated considerations regarding managing a glossary (I feel), I haven't actually uploaded the glossary I'm using into Subversion. But at least I have saved it to my own cloud to synchronize it between the devices I use to do translations.
