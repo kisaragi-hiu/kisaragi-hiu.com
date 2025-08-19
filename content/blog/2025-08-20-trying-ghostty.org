@@ -1,0 +1,69 @@
+#+title: Trying Ghostty
+#+created: 2025-08-20T01:37:22+0900
+#+language: en
+#+tags[]: linux review
+
+My main terminal is usually Alacritty or Konsole, they work fine, but sometimes I feel like exploring other terminals.
+
+My main gripe with Alacritty is that it doesn't have tabs, and having the ability to use one or two tabs is nice. Otherwise it's a perfectly good terminal.
+
+My main issue with Konsole... it's fine and featureful, but
+
+- Perhaps Breeze Dark should've been the default window color scheme when the default terminal color scheme is also dark?
+- Too many settings are thrown into Profiles. Why exactly should scrollback not have a global setting? Or the option to turn on links?
+- The default profile is read-only so you have to clone a new profile and give it a name just to be able to change the above things that arguably shouldn't have been profile specific in the first place. But it's been done, and it's no longer worth it to change it, so the configuration just ends up feeling a little janky.
+- Terminal links are off by default. Fine. But they also don't have hover hints, and you can only see the target of a link after clicking it and getting a prompt. Not so fine. Even Alacritty has this.
+- Why is Ctrl-Tab "switch to previously used tab" by default? No one does that by default. I know it's like Alt-Tab but this is not how other apps with tabs define Ctrl-Tab as by default.
+
+It's still alright. But might as well try something else. So this post is to document the last hour or two of configuring and trying out Ghostty.
+
+Nice things:
+
+- The =ghostty +show-config --default --docs= command is a pretty nice way to show config docs, and is better than throwing this entire documentation as well as default values into the initial config template. I like that.
+- I'm using Ghostty on Linux, within KDE Plasma, but I don't mind apps using the Adwaita theme. So it looks fine.
+- I like the way the shell integration just works, instead of requiring manually configuring your shell. For reference, this is how I configure zsh for [[https://github.com/akermu/emacs-libvterm][emacs-libvterm]]'s shell integration:
+
+  #+begin_src zsh
+  # in zsh/.zsh/settings.zsh in my dotfiles
+  # "source!" is just `[[ -f "$1" ]] && source "$1"`
+  if [[ $INSIDE_EMACS == vterm ]]; then
+      export EDITOR=emacsclient
+      export VISUAL=emacsclient
+      if [[ -f "/usr/share/emacs/etc/vterm/emacs-vterm-zsh.sh" ]]; then
+          # OpenSUSE ships vterm.el in its site-lisp and puts the integration in a
+          # different place.
+          source! /usr/share/emacs/etc/vterm/emacs-vterm-zsh.sh
+      elif [[ -n "$EMACS_VTERM_PATH" ]]; then
+          source! "$EMACS_VTERM_PATH"/etc/emacs-vterm-zsh.sh
+      fi
+  fi
+  #+end_src
+
+Some issues:
+
+- The builtin DoomOne theme, which probably means it's doom-one from [[https://github.com/doomemacs/doom-themes][doomemacs/doom-themes]] (based on Atom One Dark), has the issue that its bright-black color (color 8) is too dark. This means the suggestions from [[https://github.com/zsh-users/zsh-autosuggestions][zsh-autosuggestions]] are too hard to read.
+
+  This is actually an issue that doom-themes had, [[https://github.com/doomemacs/themes/blob/b6872fa/doom-themes-base.el#L197][which I provided a patch for]] in 2024. Color 8 (ansi bright black) needs to be /brighter/ than Color 0 (default) in a dark theme. It is consistently used as grayed out foreground text, so if it isn't a less saturated version of the foreground color, program output would end up looking wrong.
+
+  #+caption: The suggestion isn't supposed to be in that color.
+  [[/ghostty-DoomOne-low-contrast-color-8.png]]
+
+- The window icon isn't set correctly (at least on KDE Plasma Wayland), so it gets a generic icon as a fallback in the Alt-Tab window switcher. Zen Browser also has this issue.
+
+- The window-theme option sets the theme of the UI elements outside of the terminal itself. It has 5 valid options under GTK with Adwaita:
+
+  - auto: light if terminal background is light, dark if terminal background is dark. Except it gave me light colors when my terminal background is dark, so I don't know what's going on there.
+  - system: use the system theme. My system GTK theme is Adwaita (light). But I want my terminal to be in a dark theme.
+  - light: use a light theme. Not what I want.
+  - dark: use a dark theme. This is... fine.
+  - ghostty: only for Adwaita, paint the title bar with the same foreground color and background colors as the Ghostty theme. This would be ideal and it looks awesome.
+
+  The problem is that the "ghostty" value only sets the color for the titlebar, and does not provide another way to set the color theme for the other UI elements. In my case, they remain in light theme. So I'm left with two less than ideal options: dark theme that doesn't quite match the terminal colors, or matched terminal colors except other UI elements are blinding.
+
+  I wish it's possible to set the title bar colors separately from whether other UI elements are in light or dark mode.
+
+  [[/ghostty-dark-title-light-ui.png]]
+
+- There are a bunch of actions, but seemingly the only way to call them is to bind them to keys first. It would definitely help if there is a command palette (or an =execute-extended-command= in Emacs speech).
+
+Overall it's also alright. It starts a little slow, which might have something to do with the fact I installed via Snap (since I'm using it on KDE Neon). I'll see if this turns out to be an issue or not.
