@@ -66,4 +66,6 @@ Some issues:
 
 - There are a bunch of actions, but seemingly the only way to call them is to bind them to keys first. It would definitely help if there is a command palette (or an =execute-extended-command= in Emacs speech).
 
+2025-09-16T04:04:57+0900: [[https://ghostty.org/docs/install/release-notes/1-2-0][Ghostty 1.2.0 (2025-09-15)]] now has a command palette, bound to =ctrl+shift+p= like many other applications.
+
 Overall it's also alright. It starts a little slow, which might have something to do with the fact I installed via Snap (since I'm using it on KDE Neon). I'll see if this turns out to be an issue or not.
