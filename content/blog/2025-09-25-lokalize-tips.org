@@ -1,0 +1,24 @@
+#+title: Some tips about using Lokalize
+#+created: 2025-09-25T01:01:24+0900
+#+language: en
+#+tags[]: lokalize
+
+There are some useful features in Lokalize that are not quite obvious. Ideally they'd be more obvious, but here's an attempt to just document them a bit.
+
+I think I'll update this list in the future as I find more of these.
+
+* Focusing the translated text field
+
+There isn't currently a command to focus the text edit field. But the functionality is there. Use the =Ctrl+l= shortcut (“Focus the search line of Translation Units view”) to focus the filter field; while in the field, =Esc= is set up to move the focus back to the edit field for the translated text.
+
+I literally only found out about this after reading the code. This could be a result of me being willing to dive into the code, but I don't think I would be able to find it otherwise. In [[https://invent.kde.org/sdk/lokalize/-/merge_requests/253][!253]] I made it so that this is at least mentioned in the docs.
+
+Ideally this should probably be a standalone action because this default keybind breaks if =Esc= is bound to any action. I might work on it if I find the time.
+
+* Opening just untranslated files in the Project Overview
+
+Right clicking on a folder and choosing “Open selected files” will open every file in the folder. But there isn't an action for opening just files that aren't fully translated.
+
+That functionality is actually there: in the project overview, choose “Hide completed Items” in the toolbar (or in the menubar → “Settings” → “Hide completed items”; or with a keyboard shortcut, =Ctrl+t= by default), and then “Open selected files” will only open the files that are visible.
+
+This is non-obvious since it requires connecting the dots between hiding/showing completed items and which files are opened.
