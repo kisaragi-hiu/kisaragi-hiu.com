@@ -1,0 +1,53 @@
+#+title: How I currently (2025) set up Emacs for C++ and CMake
+#+created: 2025-09-25T00:33:56+0900
+#+tags[]: emacs c++
+#+language: en
+
+This is how I currently set up Emacs for C++, as an update to [[file:emacs-cpp-notes.org][Trying to set up Emacs for C++ (2022)]].
+
+* Goals
+
+I'm using Emacs to code for KDE projects, mostly written in C++/Qt.
+
+* Dependencies
+
+Clangd as the language server, and lsp-mode as the LSP implementation in Emacs. I don't use Eglot because last time I used it it didn't support multiple language servers in one buffer, which is a thing I need.
+
+Unlike in 2022 I'm not using Bear because I finally understand how to set up =compile_commands.json=. I finally understand now thanks to [[https://joshtronic.com/2024/01/14/cmake-compile-commands-json/][joshtronic - How to generate a JSON compile commands database with CMake]].
+
+* Emacs setup
+
+I'm just using Doom Emacs's module for this here without extra config. In other words, it's just
+
+#+begin_src emacs-lisp
+(doom!
+ ;; ...
+ :lang
+ (cc +lsp))
+#+end_src
+
+The core of the module in this configuration is basically just running =lsp-deferred= in =c++-mode=.
+
+* CMake
+
+Set up the build directory and make sure =compile_commands.json= is generated so that Clangd can make use of it:
+
+#+begin_src C++
+cmake -B build -G Ninja -DCMAKE_EXPORT_COMPILE_COMMANDS=1
+// Note that this isn't obvious (is it done when making the build directory or when doing a build?)
+#+end_src
+
+I use Ninja because it has parallel build by default.
+
+This will put =compile_commands.json= in =./build=, the build directory, but Clangd is able to make use of it when editing the source files.
+
+I prefer to write this in the build command because I don't want to modify CMakeLists in projects that I don't maintain.
+
+After setting up the build directory, spurious errors about missing stuff that are actually present should already be gone in the editor.
+
+To build and run:
+
+#+begin_src C++
+cmake --build ./build
+./build/bin/[executable]
+#+end_src
