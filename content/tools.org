@@ -1,0 +1,15 @@
+#+title: Tools
+#+created: 2025-09-26
+#+special: true
+#+hidetitle: true
+#+nocomment: true
+
+* Tools bookmarks page
+
+This is a workaround for me not really using bookmarks that much (they're hard to invoke on mobile).
+
+** Preview reStructuredText
+
+[[https://waldyrious.net/rst-playground]] docutils running in the browser through Pyodide.
+
+[[https://snippets.documatt.com/]] Uses Sphinx, not sure if in-browser or server-side; a playground hosted by Documatt
