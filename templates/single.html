@@ -20,7 +20,7 @@
     <div class="{{ $marginTweak }} font-serif">{{ partial "date" . }}</div>
   {{ end }}
   {{ if (or (.GetTerms "tags") (.GetTerms "series")) }}
-    <div class="meta font-serif mb-4">
+    <div class="meta mb-4 font-serif">
       {{ range (.GetTerms "tags") }}
         {{ partial "tag" . }}
       {{ end }}
@@ -40,18 +40,18 @@
 {{ end }}
 
 {{ define "footer" }}
-  <div class="mt-8 mb-20">
+  <div class="mb-20 mt-8">
     <hr class="mb-4" />
     {{ if not (.Param "special") }}
       {{ partial "post-navigation" . }}
     {{ end }}
     {{ partial "default-footer" . }}
 
-    {{ if not (eq .Title "404") }}
+    {{ if not (or (eq .Title "404") (.Param "nocomment")) }}
       <div class="block dark:hidden">
         {{ partial "utterances" "github-light" }}
       </div>
-      <div class="dark:block hidden">
+      <div class="hidden dark:block">
         <hr />
         {{ partial "utterances" "github-dark" }}
       </div>

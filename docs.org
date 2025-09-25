@@ -300,6 +300,7 @@ Used in the =project= shortcode definition.
 - =description=: A one to two sentence description. (per the recommendation from [[https://ogp.me/][Open Graph Protocol]].)
 - =hidetitle= (only implemented for generic single pages for now): hide the automatic heading
 - =pagetype=: Override for the =og:type= of the page. The =og:type= is usually inferred by =func-page-type=.
+- =nocomment=: Don't show the utterances widget.
 
 * Pages vs. Blog posts
 
