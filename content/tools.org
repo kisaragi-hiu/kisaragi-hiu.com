@@ -12,4 +12,4 @@ This is a workaround for me not really using bookmarks that much (they're hard t
 
 [[https://waldyrious.net/rst-playground]] docutils running in the browser through Pyodide.
 
-[[https://snippets.documatt.com/]] Uses Sphinx, not sure if in-browser or server-side; a playground hosted by Documatt
+[[https://snippets.documatt.com/]] Uses Sphinx, so it's able to preview more text roles (like =:file:`foo.exe`=). Runs in-browser (somehow). A playground hosted by Documatt.

@@ -2,16 +2,21 @@
 #+created: 2024-03-01T03:25:21+0900
 #+tags[]: translation
 
-This is my current KDE localization glossary plus some comments.
++This is my current KDE localization glossary plus some comments.+
+
+This is my translation glossary. It's mainly for translating KDE apps, but I want to kind of document things.
 
 I use the glossary kind of as a reference. While there are some items that are strongly binding (stuff like always using 剪貼簿 for “Clipboard” and never 剪貼板), I haven't found a way to annotate that yet beyond just knowing it myself.
 
-This list is exported from my current Lokalize glossary with this code:
+* Exporting from Lokalize glossary
+
+I exported this list from my Lokalize glossary initially with this code:
 
 #+begin_src elisp :results value list
-;; With begin_src elisp :results value list
 (let ((xml (with-temp-buffer
-             (insert-file-contents "/kisaragi-common/cloud/kde-translation/terms.tbx")
+             (insert-file-contents
+              ;; the tbx file
+              "/kisaragi-common/cloud/kde-translation/terms.tbx")
              (libxml-parse-xml-region (point-min) (point-max)))))
   (--map
    (format
@@ -235,3 +240,30 @@ This list is exported from my current Lokalize glossary with this code:
 - tarball → tarball | tar 壓縮檔 ::
 - Package download wiki page → 軟體包下載維基頁面 ::
 - source info page → 原始碼資訊頁面 ::
+
+* Animation
+
+Dope Sheet:
+
+- 攝影表 ([[https://help.autodesk.com/view/MAYAUL/2025/CHS/?guid=GUID-266E7597-25F5-44B7-96AF-FFB248AE4802][Maya (zh_CN)]], [[https://shortlin.blogspot.com/2010/11/2dretas-stylos-sxfx-sheet.html][example 1]])
+  - Searching for this does not yield useful results.
+  - Can be confused with Shot List.
+  - Gemini could not provide a useful answer for this.
+- 關鍵幀清單 ([[https://docs.unity.cn/cn/2021.1/Manual/animeditor-AdvancedKeySelectionAndManipulation.html][Unity (zh_CN)]])
+  - Searching for this does not yield useful results.
+  - Can be confused with literally “keyframe list”.
+  - Gemini could not provide a useful answer for this.
+- 動作律表 ([[https://terms.naer.edu.tw/detail/96434e6a411336783c8f8c842c6a125b/?startswith=zh&seq=1][樂詞網]])
+  - A search usually lands at explanations of Timing Sheet
+  - Gemini is able to land at “Dope Sheet”.
+- 動畫攝影表 ([[https://docs.blender.org/manual/zh-hans/2.80/editors/dope_sheet/index.html][Blender (zh_CN)]])
+  - A search is just as useful/useless as 動作律表
+  - Somewhat compatible with 攝影表
+  - Gemini is also able to land at “Dope Sheet”.
+- 直接借詞 dope sheet ([[https://www.gemhorn.com/blogs/news/whats-new-in-maya-2025][example]])
+  - 100% accurate with zero additional ambiguity
+- 只用「律表」
+  - this is standard for Timing Sheet / Time Sheet
+  - Timing Sheet and Dope Sheet are probably always able to be distinguished by context? A dope sheet is like a global timing sheet.
+  - [[https://hackmd.io/@96PkR44hSsyH3YyL-33BYA/B1bMUtr0D][example]]
+
