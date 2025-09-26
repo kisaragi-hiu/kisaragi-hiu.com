@@ -241,9 +241,27 @@ I exported this list from my Lokalize glossary initially with this code:
 - Package download wiki page → 軟體包下載維基頁面 ::
 - source info page → 原始碼資訊頁面 ::
 
-* Animation
+* Even more miscellaneous
+** Roadmap
 
-Dope Sheet:
+- 直接借詞 roadmap
+- 專案藍圖
+  - Works for projects, but confusable with Blueprints
+
+* Animation
+** Audio meter
+
+- 聲頻儀表 ([[https://terms.naer.edu.tw/detail/09250c42f4c1c6054b2e5cd48e7c2694/?startswith=zh&seq=1][樂詞網]])
+  - *An audio meter is not a meter for audio frequencies!*
+- 聲級計
+  - A search shows this is pretty accepted in zh_TW. ([[https://duckduckgo.com/?q=聲級計&ia=web][example]])
+  - This seems to usually be for a physical device?
+- 音量指示器
+  - Shows up a lot when I look for, say, “VU Meter”
+  - Problem is that they're not necessarily measuring “volume”…?
+- 音訊儀表
+  - 儀表 for “meter” works fine.
+** Dope Sheet
 
 - 攝影表 ([[https://help.autodesk.com/view/MAYAUL/2025/CHS/?guid=GUID-266E7597-25F5-44B7-96AF-FFB248AE4802][Maya (zh_CN)]], [[https://shortlin.blogspot.com/2010/11/2dretas-stylos-sxfx-sheet.html][example 1]])
   - Searching for this does not yield useful results.
@@ -267,3 +285,6 @@ Dope Sheet:
   - Timing Sheet and Dope Sheet are probably always able to be distinguished by context? A dope sheet is like a global timing sheet.
   - [[https://hackmd.io/@96PkR44hSsyH3YyL-33BYA/B1bMUtr0D][example]]
 
+** Easing
+
+- 緩動 ([[https://easings.net/zh-tw][easings.net]])
