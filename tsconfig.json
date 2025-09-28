@@ -1,6 +1,5 @@
 {
   "compilerOptions": {
-    "lib": ["esnext"],
     "target": "esnext",
     "module": "esnext",
     "moduleDetection": "force",

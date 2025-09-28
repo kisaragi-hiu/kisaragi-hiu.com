@@ -1,0 +1,97 @@
+---
+title: Is Google Font Taigi yet?
+created: 2025-09-28T22:11:40+0900
+language: en
+tags: ["fonts"]
+---
+
+<p>No.</p>
+<p>
+  Che-sī chi̍t-kóa Tâi-gí ê bûn. Google Fonts ê chi̍t-ē chin tōa ê būn-tê sī, i ē
+  kā peh-siaⁿ ê jī-goân the̍h-tiāu. (This is some text in Taiwanese. Google Fonts
+  has a major problem where they remove the character for the 8th tone.)
+</p>
+<p>
+  Chi̍t-ê blog iōng ê jī-thé (Equity) mā bô-hoat-tō͘ piáu-sī peh-siaⁿ,
+  chhin-chhiūⁿ: (The font used by this blug, Equity, also isn't able to display
+  the 8th tone, like this:)
+</p>
+<p></p>
+<p class="text-center text-4xl"><br /><b>chi̍t</b><br /></p>
+<p>Here's a previewer:</p>
+<label for="font-select">Font to load from Google Fonts:</label>
+<br />
+<select name="fonts" id="font-select">
+  <option value="">--Some font examples--</option>
+  <option value="sans-serif">sans-serif (not from Google Fonts)</option>
+  <option value="Roboto">Roboto</option>
+  <option value="Noto Sans">Noto Sans</option>
+  <option value="Noto Sans TC">Noto Sans TC</option>
+  <option value="Noto Serif">Noto Serif</option>
+  <option value="TASA Orbiter">TASA Orbiter</option>
+  <option value="TASA Explorer">TASA Explorer</option>
+</select>
+<br />
+<input type="text" id="font-input" name="fonts" />
+<p id="tester" class="text-center text-4xl"><br /><b>chi̍t</b><br /></p>
+<script>
+  // @ts-check
+
+  /**
+   * Load a font family from Google Fonts via a stylesheet.
+   * @param family {string}
+   */
+  function loadFont(family) {
+    // https://stackoverflow.com/a/65917124
+    const linkElem = document.createElement("link");
+    linkElem.rel = "stylesheet";
+    linkElem.href = `https://fonts.googleapis.com/css2?display=swap&family=${family}`;
+    document.getElementsByTagName("head")[0].appendChild(linkElem);
+  }
+
+  /** @type HTMLParagraphElement | null | undefined */
+  let tester;
+  /**
+   * Set the font family of the tester element.
+   * @param family {string}
+   */
+  function setFamily(family) {
+    if (!tester) {
+      const newTester = document.getElementById("tester");
+      if (!(newTester instanceof HTMLParagraphElement))
+        throw new Error("tester not found");
+      tester = newTester;
+    }
+    if (family === "") {
+      tester.style.fontFamily = "";
+    } else {
+      loadFont(family);
+      tester.style.fontFamily = `"${family}", sans-serif`;
+    }
+  }
+
+  function init() {
+    const fontSelect = document.getElementById("font-select");
+    const fontInput = document.getElementById("font-input");
+    if (!(fontInput instanceof HTMLInputElement))
+      throw new Error("font-input not found");
+    if (!(fontSelect instanceof HTMLSelectElement))
+      throw new Error("font-select not found");
+    fontInput.addEventListener("input", () => {
+      const family = fontInput.value.trim();
+      setFamily(family);
+    });
+    fontSelect.addEventListener("change", () => {
+      const family = fontSelect.options[fontSelect.selectedIndex].value;
+      fontInput.value = family;
+      setFamily(family);
+    });
+  }
+  init();
+</script>
+<p>
+  In the case of TASA Orbiter, the font has support for it, but it got removed
+  by Google Fonts because of complicated optimization reasons which obviously
+  also is a result of bias against some languages. (I understand why it's hard,
+  but it still <i>is</i> bias.)
+</p>
