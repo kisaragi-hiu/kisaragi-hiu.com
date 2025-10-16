@@ -109,8 +109,6 @@ The KDE Subversion repository looks like this:
 
 And my goal is to get my working copy to look like this:
 
-我的目的是要讓我的工作複本長這樣：
-
 : /branches/stable/l10n-kf5/ # includes "templates", zh_TW, and (for reference) ja
 : /branches/stable/l10n-kf6/ # includes "templates", zh_TW, and (for reference) ja
 : /trunk/l10n-kf5/ # includes "templates", zh_TW, and (for reference) ja
