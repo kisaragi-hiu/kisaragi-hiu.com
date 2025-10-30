@@ -1,5 +1,6 @@
-#+title: Trying Ghostty
+#+title: Trying Ghostty (as of 1.1.3; updated for 1.2.3)
 #+created: 2025-08-20T01:37:22+0900
+#+updated: 2025-10-30T21:36:20+0900
 #+language: en
 #+tags[]: linux review
 
@@ -41,12 +42,14 @@ Nice things:
 
 Some issues:
 
-- The builtin DoomOne theme, which probably means it's doom-one from [[https://github.com/doomemacs/doom-themes][doomemacs/doom-themes]] (based on Atom One Dark), has the issue that its bright-black color (color 8) is too dark. This means the suggestions from [[https://github.com/zsh-users/zsh-autosuggestions][zsh-autosuggestions]] are too hard to read.
+- The builtin DoomOne theme, which probably means it's doom-one from [[https://github.com/doomemacs/themes][doomemacs/doom-themes]] (based on Atom One Dark), has the issue that its bright-black color (color 8) is too dark. This means the suggestions from [[https://github.com/zsh-users/zsh-autosuggestions][zsh-autosuggestions]] are too hard to read.
 
   This is actually an issue that doom-themes had, [[https://github.com/doomemacs/themes/blob/b6872fa/doom-themes-base.el#L197][which I provided a patch for]] in 2024. Color 8 (ansi bright black) needs to be /brighter/ than Color 0 (default) in a dark theme. It is consistently used as grayed out foreground text, so if it isn't a less saturated version of the foreground color, program output would end up looking wrong.
 
   #+caption: The suggestion isn't supposed to be in that color.
   [[/ghostty-DoomOne-low-contrast-color-8.png]]
+
+  2025-10-30T20:21:50+0900: This was [[https://github.com/ghostty-org/ghostty/commit/cef99250a796c2898a9a197ef263a5697632d613][fixed]] in Ghostty 1.2.1. [[https://github.com/mbadolato/iTerm2-Color-Schemes][Ghostty's source of themes]] (mbadolato/iTerm2-Color-Schemes) [[https://github.com/mbadolato/iTerm2-Color-Schemes/commit/39f0b4451f55cef62dbb24ffe50bf2fcbf1a87cd][now automatically patches themes]] to [[https://github.com/mbadolato/iTerm2-Color-Schemes/pull/625/][make sure they have enough contrast]]. That also works.
 
 - The window icon isn't set correctly (at least on KDE Plasma Wayland), so it gets a generic icon as a fallback in the Alt-Tab window switcher. Zen Browser also has this issue.
 
@@ -66,6 +69,8 @@ Some issues:
 
 - There are a bunch of actions, but seemingly the only way to call them is to bind them to keys first. It would definitely help if there is a command palette (or an =execute-extended-command= in Emacs speech).
 
-2025-09-16T04:04:57+0900: [[https://ghostty.org/docs/install/release-notes/1-2-0][Ghostty 1.2.0 (2025-09-15)]] now has a command palette, bound to =ctrl+shift+p= like many other applications.
+  2025-09-16T04:04:57+0900: [[https://ghostty.org/docs/install/release-notes/1-2-0][Ghostty 1.2.0 (2025-09-15)]] now has a command palette, bound to =ctrl+shift+p= like many other applications.
 
 Overall it's also alright. It starts a little slow, which might have something to do with the fact I installed via Snap (since I'm using it on KDE Neon). I'll see if this turns out to be an issue or not.
+
+2025-10-30T21:33:54+0900: the startup speed is /a bit/ of an issue, but it's kind of fine since the cost is only paid once (like Emacs's daemon mode).
