@@ -7,7 +7,7 @@ Progressive Web Apps ([[https://developer.mozilla.org/en-US/docs/Web/Progressive
 
 On Windows, installing a PWA using Firefox is pretty simple. For websites that provide a manifest, an install button will appear next to window controls, which adds a shortcut to the start menu when clicked. Opening the shortcut will open the website in its own window without browser controls, as if it's a native app.
 
-However, for whatever reason, this is still not implemented on Linux. I'd imagine this is fairly simple since [[https://specifications.freedesktop.org/desktop-entry-spec/desktop-entry-spec-latest.html][.desktop files and their locations are already well specified]]. In fact, Chromium already supports it:
+However, for whatever reason, this is still not implemented on Linux. I'd imagine this is fairly simple since [[https://specifications.freedesktop.org/desktop-entry-spec/latest-single][.desktop files and their locations are already well specified]]. In fact, Chromium already supports it:
 
 [[/chromium-linux-pwa-install.png]]
 

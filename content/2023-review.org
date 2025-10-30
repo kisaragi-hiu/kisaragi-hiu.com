@@ -10,9 +10,11 @@ I think I made some projects that I'm reasonably proud of.
 
 - [[file:projects/kemdict.org][Kemdict]] updates.
 
-- [[https://nowww.tw][nowww.tw]], an attempt at an advocate site for Taiwanese websites to /please/ redirect their apex domains to their www subdomains.
+- [[https://nowww.kisaragi-hiu.com/][nowww.tw]], an attempt at an advocate site for Taiwanese websites to /please/ redirect their apex domains to their www subdomains.
   #+caption: The first URL is 404 but the second isn't.
   [[/20230424T000503+0900.png]]
+
+  /2025-10-30T21:59:14+0900: in 2024 I let the domain lapse because I wanted to save the domain cost. .tw domains are a little expensive. I now host it at [[https://nowww.kisaragi-hiu.com]]./
 
 - [[https://github.com/changelog-db/changelog-db][ChangelogDB]], an attempt to manually build a package name → changelog URL index.
 

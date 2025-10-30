@@ -31,7 +31,7 @@ test-27.1:
 This tells Gitlab CI to automatically run tests (with ert-runner) under Emacs 26.3 and Emacs 27.1.
 
 - =test-26.3= and =test-27.1= are job names for Gitlab CI.
-- =default= is applied to every job. [[https://docs.gitlab.com/ee/ci/yaml/README.html#global-defaults][Only some properties can be specified here. =script= isn’t one of them.]]
+- =default= is applied to every job. [[https://docs.gitlab.com/ci/yaml/#default][Only some properties can be specified here. =script= isn’t one of them.]]
 - Alternative: you can also specify a =.test= rule, then use =extends: .test= to reduce duplication. This is what [[https://gitlab.com/joewreschnig/gitlab-ci-mode/-/blob/master/.gitlab-ci.yml][joewreschnig/gitlab-ci-mode]] does.
 - [[https://hub.docker.com/r/silex/emacs][=silex/emacs=]] is a comprehensive set of Emacs Docker images. Some of them are great for interactive use, others are designed for use in CI.
 

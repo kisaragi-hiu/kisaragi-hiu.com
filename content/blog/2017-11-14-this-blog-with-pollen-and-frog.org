@@ -14,13 +14,15 @@ In March this year, I discovered Github Pages, and wanted to revive my personal 
 
 I then moved to Hugo in June, with the next two posts being yet again, cover announcements. I didn't (and still don't) understand Hugo, and so I was in the dark when trying to get the site to look the way I want it to. After July, the site was left to rot again.
 
-* First encounter with Frog, and my Pollen site based on mstill.io
+* First encounter with Frog, and my Pollen site based on [[https://web.archive.org/web/20170708201545/https://mstill.io/][mstill.io]]
 
-In September, after trying out Pollen for my self introduction in August (when my teacher told us to do one), and looking at Frog for a bit, I tried to move the site onto Frog. Knowing next to nothing of Bootstrap and the Racket html templating system (which Frog utilizes), I was again in the dark in stylizing and designing the site. As I had just played with Pollen, I decided to see if anyone has built a blog using Pollen. I found [[https://mstill.io][Malcolm Still's website]] on Github, and forked it to use as a template, as it is released under the BSD 3-clause license.
+In September, after trying out Pollen for my self introduction in August (when my teacher told us to do one), and looking at Frog for a bit, I tried to move the site onto Frog. Knowing next to nothing of Bootstrap and the Racket html templating system (which Frog utilizes), I was again in the dark in stylizing and designing the site. As I had just played with Pollen, I decided to see if anyone has built a blog using Pollen. I found [[https://web.archive.org/web/20170708201545/https://mstill.io/][Malcolm Still's website]] on Github, and forked it to use as a template, as it is released under the BSD 3-clause license.
+
+/2025-10-30T21:56:06+0900: The site is now down. The author's new site is [[https://mstill.dev/]]. The old repository is [[https://github.com/malcolmstill/mstill.io][still available on GitHub]], though./
 
 * Back to Frog, preprocessed with Pollen
 
-When trying to customize and extend mstill.io's system, I had no option but to learn how Malcolm Still has implemented it. This actually taught me a lot about how static site generators (generally) work: they take in source files, turn them into HTML, then combine them into templates. Previously I thought of templates as a black box, but now I see they're just combined together like a tree.
+When trying to customize and extend [[https://web.archive.org/web/20170708201545/https://mstill.io/][mstill.io]]'s system, I had no option but to learn how Malcolm Still has implemented it. This actually taught me a lot about how static site generators (generally) work: they take in source files, turn them into HTML, then combine them into templates. Previously I thought of templates as a black box, but now I see they're just combined together like a tree.
 
 Eventually, after a few attempts at adding features to posts, I started facing an increasing maintenance overhead. There were four distinct templates, the site index, the tag index, the tags index (a list of all tags), and the general page template, which had to serve for posts and non-posts. Then there are also some features I have no idea how to do with just Pollen, like pagination. I decided, after two weeks, to move to a proper static site generator.
 
@@ -38,11 +40,11 @@ In Markdown, a single newline doesn't get turned into an actual newline in the o
 
 ** Figuring out the design
 
-This is the trickest part for me. My web development experience only consisted of going through freeCodeCamp's first few turorials and modifying an already styled tenplate from mstill.io.
+This is the trickest part for me. My web development experience only consisted of going through freeCodeCamp's first few turorials and modifying an already styled tenplate from [[https://web.archive.org/web/20170708201545/https://mstill.io/][mstill.io]].
 
 I started with trying to make a decent looking top bar in Bootstrap, then gave up because I'm overwhelmed by Bootstrap's complexity. I then looked around and tried to base my style on Skeleton CSS, this time succeeding.
 
-In the end I spent two weeks from putting up an issue on the Github page to move away from Pollen, to having an overall better site (compared to the mess I added onto mstill.io's basis) built on Frog, in two weeks time.
+In the end I spent two weeks from putting up an issue on the Github page to move away from Pollen, to having an overall better site (compared to the mess I added onto [[https://web.archive.org/web/20170708201545/https://mstill.io/][mstill.io]]'s basis) built on Frog, in two weeks time.
 
 * Extra: setting up Travis CI
 

@@ -3,7 +3,9 @@
 #+tags[]: pollen meta
 #+language: en
 
-So, I restructured this blog again, this time using [[https://mstill.io][mstill.io]] as a template, because I don't know how to use bootstrap. And I want to use Pollen markup.
+So, I restructured this blog again, this time using [[https://web.archive.org/web/20170708201545/https://mstill.io/][mstill.io]] as a template, because I don't know how to use bootstrap. And I want to use Pollen markup.
+
+/2025-10-30T21:56:06+0900: The site is now down. The author's new site is [[https://mstill.dev/]]. The old repository is [[https://github.com/malcolmstill/mstill.io][still available on GitHub]], though./
 
 The process is actually suprisingly smooth, except:
 

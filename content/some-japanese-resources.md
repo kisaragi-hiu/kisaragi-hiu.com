@@ -15,7 +15,7 @@ tags: ["japanese"]
 
   不過這個系列和其他很多課本都是用敬語來介紹動詞—我認為這會造成之後學動詞變化的問題，就好像不管英文過去式多常用都不該從過去式開始介紹。所以在記單字的時候我會建議去查辭書形：基本上把ます拿掉就會查得到。
 
-- [Tae Kim 的日文文法指南](https://guidetojapanese.org/learn/grammar)
+- [Tae Kim 的日文文法指南](https://guidetojapanese.org/learn/grammar) (2025-10-30T22:15:28+0900: 如果會 404 的話可以暫時用 WaybackMachine: <https://web.archive.org/web/20251006172426/https://guidetojapanese.org/learn/grammar>)
 
   這是另一個很完整的文法指南。原文是英文；因為原文是 CC-BY-SA，有人有進行翻譯：[日語語法指南 (譯：pizzamx)](https://res.wokanxing.info/jpgramma/)
 

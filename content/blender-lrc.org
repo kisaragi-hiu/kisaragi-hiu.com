@@ -70,7 +70,7 @@ Now the lyrics should be synchronized to the music after you add the song into t
 
 * Context
 
-I have [[https://kisaragi-hiu.com/covers/20191207-心象カスケード-電ポールp][made]] [[https://kisaragi-hiu.com/covers/20180429-普通に歳をとるコトすら-椎名もた][several]] [[https://kisaragi-hiu.com/covers/20180829-you-and-beautiful-world-ゆよゆっぺ][lyrics]] [[https://kisaragi-hiu.com/covers/20180926-mnemonic-やなぎなぎl][videos]] [[https://kisaragi-hiu.com/covers/20200521-leo-eve][with]] [[https://kisaragi-hiu.com/covers/20210625-ハルノ寂寞-稲葉曇][Blender]]. Up until now, I've always synchronized the lyrics like this:
+I have [[https://kisaragi-hiu.com/covers/20191207-心象カスケード-電ポールp][made]] [[https://kisaragi-hiu.com/covers/20180429-普通に歳をとるコトすら-椎名もた][several]] [[https://kisaragi-hiu.com/covers/20180829-you-and-beautiful-world-ゆよゆっぺ][lyrics]] [[https://kisaragi-hiu.com/covers/20180926-mnemonic-やなぎなぎ][videos]] [[https://kisaragi-hiu.com/covers/20200521-leo-eve][with]] [[https://kisaragi-hiu.com/covers/20210625-ハルノ寂寞-稲葉曇][Blender]]. Up until now, I've always synchronized the lyrics like this:
 
 #+begin_src python
 def set_text(scene):
