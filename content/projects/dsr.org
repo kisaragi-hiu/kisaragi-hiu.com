@@ -1,6 +1,8 @@
 #+title: dired-show-readme
+#+created: 2020-04-03T22:08:51+0900
 #+tags: emacs
 #+gitlab: https://gitlab.com/kisaragi-hiu/dired-show-readme
+#+status: done
 
 #+caption: dired-show-readme in my dotfiles
 [[/dired-show-readme-0.2.1.png]]
