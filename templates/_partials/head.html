@@ -86,7 +86,12 @@
 <link rel="icon" href="/favicon.png" />
 <meta property="og:url" content="{{ .Permalink | absURL }}" />
 <link rel="canonical" href="{{ .Permalink | absURL }}" />
-<link rel="stylesheet" href="/css/built.css" />
+{{ $options := dict "inlineImports" true }}
+{{ $styles := resources.Get "css/src.css" | postCSS $options }}
+{{ if hugo.IsProduction }}
+  {{ $styles = $styles | minify | fingerprint | resources.PostProcess }}
+{{ end }}
+<link rel="stylesheet" href="{{ $styles.RelPermalink }}" />
 <link rel="stylesheet" href="/storage/Equity/equity.css" />
 <link
   href="https://fonts.googleapis.com/css2?family=Overpass:wght@400;700&family=Inconsolata&display=swap"

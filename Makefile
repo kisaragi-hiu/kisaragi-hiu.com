@@ -10,20 +10,11 @@ lint:
 bun.lockb: package.json
 	bun install
 
-dev-hugo:
-	hugo server --disableFastRender --buildDrafts
-
-dev-tailwind:
-	bunx tailwindcss --postcss -i css/src.css -o static/css/built.css --watch
+dev:
+	hugo server --buildDrafts
 
 static/js:
 	mkdir -p static/js/
-
-dev:
-	bunx concurrently "make dev-hugo" "make dev-tailwind"
-
-static/css/built.css: css/src.css
-	bunx tailwindcss --minify --postcss -i css/src.css -o static/css/built.css
 
 clean:
 	git clean -Xdf
@@ -35,14 +26,14 @@ public.zip: public
 
 # the modified timestamp gets messed up on my system; fix that with
 # the `touch`.
-public: static/css/built.css static/js
+public: static/js
 	hugo --minify
 	@touch public
 
 vercel.json: generate-vercel-config.ts
 	bun generate-vercel-config.ts > vercel.json
 
-build.vercel: static/css/built.css static/js vercel.json
+build.vercel: static/js vercel.json
 	@hugo --minify -d .vercel/output/static
 	@echo "Creating Vercel output config..."
 	@echo '{"version":3}' > .vercel/output/config.json

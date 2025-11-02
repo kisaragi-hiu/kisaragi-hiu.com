@@ -16,6 +16,26 @@ params:
   author:
     name: Kisaragi Hiu
 
+# * Build Tailwind v3 through PostCSS
+
+module:
+  mounts:
+    # this is necessary for some reason
+    - source: assets
+      target: assets
+    - source: "hugo_stats.json"
+      target: "assets/watching/hugo_stats.json"
+build:
+  buildStats:
+    enable: true
+  cachebusters:
+    - source: "assets/watching/hugo_stats\\.json"
+      target: "src\\.css"
+    - source: "assets/.*\\.(.*)$"
+      target: "$1"
+    - source: "(postcss|tailwind)\\.config\\.c?js"
+      target: "css"
+
 # * Content
 # Let's say it's 2021-05-25T00:30:00+0900 right now, and I have a new
 # page dated 2021-05-25. Hugo will consider that moment as being in

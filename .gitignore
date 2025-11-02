@@ -9,7 +9,6 @@
 .cask/
 pollen-cache
 compiled
-/static/css/built.css
 public
 sitemap.txt
 /static/external/
@@ -19,3 +18,5 @@ node_modules
 *.map
 .log
 .hugo_build.lock
+hugo_stats.json
+/resources/_gen
