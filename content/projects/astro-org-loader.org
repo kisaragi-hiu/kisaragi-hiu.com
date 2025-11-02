@@ -1,0 +1,7 @@
+#+title: astro-org-loader
+#+created: 2025-10-13
+#+tags[]: emacs
+#+github: https://github.com/kisaragi-hiu/astro-org-loader
+#+status: 10%
+
+An attempt to make an Astro content loader for Org files.

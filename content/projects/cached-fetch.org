@@ -1,0 +1,23 @@
+#+title: @kisaragi-hiu/cached-fetch
+#+created: 2021-07-25
+#+updated: 2025-10-31
+#+tags[]: typescript library
+#+github: https://github.com/kisaragi-hiu/cached-fetch
+
+A caching function designed for caching fetch GET responses on disk in a command line program.
+
+I keep rewriting this logic in multiple projects, so I'm making it a package.
+
+#+begin_src typescript
+import { cached } from "@kisaragi-hiu/cached-fetch";
+
+const text = await cached(
+  "myCacheKey",
+  () => fetch("https://example.com")
+)
+
+const text = await cached(
+  "myCacheKey2",
+  () => $`echo hello`
+)
+#+end_src

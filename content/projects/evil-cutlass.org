@@ -1,0 +1,26 @@
+#+title: evil-cutlass
+#+created: 2021-07-25
+#+updated: 2025-10-31
+#+tags[]: emacs evil
+#+github: https://github.com/kisaragi-hiu/evil-cutlass
+
+Override delete operations to not affect the clipboard / kill ring. Evil port of [[https://github.com/svermeulen/vim-cutlass][vim-cutlass]].
+
+* Setup
+
+#+begin_src elisp
+(straight-use-package '(evil-cutlass :host github :repo "kisaragi-hiu/evil-cutlass"))
+
+;; Turn on the mode globally:
+(evil-cutlass-mode)
+
+;; Or bind a key to toggle the minor mode:
+(general-define-key
+ :prefix "SPC"
+ :states '(normal)
+ "tc" #'evil-cutlass-mode)
+
+;; Maybe bind keys for cutting:
+(evil-define-key* 'normal evil-cutlass-mode-map "x" #'evil-cutlass-cut)
+(evil-define-key* 'normal evil-cutlass-mode-map "X" #'evil-cutlass-cut-line)
+#+end_src

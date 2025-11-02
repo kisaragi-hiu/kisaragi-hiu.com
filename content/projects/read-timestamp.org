@@ -1,0 +1,9 @@
+#+title: read-timestamp
+#+created: 2025-10-31
+#+tags[]: emacs-lisp
+#+github: https://github.com/kisaragi-hiu/read-timestamp
+#+status: 80%
+
+Like [[https://github.com/haversnail/inquirer-date-prompt][inquirer-date-prompt]] but in Emacs and for ISO 8601 timestamps.
+
+Use arrows (or hjkl in Evil) to move around components of the timestamp and increase/decrease it.

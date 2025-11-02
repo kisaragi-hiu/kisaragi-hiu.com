@@ -1,0 +1,8 @@
+#+title: pjsk-chart-list
+#+created: 2025-10-17
+#+tags[]: web apps
+#+draft: true
+#+github: https://github.com/kisaragi-hiu/pjsk-chart-list
+#+status: 10%
+
+https://sdvx.in/prsk.html has copies of charts for practicing Project Sekai charts. It works but I wish the chart/song list were a bit better. This is an attempt to do that.

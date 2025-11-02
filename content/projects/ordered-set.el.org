@@ -1,0 +1,16 @@
+#+title: ordered-set.el
+#+created: 2023-06-30
+#+tags[]: emacs-lisp
+#+github: https://github.com/kisaragi-hiu/ordered-set.el
+#+status: done
+
+[[https://melpa.org/#/ordered-set][file:https://melpa.org/packages/ordered-set-badge.svg]]
+
+In Emacs Lisp:
+
+- If you want fast (constant) lookup time, you use a hash table
+- If you want to preserve order, you use a list
+
+But sometimes you want a collection that has both constant lookup time and the ability to preserve element order. This library implements that.
+
+(This basically ports JavaScript Sets into Emacs Lisp.)

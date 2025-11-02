@@ -1,0 +1,9 @@
+#+title: emacs-jieba
+#+created: 2023-04-10
+#+tags[]: emacs-lisp rust
+#+github: https://github.com/kisaragi-hiu/list-albums
+#+status: 90%
+
+Emacs Lisp bindings for [[https://github.com/messense/jieba-rs][jieba-rs]].
+
+Used in Kemdict's build process because I made the (obviously questionable) decision to aggregate data with Emacs Lisp in that project, and if I wanted to use Jieba keyword extraction in that process I need it to be accessible from Emacs Lisp.

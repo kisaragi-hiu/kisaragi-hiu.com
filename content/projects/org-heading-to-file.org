@@ -1,0 +1,6 @@
+#+title: org-heading-to-file
+#+created: 2025-10-16
+#+tags[]: emacs
+#+github: https://github.com/kisaragi-hiu/org-heading-to-file
+
+A command for exporting the current heading to a file in my preference. It's a core part of my workflow reviewing notes from Simplenote and importing them into my notes archive.

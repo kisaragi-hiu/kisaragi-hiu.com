@@ -1,0 +1,9 @@
+#+title: glib-date-playground
+#+created: 2024-09-07
+#+tags[]: javascript
+#+github: https://github.com/kisaragi-hiu/glib-date-playground
+#+status: done
+
+A way to play with GLib DateTime format strings.
+
+Since =gjs= is JS and has access to GLib stuff, building a simple shell in gjs seemed to be the easiest option.

@@ -1,0 +1,6 @@
+#+title: k-kdesvn
+#+created: 2025-03-27
+#+tags[]: typescript cli
+#+github: https://github.com/kisaragi-hiu/k-kdesvn
+
+My own automation to manage my checkout of the KDE subversion repository, using Git to track local changes.

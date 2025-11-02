@@ -1,0 +1,6 @@
+#+title: k-po-mode
+#+created: 2024-05-31
+#+tags[]: emacs
+#+github: https://github.com/kisaragi-hiu/k-po-mode
+
+A personal po-mode fork for translating stuff in Emacs, sometimes reimplementing ideas from Lokalize.

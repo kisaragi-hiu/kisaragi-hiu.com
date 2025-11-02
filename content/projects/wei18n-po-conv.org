@@ -1,0 +1,9 @@
+#+title: wei18n-po-conv
+#+created: 2025-02-23
+#+tags[]: typescript cli
+#+github: https://github.com/kisaragi-hiu/wei18n-po-conv
+#+status: done
+
+Convert WebExtensions API messages.json format to/from Gettext PO files in order to be able to translate them in Lokalize.
+
+i18next-gettext-converter also works, but it doesn't handle the message descriptions.
