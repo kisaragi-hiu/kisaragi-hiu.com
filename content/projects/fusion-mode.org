@@ -1,0 +1,7 @@
+#+title: fusion-mode
+#+created: 2025-11-05
+#+tags[]: emacs
+#+github: https://github.com/kisaragi-hiu/fusion-mode
+#+status: done
+
+A very basic major mode for the Fusion programming language.
