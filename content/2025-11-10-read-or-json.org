@@ -1,0 +1,126 @@
+#+title: Is it faster to (read) Elisp or parse JSON from Emacs?
+#+created: 2025-11-10T13:28:37+0900
+#+tags[]: emacs-lisp benchmark
+
+I got curious while working on a project and did a quick test, this is the result.
+
+My main point is effectively RPC, so I have control over the production of the data. As such I'm only going to be comparing the parsing speed for a very basic structure.
+
+* How
+
+First prepare the basic test file:
+
+#+begin_src elisp
+;; /tmp/bench.el
+
+(defun generate ()
+  (require 'json)
+  (let ((list nil))
+    (dotimes (i 10000000)
+      (push i list))
+    (with-temp-file "10million.el"
+      (insert (prin1-to-string list)))
+    (with-temp-file "10million.json"
+      ;; json-serialize wants a vector, so I'll just use json-encode instead
+      ;; …I mean, I could've also just done (vconcat nil [])
+      (insert (json-encode list)))))
+#+end_src
+
+I was running this in shell instead of running it in my main Emacs instance. So I ran it like this:
+
+#+begin_src sh
+cd /tmp
+emacs -Q --batch -l bench.el --eval '(generate)'
+#+end_src
+
+Next, the functions to time:
+
+#+begin_src elisp
+;; We could add a (message … (seq-length …)) to sanity-check that they are doing
+;; something, but the real bench run can't have them because json-parse-buffer
+;; returns a vector by default which is also much faster to get the length of.
+;; That is useful information but not what I'm trying to time.
+(defun bench-json-parse ()
+  (with-temp-buffer
+    (insert-file-contents "10million.json")
+    (json-parse-buffer)))
+(defun bench-json-read ()
+  ;; require this inside to make sure the (tiny) cost of requiring it isn't
+  ;; applied to other cases
+  (require 'json)
+  (with-temp-buffer
+    (insert-file-contents "10million.json")
+    (json-read)))
+(defun bench-elisp-read ()
+  (with-temp-buffer
+    (insert-file-contents "10million.el")
+    (read (current-buffer))))
+#+end_src
+
+Now time them:
+
+#+begin_src sh
+cd /tmp
+# This simply expands out to the 3 commands
+hyperfine "emacs -Q --batch -l bench.el --eval '(bench-"{elisp-read,json-parse,json-read}")'"
+#+end_src
+
+* Results
+
+: > hyperfine "emacs -Q --batch -l bench.el --eval '(bench-"{elisp-read,json-parse,json-read}")'"
+: Benchmark 1: emacs -Q --batch -l bench.el --eval '(bench-elisp-read)'
+:   Time (mean ± σ):      1.911 s ±  0.090 s    [User: 1.748 s, System: 0.150 s]
+:   Range (min … max):    1.828 s …  2.146 s    10 runs
+:
+: Benchmark 2: emacs -Q --batch -l bench.el --eval '(bench-json-parse)'
+:   Time (mean ± σ):     666.1 ms ±   6.7 ms    [User: 574.0 ms, System: 83.3 ms]
+:   Range (min … max):   660.1 ms … 678.0 ms    10 runs
+:
+: Benchmark 3: emacs -Q --batch -l bench.el --eval '(bench-json-read)'
+:   Time (mean ± σ):     11.436 s ±  0.395 s    [User: 11.075 s, System: 0.297 s]
+:   Range (min … max):   10.910 s … 12.057 s    10 runs
+:
+: Summary
+:   emacs -Q --batch -l bench.el --eval '(bench-json-parse)' ran
+:     2.87 ± 0.14 times faster than emacs -Q --batch -l bench.el --eval '(bench-elisp-read)'
+:    17.17 ± 0.62 times faster than emacs -Q --batch -l bench.el --eval '(bench-json-read)'
+
+json-read is the slowest, by a wide margin, as to be expected. Both =read= and =json-parse-buffer= are native programs, while =json-read= is pure Elisp.
+
+But =json-parse-buffer= on a JSON array is 2~3x faster than =read= on a similar Lisp list. This is also not that surprising: [[https://v8.dev/blog/cost-of-javascript-2019#json][JSON grammar is a lot simpler than JavaScript grammar]], and it's also probably somewhat simpler than Emacs Lisp grammar. But before actually benchmarking I couldn't say for sure
+
+* Other info
+
+#+begin_src sh :results raw
+emacs --version
+#+end_src
+
+#+RESULTS:
+: GNU Emacs 30.2
+: Copyright (C) 2025 Free Software Foundation, Inc.
+: GNU Emacs comes with ABSOLUTELY NO WARRANTY.
+: You may redistribute copies of GNU Emacs
+: under the terms of the GNU General Public License.
+: For more information about these matters, see the file named COPYING.
+
+#+begin_src sh :results raw
+uname -a
+#+end_src
+
+#+RESULTS:
+: Linux MF-PC 6.12.57-1-lts #1 SMP PREEMPT_DYNAMIC Sun, 02 Nov 2025 15:08:33 +0000 x86_64 GNU/Linux
+
+#+begin_src sh :results raw
+kinfo
+#+end_src
+
+#+RESULTS:
+: Operating System: Arch Linux
+: KDE Plasma Version: 6.5.2
+: KDE Frameworks Version: 6.19.0
+: Qt Version: 6.10.0
+: Kernel Version: 6.12.57-1-lts (64-bit)
+: Graphics Platform: Wayland
+: Processors: 12 × AMD Ryzen 5 2600 Six-Core Processor
+: Memory: 16 GiB of RAM (15.5 GiB usable)
+: Graphics Processor: Intel® Arc
