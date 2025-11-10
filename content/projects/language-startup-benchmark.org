@@ -1,6 +1,6 @@
 #+title: Language startup benchmark
 #+gitlab: https://gitlab.com/kisaragi-hiu/language-startup-benchmark
-#+tags[]: experiments
+#+tags[]: experiments benchmark
 #+status: done
 #+created: 2018-01-20
 

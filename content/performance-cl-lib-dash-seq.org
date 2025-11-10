@@ -1,7 +1,7 @@
 #+title: Performance comparison between cl-lib, dash, and seq
 #+created: 2022-06-05T00:45:51+0900
 #+updated: 2024-08-08T23:15:04+0900
-#+tags[]: emacs-lisp
+#+tags[]: emacs-lisp benchmark
 #+toc: t
 
 Caveats: Not compiled
