@@ -29,7 +29,7 @@ I'm just using Doom Emacs's module for this here without extra config. In other 
 The core of the module in this configuration is basically just running =lsp-deferred= in =c++-mode=. So, outside of Doom Emacs's, it'd be
 
 - install =lsp-mode=
-- add ='lsp-deferred= to =c++-mode-hook=
+- add ='lsp-deferred= to =c++-mode-hook=. lsp-deferred is able to see dir-local variables and so is a better choice regardless of performance.
 
 * CMake
 
