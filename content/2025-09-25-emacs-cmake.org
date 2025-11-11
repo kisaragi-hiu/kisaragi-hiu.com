@@ -26,15 +26,21 @@ I'm just using Doom Emacs's module for this here without extra config. In other 
  (cc +lsp))
 #+end_src
 
-The core of the module in this configuration is basically just running =lsp-deferred= in =c++-mode=.
+The core of the module in this configuration is basically just running =lsp-deferred= in =c++-mode=. So, outside of Doom Emacs's, it'd be
+
+- install =lsp-mode=
+- add ='lsp-deferred= to =c++-mode-hook=
 
 * CMake
 
 Set up the build directory and make sure =compile_commands.json= is generated so that Clangd can make use of it:
 
-#+begin_src C++
+#+begin_src sh
 cmake -B build -G Ninja -DCMAKE_EXPORT_COMPILE_COMMANDS=1
-// Note that this isn't obvious (is it done when making the build directory or when doing a build?)
+
+# Note that this isn't obvious (is it done when making the build directory or
+# when doing a build?)
+# The correct answer is when creating the build directory.
 #+end_src
 
 I use Ninja because it has parallel build by default.
@@ -47,7 +53,7 @@ After setting up the build directory, spurious errors about missing stuff that a
 
 To build and run:
 
-#+begin_src C++
+#+begin_src sh
 cmake --build ./build
 ./build/bin/[executable]
 #+end_src
