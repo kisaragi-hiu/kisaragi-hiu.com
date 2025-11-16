@@ -1,0 +1,23 @@
+#+title: Review for October 2025
+#+created: 2025-11-17
+#+series: Monthly reviews
+#+language: en
+
+I've skipped many months, but I want to try to get back to this.
+
+* Open source contributions
+
+- Deno 2.5.5: Fix Deno's implementation of os.cpus() erroring on Android or when CPU info isn't available ([[https://github.com/denoland/deno/pull/31097][denoland/deno#31097]]). This is, however, unintentionally almost identical to [[https://github.com/termux/termux-packages/pull/26981][Termux's downstream patch]], which I didn't know existed when I [[https://github.com/denoland/deno/issues/25929#issuecomment-3448734941][investigated the issue for myself]]. The difference is that I concluded this change should apply to all platforms, since os.cpus() is specified in Node docs and implemented in Node to just return an empty array if it can't read CPU info.
+
+* My own projects
+
+- Moved my command for moving Org headings to files into its own package, [[https://github.com/kisaragi-hiu/org-heading-to-file][org-heading-to-file]].
+- [[https://github.com/kisaragi-hiu/read-timestamp][read-timestamp]], a function that I've wanted for a while that allows input of ISO 8601 timestamps with up/down commands, instead of having to type them out manually.
+- [[https://github.com/kisaragi-hiu/k-kdesvn][k-kdesvn]]: implement a =clone= subcommand which will set up a new checkout in [[file:2025-07-07-kde-translation-workflow-en.org][my style]] (partial SVN checkout from root plus a local Git repository)
+- [[https://github.com/kisaragi-hiu/cached-fetch][@kisaragi-hiu/cached-fetch]]: allow fetcher to return a string or a =Promise<string>=, which makes it useful for wrapping =spawnSync= calls ([[https://github.com/kisaragi-hiu/cached-fetch/commit/736c560f9757546c19e49d65f70ae764a3e2447c][kisaragi-hiu/cached-fetch:736c560f]])
+- [[https://github.com/kisaragi-hiu/evil-cutlass][evil-cutlass]]: Rewrite
+
+* Translations
+
+- Submitted =zh_TW= translation to Gpick ([[https://github.com/thezbyg/gpick/pull/231][thezbyg/gpick#231]])
+- Submitted a bit of translation to KDE (revisions r1719444 and r1720668)
