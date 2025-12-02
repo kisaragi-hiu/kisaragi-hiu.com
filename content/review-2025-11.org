@@ -1,0 +1,25 @@
+#+title: Review for November 2025
+#+created: 2025-12-02
+#+series: Monthly reviews
+#+language: en
+
+* Open source contributions
+
+- [[https://github.com/Wilfred/suggest.el/pull/52][Wilfred/suggest.el#52]]: Fix extra quote argument to cl-case
+- [[https://github.com/Wilfred/suggest.el/pull/53][Wilfred/suggest.el#53]]: Add suggestion candidates from various issues
+
+  There are a few more changes I might want to upstream (-zip-lists or cl-mapcar with list), but I haven't cleaned them up yet.
+
+- [[https://github.com/doomemacs/doomemacs/pull/8581][doomemacs/doomemacs#8581]]: Improve first startup speed when using the unicode module
+
+- [[https://github.com/doomemacs/doomemacs/pull/8575][doomemacs/doomemacs#8575]]: Fix tab-width within Helpful buffers, which should always be 8 for Emacs C code and Emacs Lisp code that use Tab indentation.
+
+* My own projects
+
+[[https://github.com/kisaragi-hiu/emacs-japanese-kana-input][kisaragi-hiu/emacs-japanese-kana-input]]: An attempt to implement かな入力 in Emacs. It works, but it probably doesn't yet work on JIS keyboards; I bought a new (cheap) Japanese keyboard for the layout and I'm waiting for it to arrive before I can make sure it works on JIS keyboards.
+
+* Translations
+
+KDE translation revisions r1722743 and r1723376, totalling 7 hours.
+
+Having implemented an =svn log= that can filter out Scripty commits in [[https://github.com/kisaragi-hiu/k-kdesvn][k-kdesvn]] really helps me find the work that I've done.
