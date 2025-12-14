@@ -1,0 +1,102 @@
+#+title: A translation discourse response
+#+created: 2025-12-14T21:08:32+0900
+#+updated: 2025-12-14T22:49:45+0900
+#+language: zh_TW
+#+tags[]: translation rants
+
+Here's a ranty response to [[https://breezymove.blogspot.com/2024/10/translation-style-guide-taiwan.html][Tseng-Tsia's post about zh_TW translation principles]]. Sorry. TL;DR user preferred wording ie. realities of Taiwanese Mandarin are more important than principles that we make up. The principles serve our goals of minimizing confusion, consistency, etc., not the other way around. Our principles should not invalidate words that users actually find acceptable, and we should at least care about finding out.
+
+#+html: <hr>
+
+#+begin_quote
+譯者要注意的是，既有的常見翻譯很有可能是不良翻譯。請先理解原文與概念，再試著用自己的語言說，只有在想不到詞彙能比擬後，才去找已有的中文資料，並將微軟系統譯詞、蘋果系統譯詞、各軟體公司譯詞、樂詞網搜集之譯詞作為最後一道參考。當參考這些資料後，都覺得無法表達出原作的意義，就進入自己發想階段。
+
+此處以 Dodge 和 Burn 這一組用語為例，在輸入「Dodge Burn 暗房」關鍵字後，搜尋引擎可以找到「躲避和燒錄」（2012）以及「數位銀鹽攝影術 一場逆向行駛的暗房之旅」 （2022）兩篇比較有用的文章，讓我們參考其用語。
+
+至於輸入「Dodge Burn Photoshop」搜尋，則可以知道該主流軟體採用「Dodge 加亮」和「Burn 加深」為改寫。
+
+前者去情境脈絡直譯為 Dodge 躲避和 Burn 燒錄，後者改寫為加光、減光，而既有的主流軟體則改為加亮、加深。此三者未能表達出功能圖示所表達遮蔽與曝光關聯的概念，皆不貼切，所以進入發想創造。
+#+end_quote
+
+- 不良是使用者覺得不良還是不符合譯者一廂情願的原則所以不良？「這個用詞必須要跟圖示一樣有遮蔽、曝光關連的概念」這是我們譯者方的一廂情願的希望，實際上的要求只有新使用者和現有使用者知道這是做什麼用的而已。
+- 存在一大堆專有用詞的情況下一個字不一樣意思就有可能完全不一樣，我們也必須要考量其他我們沒有辦法改變的現存翻譯對使用者的影響。色彩混合模式光原文就一團亂了，造新詞只是保證沒有人知道它是什麼意思而已。（我說是這樣說但現有的混色模式翻譯也是亂到基本上 Photoshop、Krita、GIMP、CSP 全部都有差也全部都不太一樣，每個常用軟體說他們是什麼就是什麼，所以雖然在這裡造新詞會亂，但相較於現狀是也沒什麼傷害。）
+
+#+begin_quote
+另外，根據 Accessibility 的近用性原則，通常翻譯的識讀性目標，應以國中程度為主。
+
+例如 Regular expression，一般譯為「正則表達式」，然而由於中文的「正則」過於冷僻、僵硬，令一般國民教育下的人們難以理解，識讀性門檻過高。
+
+這裡的「Regular」，代表的是 Regularity 規律性，在數學中也被譯為「正則性」，指根據發現的某種「常規」來表示，故今日建議翻譯成「常規表達式」。
+#+end_quote
+
+- 在判斷適讀性之前斷詞不應該斷的不符現實。兩個詞甚至三個詞組成的複詞不代表讀者就會把它斷成他的各個部分的詞。「正則表達式」是一個詞，它艱深的程度跟「正則」本身艱深的程度並不相等。
+
+- Regex本來也就不是國中程度的概念。
+
+- 而且 Regular → 常規 大部分台灣華語使用者會聯想成中國用語而排斥, making it potentially unsuitable for zh_TW. Not to mention…
+
+- *Regular Expression 的 regular 不是規律性，更不是「常規」！！！* “A regular language” is a math jargon for languages with [[https://en.wikipedia.org/wiki/Regular_grammar][grammars that are regular]]. We need to leave the jargon alone as a jargon to not mislead people into thinking it's simpler than it actually is!
+
+  Yes, actual regexes in programming languages are not actually regular, so the name “regular expression” is a misnomer. But using 常規 as in normality, periodicity, or matching rules is even worse as a misnomer.
+
+  Reading the original paper ([[https://www.rand.org/content/dam/rand/pubs/research_memoranda/2008/RM704.pdf][Kleene 1951, RM 704]]), the “regular” came from “regular events” (page 46), 它看起來是從普通的意思來的，但他在說普通的是那些事件，到他同一張 paper 後面開始講 "[…] Let A be a class of such strings. We call A _regular_" 的時候它就已經術語化了。
+
+  這裡有效的翻譯只有「正則…」和「正規…」！They should match the research jargon!
+
+#+begin_quote
+> 像是軟體管理程式中的 Package，早期常見譯為「套件」（現多譯為「軟體包」），是譯者改用擴充套件的概念來表達 Package 能擴充各種新功能。
+> 然而 Package 原意的重點在於和 Repository 相對，是物流封裝包裹遞送的觀念，在這個翻譯中卻完全不見。甚至造成和 Extension 擴充套件（真正意義上的套件）、Suite 套裝軟體（成套的軟體套件）、Distribution 散布版（團體或單位發行的整份散布品，又被稱為發行套件、分發套件、發行版）⋯⋯等詞語碰撞，譯者必須另外再發想不同的詞語來避開。
+> 亦即，「套件」一詞在中文語境和文化脈絡下雖然是合理的改稱，但並不是 Package 合適的對等翻譯。
+#+end_quote
+
+- While it'd be nice to keep the 包裹 analogy, the ship has sailed - 套件 in software already means package to a very large number of zh_TW speakers who may interact with the concept.
+- 「擴充套件」: 就算我們 package 不用套件還是會被大部分人以為等同 extension package. Again, the ship has sailed on this. If the conflict matters (usually it doesn't, extensions are always also software packages) then it's this use that should be deprecated. (Other choices are Chrome's 擴充功能 which is fine by virtue of people having already accepted it.)
+- 「套裝軟體」is a completely different term and irrelevant to the conflict argument.
+- 發行/分發套件 is rarely used and is itself a bad idea because of the prior association between package and 套件. This is the one that needs to be deprecated, not 套件 = package.
+
+#+begin_quote
+另外，在早期多工作業系統中，Process 常見譯為「行程」（現多譯為「程序」或「處理程序」），便是改用行程安排的概念來表達 Process 的意義。而今日手機普遍，原始意義上的行程 (Event) 安排程式（如行事曆）已大行其道，就會造成一般人[...]溝通與閱讀上的誤解。
+#+end_quote
+
+Exactly.
+
+But also, this is proof that 行程 for process is no longer a good idea, not proof that this principle is generic and can apply to "package".
+
+#+begin_quote
+一般而言，台灣社群主流翻譯風格下，只有譬喻式的英文詞（類似中文修辭的借代法）會跨情境直譯；而至於其他所有模糊泛用的英文詞，皆會區別英文詞的不同情境，來對應翻譯成不同的中文詞。
+舉例而言，如 Menu 沒有菜，非餐廳情境，不會是菜單；Render 沒有水墨，不會是渲染；Script 沒有演員，就不會是腳本。像菜單、渲染、腳本等這些中文詞語，原先都已經是情境限定才會使用的特化詞語。「菜單」是餐廳用語、「渲染」是水墨畫用語，「腳本」是戲劇類用語。
+#+end_quote
+
+While it's a good idea to depend on context when we can, sometimes we can't. It's convenient (and sometimes it doesn't even cause confusion) to be *able to" have concepts that map 1-to-1 to the source text. 轉譯, 算繪, 輸出 are all better but 渲染 is at this point acceptable to people, despite the almost unrelated extension to the original(?) definition.
+
+選單/菜單因為「選單」本身在資訊科技就是一對一對應 menu 的翻譯，使用上沒有問題
+指令稿/腳本 就已經會有某些script能用的情境指令稿會怪怪的情況，但指令稿基本上也還好，頂多「指令稿語言」(scripting language) 有點 clunky
+但渲染的替代品沒有一個是完整包含 render 在資訊科技的用法的。As the only 1-to-1 translation for "render" that has acceptance from users it should be regarded as a valid option.
+
+(菜單 for non-restaurant menus is unacceptable for a completely separate reason: in zh_TW this usage is always deemed by people as 中國用語 and rejected. 進程 is similarly unacceptable for the same reason despite theoretically being easier to explain by 顧名思義.)
+
+* 附錄
+
+Might as well finally post this /somewhere/. This was a draft in response to a message about 將錯就錯, but I avoided looking at the message and ended up being a month late to respond to it, so I didn't post it.
+
+I wrote this and timestamped it to 2025-08-11T13:50:45+0900:
+
+Debian 跟 Ubuntu 也用[套件]至少十幾年了；這也不是說軟體包不好，軟體包照同樣邏輯也是用了很久了（我不該說它標新立異）。
+現狀是 Ubuntu 的套件並沒有被改掉，所以我這一代跟很多人一開始學就是 package = 套件 = package
+再加上 Windows 等等地方也已經用套件的情況, I'm afraid the ship has sailed
+壞的用詞一開始壞是因為不符合使用者的期待，所以它的確是會因為使用者群體習慣了所以變成好的
+譯者的習慣不重要，但讀者/使用者的習慣是重要的。如果使用者的習慣也一起丟掉的話，那就是把譯者的偏好放在使用者的偏好之上，我認為這是不對的。（我的初衷是讓使用者能盡量輕易利用翻譯標的）
+即使譯者或是以前的使用者不習慣，現在使用者習慣的話它就不應該是不妥當的，除非有什麼其他會讓它不妥當的理由（
+
+所以我會反對用無視使用者現狀的方式去檢討用詞合不合理。本質上，要改變使用者已經習慣的用詞是在希望社會改變，這應該是要去說服社會，而且應該要有比「我覺得這個複詞應該變成可以拆開的簡稱」還要好的理由。
+
+* Final notes
+
+Caveats about this whole post: I complain loudly when I do but it's not like I disagree that much. The original article is perfectly good advice for new translators, but I do think it's slightly wrong (in a frustratingly fundamental manner) in practice.
+
+Translation discourse, especially word choice discourse is like any other kind of discussion that ends up being called “discourse”, it's a mess. And I'm somewhat aware that I do make it worse trying to fight against choices that I think are wrong. I try not to invalidate anyone else, and I just don't want perfectly good options to be invalidated for no reason. I don't know, really.
+
+Sorry about the liberal English / Mandarin code switch. It's not that helpful when I am actually trying to make this comprehensible to others, 但尤其在這個主題上我腦裡冒出的說法是英文的時候我如果要全部即時翻譯我大概會先瘋掉。
+
+(I plan to make a new blog and put ranty/political/discourse-y and flow-of-mind-ish stuff there, so hopefully there would not be another post like this here.)
+# This is hint for us to finally make it already.
