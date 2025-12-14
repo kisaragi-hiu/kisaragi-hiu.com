@@ -94,6 +94,8 @@ Debian 跟 Ubuntu 也用[套件]至少十幾年了；這也不是說軟體包不
 
 Caveats about this whole post: I complain loudly when I do but it's not like I disagree that much. The original article is perfectly good advice for new translators, but I do think it's slightly wrong (in a frustratingly fundamental manner) in practice.
 
+I wish I could have a better way to disagree with someone I otherwise absolutely respect.
+
 Translation discourse, especially word choice discourse is like any other kind of discussion that ends up being called “discourse”, it's a mess. And I'm somewhat aware that I do make it worse trying to fight against choices that I think are wrong. I try not to invalidate anyone else, and I just don't want perfectly good options to be invalidated for no reason. I don't know, really.
 
 Sorry about the liberal English / Mandarin code switch. It's not that helpful when I am actually trying to make this comprehensible to others, 但尤其在這個主題上我腦裡冒出的說法是英文的時候我如果要全部即時翻譯我大概會先瘋掉。
