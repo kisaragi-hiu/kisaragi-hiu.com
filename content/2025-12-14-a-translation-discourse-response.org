@@ -67,13 +67,15 @@ But also, this is proof that 行程 for process is no longer a good idea, not pr
 舉例而言，如 Menu 沒有菜，非餐廳情境，不會是菜單；Render 沒有水墨，不會是渲染；Script 沒有演員，就不會是腳本。像菜單、渲染、腳本等這些中文詞語，原先都已經是情境限定才會使用的特化詞語。「菜單」是餐廳用語、「渲染」是水墨畫用語，「腳本」是戲劇類用語。
 #+end_quote
 
-While it's a good idea to depend on context when we can, sometimes we can't. It's convenient (and sometimes it doesn't even cause confusion) to be *able to" have concepts that map 1-to-1 to the source text. 轉譯, 算繪, 輸出 are all better but 渲染 is at this point acceptable to people, despite the almost unrelated extension to the original(?) definition.
+While it's a good idea to depend on context when we can, sometimes we can't. It's convenient (and sometimes it doesn't even cause confusion) to be /able to/ have concepts that map 1-to-1 to the source text. 轉譯, 算繪, 輸出 are all better but 渲染 is at this point acceptable to people, despite the almost unrelated extension to the original(?) definition.
 
 選單/菜單因為「選單」本身在資訊科技就是一對一對應 menu 的翻譯，使用上沒有問題
+
 指令稿/腳本 就已經會有某些script能用的情境指令稿會怪怪的情況，但指令稿基本上也還好，頂多「指令稿語言」(scripting language) 有點 clunky
+
 但渲染的替代品沒有一個是完整包含 render 在資訊科技的用法的。As the only 1-to-1 translation for "render" that has acceptance from users it should be regarded as a valid option.
 
-(菜單 for non-restaurant menus is unacceptable for a completely separate reason: in zh_TW this usage is always deemed by people as 中國用語 and rejected. 進程 is similarly unacceptable for the same reason despite theoretically being easier to explain by 顧名思義.)
+(菜單 for non-restaurant menus is unacceptable for a completely separate reason: in zh_TW this usage is always deemed by people as 中國用語 and rejected. 進程 is similarly unacceptable for the same reason despite theoretically being easier to explain by 顧名思義. 顧名思義 is overused, it's not the only way to explain a term nor should it be the bulk of the explanation for a concept.)
 
 * 附錄
 
@@ -83,9 +85,13 @@ I wrote this and timestamped it to 2025-08-11T13:50:45+0900:
 
 Debian 跟 Ubuntu 也用[套件]至少十幾年了；這也不是說軟體包不好，軟體包照同樣邏輯也是用了很久了（我不該說它標新立異）。
 現狀是 Ubuntu 的套件並沒有被改掉，所以我這一代跟很多人一開始學就是 package = 套件 = package
+
 再加上 Windows 等等地方也已經用套件的情況, I'm afraid the ship has sailed
+
 壞的用詞一開始壞是因為不符合使用者的期待，所以它的確是會因為使用者群體習慣了所以變成好的
+
 譯者的習慣不重要，但讀者/使用者的習慣是重要的。如果使用者的習慣也一起丟掉的話，那就是把譯者的偏好放在使用者的偏好之上，我認為這是不對的。（我的初衷是讓使用者能盡量輕易利用翻譯標的）
+
 即使譯者或是以前的使用者不習慣，現在使用者習慣的話它就不應該是不妥當的，除非有什麼其他會讓它不妥當的理由（
 
 所以我會反對用無視使用者現狀的方式去檢討用詞合不合理。本質上，要改變使用者已經習慣的用詞是在希望社會改變，這應該是要去說服社會，而且應該要有比「我覺得這個複詞應該變成可以拆開的簡稱」還要好的理由。
