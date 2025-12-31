@@ -1,0 +1,39 @@
+#+title: 2026 Resolution
+#+created: 2025-12-28T23:43:00+0900
+#+updated: 2025-12-31T20:15:55+0900
+#+series: Resolution
+#+language: en
+
+I think instead of getting out a half-assed full year review before New Year I'll just edit and post the resolution I wrote a few days ago.
+
+2026 resolution
+
+* Personal
+
+Fucking actually graduate NKUST successfully.
+
+Stay alive to see the next year.
+
+* Open source contributions
+
+Please actually push forward the Firefox Android URL thing again. It's probably 20 hours of work. /Someone/ has to do it.
+
+* Own projects
+
+Fix the jieba-dyn thing.
+
+Get @kemdict/gettext usable.
+
+Kemdict Kautian update.
+
+i18n for Kemdict.
+
+Get POT going.
+
+More KDE translations. More GNOME translations as well. k-gnome-l10n should allow us to do this quite efficiently.
+
+* Music, 2dcg
+
+4 UTAU covers.
+
+Draw an illustration.

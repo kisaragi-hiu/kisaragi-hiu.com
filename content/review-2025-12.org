@@ -1,0 +1,24 @@
+#+title: Review for December 2025
+#+created: 2025-12-31
+#+series: Monthly reviews
+#+language: en
+
+* Open source contributions
+
+- [[https://invent.kde.org/plasma/plasma-desktop/-/merge_requests/3381][invent:plasma/plasma-desktop#3381]]: In application launchers, put “Add to favorites” next to “Add to desktop”
+- (Ongoing) [[https://github.com/marzocchi/zsh-notify/pull/103][marzocchi/zsh-notify#103]]: Support sending notifications on Linux even if xdotool and wmctrl aren't present; support focus checking and activating windows on Plasma Wayland
+- (Ongoing) [[https://github.com/microsoft/TypeScript-Website/pull/3482][microsoft/TypeScript-Website#3482]]: Document the JSDoc @overload tag, which I use in
+
+* My own projects
+
+- [[https://github.com/kemdict/gettext][@kemdict/gettext]]: A node-gettext fork with the goal of allowing me to use gettext-style translations for Kemdict
+- I'm in the process of updating Kemdict's data for the MOE Taiwanese dictionary to the latest released version…
+- [[https://github.com/kisaragi-hiu/k-gnome-l10n][kisaragi-hiu/k-gnome-l10n]]: Like k-kdesvn but for GNOME translations
+- [[https://github.com/kisaragi-hiu/mastodon][kisaragi-hiu/mastodon]]: A GitHub repository for making it easier to preview Taiwanese translations for Mastodon
+
+* Translations
+
+- At least 5 hours for KDE translations: revisions [[https://websvn.kde.org/?revision=1724965&view=revision][1724965]], [[https://websvn.kde.org/?revision=1725509&view=revision][1725509]], [[https://websvn.kde.org/?revision=1725627&view=revision][1725627]], [[https://websvn.kde.org/?revision=1725635&view=revision][1725635]]
+- Translate UserAgent-Switcher to zh_TW ([[https://github.com/ray-lothian/UserAgent-Switcher/pull/262][ray-lothian/UserAgent-Switcher#262]])
+- Update zh_TW translations for xdg-desktop-portal-gtk ([[https://github.com/flatpak/xdg-desktop-portal-gtk/pull/534][flatpak/xdg-desktop-portal-gtk#534]])
+- Submitted translations for 3 other GNOME applications for review
