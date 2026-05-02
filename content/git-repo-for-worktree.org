@@ -1,0 +1,50 @@
+#+title: How to turn an already cloned Git repository into a bare repo with worktrees
+#+created: 2026-05-02T19:21:37+0900
+#+language: en
+#+tags[]: git
+#+series: tips
+
+Worktrees are +useful+ essential if you want to multitask on one project. This is becoming common with the use of AI agents, but even when not using agents it is just nicer to be able to essentially checkout many branches at once.
+
+The default way of working with [[https://git-scm.com/docs/git-worktree][worktrees]] is not great though.
+
+- In =~/Projects/foo=
+  : git worktree add ../feature1 # create a new checkout at ../feature1 for branch feature1
+- In =~/Projects/feature1=
+  This is the branch =feature1= of foo.
+
+You cannot put worktrees in the project's own directory because the directory is taken up by the main worktree.
+
+Ideally we'd be able to work with worktrees like this:
+
+: ~/Projects/foo
+:   .git
+:   main
+:   feature1
+:   …
+
+You can [[https://morgan.cugerone.com/blog/how-to-use-git-worktree-and-in-a-clean-way/][do this when cloning]] by doing a bare clone and then adding a worktree from there, but (a) remote tracking branches are not set up for bare clones, and (b) what about repositories I've already cloned? You can [[https://xoofee.github.io/posts/2026/04/git_worktree_bare_repo_workflow/#3-migrating-an-existing-repo-without-losing-local-files][shuffle around your existing files as you migrate to a fresh clone]], sure, but that still leaves point (a).
+
+I've figured out a way. This touches the repository config directly; I think that's fine but consider this a warning. I also don't know how this interacts with the staging area of your main worktree.
+
+Given an existing checkout
+
+: ~/Projects/bar
+:   .git
+:   file1
+:   file2
+:   …
+
+- Be careful with your uncommitted changes or ignored files.
+- *Turn the git dir into a bare repository with =git config core.bare true=.*
+  This means Git no longer considers there to be a main worktree. This is actually basically all that you have to do.
+- Create worktrees to your heart's content within the folder, eg. =git worktree add main=. (Git still knows what repository it is working on since the git dir is still called =.git=.)
+
+  : ~/Projects/bar
+  :   .git
+  :   main/
+  :   file1 # leftover files from what was the main worktree
+  :   file2
+  :   …
+
+- Decide what you want to do with the files from what was the main worktree. Keep in mind, however, that within this folder items are no longer actually tracked.
