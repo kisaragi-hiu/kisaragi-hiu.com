@@ -169,6 +169,14 @@
     @apply text-special-strong dark:text-special;
   }
 
+  table {
+    /* Needed for overflow-x and doesn't seem to break things?
+       Ideally we'd override Hugo's table generation with a render hook.
+       But render hooks only support Markdown. :meltingface: */
+    display: block;
+    overflow-x: auto;
+  }
+
   h2 {
     @apply text-primary dark:text-primary-dark;
   }
