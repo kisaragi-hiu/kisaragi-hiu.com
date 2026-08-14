@@ -15,16 +15,16 @@ jobs:
     # This comes with
     # - Vercel CLI
     # - Make
-    # - Node 18
-    runs-on: ubuntu-22.04
+    # - Node
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           submodules: true
           ssh-key: ${{ secrets.SSH_KEY }}
           ssh-known-hosts: ${{ secrets.SSH_KNOWN_HOSTS }}
-      - uses: oven-sh/setup-bun@v1
+      - uses: oven-sh/setup-bun@v2
         with:
           bun-version: latest
       - name: Create Vercel config
