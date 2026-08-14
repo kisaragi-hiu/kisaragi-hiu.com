@@ -94,3 +94,120 @@ rm *.webp
 ")))
   (kisaragi-hiu.com/download-thumbnail yt))
 #+end_src
+* Extract tags
+
+#+begin_src emacs-lisp
+(shell-command-to-string "hugo --buildDrafts")
+(let ((tags))
+  (with-temp-buffer
+    (insert-file-contents "./public/tags/index.xml")
+    (dolist (item (--> (libxml-parse-xml-region)
+                       (dom-by-tag it 'item)))
+      (let* ((title (dom-text (dom-by-tag item 'title)))
+             (url (dom-text (dom-by-tag item 'link)))
+             (tag (-> (url-generic-parse-url url)
+                      url-path-and-query
+                      car
+                      (string-split "/" t)
+                      last
+                      car)))
+        (push (list title tag url) tags))))
+  (append '(("title" "tag" "url") hline)
+          (sort tags :key #'cadr :lessp #'string<)))
+#+end_src
+
+#+RESULTS:
+| title                  | tag              | url                                             |
+|------------------------+------------------+-------------------------------------------------|
+| Android                | android          | https://kisaragi-hiu.com/tags/android/          |
+| Anime                  | anime            | https://kisaragi-hiu.com/tags/anime/            |
+| Apps                   | apps             | https://kisaragi-hiu.com/tags/apps/             |
+| Astro                  | astro            | https://kisaragi-hiu.com/tags/astro/            |
+| Benchmark              | benchmark        | https://kisaragi-hiu.com/tags/benchmark/        |
+| Blender                | blender          | https://kisaragi-hiu.com/tags/blender/          |
+| C++                    | c++              | https://kisaragi-hiu.com/tags/c++/              |
+| Cangjie                | cangjie          | https://kisaragi-hiu.com/tags/cangjie/          |
+| Capacitor              | capacitor        | https://kisaragi-hiu.com/tags/capacitor/        |
+| Continuous Integration | ci               | https://kisaragi-hiu.com/tags/ci/               |
+| Cli                    | cli              | https://kisaragi-hiu.com/tags/cli/              |
+| Common Lisp            | common-lisp      | https://kisaragi-hiu.com/tags/common-lisp/      |
+| Config                 | config           | https://kisaragi-hiu.com/tags/config/           |
+| Crowdin                | crowdin          | https://kisaragi-hiu.com/tags/crowdin/          |
+| Digitization           | digitization     | https://kisaragi-hiu.com/tags/digitization/     |
+| Emacs                  | emacs            | https://kisaragi-hiu.com/tags/emacs/            |
+| Emacs Lisp             | emacs-lisp       | https://kisaragi-hiu.com/tags/emacs-lisp/       |
+| Evil                   | evil             | https://kisaragi-hiu.com/tags/evil/             |
+| Experiments            | experiments      | https://kisaragi-hiu.com/tags/experiments/      |
+| Expo                   | expo             | https://kisaragi-hiu.com/tags/expo/             |
+| Ffmpeg                 | ffmpeg           | https://kisaragi-hiu.com/tags/ffmpeg/           |
+| Firefox                | firefox          | https://kisaragi-hiu.com/tags/firefox/          |
+| Fonts                  | fonts            | https://kisaragi-hiu.com/tags/fonts/            |
+| Forges                 | forges           | https://kisaragi-hiu.com/tags/forges/           |
+| Framework7             | framework7       | https://kisaragi-hiu.com/tags/framework7/       |
+| Frog                   | frog             | https://kisaragi-hiu.com/tags/frog/             |
+| Games                  | games            | https://kisaragi-hiu.com/tags/games/            |
+| Git                    | git              | https://kisaragi-hiu.com/tags/git/              |
+| GitLab                 | gitlab           | https://kisaragi-hiu.com/tags/gitlab/           |
+| Gnupg                  | gnupg            | https://kisaragi-hiu.com/tags/gnupg/            |
+| Hugo                   | hugo             | https://kisaragi-hiu.com/tags/hugo/             |
+| Illustrated Ideas      | illustrated      | https://kisaragi-hiu.com/tags/illustrated/      |
+| Japanese               | japanese         | https://kisaragi-hiu.com/tags/japanese/         |
+| Javascript             | javascript       | https://kisaragi-hiu.com/tags/javascript/       |
+| Kde                    | kde              | https://kisaragi-hiu.com/tags/kde/              |
+| Library                | library          | https://kisaragi-hiu.com/tags/library/          |
+| Linux                  | linux            | https://kisaragi-hiu.com/tags/linux/            |
+| Lisp                   | lisp             | https://kisaragi-hiu.com/tags/lisp/             |
+| List                   | list             | https://kisaragi-hiu.com/tags/list/             |
+| Lokalize               | lokalize         | https://kisaragi-hiu.com/tags/lokalize/         |
+| Magit                  | magit            | https://kisaragi-hiu.com/tags/magit/            |
+| Make                   | make             | https://kisaragi-hiu.com/tags/make/             |
+| Markdown               | markdown         | https://kisaragi-hiu.com/tags/markdown/         |
+| Markup Languages       | markup           | https://kisaragi-hiu.com/tags/markup/           |
+| Math                   | math             | https://kisaragi-hiu.com/tags/math/             |
+| Meta                   | meta             | https://kisaragi-hiu.com/tags/meta/             |
+| MuseScore              | musescore        | https://kisaragi-hiu.com/tags/musescore/        |
+| Nginx                  | nginx            | https://kisaragi-hiu.com/tags/nginx/            |
+| Nodejs                 | nodejs           | https://kisaragi-hiu.com/tags/nodejs/           |
+| Opinions               | opinions         | https://kisaragi-hiu.com/tags/opinions/         |
+| Org Mode               | org-mode         | https://kisaragi-hiu.com/tags/org-mode/         |
+| osu!                   | osu              | https://kisaragi-hiu.com/tags/osu/              |
+| PDF                    | pdf              | https://kisaragi-hiu.com/tags/pdf/              |
+| Picolisp               | picolisp         | https://kisaragi-hiu.com/tags/picolisp/         |
+| Pipewire               | pipewire         | https://kisaragi-hiu.com/tags/pipewire/         |
+| Plasma                 | plasma           | https://kisaragi-hiu.com/tags/plasma/           |
+| Pollen                 | pollen           | https://kisaragi-hiu.com/tags/pollen/           |
+| Project Sekai          | prsk             | https://kisaragi-hiu.com/tags/prsk/             |
+| Qr-Code                | qr-code          | https://kisaragi-hiu.com/tags/qr-code/          |
+| Racket                 | racket           | https://kisaragi-hiu.com/tags/racket/           |
+| Rants                  | rants            | https://kisaragi-hiu.com/tags/rants/            |
+| REAPER                 | reaper           | https://kisaragi-hiu.com/tags/reaper/           |
+| ReStructuredText       | restructuredtext | https://kisaragi-hiu.com/tags/restructuredtext/ |
+| Review                 | review           | https://kisaragi-hiu.com/tags/review/           |
+| Re:zero                | rezero           | https://kisaragi-hiu.com/tags/rezero/           |
+| Rime                   | rime             | https://kisaragi-hiu.com/tags/rime/             |
+| Rust                   | rust             | https://kisaragi-hiu.com/tags/rust/             |
+| Sheets                 | sheets           | https://kisaragi-hiu.com/tags/sheets/           |
+| Sourcehut              | sourcehut        | https://kisaragi-hiu.com/tags/sourcehut/        |
+| Static Site Generators | ssg              | https://kisaragi-hiu.com/tags/ssg/              |
+| Steins;Gate            | steinsgate       | https://kisaragi-hiu.com/tags/steinsgate/       |
+| Steins;gate            | steinsgate       | https://kisaragi-hiu.com/tags/steinsgate/       |
+| Svelte                 | svelte           | https://kisaragi-hiu.com/tags/svelte/           |
+| Sveltekit              | sveltekit        | https://kisaragi-hiu.com/tags/sveltekit/        |
+| Systemd                | systemd          | https://kisaragi-hiu.com/tags/systemd/          |
+| Taxonomy               | taxonomy         | https://kisaragi-hiu.com/tags/taxonomy/         |
+| Termux                 | termux           | https://kisaragi-hiu.com/tags/termux/           |
+| Tips                   | tips             | https://kisaragi-hiu.com/tags/tips/             |
+| Traced                 | traced           | https://kisaragi-hiu.com/tags/traced/           |
+| Translation            | translation      | https://kisaragi-hiu.com/tags/translation/      |
+| Troubleshooting        | troubleshooting  | https://kisaragi-hiu.com/tags/troubleshooting/  |
+| Trumpet                | trumpet          | https://kisaragi-hiu.com/tags/trumpet/          |
+| Tutorials              | tutorials        | https://kisaragi-hiu.com/tags/tutorials/        |
+| Typescript             | typescript       | https://kisaragi-hiu.com/tags/typescript/       |
+| UTAU                   | utau             | https://kisaragi-hiu.com/tags/utau/             |
+| Video                  | video            | https://kisaragi-hiu.com/tags/video/            |
+| Vite                   | vite             | https://kisaragi-hiu.com/tags/vite/             |
+| Vocaloid               | vocaloid         | https://kisaragi-hiu.com/tags/vocaloid/         |
+| Wayland                | wayland          | https://kisaragi-hiu.com/tags/wayland/          |
+| Web                    | web              | https://kisaragi-hiu.com/tags/web/              |
+| Windows                | windows          | https://kisaragi-hiu.com/tags/windows/          |
+| Writing                | writing          | https://kisaragi-hiu.com/tags/writing/          |
