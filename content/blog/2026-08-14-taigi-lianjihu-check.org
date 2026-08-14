@@ -1,0 +1,21 @@
+#+title: Regular expression for checking Taigi words with too many dashes
+#+created: 2026-08-14T19:10:45+0900
+#+language: en
+#+series: tips
+#+tags[]: translation
+
+This is in a context with Perl-like regexps (Qt regexps in Lokalize, specifically).
+
+I sometimes write Taigi with too many dashes (eg. "kang-khū-lia̍t-hāng-bo̍k" instead of "kang-khū-lia̍t hāng-bo̍k") and wanted to use a regular expression to quickly find instances of this.
+
+With English we can just to =(\w+)-(\w+)-…= to find sequences of word characters. =\w= doesn't match accented characters though.
+
+Using Unicode character class escape helps a lot here. Using =\p{L}= ([[https://pcre.org/original/doc/html/pcrepattern.html#uniextseq][Unicode character property escape]] for General Categories starting with "L", ie. Letters) works for combined characters. Tone 8 (like =lo̍k=) additionally needs to be matched with =\p{Mn}= (nonspacing marks).
+
+So:
+
+- use =((\p{L}|\p{Mn})+)= to match words
+- =((\p{L}|\p{Mn})+)-((\p{L}|\p{Mn})+)= for words with one dash
+- =((\p{L}|\p{Mn})+)-((\p{L}|\p{Mn})+)-((\p{L}|\p{Mn})+)= for two dashes
+- etc.
+- Or simplify to =((\p{L}|\p{Mn})+)(-((\p{L}|\p{Mn})+)){2}= for two dashes, then the number of dashes can be specified as a number.
