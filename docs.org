@@ -43,10 +43,12 @@ The main page also needs a =type: regularpage= param for it to show up in indice
     -->
 <!-- prettier-ignore -->
 {{ $alltags := (slice) }}
-{{ range .Site.AllPages }}
+{{ range hugo.Sites }}
+  {{ range .Pages }}
     {{ $alltags = (union $alltags
                          (partial "func-page-term"
                                   (dict "page" . "taxonomy" "tags")))}}
+  {{ end }}
 {{ end }}
 
 <!-- Sort them -->
@@ -116,9 +118,11 @@ To work around this:
   #+begin_src web
   {{ partial "content" . }}
   {{ $tagged := (slice) }}
-  {{ range (where .Site.AllPages "Kind" "term" ) }}
-    {{ if (in (.Page.Param $.Data.Plural) (anchorize $.LinkTitle)) }}
-      {{ $tagged = (union $tagged (slice .Page))}}
+  {{ range hugo.Sites }}
+    {{ range (where .Pages "Kind" "term" ) }}
+      {{ if (in (.Page.Param $.Data.Plural) (anchorize $.LinkTitle)) }}
+        {{ $tagged = (union $tagged (slice .Page))}}
+      {{ end }}
     {{ end }}
   {{ end }}
   {{ with $tagged }}
@@ -140,8 +144,10 @@ To work around this:
   #+begin_src web
   <!-- Extract all values specified in the tags parameter -->
   {{ $alltagnames := (slice) }}
-  {{ range .Site.AllPages }}
-  {{ $alltagnames = (union $alltagnames .Params.tags) }}
+  {{ range hugo.Sites }}
+    {{ range .Pages }}
+    {{ $alltagnames = (union $alltagnames .Params.tags) }}
+    {{ end }}
   {{ end }}
 
   <!-- Sort them -->
@@ -243,6 +249,14 @@ See [[file:data/readme.org][Hugo Data folder]].
 #+end_src
 ** func-page-type
 Return a page type suitable for use as =og:type=.
+** func-all-pages
+
+Return all pages from all sites of the project.
+
+Compatibility for the old .Site.AllPages, [[https://discourse.gohugo.io/t/deprecations-in-v0-156-0/56732#p-184468-example-a-ndash-range-over-all-pages-in-a-project-4][which is deprecated]] and will be removed in favor of treating each Site in a Project as separate correctly.
+
+We should probably replace use of this with just =.Site.Pages= (all pages of the current site) instead.
+
 * Partials
 Partials are like shortcodes, but for use in other templates.
 
@@ -267,7 +281,7 @@ Class is the HTML class string on the =nav=.
    "all-terms"
    (dict "taxonomy" "tags"
          "title" "Tags"
-         "pages" .Site.AllPages
+         "pages" (partial "func-all-pages" .)
          "partial" "tag") }}
 #+end_src
 

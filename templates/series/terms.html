@@ -4,6 +4,6 @@
 {{ partial
    "all-terms"
    (dict "taxonomy" "series"
-         "pages" .Site.AllPages
+         "pages" (partial "func-all-pages" .)
          "partial" "series") }}
 {{ end }}

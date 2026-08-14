@@ -19,9 +19,9 @@
 
 <!-- Actually display them -->
 {{ with $lst }}
-  <h1 class="font-bold mt-4">{{ $.title }}</h1>
+  <h1 class="mt-4 font-bold">{{ $.title }}</h1>
   <ul
-    class="list-none pl-0 flex flex-wrap space-x-2 gap-y-1 leading-loose my-2"
+    class="my-2 flex list-none flex-wrap gap-y-1 space-x-2 pl-0 leading-loose"
   >
     {{ range . }}
       <!-- Filter out noppage -->
@@ -30,4 +30,5 @@
       {{ end }}
     {{ end }}
   </ul>
+  <!-- prettier-ignore -->
 {{ end }}

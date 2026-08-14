@@ -53,7 +53,7 @@ Only the regular page would be listed by ={{.Pages}}=. The term pages have to be
 
 #+begin_src go-html-template
 {{ $term_items := (slice) }}
-{{ range (where .Site.AllPages "Kind" "term" ) }}
+{{ range (where (partial "func-all-pages" .) "Kind" "term" ) }}
   {{ if (in (.Page.Param $.Data.Plural) (anchorize $.LinkTitle)) }}
     {{ $term_items = (union $term_items (slice .Page))}}
   {{ end }}

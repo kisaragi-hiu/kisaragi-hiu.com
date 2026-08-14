@@ -1,0 +1,13 @@
+<!--
+     Return all pages from all sites of the project.
+
+     Compatibility for the old .Site.AllPages, which is deprecated and will be
+     removed in favor of treating each Site in a Project as separate correctly.
+-->
+{{ $allPages := (slice) }}
+{{ range hugo.Sites }}
+  {{ range .Pages }}
+    {{ $allPages = (union $allPages (slice .)) }}
+  {{ end }}
+{{ end }}
+{{ return $allPages }}

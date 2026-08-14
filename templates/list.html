@@ -9,7 +9,7 @@
   {{ partial "heading" (dict "title" .Title) }}
   <hr />
   {{ with (partial "func-page-term" (dict "page" . "taxonomy" "tags")) }}
-    <div class="mt-2 meta">{{ range . }}{{ partial "tag" . }}{{ end }}</div>
+    <div class="meta mt-2">{{ range . }}{{ partial "tag" . }}{{ end }}</div>
   {{ end }}
 
 {{ end }}
@@ -33,9 +33,11 @@
       <!-- Store "term" items under this taxonomy term.
        This does not just work with tags.-->
       {{ $term_items := (slice) }}
-      {{ range (where .Site.AllPages "Kind" "term" ) }}
-        {{ if (in (.Page.Param $.Data.Plural) (anchorize $.LinkTitle)) }}
-          {{ $term_items = (union $term_items (slice .Page)) }}
+      {{ range hugo.Sites }}
+        {{ range (where .Pages "Kind" "term" ) }}
+          {{ if (in (.Page.Param $.Data.Plural) (anchorize $.LinkTitle)) }}
+            {{ $term_items = (union $term_items (slice .Page)) }}
+          {{ end }}
         {{ end }}
       {{ end }}
       {{ partial "content" . }}
