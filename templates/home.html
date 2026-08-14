@@ -70,16 +70,16 @@
       <hr class="my-8 opacity-50 lg:hidden" />
       {{ partial "searchable-list"
         (sort
-        ( (where .Site.RegularPages "Section" "")
-        | union (where (partial "func-all-pages" .) "Params.type" "regularpage")
-        | union (where .Site.RegularPages "Section" "translated")
-        | union (where .Site.RegularPages "Section" "projects")
-        | union (where .Site.RegularPages "Section" "illust")
-        | union (where .Site.RegularPages "Section" "covers")
-        | union (where .Site.RegularPages "Section" "blog")
-        | union (where .Site.RegularPages "Section" "poems"))
-        "Date"
-        "desc")
+         ((where (partial "func-all-pages" .) "Params.type" "regularpage")
+          | union (where .Site.RegularPages "Section" "")
+          | union (where .Site.RegularPages "Section" "translated")
+          | union (where .Site.RegularPages "Section" "projects")
+          | union (where .Site.RegularPages "Section" "illust")
+          | union (where .Site.RegularPages "Section" "covers")
+          | union (where .Site.RegularPages "Section" "blog")
+          | union (where .Site.RegularPages "Section" "poems"))
+         "Date"
+         "desc")
       }}
     </main>
   </div>
