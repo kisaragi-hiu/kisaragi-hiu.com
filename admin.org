@@ -94,30 +94,39 @@ rm *.webp
 ")))
   (kisaragi-hiu.com/download-thumbnail yt))
 #+end_src
-* Extract tags
+* Tags and series
 
-#+begin_src emacs-lisp
+#+NAME: extract-terms
+#+begin_src emacs-lisp :var type="tags"
 (shell-command-to-string "hugo --buildDrafts")
-(let ((tags))
+(let ((type (or type "tags"))
+      (terms))
   (with-temp-buffer
-    (insert-file-contents "./public/tags/index.xml")
+    (insert-file-contents
+     (format "./public/%s/index.xml" type))
     (dolist (item (--> (libxml-parse-xml-region)
                        (dom-by-tag it 'item)))
       (let* ((title (dom-text (dom-by-tag item 'title)))
              (url (dom-text (dom-by-tag item 'link)))
-             (tag (-> (url-generic-parse-url url)
-                      url-path-and-query
-                      car
-                      (string-split "/" t)
-                      last
-                      car)))
-        (push (list title tag url) tags))))
-  (append '(("title" "tag" "url") hline)
-          (sort tags :key #'cadr :lessp #'string<)))
+             (id (-> (url-generic-parse-url url)
+                     url-path-and-query
+                     car
+                     (string-split "/" t)
+                     last
+                     car)))
+        (push (list title id url) terms))))
+  (append `(("title" ,type "url") hline)
+          (sort terms :key #'cadr :lessp #'string<)))
+#+end_src
+
+** Tags
+
+#+begin_src emacs-lisp :noweb eval
+(quote <<extract-terms(type="tags")>>)
 #+end_src
 
 #+RESULTS:
-| title                  | tag              | url                                             |
+| title                  | tags             | url                                             |
 |------------------------+------------------+-------------------------------------------------|
 | Android                | android          | https://kisaragi-hiu.com/tags/android/          |
 | Anime                  | anime            | https://kisaragi-hiu.com/tags/anime/            |
@@ -211,3 +220,22 @@ rm *.webp
 | Web                    | web              | https://kisaragi-hiu.com/tags/web/              |
 | Windows                | windows          | https://kisaragi-hiu.com/tags/windows/          |
 | Writing                | writing          | https://kisaragi-hiu.com/tags/writing/          |
+
+** Series
+
+#+begin_src emacs-lisp :noweb eval
+(quote <<extract-terms(type="series")>>)
+#+end_src
+
+#+RESULTS:
+| title                                    | series                                   | url                                                                       |
+|------------------------------------------+------------------------------------------+---------------------------------------------------------------------------|
+| Hanezeve Caradhina Language Construction | hanezeve-caradhina-language-construction | https://kisaragi-hiu.com/series/hanezeve-caradhina-language-construction/ |
+| Monthly Reviews                          | monthly-reviews                          | https://kisaragi-hiu.com/series/monthly-reviews/                          |
+| Own Vocal Experiment                     | own-vocal-experiment                     | https://kisaragi-hiu.com/series/own-vocal-experiment/                     |
+| Project Announcements                    | project-announcements                    | https://kisaragi-hiu.com/series/project-announcements/                    |
+| Resolution                               | resolution                               | https://kisaragi-hiu.com/series/resolution/                               |
+| Tips                                     | tips                                     | https://kisaragi-hiu.com/series/tips/                                     |
+| Translation Discourse                    | translation-discourse                    | https://kisaragi-hiu.com/series/translation-discourse/                    |
+| Trying to Explain                        | trying-to-explain                        | https://kisaragi-hiu.com/series/trying-to-explain/                        |
+| Yearly Reviews                           | yearly-reviews                           | https://kisaragi-hiu.com/series/yearly-reviews/                           |
