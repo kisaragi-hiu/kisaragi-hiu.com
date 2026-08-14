@@ -85,6 +85,7 @@ privacy:
     simple: true
 
 security:
+  allowContent: [".*"]
   goTemplates:
     # Allow Hugo template variables in JS template literals.
     # The template is written by me.
