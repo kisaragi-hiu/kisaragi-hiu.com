@@ -1,0 +1,11 @@
+#+title: かな入力 for Emacs
+#+created: 2025-01-20
+#+tags[]: emacs
+#+github: https://github.com/kisaragi-hiu/emacs-japanese-kana-input
+#+status: 90%
+
+[[https://ja.wikipedia.org/wiki/かな入力][JIS かな入力]] for Emacs.
+
+I haven't tested this well on a JIS keyboard yet, and it's been sitting there stalled for an amazingly long time. But it's already perfectly usable on a US keyboard.
+
+My pipedream is to upstream this. (If someone is interested in doing that for me you're welcome to do so! I've already signed copyright assignment for other contributions so that won't be a hurdle.)
