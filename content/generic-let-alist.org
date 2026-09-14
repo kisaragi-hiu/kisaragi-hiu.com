@@ -1,0 +1,157 @@
+#+title: let-alist but for any collection
+#+created: 2026-09-14T12:42:19+0900
+#+tags[]: emacs-lisp
+
+=let-alist= is great:
+
+#+begin_src elisp
+(let-alist '((a . ((b . "nested-value"))))
+  .a.b)
+#+end_src
+
+#+RESULTS:
+: nested-value
+
+but it only supports alists. Surely it's not that hard to make a version that uses =(map-elt map key)= instead of =(cdr (assq key alist))=?
+
+* What
+It sure wasn't. After about 10 minutes of hacking:
+
+#+begin_src elisp
+(require 'let-alist)
+
+(defun let-map--list-to-sexp (list var)
+  "Turn symbols LIST into recursive calls to `map-elt' or `seq-elt' on VAR."
+  (let ((sym (car list))
+        (rest (if (cdr list) (let-map--list-to-sexp (cdr list) var)
+                 var)))
+    (cond
+     ((numberp sym) `(seq-elt ,rest ,sym))
+     (t `(map-elt ,rest ',sym)))))
+
+(defmacro let-map (map &rest body)
+  "Like `let-alist' but supports all maps and sequences."
+  (declare (indent 1) (debug t))
+  (cl-letf (((symbol-function 'let-alist--list-to-sexp)
+             (symbol-function 'let-map--list-to-sexp)))
+    (apply (cdr (symbol-function 'let-alist))
+           map body)))
+#+end_src
+
+This… already works as expected. And if grabbing the body of a macro to call it as a function is too internal, just copying the body of =let-alist= itself also works:
+
+#+begin_src elisp
+(defmacro let-map (map &rest body)
+  "Like `let-alist' but supports all maps and sequences."
+  (declare (indent 1) (debug t))
+  (cl-letf (((symbol-function 'let-alist--list-to-sexp)
+             (symbol-function 'let-map--list-to-sexp)))
+    (let ((var (make-symbol "map")))
+      `(let ((,var ,map))
+         (let ,(mapcar (lambda (x) `(,(car x) ,(let-alist--access-sexp (car x) var)))
+                       (delete-dups (let-alist--deep-dot-search body)))
+           ,@body)))))
+#+end_src
+
+Has no one done this yet?
+
+* Usage
+** alists, plists, etc.
+#+begin_src elisp
+(list
+ (let-map '(:height 50 :width 40)
+   .:height) ; => 50
+ (let-map '((a . ((b . c))))
+   .a.b)) ; => c
+#+end_src
+
+It just works, though when keys are keywords =.:= is a bit ugly.
+
+** hash-tables
+
+#+begin_src elisp
+(let ((json "
+{\"objects\": [{\"name\": \"hello\", \"size\": 3}, {\"name\": \"hello2\", \"size\": 5}]}
+"))
+  (let-map (json-parse-string json)
+    .objects.0.name)) ; => nil
+#+end_src
+
+I see one issue from this now. Should this =let-map= treat .a as indexing with the ='a= symbol or the ="a"= string? For hash tables the latter is often desirable.
+
+For this I spent another 20 minutes hacking on it to add an option (in =define-minor-mode= style, as a keyword before the body):
+
+#+begin_src elisp
+(let ((json "
+{\"objects\": [{\"name\": \"hello\", \"size\": 3}, {\"name\": \"hello2\", \"size\": 5}]}
+"))
+  (let-map (json-parse-string json)
+    :string-keys t
+    .objects.0.name))
+#+end_src
+
+#+RESULTS:
+: hello
+
+
+** Sequences
+#+begin_src elisp
+(list
+ (let-map '(:list (a b c))
+   .:list.0) ; => a
+ (let-map '(:names ["a" "b"])
+   .:names.1) ; => "b"
+ (let-map '(:string "abcde")
+   .:string.3)) ; => 100 (?d)
+#+end_src
+
+By using seq-elt instead of nth, non-list sequences are also supported.
+
+Because let-alist's switch on whether to index the value as a list depends solely on how we index it (the =.1= here), there is no worry that a list would conflict with alists or plists. If one wants to index an alist as a plain list of cons cells, just do eg. =.2= for the 3rd cons cell.
+
+* Final version
+
+#+begin_src elisp
+(defmacro let-map (map &rest body)
+  "Like `let-alist' on MAP and BODY but supports all maps and sequences.
+
+Keys like .foo.bar translate into (map-elt (map-elt map \\='foo) \\='bar)
+instead of using alist-specific functions, with keys becoming symbols.
+
+Some arguments can come after MAP, in the same way `define-minor-mode'\\='s
+keywords are specified:
+
+:string-keys BOOL
+  If string keys are desired, such as when indexing some hash tables,
+  this will turn .foo into (map-elt map \"foo\") instead of
+  (map-elt map \\='foo)."
+  (declare (indent 1) (debug t))
+  (let (string-keys to-sexp)
+    (while (eq (car body) :string-keys)
+      (let ((_key (pop body))
+            (value (pop body)))
+        (setq string-keys value)))
+    ;; This allows this lambda to reference itself.
+    ;; We inline this because there is no good way to pass STRING-KEYS otherwise.
+    (setq to-sexp
+          (lambda (list var)
+            (let ((sym (car list))
+                  (rest (if (cdr list)
+                            (funcall to-sexp (cdr list) var)
+                          var)))
+              (cond
+               ((numberp sym) `(seq-elt ,rest ,sym))
+               (t
+                (if string-keys
+                    `(map-elt ,rest (symbol-name ',sym))
+                  `(map-elt ,rest ',sym)))))))
+    (cl-letf* (((symbol-function 'let-alist--list-to-sexp)
+                to-sexp))
+      (let ((var (make-symbol "map")))
+        `(let ((,var ,map))
+           (let ,(mapcar (lambda (x) `(,(car x) ,(let-alist--access-sexp (car x) var)))
+                         (delete-dups (let-alist--deep-dot-search body)))
+             ,@body))))))
+#+end_src
+
+I don't know if anyone has done something like this yet, but it sure is convenient. Maybe it would be nice if something like this is upstreamed into let-alist (the code would then look less horrendous because there'd be less monkey patching).
