@@ -1,0 +1,53 @@
+#+title: Linux Packaging for Taigi Keyboard
+#+created: 2026-09-30T01:13:30+0900
+#+tags[]: linux packaging
+#+github: https://github.com/kisaragi-hiu/taigikeyboard-packaging
+#+status: done
+
+More easily installable and upgradable packages for siansiansu's [[https://taigikeyboard.tw][Taigi Keyboard]].
+
+* Ubuntu https://launchpad.net/~kisaragi-hiu/+archive/ubuntu/taigikeyboard
+
+#+begin_src sh
+sudo add-apt-repository ppa:kisaragi-hiu/taigikeyboard
+sudo apt update
+sudo apt install fcitx5-taigikeyboard
+sudo apt install ibus-taigikeyboard
+#+end_src
+
+* Fedora https://copr.fedorainfracloud.org/coprs/kisaragi-hiu/taigikeyboard/
+
+#+begin_src sh
+sudo dnf copr enable kisaragi-hiu/taigikeyboard
+sudo dnf install fcitx5-taigikeyboard
+sudo dnf install ibus-taigikeyboard
+#+end_src
+
+* openSUSE
+
+also using Fedora COPR
+
+#+begin_src sh
+# tumbleweed
+sudo zypper addrepo 'https://copr.fedorainfracloud.org/coprs/kisaragi-hiu/taigikeyboard/repo/opensuse-tumbleweed/kisaragi-hiu-taigikeyboard-opensuse-tumbleweed.repo'
+# leap 16.0
+sudo zypper addrepo 'https://copr.fedorainfracloud.org/coprs/kisaragi-hiu/taigikeyboard/repo/opensuse-tumbleweed/kisaragi-hiu-taigikeyboard-opensuse-tumbleweed.repo'
+
+# then
+sudo zypper refresh
+sudo zypper install fcitx5-taigikeyboard
+sudo zypper install ibus-taigikeyboard
+#+end_src
+
+* Bazzite or other Fedora-based immutable distros
+
+These can use the Fedora COPR package too. Hopefully I keep things up so I don't block your updates!
+
+#+begin_src sh
+sudo dnf copr enable kisaragi-hiu/taigikeyboard
+rpm-ostree install fcitx5-taigikeyboard
+rpm-ostree install ibus-taigikeyboard
+#+end_src
+
+* Arch
+@@html:<a hred="https://aur.archlinux.org/packages/fcitx5-taigikeyboard"><code>fcitx5-taigikeyboard</code></a><sup>AUR</sup>@@, @@html:<a hred="https://aur.archlinux.org/packages/ibus-taigikeyboard"><code>ibus-taigikeyboard</code></a><sup>AUR</sup>@@,
