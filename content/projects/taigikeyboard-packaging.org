@@ -50,4 +50,4 @@ rpm-ostree install ibus-taigikeyboard
 #+end_src
 
 * Arch
-@@html:<a hred="https://aur.archlinux.org/packages/fcitx5-taigikeyboard"><code>fcitx5-taigikeyboard</code></a><sup>AUR</sup>@@, @@html:<a hred="https://aur.archlinux.org/packages/ibus-taigikeyboard"><code>ibus-taigikeyboard</code></a><sup>AUR</sup>@@,
+@@html:<a hred="https://aur.archlinux.org/packages/fcitx5-taigikeyboard"><code>fcitx5-taigikeyboard</code></a><sup>AUR</sup>@@, @@html:<a hred="https://aur.archlinux.org/packages/ibus-taigikeyboard"><code>ibus-taigikeyboard</code></a><sup>AUR</sup>@@
