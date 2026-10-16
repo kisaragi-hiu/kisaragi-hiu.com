@@ -13,7 +13,6 @@ defaults:
 jobs:
   "build":
     # This comes with
-    # - Vercel CLI
     # - Make
     # - Node
     runs-on: ubuntu-latest
@@ -31,6 +30,8 @@ jobs:
         # This uses Node
         run: |
           make vercel.json
+      - name: Set up Vercel CLI
+        run: bun install -g vercel@latest
       - name: Build and deploy
         env:
           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
