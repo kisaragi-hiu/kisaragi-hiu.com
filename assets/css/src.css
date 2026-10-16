@@ -73,7 +73,9 @@
   }
   .meta {
     @apply text-sm w-max;
-    @apply overflow-auto;
+    dd {
+      @apply overflow-auto;
+    }
     /* Format like this:
          dd1   dd2   dd3   dd4
           dt1   dt2   dt3   dt4
